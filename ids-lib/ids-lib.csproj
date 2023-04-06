@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+		<RootNamespace>IdsLib</RootNamespace>
+    <Nullable>enable</Nullable>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageProjectUrl>https://github.com/CBenghi/ids-tool/</PackageProjectUrl>
+		<Copyright>Claudio Benghi</Copyright>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<LangVersion>latest</LangVersion>
+		<Description>A command line tool to check IDS Files.
+buildingSmart Information Delivery Specification files can be checked against their relative schema.</Description>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageTags>IDS, buildingSmart</PackageTags>
+		<RepositoryUrl>https://github.com/CBenghi/ids-tool.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>First implementation.</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+		<AssemblyVersion>1.0.16</AssemblyVersion>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Resources\XsdSchemas\ids.xsd" />
+	  <None Remove="xml.xsd" />
+	  <None Remove="xsdschema.xsd" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\XsdSchemas\ids.xsd" />
+	  <EmbeddedResource Include="Resources\XsdSchemas\xml.xsd" />
+	  <EmbeddedResource Include="Resources\XsdSchemas\xsdschema.xsd" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\graphics\icon.png" Link="icon.png">
+	    <PackagePath></PackagePath>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>ids-tool.tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+  
+	<ItemGroup>
+		<PackageReference Include="CommandLineParser" Version="2.9.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
+	<!--
+    If the expected destination folder exists on the local machine, this target copies the produced nupkg there too.
+    We are using forward slashes as they work on all OSs, but this is really only useful on windows at the moment.
+    -->
+	<Target Name="PublishLocally" AfterTargets="Pack" Condition="Exists('C:/Users/Claudio/OneDrive/Benghi/FastViewer') And '$(Configuration)' == 'Release'">
+		<!-- just use forward slashes, works in windws as well -->
+		<Message Importance="high" Text="Copying local package to:  C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
+		<Message Importance="high" Text="  source: $(OutputPath)/$(PackageId).$(PackageVersion).nupkg" />
+		<Copy SourceFiles="$(OutputPath)/$(PackageId).$(PackageVersion).nupkg" DestinationFolder="C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
+	</Target>
+
+</Project>

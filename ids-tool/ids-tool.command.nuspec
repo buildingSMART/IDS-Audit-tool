@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+	<metadata>
+		<id>ids-tool.CommandLine</id>
+		<authors>Claudio Benghi</authors>
+		<description>CLI deployment of the ids-tool</description>
+		<projectUrl>https://github.com/CBenghi/ids-tool/</projectUrl>
+		<version>$version$</version>
+		<iconUrl>https://raw.githubusercontent.com/CBenghi/ids-tool/main/graphics/icon.png</iconUrl>
+		<releaseNotes>$releaseNotes$</releaseNotes>
+		<copyright>$copyright$</copyright>
+		<license type="expression">MIT</license>
+		<icon>icon.png</icon>
+    <readme>README.md</readme>
+	</metadata>
+	<files>
+		<file src="$publishdir$net6.0\icon.png" target="icon.png" />
+		<file src="$publishdir$net6.0\**\*" target="tools/net6.0/" />
+    <file src="README.md" target="\" />
+	</files>
+</package>

@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <RootNamespace>IdsTool</RootNamespace>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/CBenghi/ids-tool/</PackageProjectUrl>
+    <Copyright>Claudio Benghi</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Nullable>enable</Nullable>
+    <Description>
+		A command line tool to audit IDS Files and IDS schemas.
+        buildingSmart Information Delivery Specification files can be audited against their relative schema and against the implementation agreements of the standard.
+	</Description>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>IDS, buildingSmart</PackageTags>
+    <AssemblyVersion>1.0.12</AssemblyVersion>
+	<FileVersion>$(AssemblyVersion)</FileVersion>
+	<Version>$(AssemblyVersion)</Version>
+    <RepositoryUrl>https://github.com/CBenghi/ids-tool.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Moved to net6.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <!-- required for tool deployment -->
+  <PropertyGroup>
+	  <NuspecFile>ids-tool.command.nuspec</NuspecFile>
+	  <NoPackageAnalysis>true</NoPackageAnalysis>
+	  <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/publish/</IntermediatePackDir>
+	  <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
+	  <NuspecProperties>
+		  publishDir=$([MSBuild]::NormalizeDirectory($(IntermediatePackDir)));
+		  version=$(Version);
+		  releaseNotes=$(PackageReleaseNotes);
+		  copyright=$(Copyright)
+	  </NuspecProperties>
+  </PropertyGroup>
+
+  <!-- Executes /t:Publish for all target frameworks before packing-->
+  <Target Name="PublishAll" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <_TargetFramework Include="$(TargetFrameworks)" />
+    </ItemGroup>
+    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" Properties="TargetFramework=%(_TargetFramework.Identity)" />
+  </Target>
+		
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\graphics\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ids-lib\ids-lib.csproj" />
+  </ItemGroup>
+
+  <!--
+    If the expected destination folder exists on the local machine, this target copies the produced nupkg there too.
+    We are using forward slashes as they work on all OSs, but this is really only useful on windows at the moment.
+    -->
+  <Target Name="PublishLocally" AfterTargets="Pack" Condition="Exists('C:/Users/Claudio/OneDrive/Benghi/FastViewer') And '$(Configuration)' == 'Release'">
+    <!-- just use forward slashes, works in windws as well -->
+    <Message Importance="high" Text="Copying local package to:  C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
+    <Message Importance="high" Text="  source: $(OutputPath)/ids-tool.CommandLine.$(PackageVersion).nupkg" />
+    <Copy SourceFiles="$(OutputPath)/ids-tool.CommandLine.$(PackageVersion).nupkg" DestinationFolder="C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
+  </Target>
+  
+</Project>

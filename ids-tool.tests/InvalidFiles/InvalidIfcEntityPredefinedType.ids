@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd">
+	<ids:info>
+		<ids:title>random example to show technical capabilities and usage</ids:title>
+		<ids:copyright>buildingSMART International Ltd</ids:copyright>
+		<ids:date>2021-09-17</ids:date>
+	</ids:info>
+	<ids:specifications>
+		<ids:specification ifcVersion="IFC2X3 IFC4" name="binder" maxOccurs="unbounded">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<!-- this is ok -->
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="CLADDING"/>
+							<xs:enumeration value="MEMBRANE"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<!-- Thi is ok -->
+						<ids:simpleValue>CLADDING</ids:simpleValue>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<!-- Thi is ok -->
+						<xs:restriction base="xs:string">
+							<xs:pattern value="CLADDING|MEMBRANE"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<!-- Thi is ok -->
+						<xs:restriction base="xs:string">
+							<xs:pattern value="CLAD*ING|MEMBRANE"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<xs:restriction base="xs:string">
+							<!-- this is NOT ok -->
+							<xs:enumeration value="INVALID"/>
+							<!-- this is NOT ok -->
+							<xs:enumeration value="SOMEOTHERINVALID"/>
+							<!-- this is NOT ok -->
+							<xs:enumeration value="cladding"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<xs:restriction base="xs:string">
+							<!-- this is NOT ok, because not found -->
+							<xs:pattern value="INVALID"/>							
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<xs:restriction base="xs:string">
+							<!-- this is NOT ok bacause of case -->
+							<xs:pattern value="cladding"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+			</ids:requirements>
+		</ids:specification>
+	</ids:specifications>
+</ids:ids>

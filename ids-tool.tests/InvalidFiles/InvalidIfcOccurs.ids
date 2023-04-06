@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd">
+	<ids:info>
+		<ids:title>random example to show technical capabilities and usage</ids:title>
+		<ids:copyright>buildingSMART International Ltd</ids:copyright>
+		<ids:date>2021-09-17</ids:date>
+	</ids:info>
+	<ids:specifications>
+		<!-- Error because default for max is 1 -->
+		<ids:specification ifcVersion="IFC2X3" name="binder" minOccurs="2">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="IFCCOVERING"/>
+						</xs:restriction>
+					</ids:name>
+					<ids:predefinedType>
+						<ids:simpleValue>CLADDING</ids:simpleValue>
+					</ids:predefinedType>
+				</ids:entity>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property minOccurs="1">
+					<ids:propertySet>
+						<xs:restriction>
+							<xs:pattern value="anas.*"/>
+						</xs:restriction>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>Anax</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<ids:simpleValue>yes</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+				<!-- Ensure test for classification facets -->
+				<ids:classification minOccurs="4" maxOccurs="2">
+					<ids:system>
+						<ids:simpleValue>SystemName</ids:simpleValue>
+					</ids:system>
+				</ids:classification>
+				<!-- Ensure test for property facets -->
+				<ids:property minOccurs="4" maxOccurs="2">
+					<ids:propertySet>
+						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>Reference</ids:simpleValue>
+					</ids:name>
+				</ids:property>
+				<!-- Ensure test for material facets -->
+				<ids:material minOccurs="4" maxOccurs="2">
+					<ids:value>
+						<ids:simpleValue>Material</ids:simpleValue>
+					</ids:value>
+				</ids:material>
+				<!-- Ensure test for partOf facets -->
+				<ids:partOf relation="IfcRelAggregates" minOccurs="4" maxOccurs="2"/>
+			</ids:requirements>
+		</ids:specification>
+	</ids:specifications>
+</ids:ids>
