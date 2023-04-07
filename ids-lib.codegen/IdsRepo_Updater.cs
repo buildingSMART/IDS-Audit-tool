@@ -10,6 +10,20 @@ namespace IdsLib.codegen
 {
     internal class IdsRepo_Updater
     {
+        internal class UpdatableFile
+        {
+            public string Name { get; set; }
+            public string Source { get; set; }
+            public string Destination { get; set; }
+
+            public UpdatableFile(string name, string source, string destination)
+            {
+                Name = name;
+                Source = source;
+                Destination = destination;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -32,15 +46,20 @@ namespace IdsLib.codegen
                 return false;
             }
             var ret = false;
-            ret = UpdateDocumentationUnits(solutionDir) | ret;
-            ret = UpdateEmbeddedSchema(solutionDir) | ret;
+            
             return ret;
         }
 
-        private static bool UpdateDocumentationUnits(DirectoryInfo solutionDir)
+        public static IEnumerable<UpdatableFile> GetAllUpdatable(DirectoryInfo solutionDir)
         {
-            var units = BuildingSmartRepoFiles.GetDocumentation("units.md");
-            if (units.Exists)
+            return UpdateDocumentationUnits(solutionDir)
+                .Concat(UpdateEmbeddedSchema(solutionDir));
+        }
+
+        private static IEnumerable<UpdatableFile> UpdateDocumentationUnits(DirectoryInfo solutionDir)
+        {
+            var sourceFile = BuildingSmartRepoFiles.GetDocumentation("units.md");
+            if (sourceFile.Exists)
             {
                 var destination = Path.Combine(
                     solutionDir.FullName,
@@ -48,18 +67,16 @@ namespace IdsLib.codegen
                     "buildingSMART",
                     "units.md"
                     );
-                if (BuildingSmartRepoFiles.FilesAreIdentical(units, new FileInfo(destination) ))
-                    return false;
-                File.Copy(units.FullName, destination, true);
-                return true;
+                if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, new FileInfo(destination)))
+                    yield break;
+                yield return new UpdatableFile("Units documentation file", sourceFile.FullName, destination);
             }
-            return false;
         }
 
-        private static bool UpdateEmbeddedSchema(DirectoryInfo solutionDir)
+        private static IEnumerable<UpdatableFile> UpdateEmbeddedSchema(DirectoryInfo solutionDir)
         {
-            var units = BuildingSmartRepoFiles.GetDevelopment("ids.xsd");
-            if (units.Exists)
+            var sourceFile = BuildingSmartRepoFiles.GetDevelopment("ids.xsd");
+            if (sourceFile.Exists)
             {
                 var destination = Path.Combine(
                    solutionDir.FullName,
@@ -68,12 +85,10 @@ namespace IdsLib.codegen
                     "XsdSchemas",
                     "ids.xsd"
                     );
-                if (BuildingSmartRepoFiles.FilesAreIdentical(units, new FileInfo(destination)))
-                    return false;
-                File.Copy(units.FullName, destination, true);
-                return true;
+                if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, new FileInfo(destination)))
+                    yield break;
+                yield return new UpdatableFile("Ids schema file", sourceFile.FullName, destination);
             }
-            return false;
         }
 
         private static DirectoryInfo? GetSolutionDirectory()
@@ -89,9 +104,9 @@ namespace IdsLib.codegen
             return null;
         }
 
-        
 
-        internal static bool Exists 
+
+        internal static bool Exists
         {
             get
             {

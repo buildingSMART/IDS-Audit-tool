@@ -12,8 +12,12 @@ internal class IdsFacet : BaseContext, IIdsRequirementFacet
 
     public Audit.Status PerformAuditAsRequirement(ILogger? logger)
     {
+        var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            return logger.ReportInvalidOccurr(this, minMaxOccurr);
-        return Audit.Status.Ok;
+        {
+            logger.ReportInvalidOccurr(this, minMaxOccurr);
+            ret |= MinMaxOccur.ErrorStatus;
+        }
+        return ret;
     }
 }

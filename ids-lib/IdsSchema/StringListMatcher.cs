@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.IfcSchema;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Xml;
 
 namespace IdsLib.IdsSchema;
@@ -25,5 +28,32 @@ internal class StringListMatcher : IStringListMatcher
         if (!matches.Any())
             return IdsLoggerExtensions.ReportInvalidListMatcher(context, value, logger, listToMatchName, schemaContext);
         return Audit.Status.Ok;
+    }
+
+    /// <summary>
+    /// triggers a log error if there's anything but a single match
+    /// </summary>
+    internal Audit.Status HasSingleMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out string? singleMatch, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+    {
+        var ret = DoesMatch(candidateStrings, ignoreCase, logger, out var matches, listToMatchName, schemaContext);
+        if (ret != Audit.Status.Ok)
+        {
+            try
+            {
+                singleMatch = matches.Single();
+            }
+            catch (Exception)
+            {
+                var count = matches.Count();
+                ret |= IdsLoggerExtensions.ReportInvalidListMatcherCount(context, value, logger, listToMatchName, count, schemaContext);
+                singleMatch = null;
+                return ret;
+            }
+        }
+        else
+        {
+            singleMatch = null; 
+        }
+        return ret;
     }
 }

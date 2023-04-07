@@ -20,6 +20,8 @@ internal class MinMaxOccur
         maxString = reader.GetAttribute("maxOccurs") ?? "1"; 
     }
 
+    internal const Audit.Status ErrorStatus = IdsLib.Audit.Status.IdsContentError;
+
     /// <summary>
     /// Audits the validity of an occurrence setting.
     /// </summary>
@@ -33,17 +35,17 @@ internal class MinMaxOccur
         else if (!uint.TryParse(maxString, out max))
         {
             errorMessage = $"Invalid maxOccurs '{maxString}'";
-            return IdsLib.Audit.Status.IdsContentError;
+            return ErrorStatus;
         }
         if (!uint.TryParse(minString, out var min))
         {
             errorMessage = $"Invalid minOccurs '{minString}'";
-            return IdsLib.Audit.Status.IdsContentError;
+            return ErrorStatus;
         }
         if (max < min)
         {
             errorMessage = $"Invalid range '{minString}' to `{maxString}`";
-            return IdsLib.Audit.Status.IdsContentError;
+            return ErrorStatus;
         }
         if (
             min > 1 ||
@@ -51,7 +53,7 @@ internal class MinMaxOccur
             )
         {
             errorMessage = $"Invalid configuration for IDS implementation agreements {this}";
-            return IdsLib.Audit.Status.IdsContentError;
+            return ErrorStatus;
         }
 
         errorMessage = string.Empty;

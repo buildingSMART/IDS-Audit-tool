@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace IdsTool;
 
+/// <summary>
+/// Concrete class passed to the ids-tool library, when Running the audit.
+/// See <see cref="IAuditOptions"/> for more details.
+/// </summary>
 [Verb("audit", HelpText = "Audits ids files and/or their xsd schema.")]
 public class AuditOptions : IAuditOptions
 {

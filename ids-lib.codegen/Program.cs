@@ -28,6 +28,10 @@ internal class Program
         tmp = IfcSchema_AttributesGenerator.Execute();
         dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs");
         File.WriteAllText(dest, tmp);
+
+        tmp = IfcSchema_PartOfRelationGenerator.Execute();
+        dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");
+        File.WriteAllText(dest, tmp);
     }
 
     private static void Message(string v, ConsoleColor messageColor)

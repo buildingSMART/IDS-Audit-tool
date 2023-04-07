@@ -278,11 +278,8 @@ namespace IdsLib.IfcSchema
             return AttributesToAllClasses.Keys;
         }
 
-
-
         static partial void GetAttributesIFC2x3(SchemaInfo destinationSchema);
         static partial void GetAttributesIFC4(SchemaInfo destinationSchema);
-
         static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema);
 
         private void AddAttribute(string attributeName, string[] topClassNames, string[] allClassNames)
@@ -314,6 +311,11 @@ namespace IdsLib.IfcSchema
             return Classes.Values.GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns the schema metadata information for the required versions.
+        /// </summary>
+        /// <param name="schemaVersions">required</param>
+        /// <returns></returns>
         public static IEnumerable<SchemaInfo> GetSchemas(IfcSchemaVersions schemaVersions)
         {
             if (schemaVersions.HasFlag(IfcSchemaVersions.Ifc2x3))

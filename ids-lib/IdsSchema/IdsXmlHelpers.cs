@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema;
 
-public class IdsXmlHelpers
+internal class IdsXmlHelpers
 {
     internal static BaseContext GetContextFromElement(XmlReader reader, ILogger? logger)
     {

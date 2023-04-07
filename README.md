@@ -73,6 +73,8 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] Predefined types Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Prefefined types are tested against values provided from the schema.
       - [x] Meaningful test cases
+      - [ ] Handle User-defined behaviours
+        - [ ] Get value from attributes
     - [x] IfcTypeNames
       - [x] IfcType Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Simple type names are audited
@@ -88,12 +90,12 @@ We are planning to a number of audits (checked ones are implemented)
   - [ ] properties 
     - [ ] All audits are case insensitive
     - [ ] no extensions of standard PSETs
-       - [ ] properties are limited to the agreed set
-    - [ ] No misplacement of propertis
+      - [ ] properties are limited to the agreed set
+    - [ ] No misplacement of properties
       - [ ] Property with a recognised name (e.g. IsExternal) should not be outside of the agreed pset.
         - [ ] Perhaps return a warning for userdefined property
         - [ ] Warning or error as configuration (strict)
-      - [ ] Includes IFC type inheritance?
+    - [ ] Includes IFC type inheritance?
     - [ ] Reserved prefix
       - [ ] No custom pset can start with "PSET_" this prefix is reserved for the standard
     - [ ] Measures
@@ -107,7 +109,9 @@ We are planning to a number of audits (checked ones are implemented)
     - [x] property
     - [x] material  
   - [ ] PartOf
-    - [ ] Relation
+    - [x] Entity
+      - [ ] Constrained to relation type
+    - [x] Relation
 - [x] Cardinality
   - [x] Min and Max values are intrinsically valid (xml constraints)
   - [x] Min and Max values are restricted to agreed patterns (IDS implementation agreement)

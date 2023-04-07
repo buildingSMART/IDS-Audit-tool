@@ -46,6 +46,7 @@ public class AuditTests : BuildingSmartRepoFiles
             SchemaFiles = new[] { "/bsFiles/ids093.xsd" }
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
+        // hack to provide milder error because we don't have control on the generator
         Skip.If(auditResult != Audit.Status.Ok);
         auditResult.Should().Be(Audit.Status.Ok);
     }

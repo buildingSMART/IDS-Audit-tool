@@ -15,20 +15,66 @@ using System.Collections.Concurrent;
 
 namespace IdsLib;
 
+/// <summary>
+/// Main static class for the execution of the audit functions of the tool.
+/// See the <see cref="Run(IdsLib.IAuditOptions, ILogger?)"/> and <see cref="Run(Stream, IdsLib.IAuditOptions, ILogger?)"/> for more details.
+/// </summary>
 public static partial class Audit
 {
+    /// <summary>
+    /// Summary return status of the audit functions
+    /// </summary>
     [Flags]
     public enum Status
     {
+        /// <summary>
+        /// No errors encountered
+        /// </summary>
         Ok = 0,
+        /// <summary>
+        /// The tool did not complete all the audits, because some aspect of the process are not implemented yet
+        /// </summary>
         NotImplementedError = 1 << 0,
+        /// <summary>
+        /// The options provided in input are incomplete or inconsistent.
+        /// </summary>
         InvalidOptionsError = 1 << 1,
+        /// <summary>
+        /// A resources passed via file name was not found.
+        /// </summary>
         NotFoundError = 1 << 2,
+        /// <summary>
+        /// When auditing an IDS, ne or more errors encountered in the XML structure (includes XSD compliance errors).
+        /// </summary>
         IdsStructureError = 1 << 3,
+        /// <summary>
+        /// When auditing an IDS, one or more errors encountered auditing against the implementation agreement.
+        /// </summary>
         IdsContentError = 1 << 4,
+        /// <summary>
+        /// A custom XSD was passed, but it could not be used because of an error in its content or structure.
+        /// </summary>
         XsdSchemaError = 1 << 5,
     }
 
+    /// <summary>
+    /// Main entry point to access the library features, when dealing with streams
+    /// This is currently not implemented, while we work out the best way to pass streams
+    /// to the underlying XML APIs that we use in <see cref="Run(IAuditOptions, ILogger?)"/>.
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    [Obsolete("Still not implemeted; it's not to be considered obsolete, rather a reminder of work to do.")]
+    public static Status Run(Stream idsSource, IAuditOptions opts, ILogger? logger = null)
+    {
+        throw new NotImplementedException("Will come soon.");
+    }
+
+    /// <summary>
+    /// main entry point to access the library features, when dealing with files on the disk
+    /// </summary>
+    /// <param name="opts">configuraion options for the execution of audits</param>
+    /// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed</param>
+    /// <returns>A status enum</returns>
     public static Status Run(IAuditOptions opts, ILogger? logger = null)
     {
         Status retvalue = Status.Ok;
@@ -301,6 +347,11 @@ public static partial class Audit
         return ret;
     }
 
+    /// <summary>
+    /// Provides access to the latest XSD schema, saved as a file in the temporary directory.
+    /// This is useful because some of Microsoft's XML APIs rely on files rather than streams.
+    /// </summary>
+    /// <returns>A valid FileInfo class if successful, null on failure.</returns>
     public static FileInfo? GetLatestIdsSchema()
     {
         var file = ExtractResources(new[] {"ids.xsd"}).FirstOrDefault();

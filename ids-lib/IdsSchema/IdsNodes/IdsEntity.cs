@@ -1,4 +1,5 @@
 ﻿using IdsLib.IfcSchema;
+using IdsLib.IfcSchema.TypeFilters;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -6,12 +7,14 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsEntity : BaseContext
+internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider
 {
     private static readonly string[] SpecificationArray = { "specification" };
+    private IIfcTypeConstraint validTypes;
 
     public IdsEntity(System.Xml.XmlReader reader) : base(reader)
     {
+        validTypes = IfcConcreteTypeList.Empty;
     }
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
@@ -35,11 +38,15 @@ internal class IdsEntity : BaseContext
             return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
         var ValidClassNames = SchemaInfo.AllClasses
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
-            .Select(y => y.IfcClassName.ToUpperInvariant());
+            .Select(y => y.UpperCaseName);
         var ret = sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity names", requiredSchemaVersions);
-        if (ret != Audit.Status.Ok)   
+        if (ret != Audit.Status.Ok)
+        {
+            validTypes = IfcConcreteTypeList.Empty;
             return ret;
-        
+        }
+        validTypes = new IfcConcreteTypeList(possibleClasses);
+
 
         // predefined types that are common for the possibleClasses across defined schemas
         var type = GetChildNodes("predefinedType").FirstOrDefault();
@@ -75,4 +82,6 @@ internal class IdsEntity : BaseContext
         
         return ret;
     }
+
+    public IIfcTypeConstraint ValidTypes => validTypes;
 }
