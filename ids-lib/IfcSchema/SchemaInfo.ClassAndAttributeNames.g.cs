@@ -16,1165 +16,1028 @@ namespace IdsLib.IfcSchema
         {
             get
             {
-               yield return new IfcClassInformation("Ifc2DCompositeCurve", new[] { "Ifc2x3" }); // 1
-               yield return new IfcClassInformation("IfcAbsorbedDoseMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 2
-               yield return new IfcClassInformation("IfcAccelerationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 3
-               yield return new IfcClassInformation("IfcActionRequest", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 4
-               yield return new IfcClassInformation("IfcActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 5
-               yield return new IfcClassInformation("IfcActorRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 6
-               yield return new IfcClassInformation("IfcActuator", new[] { "Ifc4", "Ifc4x3" }); // 7
-               yield return new IfcClassInformation("IfcActuatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 8
-               yield return new IfcClassInformation("IfcAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 9
-               yield return new IfcClassInformation("IfcAdvancedBrep", new[] { "Ifc4", "Ifc4x3" }); // 10
-               yield return new IfcClassInformation("IfcAdvancedBrepWithVoids", new[] { "Ifc4", "Ifc4x3" }); // 11
-               yield return new IfcClassInformation("IfcAdvancedFace", new[] { "Ifc4", "Ifc4x3" }); // 12
-               yield return new IfcClassInformation("IfcAirTerminal", new[] { "Ifc4", "Ifc4x3" }); // 13
-               yield return new IfcClassInformation("IfcAirTerminalBox", new[] { "Ifc4", "Ifc4x3" }); // 14
-               yield return new IfcClassInformation("IfcAirTerminalBoxType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 15
-               yield return new IfcClassInformation("IfcAirTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 16
-               yield return new IfcClassInformation("IfcAirToAirHeatRecovery", new[] { "Ifc4", "Ifc4x3" }); // 17
-               yield return new IfcClassInformation("IfcAirToAirHeatRecoveryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 18
-               yield return new IfcClassInformation("IfcAlarm", new[] { "Ifc4", "Ifc4x3" }); // 19
-               yield return new IfcClassInformation("IfcAlarmType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 20
-               yield return new IfcClassInformation("IfcAlignment", new[] { "Ifc4", "Ifc4x3" }); // 21
-               yield return new IfcClassInformation("IfcAlignment2DHorizontal", new[] { "Ifc4" }); // 22
-               yield return new IfcClassInformation("IfcAlignment2DHorizontalSegment", new[] { "Ifc4" }); // 23
-               yield return new IfcClassInformation("IfcAlignment2DSegment", new[] { "Ifc4" }); // 24
-               yield return new IfcClassInformation("IfcAlignment2DVerSegCircularArc", new[] { "Ifc4" }); // 25
-               yield return new IfcClassInformation("IfcAlignment2DVerSegLine", new[] { "Ifc4" }); // 26
-               yield return new IfcClassInformation("IfcAlignment2DVerSegParabolicArc", new[] { "Ifc4" }); // 27
-               yield return new IfcClassInformation("IfcAlignment2DVertical", new[] { "Ifc4" }); // 28
-               yield return new IfcClassInformation("IfcAlignment2DVerticalSegment", new[] { "Ifc4" }); // 29
-               yield return new IfcClassInformation("IfcAlignmentCant", new[] { "Ifc4x3" }); // 30
-               yield return new IfcClassInformation("IfcAlignmentCantSegment", new[] { "Ifc4x3" }); // 31
-               yield return new IfcClassInformation("IfcAlignmentCurve", new[] { "Ifc4" }); // 32
-               yield return new IfcClassInformation("IfcAlignmentHorizontal", new[] { "Ifc4x3" }); // 33
-               yield return new IfcClassInformation("IfcAlignmentHorizontalSegment", new[] { "Ifc4x3" }); // 34
-               yield return new IfcClassInformation("IfcAlignmentParameterSegment", new[] { "Ifc4x3" }); // 35
-               yield return new IfcClassInformation("IfcAlignmentSegment", new[] { "Ifc4x3" }); // 36
-               yield return new IfcClassInformation("IfcAlignmentVertical", new[] { "Ifc4x3" }); // 37
-               yield return new IfcClassInformation("IfcAlignmentVerticalSegment", new[] { "Ifc4x3" }); // 38
-               yield return new IfcClassInformation("IfcAmountOfSubstanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 39
-               yield return new IfcClassInformation("IfcAngularDimension", new[] { "Ifc2x3" }); // 40
-               yield return new IfcClassInformation("IfcAngularVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 41
-               yield return new IfcClassInformation("IfcAnnotation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 42
-               yield return new IfcClassInformation("IfcAnnotationCurveOccurrence", new[] { "Ifc2x3" }); // 43
-               yield return new IfcClassInformation("IfcAnnotationFillArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 44
-               yield return new IfcClassInformation("IfcAnnotationFillAreaOccurrence", new[] { "Ifc2x3" }); // 45
-               yield return new IfcClassInformation("IfcAnnotationOccurrence", new[] { "Ifc2x3" }); // 46
-               yield return new IfcClassInformation("IfcAnnotationSurface", new[] { "Ifc2x3" }); // 47
-               yield return new IfcClassInformation("IfcAnnotationSurfaceOccurrence", new[] { "Ifc2x3" }); // 48
-               yield return new IfcClassInformation("IfcAnnotationSymbolOccurrence", new[] { "Ifc2x3" }); // 49
-               yield return new IfcClassInformation("IfcAnnotationTextOccurrence", new[] { "Ifc2x3" }); // 50
-               yield return new IfcClassInformation("IfcApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 51
-               yield return new IfcClassInformation("IfcAppliedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 52
-               yield return new IfcClassInformation("IfcAppliedValueRelationship", new[] { "Ifc2x3" }); // 53
-               yield return new IfcClassInformation("IfcApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 54
-               yield return new IfcClassInformation("IfcApprovalActorRelationship", new[] { "Ifc2x3" }); // 55
-               yield return new IfcClassInformation("IfcApprovalPropertyRelationship", new[] { "Ifc2x3" }); // 56
-               yield return new IfcClassInformation("IfcApprovalRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 57
-               yield return new IfcClassInformation("IfcArbitraryClosedProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 58
-               yield return new IfcClassInformation("IfcArbitraryOpenProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 59
-               yield return new IfcClassInformation("IfcArbitraryProfileDefWithVoids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 60
-               yield return new IfcClassInformation("IfcArcIndex", new[] { "Ifc4", "Ifc4x3" }); // 61
-               yield return new IfcClassInformation("IfcAreaDensityMeasure", new[] { "Ifc4", "Ifc4x3" }); // 62
-               yield return new IfcClassInformation("IfcAreaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 63
-               yield return new IfcClassInformation("IfcAsset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 64
-               yield return new IfcClassInformation("IfcAsymmetricIShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 65
-               yield return new IfcClassInformation("IfcAudioVisualAppliance", new[] { "Ifc4", "Ifc4x3" }); // 66
-               yield return new IfcClassInformation("IfcAudioVisualApplianceType", new[] { "Ifc4", "Ifc4x3" }); // 67
-               yield return new IfcClassInformation("IfcAxis1Placement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 68
-               yield return new IfcClassInformation("IfcAxis2Placement2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 69
-               yield return new IfcClassInformation("IfcAxis2Placement3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 70
-               yield return new IfcClassInformation("IfcAxis2PlacementLinear", new[] { "Ifc4x3" }); // 71
-               yield return new IfcClassInformation("IfcBeam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 72
-               yield return new IfcClassInformation("IfcBeamStandardCase", new[] { "Ifc4" }); // 73
-               yield return new IfcClassInformation("IfcBeamType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 74
-               yield return new IfcClassInformation("IfcBearing", new[] { "Ifc4x3" }); // 75
-               yield return new IfcClassInformation("IfcBearingType", new[] { "Ifc4x3" }); // 76
-               yield return new IfcClassInformation("IfcBezierCurve", new[] { "Ifc2x3" }); // 77
-               yield return new IfcClassInformation("IfcBinary", new[] { "Ifc4", "Ifc4x3" }); // 78
-               yield return new IfcClassInformation("IfcBlobTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 79
-               yield return new IfcClassInformation("IfcBlock", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 80
-               yield return new IfcClassInformation("IfcBoiler", new[] { "Ifc4", "Ifc4x3" }); // 81
-               yield return new IfcClassInformation("IfcBoilerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 82
-               yield return new IfcClassInformation("IfcBoolean", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 83
-               yield return new IfcClassInformation("IfcBooleanClippingResult", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 84
-               yield return new IfcClassInformation("IfcBooleanResult", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 85
-               yield return new IfcClassInformation("IfcBorehole", new[] { "Ifc4x3" }); // 86
-               yield return new IfcClassInformation("IfcBoundaryCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 87
-               yield return new IfcClassInformation("IfcBoundaryCurve", new[] { "Ifc4", "Ifc4x3" }); // 88
-               yield return new IfcClassInformation("IfcBoundaryEdgeCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 89
-               yield return new IfcClassInformation("IfcBoundaryFaceCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 90
-               yield return new IfcClassInformation("IfcBoundaryNodeCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 91
-               yield return new IfcClassInformation("IfcBoundaryNodeConditionWarping", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 92
-               yield return new IfcClassInformation("IfcBoundedCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 93
-               yield return new IfcClassInformation("IfcBoundedSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 94
-               yield return new IfcClassInformation("IfcBoundingBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 95
-               yield return new IfcClassInformation("IfcBoxAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 96
-               yield return new IfcClassInformation("IfcBoxedHalfSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 97
-               yield return new IfcClassInformation("IfcBridge", new[] { "Ifc4x3" }); // 98
-               yield return new IfcClassInformation("IfcBridgePart", new[] { "Ifc4x3" }); // 99
-               yield return new IfcClassInformation("IfcBSplineCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 100
-               yield return new IfcClassInformation("IfcBSplineCurveWithKnots", new[] { "Ifc4", "Ifc4x3" }); // 101
-               yield return new IfcClassInformation("IfcBSplineSurface", new[] { "Ifc4", "Ifc4x3" }); // 102
-               yield return new IfcClassInformation("IfcBSplineSurfaceWithKnots", new[] { "Ifc4", "Ifc4x3" }); // 103
-               yield return new IfcClassInformation("IfcBuilding", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 104
-               yield return new IfcClassInformation("IfcBuildingElement", new[] { "Ifc2x3", "Ifc4" }); // 105
-               yield return new IfcClassInformation("IfcBuildingElementComponent", new[] { "Ifc2x3" }); // 106
-               yield return new IfcClassInformation("IfcBuildingElementPart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 107
-               yield return new IfcClassInformation("IfcBuildingElementPartType", new[] { "Ifc4", "Ifc4x3" }); // 108
-               yield return new IfcClassInformation("IfcBuildingElementProxy", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 109
-               yield return new IfcClassInformation("IfcBuildingElementProxyType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 110
-               yield return new IfcClassInformation("IfcBuildingElementType", new[] { "Ifc2x3", "Ifc4" }); // 111
-               yield return new IfcClassInformation("IfcBuildingStorey", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 112
-               yield return new IfcClassInformation("IfcBuildingSystem", new[] { "Ifc4", "Ifc4x3" }); // 113
-               yield return new IfcClassInformation("IfcBuiltElement", new[] { "Ifc4x3" }); // 114
-               yield return new IfcClassInformation("IfcBuiltElementType", new[] { "Ifc4x3" }); // 115
-               yield return new IfcClassInformation("IfcBuiltSystem", new[] { "Ifc4x3" }); // 116
-               yield return new IfcClassInformation("IfcBurner", new[] { "Ifc4", "Ifc4x3" }); // 117
-               yield return new IfcClassInformation("IfcBurnerType", new[] { "Ifc4", "Ifc4x3" }); // 118
-               yield return new IfcClassInformation("IfcCableCarrierFitting", new[] { "Ifc4", "Ifc4x3" }); // 119
-               yield return new IfcClassInformation("IfcCableCarrierFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 120
-               yield return new IfcClassInformation("IfcCableCarrierSegment", new[] { "Ifc4", "Ifc4x3" }); // 121
-               yield return new IfcClassInformation("IfcCableCarrierSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 122
-               yield return new IfcClassInformation("IfcCableFitting", new[] { "Ifc4", "Ifc4x3" }); // 123
-               yield return new IfcClassInformation("IfcCableFittingType", new[] { "Ifc4", "Ifc4x3" }); // 124
-               yield return new IfcClassInformation("IfcCableSegment", new[] { "Ifc4", "Ifc4x3" }); // 125
-               yield return new IfcClassInformation("IfcCableSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 126
-               yield return new IfcClassInformation("IfcCaissonFoundation", new[] { "Ifc4x3" }); // 127
-               yield return new IfcClassInformation("IfcCaissonFoundationType", new[] { "Ifc4x3" }); // 128
-               yield return new IfcClassInformation("IfcCalendarDate", new[] { "Ifc2x3" }); // 129
-               yield return new IfcClassInformation("IfcCardinalPointReference", new[] { "Ifc4", "Ifc4x3" }); // 130
-               yield return new IfcClassInformation("IfcCartesianPoint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 131
-               yield return new IfcClassInformation("IfcCartesianPointList", new[] { "Ifc4", "Ifc4x3" }); // 132
-               yield return new IfcClassInformation("IfcCartesianPointList2D", new[] { "Ifc4", "Ifc4x3" }); // 133
-               yield return new IfcClassInformation("IfcCartesianPointList3D", new[] { "Ifc4", "Ifc4x3" }); // 134
-               yield return new IfcClassInformation("IfcCartesianTransformationOperator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 135
-               yield return new IfcClassInformation("IfcCartesianTransformationOperator2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 136
-               yield return new IfcClassInformation("IfcCartesianTransformationOperator2DnonUniform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 137
-               yield return new IfcClassInformation("IfcCartesianTransformationOperator3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 138
-               yield return new IfcClassInformation("IfcCartesianTransformationOperator3DnonUniform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 139
-               yield return new IfcClassInformation("IfcCenterLineProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 140
-               yield return new IfcClassInformation("IfcChamferEdgeFeature", new[] { "Ifc2x3" }); // 141
-               yield return new IfcClassInformation("IfcChiller", new[] { "Ifc4", "Ifc4x3" }); // 142
-               yield return new IfcClassInformation("IfcChillerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 143
-               yield return new IfcClassInformation("IfcChimney", new[] { "Ifc4", "Ifc4x3" }); // 144
-               yield return new IfcClassInformation("IfcChimneyType", new[] { "Ifc4", "Ifc4x3" }); // 145
-               yield return new IfcClassInformation("IfcCircle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 146
-               yield return new IfcClassInformation("IfcCircleHollowProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 147
-               yield return new IfcClassInformation("IfcCircleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 148
-               yield return new IfcClassInformation("IfcCircularArcSegment2D", new[] { "Ifc4" }); // 149
-               yield return new IfcClassInformation("IfcCivilElement", new[] { "Ifc4", "Ifc4x3" }); // 150
-               yield return new IfcClassInformation("IfcCivilElementType", new[] { "Ifc4", "Ifc4x3" }); // 151
-               yield return new IfcClassInformation("IfcClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 152
-               yield return new IfcClassInformation("IfcClassificationItem", new[] { "Ifc2x3" }); // 153
-               yield return new IfcClassInformation("IfcClassificationItemRelationship", new[] { "Ifc2x3" }); // 154
-               yield return new IfcClassInformation("IfcClassificationNotation", new[] { "Ifc2x3" }); // 155
-               yield return new IfcClassInformation("IfcClassificationNotationFacet", new[] { "Ifc2x3" }); // 156
-               yield return new IfcClassInformation("IfcClassificationReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 157
-               yield return new IfcClassInformation("IfcClosedShell", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 158
-               yield return new IfcClassInformation("IfcClothoid", new[] { "Ifc4x3" }); // 159
-               yield return new IfcClassInformation("IfcCoil", new[] { "Ifc4", "Ifc4x3" }); // 160
-               yield return new IfcClassInformation("IfcCoilType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 161
-               yield return new IfcClassInformation("IfcColourRgb", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 162
-               yield return new IfcClassInformation("IfcColourRgbList", new[] { "Ifc4", "Ifc4x3" }); // 163
-               yield return new IfcClassInformation("IfcColourSpecification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 164
-               yield return new IfcClassInformation("IfcColumn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 165
-               yield return new IfcClassInformation("IfcColumnStandardCase", new[] { "Ifc4" }); // 166
-               yield return new IfcClassInformation("IfcColumnType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 167
-               yield return new IfcClassInformation("IfcCommunicationsAppliance", new[] { "Ifc4", "Ifc4x3" }); // 168
-               yield return new IfcClassInformation("IfcCommunicationsApplianceType", new[] { "Ifc4", "Ifc4x3" }); // 169
-               yield return new IfcClassInformation("IfcComplexNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 170
-               yield return new IfcClassInformation("IfcComplexProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 171
-               yield return new IfcClassInformation("IfcComplexPropertyTemplate", new[] { "Ifc4", "Ifc4x3" }); // 172
-               yield return new IfcClassInformation("IfcCompositeCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 173
-               yield return new IfcClassInformation("IfcCompositeCurveOnSurface", new[] { "Ifc4", "Ifc4x3" }); // 174
-               yield return new IfcClassInformation("IfcCompositeCurveSegment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 175
-               yield return new IfcClassInformation("IfcCompositeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 176
-               yield return new IfcClassInformation("IfcCompoundPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 177
-               yield return new IfcClassInformation("IfcCompressor", new[] { "Ifc4", "Ifc4x3" }); // 178
-               yield return new IfcClassInformation("IfcCompressorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 179
-               yield return new IfcClassInformation("IfcCondenser", new[] { "Ifc4", "Ifc4x3" }); // 180
-               yield return new IfcClassInformation("IfcCondenserType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 181
-               yield return new IfcClassInformation("IfcCondition", new[] { "Ifc2x3" }); // 182
-               yield return new IfcClassInformation("IfcConditionCriterion", new[] { "Ifc2x3" }); // 183
-               yield return new IfcClassInformation("IfcConic", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 184
-               yield return new IfcClassInformation("IfcConnectedFaceSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 185
-               yield return new IfcClassInformation("IfcConnectionCurveGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 186
-               yield return new IfcClassInformation("IfcConnectionGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 187
-               yield return new IfcClassInformation("IfcConnectionPointEccentricity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 188
-               yield return new IfcClassInformation("IfcConnectionPointGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 189
-               yield return new IfcClassInformation("IfcConnectionPortGeometry", new[] { "Ifc2x3" }); // 190
-               yield return new IfcClassInformation("IfcConnectionSurfaceGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 191
-               yield return new IfcClassInformation("IfcConnectionVolumeGeometry", new[] { "Ifc4", "Ifc4x3" }); // 192
-               yield return new IfcClassInformation("IfcConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 193
-               yield return new IfcClassInformation("IfcConstraintAggregationRelationship", new[] { "Ifc2x3" }); // 194
-               yield return new IfcClassInformation("IfcConstraintClassificationRelationship", new[] { "Ifc2x3" }); // 195
-               yield return new IfcClassInformation("IfcConstraintRelationship", new[] { "Ifc2x3" }); // 196
-               yield return new IfcClassInformation("IfcConstructionEquipmentResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 197
-               yield return new IfcClassInformation("IfcConstructionEquipmentResourceType", new[] { "Ifc4", "Ifc4x3" }); // 198
-               yield return new IfcClassInformation("IfcConstructionMaterialResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 199
-               yield return new IfcClassInformation("IfcConstructionMaterialResourceType", new[] { "Ifc4", "Ifc4x3" }); // 200
-               yield return new IfcClassInformation("IfcConstructionProductResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 201
-               yield return new IfcClassInformation("IfcConstructionProductResourceType", new[] { "Ifc4", "Ifc4x3" }); // 202
-               yield return new IfcClassInformation("IfcConstructionResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 203
-               yield return new IfcClassInformation("IfcConstructionResourceType", new[] { "Ifc4", "Ifc4x3" }); // 204
-               yield return new IfcClassInformation("IfcContext", new[] { "Ifc4", "Ifc4x3" }); // 205
-               yield return new IfcClassInformation("IfcContextDependentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 206
-               yield return new IfcClassInformation("IfcContextDependentUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 207
-               yield return new IfcClassInformation("IfcControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 208
-               yield return new IfcClassInformation("IfcController", new[] { "Ifc4", "Ifc4x3" }); // 209
-               yield return new IfcClassInformation("IfcControllerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 210
-               yield return new IfcClassInformation("IfcConversionBasedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 211
-               yield return new IfcClassInformation("IfcConversionBasedUnitWithOffset", new[] { "Ifc4", "Ifc4x3" }); // 212
-               yield return new IfcClassInformation("IfcConveyorSegment", new[] { "Ifc4x3" }); // 213
-               yield return new IfcClassInformation("IfcConveyorSegmentType", new[] { "Ifc4x3" }); // 214
-               yield return new IfcClassInformation("IfcCooledBeam", new[] { "Ifc4", "Ifc4x3" }); // 215
-               yield return new IfcClassInformation("IfcCooledBeamType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 216
-               yield return new IfcClassInformation("IfcCoolingTower", new[] { "Ifc4", "Ifc4x3" }); // 217
-               yield return new IfcClassInformation("IfcCoolingTowerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 218
-               yield return new IfcClassInformation("IfcCoordinatedUniversalTimeOffset", new[] { "Ifc2x3" }); // 219
-               yield return new IfcClassInformation("IfcCoordinateOperation", new[] { "Ifc4", "Ifc4x3" }); // 220
-               yield return new IfcClassInformation("IfcCoordinateReferenceSystem", new[] { "Ifc4", "Ifc4x3" }); // 221
-               yield return new IfcClassInformation("IfcCosineSpiral", new[] { "Ifc4x3" }); // 222
-               yield return new IfcClassInformation("IfcCostItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 223
-               yield return new IfcClassInformation("IfcCostSchedule", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 224
-               yield return new IfcClassInformation("IfcCostValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 225
-               yield return new IfcClassInformation("IfcCountMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 226
-               yield return new IfcClassInformation("IfcCourse", new[] { "Ifc4x3" }); // 227
-               yield return new IfcClassInformation("IfcCourseType", new[] { "Ifc4x3" }); // 228
-               yield return new IfcClassInformation("IfcCovering", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 229
-               yield return new IfcClassInformation("IfcCoveringType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 230
-               yield return new IfcClassInformation("IfcCraneRailAShapeProfileDef", new[] { "Ifc2x3" }); // 231
-               yield return new IfcClassInformation("IfcCraneRailFShapeProfileDef", new[] { "Ifc2x3" }); // 232
-               yield return new IfcClassInformation("IfcCrewResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 233
-               yield return new IfcClassInformation("IfcCrewResourceType", new[] { "Ifc4", "Ifc4x3" }); // 234
-               yield return new IfcClassInformation("IfcCsgPrimitive3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 235
-               yield return new IfcClassInformation("IfcCsgSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 236
-               yield return new IfcClassInformation("IfcCShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 237
-               yield return new IfcClassInformation("IfcCurrencyRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 238
-               yield return new IfcClassInformation("IfcCurtainWall", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 239
-               yield return new IfcClassInformation("IfcCurtainWallType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 240
-               yield return new IfcClassInformation("IfcCurvatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 241
-               yield return new IfcClassInformation("IfcCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 242
-               yield return new IfcClassInformation("IfcCurveBoundedPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 243
-               yield return new IfcClassInformation("IfcCurveBoundedSurface", new[] { "Ifc4", "Ifc4x3" }); // 244
-               yield return new IfcClassInformation("IfcCurveSegment", new[] { "Ifc4x3" }); // 245
-               yield return new IfcClassInformation("IfcCurveSegment2D", new[] { "Ifc4" }); // 246
-               yield return new IfcClassInformation("IfcCurveStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 247
-               yield return new IfcClassInformation("IfcCurveStyleFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 248
-               yield return new IfcClassInformation("IfcCurveStyleFontAndScaling", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 249
-               yield return new IfcClassInformation("IfcCurveStyleFontPattern", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 250
-               yield return new IfcClassInformation("IfcCylindricalSurface", new[] { "Ifc4", "Ifc4x3" }); // 251
-               yield return new IfcClassInformation("IfcDamper", new[] { "Ifc4", "Ifc4x3" }); // 252
-               yield return new IfcClassInformation("IfcDamperType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 253
-               yield return new IfcClassInformation("IfcDate", new[] { "Ifc4", "Ifc4x3" }); // 254
-               yield return new IfcClassInformation("IfcDateAndTime", new[] { "Ifc2x3" }); // 255
-               yield return new IfcClassInformation("IfcDateTime", new[] { "Ifc4", "Ifc4x3" }); // 256
-               yield return new IfcClassInformation("IfcDayInMonthNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 257
-               yield return new IfcClassInformation("IfcDayInWeekNumber", new[] { "Ifc4", "Ifc4x3" }); // 258
-               yield return new IfcClassInformation("IfcDaylightSavingHour", new[] { "Ifc2x3" }); // 259
-               yield return new IfcClassInformation("IfcDeepFoundation", new[] { "Ifc4x3" }); // 260
-               yield return new IfcClassInformation("IfcDeepFoundationType", new[] { "Ifc4x3" }); // 261
-               yield return new IfcClassInformation("IfcDefinedSymbol", new[] { "Ifc2x3" }); // 262
-               yield return new IfcClassInformation("IfcDerivedProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 263
-               yield return new IfcClassInformation("IfcDerivedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 264
-               yield return new IfcClassInformation("IfcDerivedUnitElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 265
-               yield return new IfcClassInformation("IfcDescriptiveMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 266
-               yield return new IfcClassInformation("IfcDiameterDimension", new[] { "Ifc2x3" }); // 267
-               yield return new IfcClassInformation("IfcDimensionalExponents", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 268
-               yield return new IfcClassInformation("IfcDimensionCalloutRelationship", new[] { "Ifc2x3" }); // 269
-               yield return new IfcClassInformation("IfcDimensionCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 270
-               yield return new IfcClassInformation("IfcDimensionCurve", new[] { "Ifc2x3" }); // 271
-               yield return new IfcClassInformation("IfcDimensionCurveDirectedCallout", new[] { "Ifc2x3" }); // 272
-               yield return new IfcClassInformation("IfcDimensionCurveTerminator", new[] { "Ifc2x3" }); // 273
-               yield return new IfcClassInformation("IfcDimensionPair", new[] { "Ifc2x3" }); // 274
-               yield return new IfcClassInformation("IfcDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 275
-               yield return new IfcClassInformation("IfcDirectrixCurveSweptAreaSolid", new[] { "Ifc4x3" }); // 276
-               yield return new IfcClassInformation("IfcDirectrixDerivedReferenceSweptAreaSolid", new[] { "Ifc4x3" }); // 277
-               yield return new IfcClassInformation("IfcDiscreteAccessory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 278
-               yield return new IfcClassInformation("IfcDiscreteAccessoryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 279
-               yield return new IfcClassInformation("IfcDistanceExpression", new[] { "Ifc4" }); // 280
-               yield return new IfcClassInformation("IfcDistributionBoard", new[] { "Ifc4x3" }); // 281
-               yield return new IfcClassInformation("IfcDistributionBoardType", new[] { "Ifc4x3" }); // 282
-               yield return new IfcClassInformation("IfcDistributionChamberElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 283
-               yield return new IfcClassInformation("IfcDistributionChamberElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 284
-               yield return new IfcClassInformation("IfcDistributionCircuit", new[] { "Ifc4", "Ifc4x3" }); // 285
-               yield return new IfcClassInformation("IfcDistributionControlElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 286
-               yield return new IfcClassInformation("IfcDistributionControlElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 287
-               yield return new IfcClassInformation("IfcDistributionElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 288
-               yield return new IfcClassInformation("IfcDistributionElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 289
-               yield return new IfcClassInformation("IfcDistributionFlowElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 290
-               yield return new IfcClassInformation("IfcDistributionFlowElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 291
-               yield return new IfcClassInformation("IfcDistributionPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 292
-               yield return new IfcClassInformation("IfcDistributionSystem", new[] { "Ifc4", "Ifc4x3" }); // 293
-               yield return new IfcClassInformation("IfcDocumentElectronicFormat", new[] { "Ifc2x3" }); // 294
-               yield return new IfcClassInformation("IfcDocumentInformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 295
-               yield return new IfcClassInformation("IfcDocumentInformationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 296
-               yield return new IfcClassInformation("IfcDocumentReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 297
-               yield return new IfcClassInformation("IfcDoor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 298
-               yield return new IfcClassInformation("IfcDoorLiningProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 299
-               yield return new IfcClassInformation("IfcDoorPanelProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 300
-               yield return new IfcClassInformation("IfcDoorStandardCase", new[] { "Ifc4" }); // 301
-               yield return new IfcClassInformation("IfcDoorStyle", new[] { "Ifc2x3", "Ifc4" }); // 302
-               yield return new IfcClassInformation("IfcDoorType", new[] { "Ifc4", "Ifc4x3" }); // 303
-               yield return new IfcClassInformation("IfcDoseEquivalentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 304
-               yield return new IfcClassInformation("IfcDraughtingCallout", new[] { "Ifc2x3" }); // 305
-               yield return new IfcClassInformation("IfcDraughtingCalloutRelationship", new[] { "Ifc2x3" }); // 306
-               yield return new IfcClassInformation("IfcDraughtingPreDefinedColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 307
-               yield return new IfcClassInformation("IfcDraughtingPreDefinedCurveFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 308
-               yield return new IfcClassInformation("IfcDraughtingPreDefinedTextFont", new[] { "Ifc2x3" }); // 309
-               yield return new IfcClassInformation("IfcDuctFitting", new[] { "Ifc4", "Ifc4x3" }); // 310
-               yield return new IfcClassInformation("IfcDuctFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 311
-               yield return new IfcClassInformation("IfcDuctSegment", new[] { "Ifc4", "Ifc4x3" }); // 312
-               yield return new IfcClassInformation("IfcDuctSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 313
-               yield return new IfcClassInformation("IfcDuctSilencer", new[] { "Ifc4", "Ifc4x3" }); // 314
-               yield return new IfcClassInformation("IfcDuctSilencerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 315
-               yield return new IfcClassInformation("IfcDuration", new[] { "Ifc4", "Ifc4x3" }); // 316
-               yield return new IfcClassInformation("IfcDynamicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 317
-               yield return new IfcClassInformation("IfcEarthworksCut", new[] { "Ifc4x3" }); // 318
-               yield return new IfcClassInformation("IfcEarthworksElement", new[] { "Ifc4x3" }); // 319
-               yield return new IfcClassInformation("IfcEarthworksFill", new[] { "Ifc4x3" }); // 320
-               yield return new IfcClassInformation("IfcEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 321
-               yield return new IfcClassInformation("IfcEdgeCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 322
-               yield return new IfcClassInformation("IfcEdgeFeature", new[] { "Ifc2x3" }); // 323
-               yield return new IfcClassInformation("IfcEdgeLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 324
-               yield return new IfcClassInformation("IfcElectricalBaseProperties", new[] { "Ifc2x3" }); // 325
-               yield return new IfcClassInformation("IfcElectricalCircuit", new[] { "Ifc2x3" }); // 326
-               yield return new IfcClassInformation("IfcElectricalElement", new[] { "Ifc2x3" }); // 327
-               yield return new IfcClassInformation("IfcElectricAppliance", new[] { "Ifc4", "Ifc4x3" }); // 328
-               yield return new IfcClassInformation("IfcElectricApplianceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 329
-               yield return new IfcClassInformation("IfcElectricCapacitanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 330
-               yield return new IfcClassInformation("IfcElectricChargeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 331
-               yield return new IfcClassInformation("IfcElectricConductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 332
-               yield return new IfcClassInformation("IfcElectricCurrentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 333
-               yield return new IfcClassInformation("IfcElectricDistributionBoard", new[] { "Ifc4", "Ifc4x3" }); // 334
-               yield return new IfcClassInformation("IfcElectricDistributionBoardType", new[] { "Ifc4", "Ifc4x3" }); // 335
-               yield return new IfcClassInformation("IfcElectricDistributionPoint", new[] { "Ifc2x3" }); // 336
-               yield return new IfcClassInformation("IfcElectricFlowStorageDevice", new[] { "Ifc4", "Ifc4x3" }); // 337
-               yield return new IfcClassInformation("IfcElectricFlowStorageDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 338
-               yield return new IfcClassInformation("IfcElectricFlowTreatmentDevice", new[] { "Ifc4x3" }); // 339
-               yield return new IfcClassInformation("IfcElectricFlowTreatmentDeviceType", new[] { "Ifc4x3" }); // 340
-               yield return new IfcClassInformation("IfcElectricGenerator", new[] { "Ifc4", "Ifc4x3" }); // 341
-               yield return new IfcClassInformation("IfcElectricGeneratorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 342
-               yield return new IfcClassInformation("IfcElectricHeaterType", new[] { "Ifc2x3" }); // 343
-               yield return new IfcClassInformation("IfcElectricMotor", new[] { "Ifc4", "Ifc4x3" }); // 344
-               yield return new IfcClassInformation("IfcElectricMotorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 345
-               yield return new IfcClassInformation("IfcElectricResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 346
-               yield return new IfcClassInformation("IfcElectricTimeControl", new[] { "Ifc4", "Ifc4x3" }); // 347
-               yield return new IfcClassInformation("IfcElectricTimeControlType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 348
-               yield return new IfcClassInformation("IfcElectricVoltageMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 349
-               yield return new IfcClassInformation("IfcElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 350
-               yield return new IfcClassInformation("IfcElementarySurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 351
-               yield return new IfcClassInformation("IfcElementAssembly", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 352
-               yield return new IfcClassInformation("IfcElementAssemblyType", new[] { "Ifc4", "Ifc4x3" }); // 353
-               yield return new IfcClassInformation("IfcElementComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 354
-               yield return new IfcClassInformation("IfcElementComponentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 355
-               yield return new IfcClassInformation("IfcElementQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 356
-               yield return new IfcClassInformation("IfcElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 357
-               yield return new IfcClassInformation("IfcEllipse", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 358
-               yield return new IfcClassInformation("IfcEllipseProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 359
-               yield return new IfcClassInformation("IfcEnergyConversionDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 360
-               yield return new IfcClassInformation("IfcEnergyConversionDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 361
-               yield return new IfcClassInformation("IfcEnergyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 362
-               yield return new IfcClassInformation("IfcEnergyProperties", new[] { "Ifc2x3" }); // 363
-               yield return new IfcClassInformation("IfcEngine", new[] { "Ifc4", "Ifc4x3" }); // 364
-               yield return new IfcClassInformation("IfcEngineType", new[] { "Ifc4", "Ifc4x3" }); // 365
-               yield return new IfcClassInformation("IfcEnvironmentalImpactValue", new[] { "Ifc2x3" }); // 366
-               yield return new IfcClassInformation("IfcEquipmentElement", new[] { "Ifc2x3" }); // 367
-               yield return new IfcClassInformation("IfcEquipmentStandard", new[] { "Ifc2x3" }); // 368
-               yield return new IfcClassInformation("IfcEvaporativeCooler", new[] { "Ifc4", "Ifc4x3" }); // 369
-               yield return new IfcClassInformation("IfcEvaporativeCoolerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 370
-               yield return new IfcClassInformation("IfcEvaporator", new[] { "Ifc4", "Ifc4x3" }); // 371
-               yield return new IfcClassInformation("IfcEvaporatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 372
-               yield return new IfcClassInformation("IfcEvent", new[] { "Ifc4", "Ifc4x3" }); // 373
-               yield return new IfcClassInformation("IfcEventTime", new[] { "Ifc4", "Ifc4x3" }); // 374
-               yield return new IfcClassInformation("IfcEventType", new[] { "Ifc4", "Ifc4x3" }); // 375
-               yield return new IfcClassInformation("IfcExtendedMaterialProperties", new[] { "Ifc2x3" }); // 376
-               yield return new IfcClassInformation("IfcExtendedProperties", new[] { "Ifc4", "Ifc4x3" }); // 377
-               yield return new IfcClassInformation("IfcExternalInformation", new[] { "Ifc4", "Ifc4x3" }); // 378
-               yield return new IfcClassInformation("IfcExternallyDefinedHatchStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 379
-               yield return new IfcClassInformation("IfcExternallyDefinedSurfaceStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 380
-               yield return new IfcClassInformation("IfcExternallyDefinedSymbol", new[] { "Ifc2x3" }); // 381
-               yield return new IfcClassInformation("IfcExternallyDefinedTextFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 382
-               yield return new IfcClassInformation("IfcExternalReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 383
-               yield return new IfcClassInformation("IfcExternalReferenceRelationship", new[] { "Ifc4", "Ifc4x3" }); // 384
-               yield return new IfcClassInformation("IfcExternalSpatialElement", new[] { "Ifc4", "Ifc4x3" }); // 385
-               yield return new IfcClassInformation("IfcExternalSpatialStructureElement", new[] { "Ifc4", "Ifc4x3" }); // 386
-               yield return new IfcClassInformation("IfcExtrudedAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 387
-               yield return new IfcClassInformation("IfcExtrudedAreaSolidTapered", new[] { "Ifc4", "Ifc4x3" }); // 388
-               yield return new IfcClassInformation("IfcFace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 389
-               yield return new IfcClassInformation("IfcFaceBasedSurfaceModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 390
-               yield return new IfcClassInformation("IfcFaceBound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 391
-               yield return new IfcClassInformation("IfcFaceOuterBound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 392
-               yield return new IfcClassInformation("IfcFaceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 393
-               yield return new IfcClassInformation("IfcFacetedBrep", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 394
-               yield return new IfcClassInformation("IfcFacetedBrepWithVoids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 395
-               yield return new IfcClassInformation("IfcFacility", new[] { "Ifc4x3" }); // 396
-               yield return new IfcClassInformation("IfcFacilityPart", new[] { "Ifc4x3" }); // 397
-               yield return new IfcClassInformation("IfcFacilityPartCommon", new[] { "Ifc4x3" }); // 398
-               yield return new IfcClassInformation("IfcFailureConnectionCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 399
-               yield return new IfcClassInformation("IfcFan", new[] { "Ifc4", "Ifc4x3" }); // 400
-               yield return new IfcClassInformation("IfcFanType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 401
-               yield return new IfcClassInformation("IfcFastener", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 402
-               yield return new IfcClassInformation("IfcFastenerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 403
-               yield return new IfcClassInformation("IfcFeatureElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 404
-               yield return new IfcClassInformation("IfcFeatureElementAddition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 405
-               yield return new IfcClassInformation("IfcFeatureElementSubtraction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 406
-               yield return new IfcClassInformation("IfcFillAreaStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 407
-               yield return new IfcClassInformation("IfcFillAreaStyleHatching", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 408
-               yield return new IfcClassInformation("IfcFillAreaStyleTiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 409
-               yield return new IfcClassInformation("IfcFillAreaStyleTileSymbolWithStyle", new[] { "Ifc2x3" }); // 410
-               yield return new IfcClassInformation("IfcFilter", new[] { "Ifc4", "Ifc4x3" }); // 411
-               yield return new IfcClassInformation("IfcFilterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 412
-               yield return new IfcClassInformation("IfcFireSuppressionTerminal", new[] { "Ifc4", "Ifc4x3" }); // 413
-               yield return new IfcClassInformation("IfcFireSuppressionTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 414
-               yield return new IfcClassInformation("IfcFixedReferenceSweptAreaSolid", new[] { "Ifc4", "Ifc4x3" }); // 415
-               yield return new IfcClassInformation("IfcFlowController", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 416
-               yield return new IfcClassInformation("IfcFlowControllerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 417
-               yield return new IfcClassInformation("IfcFlowFitting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 418
-               yield return new IfcClassInformation("IfcFlowFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 419
-               yield return new IfcClassInformation("IfcFlowInstrument", new[] { "Ifc4", "Ifc4x3" }); // 420
-               yield return new IfcClassInformation("IfcFlowInstrumentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 421
-               yield return new IfcClassInformation("IfcFlowMeter", new[] { "Ifc4", "Ifc4x3" }); // 422
-               yield return new IfcClassInformation("IfcFlowMeterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 423
-               yield return new IfcClassInformation("IfcFlowMovingDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 424
-               yield return new IfcClassInformation("IfcFlowMovingDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 425
-               yield return new IfcClassInformation("IfcFlowSegment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 426
-               yield return new IfcClassInformation("IfcFlowSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 427
-               yield return new IfcClassInformation("IfcFlowStorageDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 428
-               yield return new IfcClassInformation("IfcFlowStorageDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 429
-               yield return new IfcClassInformation("IfcFlowTerminal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 430
-               yield return new IfcClassInformation("IfcFlowTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 431
-               yield return new IfcClassInformation("IfcFlowTreatmentDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 432
-               yield return new IfcClassInformation("IfcFlowTreatmentDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 433
-               yield return new IfcClassInformation("IfcFluidFlowProperties", new[] { "Ifc2x3" }); // 434
-               yield return new IfcClassInformation("IfcFontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 435
-               yield return new IfcClassInformation("IfcFontVariant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 436
-               yield return new IfcClassInformation("IfcFontWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 437
-               yield return new IfcClassInformation("IfcFooting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 438
-               yield return new IfcClassInformation("IfcFootingType", new[] { "Ifc4", "Ifc4x3" }); // 439
-               yield return new IfcClassInformation("IfcForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 440
-               yield return new IfcClassInformation("IfcFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 441
-               yield return new IfcClassInformation("IfcFuelProperties", new[] { "Ifc2x3" }); // 442
-               yield return new IfcClassInformation("IfcFurnishingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 443
-               yield return new IfcClassInformation("IfcFurnishingElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 444
-               yield return new IfcClassInformation("IfcFurniture", new[] { "Ifc4", "Ifc4x3" }); // 445
-               yield return new IfcClassInformation("IfcFurnitureStandard", new[] { "Ifc2x3" }); // 446
-               yield return new IfcClassInformation("IfcFurnitureType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 447
-               yield return new IfcClassInformation("IfcGasTerminalType", new[] { "Ifc2x3" }); // 448
-               yield return new IfcClassInformation("IfcGeneralMaterialProperties", new[] { "Ifc2x3" }); // 449
-               yield return new IfcClassInformation("IfcGeneralProfileProperties", new[] { "Ifc2x3" }); // 450
-               yield return new IfcClassInformation("IfcGeographicCRS", new[] { "Ifc4x3" }); // 451
-               yield return new IfcClassInformation("IfcGeographicElement", new[] { "Ifc4", "Ifc4x3" }); // 452
-               yield return new IfcClassInformation("IfcGeographicElementType", new[] { "Ifc4", "Ifc4x3" }); // 453
-               yield return new IfcClassInformation("IfcGeometricCurveSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 454
-               yield return new IfcClassInformation("IfcGeometricRepresentationContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 455
-               yield return new IfcClassInformation("IfcGeometricRepresentationItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 456
-               yield return new IfcClassInformation("IfcGeometricRepresentationSubContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 457
-               yield return new IfcClassInformation("IfcGeometricSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 458
-               yield return new IfcClassInformation("IfcGeomodel", new[] { "Ifc4x3" }); // 459
-               yield return new IfcClassInformation("IfcGeoslice", new[] { "Ifc4x3" }); // 460
-               yield return new IfcClassInformation("IfcGeotechnicalAssembly", new[] { "Ifc4x3" }); // 461
-               yield return new IfcClassInformation("IfcGeotechnicalElement", new[] { "Ifc4x3" }); // 462
-               yield return new IfcClassInformation("IfcGeotechnicalStratum", new[] { "Ifc4x3" }); // 463
-               yield return new IfcClassInformation("IfcGloballyUniqueId", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 464
-               yield return new IfcClassInformation("IfcGradientCurve", new[] { "Ifc4x3" }); // 465
-               yield return new IfcClassInformation("IfcGrid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 466
-               yield return new IfcClassInformation("IfcGridAxis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 467
-               yield return new IfcClassInformation("IfcGridPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 468
-               yield return new IfcClassInformation("IfcGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 469
-               yield return new IfcClassInformation("IfcHalfSpaceSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 470
-               yield return new IfcClassInformation("IfcHeatExchanger", new[] { "Ifc4", "Ifc4x3" }); // 471
-               yield return new IfcClassInformation("IfcHeatExchangerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 472
-               yield return new IfcClassInformation("IfcHeatFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 473
-               yield return new IfcClassInformation("IfcHeatingValueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 474
-               yield return new IfcClassInformation("IfcHourInDay", new[] { "Ifc2x3" }); // 475
-               yield return new IfcClassInformation("IfcHumidifier", new[] { "Ifc4", "Ifc4x3" }); // 476
-               yield return new IfcClassInformation("IfcHumidifierType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 477
-               yield return new IfcClassInformation("IfcHygroscopicMaterialProperties", new[] { "Ifc2x3" }); // 478
-               yield return new IfcClassInformation("IfcIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 479
-               yield return new IfcClassInformation("IfcIlluminanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 480
-               yield return new IfcClassInformation("IfcImageTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 481
-               yield return new IfcClassInformation("IfcImpactProtectionDevice", new[] { "Ifc4x3" }); // 482
-               yield return new IfcClassInformation("IfcImpactProtectionDeviceType", new[] { "Ifc4x3" }); // 483
-               yield return new IfcClassInformation("IfcIndexedColourMap", new[] { "Ifc4", "Ifc4x3" }); // 484
-               yield return new IfcClassInformation("IfcIndexedPolyCurve", new[] { "Ifc4", "Ifc4x3" }); // 485
-               yield return new IfcClassInformation("IfcIndexedPolygonalFace", new[] { "Ifc4", "Ifc4x3" }); // 486
-               yield return new IfcClassInformation("IfcIndexedPolygonalFaceWithVoids", new[] { "Ifc4", "Ifc4x3" }); // 487
-               yield return new IfcClassInformation("IfcIndexedPolygonalTextureMap", new[] { "Ifc4x3" }); // 488
-               yield return new IfcClassInformation("IfcIndexedTextureMap", new[] { "Ifc4", "Ifc4x3" }); // 489
-               yield return new IfcClassInformation("IfcIndexedTriangleTextureMap", new[] { "Ifc4", "Ifc4x3" }); // 490
-               yield return new IfcClassInformation("IfcInductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 491
-               yield return new IfcClassInformation("IfcInteger", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 492
-               yield return new IfcClassInformation("IfcIntegerCountRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 493
-               yield return new IfcClassInformation("IfcInterceptor", new[] { "Ifc4", "Ifc4x3" }); // 494
-               yield return new IfcClassInformation("IfcInterceptorType", new[] { "Ifc4", "Ifc4x3" }); // 495
-               yield return new IfcClassInformation("IfcIntersectionCurve", new[] { "Ifc4", "Ifc4x3" }); // 496
-               yield return new IfcClassInformation("IfcInventory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 497
-               yield return new IfcClassInformation("IfcIonConcentrationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 498
-               yield return new IfcClassInformation("IfcIrregularTimeSeries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 499
-               yield return new IfcClassInformation("IfcIrregularTimeSeriesValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 500
-               yield return new IfcClassInformation("IfcIShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 501
-               yield return new IfcClassInformation("IfcIsothermalMoistureCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 502
-               yield return new IfcClassInformation("IfcJunctionBox", new[] { "Ifc4", "Ifc4x3" }); // 503
-               yield return new IfcClassInformation("IfcJunctionBoxType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 504
-               yield return new IfcClassInformation("IfcKerb", new[] { "Ifc4x3" }); // 505
-               yield return new IfcClassInformation("IfcKerbType", new[] { "Ifc4x3" }); // 506
-               yield return new IfcClassInformation("IfcKinematicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 507
-               yield return new IfcClassInformation("IfcLabel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 508
-               yield return new IfcClassInformation("IfcLaborResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 509
-               yield return new IfcClassInformation("IfcLaborResourceType", new[] { "Ifc4", "Ifc4x3" }); // 510
-               yield return new IfcClassInformation("IfcLagTime", new[] { "Ifc4", "Ifc4x3" }); // 511
-               yield return new IfcClassInformation("IfcLamp", new[] { "Ifc4", "Ifc4x3" }); // 512
-               yield return new IfcClassInformation("IfcLampType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 513
-               yield return new IfcClassInformation("IfcLanguageId", new[] { "Ifc4", "Ifc4x3" }); // 514
-               yield return new IfcClassInformation("IfcLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 515
-               yield return new IfcClassInformation("IfcLibraryInformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 516
-               yield return new IfcClassInformation("IfcLibraryReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 517
-               yield return new IfcClassInformation("IfcLightDistributionData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 518
-               yield return new IfcClassInformation("IfcLightFixture", new[] { "Ifc4", "Ifc4x3" }); // 519
-               yield return new IfcClassInformation("IfcLightFixtureType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 520
-               yield return new IfcClassInformation("IfcLightIntensityDistribution", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 521
-               yield return new IfcClassInformation("IfcLightSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 522
-               yield return new IfcClassInformation("IfcLightSourceAmbient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 523
-               yield return new IfcClassInformation("IfcLightSourceDirectional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 524
-               yield return new IfcClassInformation("IfcLightSourceGoniometric", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 525
-               yield return new IfcClassInformation("IfcLightSourcePositional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 526
-               yield return new IfcClassInformation("IfcLightSourceSpot", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 527
-               yield return new IfcClassInformation("IfcLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 528
-               yield return new IfcClassInformation("IfcLinearDimension", new[] { "Ifc2x3" }); // 529
-               yield return new IfcClassInformation("IfcLinearElement", new[] { "Ifc4x3" }); // 530
-               yield return new IfcClassInformation("IfcLinearForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 531
-               yield return new IfcClassInformation("IfcLinearMomentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 532
-               yield return new IfcClassInformation("IfcLinearPlacement", new[] { "Ifc4", "Ifc4x3" }); // 533
-               yield return new IfcClassInformation("IfcLinearPositioningElement", new[] { "Ifc4", "Ifc4x3" }); // 534
-               yield return new IfcClassInformation("IfcLinearStiffnessMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 535
-               yield return new IfcClassInformation("IfcLinearVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 536
-               yield return new IfcClassInformation("IfcLineIndex", new[] { "Ifc4", "Ifc4x3" }); // 537
-               yield return new IfcClassInformation("IfcLineSegment2D", new[] { "Ifc4" }); // 538
-               yield return new IfcClassInformation("IfcLiquidTerminal", new[] { "Ifc4x3" }); // 539
-               yield return new IfcClassInformation("IfcLiquidTerminalType", new[] { "Ifc4x3" }); // 540
-               yield return new IfcClassInformation("IfcLocalPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 541
-               yield return new IfcClassInformation("IfcLocalTime", new[] { "Ifc2x3" }); // 542
-               yield return new IfcClassInformation("IfcLogical", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 543
-               yield return new IfcClassInformation("IfcLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 544
-               yield return new IfcClassInformation("IfcLShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 545
-               yield return new IfcClassInformation("IfcLuminousFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 546
-               yield return new IfcClassInformation("IfcLuminousIntensityDistributionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 547
-               yield return new IfcClassInformation("IfcLuminousIntensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 548
-               yield return new IfcClassInformation("IfcMagneticFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 549
-               yield return new IfcClassInformation("IfcMagneticFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 550
-               yield return new IfcClassInformation("IfcManifoldSolidBrep", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 551
-               yield return new IfcClassInformation("IfcMapConversion", new[] { "Ifc4", "Ifc4x3" }); // 552
-               yield return new IfcClassInformation("IfcMapConversionScaled", new[] { "Ifc4x3" }); // 553
-               yield return new IfcClassInformation("IfcMappedItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 554
-               yield return new IfcClassInformation("IfcMarineFacility", new[] { "Ifc4x3" }); // 555
-               yield return new IfcClassInformation("IfcMarinePart", new[] { "Ifc4x3" }); // 556
-               yield return new IfcClassInformation("IfcMassDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 557
-               yield return new IfcClassInformation("IfcMassFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 558
-               yield return new IfcClassInformation("IfcMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 559
-               yield return new IfcClassInformation("IfcMassPerLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 560
-               yield return new IfcClassInformation("IfcMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 561
-               yield return new IfcClassInformation("IfcMaterialClassificationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 562
-               yield return new IfcClassInformation("IfcMaterialConstituent", new[] { "Ifc4", "Ifc4x3" }); // 563
-               yield return new IfcClassInformation("IfcMaterialConstituentSet", new[] { "Ifc4", "Ifc4x3" }); // 564
-               yield return new IfcClassInformation("IfcMaterialDefinition", new[] { "Ifc4", "Ifc4x3" }); // 565
-               yield return new IfcClassInformation("IfcMaterialDefinitionRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 566
-               yield return new IfcClassInformation("IfcMaterialLayer", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 567
-               yield return new IfcClassInformation("IfcMaterialLayerSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 568
-               yield return new IfcClassInformation("IfcMaterialLayerSetUsage", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 569
-               yield return new IfcClassInformation("IfcMaterialLayerWithOffsets", new[] { "Ifc4", "Ifc4x3" }); // 570
-               yield return new IfcClassInformation("IfcMaterialList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 571
-               yield return new IfcClassInformation("IfcMaterialProfile", new[] { "Ifc4", "Ifc4x3" }); // 572
-               yield return new IfcClassInformation("IfcMaterialProfileSet", new[] { "Ifc4", "Ifc4x3" }); // 573
-               yield return new IfcClassInformation("IfcMaterialProfileSetUsage", new[] { "Ifc4", "Ifc4x3" }); // 574
-               yield return new IfcClassInformation("IfcMaterialProfileSetUsageTapering", new[] { "Ifc4", "Ifc4x3" }); // 575
-               yield return new IfcClassInformation("IfcMaterialProfileWithOffsets", new[] { "Ifc4", "Ifc4x3" }); // 576
-               yield return new IfcClassInformation("IfcMaterialProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 577
-               yield return new IfcClassInformation("IfcMaterialRelationship", new[] { "Ifc4", "Ifc4x3" }); // 578
-               yield return new IfcClassInformation("IfcMaterialUsageDefinition", new[] { "Ifc4", "Ifc4x3" }); // 579
-               yield return new IfcClassInformation("IfcMeasureWithUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 580
-               yield return new IfcClassInformation("IfcMechanicalConcreteMaterialProperties", new[] { "Ifc2x3" }); // 581
-               yield return new IfcClassInformation("IfcMechanicalFastener", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 582
-               yield return new IfcClassInformation("IfcMechanicalFastenerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 583
-               yield return new IfcClassInformation("IfcMechanicalMaterialProperties", new[] { "Ifc2x3" }); // 584
-               yield return new IfcClassInformation("IfcMechanicalSteelMaterialProperties", new[] { "Ifc2x3" }); // 585
-               yield return new IfcClassInformation("IfcMedicalDevice", new[] { "Ifc4", "Ifc4x3" }); // 586
-               yield return new IfcClassInformation("IfcMedicalDeviceType", new[] { "Ifc4", "Ifc4x3" }); // 587
-               yield return new IfcClassInformation("IfcMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 588
-               yield return new IfcClassInformation("IfcMemberStandardCase", new[] { "Ifc4" }); // 589
-               yield return new IfcClassInformation("IfcMemberType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 590
-               yield return new IfcClassInformation("IfcMetric", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 591
-               yield return new IfcClassInformation("IfcMinuteInHour", new[] { "Ifc2x3" }); // 592
-               yield return new IfcClassInformation("IfcMirroredProfileDef", new[] { "Ifc4", "Ifc4x3" }); // 593
-               yield return new IfcClassInformation("IfcMobileTelecommunicationsAppliance", new[] { "Ifc4x3" }); // 594
-               yield return new IfcClassInformation("IfcMobileTelecommunicationsApplianceType", new[] { "Ifc4x3" }); // 595
-               yield return new IfcClassInformation("IfcModulusOfElasticityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 596
-               yield return new IfcClassInformation("IfcModulusOfLinearSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 597
-               yield return new IfcClassInformation("IfcModulusOfRotationalSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 598
-               yield return new IfcClassInformation("IfcModulusOfSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 599
-               yield return new IfcClassInformation("IfcMoistureDiffusivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 600
-               yield return new IfcClassInformation("IfcMolecularWeightMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 601
-               yield return new IfcClassInformation("IfcMomentOfInertiaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 602
-               yield return new IfcClassInformation("IfcMonetaryMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 603
-               yield return new IfcClassInformation("IfcMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 604
-               yield return new IfcClassInformation("IfcMonthInYearNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 605
-               yield return new IfcClassInformation("IfcMooringDevice", new[] { "Ifc4x3" }); // 606
-               yield return new IfcClassInformation("IfcMooringDeviceType", new[] { "Ifc4x3" }); // 607
-               yield return new IfcClassInformation("IfcMotorConnection", new[] { "Ifc4", "Ifc4x3" }); // 608
-               yield return new IfcClassInformation("IfcMotorConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 609
-               yield return new IfcClassInformation("IfcMove", new[] { "Ifc2x3" }); // 610
-               yield return new IfcClassInformation("IfcNamedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 611
-               yield return new IfcClassInformation("IfcNavigationElement", new[] { "Ifc4x3" }); // 612
-               yield return new IfcClassInformation("IfcNavigationElementType", new[] { "Ifc4x3" }); // 613
-               yield return new IfcClassInformation("IfcNonNegativeLengthMeasure", new[] { "Ifc4", "Ifc4x3" }); // 614
-               yield return new IfcClassInformation("IfcNormalisedRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 615
-               yield return new IfcClassInformation("IfcNullStyle", new[] { "Ifc2x3", "Ifc4" }); // 616
-               yield return new IfcClassInformation("IfcNumericMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 617
-               yield return new IfcClassInformation("IfcObject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 618
-               yield return new IfcClassInformation("IfcObjectDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 619
-               yield return new IfcClassInformation("IfcObjective", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 620
-               yield return new IfcClassInformation("IfcObjectPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 621
-               yield return new IfcClassInformation("IfcOccupant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 622
-               yield return new IfcClassInformation("IfcOffsetCurve", new[] { "Ifc4", "Ifc4x3" }); // 623
-               yield return new IfcClassInformation("IfcOffsetCurve2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 624
-               yield return new IfcClassInformation("IfcOffsetCurve3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 625
-               yield return new IfcClassInformation("IfcOffsetCurveByDistances", new[] { "Ifc4", "Ifc4x3" }); // 626
-               yield return new IfcClassInformation("IfcOneDirectionRepeatFactor", new[] { "Ifc2x3" }); // 627
-               yield return new IfcClassInformation("IfcOpenCrossProfileDef", new[] { "Ifc4x3" }); // 628
-               yield return new IfcClassInformation("IfcOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 629
-               yield return new IfcClassInformation("IfcOpeningStandardCase", new[] { "Ifc4" }); // 630
-               yield return new IfcClassInformation("IfcOpenShell", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 631
-               yield return new IfcClassInformation("IfcOpticalMaterialProperties", new[] { "Ifc2x3" }); // 632
-               yield return new IfcClassInformation("IfcOrderAction", new[] { "Ifc2x3" }); // 633
-               yield return new IfcClassInformation("IfcOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 634
-               yield return new IfcClassInformation("IfcOrganizationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 635
-               yield return new IfcClassInformation("IfcOrientationExpression", new[] { "Ifc4" }); // 636
-               yield return new IfcClassInformation("IfcOrientedEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 637
-               yield return new IfcClassInformation("IfcOuterBoundaryCurve", new[] { "Ifc4", "Ifc4x3" }); // 638
-               yield return new IfcClassInformation("IfcOutlet", new[] { "Ifc4", "Ifc4x3" }); // 639
-               yield return new IfcClassInformation("IfcOutletType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 640
-               yield return new IfcClassInformation("IfcOwnerHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 641
-               yield return new IfcClassInformation("IfcParameterizedProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 642
-               yield return new IfcClassInformation("IfcParameterValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 643
-               yield return new IfcClassInformation("IfcPath", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 644
-               yield return new IfcClassInformation("IfcPavement", new[] { "Ifc4x3" }); // 645
-               yield return new IfcClassInformation("IfcPavementType", new[] { "Ifc4x3" }); // 646
-               yield return new IfcClassInformation("IfcPcurve", new[] { "Ifc4", "Ifc4x3" }); // 647
-               yield return new IfcClassInformation("IfcPerformanceHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 648
-               yield return new IfcClassInformation("IfcPermeableCoveringProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 649
-               yield return new IfcClassInformation("IfcPermit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 650
-               yield return new IfcClassInformation("IfcPerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 651
-               yield return new IfcClassInformation("IfcPersonAndOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 652
-               yield return new IfcClassInformation("IfcPHMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 653
-               yield return new IfcClassInformation("IfcPhysicalComplexQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 654
-               yield return new IfcClassInformation("IfcPhysicalQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 655
-               yield return new IfcClassInformation("IfcPhysicalSimpleQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 656
-               yield return new IfcClassInformation("IfcPile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 657
-               yield return new IfcClassInformation("IfcPileType", new[] { "Ifc4", "Ifc4x3" }); // 658
-               yield return new IfcClassInformation("IfcPipeFitting", new[] { "Ifc4", "Ifc4x3" }); // 659
-               yield return new IfcClassInformation("IfcPipeFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 660
-               yield return new IfcClassInformation("IfcPipeSegment", new[] { "Ifc4", "Ifc4x3" }); // 661
-               yield return new IfcClassInformation("IfcPipeSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 662
-               yield return new IfcClassInformation("IfcPixelTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 663
-               yield return new IfcClassInformation("IfcPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 664
-               yield return new IfcClassInformation("IfcPlanarBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 665
-               yield return new IfcClassInformation("IfcPlanarExtent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 666
-               yield return new IfcClassInformation("IfcPlanarForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 667
-               yield return new IfcClassInformation("IfcPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 668
-               yield return new IfcClassInformation("IfcPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 669
-               yield return new IfcClassInformation("IfcPlate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 670
-               yield return new IfcClassInformation("IfcPlateStandardCase", new[] { "Ifc4" }); // 671
-               yield return new IfcClassInformation("IfcPlateType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 672
-               yield return new IfcClassInformation("IfcPoint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 673
-               yield return new IfcClassInformation("IfcPointByDistanceExpression", new[] { "Ifc4x3" }); // 674
-               yield return new IfcClassInformation("IfcPointOnCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 675
-               yield return new IfcClassInformation("IfcPointOnSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 676
-               yield return new IfcClassInformation("IfcPolygonalBoundedHalfSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 677
-               yield return new IfcClassInformation("IfcPolygonalFaceSet", new[] { "Ifc4", "Ifc4x3" }); // 678
-               yield return new IfcClassInformation("IfcPolyline", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 679
-               yield return new IfcClassInformation("IfcPolyLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 680
-               yield return new IfcClassInformation("IfcPolynomialCurve", new[] { "Ifc4x3" }); // 681
-               yield return new IfcClassInformation("IfcPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 682
-               yield return new IfcClassInformation("IfcPositioningElement", new[] { "Ifc4", "Ifc4x3" }); // 683
-               yield return new IfcClassInformation("IfcPositiveInteger", new[] { "Ifc4", "Ifc4x3" }); // 684
-               yield return new IfcClassInformation("IfcPositiveLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 685
-               yield return new IfcClassInformation("IfcPositivePlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 686
-               yield return new IfcClassInformation("IfcPositiveRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 687
-               yield return new IfcClassInformation("IfcPostalAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 688
-               yield return new IfcClassInformation("IfcPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 689
-               yield return new IfcClassInformation("IfcPreDefinedColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 690
-               yield return new IfcClassInformation("IfcPreDefinedCurveFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 691
-               yield return new IfcClassInformation("IfcPreDefinedDimensionSymbol", new[] { "Ifc2x3" }); // 692
-               yield return new IfcClassInformation("IfcPreDefinedItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 693
-               yield return new IfcClassInformation("IfcPreDefinedPointMarkerSymbol", new[] { "Ifc2x3" }); // 694
-               yield return new IfcClassInformation("IfcPreDefinedProperties", new[] { "Ifc4", "Ifc4x3" }); // 695
-               yield return new IfcClassInformation("IfcPreDefinedPropertySet", new[] { "Ifc4", "Ifc4x3" }); // 696
-               yield return new IfcClassInformation("IfcPreDefinedSymbol", new[] { "Ifc2x3" }); // 697
-               yield return new IfcClassInformation("IfcPreDefinedTerminatorSymbol", new[] { "Ifc2x3" }); // 698
-               yield return new IfcClassInformation("IfcPreDefinedTextFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 699
-               yield return new IfcClassInformation("IfcPresentableText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 700
-               yield return new IfcClassInformation("IfcPresentationItem", new[] { "Ifc4", "Ifc4x3" }); // 701
-               yield return new IfcClassInformation("IfcPresentationLayerAssignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 702
-               yield return new IfcClassInformation("IfcPresentationLayerWithStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 703
-               yield return new IfcClassInformation("IfcPresentationStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 704
-               yield return new IfcClassInformation("IfcPresentationStyleAssignment", new[] { "Ifc2x3", "Ifc4" }); // 705
-               yield return new IfcClassInformation("IfcPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 706
-               yield return new IfcClassInformation("IfcProcedure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 707
-               yield return new IfcClassInformation("IfcProcedureType", new[] { "Ifc4", "Ifc4x3" }); // 708
-               yield return new IfcClassInformation("IfcProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 709
-               yield return new IfcClassInformation("IfcProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 710
-               yield return new IfcClassInformation("IfcProductDefinitionShape", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 711
-               yield return new IfcClassInformation("IfcProductRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 712
-               yield return new IfcClassInformation("IfcProductsOfCombustionProperties", new[] { "Ifc2x3" }); // 713
-               yield return new IfcClassInformation("IfcProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 714
-               yield return new IfcClassInformation("IfcProfileProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 715
-               yield return new IfcClassInformation("IfcProject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 716
-               yield return new IfcClassInformation("IfcProjectedCRS", new[] { "Ifc4", "Ifc4x3" }); // 717
-               yield return new IfcClassInformation("IfcProjectionCurve", new[] { "Ifc2x3" }); // 718
-               yield return new IfcClassInformation("IfcProjectionElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 719
-               yield return new IfcClassInformation("IfcProjectLibrary", new[] { "Ifc4", "Ifc4x3" }); // 720
-               yield return new IfcClassInformation("IfcProjectOrder", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 721
-               yield return new IfcClassInformation("IfcProjectOrderRecord", new[] { "Ifc2x3" }); // 722
-               yield return new IfcClassInformation("IfcProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 723
-               yield return new IfcClassInformation("IfcPropertyAbstraction", new[] { "Ifc4", "Ifc4x3" }); // 724
-               yield return new IfcClassInformation("IfcPropertyBoundedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 725
-               yield return new IfcClassInformation("IfcPropertyConstraintRelationship", new[] { "Ifc2x3" }); // 726
-               yield return new IfcClassInformation("IfcPropertyDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 727
-               yield return new IfcClassInformation("IfcPropertyDependencyRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 728
-               yield return new IfcClassInformation("IfcPropertyEnumeratedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 729
-               yield return new IfcClassInformation("IfcPropertyEnumeration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 730
-               yield return new IfcClassInformation("IfcPropertyListValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 731
-               yield return new IfcClassInformation("IfcPropertyReferenceValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 732
-               yield return new IfcClassInformation("IfcPropertySet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 733
-               yield return new IfcClassInformation("IfcPropertySetDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 734
-               yield return new IfcClassInformation("IfcPropertySetDefinitionSet", new[] { "Ifc4", "Ifc4x3" }); // 735
-               yield return new IfcClassInformation("IfcPropertySetTemplate", new[] { "Ifc4", "Ifc4x3" }); // 736
-               yield return new IfcClassInformation("IfcPropertySingleValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 737
-               yield return new IfcClassInformation("IfcPropertyTableValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 738
-               yield return new IfcClassInformation("IfcPropertyTemplate", new[] { "Ifc4", "Ifc4x3" }); // 739
-               yield return new IfcClassInformation("IfcPropertyTemplateDefinition", new[] { "Ifc4", "Ifc4x3" }); // 740
-               yield return new IfcClassInformation("IfcProtectiveDevice", new[] { "Ifc4", "Ifc4x3" }); // 741
-               yield return new IfcClassInformation("IfcProtectiveDeviceTrippingUnit", new[] { "Ifc4", "Ifc4x3" }); // 742
-               yield return new IfcClassInformation("IfcProtectiveDeviceTrippingUnitType", new[] { "Ifc4", "Ifc4x3" }); // 743
-               yield return new IfcClassInformation("IfcProtectiveDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 744
-               yield return new IfcClassInformation("IfcProxy", new[] { "Ifc2x3", "Ifc4" }); // 745
-               yield return new IfcClassInformation("IfcPump", new[] { "Ifc4", "Ifc4x3" }); // 746
-               yield return new IfcClassInformation("IfcPumpType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 747
-               yield return new IfcClassInformation("IfcQuantityArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 748
-               yield return new IfcClassInformation("IfcQuantityCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 749
-               yield return new IfcClassInformation("IfcQuantityLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 750
-               yield return new IfcClassInformation("IfcQuantityNumber", new[] { "Ifc4x3" }); // 751
-               yield return new IfcClassInformation("IfcQuantitySet", new[] { "Ifc4", "Ifc4x3" }); // 752
-               yield return new IfcClassInformation("IfcQuantityTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 753
-               yield return new IfcClassInformation("IfcQuantityVolume", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 754
-               yield return new IfcClassInformation("IfcQuantityWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 755
-               yield return new IfcClassInformation("IfcRadioActivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 756
-               yield return new IfcClassInformation("IfcRadiusDimension", new[] { "Ifc2x3" }); // 757
-               yield return new IfcClassInformation("IfcRail", new[] { "Ifc4x3" }); // 758
-               yield return new IfcClassInformation("IfcRailing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 759
-               yield return new IfcClassInformation("IfcRailingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 760
-               yield return new IfcClassInformation("IfcRailType", new[] { "Ifc4x3" }); // 761
-               yield return new IfcClassInformation("IfcRailway", new[] { "Ifc4x3" }); // 762
-               yield return new IfcClassInformation("IfcRailwayPart", new[] { "Ifc4x3" }); // 763
-               yield return new IfcClassInformation("IfcRamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 764
-               yield return new IfcClassInformation("IfcRampFlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 765
-               yield return new IfcClassInformation("IfcRampFlightType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 766
-               yield return new IfcClassInformation("IfcRampType", new[] { "Ifc4", "Ifc4x3" }); // 767
-               yield return new IfcClassInformation("IfcRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 768
-               yield return new IfcClassInformation("IfcRationalBezierCurve", new[] { "Ifc2x3" }); // 769
-               yield return new IfcClassInformation("IfcRationalBSplineCurveWithKnots", new[] { "Ifc4", "Ifc4x3" }); // 770
-               yield return new IfcClassInformation("IfcRationalBSplineSurfaceWithKnots", new[] { "Ifc4", "Ifc4x3" }); // 771
-               yield return new IfcClassInformation("IfcReal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 772
-               yield return new IfcClassInformation("IfcRectangleHollowProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 773
-               yield return new IfcClassInformation("IfcRectangleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 774
-               yield return new IfcClassInformation("IfcRectangularPyramid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 775
-               yield return new IfcClassInformation("IfcRectangularTrimmedSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 776
-               yield return new IfcClassInformation("IfcRecurrencePattern", new[] { "Ifc4", "Ifc4x3" }); // 777
-               yield return new IfcClassInformation("IfcReference", new[] { "Ifc4", "Ifc4x3" }); // 778
-               yield return new IfcClassInformation("IfcReferencesValueDocument", new[] { "Ifc2x3" }); // 779
-               yield return new IfcClassInformation("IfcReferent", new[] { "Ifc4", "Ifc4x3" }); // 780
-               yield return new IfcClassInformation("IfcRegularTimeSeries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 781
-               yield return new IfcClassInformation("IfcReinforcedSoil", new[] { "Ifc4x3" }); // 782
-               yield return new IfcClassInformation("IfcReinforcementBarProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 783
-               yield return new IfcClassInformation("IfcReinforcementDefinitionProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 784
-               yield return new IfcClassInformation("IfcReinforcingBar", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 785
-               yield return new IfcClassInformation("IfcReinforcingBarType", new[] { "Ifc4", "Ifc4x3" }); // 786
-               yield return new IfcClassInformation("IfcReinforcingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 787
-               yield return new IfcClassInformation("IfcReinforcingElementType", new[] { "Ifc4", "Ifc4x3" }); // 788
-               yield return new IfcClassInformation("IfcReinforcingMesh", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 789
-               yield return new IfcClassInformation("IfcReinforcingMeshType", new[] { "Ifc4", "Ifc4x3" }); // 790
-               yield return new IfcClassInformation("IfcRelAdheresToElement", new[] { "Ifc4x3" }); // 791
-               yield return new IfcClassInformation("IfcRelAggregates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 792
-               yield return new IfcClassInformation("IfcRelAssigns", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 793
-               yield return new IfcClassInformation("IfcRelAssignsTasks", new[] { "Ifc2x3" }); // 794
-               yield return new IfcClassInformation("IfcRelAssignsToActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 795
-               yield return new IfcClassInformation("IfcRelAssignsToControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 796
-               yield return new IfcClassInformation("IfcRelAssignsToGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 797
-               yield return new IfcClassInformation("IfcRelAssignsToGroupByFactor", new[] { "Ifc4", "Ifc4x3" }); // 798
-               yield return new IfcClassInformation("IfcRelAssignsToProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 799
-               yield return new IfcClassInformation("IfcRelAssignsToProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 800
-               yield return new IfcClassInformation("IfcRelAssignsToProjectOrder", new[] { "Ifc2x3" }); // 801
-               yield return new IfcClassInformation("IfcRelAssignsToResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 802
-               yield return new IfcClassInformation("IfcRelAssociates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 803
-               yield return new IfcClassInformation("IfcRelAssociatesAppliedValue", new[] { "Ifc2x3" }); // 804
-               yield return new IfcClassInformation("IfcRelAssociatesApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 805
-               yield return new IfcClassInformation("IfcRelAssociatesClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 806
-               yield return new IfcClassInformation("IfcRelAssociatesConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 807
-               yield return new IfcClassInformation("IfcRelAssociatesDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 808
-               yield return new IfcClassInformation("IfcRelAssociatesLibrary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 809
-               yield return new IfcClassInformation("IfcRelAssociatesMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 810
-               yield return new IfcClassInformation("IfcRelAssociatesProfileDef", new[] { "Ifc4x3" }); // 811
-               yield return new IfcClassInformation("IfcRelAssociatesProfileProperties", new[] { "Ifc2x3" }); // 812
-               yield return new IfcClassInformation("IfcRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 813
-               yield return new IfcClassInformation("IfcRelaxation", new[] { "Ifc2x3" }); // 814
-               yield return new IfcClassInformation("IfcRelConnects", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 815
-               yield return new IfcClassInformation("IfcRelConnectsElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 816
-               yield return new IfcClassInformation("IfcRelConnectsPathElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 817
-               yield return new IfcClassInformation("IfcRelConnectsPorts", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 818
-               yield return new IfcClassInformation("IfcRelConnectsPortToElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 819
-               yield return new IfcClassInformation("IfcRelConnectsStructuralActivity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 820
-               yield return new IfcClassInformation("IfcRelConnectsStructuralElement", new[] { "Ifc2x3" }); // 821
-               yield return new IfcClassInformation("IfcRelConnectsStructuralMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 822
-               yield return new IfcClassInformation("IfcRelConnectsWithEccentricity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 823
-               yield return new IfcClassInformation("IfcRelConnectsWithRealizingElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 824
-               yield return new IfcClassInformation("IfcRelContainedInSpatialStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 825
-               yield return new IfcClassInformation("IfcRelCoversBldgElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 826
-               yield return new IfcClassInformation("IfcRelCoversSpaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 827
-               yield return new IfcClassInformation("IfcRelDeclares", new[] { "Ifc4", "Ifc4x3" }); // 828
-               yield return new IfcClassInformation("IfcRelDecomposes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 829
-               yield return new IfcClassInformation("IfcRelDefines", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 830
-               yield return new IfcClassInformation("IfcRelDefinesByObject", new[] { "Ifc4", "Ifc4x3" }); // 831
-               yield return new IfcClassInformation("IfcRelDefinesByProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 832
-               yield return new IfcClassInformation("IfcRelDefinesByTemplate", new[] { "Ifc4", "Ifc4x3" }); // 833
-               yield return new IfcClassInformation("IfcRelDefinesByType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 834
-               yield return new IfcClassInformation("IfcRelFillsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 835
-               yield return new IfcClassInformation("IfcRelFlowControlElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 836
-               yield return new IfcClassInformation("IfcRelInteractionRequirements", new[] { "Ifc2x3" }); // 837
-               yield return new IfcClassInformation("IfcRelInterferesElements", new[] { "Ifc4", "Ifc4x3" }); // 838
-               yield return new IfcClassInformation("IfcRelNests", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 839
-               yield return new IfcClassInformation("IfcRelOccupiesSpaces", new[] { "Ifc2x3" }); // 840
-               yield return new IfcClassInformation("IfcRelOverridesProperties", new[] { "Ifc2x3" }); // 841
-               yield return new IfcClassInformation("IfcRelPositions", new[] { "Ifc4x3" }); // 842
-               yield return new IfcClassInformation("IfcRelProjectsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 843
-               yield return new IfcClassInformation("IfcRelReferencedInSpatialStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 844
-               yield return new IfcClassInformation("IfcRelSchedulesCostItems", new[] { "Ifc2x3" }); // 845
-               yield return new IfcClassInformation("IfcRelSequence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 846
-               yield return new IfcClassInformation("IfcRelServicesBuildings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 847
-               yield return new IfcClassInformation("IfcRelSpaceBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 848
-               yield return new IfcClassInformation("IfcRelSpaceBoundary1stLevel", new[] { "Ifc4", "Ifc4x3" }); // 849
-               yield return new IfcClassInformation("IfcRelSpaceBoundary2ndLevel", new[] { "Ifc4", "Ifc4x3" }); // 850
-               yield return new IfcClassInformation("IfcRelVoidsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 851
-               yield return new IfcClassInformation("IfcReparametrisedCompositeCurveSegment", new[] { "Ifc4", "Ifc4x3" }); // 852
-               yield return new IfcClassInformation("IfcRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 853
-               yield return new IfcClassInformation("IfcRepresentationContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 854
-               yield return new IfcClassInformation("IfcRepresentationItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 855
-               yield return new IfcClassInformation("IfcRepresentationMap", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 856
-               yield return new IfcClassInformation("IfcResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 857
-               yield return new IfcClassInformation("IfcResourceApprovalRelationship", new[] { "Ifc4", "Ifc4x3" }); // 858
-               yield return new IfcClassInformation("IfcResourceConstraintRelationship", new[] { "Ifc4", "Ifc4x3" }); // 859
-               yield return new IfcClassInformation("IfcResourceLevelRelationship", new[] { "Ifc4", "Ifc4x3" }); // 860
-               yield return new IfcClassInformation("IfcResourceTime", new[] { "Ifc4", "Ifc4x3" }); // 861
-               yield return new IfcClassInformation("IfcRevolvedAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 862
-               yield return new IfcClassInformation("IfcRevolvedAreaSolidTapered", new[] { "Ifc4", "Ifc4x3" }); // 863
-               yield return new IfcClassInformation("IfcRibPlateProfileProperties", new[] { "Ifc2x3" }); // 864
-               yield return new IfcClassInformation("IfcRightCircularCone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 865
-               yield return new IfcClassInformation("IfcRightCircularCylinder", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 866
-               yield return new IfcClassInformation("IfcRigidOperation", new[] { "Ifc4x3" }); // 867
-               yield return new IfcClassInformation("IfcRoad", new[] { "Ifc4x3" }); // 868
-               yield return new IfcClassInformation("IfcRoadPart", new[] { "Ifc4x3" }); // 869
-               yield return new IfcClassInformation("IfcRoof", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 870
-               yield return new IfcClassInformation("IfcRoofType", new[] { "Ifc4", "Ifc4x3" }); // 871
-               yield return new IfcClassInformation("IfcRoot", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 872
-               yield return new IfcClassInformation("IfcRotationalFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 873
-               yield return new IfcClassInformation("IfcRotationalMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 874
-               yield return new IfcClassInformation("IfcRotationalStiffnessMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 875
-               yield return new IfcClassInformation("IfcRoundedEdgeFeature", new[] { "Ifc2x3" }); // 876
-               yield return new IfcClassInformation("IfcRoundedRectangleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 877
-               yield return new IfcClassInformation("IfcSanitaryTerminal", new[] { "Ifc4", "Ifc4x3" }); // 878
-               yield return new IfcClassInformation("IfcSanitaryTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 879
-               yield return new IfcClassInformation("IfcScheduleTimeControl", new[] { "Ifc2x3" }); // 880
-               yield return new IfcClassInformation("IfcSchedulingTime", new[] { "Ifc4", "Ifc4x3" }); // 881
-               yield return new IfcClassInformation("IfcSeamCurve", new[] { "Ifc4", "Ifc4x3" }); // 882
-               yield return new IfcClassInformation("IfcSecondInMinute", new[] { "Ifc2x3" }); // 883
-               yield return new IfcClassInformation("IfcSecondOrderPolynomialSpiral", new[] { "Ifc4x3" }); // 884
-               yield return new IfcClassInformation("IfcSectionalAreaIntegralMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 885
-               yield return new IfcClassInformation("IfcSectionedSolid", new[] { "Ifc4", "Ifc4x3" }); // 886
-               yield return new IfcClassInformation("IfcSectionedSolidHorizontal", new[] { "Ifc4", "Ifc4x3" }); // 887
-               yield return new IfcClassInformation("IfcSectionedSpine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 888
-               yield return new IfcClassInformation("IfcSectionedSurface", new[] { "Ifc4x3" }); // 889
-               yield return new IfcClassInformation("IfcSectionModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 890
-               yield return new IfcClassInformation("IfcSectionProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 891
-               yield return new IfcClassInformation("IfcSectionReinforcementProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 892
-               yield return new IfcClassInformation("IfcSegment", new[] { "Ifc4x3" }); // 893
-               yield return new IfcClassInformation("IfcSegmentedReferenceCurve", new[] { "Ifc4x3" }); // 894
-               yield return new IfcClassInformation("IfcSensor", new[] { "Ifc4", "Ifc4x3" }); // 895
-               yield return new IfcClassInformation("IfcSensorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 896
-               yield return new IfcClassInformation("IfcServiceLife", new[] { "Ifc2x3" }); // 897
-               yield return new IfcClassInformation("IfcServiceLifeFactor", new[] { "Ifc2x3" }); // 898
-               yield return new IfcClassInformation("IfcSeventhOrderPolynomialSpiral", new[] { "Ifc4x3" }); // 899
-               yield return new IfcClassInformation("IfcShadingDevice", new[] { "Ifc4", "Ifc4x3" }); // 900
-               yield return new IfcClassInformation("IfcShadingDeviceType", new[] { "Ifc4", "Ifc4x3" }); // 901
-               yield return new IfcClassInformation("IfcShapeAspect", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 902
-               yield return new IfcClassInformation("IfcShapeModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 903
-               yield return new IfcClassInformation("IfcShapeRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 904
-               yield return new IfcClassInformation("IfcShearModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 905
-               yield return new IfcClassInformation("IfcShellBasedSurfaceModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 906
-               yield return new IfcClassInformation("IfcSign", new[] { "Ifc4x3" }); // 907
-               yield return new IfcClassInformation("IfcSignal", new[] { "Ifc4x3" }); // 908
-               yield return new IfcClassInformation("IfcSignalType", new[] { "Ifc4x3" }); // 909
-               yield return new IfcClassInformation("IfcSignType", new[] { "Ifc4x3" }); // 910
-               yield return new IfcClassInformation("IfcSimpleProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 911
-               yield return new IfcClassInformation("IfcSimplePropertyTemplate", new[] { "Ifc4", "Ifc4x3" }); // 912
-               yield return new IfcClassInformation("IfcSineSpiral", new[] { "Ifc4x3" }); // 913
-               yield return new IfcClassInformation("IfcSite", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 914
-               yield return new IfcClassInformation("IfcSIUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 915
-               yield return new IfcClassInformation("IfcSlab", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 916
-               yield return new IfcClassInformation("IfcSlabElementedCase", new[] { "Ifc4" }); // 917
-               yield return new IfcClassInformation("IfcSlabStandardCase", new[] { "Ifc4" }); // 918
-               yield return new IfcClassInformation("IfcSlabType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 919
-               yield return new IfcClassInformation("IfcSlippageConnectionCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 920
-               yield return new IfcClassInformation("IfcSolarDevice", new[] { "Ifc4", "Ifc4x3" }); // 921
-               yield return new IfcClassInformation("IfcSolarDeviceType", new[] { "Ifc4", "Ifc4x3" }); // 922
-               yield return new IfcClassInformation("IfcSolidAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 923
-               yield return new IfcClassInformation("IfcSolidModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 924
-               yield return new IfcClassInformation("IfcSoundPowerLevelMeasure", new[] { "Ifc4", "Ifc4x3" }); // 925
-               yield return new IfcClassInformation("IfcSoundPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 926
-               yield return new IfcClassInformation("IfcSoundPressureLevelMeasure", new[] { "Ifc4", "Ifc4x3" }); // 927
-               yield return new IfcClassInformation("IfcSoundPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 928
-               yield return new IfcClassInformation("IfcSoundProperties", new[] { "Ifc2x3" }); // 929
-               yield return new IfcClassInformation("IfcSoundValue", new[] { "Ifc2x3" }); // 930
-               yield return new IfcClassInformation("IfcSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 931
-               yield return new IfcClassInformation("IfcSpaceHeater", new[] { "Ifc4", "Ifc4x3" }); // 932
-               yield return new IfcClassInformation("IfcSpaceHeaterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 933
-               yield return new IfcClassInformation("IfcSpaceProgram", new[] { "Ifc2x3" }); // 934
-               yield return new IfcClassInformation("IfcSpaceThermalLoadProperties", new[] { "Ifc2x3" }); // 935
-               yield return new IfcClassInformation("IfcSpaceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 936
-               yield return new IfcClassInformation("IfcSpatialElement", new[] { "Ifc4", "Ifc4x3" }); // 937
-               yield return new IfcClassInformation("IfcSpatialElementType", new[] { "Ifc4", "Ifc4x3" }); // 938
-               yield return new IfcClassInformation("IfcSpatialStructureElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 939
-               yield return new IfcClassInformation("IfcSpatialStructureElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 940
-               yield return new IfcClassInformation("IfcSpatialZone", new[] { "Ifc4", "Ifc4x3" }); // 941
-               yield return new IfcClassInformation("IfcSpatialZoneType", new[] { "Ifc4", "Ifc4x3" }); // 942
-               yield return new IfcClassInformation("IfcSpecificHeatCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 943
-               yield return new IfcClassInformation("IfcSpecularExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 944
-               yield return new IfcClassInformation("IfcSpecularRoughness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 945
-               yield return new IfcClassInformation("IfcSphere", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 946
-               yield return new IfcClassInformation("IfcSphericalSurface", new[] { "Ifc4", "Ifc4x3" }); // 947
-               yield return new IfcClassInformation("IfcSpiral", new[] { "Ifc4x3" }); // 948
-               yield return new IfcClassInformation("IfcStackTerminal", new[] { "Ifc4", "Ifc4x3" }); // 949
-               yield return new IfcClassInformation("IfcStackTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 950
-               yield return new IfcClassInformation("IfcStair", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 951
-               yield return new IfcClassInformation("IfcStairFlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 952
-               yield return new IfcClassInformation("IfcStairFlightType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 953
-               yield return new IfcClassInformation("IfcStairType", new[] { "Ifc4", "Ifc4x3" }); // 954
-               yield return new IfcClassInformation("IfcStrippedOptional", new[] { "Ifc4", "Ifc4x3" }); // 955
-               yield return new IfcClassInformation("IfcStructuralAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 956
-               yield return new IfcClassInformation("IfcStructuralActivity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 957
-               yield return new IfcClassInformation("IfcStructuralAnalysisModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 958
-               yield return new IfcClassInformation("IfcStructuralConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 959
-               yield return new IfcClassInformation("IfcStructuralConnectionCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 960
-               yield return new IfcClassInformation("IfcStructuralCurveAction", new[] { "Ifc4", "Ifc4x3" }); // 961
-               yield return new IfcClassInformation("IfcStructuralCurveConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 962
-               yield return new IfcClassInformation("IfcStructuralCurveMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 963
-               yield return new IfcClassInformation("IfcStructuralCurveMemberVarying", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 964
-               yield return new IfcClassInformation("IfcStructuralCurveReaction", new[] { "Ifc4", "Ifc4x3" }); // 965
-               yield return new IfcClassInformation("IfcStructuralItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 966
-               yield return new IfcClassInformation("IfcStructuralLinearAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 967
-               yield return new IfcClassInformation("IfcStructuralLinearActionVarying", new[] { "Ifc2x3" }); // 968
-               yield return new IfcClassInformation("IfcStructuralLoad", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 969
-               yield return new IfcClassInformation("IfcStructuralLoadCase", new[] { "Ifc4", "Ifc4x3" }); // 970
-               yield return new IfcClassInformation("IfcStructuralLoadConfiguration", new[] { "Ifc4", "Ifc4x3" }); // 971
-               yield return new IfcClassInformation("IfcStructuralLoadGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 972
-               yield return new IfcClassInformation("IfcStructuralLoadLinearForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 973
-               yield return new IfcClassInformation("IfcStructuralLoadOrResult", new[] { "Ifc4", "Ifc4x3" }); // 974
-               yield return new IfcClassInformation("IfcStructuralLoadPlanarForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 975
-               yield return new IfcClassInformation("IfcStructuralLoadSingleDisplacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 976
-               yield return new IfcClassInformation("IfcStructuralLoadSingleDisplacementDistortion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 977
-               yield return new IfcClassInformation("IfcStructuralLoadSingleForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 978
-               yield return new IfcClassInformation("IfcStructuralLoadSingleForceWarping", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 979
-               yield return new IfcClassInformation("IfcStructuralLoadStatic", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 980
-               yield return new IfcClassInformation("IfcStructuralLoadTemperature", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 981
-               yield return new IfcClassInformation("IfcStructuralMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 982
-               yield return new IfcClassInformation("IfcStructuralPlanarAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 983
-               yield return new IfcClassInformation("IfcStructuralPlanarActionVarying", new[] { "Ifc2x3" }); // 984
-               yield return new IfcClassInformation("IfcStructuralPointAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 985
-               yield return new IfcClassInformation("IfcStructuralPointConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 986
-               yield return new IfcClassInformation("IfcStructuralPointReaction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 987
-               yield return new IfcClassInformation("IfcStructuralProfileProperties", new[] { "Ifc2x3" }); // 988
-               yield return new IfcClassInformation("IfcStructuralReaction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 989
-               yield return new IfcClassInformation("IfcStructuralResultGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 990
-               yield return new IfcClassInformation("IfcStructuralSteelProfileProperties", new[] { "Ifc2x3" }); // 991
-               yield return new IfcClassInformation("IfcStructuralSurfaceAction", new[] { "Ifc4", "Ifc4x3" }); // 992
-               yield return new IfcClassInformation("IfcStructuralSurfaceConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 993
-               yield return new IfcClassInformation("IfcStructuralSurfaceMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 994
-               yield return new IfcClassInformation("IfcStructuralSurfaceMemberVarying", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 995
-               yield return new IfcClassInformation("IfcStructuralSurfaceReaction", new[] { "Ifc4", "Ifc4x3" }); // 996
-               yield return new IfcClassInformation("IfcStructuredDimensionCallout", new[] { "Ifc2x3" }); // 997
-               yield return new IfcClassInformation("IfcStyledItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 998
-               yield return new IfcClassInformation("IfcStyledRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 999
-               yield return new IfcClassInformation("IfcStyleModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1000
-               yield return new IfcClassInformation("IfcSubContractResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1001
-               yield return new IfcClassInformation("IfcSubContractResourceType", new[] { "Ifc4", "Ifc4x3" }); // 1002
-               yield return new IfcClassInformation("IfcSubedge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1003
-               yield return new IfcClassInformation("IfcSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1004
-               yield return new IfcClassInformation("IfcSurfaceCurve", new[] { "Ifc4", "Ifc4x3" }); // 1005
-               yield return new IfcClassInformation("IfcSurfaceCurveSweptAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1006
-               yield return new IfcClassInformation("IfcSurfaceFeature", new[] { "Ifc4", "Ifc4x3" }); // 1007
-               yield return new IfcClassInformation("IfcSurfaceOfLinearExtrusion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1008
-               yield return new IfcClassInformation("IfcSurfaceOfRevolution", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1009
-               yield return new IfcClassInformation("IfcSurfaceReinforcementArea", new[] { "Ifc4", "Ifc4x3" }); // 1010
-               yield return new IfcClassInformation("IfcSurfaceStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1011
-               yield return new IfcClassInformation("IfcSurfaceStyleLighting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1012
-               yield return new IfcClassInformation("IfcSurfaceStyleRefraction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1013
-               yield return new IfcClassInformation("IfcSurfaceStyleRendering", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1014
-               yield return new IfcClassInformation("IfcSurfaceStyleShading", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1015
-               yield return new IfcClassInformation("IfcSurfaceStyleWithTextures", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1016
-               yield return new IfcClassInformation("IfcSurfaceTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1017
-               yield return new IfcClassInformation("IfcSweptAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1018
-               yield return new IfcClassInformation("IfcSweptDiskSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1019
-               yield return new IfcClassInformation("IfcSweptDiskSolidPolygonal", new[] { "Ifc4", "Ifc4x3" }); // 1020
-               yield return new IfcClassInformation("IfcSweptSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1021
-               yield return new IfcClassInformation("IfcSwitchingDevice", new[] { "Ifc4", "Ifc4x3" }); // 1022
-               yield return new IfcClassInformation("IfcSwitchingDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1023
-               yield return new IfcClassInformation("IfcSymbolStyle", new[] { "Ifc2x3" }); // 1024
-               yield return new IfcClassInformation("IfcSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1025
-               yield return new IfcClassInformation("IfcSystemFurnitureElement", new[] { "Ifc4", "Ifc4x3" }); // 1026
-               yield return new IfcClassInformation("IfcSystemFurnitureElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1027
-               yield return new IfcClassInformation("IfcTable", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1028
-               yield return new IfcClassInformation("IfcTableColumn", new[] { "Ifc4", "Ifc4x3" }); // 1029
-               yield return new IfcClassInformation("IfcTableRow", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1030
-               yield return new IfcClassInformation("IfcTank", new[] { "Ifc4", "Ifc4x3" }); // 1031
-               yield return new IfcClassInformation("IfcTankType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1032
-               yield return new IfcClassInformation("IfcTask", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1033
-               yield return new IfcClassInformation("IfcTaskTime", new[] { "Ifc4", "Ifc4x3" }); // 1034
-               yield return new IfcClassInformation("IfcTaskTimeRecurring", new[] { "Ifc4", "Ifc4x3" }); // 1035
-               yield return new IfcClassInformation("IfcTaskType", new[] { "Ifc4", "Ifc4x3" }); // 1036
-               yield return new IfcClassInformation("IfcTelecomAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1037
-               yield return new IfcClassInformation("IfcTemperatureGradientMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1038
-               yield return new IfcClassInformation("IfcTemperatureRateOfChangeMeasure", new[] { "Ifc4", "Ifc4x3" }); // 1039
-               yield return new IfcClassInformation("IfcTendon", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1040
-               yield return new IfcClassInformation("IfcTendonAnchor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1041
-               yield return new IfcClassInformation("IfcTendonAnchorType", new[] { "Ifc4", "Ifc4x3" }); // 1042
-               yield return new IfcClassInformation("IfcTendonConduit", new[] { "Ifc4x3" }); // 1043
-               yield return new IfcClassInformation("IfcTendonConduitType", new[] { "Ifc4x3" }); // 1044
-               yield return new IfcClassInformation("IfcTendonType", new[] { "Ifc4", "Ifc4x3" }); // 1045
-               yield return new IfcClassInformation("IfcTerminatorSymbol", new[] { "Ifc2x3" }); // 1046
-               yield return new IfcClassInformation("IfcTessellatedFaceSet", new[] { "Ifc4", "Ifc4x3" }); // 1047
-               yield return new IfcClassInformation("IfcTessellatedItem", new[] { "Ifc4", "Ifc4x3" }); // 1048
-               yield return new IfcClassInformation("IfcText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1049
-               yield return new IfcClassInformation("IfcTextAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1050
-               yield return new IfcClassInformation("IfcTextDecoration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1051
-               yield return new IfcClassInformation("IfcTextFontName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1052
-               yield return new IfcClassInformation("IfcTextLiteral", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1053
-               yield return new IfcClassInformation("IfcTextLiteralWithExtent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1054
-               yield return new IfcClassInformation("IfcTextStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1055
-               yield return new IfcClassInformation("IfcTextStyleFontModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1056
-               yield return new IfcClassInformation("IfcTextStyleForDefinedFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1057
-               yield return new IfcClassInformation("IfcTextStyleTextModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1058
-               yield return new IfcClassInformation("IfcTextStyleWithBoxCharacteristics", new[] { "Ifc2x3" }); // 1059
-               yield return new IfcClassInformation("IfcTextTransformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1060
-               yield return new IfcClassInformation("IfcTextureCoordinate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1061
-               yield return new IfcClassInformation("IfcTextureCoordinateGenerator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1062
-               yield return new IfcClassInformation("IfcTextureCoordinateIndices", new[] { "Ifc4x3" }); // 1063
-               yield return new IfcClassInformation("IfcTextureCoordinateIndicesWithVoids", new[] { "Ifc4x3" }); // 1064
-               yield return new IfcClassInformation("IfcTextureMap", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1065
-               yield return new IfcClassInformation("IfcTextureVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1066
-               yield return new IfcClassInformation("IfcTextureVertexList", new[] { "Ifc4", "Ifc4x3" }); // 1067
-               yield return new IfcClassInformation("IfcThermalAdmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1068
-               yield return new IfcClassInformation("IfcThermalConductivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1069
-               yield return new IfcClassInformation("IfcThermalExpansionCoefficientMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1070
-               yield return new IfcClassInformation("IfcThermalMaterialProperties", new[] { "Ifc2x3" }); // 1071
-               yield return new IfcClassInformation("IfcThermalResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1072
-               yield return new IfcClassInformation("IfcThermalTransmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1073
-               yield return new IfcClassInformation("IfcThermodynamicTemperatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1074
-               yield return new IfcClassInformation("IfcThirdOrderPolynomialSpiral", new[] { "Ifc4x3" }); // 1075
-               yield return new IfcClassInformation("IfcTime", new[] { "Ifc4", "Ifc4x3" }); // 1076
-               yield return new IfcClassInformation("IfcTimeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1077
-               yield return new IfcClassInformation("IfcTimePeriod", new[] { "Ifc4", "Ifc4x3" }); // 1078
-               yield return new IfcClassInformation("IfcTimeSeries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1079
-               yield return new IfcClassInformation("IfcTimeSeriesReferenceRelationship", new[] { "Ifc2x3" }); // 1080
-               yield return new IfcClassInformation("IfcTimeSeriesSchedule", new[] { "Ifc2x3" }); // 1081
-               yield return new IfcClassInformation("IfcTimeSeriesValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1082
-               yield return new IfcClassInformation("IfcTimeStamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1083
-               yield return new IfcClassInformation("IfcTopologicalRepresentationItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1084
-               yield return new IfcClassInformation("IfcTopologyRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1085
-               yield return new IfcClassInformation("IfcToroidalSurface", new[] { "Ifc4", "Ifc4x3" }); // 1086
-               yield return new IfcClassInformation("IfcTorqueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1087
-               yield return new IfcClassInformation("IfcTrackElement", new[] { "Ifc4x3" }); // 1088
-               yield return new IfcClassInformation("IfcTrackElementType", new[] { "Ifc4x3" }); // 1089
-               yield return new IfcClassInformation("IfcTransformer", new[] { "Ifc4", "Ifc4x3" }); // 1090
-               yield return new IfcClassInformation("IfcTransformerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1091
-               yield return new IfcClassInformation("IfcTransitionCurveSegment2D", new[] { "Ifc4" }); // 1092
-               yield return new IfcClassInformation("IfcTransportationDevice", new[] { "Ifc4x3" }); // 1093
-               yield return new IfcClassInformation("IfcTransportationDeviceType", new[] { "Ifc4x3" }); // 1094
-               yield return new IfcClassInformation("IfcTransportElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1095
-               yield return new IfcClassInformation("IfcTransportElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1096
-               yield return new IfcClassInformation("IfcTrapeziumProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1097
-               yield return new IfcClassInformation("IfcTriangulatedFaceSet", new[] { "Ifc4", "Ifc4x3" }); // 1098
-               yield return new IfcClassInformation("IfcTriangulatedIrregularNetwork", new[] { "Ifc4", "Ifc4x3" }); // 1099
-               yield return new IfcClassInformation("IfcTrimmedCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1100
-               yield return new IfcClassInformation("IfcTShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1101
-               yield return new IfcClassInformation("IfcTubeBundle", new[] { "Ifc4", "Ifc4x3" }); // 1102
-               yield return new IfcClassInformation("IfcTubeBundleType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1103
-               yield return new IfcClassInformation("IfcTwoDirectionRepeatFactor", new[] { "Ifc2x3" }); // 1104
-               yield return new IfcClassInformation("IfcTypeObject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1105
-               yield return new IfcClassInformation("IfcTypeProcess", new[] { "Ifc4", "Ifc4x3" }); // 1106
-               yield return new IfcClassInformation("IfcTypeProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1107
-               yield return new IfcClassInformation("IfcTypeResource", new[] { "Ifc4", "Ifc4x3" }); // 1108
-               yield return new IfcClassInformation("IfcUnitaryControlElement", new[] { "Ifc4", "Ifc4x3" }); // 1109
-               yield return new IfcClassInformation("IfcUnitaryControlElementType", new[] { "Ifc4", "Ifc4x3" }); // 1110
-               yield return new IfcClassInformation("IfcUnitaryEquipment", new[] { "Ifc4", "Ifc4x3" }); // 1111
-               yield return new IfcClassInformation("IfcUnitaryEquipmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1112
-               yield return new IfcClassInformation("IfcUnitAssignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1113
-               yield return new IfcClassInformation("IfcURIReference", new[] { "Ifc4", "Ifc4x3" }); // 1114
-               yield return new IfcClassInformation("IfcUShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1115
-               yield return new IfcClassInformation("IfcValve", new[] { "Ifc4", "Ifc4x3" }); // 1116
-               yield return new IfcClassInformation("IfcValveType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1117
-               yield return new IfcClassInformation("IfcVaporPermeabilityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1118
-               yield return new IfcClassInformation("IfcVector", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1119
-               yield return new IfcClassInformation("IfcVehicle", new[] { "Ifc4x3" }); // 1120
-               yield return new IfcClassInformation("IfcVehicleType", new[] { "Ifc4x3" }); // 1121
-               yield return new IfcClassInformation("IfcVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1122
-               yield return new IfcClassInformation("IfcVertexBasedTextureMap", new[] { "Ifc2x3" }); // 1123
-               yield return new IfcClassInformation("IfcVertexLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1124
-               yield return new IfcClassInformation("IfcVertexPoint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1125
-               yield return new IfcClassInformation("IfcVibrationDamper", new[] { "Ifc4x3" }); // 1126
-               yield return new IfcClassInformation("IfcVibrationDamperType", new[] { "Ifc4x3" }); // 1127
-               yield return new IfcClassInformation("IfcVibrationIsolator", new[] { "Ifc4", "Ifc4x3" }); // 1128
-               yield return new IfcClassInformation("IfcVibrationIsolatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1129
-               yield return new IfcClassInformation("IfcVirtualElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1130
-               yield return new IfcClassInformation("IfcVirtualGridIntersection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1131
-               yield return new IfcClassInformation("IfcVoidingFeature", new[] { "Ifc4", "Ifc4x3" }); // 1132
-               yield return new IfcClassInformation("IfcVolumeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1133
-               yield return new IfcClassInformation("IfcVolumetricFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1134
-               yield return new IfcClassInformation("IfcWall", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1135
-               yield return new IfcClassInformation("IfcWallElementedCase", new[] { "Ifc4" }); // 1136
-               yield return new IfcClassInformation("IfcWallStandardCase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1137
-               yield return new IfcClassInformation("IfcWallType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1138
-               yield return new IfcClassInformation("IfcWarpingConstantMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1139
-               yield return new IfcClassInformation("IfcWarpingMomentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1140
-               yield return new IfcClassInformation("IfcWasteTerminal", new[] { "Ifc4", "Ifc4x3" }); // 1141
-               yield return new IfcClassInformation("IfcWasteTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1142
-               yield return new IfcClassInformation("IfcWaterProperties", new[] { "Ifc2x3" }); // 1143
-               yield return new IfcClassInformation("IfcWellKnownText", new[] { "Ifc4x3" }); // 1144
-               yield return new IfcClassInformation("IfcWellKnownTextLiteral", new[] { "Ifc4x3" }); // 1145
-               yield return new IfcClassInformation("IfcWindow", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1146
-               yield return new IfcClassInformation("IfcWindowLiningProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1147
-               yield return new IfcClassInformation("IfcWindowPanelProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1148
-               yield return new IfcClassInformation("IfcWindowStandardCase", new[] { "Ifc4" }); // 1149
-               yield return new IfcClassInformation("IfcWindowStyle", new[] { "Ifc2x3", "Ifc4" }); // 1150
-               yield return new IfcClassInformation("IfcWindowType", new[] { "Ifc4", "Ifc4x3" }); // 1151
-               yield return new IfcClassInformation("IfcWorkCalendar", new[] { "Ifc4", "Ifc4x3" }); // 1152
-               yield return new IfcClassInformation("IfcWorkControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1153
-               yield return new IfcClassInformation("IfcWorkPlan", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1154
-               yield return new IfcClassInformation("IfcWorkSchedule", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1155
-               yield return new IfcClassInformation("IfcWorkTime", new[] { "Ifc4", "Ifc4x3" }); // 1156
-               yield return new IfcClassInformation("IfcYearNumber", new[] { "Ifc2x3" }); // 1157
-               yield return new IfcClassInformation("IfcZone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1158
-               yield return new IfcClassInformation("IfcZShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1159
+               yield return new IfcClassInformation("Ifc2DCompositeCurve", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAbsorbedDoseMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAccelerationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcActionRequest", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcActorRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcActuator", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcActuatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAdvancedBrep", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAdvancedBrepWithVoids", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAdvancedFace", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirTerminal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirTerminalBox", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirTerminalBoxType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirToAirHeatRecovery", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAirToAirHeatRecoveryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlarm", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlarmType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignment2DHorizontal", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignment2DHorizontalSegment", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignment2DVerSegCircularArc", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignment2DVerSegLine", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignment2DVerSegParabolicArc", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignment2DVertical", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignmentCant", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentCantSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentCurve", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcAlignmentHorizontal", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentHorizontalSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentVertical", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAlignmentVerticalSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAmountOfSubstanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAngularDimension", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAngularVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAnnotation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAnnotationCurveOccurrence", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAnnotationFillArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAnnotationFillAreaOccurrence", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAnnotationSurface", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAnnotationSurfaceOccurrence", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAnnotationSymbolOccurrence", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcAnnotationTextOccurrence", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAppliedValue", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAppliedValueRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcApprovalActorRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcApprovalPropertyRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcApprovalRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcArbitraryClosedProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcArbitraryOpenProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcArbitraryProfileDefWithVoids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcArcIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAreaDensityMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAreaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAsset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAsymmetricIShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAudioVisualAppliance", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAudioVisualApplianceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAxis1Placement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAxis2Placement2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAxis2Placement3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcAxis2PlacementLinear", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBeam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBeamStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcBeamType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBearing", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBearingType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBezierCurve", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcBinary", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBlobTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBlock", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoiler", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoilerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoolean", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBooleanClippingResult", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBooleanResult", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBorehole", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundaryCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundaryEdgeCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundaryFaceCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundaryNodeCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundaryNodeConditionWarping", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoundedSurface", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcBoundingBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoxAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBoxedHalfSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBridge", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBridgePart", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBSplineCurveWithKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBSplineSurfaceWithKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuilding", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingElementPart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingElementPartType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingElementProxy", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingElementProxyType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingStorey", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuildingSystem", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuiltElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuiltElementType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBuiltSystem", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBurner", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcBurnerType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableCarrierFitting", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableCarrierFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableCarrierSegment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableCarrierSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableFitting", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableFittingType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableSegment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCableSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCaissonFoundation", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCaissonFoundationType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCalendarDate", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcCardinalPointReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianPoint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianPointList2D", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianPointList3D", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianTransformationOperator2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianTransformationOperator2DnonUniform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianTransformationOperator3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCartesianTransformationOperator3DnonUniform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCenterLineProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcChamferEdgeFeature", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcChiller", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcChillerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcChimney", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcChimneyType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCircle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCircleHollowProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCircleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCircularArcSegment2D", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcCivilElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCivilElementType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcClassificationItem", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcClassificationItemRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcClassificationNotation", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcClassificationNotationFacet", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcClassificationReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcClosedShell", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcClothoid", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoil", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoilType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcColourRgb", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcColourRgbList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcColumn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcColumnStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcColumnType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCommunicationsAppliance", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCommunicationsApplianceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcComplexNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcComplexProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcComplexPropertyTemplate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompositeCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompositeCurveOnSurface", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompositeCurveSegment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompositeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompoundPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompressor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCompressorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCondenser", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCondenserType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCondition", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConditionCriterion", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConnectedFaceSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConnectionCurveGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConnectionPointEccentricity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConnectionPointGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConnectionPortGeometry", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConnectionSurfaceGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConnectionVolumeGeometry", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstraintAggregationRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConstraintClassificationRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConstraintRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcConstructionEquipmentResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstructionEquipmentResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstructionMaterialResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstructionMaterialResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstructionProductResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConstructionProductResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcContextDependentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcContextDependentUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcController", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcControllerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConversionBasedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConversionBasedUnitWithOffset", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConveyorSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcConveyorSegmentType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCooledBeam", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCooledBeamType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoolingTower", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoolingTowerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoordinatedUniversalTimeOffset", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcCosineSpiral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCostItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCostSchedule", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCostValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCountMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCourse", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCourseType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCovering", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCoveringType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCraneRailAShapeProfileDef", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcCraneRailFShapeProfileDef", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcCrewResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCrewResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCsgSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurrencyRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurtainWall", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurtainWallType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurvatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveBoundedPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveBoundedSurface", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveSegment", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveStyleFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveStyleFontAndScaling", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCurveStyleFontPattern", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcCylindricalSurface", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDamper", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDamperType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDateAndTime", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDateTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDayInMonthNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDayInWeekNumber", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDaylightSavingHour", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDeepFoundation", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDeepFoundationType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDefinedSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDerivedProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDerivedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDerivedUnitElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDescriptiveMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDiameterDimension", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDimensionalExponents", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDimensionCalloutRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDimensionCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDimensionCurve", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDimensionCurveDirectedCallout", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDimensionCurveTerminator", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDimensionPair", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDirectrixDerivedReferenceSweptAreaSolid", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDiscreteAccessory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDiscreteAccessoryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistanceExpression", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcDistributionBoard", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionBoardType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionChamberElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionChamberElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionCircuit", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionControlElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionFlowElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDistributionSystem", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDocumentElectronicFormat", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDocumentInformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDocumentInformationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDocumentReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDoor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDoorLiningProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDoorPanelProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDoorStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcDoorStyle", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcClassInformation("IfcDoorType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDoseEquivalentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDraughtingCallout", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDraughtingCalloutRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDraughtingPreDefinedColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDraughtingPreDefinedCurveFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDraughtingPreDefinedTextFont", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcDuctFitting", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuctFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuctSegment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuctSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuctSilencer", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuctSilencerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDuration", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcDynamicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEarthworksCut", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEarthworksElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEarthworksFill", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEdgeCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEdgeLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricalBaseProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcElectricalCircuit", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcElectricalElement", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcElectricAppliance", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricApplianceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricCapacitanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricChargeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricConductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricCurrentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricDistributionBoard", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricDistributionBoardType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricDistributionPoint", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcElectricFlowStorageDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricFlowStorageDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricFlowTreatmentDevice", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricFlowTreatmentDeviceType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricGenerator", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricGeneratorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricHeaterType", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcElectricMotor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricMotorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricTimeControl", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricTimeControlType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElectricVoltageMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElementAssembly", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElementAssemblyType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcElementQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEllipse", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEllipseProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEnergyConversionDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEnergyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEnergyProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcEngine", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEngineType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEnvironmentalImpactValue", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcEquipmentElement", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcEquipmentStandard", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcEvaporativeCooler", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEvaporativeCoolerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEvaporator", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEvaporatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEvent", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEventTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcEventType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExtendedMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcExternallyDefinedHatchStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExternallyDefinedSurfaceStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExternallyDefinedSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcExternallyDefinedTextFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExternalReferenceRelationship", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExternalSpatialElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExtrudedAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcExtrudedAreaSolidTapered", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFaceBasedSurfaceModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFaceBound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFaceOuterBound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFaceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFacetedBrep", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFacetedBrepWithVoids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFacility", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFacilityPartCommon", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFailureConnectionCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFan", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFanType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFastener", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFastenerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFillAreaStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFillAreaStyleHatching", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFillAreaStyleTiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFillAreaStyleTileSymbolWithStyle", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcFilter", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFilterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFireSuppressionTerminal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFireSuppressionTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFixedReferenceSweptAreaSolid", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowController", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowFitting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowInstrument", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowInstrumentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowMeter", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowMeterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowMovingDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowSegment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowStorageDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowTerminal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFlowTreatmentDevice", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFluidFlowProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcFontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFontVariant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFontWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFooting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFootingType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFuelProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcFurnishingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFurnishingElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFurniture", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcFurnitureStandard", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcFurnitureType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGasTerminalType", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcGeneralMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcGeneralProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcGeographicCRS", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeographicElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeographicElementType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeometricCurveSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeometricRepresentationContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeometricRepresentationSubContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeometricSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeomodel", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeoslice", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGeotechnicalStratum", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGloballyUniqueId", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGradientCurve", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGrid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGridAxis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGridPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHalfSpaceSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHeatExchanger", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHeatExchangerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHeatFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHeatingValueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHourInDay", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcHumidifier", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHumidifierType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcHygroscopicMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIlluminanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcImageTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcImpactProtectionDevice", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcImpactProtectionDeviceType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedColourMap", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedPolyCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedPolygonalFace", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedPolygonalFaceWithVoids", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedPolygonalTextureMap", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIndexedTriangleTextureMap", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcInductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcInteger", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIntegerCountRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcInterceptor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcInterceptorType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIntersectionCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcInventory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIonConcentrationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIrregularTimeSeries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIrregularTimeSeriesValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcIsothermalMoistureCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcJunctionBox", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcJunctionBoxType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcKerb", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcKerbType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcKinematicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLabel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLaborResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLaborResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLagTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLamp", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLampType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLanguageId", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLibraryInformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLibraryReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightDistributionData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightFixture", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightFixtureType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightIntensityDistribution", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightSourceAmbient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightSourceDirectional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightSourceGoniometric", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightSourcePositional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLightSourceSpot", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearDimension", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcLinearElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearMomentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearPlacement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearPositioningElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearStiffnessMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLinearVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLineIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLineSegment2D", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcLiquidTerminal", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLiquidTerminalType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLocalPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLocalTime", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcLogical", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLuminousFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLuminousIntensityDistributionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcLuminousIntensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMagneticFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMagneticFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMapConversion", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMapConversionScaled", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMappedItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMarineFacility", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMarinePart", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMassDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMassFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMassPerLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialClassificationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialConstituent", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialConstituentSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialDefinitionRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialLayer", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialLayerSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialLayerSetUsage", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialLayerWithOffsets", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProfile", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProfileSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProfileSetUsage", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProfileSetUsageTapering", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProfileWithOffsets", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialProperties", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMaterialRelationship", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMeasureWithUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMechanicalConcreteMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcMechanicalFastener", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMechanicalFastenerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMechanicalMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcMechanicalSteelMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcMedicalDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMedicalDeviceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMemberStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcMemberType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMetric", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMinuteInHour", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcMirroredProfileDef", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMobileTelecommunicationsAppliance", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMobileTelecommunicationsApplianceType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcModulusOfElasticityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcModulusOfLinearSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcModulusOfRotationalSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcModulusOfSubgradeReactionMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMoistureDiffusivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMolecularWeightMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMomentOfInertiaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMonetaryMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMonthInYearNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMooringDevice", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMooringDeviceType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMotorConnection", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMotorConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcMove", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcNavigationElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcNavigationElementType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcNonNegativeLengthMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcNormalisedRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcNullStyle", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcClassInformation("IfcNumericMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcObjective", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOccupant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOffsetCurve2D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOffsetCurve3D", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOffsetCurveByDistances", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOneDirectionRepeatFactor", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcOpenCrossProfileDef", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOpeningStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcOpenShell", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOpticalMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcOrderAction", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOrganizationRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOrientationExpression", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcOrientedEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOuterBoundaryCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOutlet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOutletType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcOwnerHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcParameterValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPath", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPavement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPavementType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPcurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPerformanceHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPermeableCoveringProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPermit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPersonAndOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPHMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPhysicalComplexQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPileType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPipeFitting", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPipeFittingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPipeSegment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPipeSegmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPixelTexture", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlanarBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlanarExtent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlanarForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPlateStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcPlateType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPointByDistanceExpression", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPointOnCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPointOnSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPolygonalBoundedHalfSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPolygonalFaceSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPolyline", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPolyLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPolynomialCurve", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPositiveInteger", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPositiveLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPositivePlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPositiveRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPostalAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPreDefinedDimensionSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcPreDefinedPointMarkerSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcPreDefinedTerminatorSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcPresentableText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPresentationLayerAssignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPresentationLayerWithStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPresentationStyleAssignment", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcClassInformation("IfcPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProcedure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProcedureType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProductDefinitionShape", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProductRepresentation", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcProductsOfCombustionProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcProfileDef", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProfileProperties", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProjectedCRS", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProjectionCurve", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcProjectionElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProjectLibrary", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProjectOrder", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProjectOrderRecord", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcPropertyBoundedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyConstraintRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcPropertyDependencyRelationship", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyEnumeratedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyEnumeration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyListValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyReferenceValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertySet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertySetDefinitionSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertySetTemplate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertySingleValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPropertyTableValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProtectiveDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProtectiveDeviceTrippingUnit", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProtectiveDeviceTrippingUnitType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProtectiveDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcProxy", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcClassInformation("IfcPump", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcPumpType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityNumber", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityVolume", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcQuantityWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRadioActivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRadiusDimension", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRail", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRailing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRailingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRailType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRailway", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRailwayPart", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRampFlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRampFlightType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRampType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRationalBezierCurve", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRationalBSplineCurveWithKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRationalBSplineSurfaceWithKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRectangleHollowProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRectangleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRectangularPyramid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRectangularTrimmedSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRecurrencePattern", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReferencesValueDocument", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcReferent", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRegularTimeSeries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcedSoil", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcementBarProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcementDefinitionProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcingBar", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcingBarType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcingMesh", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReinforcingMeshType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAdheresToElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAggregates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsTasks", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToGroupByFactor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToProjectOrder", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelAssignsToResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociates", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesAppliedValue", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesLibrary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesProfileDef", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelAssociatesProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelaxation", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelConnectsElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsPathElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsPorts", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsPortToElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsStructuralActivity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsStructuralElement", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelConnectsStructuralMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsWithEccentricity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelConnectsWithRealizingElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelContainedInSpatialStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelCoversBldgElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelCoversSpaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelDeclares", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelDefinesByObject", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelDefinesByProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelDefinesByTemplate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelDefinesByType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelFillsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelFlowControlElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelInteractionRequirements", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelInterferesElements", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelNests", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelOccupiesSpaces", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelOverridesProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelPositions", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelProjectsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelReferencedInSpatialStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelSchedulesCostItems", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRelSequence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelServicesBuildings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelSpaceBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelSpaceBoundary1stLevel", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelSpaceBoundary2ndLevel", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRelVoidsElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcReparametrisedCompositeCurveSegment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRepresentation", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRepresentationContext", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRepresentationMap", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcResourceApprovalRelationship", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcResourceConstraintRelationship", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcResourceTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRevolvedAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRevolvedAreaSolidTapered", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRibPlateProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRightCircularCone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRightCircularCylinder", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRigidOperation", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRoad", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRoadPart", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRoof", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRoofType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRotationalFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRotationalMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRotationalStiffnessMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcRoundedEdgeFeature", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcRoundedRectangleProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSanitaryTerminal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSanitaryTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcScheduleTimeControl", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSeamCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSecondInMinute", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSecondOrderPolynomialSpiral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionalAreaIntegralMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionedSolidHorizontal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionedSpine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionedSurface", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSectionReinforcementProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSegmentedReferenceCurve", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSensor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSensorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcServiceLife", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcServiceLifeFactor", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSeventhOrderPolynomialSpiral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShadingDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShadingDeviceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShapeAspect", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShapeRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShearModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcShellBasedSurfaceModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSign", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSignal", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSignalType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSignType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSimplePropertyTemplate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSineSpiral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSite", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSIUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSlab", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSlabElementedCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcSlabStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcSlabType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSlippageConnectionCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSolarDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSolarDeviceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSolidAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSoundPowerLevelMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSoundPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSoundPressureLevelMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSoundPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSoundProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSoundValue", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpaceHeater", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpaceHeaterType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpaceProgram", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSpaceThermalLoadProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSpaceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpatialZone", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpatialZoneType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpecificHeatCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpecularExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSpecularRoughness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSphere", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSphericalSurface", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStackTerminal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStackTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStair", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStairFlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStairFlightType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStairType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStrippedOptional", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralAnalysisModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralCurveAction", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralCurveConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralCurveMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralCurveMemberVarying", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralCurveReaction", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLinearAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLinearActionVarying", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadCase", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadConfiguration", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadLinearForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadPlanarForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadSingleDisplacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadSingleDisplacementDistortion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadSingleForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadSingleForceWarping", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralLoadTemperature", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralPlanarAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralPlanarActionVarying", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcStructuralPointAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralPointConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralPointReaction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcStructuralResultGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralSteelProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcStructuralSurfaceAction", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralSurfaceConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralSurfaceMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralSurfaceMemberVarying", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuralSurfaceReaction", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStructuredDimensionCallout", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcStyledItem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcStyledRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSubContractResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSubContractResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSubedge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceCurveSweptAreaSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceFeature", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceOfLinearExtrusion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceOfRevolution", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceReinforcementArea", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyleLighting", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyleRefraction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyleRendering", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyleShading", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSurfaceStyleWithTextures", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSweptDiskSolid", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSweptDiskSolidPolygonal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSwitchingDevice", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSwitchingDeviceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSymbolStyle", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSystemFurnitureElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcSystemFurnitureElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTable", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTableColumn", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTableRow", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTank", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTankType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTask", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTaskTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTaskTimeRecurring", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTaskType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTelecomAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTemperatureGradientMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTemperatureRateOfChangeMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendon", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendonAnchor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendonAnchorType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendonConduit", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendonConduitType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTendonType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTerminatorSymbol", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextDecoration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextFontName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextLiteral", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextLiteralWithExtent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextStyleFontModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextStyleForDefinedFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextStyleTextModel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextStyleWithBoxCharacteristics", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcTextTransformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureCoordinateGenerator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureCoordinateIndices", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureCoordinateIndicesWithVoids", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureMap", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTextureVertexList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermalAdmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermalConductivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermalExpansionCoefficientMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermalMaterialProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcThermalResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermalTransmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThermodynamicTemperatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcThirdOrderPolynomialSpiral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTimeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTimePeriod", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTimeSeriesReferenceRelationship", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcTimeSeriesSchedule", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcTimeSeriesValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTimeStamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTopologyRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcToroidalSurface", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTorqueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTrackElement", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTrackElementType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTransformer", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTransformerType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTransitionCurveSegment2D", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcTransportElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTransportElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTrapeziumProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTriangulatedFaceSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTriangulatedIrregularNetwork", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTrimmedCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTubeBundle", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTubeBundleType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTwoDirectionRepeatFactor", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcTypeObject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcTypeProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUnitaryControlElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUnitaryControlElementType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUnitaryEquipment", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUnitaryEquipmentType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUnitAssignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcURIReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcUShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcValve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcValveType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVaporPermeabilityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVector", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVehicle", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVehicleType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVertexBasedTextureMap", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcVertexLoop", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVertexPoint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVibrationDamper", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVibrationDamperType", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVibrationIsolator", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVibrationIsolatorType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVirtualElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVirtualGridIntersection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVoidingFeature", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVolumeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcVolumetricFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWall", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWallElementedCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcWallStandardCase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWallType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWarpingConstantMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWarpingMomentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWasteTerminal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWasteTerminalType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWaterProperties", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcWellKnownText", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWellKnownTextLiteral", new[] { "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWindow", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWindowLiningProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWindowPanelProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWindowStandardCase", new[] { "Ifc4" });
+               yield return new IfcClassInformation("IfcWindowStyle", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcClassInformation("IfcWindowType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWorkCalendar", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWorkPlan", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWorkSchedule", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcWorkTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcYearNumber", new[] { "Ifc2x3" });
+               yield return new IfcClassInformation("IfcZone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcClassInformation("IfcZShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
             }
         }
 
@@ -1185,1236 +1048,1236 @@ namespace IdsLib.IfcSchema
         {
             get
             {
-               yield return new IfcAttributeInformation("AccessState", new[] { "Ifc4", "Ifc4x3" }); // 1
-               yield return new IfcAttributeInformation("AcidityConcentration", new[] { "Ifc2x3" }); // 2
-               yield return new IfcAttributeInformation("ActingRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 3
-               yield return new IfcAttributeInformation("ActionID", new[] { "Ifc2x3" }); // 4
-               yield return new IfcAttributeInformation("ActionSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 5
-               yield return new IfcAttributeInformation("ActionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 6
-               yield return new IfcAttributeInformation("Actor", new[] { "Ifc2x3" }); // 7
-               yield return new IfcAttributeInformation("ActualDate", new[] { "Ifc4", "Ifc4x3" }); // 8
-               yield return new IfcAttributeInformation("ActualDuration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 9
-               yield return new IfcAttributeInformation("ActualFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 10
-               yield return new IfcAttributeInformation("ActualStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 11
-               yield return new IfcAttributeInformation("ActualUsage", new[] { "Ifc4", "Ifc4x3" }); // 12
-               yield return new IfcAttributeInformation("ActualWork", new[] { "Ifc4", "Ifc4x3" }); // 13
-               yield return new IfcAttributeInformation("AdditionalConditions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 14
-               yield return new IfcAttributeInformation("Addresses", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 15
-               yield return new IfcAttributeInformation("AddressLines", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 16
-               yield return new IfcAttributeInformation("AdmixturesDescription", new[] { "Ifc2x3" }); // 17
-               yield return new IfcAttributeInformation("AgreementFlag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 18
-               yield return new IfcAttributeInformation("AlkalinityConcentration", new[] { "Ifc2x3" }); // 19
-               yield return new IfcAttributeInformation("AlongHorizontal", new[] { "Ifc4" }); // 20
-               yield return new IfcAttributeInformation("AmbientIntensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 21
-               yield return new IfcAttributeInformation("AmountOfSubstanceExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 22
-               yield return new IfcAttributeInformation("AnchorageSlip", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 23
-               yield return new IfcAttributeInformation("Angle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 24
-               yield return new IfcAttributeInformation("AnnotatedCurve", new[] { "Ifc2x3" }); // 25
-               yield return new IfcAttributeInformation("ApplicableDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 26
-               yield return new IfcAttributeInformation("ApplicableDates", new[] { "Ifc2x3" }); // 27
-               yield return new IfcAttributeInformation("ApplicableEntity", new[] { "Ifc4", "Ifc4x3" }); // 28
-               yield return new IfcAttributeInformation("ApplicableOccurrence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 29
-               yield return new IfcAttributeInformation("ApplicableValueRatio", new[] { "Ifc2x3" }); // 30
-               yield return new IfcAttributeInformation("ApplicationDeveloper", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 31
-               yield return new IfcAttributeInformation("ApplicationFullName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 32
-               yield return new IfcAttributeInformation("ApplicationIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 33
-               yield return new IfcAttributeInformation("AppliedCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 34
-               yield return new IfcAttributeInformation("AppliedLoad", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 35
-               yield return new IfcAttributeInformation("AppliedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 36
-               yield return new IfcAttributeInformation("Approval", new[] { "Ifc2x3" }); // 37
-               yield return new IfcAttributeInformation("ApprovalDateTime", new[] { "Ifc2x3" }); // 38
-               yield return new IfcAttributeInformation("ApprovalLevel", new[] { "Ifc2x3" }); // 39
-               yield return new IfcAttributeInformation("ApprovalQualifier", new[] { "Ifc2x3" }); // 40
-               yield return new IfcAttributeInformation("ApprovalStatus", new[] { "Ifc2x3" }); // 41
-               yield return new IfcAttributeInformation("ApprovedProperties", new[] { "Ifc2x3" }); // 42
-               yield return new IfcAttributeInformation("AreaValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 43
-               yield return new IfcAttributeInformation("ArithmeticOperator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 44
-               yield return new IfcAttributeInformation("AssemblyPlace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 45
-               yield return new IfcAttributeInformation("AssetID", new[] { "Ifc2x3" }); // 46
-               yield return new IfcAttributeInformation("AssignedItems", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 47
-               yield return new IfcAttributeInformation("AssociatedGeometry", new[] { "Ifc4", "Ifc4x3" }); // 48
-               yield return new IfcAttributeInformation("AttributeIdentifier", new[] { "Ifc4", "Ifc4x3" }); // 49
-               yield return new IfcAttributeInformation("Axis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 50
-               yield return new IfcAttributeInformation("Axis1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 51
-               yield return new IfcAttributeInformation("Axis2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 52
-               yield return new IfcAttributeInformation("Axis3", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 53
-               yield return new IfcAttributeInformation("AxisCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 54
-               yield return new IfcAttributeInformation("AxisDirection", new[] { "Ifc4x3" }); // 55
-               yield return new IfcAttributeInformation("AxisPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 56
-               yield return new IfcAttributeInformation("AxisTag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 57
-               yield return new IfcAttributeInformation("BackgroundColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 58
-               yield return new IfcAttributeInformation("BarCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 59
-               yield return new IfcAttributeInformation("BarLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 60
-               yield return new IfcAttributeInformation("BarRole", new[] { "Ifc2x3" }); // 61
-               yield return new IfcAttributeInformation("BarSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 62
-               yield return new IfcAttributeInformation("BaseCosts", new[] { "Ifc4", "Ifc4x3" }); // 63
-               yield return new IfcAttributeInformation("BaseCurve", new[] { "Ifc4x3" }); // 64
-               yield return new IfcAttributeInformation("BaseDepth1", new[] { "Ifc2x3" }); // 65
-               yield return new IfcAttributeInformation("BaseDepth2", new[] { "Ifc2x3" }); // 66
-               yield return new IfcAttributeInformation("BaseDepth3", new[] { "Ifc2x3" }); // 67
-               yield return new IfcAttributeInformation("BaseQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 68
-               yield return new IfcAttributeInformation("BaseSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 69
-               yield return new IfcAttributeInformation("BaseWidth2", new[] { "Ifc2x3" }); // 70
-               yield return new IfcAttributeInformation("BaseWidth4", new[] { "Ifc2x3" }); // 71
-               yield return new IfcAttributeInformation("BasisCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 72
-               yield return new IfcAttributeInformation("BasisSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 73
-               yield return new IfcAttributeInformation("BeamWidthAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 74
-               yield return new IfcAttributeInformation("Benchmark", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 75
-               yield return new IfcAttributeInformation("BenchmarkValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 76
-               yield return new IfcAttributeInformation("BendingParameters", new[] { "Ifc4", "Ifc4x3" }); // 77
-               yield return new IfcAttributeInformation("BendingShapeCode", new[] { "Ifc4", "Ifc4x3" }); // 78
-               yield return new IfcAttributeInformation("Blue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 79
-               yield return new IfcAttributeInformation("BoilingPoint", new[] { "Ifc2x3" }); // 80
-               yield return new IfcAttributeInformation("BottomFlangeEdgeRadius", new[] { "Ifc4", "Ifc4x3" }); // 81
-               yield return new IfcAttributeInformation("BottomFlangeFilletRadius", new[] { "Ifc4", "Ifc4x3" }); // 82
-               yield return new IfcAttributeInformation("BottomFlangeSlope", new[] { "Ifc4", "Ifc4x3" }); // 83
-               yield return new IfcAttributeInformation("BottomFlangeThickness", new[] { "Ifc4", "Ifc4x3" }); // 84
-               yield return new IfcAttributeInformation("BottomFlangeWidth", new[] { "Ifc4", "Ifc4x3" }); // 85
-               yield return new IfcAttributeInformation("BottomRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 86
-               yield return new IfcAttributeInformation("BottomXDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 87
-               yield return new IfcAttributeInformation("Bound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 88
-               yield return new IfcAttributeInformation("Boundaries", new[] { "Ifc4", "Ifc4x3" }); // 89
-               yield return new IfcAttributeInformation("Bounds", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 90
-               yield return new IfcAttributeInformation("BoxAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 91
-               yield return new IfcAttributeInformation("BoxHeight", new[] { "Ifc2x3" }); // 92
-               yield return new IfcAttributeInformation("BoxRotateAngle", new[] { "Ifc2x3" }); // 93
-               yield return new IfcAttributeInformation("BoxSlantAngle", new[] { "Ifc2x3" }); // 94
-               yield return new IfcAttributeInformation("BoxWidth", new[] { "Ifc2x3" }); // 95
-               yield return new IfcAttributeInformation("BuildingAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 96
-               yield return new IfcAttributeInformation("CapacityByNumber", new[] { "Ifc2x3" }); // 97
-               yield return new IfcAttributeInformation("CapacityByWeight", new[] { "Ifc2x3" }); // 98
-               yield return new IfcAttributeInformation("CarbonContent", new[] { "Ifc2x3" }); // 99
-               yield return new IfcAttributeInformation("CardinalEndPoint", new[] { "Ifc4", "Ifc4x3" }); // 100
-               yield return new IfcAttributeInformation("CardinalPoint", new[] { "Ifc4", "Ifc4x3" }); // 101
-               yield return new IfcAttributeInformation("CartesianPosition", new[] { "Ifc4", "Ifc4x3" }); // 102
-               yield return new IfcAttributeInformation("CasingDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 103
-               yield return new IfcAttributeInformation("CasingThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 104
-               yield return new IfcAttributeInformation("Category", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 105
-               yield return new IfcAttributeInformation("CausedBy", new[] { "Ifc2x3" }); // 106
-               yield return new IfcAttributeInformation("CentreOfGravityInX", new[] { "Ifc2x3" }); // 107
-               yield return new IfcAttributeInformation("CentreOfGravityInY", new[] { "Ifc2x3" }); // 108
-               yield return new IfcAttributeInformation("CfsFaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 109
-               yield return new IfcAttributeInformation("ChangeAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 110
-               yield return new IfcAttributeInformation("CharacterSpacing", new[] { "Ifc2x3" }); // 111
-               yield return new IfcAttributeInformation("ClassifiedConstraint", new[] { "Ifc2x3" }); // 112
-               yield return new IfcAttributeInformation("ClassifiedMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 113
-               yield return new IfcAttributeInformation("Closed", new[] { "Ifc4", "Ifc4x3" }); // 114
-               yield return new IfcAttributeInformation("ClosedCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 115
-               yield return new IfcAttributeInformation("ClothoidConstant", new[] { "Ifc4x3" }); // 116
-               yield return new IfcAttributeInformation("CO2Content", new[] { "Ifc2x3" }); // 117
-               yield return new IfcAttributeInformation("COContent", new[] { "Ifc2x3" }); // 118
-               yield return new IfcAttributeInformation("Coefficient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 119
-               yield return new IfcAttributeInformation("CoefficientsX", new[] { "Ifc4x3" }); // 120
-               yield return new IfcAttributeInformation("CoefficientsY", new[] { "Ifc4x3" }); // 121
-               yield return new IfcAttributeInformation("CoefficientsZ", new[] { "Ifc4x3" }); // 122
-               yield return new IfcAttributeInformation("Colour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 123
-               yield return new IfcAttributeInformation("ColourAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 124
-               yield return new IfcAttributeInformation("ColourComponents", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 125
-               yield return new IfcAttributeInformation("ColourIndex", new[] { "Ifc4", "Ifc4x3" }); // 126
-               yield return new IfcAttributeInformation("ColourList", new[] { "Ifc4", "Ifc4x3" }); // 127
-               yield return new IfcAttributeInformation("Colours", new[] { "Ifc4", "Ifc4x3" }); // 128
-               yield return new IfcAttributeInformation("ColourTemperature", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 129
-               yield return new IfcAttributeInformation("Columns", new[] { "Ifc4", "Ifc4x3" }); // 130
-               yield return new IfcAttributeInformation("CombustionTemperature", new[] { "Ifc2x3" }); // 131
-               yield return new IfcAttributeInformation("Completion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 132
-               yield return new IfcAttributeInformation("ComponentOfTotal", new[] { "Ifc2x3" }); // 133
-               yield return new IfcAttributeInformation("Components", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 134
-               yield return new IfcAttributeInformation("CompositeProfile", new[] { "Ifc4", "Ifc4x3" }); // 135
-               yield return new IfcAttributeInformation("CompositionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 136
-               yield return new IfcAttributeInformation("CompressionFailureX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 137
-               yield return new IfcAttributeInformation("CompressionFailureY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 138
-               yield return new IfcAttributeInformation("CompressionFailureZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 139
-               yield return new IfcAttributeInformation("CompressiveStrength", new[] { "Ifc2x3" }); // 140
-               yield return new IfcAttributeInformation("ConcentrationExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 141
-               yield return new IfcAttributeInformation("Condition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 142
-               yield return new IfcAttributeInformation("ConditionCoordinateSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 143
-               yield return new IfcAttributeInformation("Confidentiality", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 144
-               yield return new IfcAttributeInformation("ConnectionConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 145
-               yield return new IfcAttributeInformation("ConnectionGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 146
-               yield return new IfcAttributeInformation("ConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 147
-               yield return new IfcAttributeInformation("ConstantAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 148
-               yield return new IfcAttributeInformation("ConstantTerm", new[] { "Ifc4x3" }); // 149
-               yield return new IfcAttributeInformation("ConstraintGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 150
-               yield return new IfcAttributeInformation("ConstraintSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 151
-               yield return new IfcAttributeInformation("ConstructionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 152
-               yield return new IfcAttributeInformation("Contents", new[] { "Ifc2x3" }); // 153
-               yield return new IfcAttributeInformation("ContextIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 154
-               yield return new IfcAttributeInformation("ContextOfItems", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 155
-               yield return new IfcAttributeInformation("ContextType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 156
-               yield return new IfcAttributeInformation("ControlElementId", new[] { "Ifc2x3" }); // 157
-               yield return new IfcAttributeInformation("ControlPointsList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 158
-               yield return new IfcAttributeInformation("ConversionFactor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 159
-               yield return new IfcAttributeInformation("ConversionOffset", new[] { "Ifc4", "Ifc4x3" }); // 160
-               yield return new IfcAttributeInformation("CoordinateReferenceSystem", new[] { "Ifc4x3" }); // 161
-               yield return new IfcAttributeInformation("Coordinates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 162
-               yield return new IfcAttributeInformation("CoordinateSpaceDimension", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 163
-               yield return new IfcAttributeInformation("CoordIndex", new[] { "Ifc4", "Ifc4x3" }); // 164
-               yield return new IfcAttributeInformation("CoordList", new[] { "Ifc4", "Ifc4x3" }); // 165
-               yield return new IfcAttributeInformation("Corner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 166
-               yield return new IfcAttributeInformation("CorrespondingBoundary", new[] { "Ifc4", "Ifc4x3" }); // 167
-               yield return new IfcAttributeInformation("CosineTerm", new[] { "Ifc4x3" }); // 168
-               yield return new IfcAttributeInformation("CostQuantities", new[] { "Ifc4", "Ifc4x3" }); // 169
-               yield return new IfcAttributeInformation("CostType", new[] { "Ifc2x3" }); // 170
-               yield return new IfcAttributeInformation("CostValues", new[] { "Ifc4", "Ifc4x3" }); // 171
-               yield return new IfcAttributeInformation("Country", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 172
-               yield return new IfcAttributeInformation("CountValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 173
-               yield return new IfcAttributeInformation("CreatingActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 174
-               yield return new IfcAttributeInformation("CreationDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 175
-               yield return new IfcAttributeInformation("CreationTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 176
-               yield return new IfcAttributeInformation("Creators", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 177
-               yield return new IfcAttributeInformation("Criterion", new[] { "Ifc2x3" }); // 178
-               yield return new IfcAttributeInformation("CriterionDateTime", new[] { "Ifc2x3" }); // 179
-               yield return new IfcAttributeInformation("CrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 180
-               yield return new IfcAttributeInformation("CrossSectionPositions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 181
-               yield return new IfcAttributeInformation("CrossSectionReinforcementDefinitions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 182
-               yield return new IfcAttributeInformation("CrossSections", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 183
-               yield return new IfcAttributeInformation("CubicTerm", new[] { "Ifc4x3" }); // 184
-               yield return new IfcAttributeInformation("Currency", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 185
-               yield return new IfcAttributeInformation("CurrentValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 186
-               yield return new IfcAttributeInformation("Curve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 187
-               yield return new IfcAttributeInformation("Curve3D", new[] { "Ifc4", "Ifc4x3" }); // 188
-               yield return new IfcAttributeInformation("CurveColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 189
-               yield return new IfcAttributeInformation("CurveFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 190
-               yield return new IfcAttributeInformation("CurveFontScaling", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 191
-               yield return new IfcAttributeInformation("CurveForm", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 192
-               yield return new IfcAttributeInformation("CurveGeometry", new[] { "Ifc4" }); // 193
-               yield return new IfcAttributeInformation("CurveInterpolation", new[] { "Ifc4", "Ifc4x3" }); // 194
-               yield return new IfcAttributeInformation("CurveOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 195
-               yield return new IfcAttributeInformation("CurveOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 196
-               yield return new IfcAttributeInformation("CurveStyleFont", new[] { "Ifc4x3" }); // 197
-               yield return new IfcAttributeInformation("CurveWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 198
-               yield return new IfcAttributeInformation("DailyInteraction", new[] { "Ifc2x3" }); // 199
-               yield return new IfcAttributeInformation("DataOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 200
-               yield return new IfcAttributeInformation("DataValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 201
-               yield return new IfcAttributeInformation("DateComponent", new[] { "Ifc2x3" }); // 202
-               yield return new IfcAttributeInformation("DayComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 203
-               yield return new IfcAttributeInformation("DaylightSavingOffset", new[] { "Ifc2x3" }); // 204
-               yield return new IfcAttributeInformation("DefinedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 205
-               yield return new IfcAttributeInformation("DefinedValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 206
-               yield return new IfcAttributeInformation("DefiningUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 207
-               yield return new IfcAttributeInformation("DefiningValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 208
-               yield return new IfcAttributeInformation("Definition", new[] { "Ifc2x3" }); // 209
-               yield return new IfcAttributeInformation("DefinitionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 210
-               yield return new IfcAttributeInformation("Degree", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 211
-               yield return new IfcAttributeInformation("DeltaT_Constant", new[] { "Ifc2x3" }); // 212
-               yield return new IfcAttributeInformation("DeltaT_Y", new[] { "Ifc2x3" }); // 213
-               yield return new IfcAttributeInformation("DeltaT_Z", new[] { "Ifc2x3" }); // 214
-               yield return new IfcAttributeInformation("DeltaTConstant", new[] { "Ifc4", "Ifc4x3" }); // 215
-               yield return new IfcAttributeInformation("DeltaTY", new[] { "Ifc4", "Ifc4x3" }); // 216
-               yield return new IfcAttributeInformation("DeltaTZ", new[] { "Ifc4", "Ifc4x3" }); // 217
-               yield return new IfcAttributeInformation("DependantProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 218
-               yield return new IfcAttributeInformation("DependingProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 219
-               yield return new IfcAttributeInformation("DepreciatedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 220
-               yield return new IfcAttributeInformation("Depth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 221
-               yield return new IfcAttributeInformation("Description", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 222
-               yield return new IfcAttributeInformation("DesignParameters", new[] { "Ifc4x3" }); // 223
-               yield return new IfcAttributeInformation("DestabilizingLoad", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 224
-               yield return new IfcAttributeInformation("DiffuseColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 225
-               yield return new IfcAttributeInformation("DiffuseReflectionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 226
-               yield return new IfcAttributeInformation("DiffuseTransmissionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 227
-               yield return new IfcAttributeInformation("Dimensions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 228
-               yield return new IfcAttributeInformation("Dir", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 229
-               yield return new IfcAttributeInformation("Direction", new[] { "Ifc2x3" }); // 230
-               yield return new IfcAttributeInformation("DirectionRatios", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 231
-               yield return new IfcAttributeInformation("DirectionSense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 232
-               yield return new IfcAttributeInformation("Directrix", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 233
-               yield return new IfcAttributeInformation("Discrimination", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 234
-               yield return new IfcAttributeInformation("DispersionFactor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 235
-               yield return new IfcAttributeInformation("DisplacementX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 236
-               yield return new IfcAttributeInformation("DisplacementY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 237
-               yield return new IfcAttributeInformation("DisplacementZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 238
-               yield return new IfcAttributeInformation("DissolvedSolidsContent", new[] { "Ifc2x3" }); // 239
-               yield return new IfcAttributeInformation("Distance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 240
-               yield return new IfcAttributeInformation("DistanceAlong", new[] { "Ifc4", "Ifc4x3" }); // 241
-               yield return new IfcAttributeInformation("DistanceAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 242
-               yield return new IfcAttributeInformation("Distortion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 243
-               yield return new IfcAttributeInformation("DistributionData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 244
-               yield return new IfcAttributeInformation("DistributionPointFunction", new[] { "Ifc2x3" }); // 245
-               yield return new IfcAttributeInformation("DocumentId", new[] { "Ifc2x3" }); // 246
-               yield return new IfcAttributeInformation("DocumentOwner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 247
-               yield return new IfcAttributeInformation("DocumentReferences", new[] { "Ifc2x3" }); // 248
-               yield return new IfcAttributeInformation("Duration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 249
-               yield return new IfcAttributeInformation("DurationType", new[] { "Ifc4", "Ifc4x3" }); // 250
-               yield return new IfcAttributeInformation("DynamicViscosity", new[] { "Ifc2x3" }); // 251
-               yield return new IfcAttributeInformation("EarlyDate", new[] { "Ifc4", "Ifc4x3" }); // 252
-               yield return new IfcAttributeInformation("EarlyFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 253
-               yield return new IfcAttributeInformation("EarlyStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 254
-               yield return new IfcAttributeInformation("Eastings", new[] { "Ifc4", "Ifc4x3" }); // 255
-               yield return new IfcAttributeInformation("EccentricityInX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 256
-               yield return new IfcAttributeInformation("EccentricityInY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 257
-               yield return new IfcAttributeInformation("EccentricityInZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 258
-               yield return new IfcAttributeInformation("EdgeElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 259
-               yield return new IfcAttributeInformation("EdgeEnd", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 260
-               yield return new IfcAttributeInformation("EdgeGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 261
-               yield return new IfcAttributeInformation("EdgeList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 262
-               yield return new IfcAttributeInformation("EdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 263
-               yield return new IfcAttributeInformation("EdgeStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 264
-               yield return new IfcAttributeInformation("Edition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 265
-               yield return new IfcAttributeInformation("EditionDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 266
-               yield return new IfcAttributeInformation("Editors", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 267
-               yield return new IfcAttributeInformation("EffectiveDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 268
-               yield return new IfcAttributeInformation("ElectricCurrentExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 269
-               yield return new IfcAttributeInformation("ElectricCurrentType", new[] { "Ifc2x3" }); // 270
-               yield return new IfcAttributeInformation("ElectronicFormat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 271
-               yield return new IfcAttributeInformation("ElectronicMailAddresses", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 272
-               yield return new IfcAttributeInformation("Elements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 273
-               yield return new IfcAttributeInformation("ElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 274
-               yield return new IfcAttributeInformation("Elevation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 275
-               yield return new IfcAttributeInformation("ElevationOfRefHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 276
-               yield return new IfcAttributeInformation("ElevationOfTerrain", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 277
-               yield return new IfcAttributeInformation("ElevationWithFlooring", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 278
-               yield return new IfcAttributeInformation("Enclosure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 279
-               yield return new IfcAttributeInformation("EndCantLeft", new[] { "Ifc4x3" }); // 280
-               yield return new IfcAttributeInformation("EndCantRight", new[] { "Ifc4x3" }); // 281
-               yield return new IfcAttributeInformation("EndGradient", new[] { "Ifc4x3" }); // 282
-               yield return new IfcAttributeInformation("EndParam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 283
-               yield return new IfcAttributeInformation("EndPoint", new[] { "Ifc4x3" }); // 284
-               yield return new IfcAttributeInformation("EndProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 285
-               yield return new IfcAttributeInformation("EndRadius", new[] { "Ifc4" }); // 286
-               yield return new IfcAttributeInformation("EndRadiusOfCurvature", new[] { "Ifc4x3" }); // 287
-               yield return new IfcAttributeInformation("EndSweptArea", new[] { "Ifc4", "Ifc4x3" }); // 288
-               yield return new IfcAttributeInformation("EndTag", new[] { "Ifc4", "Ifc4x3" }); // 289
-               yield return new IfcAttributeInformation("EndTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 290
-               yield return new IfcAttributeInformation("EnergySequence", new[] { "Ifc2x3" }); // 291
-               yield return new IfcAttributeInformation("EnumerationReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 292
-               yield return new IfcAttributeInformation("EnumerationValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 293
-               yield return new IfcAttributeInformation("Enumerators", new[] { "Ifc4", "Ifc4x3" }); // 294
-               yield return new IfcAttributeInformation("EventOccurenceTime", new[] { "Ifc4", "Ifc4x3" }); // 295
-               yield return new IfcAttributeInformation("EventTriggerType", new[] { "Ifc4", "Ifc4x3" }); // 296
-               yield return new IfcAttributeInformation("ExceptionTimes", new[] { "Ifc4", "Ifc4x3" }); // 297
-               yield return new IfcAttributeInformation("ExchangeRate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 298
-               yield return new IfcAttributeInformation("Exponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 299
-               yield return new IfcAttributeInformation("Expression", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 300
-               yield return new IfcAttributeInformation("ExtendedProperties", new[] { "Ifc2x3" }); // 301
-               yield return new IfcAttributeInformation("Extent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 302
-               yield return new IfcAttributeInformation("ExtrudedDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 303
-               yield return new IfcAttributeInformation("Faces", new[] { "Ifc4", "Ifc4x3" }); // 304
-               yield return new IfcAttributeInformation("FaceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 305
-               yield return new IfcAttributeInformation("FacsimileNumbers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 306
-               yield return new IfcAttributeInformation("Factor", new[] { "Ifc4", "Ifc4x3" }); // 307
-               yield return new IfcAttributeInformation("FamilyName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 308
-               yield return new IfcAttributeInformation("FbsmFaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 309
-               yield return new IfcAttributeInformation("FeatureLength", new[] { "Ifc2x3" }); // 310
-               yield return new IfcAttributeInformation("FileExtension", new[] { "Ifc2x3" }); // 311
-               yield return new IfcAttributeInformation("FilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 312
-               yield return new IfcAttributeInformation("FillStyles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 313
-               yield return new IfcAttributeInformation("FillStyleTarget", new[] { "Ifc2x3" }); // 314
-               yield return new IfcAttributeInformation("Finish", new[] { "Ifc4" }); // 315
-               yield return new IfcAttributeInformation("FinishDate", new[] { "Ifc4x3" }); // 316
-               yield return new IfcAttributeInformation("FinishFloat", new[] { "Ifc2x3" }); // 317
-               yield return new IfcAttributeInformation("FinishTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 318
-               yield return new IfcAttributeInformation("FirstCoordinate", new[] { "Ifc4x3" }); // 319
-               yield return new IfcAttributeInformation("FirstMullionOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 320
-               yield return new IfcAttributeInformation("FirstOperand", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 321
-               yield return new IfcAttributeInformation("FirstTransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 322
-               yield return new IfcAttributeInformation("FixedAxisVertical", new[] { "Ifc4" }); // 323
-               yield return new IfcAttributeInformation("FixedReference", new[] { "Ifc4", "Ifc4x3" }); // 324
-               yield return new IfcAttributeInformation("FixedUntilDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 325
-               yield return new IfcAttributeInformation("Flags", new[] { "Ifc4", "Ifc4x3" }); // 326
-               yield return new IfcAttributeInformation("FlangeEdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 327
-               yield return new IfcAttributeInformation("FlangeSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 328
-               yield return new IfcAttributeInformation("FlangeThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 329
-               yield return new IfcAttributeInformation("FlangeWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 330
-               yield return new IfcAttributeInformation("FlowConditionSingleValue", new[] { "Ifc2x3" }); // 331
-               yield return new IfcAttributeInformation("FlowConditionTimeSeries", new[] { "Ifc2x3" }); // 332
-               yield return new IfcAttributeInformation("FlowDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 333
-               yield return new IfcAttributeInformation("FlowrateSingleValue", new[] { "Ifc2x3" }); // 334
-               yield return new IfcAttributeInformation("FlowrateTimeSeries", new[] { "Ifc2x3" }); // 335
-               yield return new IfcAttributeInformation("Fluid", new[] { "Ifc2x3" }); // 336
-               yield return new IfcAttributeInformation("FontFamily", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 337
-               yield return new IfcAttributeInformation("FontSize", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 338
-               yield return new IfcAttributeInformation("FontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 339
-               yield return new IfcAttributeInformation("FontVariant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 340
-               yield return new IfcAttributeInformation("FontWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 341
-               yield return new IfcAttributeInformation("ForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 342
-               yield return new IfcAttributeInformation("ForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 343
-               yield return new IfcAttributeInformation("ForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 344
-               yield return new IfcAttributeInformation("ForLayerSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 345
-               yield return new IfcAttributeInformation("Formula", new[] { "Ifc4", "Ifc4x3" }); // 346
-               yield return new IfcAttributeInformation("ForProfileEndSet", new[] { "Ifc4", "Ifc4x3" }); // 347
-               yield return new IfcAttributeInformation("ForProfileSet", new[] { "Ifc4", "Ifc4x3" }); // 348
-               yield return new IfcAttributeInformation("Fraction", new[] { "Ifc4", "Ifc4x3" }); // 349
-               yield return new IfcAttributeInformation("FrameDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 350
-               yield return new IfcAttributeInformation("FrameThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 351
-               yield return new IfcAttributeInformation("FreeFloat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 352
-               yield return new IfcAttributeInformation("FreezingPoint", new[] { "Ifc2x3" }); // 353
-               yield return new IfcAttributeInformation("Frequency", new[] { "Ifc2x3" }); // 354
-               yield return new IfcAttributeInformation("FrictionCoefficient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 355
-               yield return new IfcAttributeInformation("FullLoadCurrent", new[] { "Ifc2x3" }); // 356
-               yield return new IfcAttributeInformation("GeodeticDatum", new[] { "Ifc4", "Ifc4x3" }); // 357
-               yield return new IfcAttributeInformation("Girth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 358
-               yield return new IfcAttributeInformation("GivenName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 359
-               yield return new IfcAttributeInformation("GivingApproval", new[] { "Ifc4", "Ifc4x3" }); // 360
-               yield return new IfcAttributeInformation("GlobalId", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 361
-               yield return new IfcAttributeInformation("GlobalOrLocal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 362
-               yield return new IfcAttributeInformation("GravityCenterLineHeight", new[] { "Ifc4x3" }); // 363
-               yield return new IfcAttributeInformation("Green", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 364
-               yield return new IfcAttributeInformation("HardeningModule", new[] { "Ifc2x3" }); // 365
-               yield return new IfcAttributeInformation("Hardness", new[] { "Ifc2x3" }); // 366
-               yield return new IfcAttributeInformation("HasProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 367
-               yield return new IfcAttributeInformation("HasPropertySets", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 368
-               yield return new IfcAttributeInformation("HasPropertyTemplates", new[] { "Ifc4", "Ifc4x3" }); // 369
-               yield return new IfcAttributeInformation("HasQuantities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 370
-               yield return new IfcAttributeInformation("HasResults", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 371
-               yield return new IfcAttributeInformation("HatchLineAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 372
-               yield return new IfcAttributeInformation("HatchLineAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 373
-               yield return new IfcAttributeInformation("HeadDepth2", new[] { "Ifc2x3" }); // 374
-               yield return new IfcAttributeInformation("HeadDepth3", new[] { "Ifc2x3" }); // 375
-               yield return new IfcAttributeInformation("HeadWidth", new[] { "Ifc2x3" }); // 376
-               yield return new IfcAttributeInformation("Height", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 377
-               yield return new IfcAttributeInformation("HigherHeatingValue", new[] { "Ifc2x3" }); // 378
-               yield return new IfcAttributeInformation("Horizontal", new[] { "Ifc4" }); // 379
-               yield return new IfcAttributeInformation("HorizontalLength", new[] { "Ifc4", "Ifc4x3" }); // 380
-               yield return new IfcAttributeInformation("HorizontalWidths", new[] { "Ifc4x3" }); // 381
-               yield return new IfcAttributeInformation("HourComponent", new[] { "Ifc2x3" }); // 382
-               yield return new IfcAttributeInformation("HourOffset", new[] { "Ifc2x3" }); // 383
-               yield return new IfcAttributeInformation("Id", new[] { "Ifc2x3" }); // 384
-               yield return new IfcAttributeInformation("ID", new[] { "Ifc2x3" }); // 385
-               yield return new IfcAttributeInformation("Identification", new[] { "Ifc4", "Ifc4x3" }); // 386
-               yield return new IfcAttributeInformation("Identifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 387
-               yield return new IfcAttributeInformation("ImpactType", new[] { "Ifc2x3" }); // 388
-               yield return new IfcAttributeInformation("ImplicitOuter", new[] { "Ifc4", "Ifc4x3" }); // 389
-               yield return new IfcAttributeInformation("ImpliedOrder", new[] { "Ifc4", "Ifc4x3" }); // 390
-               yield return new IfcAttributeInformation("ImportanceRating", new[] { "Ifc2x3" }); // 391
-               yield return new IfcAttributeInformation("ImpuritiesContent", new[] { "Ifc2x3" }); // 392
-               yield return new IfcAttributeInformation("IncorporationDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 393
-               yield return new IfcAttributeInformation("InitialStress", new[] { "Ifc2x3" }); // 394
-               yield return new IfcAttributeInformation("InnerBoundaries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 395
-               yield return new IfcAttributeInformation("InnerCoordIndices", new[] { "Ifc4", "Ifc4x3" }); // 396
-               yield return new IfcAttributeInformation("InnerCurves", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 397
-               yield return new IfcAttributeInformation("InnerFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 398
-               yield return new IfcAttributeInformation("InnerRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 399
-               yield return new IfcAttributeInformation("InnerReference", new[] { "Ifc4", "Ifc4x3" }); // 400
-               yield return new IfcAttributeInformation("InnerTexCoordIndices", new[] { "Ifc4x3" }); // 401
-               yield return new IfcAttributeInformation("InputFrequency", new[] { "Ifc2x3" }); // 402
-               yield return new IfcAttributeInformation("InputPhase", new[] { "Ifc2x3" }); // 403
-               yield return new IfcAttributeInformation("InputVoltage", new[] { "Ifc2x3" }); // 404
-               yield return new IfcAttributeInformation("InstanceName", new[] { "Ifc4", "Ifc4x3" }); // 405
-               yield return new IfcAttributeInformation("IntendedUse", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 406
-               yield return new IfcAttributeInformation("Intensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 407
-               yield return new IfcAttributeInformation("Intent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 408
-               yield return new IfcAttributeInformation("InterferenceGeometry", new[] { "Ifc4", "Ifc4x3" }); // 409
-               yield return new IfcAttributeInformation("InterferenceSpace", new[] { "Ifc4x3" }); // 410
-               yield return new IfcAttributeInformation("InterferenceType", new[] { "Ifc4", "Ifc4x3" }); // 411
-               yield return new IfcAttributeInformation("InteriorOrExteriorSpace", new[] { "Ifc2x3" }); // 412
-               yield return new IfcAttributeInformation("InternalFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 413
-               yield return new IfcAttributeInformation("InternalLocation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 414
-               yield return new IfcAttributeInformation("InternalOrExternalBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 415
-               yield return new IfcAttributeInformation("IntersectingAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 416
-               yield return new IfcAttributeInformation("Interval", new[] { "Ifc4", "Ifc4x3" }); // 417
-               yield return new IfcAttributeInformation("InventoryType", new[] { "Ifc2x3" }); // 418
-               yield return new IfcAttributeInformation("InvisibleSegmentLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 419
-               yield return new IfcAttributeInformation("IsAttenuating", new[] { "Ifc2x3" }); // 420
-               yield return new IfcAttributeInformation("IsCCW", new[] { "Ifc4" }); // 421
-               yield return new IfcAttributeInformation("IsConvex", new[] { "Ifc4" }); // 422
-               yield return new IfcAttributeInformation("IsCritical", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 423
-               yield return new IfcAttributeInformation("IsEndRadiusCCW", new[] { "Ifc4" }); // 424
-               yield return new IfcAttributeInformation("IsHeading", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 425
-               yield return new IfcAttributeInformation("IsLinear", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 426
-               yield return new IfcAttributeInformation("IsMilestone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 427
-               yield return new IfcAttributeInformation("IsothermalMoistureCapacity", new[] { "Ifc2x3" }); // 428
-               yield return new IfcAttributeInformation("IsOverAllocated", new[] { "Ifc4", "Ifc4x3" }); // 429
-               yield return new IfcAttributeInformation("IsPotable", new[] { "Ifc2x3" }); // 430
-               yield return new IfcAttributeInformation("IsStartRadiusCCW", new[] { "Ifc4" }); // 431
-               yield return new IfcAttributeInformation("IsVentilated", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 432
-               yield return new IfcAttributeInformation("Item", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 433
-               yield return new IfcAttributeInformation("ItemOf", new[] { "Ifc2x3" }); // 434
-               yield return new IfcAttributeInformation("ItemReference", new[] { "Ifc2x3" }); // 435
-               yield return new IfcAttributeInformation("Items", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 436
-               yield return new IfcAttributeInformation("JobDescription", new[] { "Ifc2x3" }); // 437
-               yield return new IfcAttributeInformation("Jurisdiction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 438
-               yield return new IfcAttributeInformation("KnotMultiplicities", new[] { "Ifc4", "Ifc4x3" }); // 439
-               yield return new IfcAttributeInformation("Knots", new[] { "Ifc4", "Ifc4x3" }); // 440
-               yield return new IfcAttributeInformation("KnotSpec", new[] { "Ifc4", "Ifc4x3" }); // 441
-               yield return new IfcAttributeInformation("Label", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 442
-               yield return new IfcAttributeInformation("LagValue", new[] { "Ifc4", "Ifc4x3" }); // 443
-               yield return new IfcAttributeInformation("LandTitleNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 444
-               yield return new IfcAttributeInformation("Language", new[] { "Ifc4", "Ifc4x3" }); // 445
-               yield return new IfcAttributeInformation("LastModifiedDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 446
-               yield return new IfcAttributeInformation("LastModifyingApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 447
-               yield return new IfcAttributeInformation("LastModifyingUser", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 448
-               yield return new IfcAttributeInformation("LastRevisionTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 449
-               yield return new IfcAttributeInformation("LastUpdateDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 450
-               yield return new IfcAttributeInformation("LateDate", new[] { "Ifc4", "Ifc4x3" }); // 451
-               yield return new IfcAttributeInformation("LateFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 452
-               yield return new IfcAttributeInformation("LateralAxisDirection", new[] { "Ifc4" }); // 453
-               yield return new IfcAttributeInformation("LateStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 454
-               yield return new IfcAttributeInformation("LayerBlocked", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 455
-               yield return new IfcAttributeInformation("LayerFrozen", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 456
-               yield return new IfcAttributeInformation("LayerOn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 457
-               yield return new IfcAttributeInformation("LayerSetDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 458
-               yield return new IfcAttributeInformation("LayerSetName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 459
-               yield return new IfcAttributeInformation("LayerStyles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 460
-               yield return new IfcAttributeInformation("LayerThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 461
-               yield return new IfcAttributeInformation("LegSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 462
-               yield return new IfcAttributeInformation("LengthExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 463
-               yield return new IfcAttributeInformation("LengthValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 464
-               yield return new IfcAttributeInformation("LetterSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 465
-               yield return new IfcAttributeInformation("Level", new[] { "Ifc4", "Ifc4x3" }); // 466
-               yield return new IfcAttributeInformation("LevelingDelay", new[] { "Ifc4", "Ifc4x3" }); // 467
-               yield return new IfcAttributeInformation("LibraryReference", new[] { "Ifc2x3" }); // 468
-               yield return new IfcAttributeInformation("LifeCyclePhase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 469
-               yield return new IfcAttributeInformation("LightColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 470
-               yield return new IfcAttributeInformation("LightDistributionCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 471
-               yield return new IfcAttributeInformation("LightDistributionDataSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 472
-               yield return new IfcAttributeInformation("LightEmissionSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 473
-               yield return new IfcAttributeInformation("LinearForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 474
-               yield return new IfcAttributeInformation("LinearForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 475
-               yield return new IfcAttributeInformation("LinearForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 476
-               yield return new IfcAttributeInformation("LinearMomentX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 477
-               yield return new IfcAttributeInformation("LinearMomentY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 478
-               yield return new IfcAttributeInformation("LinearMomentZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 479
-               yield return new IfcAttributeInformation("LinearStiffnessByAreaX", new[] { "Ifc2x3" }); // 480
-               yield return new IfcAttributeInformation("LinearStiffnessByAreaY", new[] { "Ifc2x3" }); // 481
-               yield return new IfcAttributeInformation("LinearStiffnessByAreaZ", new[] { "Ifc2x3" }); // 482
-               yield return new IfcAttributeInformation("LinearStiffnessByLengthX", new[] { "Ifc2x3" }); // 483
-               yield return new IfcAttributeInformation("LinearStiffnessByLengthY", new[] { "Ifc2x3" }); // 484
-               yield return new IfcAttributeInformation("LinearStiffnessByLengthZ", new[] { "Ifc2x3" }); // 485
-               yield return new IfcAttributeInformation("LinearStiffnessX", new[] { "Ifc2x3" }); // 486
-               yield return new IfcAttributeInformation("LinearStiffnessY", new[] { "Ifc2x3" }); // 487
-               yield return new IfcAttributeInformation("LinearStiffnessZ", new[] { "Ifc2x3" }); // 488
-               yield return new IfcAttributeInformation("LinearTerm", new[] { "Ifc4x3" }); // 489
-               yield return new IfcAttributeInformation("LineHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 490
-               yield return new IfcAttributeInformation("LiningDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 491
-               yield return new IfcAttributeInformation("LiningOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 492
-               yield return new IfcAttributeInformation("LiningThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 493
-               yield return new IfcAttributeInformation("LiningToPanelOffsetX", new[] { "Ifc4", "Ifc4x3" }); // 494
-               yield return new IfcAttributeInformation("LiningToPanelOffsetY", new[] { "Ifc4", "Ifc4x3" }); // 495
-               yield return new IfcAttributeInformation("ListPositions", new[] { "Ifc4", "Ifc4x3" }); // 496
-               yield return new IfcAttributeInformation("ListValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 497
-               yield return new IfcAttributeInformation("Literal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 498
-               yield return new IfcAttributeInformation("LoadedBy", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 499
-               yield return new IfcAttributeInformation("LocalOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 500
-               yield return new IfcAttributeInformation("Location", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 501
-               yield return new IfcAttributeInformation("LocationAtRelatedElement", new[] { "Ifc2x3" }); // 502
-               yield return new IfcAttributeInformation("LocationAtRelatingElement", new[] { "Ifc2x3" }); // 503
-               yield return new IfcAttributeInformation("LocationOfInteraction", new[] { "Ifc2x3" }); // 504
-               yield return new IfcAttributeInformation("Locations", new[] { "Ifc4", "Ifc4x3" }); // 505
-               yield return new IfcAttributeInformation("LogicalAggregator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 506
-               yield return new IfcAttributeInformation("LongDescription", new[] { "Ifc4", "Ifc4x3" }); // 507
-               yield return new IfcAttributeInformation("LongitudinalBarCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 508
-               yield return new IfcAttributeInformation("LongitudinalBarNominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 509
-               yield return new IfcAttributeInformation("LongitudinalBarSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 510
-               yield return new IfcAttributeInformation("LongitudinalEndPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 511
-               yield return new IfcAttributeInformation("LongitudinalStartPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 512
-               yield return new IfcAttributeInformation("LongName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 513
-               yield return new IfcAttributeInformation("LoopVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 514
-               yield return new IfcAttributeInformation("LowerBoundValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 515
-               yield return new IfcAttributeInformation("LowerHeatingValue", new[] { "Ifc2x3" }); // 516
-               yield return new IfcAttributeInformation("LowerValue", new[] { "Ifc2x3" }); // 517
-               yield return new IfcAttributeInformation("LowerVaporResistanceFactor", new[] { "Ifc2x3" }); // 518
-               yield return new IfcAttributeInformation("LuminousFlux", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 519
-               yield return new IfcAttributeInformation("LuminousIntensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 520
-               yield return new IfcAttributeInformation("LuminousIntensityExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 521
-               yield return new IfcAttributeInformation("Magnitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 522
-               yield return new IfcAttributeInformation("MainPlaneAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 523
-               yield return new IfcAttributeInformation("MajorRadius", new[] { "Ifc4", "Ifc4x3" }); // 524
-               yield return new IfcAttributeInformation("MappedRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 525
-               yield return new IfcAttributeInformation("MappedTo", new[] { "Ifc4", "Ifc4x3" }); // 526
-               yield return new IfcAttributeInformation("MappingOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 527
-               yield return new IfcAttributeInformation("MappingSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 528
-               yield return new IfcAttributeInformation("MappingTarget", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 529
-               yield return new IfcAttributeInformation("MapProjection", new[] { "Ifc4", "Ifc4x3" }); // 530
-               yield return new IfcAttributeInformation("Maps", new[] { "Ifc4", "Ifc4x3" }); // 531
-               yield return new IfcAttributeInformation("MapUnit", new[] { "Ifc4", "Ifc4x3" }); // 532
-               yield return new IfcAttributeInformation("MapZone", new[] { "Ifc4", "Ifc4x3" }); // 533
-               yield return new IfcAttributeInformation("MassDensity", new[] { "Ifc2x3" }); // 534
-               yield return new IfcAttributeInformation("MassExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 535
-               yield return new IfcAttributeInformation("MasterRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 536
-               yield return new IfcAttributeInformation("Material", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 537
-               yield return new IfcAttributeInformation("MaterialClassifications", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 538
-               yield return new IfcAttributeInformation("MaterialConstituents", new[] { "Ifc4", "Ifc4x3" }); // 539
-               yield return new IfcAttributeInformation("MaterialExpression", new[] { "Ifc4x3" }); // 540
-               yield return new IfcAttributeInformation("MaterialLayers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 541
-               yield return new IfcAttributeInformation("MaterialProfiles", new[] { "Ifc4", "Ifc4x3" }); // 542
-               yield return new IfcAttributeInformation("Materials", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 543
-               yield return new IfcAttributeInformation("MaxAggregateSize", new[] { "Ifc2x3" }); // 544
-               yield return new IfcAttributeInformation("MaximumPlateThickness", new[] { "Ifc2x3" }); // 545
-               yield return new IfcAttributeInformation("MaximumPowerInput", new[] { "Ifc2x3" }); // 546
-               yield return new IfcAttributeInformation("MaximumSectionModulusY", new[] { "Ifc2x3" }); // 547
-               yield return new IfcAttributeInformation("MaximumSectionModulusZ", new[] { "Ifc2x3" }); // 548
-               yield return new IfcAttributeInformation("MaximumValue", new[] { "Ifc2x3" }); // 549
-               yield return new IfcAttributeInformation("MaxRequiredArea", new[] { "Ifc2x3" }); // 550
-               yield return new IfcAttributeInformation("MeshLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 551
-               yield return new IfcAttributeInformation("MeshWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 552
-               yield return new IfcAttributeInformation("MessagingIDs", new[] { "Ifc4", "Ifc4x3" }); // 553
-               yield return new IfcAttributeInformation("MethodOfMeasurement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 554
-               yield return new IfcAttributeInformation("MiddleNames", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 555
-               yield return new IfcAttributeInformation("MimeContentType", new[] { "Ifc2x3" }); // 556
-               yield return new IfcAttributeInformation("MimeSubtype", new[] { "Ifc2x3" }); // 557
-               yield return new IfcAttributeInformation("MinCurvatureRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 558
-               yield return new IfcAttributeInformation("MinimumCircuitCurrent", new[] { "Ifc2x3" }); // 559
-               yield return new IfcAttributeInformation("MinimumPlateThickness", new[] { "Ifc2x3" }); // 560
-               yield return new IfcAttributeInformation("MinimumSectionModulusY", new[] { "Ifc2x3" }); // 561
-               yield return new IfcAttributeInformation("MinimumSectionModulusZ", new[] { "Ifc2x3" }); // 562
-               yield return new IfcAttributeInformation("MinimumValue", new[] { "Ifc2x3" }); // 563
-               yield return new IfcAttributeInformation("MinorRadius", new[] { "Ifc4", "Ifc4x3" }); // 564
-               yield return new IfcAttributeInformation("MinRequiredArea", new[] { "Ifc2x3" }); // 565
-               yield return new IfcAttributeInformation("MinuteComponent", new[] { "Ifc2x3" }); // 566
-               yield return new IfcAttributeInformation("MinuteOffset", new[] { "Ifc2x3" }); // 567
-               yield return new IfcAttributeInformation("Mode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 568
-               yield return new IfcAttributeInformation("ModelorDraughting", new[] { "Ifc4" }); // 569
-               yield return new IfcAttributeInformation("ModelOrDraughting", new[] { "Ifc4", "Ifc4x3" }); // 570
-               yield return new IfcAttributeInformation("MoistureDiffusivity", new[] { "Ifc2x3" }); // 571
-               yield return new IfcAttributeInformation("MolecularWeight", new[] { "Ifc2x3" }); // 572
-               yield return new IfcAttributeInformation("MomentOfInertiaY", new[] { "Ifc2x3" }); // 573
-               yield return new IfcAttributeInformation("MomentOfInertiaYZ", new[] { "Ifc2x3" }); // 574
-               yield return new IfcAttributeInformation("MomentOfInertiaZ", new[] { "Ifc2x3" }); // 575
-               yield return new IfcAttributeInformation("MomentX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 576
-               yield return new IfcAttributeInformation("MomentY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 577
-               yield return new IfcAttributeInformation("MomentZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 578
-               yield return new IfcAttributeInformation("MonthComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 579
-               yield return new IfcAttributeInformation("MostUsedValue", new[] { "Ifc2x3" }); // 580
-               yield return new IfcAttributeInformation("MoveFrom", new[] { "Ifc2x3" }); // 581
-               yield return new IfcAttributeInformation("MoveTo", new[] { "Ifc2x3" }); // 582
-               yield return new IfcAttributeInformation("MullionThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 583
-               yield return new IfcAttributeInformation("N20Content", new[] { "Ifc2x3" }); // 584
-               yield return new IfcAttributeInformation("Name", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 585
-               yield return new IfcAttributeInformation("NominalBarDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 586
-               yield return new IfcAttributeInformation("NominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 587
-               yield return new IfcAttributeInformation("NominalLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 588
-               yield return new IfcAttributeInformation("NominalValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 589
-               yield return new IfcAttributeInformation("Normals", new[] { "Ifc4", "Ifc4x3" }); // 590
-               yield return new IfcAttributeInformation("Northings", new[] { "Ifc4", "Ifc4x3" }); // 591
-               yield return new IfcAttributeInformation("Notation", new[] { "Ifc2x3" }); // 592
-               yield return new IfcAttributeInformation("NotationFacets", new[] { "Ifc2x3" }); // 593
-               yield return new IfcAttributeInformation("NotationValue", new[] { "Ifc2x3" }); // 594
-               yield return new IfcAttributeInformation("NumberOfRiser", new[] { "Ifc2x3" }); // 595
-               yield return new IfcAttributeInformation("NumberOfRisers", new[] { "Ifc4", "Ifc4x3" }); // 596
-               yield return new IfcAttributeInformation("NumberOfTreads", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 597
-               yield return new IfcAttributeInformation("NumberValue", new[] { "Ifc4x3" }); // 598
-               yield return new IfcAttributeInformation("ObjectiveQualifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 599
-               yield return new IfcAttributeInformation("ObjectPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 600
-               yield return new IfcAttributeInformation("ObjectType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 601
-               yield return new IfcAttributeInformation("Occurrences", new[] { "Ifc4", "Ifc4x3" }); // 602
-               yield return new IfcAttributeInformation("OffsetDirection", new[] { "Ifc4", "Ifc4x3" }); // 603
-               yield return new IfcAttributeInformation("OffsetDistances", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 604
-               yield return new IfcAttributeInformation("OffsetFromReferenceLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 605
-               yield return new IfcAttributeInformation("OffsetLateral", new[] { "Ifc4", "Ifc4x3" }); // 606
-               yield return new IfcAttributeInformation("OffsetLongitudinal", new[] { "Ifc4", "Ifc4x3" }); // 607
-               yield return new IfcAttributeInformation("OffsetPoint", new[] { "Ifc4x3" }); // 608
-               yield return new IfcAttributeInformation("OffsetValues", new[] { "Ifc4", "Ifc4x3" }); // 609
-               yield return new IfcAttributeInformation("OffsetVertical", new[] { "Ifc4", "Ifc4x3" }); // 610
-               yield return new IfcAttributeInformation("Opacity", new[] { "Ifc4", "Ifc4x3" }); // 611
-               yield return new IfcAttributeInformation("OperationType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 612
-               yield return new IfcAttributeInformation("Operator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 613
-               yield return new IfcAttributeInformation("Orientation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 614
-               yield return new IfcAttributeInformation("OrientationOf2DPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 615
-               yield return new IfcAttributeInformation("OriginalValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 616
-               yield return new IfcAttributeInformation("OrthogonalHeight", new[] { "Ifc4", "Ifc4x3" }); // 617
-               yield return new IfcAttributeInformation("Outer", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 618
-               yield return new IfcAttributeInformation("OuterBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 619
-               yield return new IfcAttributeInformation("OuterCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 620
-               yield return new IfcAttributeInformation("OuterFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 621
-               yield return new IfcAttributeInformation("OverallDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 622
-               yield return new IfcAttributeInformation("OverallHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 623
-               yield return new IfcAttributeInformation("OverallWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 624
-               yield return new IfcAttributeInformation("OverridingProperties", new[] { "Ifc2x3" }); // 625
-               yield return new IfcAttributeInformation("Owner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 626
-               yield return new IfcAttributeInformation("OwnerHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 627
-               yield return new IfcAttributeInformation("OwningApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 628
-               yield return new IfcAttributeInformation("OwningUser", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 629
-               yield return new IfcAttributeInformation("PagerNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 630
-               yield return new IfcAttributeInformation("PanelDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 631
-               yield return new IfcAttributeInformation("PanelOperation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 632
-               yield return new IfcAttributeInformation("PanelPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 633
-               yield return new IfcAttributeInformation("PanelWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 634
-               yield return new IfcAttributeInformation("ParabolaConstant", new[] { "Ifc4" }); // 635
-               yield return new IfcAttributeInformation("Parameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 636
-               yield return new IfcAttributeInformation("ParameterTakesPrecedence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 637
-               yield return new IfcAttributeInformation("ParamLength", new[] { "Ifc4", "Ifc4x3" }); // 638
-               yield return new IfcAttributeInformation("ParentBoundary", new[] { "Ifc4", "Ifc4x3" }); // 639
-               yield return new IfcAttributeInformation("ParentContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 640
-               yield return new IfcAttributeInformation("ParentCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 641
-               yield return new IfcAttributeInformation("ParentEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 642
-               yield return new IfcAttributeInformation("ParentProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 643
-               yield return new IfcAttributeInformation("PartitioningType", new[] { "Ifc4", "Ifc4x3" }); // 644
-               yield return new IfcAttributeInformation("PartOfProductDefinitionShape", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 645
-               yield return new IfcAttributeInformation("Path", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 646
-               yield return new IfcAttributeInformation("PatternList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 647
-               yield return new IfcAttributeInformation("PatternStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 648
-               yield return new IfcAttributeInformation("Perimeter", new[] { "Ifc2x3" }); // 649
-               yield return new IfcAttributeInformation("PermitID", new[] { "Ifc2x3" }); // 650
-               yield return new IfcAttributeInformation("Phase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 651
-               yield return new IfcAttributeInformation("PHLevel", new[] { "Ifc2x3" }); // 652
-               yield return new IfcAttributeInformation("PhysicalOrVirtualBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 653
-               yield return new IfcAttributeInformation("PhysicalWeight", new[] { "Ifc2x3" }); // 654
-               yield return new IfcAttributeInformation("Pixel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 655
-               yield return new IfcAttributeInformation("Placement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 656
-               yield return new IfcAttributeInformation("PlacementLocation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 657
-               yield return new IfcAttributeInformation("PlacementRefDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 658
-               yield return new IfcAttributeInformation("PlacementRelTo", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 659
-               yield return new IfcAttributeInformation("PlanarForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 660
-               yield return new IfcAttributeInformation("PlanarForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 661
-               yield return new IfcAttributeInformation("PlanarForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 662
-               yield return new IfcAttributeInformation("PlasticShapeFactorY", new[] { "Ifc2x3" }); // 663
-               yield return new IfcAttributeInformation("PlasticShapeFactorZ", new[] { "Ifc2x3" }); // 664
-               yield return new IfcAttributeInformation("PlasticStrain", new[] { "Ifc2x3" }); // 665
-               yield return new IfcAttributeInformation("PnIndex", new[] { "Ifc4", "Ifc4x3" }); // 666
-               yield return new IfcAttributeInformation("Pnt", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 667
-               yield return new IfcAttributeInformation("PointOfReferenceHatchLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 668
-               yield return new IfcAttributeInformation("PointOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 669
-               yield return new IfcAttributeInformation("PointOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 670
-               yield return new IfcAttributeInformation("PointParameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 671
-               yield return new IfcAttributeInformation("PointParameterU", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 672
-               yield return new IfcAttributeInformation("PointParameterV", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 673
-               yield return new IfcAttributeInformation("Points", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 674
-               yield return new IfcAttributeInformation("PoissonRatio", new[] { "Ifc2x3" }); // 675
-               yield return new IfcAttributeInformation("Polygon", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 676
-               yield return new IfcAttributeInformation("PolygonalBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 677
-               yield return new IfcAttributeInformation("Porosity", new[] { "Ifc2x3" }); // 678
-               yield return new IfcAttributeInformation("Position", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 679
-               yield return new IfcAttributeInformation("PostalBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 680
-               yield return new IfcAttributeInformation("PostalCode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 681
-               yield return new IfcAttributeInformation("Precision", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 682
-               yield return new IfcAttributeInformation("PredefinedType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 683
-               yield return new IfcAttributeInformation("Prefix", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 684
-               yield return new IfcAttributeInformation("PrefixTitles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 685
-               yield return new IfcAttributeInformation("PreparedBy", new[] { "Ifc2x3" }); // 686
-               yield return new IfcAttributeInformation("PressureSingleValue", new[] { "Ifc2x3" }); // 687
-               yield return new IfcAttributeInformation("PressureTimeSeries", new[] { "Ifc2x3" }); // 688
-               yield return new IfcAttributeInformation("PreStress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 689
-               yield return new IfcAttributeInformation("PrimaryMeasureType", new[] { "Ifc4", "Ifc4x3" }); // 690
-               yield return new IfcAttributeInformation("PrimaryUnit", new[] { "Ifc4", "Ifc4x3" }); // 691
-               yield return new IfcAttributeInformation("PrimeMeridian", new[] { "Ifc4x3" }); // 692
-               yield return new IfcAttributeInformation("Priority", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 693
-               yield return new IfcAttributeInformation("ProcedureID", new[] { "Ifc2x3" }); // 694
-               yield return new IfcAttributeInformation("ProcedureType", new[] { "Ifc2x3" }); // 695
-               yield return new IfcAttributeInformation("ProcessType", new[] { "Ifc4", "Ifc4x3" }); // 696
-               yield return new IfcAttributeInformation("ProductDefinitional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 697
-               yield return new IfcAttributeInformation("Profile", new[] { "Ifc4", "Ifc4x3" }); // 698
-               yield return new IfcAttributeInformation("ProfileDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 699
-               yield return new IfcAttributeInformation("ProfileName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 700
-               yield return new IfcAttributeInformation("ProfileOfPort", new[] { "Ifc2x3" }); // 701
-               yield return new IfcAttributeInformation("ProfileOrientation", new[] { "Ifc2x3" }); // 702
-               yield return new IfcAttributeInformation("Profiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 703
-               yield return new IfcAttributeInformation("ProfileSectionLocation", new[] { "Ifc2x3" }); // 704
-               yield return new IfcAttributeInformation("ProfileType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 705
-               yield return new IfcAttributeInformation("ProjectedOrTrue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 706
-               yield return new IfcAttributeInformation("Properties", new[] { "Ifc4", "Ifc4x3" }); // 707
-               yield return new IfcAttributeInformation("PropertyReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 708
-               yield return new IfcAttributeInformation("PropertySource", new[] { "Ifc2x3" }); // 709
-               yield return new IfcAttributeInformation("ProportionalStress", new[] { "Ifc2x3" }); // 710
-               yield return new IfcAttributeInformation("ProtectivePoreRatio", new[] { "Ifc2x3" }); // 711
-               yield return new IfcAttributeInformation("ProxyType", new[] { "Ifc2x3", "Ifc4" }); // 712
-               yield return new IfcAttributeInformation("Publisher", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 713
-               yield return new IfcAttributeInformation("PunchList", new[] { "Ifc2x3" }); // 714
-               yield return new IfcAttributeInformation("Purpose", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 715
-               yield return new IfcAttributeInformation("QuadraticTerm", new[] { "Ifc4x3" }); // 716
-               yield return new IfcAttributeInformation("QuadricAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 717
-               yield return new IfcAttributeInformation("Qualifier", new[] { "Ifc4", "Ifc4x3" }); // 718
-               yield return new IfcAttributeInformation("Quality", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 719
-               yield return new IfcAttributeInformation("Quantities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 720
-               yield return new IfcAttributeInformation("QuantityInProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 721
-               yield return new IfcAttributeInformation("QuarticTerm", new[] { "Ifc4x3" }); // 722
-               yield return new IfcAttributeInformation("QuinticTerm", new[] { "Ifc4x3" }); // 723
-               yield return new IfcAttributeInformation("Radius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 724
-               yield return new IfcAttributeInformation("RadiusOfCurvature", new[] { "Ifc4x3" }); // 725
-               yield return new IfcAttributeInformation("RailHeadDistance", new[] { "Ifc4x3" }); // 726
-               yield return new IfcAttributeInformation("RasterCode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 727
-               yield return new IfcAttributeInformation("RasterFormat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 728
-               yield return new IfcAttributeInformation("RateDateTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 729
-               yield return new IfcAttributeInformation("RatedPowerInput", new[] { "Ifc2x3" }); // 730
-               yield return new IfcAttributeInformation("RateSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 731
-               yield return new IfcAttributeInformation("RealizingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 732
-               yield return new IfcAttributeInformation("RealizingElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 733
-               yield return new IfcAttributeInformation("Records", new[] { "Ifc2x3" }); // 734
-               yield return new IfcAttributeInformation("Recurrence", new[] { "Ifc4", "Ifc4x3" }); // 735
-               yield return new IfcAttributeInformation("RecurrencePattern", new[] { "Ifc4", "Ifc4x3" }); // 736
-               yield return new IfcAttributeInformation("RecurrenceType", new[] { "Ifc4", "Ifc4x3" }); // 737
-               yield return new IfcAttributeInformation("Red", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 738
-               yield return new IfcAttributeInformation("RefDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 739
-               yield return new IfcAttributeInformation("RefElevation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 740
-               yield return new IfcAttributeInformation("ReferenceCurve", new[] { "Ifc4", "Ifc4x3" }); // 741
-               yield return new IfcAttributeInformation("ReferencedDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 742
-               yield return new IfcAttributeInformation("ReferencedLibrary", new[] { "Ifc4", "Ifc4x3" }); // 743
-               yield return new IfcAttributeInformation("ReferencedSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 744
-               yield return new IfcAttributeInformation("ReferencedTimeSeries", new[] { "Ifc2x3" }); // 745
-               yield return new IfcAttributeInformation("ReferenceExtent", new[] { "Ifc4", "Ifc4x3" }); // 746
-               yield return new IfcAttributeInformation("ReferencePath", new[] { "Ifc4", "Ifc4x3" }); // 747
-               yield return new IfcAttributeInformation("ReferenceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 748
-               yield return new IfcAttributeInformation("ReferenceTokens", new[] { "Ifc4", "Ifc4x3" }); // 749
-               yield return new IfcAttributeInformation("ReferencingValues", new[] { "Ifc2x3" }); // 750
-               yield return new IfcAttributeInformation("RefLatitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 751
-               yield return new IfcAttributeInformation("ReflectanceColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 752
-               yield return new IfcAttributeInformation("ReflectanceMethod", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 753
-               yield return new IfcAttributeInformation("ReflectionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 754
-               yield return new IfcAttributeInformation("RefLongitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 755
-               yield return new IfcAttributeInformation("RefractionIndex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 756
-               yield return new IfcAttributeInformation("Region", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 757
-               yield return new IfcAttributeInformation("ReinforcementRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 758
-               yield return new IfcAttributeInformation("ReinforcementSectionDefinitions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 759
-               yield return new IfcAttributeInformation("RelatedApproval", new[] { "Ifc2x3" }); // 760
-               yield return new IfcAttributeInformation("RelatedApprovals", new[] { "Ifc4", "Ifc4x3" }); // 761
-               yield return new IfcAttributeInformation("RelatedBuildingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 762
-               yield return new IfcAttributeInformation("RelatedBuildings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 763
-               yield return new IfcAttributeInformation("RelatedClassifications", new[] { "Ifc2x3" }); // 764
-               yield return new IfcAttributeInformation("RelatedConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 765
-               yield return new IfcAttributeInformation("RelatedConstraints", new[] { "Ifc2x3" }); // 766
-               yield return new IfcAttributeInformation("RelatedControlElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 767
-               yield return new IfcAttributeInformation("RelatedCoverings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 768
-               yield return new IfcAttributeInformation("RelatedDefinitions", new[] { "Ifc4", "Ifc4x3" }); // 769
-               yield return new IfcAttributeInformation("RelatedDocuments", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 770
-               yield return new IfcAttributeInformation("RelatedDraughtingCallout", new[] { "Ifc2x3" }); // 771
-               yield return new IfcAttributeInformation("RelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 772
-               yield return new IfcAttributeInformation("RelatedElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 773
-               yield return new IfcAttributeInformation("RelatedFeatureElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 774
-               yield return new IfcAttributeInformation("RelatedItems", new[] { "Ifc2x3" }); // 775
-               yield return new IfcAttributeInformation("RelatedMaterials", new[] { "Ifc4", "Ifc4x3" }); // 776
-               yield return new IfcAttributeInformation("RelatedMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 777
-               yield return new IfcAttributeInformation("RelatedObjects", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 778
-               yield return new IfcAttributeInformation("RelatedObjectsType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 779
-               yield return new IfcAttributeInformation("RelatedOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 780
-               yield return new IfcAttributeInformation("RelatedOrganizations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 781
-               yield return new IfcAttributeInformation("RelatedPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 782
-               yield return new IfcAttributeInformation("RelatedPriorities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 783
-               yield return new IfcAttributeInformation("RelatedProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 784
-               yield return new IfcAttributeInformation("RelatedProducts", new[] { "Ifc4x3" }); // 785
-               yield return new IfcAttributeInformation("RelatedProperties", new[] { "Ifc2x3" }); // 786
-               yield return new IfcAttributeInformation("RelatedPropertySets", new[] { "Ifc4", "Ifc4x3" }); // 787
-               yield return new IfcAttributeInformation("RelatedResourceObjects", new[] { "Ifc4", "Ifc4x3" }); // 788
-               yield return new IfcAttributeInformation("RelatedSpace", new[] { "Ifc2x3" }); // 789
-               yield return new IfcAttributeInformation("RelatedSpaceProgram", new[] { "Ifc2x3" }); // 790
-               yield return new IfcAttributeInformation("RelatedStructuralActivity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 791
-               yield return new IfcAttributeInformation("RelatedStructuralConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 792
-               yield return new IfcAttributeInformation("RelatedStructuralMember", new[] { "Ifc2x3" }); // 793
-               yield return new IfcAttributeInformation("RelatedSurfaceFeatures", new[] { "Ifc4x3" }); // 794
-               yield return new IfcAttributeInformation("RelatingActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 795
-               yield return new IfcAttributeInformation("RelatingAppliedValue", new[] { "Ifc2x3" }); // 796
-               yield return new IfcAttributeInformation("RelatingApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 797
-               yield return new IfcAttributeInformation("RelatingBuildingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 798
-               yield return new IfcAttributeInformation("RelatingClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 799
-               yield return new IfcAttributeInformation("RelatingConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 800
-               yield return new IfcAttributeInformation("RelatingConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 801
-               yield return new IfcAttributeInformation("RelatingContext", new[] { "Ifc4", "Ifc4x3" }); // 802
-               yield return new IfcAttributeInformation("RelatingControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 803
-               yield return new IfcAttributeInformation("RelatingDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 804
-               yield return new IfcAttributeInformation("RelatingDraughtingCallout", new[] { "Ifc2x3" }); // 805
-               yield return new IfcAttributeInformation("RelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 806
-               yield return new IfcAttributeInformation("RelatingFlowElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 807
-               yield return new IfcAttributeInformation("RelatingGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 808
-               yield return new IfcAttributeInformation("RelatingItem", new[] { "Ifc2x3" }); // 809
-               yield return new IfcAttributeInformation("RelatingLibrary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 810
-               yield return new IfcAttributeInformation("RelatingMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 811
-               yield return new IfcAttributeInformation("RelatingMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 812
-               yield return new IfcAttributeInformation("RelatingObject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 813
-               yield return new IfcAttributeInformation("RelatingOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 814
-               yield return new IfcAttributeInformation("RelatingOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 815
-               yield return new IfcAttributeInformation("RelatingPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 816
-               yield return new IfcAttributeInformation("RelatingPositioningElement", new[] { "Ifc4x3" }); // 817
-               yield return new IfcAttributeInformation("RelatingPriorities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 818
-               yield return new IfcAttributeInformation("RelatingProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 819
-               yield return new IfcAttributeInformation("RelatingProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 820
-               yield return new IfcAttributeInformation("RelatingProfileDef", new[] { "Ifc4x3" }); // 821
-               yield return new IfcAttributeInformation("RelatingProfileProperties", new[] { "Ifc2x3" }); // 822
-               yield return new IfcAttributeInformation("RelatingPropertyDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 823
-               yield return new IfcAttributeInformation("RelatingReference", new[] { "Ifc4", "Ifc4x3" }); // 824
-               yield return new IfcAttributeInformation("RelatingResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 825
-               yield return new IfcAttributeInformation("RelatingSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 826
-               yield return new IfcAttributeInformation("RelatingSpaceProgram", new[] { "Ifc2x3" }); // 827
-               yield return new IfcAttributeInformation("RelatingStructuralMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 828
-               yield return new IfcAttributeInformation("RelatingStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 829
-               yield return new IfcAttributeInformation("RelatingSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 830
-               yield return new IfcAttributeInformation("RelatingTemplate", new[] { "Ifc4", "Ifc4x3" }); // 831
-               yield return new IfcAttributeInformation("RelatingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 832
-               yield return new IfcAttributeInformation("RelationshipType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 833
-               yield return new IfcAttributeInformation("RelativePlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 834
-               yield return new IfcAttributeInformation("Relaxations", new[] { "Ifc2x3" }); // 835
-               yield return new IfcAttributeInformation("RelaxationValue", new[] { "Ifc2x3" }); // 836
-               yield return new IfcAttributeInformation("RemainingTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 837
-               yield return new IfcAttributeInformation("RemainingUsage", new[] { "Ifc4", "Ifc4x3" }); // 838
-               yield return new IfcAttributeInformation("RemainingWork", new[] { "Ifc4", "Ifc4x3" }); // 839
-               yield return new IfcAttributeInformation("RepeatFactor", new[] { "Ifc2x3" }); // 840
-               yield return new IfcAttributeInformation("RepeatS", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 841
-               yield return new IfcAttributeInformation("RepeatT", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 842
-               yield return new IfcAttributeInformation("Representation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 843
-               yield return new IfcAttributeInformation("RepresentationContexts", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 844
-               yield return new IfcAttributeInformation("RepresentationIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 845
-               yield return new IfcAttributeInformation("RepresentationMaps", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 846
-               yield return new IfcAttributeInformation("Representations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 847
-               yield return new IfcAttributeInformation("RepresentationType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 848
-               yield return new IfcAttributeInformation("RepresentedMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 849
-               yield return new IfcAttributeInformation("RequestedLocation", new[] { "Ifc2x3" }); // 850
-               yield return new IfcAttributeInformation("RequestID", new[] { "Ifc2x3" }); // 851
-               yield return new IfcAttributeInformation("RequestingApproval", new[] { "Ifc4", "Ifc4x3" }); // 852
-               yield return new IfcAttributeInformation("ResourceConsumption", new[] { "Ifc2x3" }); // 853
-               yield return new IfcAttributeInformation("ResourceGroup", new[] { "Ifc2x3" }); // 854
-               yield return new IfcAttributeInformation("ResourceIdentifier", new[] { "Ifc2x3" }); // 855
-               yield return new IfcAttributeInformation("ResourceType", new[] { "Ifc4", "Ifc4x3" }); // 856
-               yield return new IfcAttributeInformation("ResponsiblePerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 857
-               yield return new IfcAttributeInformation("ResponsiblePersons", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 858
-               yield return new IfcAttributeInformation("RestartDistance", new[] { "Ifc4" }); // 859
-               yield return new IfcAttributeInformation("ResultForLoadGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 860
-               yield return new IfcAttributeInformation("ResultValues", new[] { "Ifc2x3" }); // 861
-               yield return new IfcAttributeInformation("Revision", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 862
-               yield return new IfcAttributeInformation("RibHeight", new[] { "Ifc2x3" }); // 863
-               yield return new IfcAttributeInformation("RibSpacing", new[] { "Ifc2x3" }); // 864
-               yield return new IfcAttributeInformation("RibWidth", new[] { "Ifc2x3" }); // 865
-               yield return new IfcAttributeInformation("RiserHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 866
-               yield return new IfcAttributeInformation("Role", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 867
-               yield return new IfcAttributeInformation("Roles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 868
-               yield return new IfcAttributeInformation("RotationalDisplacementRX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 869
-               yield return new IfcAttributeInformation("RotationalDisplacementRY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 870
-               yield return new IfcAttributeInformation("RotationalDisplacementRZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 871
-               yield return new IfcAttributeInformation("RotationalStiffnessByLengthX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 872
-               yield return new IfcAttributeInformation("RotationalStiffnessByLengthY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 873
-               yield return new IfcAttributeInformation("RotationalStiffnessByLengthZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 874
-               yield return new IfcAttributeInformation("RotationalStiffnessX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 875
-               yield return new IfcAttributeInformation("RotationalStiffnessY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 876
-               yield return new IfcAttributeInformation("RotationalStiffnessZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 877
-               yield return new IfcAttributeInformation("RoundingRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 878
-               yield return new IfcAttributeInformation("RowCells", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 879
-               yield return new IfcAttributeInformation("Rows", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 880
-               yield return new IfcAttributeInformation("SameSense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 881
-               yield return new IfcAttributeInformation("SbsmBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 882
-               yield return new IfcAttributeInformation("Scale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 883
-               yield return new IfcAttributeInformation("Scale2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 884
-               yield return new IfcAttributeInformation("Scale3", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 885
-               yield return new IfcAttributeInformation("ScaleX", new[] { "Ifc4x3" }); // 886
-               yield return new IfcAttributeInformation("ScaleY", new[] { "Ifc4x3" }); // 887
-               yield return new IfcAttributeInformation("ScaleZ", new[] { "Ifc4x3" }); // 888
-               yield return new IfcAttributeInformation("ScheduleContour", new[] { "Ifc4", "Ifc4x3" }); // 889
-               yield return new IfcAttributeInformation("ScheduleDate", new[] { "Ifc4", "Ifc4x3" }); // 890
-               yield return new IfcAttributeInformation("ScheduleDuration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 891
-               yield return new IfcAttributeInformation("ScheduleFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 892
-               yield return new IfcAttributeInformation("ScheduleStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 893
-               yield return new IfcAttributeInformation("ScheduleUsage", new[] { "Ifc4", "Ifc4x3" }); // 894
-               yield return new IfcAttributeInformation("ScheduleWork", new[] { "Ifc4", "Ifc4x3" }); // 895
-               yield return new IfcAttributeInformation("Scope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 896
-               yield return new IfcAttributeInformation("SecondaryMeasureType", new[] { "Ifc4", "Ifc4x3" }); // 897
-               yield return new IfcAttributeInformation("SecondaryPlaneAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 898
-               yield return new IfcAttributeInformation("SecondaryUnit", new[] { "Ifc4", "Ifc4x3" }); // 899
-               yield return new IfcAttributeInformation("SecondComponent", new[] { "Ifc2x3" }); // 900
-               yield return new IfcAttributeInformation("SecondCoordinate", new[] { "Ifc4x3" }); // 901
-               yield return new IfcAttributeInformation("SecondMullionOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 902
-               yield return new IfcAttributeInformation("SecondOperand", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 903
-               yield return new IfcAttributeInformation("SecondRepeatFactor", new[] { "Ifc2x3" }); // 904
-               yield return new IfcAttributeInformation("SecondTransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 905
-               yield return new IfcAttributeInformation("SectionDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 906
-               yield return new IfcAttributeInformation("SectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 907
-               yield return new IfcAttributeInformation("SegmentLength", new[] { "Ifc4", "Ifc4x3" }); // 908
-               yield return new IfcAttributeInformation("Segments", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 909
-               yield return new IfcAttributeInformation("SegmentStart", new[] { "Ifc4x3" }); // 910
-               yield return new IfcAttributeInformation("SelfIntersect", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 911
-               yield return new IfcAttributeInformation("SelfWeightCoefficients", new[] { "Ifc4", "Ifc4x3" }); // 912
-               yield return new IfcAttributeInformation("SemiAxis1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 913
-               yield return new IfcAttributeInformation("SemiAxis2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 914
-               yield return new IfcAttributeInformation("Sense", new[] { "Ifc2x3" }); // 915
-               yield return new IfcAttributeInformation("SenseAgreement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 916
-               yield return new IfcAttributeInformation("SepticTerm", new[] { "Ifc4x3" }); // 917
-               yield return new IfcAttributeInformation("SequenceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 918
-               yield return new IfcAttributeInformation("ServiceLifeDuration", new[] { "Ifc2x3" }); // 919
-               yield return new IfcAttributeInformation("ServiceLifeType", new[] { "Ifc2x3" }); // 920
-               yield return new IfcAttributeInformation("SetPointValue", new[] { "Ifc4", "Ifc4x3" }); // 921
-               yield return new IfcAttributeInformation("SexticTerm", new[] { "Ifc4x3" }); // 922
-               yield return new IfcAttributeInformation("ShapeAspectStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 923
-               yield return new IfcAttributeInformation("ShapeRepresentations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 924
-               yield return new IfcAttributeInformation("ShapeType", new[] { "Ifc2x3" }); // 925
-               yield return new IfcAttributeInformation("SharedPlacement", new[] { "Ifc4", "Ifc4x3" }); // 926
-               yield return new IfcAttributeInformation("ShearAreaY", new[] { "Ifc2x3" }); // 927
-               yield return new IfcAttributeInformation("ShearAreaZ", new[] { "Ifc2x3" }); // 928
-               yield return new IfcAttributeInformation("ShearCentreY", new[] { "Ifc2x3" }); // 929
-               yield return new IfcAttributeInformation("ShearCentreZ", new[] { "Ifc2x3" }); // 930
-               yield return new IfcAttributeInformation("ShearDeformationAreaY", new[] { "Ifc2x3" }); // 931
-               yield return new IfcAttributeInformation("ShearDeformationAreaZ", new[] { "Ifc2x3" }); // 932
-               yield return new IfcAttributeInformation("ShearModulus", new[] { "Ifc2x3" }); // 933
-               yield return new IfcAttributeInformation("ShearReinforcement", new[] { "Ifc4", "Ifc4x3" }); // 934
-               yield return new IfcAttributeInformation("SheathDiameter", new[] { "Ifc4", "Ifc4x3" }); // 935
-               yield return new IfcAttributeInformation("Side", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 936
-               yield return new IfcAttributeInformation("SineTerm", new[] { "Ifc4x3" }); // 937
-               yield return new IfcAttributeInformation("SiteAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 938
-               yield return new IfcAttributeInformation("Sizeable", new[] { "Ifc2x3", "Ifc4" }); // 939
-               yield return new IfcAttributeInformation("SizeInX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 940
-               yield return new IfcAttributeInformation("SizeInY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 941
-               yield return new IfcAttributeInformation("SkillSet", new[] { "Ifc2x3" }); // 942
-               yield return new IfcAttributeInformation("SlippageX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 943
-               yield return new IfcAttributeInformation("SlippageY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 944
-               yield return new IfcAttributeInformation("SlippageZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 945
-               yield return new IfcAttributeInformation("Slopes", new[] { "Ifc4x3" }); // 946
-               yield return new IfcAttributeInformation("SolarReflectanceBack", new[] { "Ifc2x3" }); // 947
-               yield return new IfcAttributeInformation("SolarReflectanceFront", new[] { "Ifc2x3" }); // 948
-               yield return new IfcAttributeInformation("SolarTransmittance", new[] { "Ifc2x3" }); // 949
-               yield return new IfcAttributeInformation("Sort", new[] { "Ifc4", "Ifc4x3" }); // 950
-               yield return new IfcAttributeInformation("SoundLevelSingleValue", new[] { "Ifc2x3" }); // 951
-               yield return new IfcAttributeInformation("SoundLevelTimeSeries", new[] { "Ifc2x3" }); // 952
-               yield return new IfcAttributeInformation("SoundScale", new[] { "Ifc2x3" }); // 953
-               yield return new IfcAttributeInformation("SoundValues", new[] { "Ifc2x3" }); // 954
-               yield return new IfcAttributeInformation("Source", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 955
-               yield return new IfcAttributeInformation("SourceCRS", new[] { "Ifc4", "Ifc4x3" }); // 956
-               yield return new IfcAttributeInformation("SourceDescription", new[] { "Ifc2x3" }); // 957
-               yield return new IfcAttributeInformation("SpaceProgramIdentifier", new[] { "Ifc2x3" }); // 958
-               yield return new IfcAttributeInformation("Specification", new[] { "Ifc4x3" }); // 959
-               yield return new IfcAttributeInformation("SpecificHeatCapacity", new[] { "Ifc2x3" }); // 960
-               yield return new IfcAttributeInformation("SpecularColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 961
-               yield return new IfcAttributeInformation("SpecularHighlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 962
-               yield return new IfcAttributeInformation("SpineCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 963
-               yield return new IfcAttributeInformation("SpreadAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 964
-               yield return new IfcAttributeInformation("StandardRequiredArea", new[] { "Ifc2x3" }); // 965
-               yield return new IfcAttributeInformation("Start", new[] { "Ifc4" }); // 966
-               yield return new IfcAttributeInformation("StartCantLeft", new[] { "Ifc4x3" }); // 967
-               yield return new IfcAttributeInformation("StartCantRight", new[] { "Ifc4x3" }); // 968
-               yield return new IfcAttributeInformation("StartDate", new[] { "Ifc4x3" }); // 969
-               yield return new IfcAttributeInformation("StartDirection", new[] { "Ifc4", "Ifc4x3" }); // 970
-               yield return new IfcAttributeInformation("StartDistAlong", new[] { "Ifc4", "Ifc4x3" }); // 971
-               yield return new IfcAttributeInformation("StartFloat", new[] { "Ifc2x3" }); // 972
-               yield return new IfcAttributeInformation("StartGradient", new[] { "Ifc4", "Ifc4x3" }); // 973
-               yield return new IfcAttributeInformation("StartHeight", new[] { "Ifc4", "Ifc4x3" }); // 974
-               yield return new IfcAttributeInformation("StartOfNextHatchLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 975
-               yield return new IfcAttributeInformation("StartParam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 976
-               yield return new IfcAttributeInformation("StartPoint", new[] { "Ifc4", "Ifc4x3" }); // 977
-               yield return new IfcAttributeInformation("StartProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 978
-               yield return new IfcAttributeInformation("StartRadius", new[] { "Ifc4" }); // 979
-               yield return new IfcAttributeInformation("StartRadiusOfCurvature", new[] { "Ifc4x3" }); // 980
-               yield return new IfcAttributeInformation("StartTag", new[] { "Ifc4", "Ifc4x3" }); // 981
-               yield return new IfcAttributeInformation("StartTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 982
-               yield return new IfcAttributeInformation("State", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 983
-               yield return new IfcAttributeInformation("Status", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 984
-               yield return new IfcAttributeInformation("StatusTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 985
-               yield return new IfcAttributeInformation("SteelGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 986
-               yield return new IfcAttributeInformation("StyleOfSymbol", new[] { "Ifc2x3" }); // 987
-               yield return new IfcAttributeInformation("Styles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 988
-               yield return new IfcAttributeInformation("SubContractor", new[] { "Ifc2x3" }); // 989
-               yield return new IfcAttributeInformation("SubmittedBy", new[] { "Ifc2x3" }); // 990
-               yield return new IfcAttributeInformation("SubmittedOn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 991
-               yield return new IfcAttributeInformation("SubsequentAppliedLoads", new[] { "Ifc2x3" }); // 992
-               yield return new IfcAttributeInformation("SubsequentThickness", new[] { "Ifc2x3" }); // 993
-               yield return new IfcAttributeInformation("SuffixTitles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 994
-               yield return new IfcAttributeInformation("Suppliers", new[] { "Ifc2x3" }); // 995
-               yield return new IfcAttributeInformation("SupportedLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 996
-               yield return new IfcAttributeInformation("SurfaceColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 997
-               yield return new IfcAttributeInformation("SurfaceForm", new[] { "Ifc4", "Ifc4x3" }); // 998
-               yield return new IfcAttributeInformation("SurfaceOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 999
-               yield return new IfcAttributeInformation("SurfaceOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1000
-               yield return new IfcAttributeInformation("SurfaceReinforcement1", new[] { "Ifc4", "Ifc4x3" }); // 1001
-               yield return new IfcAttributeInformation("SurfaceReinforcement2", new[] { "Ifc4", "Ifc4x3" }); // 1002
-               yield return new IfcAttributeInformation("SweptArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1003
-               yield return new IfcAttributeInformation("SweptCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1004
-               yield return new IfcAttributeInformation("Symbol", new[] { "Ifc2x3" }); // 1005
-               yield return new IfcAttributeInformation("SystemType", new[] { "Ifc4", "Ifc4x3" }); // 1006
-               yield return new IfcAttributeInformation("Tag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1007
-               yield return new IfcAttributeInformation("TagList", new[] { "Ifc4", "Ifc4x3" }); // 1008
-               yield return new IfcAttributeInformation("Tags", new[] { "Ifc4x3" }); // 1009
-               yield return new IfcAttributeInformation("TangentialContinuity", new[] { "Ifc4" }); // 1010
-               yield return new IfcAttributeInformation("Target", new[] { "Ifc2x3" }); // 1011
-               yield return new IfcAttributeInformation("TargetCRS", new[] { "Ifc4", "Ifc4x3" }); // 1012
-               yield return new IfcAttributeInformation("TargetScale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1013
-               yield return new IfcAttributeInformation("TargetUsers", new[] { "Ifc2x3" }); // 1014
-               yield return new IfcAttributeInformation("TargetView", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1015
-               yield return new IfcAttributeInformation("TaskId", new[] { "Ifc2x3" }); // 1016
-               yield return new IfcAttributeInformation("TaskTime", new[] { "Ifc4", "Ifc4x3" }); // 1017
-               yield return new IfcAttributeInformation("TelephoneNumbers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1018
-               yield return new IfcAttributeInformation("TemperatureSingleValue", new[] { "Ifc2x3" }); // 1019
-               yield return new IfcAttributeInformation("TemperatureTimeSeries", new[] { "Ifc2x3" }); // 1020
-               yield return new IfcAttributeInformation("TemplateType", new[] { "Ifc4", "Ifc4x3" }); // 1021
-               yield return new IfcAttributeInformation("TensionFailureX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1022
-               yield return new IfcAttributeInformation("TensionFailureY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1023
-               yield return new IfcAttributeInformation("TensionFailureZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1024
-               yield return new IfcAttributeInformation("TensionForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1025
-               yield return new IfcAttributeInformation("TexCoordIndex", new[] { "Ifc4", "Ifc4x3" }); // 1026
-               yield return new IfcAttributeInformation("TexCoordIndices", new[] { "Ifc4x3" }); // 1027
-               yield return new IfcAttributeInformation("TexCoords", new[] { "Ifc4", "Ifc4x3" }); // 1028
-               yield return new IfcAttributeInformation("TexCoordsList", new[] { "Ifc4", "Ifc4x3" }); // 1029
-               yield return new IfcAttributeInformation("TexCoordsOf", new[] { "Ifc4x3" }); // 1030
-               yield return new IfcAttributeInformation("TextAlign", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1031
-               yield return new IfcAttributeInformation("TextCharacterAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1032
-               yield return new IfcAttributeInformation("TextDecoration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1033
-               yield return new IfcAttributeInformation("TextFontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1034
-               yield return new IfcAttributeInformation("TextIndent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1035
-               yield return new IfcAttributeInformation("TextStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1036
-               yield return new IfcAttributeInformation("TextTransform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1037
-               yield return new IfcAttributeInformation("TextureCoordinates", new[] { "Ifc2x3" }); // 1038
-               yield return new IfcAttributeInformation("TextureMaps", new[] { "Ifc2x3" }); // 1039
-               yield return new IfcAttributeInformation("TexturePoints", new[] { "Ifc2x3" }); // 1040
-               yield return new IfcAttributeInformation("Textures", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1041
-               yield return new IfcAttributeInformation("TextureTransform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1042
-               yield return new IfcAttributeInformation("TextureType", new[] { "Ifc2x3" }); // 1043
-               yield return new IfcAttributeInformation("TextureVertices", new[] { "Ifc2x3" }); // 1044
-               yield return new IfcAttributeInformation("TheActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1045
-               yield return new IfcAttributeInformation("TheOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1046
-               yield return new IfcAttributeInformation("TheoryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1047
-               yield return new IfcAttributeInformation("ThePerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1048
-               yield return new IfcAttributeInformation("ThermalConductivity", new[] { "Ifc2x3" }); // 1049
-               yield return new IfcAttributeInformation("ThermalExpansionCoefficient", new[] { "Ifc2x3" }); // 1050
-               yield return new IfcAttributeInformation("ThermalIrEmissivityBack", new[] { "Ifc2x3" }); // 1051
-               yield return new IfcAttributeInformation("ThermalIrEmissivityFront", new[] { "Ifc2x3" }); // 1052
-               yield return new IfcAttributeInformation("ThermalIrTransmittance", new[] { "Ifc2x3" }); // 1053
-               yield return new IfcAttributeInformation("ThermalLoadSource", new[] { "Ifc2x3" }); // 1054
-               yield return new IfcAttributeInformation("ThermalLoadTimeSeriesValues", new[] { "Ifc2x3" }); // 1055
-               yield return new IfcAttributeInformation("ThermalLoadType", new[] { "Ifc2x3" }); // 1056
-               yield return new IfcAttributeInformation("ThermodynamicTemperatureExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1057
-               yield return new IfcAttributeInformation("Thickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1058
-               yield return new IfcAttributeInformation("ThresholdDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1059
-               yield return new IfcAttributeInformation("ThresholdOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1060
-               yield return new IfcAttributeInformation("ThresholdThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1061
-               yield return new IfcAttributeInformation("Tiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1062
-               yield return new IfcAttributeInformation("TilingPattern", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1063
-               yield return new IfcAttributeInformation("TilingScale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1064
-               yield return new IfcAttributeInformation("TimeComponent", new[] { "Ifc2x3" }); // 1065
-               yield return new IfcAttributeInformation("TimeExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1066
-               yield return new IfcAttributeInformation("TimeForTask", new[] { "Ifc2x3" }); // 1067
-               yield return new IfcAttributeInformation("TimeLag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1068
-               yield return new IfcAttributeInformation("TimeOfApproval", new[] { "Ifc4", "Ifc4x3" }); // 1069
-               yield return new IfcAttributeInformation("TimePeriods", new[] { "Ifc4", "Ifc4x3" }); // 1070
-               yield return new IfcAttributeInformation("TimeSeries", new[] { "Ifc2x3" }); // 1071
-               yield return new IfcAttributeInformation("TimeSeriesDataType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1072
-               yield return new IfcAttributeInformation("TimeSeriesReferences", new[] { "Ifc2x3" }); // 1073
-               yield return new IfcAttributeInformation("TimeSeriesScheduleType", new[] { "Ifc2x3" }); // 1074
-               yield return new IfcAttributeInformation("TimeStamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1075
-               yield return new IfcAttributeInformation("TimeStep", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1076
-               yield return new IfcAttributeInformation("TimeValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1077
-               yield return new IfcAttributeInformation("Title", new[] { "Ifc2x3" }); // 1078
-               yield return new IfcAttributeInformation("TopFlangeEdgeRadius", new[] { "Ifc4", "Ifc4x3" }); // 1079
-               yield return new IfcAttributeInformation("TopFlangeFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1080
-               yield return new IfcAttributeInformation("TopFlangeSlope", new[] { "Ifc4", "Ifc4x3" }); // 1081
-               yield return new IfcAttributeInformation("TopFlangeThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1082
-               yield return new IfcAttributeInformation("TopFlangeWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1083
-               yield return new IfcAttributeInformation("TopXDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1084
-               yield return new IfcAttributeInformation("TopXOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1085
-               yield return new IfcAttributeInformation("TorsionalConstantX", new[] { "Ifc2x3" }); // 1086
-               yield return new IfcAttributeInformation("TorsionalSectionModulus", new[] { "Ifc2x3" }); // 1087
-               yield return new IfcAttributeInformation("TotalCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1088
-               yield return new IfcAttributeInformation("TotalFloat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1089
-               yield return new IfcAttributeInformation("TotalReplacementCost", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1090
-               yield return new IfcAttributeInformation("Town", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1091
-               yield return new IfcAttributeInformation("Transition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1092
-               yield return new IfcAttributeInformation("TransitionCurveType", new[] { "Ifc4" }); // 1093
-               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaX", new[] { "Ifc4", "Ifc4x3" }); // 1094
-               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaY", new[] { "Ifc4", "Ifc4x3" }); // 1095
-               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaZ", new[] { "Ifc4", "Ifc4x3" }); // 1096
-               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthX", new[] { "Ifc4", "Ifc4x3" }); // 1097
-               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthY", new[] { "Ifc4", "Ifc4x3" }); // 1098
-               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthZ", new[] { "Ifc4", "Ifc4x3" }); // 1099
-               yield return new IfcAttributeInformation("TranslationalStiffnessX", new[] { "Ifc4", "Ifc4x3" }); // 1100
-               yield return new IfcAttributeInformation("TranslationalStiffnessY", new[] { "Ifc4", "Ifc4x3" }); // 1101
-               yield return new IfcAttributeInformation("TranslationalStiffnessZ", new[] { "Ifc4", "Ifc4x3" }); // 1102
-               yield return new IfcAttributeInformation("TransmissionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1103
-               yield return new IfcAttributeInformation("TransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1104
-               yield return new IfcAttributeInformation("TransomThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1105
-               yield return new IfcAttributeInformation("Transparency", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1106
-               yield return new IfcAttributeInformation("TransverseBarCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1107
-               yield return new IfcAttributeInformation("TransverseBarNominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1108
-               yield return new IfcAttributeInformation("TransverseBarSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1109
-               yield return new IfcAttributeInformation("TransversePosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1110
-               yield return new IfcAttributeInformation("TreadLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1111
-               yield return new IfcAttributeInformation("TreeRootExpression", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1112
-               yield return new IfcAttributeInformation("Trim1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1113
-               yield return new IfcAttributeInformation("Trim2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1114
-               yield return new IfcAttributeInformation("TrueNorth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1115
-               yield return new IfcAttributeInformation("TypeIdentifier", new[] { "Ifc4", "Ifc4x3" }); // 1116
-               yield return new IfcAttributeInformation("U1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1117
-               yield return new IfcAttributeInformation("U2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1118
-               yield return new IfcAttributeInformation("UAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1119
-               yield return new IfcAttributeInformation("UClosed", new[] { "Ifc4", "Ifc4x3" }); // 1120
-               yield return new IfcAttributeInformation("UDegree", new[] { "Ifc4", "Ifc4x3" }); // 1121
-               yield return new IfcAttributeInformation("UKnots", new[] { "Ifc4", "Ifc4x3" }); // 1122
-               yield return new IfcAttributeInformation("UltimateStrain", new[] { "Ifc2x3" }); // 1123
-               yield return new IfcAttributeInformation("UltimateStress", new[] { "Ifc2x3" }); // 1124
-               yield return new IfcAttributeInformation("UMultiplicities", new[] { "Ifc4", "Ifc4x3" }); // 1125
-               yield return new IfcAttributeInformation("Unit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1126
-               yield return new IfcAttributeInformation("UnitBasis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1127
-               yield return new IfcAttributeInformation("UnitComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1128
-               yield return new IfcAttributeInformation("Units", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1129
-               yield return new IfcAttributeInformation("UnitsInContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1130
-               yield return new IfcAttributeInformation("UnitType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1131
-               yield return new IfcAttributeInformation("UpdateDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1132
-               yield return new IfcAttributeInformation("UpperBoundValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1133
-               yield return new IfcAttributeInformation("UpperValue", new[] { "Ifc2x3" }); // 1134
-               yield return new IfcAttributeInformation("UpperVaporResistanceFactor", new[] { "Ifc2x3" }); // 1135
-               yield return new IfcAttributeInformation("UrlReference", new[] { "Ifc2x3" }); // 1136
-               yield return new IfcAttributeInformation("URLReference", new[] { "Ifc4", "Ifc4x3" }); // 1137
-               yield return new IfcAttributeInformation("Usage", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1138
-               yield return new IfcAttributeInformation("UsageName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1139
-               yield return new IfcAttributeInformation("UsageRatio", new[] { "Ifc2x3" }); // 1140
-               yield return new IfcAttributeInformation("UsageType", new[] { "Ifc4x3" }); // 1141
-               yield return new IfcAttributeInformation("Usense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1142
-               yield return new IfcAttributeInformation("User", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1143
-               yield return new IfcAttributeInformation("UserDefinedCategory", new[] { "Ifc2x3" }); // 1144
-               yield return new IfcAttributeInformation("UserDefinedControlType", new[] { "Ifc2x3" }); // 1145
-               yield return new IfcAttributeInformation("UserDefinedDataOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1146
-               yield return new IfcAttributeInformation("UserDefinedEnergySequence", new[] { "Ifc2x3" }); // 1147
-               yield return new IfcAttributeInformation("UserDefinedEventTriggerType", new[] { "Ifc4", "Ifc4x3" }); // 1148
-               yield return new IfcAttributeInformation("UserDefinedFunction", new[] { "Ifc2x3" }); // 1149
-               yield return new IfcAttributeInformation("UserDefinedGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1150
-               yield return new IfcAttributeInformation("UserDefinedOperationType", new[] { "Ifc4", "Ifc4x3" }); // 1151
-               yield return new IfcAttributeInformation("UserDefinedPartitioningType", new[] { "Ifc4", "Ifc4x3" }); // 1152
-               yield return new IfcAttributeInformation("UserDefinedProcedureType", new[] { "Ifc2x3" }); // 1153
-               yield return new IfcAttributeInformation("UserDefinedPropertySource", new[] { "Ifc2x3" }); // 1154
-               yield return new IfcAttributeInformation("UserDefinedPurpose", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1155
-               yield return new IfcAttributeInformation("UserDefinedQualifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1156
-               yield return new IfcAttributeInformation("UserDefinedRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1157
-               yield return new IfcAttributeInformation("UserDefinedSequenceType", new[] { "Ifc4", "Ifc4x3" }); // 1158
-               yield return new IfcAttributeInformation("UserDefinedTargetView", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1159
-               yield return new IfcAttributeInformation("UserDefinedThermalLoadSource", new[] { "Ifc2x3" }); // 1160
-               yield return new IfcAttributeInformation("UserDefinedType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1161
-               yield return new IfcAttributeInformation("V1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1162
-               yield return new IfcAttributeInformation("V2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1163
-               yield return new IfcAttributeInformation("ValidFrom", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1164
-               yield return new IfcAttributeInformation("ValidUntil", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1165
-               yield return new IfcAttributeInformation("ValueComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1166
-               yield return new IfcAttributeInformation("Values", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1167
-               yield return new IfcAttributeInformation("ValueSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1168
-               yield return new IfcAttributeInformation("VaporPermeability", new[] { "Ifc2x3" }); // 1169
-               yield return new IfcAttributeInformation("VaryingAppliedLoadLocation", new[] { "Ifc2x3" }); // 1170
-               yield return new IfcAttributeInformation("VaryingThicknessLocation", new[] { "Ifc2x3" }); // 1171
-               yield return new IfcAttributeInformation("VAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1172
-               yield return new IfcAttributeInformation("VClosed", new[] { "Ifc4", "Ifc4x3" }); // 1173
-               yield return new IfcAttributeInformation("VDegree", new[] { "Ifc4", "Ifc4x3" }); // 1174
-               yield return new IfcAttributeInformation("VelocitySingleValue", new[] { "Ifc2x3" }); // 1175
-               yield return new IfcAttributeInformation("VelocityTimeSeries", new[] { "Ifc2x3" }); // 1176
-               yield return new IfcAttributeInformation("Version", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1177
-               yield return new IfcAttributeInformation("VersionDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1178
-               yield return new IfcAttributeInformation("VertexGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1179
-               yield return new IfcAttributeInformation("Vertical", new[] { "Ifc4" }); // 1180
-               yield return new IfcAttributeInformation("VerticalAxisDirection", new[] { "Ifc4" }); // 1181
-               yield return new IfcAttributeInformation("VerticalDatum", new[] { "Ifc4", "Ifc4x3" }); // 1182
-               yield return new IfcAttributeInformation("Vertices", new[] { "Ifc4", "Ifc4x3" }); // 1183
-               yield return new IfcAttributeInformation("VisibleReflectanceBack", new[] { "Ifc2x3" }); // 1184
-               yield return new IfcAttributeInformation("VisibleReflectanceFront", new[] { "Ifc2x3" }); // 1185
-               yield return new IfcAttributeInformation("VisibleSegmentLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1186
-               yield return new IfcAttributeInformation("VisibleTransmittance", new[] { "Ifc2x3" }); // 1187
-               yield return new IfcAttributeInformation("VKnots", new[] { "Ifc4", "Ifc4x3" }); // 1188
-               yield return new IfcAttributeInformation("VMultiplicities", new[] { "Ifc4", "Ifc4x3" }); // 1189
-               yield return new IfcAttributeInformation("Voids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1190
-               yield return new IfcAttributeInformation("VolumeOnRelatedElement", new[] { "Ifc4", "Ifc4x3" }); // 1191
-               yield return new IfcAttributeInformation("VolumeOnRelatingElement", new[] { "Ifc4", "Ifc4x3" }); // 1192
-               yield return new IfcAttributeInformation("VolumeValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1193
-               yield return new IfcAttributeInformation("Vsense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1194
-               yield return new IfcAttributeInformation("WallThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1195
-               yield return new IfcAttributeInformation("WarpingConstant", new[] { "Ifc2x3" }); // 1196
-               yield return new IfcAttributeInformation("WarpingMoment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1197
-               yield return new IfcAttributeInformation("WarpingStiffness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1198
-               yield return new IfcAttributeInformation("WaterImpermeability", new[] { "Ifc2x3" }); // 1199
-               yield return new IfcAttributeInformation("WAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1200
-               yield return new IfcAttributeInformation("WebEdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1201
-               yield return new IfcAttributeInformation("WebSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1202
-               yield return new IfcAttributeInformation("WebThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1203
-               yield return new IfcAttributeInformation("WeekdayComponent", new[] { "Ifc4", "Ifc4x3" }); // 1204
-               yield return new IfcAttributeInformation("WeightsData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1205
-               yield return new IfcAttributeInformation("WeightValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1206
-               yield return new IfcAttributeInformation("WellKnownText", new[] { "Ifc4x3" }); // 1207
-               yield return new IfcAttributeInformation("WetBulbTemperatureSingleValue", new[] { "Ifc2x3" }); // 1208
-               yield return new IfcAttributeInformation("WetBulbTemperatureTimeSeries", new[] { "Ifc2x3" }); // 1209
-               yield return new IfcAttributeInformation("Width", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1210
-               yield return new IfcAttributeInformation("Widths", new[] { "Ifc4x3" }); // 1211
-               yield return new IfcAttributeInformation("WordSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1212
-               yield return new IfcAttributeInformation("Workability", new[] { "Ifc2x3" }); // 1213
-               yield return new IfcAttributeInformation("WorkControlType", new[] { "Ifc2x3" }); // 1214
-               yield return new IfcAttributeInformation("WorkingTimes", new[] { "Ifc4", "Ifc4x3" }); // 1215
-               yield return new IfcAttributeInformation("WorkMethod", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1216
-               yield return new IfcAttributeInformation("WorldCoordinateSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1217
-               yield return new IfcAttributeInformation("WWWHomePageURL", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1218
-               yield return new IfcAttributeInformation("XAxisAbscissa", new[] { "Ifc4", "Ifc4x3" }); // 1219
-               yield return new IfcAttributeInformation("XAxisOrdinate", new[] { "Ifc4", "Ifc4x3" }); // 1220
-               yield return new IfcAttributeInformation("XDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1221
-               yield return new IfcAttributeInformation("XLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1222
-               yield return new IfcAttributeInformation("YDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1223
-               yield return new IfcAttributeInformation("YearComponent", new[] { "Ifc2x3" }); // 1224
-               yield return new IfcAttributeInformation("YieldStress", new[] { "Ifc2x3" }); // 1225
-               yield return new IfcAttributeInformation("YLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1226
-               yield return new IfcAttributeInformation("YoungModulus", new[] { "Ifc2x3" }); // 1227
-               yield return new IfcAttributeInformation("ZDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1228
-               yield return new IfcAttributeInformation("ZLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1229
-               yield return new IfcAttributeInformation("Zone", new[] { "Ifc2x3" }); // 1230
+               yield return new IfcAttributeInformation("AccessState", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AcidityConcentration", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ActingRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActionID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ActionSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Actor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ActualDate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActualDuration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActualFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActualStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActualUsage", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ActualWork", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AdditionalConditions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Addresses", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AddressLines", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AdmixturesDescription", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("AgreementFlag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AlkalinityConcentration", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("AlongHorizontal", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("AmbientIntensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AmountOfSubstanceExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AnchorageSlip", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Angle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AnnotatedCurve", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApplicableDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ApplicableDates", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApplicableEntity", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ApplicableOccurrence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ApplicableValueRatio", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApplicationDeveloper", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ApplicationFullName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ApplicationIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AppliedCondition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AppliedLoad", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AppliedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Approval", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApprovalDateTime", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApprovalLevel", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApprovalQualifier", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApprovalStatus", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ApprovedProperties", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("AreaValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ArithmeticOperator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AssemblyPlace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AssetID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("AssignedItems", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AssociatedGeometry", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AttributeIdentifier", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Axis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Axis1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Axis2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Axis3", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AxisCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AxisDirection", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("AxisPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("AxisTag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BackgroundColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BarCount", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BarLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BarRole", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BarSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BaseCosts", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BaseCurve", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("BaseDepth1", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BaseDepth2", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BaseDepth3", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BaseQuantity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BaseSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BaseWidth2", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BaseWidth4", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BasisCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BasisSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BeamWidthAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Benchmark", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BenchmarkValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BendingParameters", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BendingShapeCode", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Blue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BoilingPoint", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BottomFlangeEdgeRadius", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomFlangeFilletRadius", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomFlangeSlope", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomFlangeThickness", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomFlangeWidth", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BottomXDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Bound", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Boundaries", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Bounds", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BoxAlignment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("BoxHeight", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BoxRotateAngle", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BoxSlantAngle", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BoxWidth", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("BuildingAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CapacityByNumber", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CapacityByWeight", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CarbonContent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CardinalEndPoint", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CardinalPoint", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CartesianPosition", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CasingDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CasingThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Category", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CausedBy", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CentreOfGravityInX", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CentreOfGravityInY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CfsFaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ChangeAction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CharacterSpacing", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ClassifiedConstraint", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ClassifiedMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Closed", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ClosedCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ClothoidConstant", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("CO2Content", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("COContent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Coefficient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoefficientsX", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoefficientsY", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoefficientsZ", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Colour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ColourAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ColourComponents", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ColourIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ColourList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Colours", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ColourTemperature", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Columns", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CombustionTemperature", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Completion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ComponentOfTotal", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Components", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompositeProfile", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompositionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompressionFailureX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompressionFailureY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompressionFailureZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CompressiveStrength", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ConcentrationExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Condition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConditionCoordinateSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Confidentiality", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConnectionConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConnectionGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConstantAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConstantTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConstraintGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConstraintSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConstructionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Contents", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ContextIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ContextOfItems", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ContextType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ControlElementId", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ControlPointsList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConversionFactor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ConversionOffset", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoordinateReferenceSystem", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Coordinates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoordinateSpaceDimension", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoordIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CoordList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Corner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CorrespondingBoundary", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CosineTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("CostQuantities", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CostType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CostValues", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Country", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CountValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CreatingActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CreationDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CreationTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Creators", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Criterion", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CriterionDateTime", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("CrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CrossSectionPositions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CrossSectionReinforcementDefinitions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CrossSections", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CubicTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Currency", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurrentValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Curve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Curve3D", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveFont", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveFontScaling", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveForm", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveGeometry", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("CurveInterpolation", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveStyleFont", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("CurveWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DailyInteraction", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DataOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DataValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DateComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DayComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DaylightSavingOffset", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DefinedUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DefinedValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DefiningUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DefiningValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Definition", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DefinitionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Degree", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DeltaT_Constant", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DeltaT_Y", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DeltaT_Z", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DeltaTConstant", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DeltaTY", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DeltaTZ", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DependantProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DependingProperty", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DepreciatedValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Depth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Description", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DesignParameters", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("DestabilizingLoad", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DiffuseColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DiffuseReflectionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DiffuseTransmissionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Dimensions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Dir", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Direction", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DirectionRatios", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DirectionSense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Directrix", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Discrimination", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DispersionFactor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DisplacementX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DisplacementY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DisplacementZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DissolvedSolidsContent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Distance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DistanceAlong", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DistanceAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Distortion", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DistributionData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DistributionPointFunction", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DocumentId", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("DocumentOwner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DocumentReferences", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Duration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DurationType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("DynamicViscosity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("EarlyDate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EarlyFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EarlyStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Eastings", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EccentricityInX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EccentricityInY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EccentricityInZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeEnd", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EdgeStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Edition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EditionDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Editors", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EffectiveDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElectricCurrentExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElectricCurrentType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ElectronicFormat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElectronicMailAddresses", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Elements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElementType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Elevation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElevationOfRefHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElevationOfTerrain", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ElevationWithFlooring", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Enclosure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndCantLeft", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndCantRight", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndGradient", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndParam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndPoint", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndRadius", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("EndRadiusOfCurvature", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndSweptArea", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndTag", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EndTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EnergySequence", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("EnumerationReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EnumerationValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Enumerators", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EventOccurenceTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("EventTriggerType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ExceptionTimes", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ExchangeRate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Exponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Expression", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ExtendedProperties", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Extent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ExtrudedDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Faces", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FaceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FacsimileNumbers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Factor", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FamilyName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FbsmFaces", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FeatureLength", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FileExtension", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FillStyles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FillStyleTarget", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Finish", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("FinishDate", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("FinishFloat", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FinishTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FirstCoordinate", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("FirstMullionOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FirstOperand", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FirstTransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FixedAxisVertical", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("FixedReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FixedUntilDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Flags", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlangeEdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlangeSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlangeThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlangeWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlowConditionSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FlowConditionTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FlowDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FlowrateSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FlowrateTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Fluid", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FontFamily", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FontSize", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FontVariant", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FontWeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForLayerSet", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Formula", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForProfileEndSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ForProfileSet", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Fraction", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FrameDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FrameThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FreeFloat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FreezingPoint", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Frequency", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("FrictionCoefficient", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("FullLoadCurrent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("GeodeticDatum", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Girth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("GivenName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("GivingApproval", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("GlobalId", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("GlobalOrLocal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("GravityCenterLineHeight", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Green", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HardeningModule", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Hardness", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("HasProperties", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HasPropertySets", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HasPropertyTemplates", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HasQuantities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HasResults", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HatchLineAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HatchLineAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HeadDepth2", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("HeadDepth3", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("HeadWidth", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Height", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HigherHeatingValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Horizontal", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("HorizontalLength", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("HorizontalWidths", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("HourComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("HourOffset", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Id", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Identification", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Identifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ImpactType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ImplicitOuter", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ImpliedOrder", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ImportanceRating", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ImpuritiesContent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("IncorporationDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InitialStress", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InnerBoundaries", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerCoordIndices", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerCurves", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InnerTexCoordIndices", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("InputFrequency", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InputPhase", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InputVoltage", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InstanceName", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IntendedUse", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Intensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Intent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InterferenceGeometry", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InterferenceSpace", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("InterferenceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InteriorOrExteriorSpace", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InternalFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InternalLocation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InternalOrExternalBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IntersectingAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Interval", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("InventoryType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("InvisibleSegmentLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsAttenuating", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("IsCCW", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("IsConvex", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("IsCritical", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsEndRadiusCCW", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("IsHeading", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsLinear", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsMilestone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsothermalMoistureCapacity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("IsOverAllocated", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("IsPotable", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("IsStartRadiusCCW", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("IsVentilated", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Item", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ItemOf", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ItemReference", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Items", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("JobDescription", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Jurisdiction", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("KnotMultiplicities", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Knots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("KnotSpec", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Label", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LagValue", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LandTitleNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Language", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LastModifiedDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LastModifyingApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LastModifyingUser", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LastRevisionTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LastUpdateDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LateDate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LateFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LateralAxisDirection", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("LateStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerBlocked", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerFrozen", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerOn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerSetDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerSetName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerStyles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LayerThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LegSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LengthExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LengthValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LetterSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Level", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LevelingDelay", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LibraryReference", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LifeCyclePhase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LightColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LightDistributionCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LightDistributionDataSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LightEmissionSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearMomentX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearMomentY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearMomentZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByAreaX", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByAreaY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByAreaZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByLengthX", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByLengthY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessByLengthZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessX", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearStiffnessZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LinearTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("LineHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LiningDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LiningOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LiningThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LiningToPanelOffsetX", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LiningToPanelOffsetY", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ListPositions", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ListValues", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Literal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LoadedBy", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LocalOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Location", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LocationAtRelatedElement", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LocationAtRelatingElement", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LocationOfInteraction", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Locations", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LogicalAggregator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongDescription", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongitudinalBarCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongitudinalBarNominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongitudinalBarSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongitudinalEndPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongitudinalStartPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LongName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LoopVertex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LowerBoundValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LowerHeatingValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LowerValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LowerVaporResistanceFactor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("LuminousFlux", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LuminousIntensity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("LuminousIntensityExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Magnitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MainPlaneAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MajorRadius", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MappedRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MappedTo", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MappingOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MappingSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MappingTarget", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MapProjection", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Maps", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MapUnit", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MapZone", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MassDensity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MassExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MasterRepresentation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Material", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaterialClassifications", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaterialConstituents", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaterialExpression", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaterialLayers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaterialProfiles", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Materials", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MaxAggregateSize", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaximumPlateThickness", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaximumPowerInput", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaximumSectionModulusY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaximumSectionModulusZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaximumValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MaxRequiredArea", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MeshLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MeshWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MessagingIDs", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MethodOfMeasurement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MiddleNames", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MimeContentType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MimeSubtype", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinCurvatureRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MinimumCircuitCurrent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinimumPlateThickness", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinimumSectionModulusY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinimumSectionModulusZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinimumValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinorRadius", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MinRequiredArea", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinuteComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MinuteOffset", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Mode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ModelorDraughting", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("ModelOrDraughting", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MoistureDiffusivity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MolecularWeight", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MomentOfInertiaY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MomentOfInertiaYZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MomentOfInertiaZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MomentX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MomentY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MomentZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MonthComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("MostUsedValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MoveFrom", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MoveTo", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("MullionThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("N20Content", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Name", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NominalBarDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NominalLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NominalValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Normals", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Northings", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Notation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("NotationFacets", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("NotationValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("NumberOfRiser", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("NumberOfRisers", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NumberOfTreads", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("NumberValue", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ObjectiveQualifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ObjectPlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ObjectType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Occurrences", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetDirection", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetDistances", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetFromReferenceLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetLateral", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetLongitudinal", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetPoint", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetValues", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OffsetVertical", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Opacity", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OperationType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Operator", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Orientation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OrientationOf2DPlane", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OriginalValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OrthogonalHeight", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Outer", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OuterBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OuterCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OuterFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OverallDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OverallHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OverallWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OverridingProperties", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Owner", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OwnerHistory", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OwningApplication", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("OwningUser", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PagerNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PanelDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PanelOperation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PanelPosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PanelWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParabolaConstant", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("Parameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParameterTakesPrecedence", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParamLength", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParentBoundary", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParentContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParentCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParentEdge", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ParentProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PartitioningType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PartOfProductDefinitionShape", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Path", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PatternList", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PatternStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Perimeter", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PermitID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Phase", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PHLevel", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PhysicalOrVirtualBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PhysicalWeight", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Pixel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Placement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlacementLocation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlacementRefDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlacementRelTo", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlanarForceX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlanarForceY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlanarForceZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PlasticShapeFactorY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PlasticShapeFactorZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PlasticStrain", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PnIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Pnt", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointOfReferenceHatchLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointParameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointParameterU", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PointParameterV", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Points", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PoissonRatio", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Polygon", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PolygonalBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Porosity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Position", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PostalBox", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PostalCode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Precision", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PredefinedType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Prefix", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PrefixTitles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PreparedBy", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PressureSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PressureTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("PreStress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PrimaryMeasureType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PrimaryUnit", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PrimeMeridian", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Priority", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProcedureID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProcedureType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProcessType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProductDefinitional", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Profile", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProfileDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProfileName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProfileOfPort", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProfileOrientation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Profiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProfileSectionLocation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProfileType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ProjectedOrTrue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Properties", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PropertyReference", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PropertySource", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProportionalStress", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProtectivePoreRatio", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ProxyType", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcAttributeInformation("Publisher", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("PunchList", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Purpose", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("QuadraticTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("QuadricAttenuation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Qualifier", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Quality", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Quantities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("QuantityInProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("QuarticTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("QuinticTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Radius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RadiusOfCurvature", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RailHeadDistance", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RasterCode", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RasterFormat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RateDateTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RatedPowerInput", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RateSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RealizingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RealizingElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Records", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Recurrence", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RecurrencePattern", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RecurrenceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Red", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RefDirection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RefElevation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferenceCurve", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencedDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencedLibrary", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencedSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencedTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ReferenceExtent", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencePath", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferenceSurface", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferenceTokens", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReferencingValues", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RefLatitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReflectanceColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReflectanceMethod", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReflectionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RefLongitude", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RefractionIndex", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Region", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReinforcementRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ReinforcementSectionDefinitions", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedApproval", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedApprovals", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedBuildingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedBuildings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedClassifications", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedConstraints", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedControlElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedCoverings", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedDefinitions", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedDocuments", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedDraughtingCallout", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedElements", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedFeatureElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedItems", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedMaterials", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedObjects", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedObjectsType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedOrganizations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedPriorities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedProducts", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedProperties", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedPropertySets", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedResourceObjects", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedSpace", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedSpaceProgram", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedStructuralActivity", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedStructuralConnection", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatedStructuralMember", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatedSurfaceFeatures", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingAppliedValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatingApproval", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingBuildingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingClassification", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingConnectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingConstraint", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingContext", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingControl", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingDocument", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingDraughtingCallout", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingFlowElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingItem", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatingLibrary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingMonetaryUnit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingObject", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingOpeningElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingPort", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingPositioningElement", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingPriorities", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingProcess", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingProduct", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingProfileDef", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingProfileProperties", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatingPropertyDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingResource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingSpace", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingSpaceProgram", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelatingStructuralMember", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingTemplate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelatingType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelationshipType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RelativePlacement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Relaxations", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RelaxationValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RemainingTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RemainingUsage", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RemainingWork", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepeatFactor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RepeatS", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepeatT", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Representation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepresentationContexts", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepresentationIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepresentationMaps", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Representations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepresentationType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RepresentedMaterial", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RequestedLocation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RequestID", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RequestingApproval", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ResourceConsumption", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ResourceGroup", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ResourceIdentifier", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ResourceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ResponsiblePerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ResponsiblePersons", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RestartDistance", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("ResultForLoadGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ResultValues", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Revision", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RibHeight", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RibSpacing", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RibWidth", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("RiserHeight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Role", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Roles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalDisplacementRX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalDisplacementRY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalDisplacementRZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessByLengthX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessByLengthY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessByLengthZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RotationalStiffnessZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RoundingRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("RowCells", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Rows", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SameSense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SbsmBoundary", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Scale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Scale2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Scale3", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScaleX", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScaleY", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScaleZ", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleContour", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleDate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleDuration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleFinish", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleStart", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleUsage", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ScheduleWork", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Scope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondaryMeasureType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondaryPlaneAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondaryUnit", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SecondCoordinate", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondMullionOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondOperand", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SecondRepeatFactor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SecondTransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SectionDefinition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SectionType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SegmentLength", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Segments", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SegmentStart", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SelfIntersect", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SelfWeightCoefficients", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SemiAxis1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SemiAxis2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Sense", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SenseAgreement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SepticTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SequenceType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ServiceLifeDuration", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ServiceLifeType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SetPointValue", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SexticTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("ShapeAspectStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ShapeRepresentations", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ShapeType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SharedPlacement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ShearAreaY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearAreaZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearCentreY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearCentreZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearDeformationAreaY", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearDeformationAreaZ", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearModulus", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ShearReinforcement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SheathDiameter", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Side", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SineTerm", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SiteAddress", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Sizeable", new[] { "Ifc2x3", "Ifc4" });
+               yield return new IfcAttributeInformation("SizeInX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SizeInY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SkillSet", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SlippageX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SlippageY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SlippageZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Slopes", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SolarReflectanceBack", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SolarReflectanceFront", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SolarTransmittance", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Sort", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SoundLevelSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SoundLevelTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SoundScale", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SoundValues", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Source", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SourceCRS", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SourceDescription", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SpaceProgramIdentifier", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Specification", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("SpecificHeatCapacity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SpecularColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SpecularHighlight", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SpineCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SpreadAngle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StandardRequiredArea", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Start", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("StartCantLeft", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartCantRight", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartDate", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartDirection", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartDistAlong", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartFloat", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("StartGradient", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartHeight", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartOfNextHatchLine", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartParam", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartPoint", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartProfile", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartRadius", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("StartRadiusOfCurvature", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartTag", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StartTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("State", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Status", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StatusTime", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SteelGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("StyleOfSymbol", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Styles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SubContractor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SubmittedBy", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SubmittedOn", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SubsequentAppliedLoads", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SubsequentThickness", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SuffixTitles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Suppliers", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SupportedLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceForm", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceOnRelatedElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceOnRelatingElement", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceReinforcement1", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SurfaceReinforcement2", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SweptArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("SweptCurve", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Symbol", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("SystemType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Tag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TagList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Tags", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("TangentialContinuity", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("Target", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TargetCRS", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TargetScale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TargetUsers", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TargetView", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TaskId", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TaskTime", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TelephoneNumbers", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TemperatureSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TemperatureTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TemplateType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TensionFailureX", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TensionFailureY", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TensionFailureZ", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TensionForce", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TexCoordIndex", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TexCoordIndices", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("TexCoords", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TexCoordsList", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TexCoordsOf", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextAlign", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextCharacterAppearance", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextDecoration", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextFontStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextIndent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextStyle", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextTransform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextureCoordinates", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TextureMaps", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TexturePoints", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Textures", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextureTransform", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TextureType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TextureVertices", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TheActor", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TheOrganization", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TheoryType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ThePerson", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ThermalConductivity", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalExpansionCoefficient", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalIrEmissivityBack", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalIrEmissivityFront", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalIrTransmittance", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalLoadSource", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalLoadTimeSeriesValues", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermalLoadType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ThermodynamicTemperatureExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Thickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ThresholdDepth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ThresholdOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ThresholdThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Tiles", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TilingPattern", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TilingScale", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TimeExponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeForTask", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TimeLag", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeOfApproval", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimePeriods", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TimeSeriesDataType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeSeriesReferences", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TimeSeriesScheduleType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TimeStamp", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeStep", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TimeValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Title", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TopFlangeEdgeRadius", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopFlangeFilletRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopFlangeSlope", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopFlangeThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopFlangeWidth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopXDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TopXOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TorsionalConstantX", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TorsionalSectionModulus", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("TotalCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TotalFloat", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TotalReplacementCost", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Town", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Transition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransitionCurveType", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaX", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaY", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByAreaZ", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthX", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthY", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessByLengthZ", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessX", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessY", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TranslationalStiffnessZ", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransmissionColour", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransomOffset", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransomThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Transparency", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransverseBarCrossSectionArea", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransverseBarNominalDiameter", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransverseBarSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TransversePosition", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TreadLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TreeRootExpression", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Trim1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Trim2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TrueNorth", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("TypeIdentifier", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("U1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("U2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UClosed", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UDegree", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UltimateStrain", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UltimateStress", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UMultiplicities", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Unit", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UnitBasis", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UnitComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Units", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UnitsInContext", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UnitType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UpdateDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UpperBoundValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UpperValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UpperVaporResistanceFactor", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UrlReference", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("URLReference", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Usage", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UsageName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UsageRatio", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UsageType", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("Usense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("User", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedCategory", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedControlType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedDataOrigin", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedEnergySequence", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedEventTriggerType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedFunction", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedGrade", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedOperationType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedPartitioningType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedProcedureType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedPropertySource", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedPurpose", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedQualifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedRole", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedSequenceType", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedTargetView", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("UserDefinedThermalLoadSource", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("UserDefinedType", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("V1", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("V2", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ValidFrom", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ValidUntil", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ValueComponent", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Values", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ValueSource", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VaporPermeability", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VaryingAppliedLoadLocation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VaryingThicknessLocation", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VClosed", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VDegree", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VelocitySingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VelocityTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Version", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VersionDate", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VertexGeometry", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Vertical", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("VerticalAxisDirection", new[] { "Ifc4" });
+               yield return new IfcAttributeInformation("VerticalDatum", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Vertices", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VisibleReflectanceBack", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VisibleReflectanceFront", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VisibleSegmentLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VisibleTransmittance", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("VKnots", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VMultiplicities", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Voids", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VolumeOnRelatedElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VolumeOnRelatingElement", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("VolumeValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Vsense", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WallThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WarpingConstant", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("WarpingMoment", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WarpingStiffness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WaterImpermeability", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("WAxes", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WebEdgeRadius", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WebSlope", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WebThickness", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WeekdayComponent", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WeightsData", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WeightValue", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WellKnownText", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("WetBulbTemperatureSingleValue", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("WetBulbTemperatureTimeSeries", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("Width", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Widths", new[] { "Ifc4x3" });
+               yield return new IfcAttributeInformation("WordSpacing", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Workability", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("WorkControlType", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("WorkingTimes", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WorkMethod", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WorldCoordinateSystem", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("WWWHomePageURL", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("XAxisAbscissa", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("XAxisOrdinate", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("XDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("XLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("YDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("YearComponent", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("YieldStress", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("YLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("YoungModulus", new[] { "Ifc2x3" });
+               yield return new IfcAttributeInformation("ZDim", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("ZLength", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcAttributeInformation("Zone", new[] { "Ifc2x3" });
             }
         }
     }

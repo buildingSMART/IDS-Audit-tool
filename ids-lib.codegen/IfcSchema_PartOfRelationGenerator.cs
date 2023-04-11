@@ -67,13 +67,11 @@ public class IfcSchema_PartOfRelationGenerator
         }
         var source = stub;
         var sbMeasures = new StringBuilder();
-        int i = 0;
         foreach (var clNm in measureInfos.Keys.OrderBy(x => x))
         {
             var relInfo = measureInfos[clNm];
-            sbMeasures.AppendLine($"""               yield return new IfcOneToManyRelationInformation("{clNm}", {CodeHelpers.NewStringArray(relInfo.Schemas)}, "{relInfo.OneType}", "{relInfo.ManyType}"); // {++i}""");
+            sbMeasures.AppendLine($"""               yield return new IfcOneToManyRelationInformation("{clNm}", {CodeHelpers.NewStringArray(relInfo.Schemas)}, "{relInfo.OneType}", "{relInfo.ManyType}");""");
         }
-        i = 0;
         source = source.Replace($"<PlaceHolderRelations>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         return source;

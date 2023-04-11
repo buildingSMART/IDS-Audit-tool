@@ -9,11 +9,8 @@ namespace IdsLib.IdsSchema.XsNodes;
 
 internal class XsTotalDigits : BaseContext, IStringListMatcher
 {
-    // private readonly string value;
-    public XsTotalDigits(XmlReader reader) : base(reader)
-    {
-        // value might be useful for future implementations
-        // value = reader.GetAttribute("value") ?? string.Empty; 
+    public XsTotalDigits(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    {        
     }
 
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)

@@ -12,7 +12,7 @@ namespace IdsLib.IdsSchema.XsNodes;
 internal class XsPattern : BaseContext, IStringListMatcher
 {
     private readonly string pattern;
-    public XsPattern(XmlReader reader) : base(reader)
+    public XsPattern(XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         pattern = reader.GetAttribute("value") ?? string.Empty;
     }

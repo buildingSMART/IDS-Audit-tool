@@ -70,13 +70,14 @@ namespace IdsLib.IfcSchema
             foreach (var currClass in Classes.Values)
             {
                 var parent = currClass.ParentName;
-                if (!string.IsNullOrWhiteSpace(parent) && Classes.TryGetValue(parent, out var gotten))
+                if (!string.IsNullOrWhiteSpace(parent) && Classes.TryGetValue(parent, out var resolvedParent))
                 {
-                    if (!gotten.SubClasses.Any(x => x.Name == currClass.Name))
+                    // if it's not in the subclasses yet, add it
+                    if (!resolvedParent.SubClasses.Any(x => x.Name == currClass.Name))
                     {
-                        gotten.SubClasses.Add(currClass);
+                        resolvedParent.SubClasses.Add(currClass);
                     }
-                    currClass.Parent = gotten;
+                    currClass.Parent = resolvedParent;
                 }
             }
             linked = true;
@@ -96,6 +97,7 @@ namespace IdsLib.IfcSchema
                     GetRelationTypesIFC4(t);
                     GetAttributesIFC4(t);
                     SetTypeObject(t, "IfcTypeObject");
+                    t.LinkTree();
                     schemaIfc4 = t;
                 }
                 return schemaIfc4;
@@ -116,6 +118,7 @@ namespace IdsLib.IfcSchema
                     GetRelationTypesIFC4x3(t);
                     GetAttributesIFC4x3(t);
                     SetTypeObject(t, "IfcTypeObject");
+                    t.LinkTree();
                     schemaIfc4x3 = t;
                 }
                 return schemaIfc4x3;
@@ -241,6 +244,7 @@ namespace IdsLib.IfcSchema
                     GetRelationTypesIFC2x3(t);
                     GetAttributesIFC2x3(t);
                     SetTypeObject(t, "IfcTypeObject");
+                    t.LinkTree();
                     schemaIFC2x3 = t;
                 }
                 return schemaIFC2x3;

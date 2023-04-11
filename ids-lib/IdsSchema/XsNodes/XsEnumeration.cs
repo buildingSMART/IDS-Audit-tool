@@ -9,7 +9,7 @@ namespace IdsLib.IdsSchema.XsNodes;
 internal class XsEnumeration : BaseContext, IStringListMatcher
 {
     private readonly string value;
-    public XsEnumeration(XmlReader reader) : base(reader)
+    public XsEnumeration(XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         value = reader.GetAttribute("value") ?? string.Empty;
     }

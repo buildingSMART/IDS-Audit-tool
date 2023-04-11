@@ -56,7 +56,13 @@
 					</ids:value>
 				</ids:material>
 				<!-- Ensure test for partOf facets -->
-				<ids:partOf relation="IfcRelAggregates" minOccurs="4" maxOccurs="2"/>
+				<ids:partOf relation="IfcRelAggregates" minOccurs="4" maxOccurs="2">
+					<ids:entity>
+						<ids:name>
+							<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						</ids:name>
+					</ids:entity>
+				</ids:partOf>
 			</ids:requirements>
 		</ids:specification>
 	</ids:specifications>

@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.IdsSchema.IdsNodes;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdsLib.IdsSchema;
 
@@ -16,7 +18,7 @@ internal class BaseContext
     protected virtual internal BaseContext? Parent
     {
         get => parent;
-        set
+        private set
         {
             parent = value;
             parent?.AddChild(this);
@@ -33,8 +35,9 @@ internal class BaseContext
     internal int StartLineNumber { get; set; } = 0;
     internal int StartLinePosition { get; set; } = 0;
 
-    public BaseContext(XmlReader reader)
+    public BaseContext(XmlReader reader, BaseContext? parent)
     {
+        Parent = parent;
         type = reader.LocalName;
         if (reader is IXmlLineInfo li)
         {
@@ -74,6 +77,28 @@ internal class BaseContext
         return TryGetUpperNodes(start.Parent, ref nodes, typeNames);
     }
 
+    protected static bool TryGetUpperNode<T>(ILogger? logger, BaseContext context, string[] typeNames, [NotNullWhen(true)] out T? node, out Audit.Status status)
+    {
+        if (!TryGetUpperNodes(context, typeNames, out var nodes))
+        {
+            IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
+            node = default;
+            status = Audit.Status.IdsStructureError;
+            return false;
+        }
+        if (nodes[0] is not T spec)
+        {
+            node = default;
+            IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
+            status = Audit.Status.IdsStructureError;
+            return false;
+        }
+        node = spec;
+        status = Audit.Status.Ok;
+        return true;
+    }
+
+
     protected static bool TryGetUpperNodes(BaseContext start, string[] typeNames, out List<BaseContext> nodes)
     {
         var span = new ReadOnlySpan<string>(typeNames);
@@ -104,6 +129,11 @@ internal class BaseContext
     protected IEnumerable<BaseContext> GetChildNodes(string name)
     {
         return Children.Where(x => x.type == name);
+    }
+
+    protected T? GetChildNode<T>(string name)
+    {
+        return Children.Where(x => x.type == name).OfType<T>().FirstOrDefault();
     }
 
     internal IStringListMatcher? GetListMatcher()

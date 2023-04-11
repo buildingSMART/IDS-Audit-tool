@@ -1,12 +1,6 @@
 ﻿using FluentAssertions;
 using IdsLib;
 using idsTool.tests.Helpers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace idsTool.tests

@@ -28,7 +28,7 @@ namespace IdsLib.codegen
         /// 
         /// </summary>
         /// <returns>True if information has been changed locally... need to reboot.</returns>
-        internal static bool TryPromptUpdate()
+        internal static bool UpdateRequiresRestart()
         {
             if (!Exists)
                 return false;
@@ -37,7 +37,15 @@ namespace IdsLib.codegen
             if (solutionDir is null)
                 return false;
 
-            Console.WriteLine("Get updates from IDS repository? (y/n)");
+            var updatables = GetAllUpdatable(solutionDir);
+            if (!updatables.Any())
+                return false;
+            
+            Console.WriteLine("Updates are available from the IDS repository:");
+            foreach (var updatable in updatables)
+                Console.WriteLine($"- {updatable.Name}");
+
+            Console.WriteLine("Get these updates from IDS repository? (y/n)");
             var k = Console.ReadKey();
             Console.WriteLine();
             if (k.Key != ConsoleKey.Y)
@@ -45,9 +53,10 @@ namespace IdsLib.codegen
                 Console.WriteLine("Update skipped.");
                 return false;
             }
-            var ret = false;
-            
-            return ret;
+            foreach (var updatableFile in updatables)
+                File.Copy(updatableFile.Source, updatableFile.Destination, true);   
+
+            return true;
         }
 
         public static IEnumerable<UpdatableFile> GetAllUpdatable(DirectoryInfo solutionDir)

@@ -10,7 +10,7 @@ namespace IdsLib.IdsSchema.XsNodes;
 internal class XsLength : BaseContext, IStringListMatcher
 {
     private readonly string value;
-    public XsLength(XmlReader reader) : base(reader)
+    public XsLength(XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         value = reader.GetAttribute("value") ?? string.Empty;
     }

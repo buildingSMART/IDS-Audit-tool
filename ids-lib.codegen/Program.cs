@@ -4,34 +4,53 @@ internal class Program
 {
     static void Main()
     {
-        var destPath = new DirectoryInfo(@"..\..\..\..\");
         Console.WriteLine("Running code generation for ids-lib.");
-        if (IdsRepo_Updater.TryPromptUpdate())
+        if (IdsRepo_Updater.UpdateRequiresRestart())
         {
             Message("Local code updated, need to restart the generation.", ConsoleColor.Yellow);
             return;
         }
-
         
-        var tmp = IfcSchema_ClassAndAttributeNamesGenerator.Execute();
-        var dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs");
-        File.WriteAllText(dest, tmp);
+        EvaluateContent(
+            IfcSchema_ClassAndAttributeNamesGenerator.Execute(), 
+            @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs"
+            );
 
-        tmp = IfcSchema_MeasureNamesGenerator.Execute();
-        dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs");
-        File.WriteAllText(dest, tmp);
+        EvaluateContent(
+            IfcSchema_MeasureNamesGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs");
 
-        tmp = IfcSchema_ClassGenerator.Execute();
-        dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs");
-        File.WriteAllText(dest, tmp);
+        EvaluateContent(
+            IfcSchema_ClassGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs");
 
-        tmp = IfcSchema_AttributesGenerator.Execute();
-        dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs");
-        File.WriteAllText(dest, tmp);
+        EvaluateContent(
+            IfcSchema_AttributesGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs");
 
-        tmp = IfcSchema_PartOfRelationGenerator.Execute();
-        dest = Path.Combine(destPath.FullName, @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");
-        File.WriteAllText(dest, tmp);
+        EvaluateContent(
+            IfcSchema_PartOfRelationGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");
+    }
+
+    private static void EvaluateContent(string content, string destinationPath)
+    {
+        Console.Write($"Evaluating: {destinationPath}... ");
+        var destPath = new DirectoryInfo(@"..\..\..\..\");
+        var dest = Path.Combine(destPath.FullName, destinationPath);
+
+        if (File.Exists(dest))
+        {
+            var current = File.ReadAllText(dest);
+            if (content == current)
+            {
+                Message($"no change.", ConsoleColor.Green);
+                return;
+            }
+        }
+
+        File.WriteAllText(dest, content);
+        Message($"updated.", ConsoleColor.DarkYellow);
     }
 
     private static void Message(string v, ConsoleColor messageColor)

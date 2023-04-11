@@ -9,6 +9,7 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema;
 
+[DebuggerDisplay("{value}")]
 internal class StringListMatcher : IStringListMatcher
 {
     private readonly string value;
@@ -36,7 +37,7 @@ internal class StringListMatcher : IStringListMatcher
     internal Audit.Status HasSingleMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out string? singleMatch, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         var ret = DoesMatch(candidateStrings, ignoreCase, logger, out var matches, listToMatchName, schemaContext);
-        if (ret != Audit.Status.Ok)
+        if (ret == Audit.Status.Ok)
         {
             try
             {

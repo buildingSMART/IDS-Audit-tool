@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace IdsLib.IfcSchema
@@ -48,6 +49,7 @@ namespace IdsLib.IfcSchema
     /// <summary>
     /// Contains information on relevant standard properties of IFC classes
     /// </summary>
+    [DebuggerDisplay("{Name}")]
     public partial class ClassInfo
     {
         /// <summary>

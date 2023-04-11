@@ -12,7 +12,7 @@ namespace IdsLib.IfcSchema.TypeFilters
 		/// Concrete types as upper invariant strings
 		/// </summary>
 		IEnumerable<string> ConcreteTypes { get; }
-		IIfcTypeConstraint Intersect(IIfcTypeConstraint other);
+		IIfcTypeConstraint Intersect(IIfcTypeConstraint? other);
 		bool IsEmpty { get; }
 	}
 }

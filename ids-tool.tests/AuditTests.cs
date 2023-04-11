@@ -1,10 +1,8 @@
-﻿using CommandLine;
-using FluentAssertions;
+﻿using FluentAssertions;
 using IdsLib;
 using idsTool.tests.Helpers;
 using IdsTool;
 using System.IO;
-using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -46,7 +44,7 @@ public class AuditTests : BuildingSmartRepoFiles
             SchemaFiles = new[] { "/bsFiles/ids093.xsd" }
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
-        // hack to provide milder error because we don't have control on the generator
+        // hack to provide milder error because we don't have control on the test case generator
         Skip.If(auditResult != Audit.Status.Ok);
         auditResult.Should().Be(Audit.Status.Ok);
     }
@@ -59,6 +57,8 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError)]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);

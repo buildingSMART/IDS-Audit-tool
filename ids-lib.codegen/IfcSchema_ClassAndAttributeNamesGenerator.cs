@@ -15,15 +15,15 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
             var metaD = ExpressMetaData.GetMetadata(module);
             foreach (var daType in metaD.Types())
             {
+                // only concrete classes are valid
+                if (daType.Type.IsAbstract)
+                    continue;
+
                 // just class names
                 if (classNames.TryGetValue(daType.Name, out var lst))
-                {
                     lst.Add(schema);
-                }
                 else
-                {
                     classNames.Add(daType.Name, new List<string>() { schema });
-                }
 
                 // Enriching schema with attribute names
                 var thisattnames = daType.Properties.Values.Select(x => x.Name);
@@ -43,17 +43,15 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
         var source = stub;
         var sbClasses = new StringBuilder();
         var sbAtts = new StringBuilder();
-        int i = 0;
         foreach (var clNm in classNames.Keys.OrderBy(x => x))
         {
             var schemes = classNames[clNm];
-            sbClasses.AppendLine($"""               yield return new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)}); // {++i}""");
+            sbClasses.AppendLine($"""               yield return new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
         }
-        i = 0;
         foreach (var clNm in attNames.Keys.OrderBy(x => x))
         {
             var schemes = attNames[clNm];
-            sbAtts.AppendLine($"""               yield return new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())}); // {++i}""");
+            sbAtts.AppendLine($"""               yield return new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())});""");
         }
         source = source.Replace($"<PlaceHolderClasses>\r\n", sbClasses.ToString());
         source = source.Replace($"<PlaceHolderAttributes>\r\n", sbAtts.ToString());

@@ -7,28 +7,23 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider
+internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 {
     private static readonly string[] SpecificationArray = { "specification" };
     private IIfcTypeConstraint validTypes;
 
-    public IdsEntity(System.Xml.XmlReader reader) : base(reader)
+    public IdsEntity(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         validTypes = IfcConcreteTypeList.Empty;
+        IsValid = false;
     }
+
+    public bool IsValid {get; private set;}
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNodes(this, SpecificationArray, out var nodes))
-        {
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, "Missing specification for entity.", this);
-            return Audit.Status.IdsStructureError;
-        }
-        if (nodes[0] is not IdsSpecification spec)
-        {
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, "Invalid specification for entity.", this);
-            return Audit.Status.IdsContentError;
-        }
+        if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
+            return retStatus;        
         var requiredSchemaVersions = spec.SchemaVersions;
         var name = GetChildNodes("name").FirstOrDefault();
 
@@ -41,12 +36,10 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider
             .Select(y => y.UpperCaseName);
         var ret = sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity names", requiredSchemaVersions);
         if (ret != Audit.Status.Ok)
-        {
-            validTypes = IfcConcreteTypeList.Empty;
-            return ret;
-        }
-        validTypes = new IfcConcreteTypeList(possibleClasses);
+            return SetInvalid();
 
+        IsValid = true;        
+        validTypes = new IfcConcreteTypeList(possibleClasses);
 
         // predefined types that are common for the possibleClasses across defined schemas
         var type = GetChildNodes("predefinedType").FirstOrDefault();
@@ -81,6 +74,13 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider
             ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", requiredSchemaVersions);
         
         return ret;
+    }
+
+    private Audit.Status SetInvalid()
+    {
+        validTypes = IfcConcreteTypeList.Empty;
+        IsValid = false;
+        return Audit.Status.IdsContentError;
     }
 
     public IIfcTypeConstraint ValidTypes => validTypes;

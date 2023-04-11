@@ -8,7 +8,7 @@ internal partial class IdsSimpleValue : BaseContext, IStringListMatcher
 {
     internal string Content = string.Empty;
 
-    public IdsSimpleValue(System.Xml.XmlReader reader) : base(reader)
+    public IdsSimpleValue(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
     }
 

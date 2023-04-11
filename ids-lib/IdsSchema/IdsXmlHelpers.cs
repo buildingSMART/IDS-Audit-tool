@@ -11,28 +11,29 @@ namespace IdsLib.IdsSchema;
 
 internal class IdsXmlHelpers
 {
-    internal static BaseContext GetContextFromElement(XmlReader reader, ILogger? logger)
+    internal static BaseContext GetContextFromElement(XmlReader reader, BaseContext? parent, ILogger? logger)
     {
         return reader.LocalName switch
         {
             // ids
-            "specification" => new IdsSpecification(reader, logger),
-            "requirements" => new IdsRequirements(reader),
-            "simpleValue" => new IdsSimpleValue(reader),
-            "entity" => new IdsEntity(reader),
-            "attribute" => new IdsAttribute(reader),
-            "partOf" => new IdsFacet(reader),
-            "classification" => new IdsFacet(reader),
-            "property" => new IdsProperty(reader),
-            "material" => new IdsFacet(reader),
+            "specification" => new IdsSpecification(reader, parent, logger),
+            "requirements" => new IdsFacetCollection(reader, parent, logger),
+            "applicability" => new IdsFacetCollection(reader, parent, logger),
+            "simpleValue" => new IdsSimpleValue(reader, parent),
+            "entity" => new IdsEntity(reader, parent),
+            "attribute" => new IdsAttribute(reader, parent),
+            "partOf" => new IdsPartOf(reader, parent),
+            "classification" => new IdsFacet(reader, parent),
+            "property" => new IdsProperty(reader, parent),
+            "material" => new IdsFacet(reader, parent),
             // xs
-            "restriction" => new XsRestriction(reader),
-            "enumeration" => new XsEnumeration(reader),
-            "totalDigits" => new XsTotalDigits(reader),
-            "pattern" => new XsPattern(reader),
-            "length" => new XsLength(reader),
+            "restriction" => new XsRestriction(reader, parent),
+            "enumeration" => new XsEnumeration(reader, parent),
+            "totalDigits" => new XsTotalDigits(reader, parent),
+            "pattern" => new XsPattern(reader, parent),
+            "length" => new XsLength(reader, parent),
             // default
-            _ => new BaseContext(reader),
+            _ => new BaseContext(reader, parent),
         };
     }
 

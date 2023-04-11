@@ -60,7 +60,7 @@ Simple usage: `ids-tool audit path-to-some-file` or `ids-tool audit path-to-some
 
 If no option is specificed all available audits are performed on the IDS files.
 
-## Roadmap
+## Audit Roadmap
 
 We are planning to a number of audits (checked ones are implemented)
 
@@ -73,8 +73,7 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] Predefined types Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Prefefined types are tested against values provided from the schema.
       - [x] Meaningful test cases
-      - [ ] Handle User-defined behaviours
-        - [ ] Get value from attributes
+      - [ ] Should we handle User-defined behaviour as special case?
     - [x] IfcTypeNames
       - [x] IfcType Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Simple type names are audited
@@ -108,15 +107,29 @@ We are planning to a number of audits (checked ones are implemented)
     - [x] classification
     - [x] property
     - [x] material  
-  - [ ] PartOf
+  - [x] PartOf
     - [x] Entity
-      - [ ] Constrained to relation type
+      - [x] Constrained to relation type
     - [x] Relation
 - [x] Cardinality
   - [x] Min and Max values are intrinsically valid (xml constraints)
   - [x] Min and Max values are restricted to agreed patterns (IDS implementation agreement)
-- [ ] Specification audit 
-  - [ ] Coherence between applicability and requirements
-    - [ ] Property sets for types defined in the applicability
-    - [ ] Inconsistenty types between applicability and requirements
+- [ ] Type coherence audits
+  - [ ] Extend with prohibited clauses (currently only dealing with required)
+  - [x] Coherence between applicability and requirements
+    - [x] Inconsistent types between applicability and requirements
+  - [ ] Type constraining Facets
+    - [x] PartOf (depending on relation)
+    - [x] Entity
+    - [ ] Property sets
+      - [ ] determine type constraint by standard property sets
+    - [ ] Material
+      - [ ] Option: could be constraining types depending on implicit set or relations
+    - [ ] Attribute
+      - [ ] Option: could be defining type depending on attribute name 
+    - [ ] Classification
+      - [ ] Option: could be constraining types depending on implicit set or relations
 
+## Feature Roadmap
+
+- [ ] Implement Run with streams (as opposed to disk files)

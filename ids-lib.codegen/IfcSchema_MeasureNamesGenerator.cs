@@ -40,13 +40,11 @@ public class IfcSchema_MeasureNamesGenerator
         }
         var source = stub;
         var sbMeasures = new StringBuilder();
-        int i = 0;
         foreach (var clNm in measureInfos.Keys.OrderBy(x => x))
         {
             var schemes = measureInfos[clNm];
-            sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)}); // {++i}""");
+            sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
         }
-        i = 0;
         source = source.Replace($"<PlaceHolderMeasures>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         return source;

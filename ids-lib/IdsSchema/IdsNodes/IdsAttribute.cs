@@ -9,10 +9,11 @@ internal class IdsAttribute : BaseContext, IIdsRequirementFacet
 {
     private static readonly string[] SpecificationArray = { "specification" };
     
-    public IdsAttribute(System.Xml.XmlReader reader) : base(reader)
+    public IdsAttribute(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
-        
     }
+
+    public bool IsValid { get; private set; }
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {

@@ -37,6 +37,12 @@
 		<None Update="InvalidFiles\empty.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="InvalidFiles\InvalidIfcPartOf.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\EntityImpossible.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="InvalidFiles\invalidPropertyMeasures.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

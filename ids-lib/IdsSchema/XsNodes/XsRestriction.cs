@@ -11,7 +11,7 @@ namespace IdsLib.IdsSchema.XsNodes;
 internal class XsRestriction : BaseContext, IStringListMatcher
 {
     private readonly string baseAsString;
-    public XsRestriction(XmlReader reader) : base(reader)
+    public XsRestriction(XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         baseAsString = reader.GetAttribute("base") ?? string.Empty;
     }
@@ -20,7 +20,7 @@ internal class XsRestriction : BaseContext, IStringListMatcher
     {
         matches =  Enumerable.Empty<string>();
         
-        if ( // todo: do we want to force the base requirement?
+        if ( // todo: discuss with group: do we want to force the base requirement?
             !string.IsNullOrWhiteSpace(baseAsString) &&
             baseAsString != "xs:string"
             )

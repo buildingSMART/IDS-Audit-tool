@@ -16,59 +16,59 @@ namespace IdsLib.IfcSchema
         {
             get
             {
-               yield return new IfcMeasureInformation("IfcAmountOfSubstanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 1
-               yield return new IfcMeasureInformation("IfcAreaDensityMeasure", new[] { "Ifc4", "Ifc4x3" }); // 2
-               yield return new IfcMeasureInformation("IfcAreaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 3
-               yield return new IfcMeasureInformation("IfcDynamicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 4
-               yield return new IfcMeasureInformation("IfcElectricCapacitanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 5
-               yield return new IfcMeasureInformation("IfcElectricChargeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 6
-               yield return new IfcMeasureInformation("IfcElectricConductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 7
-               yield return new IfcMeasureInformation("IfcElectricCurrentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 8
-               yield return new IfcMeasureInformation("IfcElectricResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 9
-               yield return new IfcMeasureInformation("IfcElectricVoltageMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 10
-               yield return new IfcMeasureInformation("IfcEnergyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 11
-               yield return new IfcMeasureInformation("IfcForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 12
-               yield return new IfcMeasureInformation("IfcFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 13
-               yield return new IfcMeasureInformation("IfcHeatFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 14
-               yield return new IfcMeasureInformation("IfcHeatingValueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 15
-               yield return new IfcMeasureInformation("IfcIlluminanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 16
-               yield return new IfcMeasureInformation("IfcIonConcentrationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 17
-               yield return new IfcMeasureInformation("IfcIsothermalMoistureCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 18
-               yield return new IfcMeasureInformation("IfcLabel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 19
-               yield return new IfcMeasureInformation("IfcLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 20
-               yield return new IfcMeasureInformation("IfcLinearVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 21
-               yield return new IfcMeasureInformation("IfcLuminousFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 22
-               yield return new IfcMeasureInformation("IfcLuminousIntensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 23
-               yield return new IfcMeasureInformation("IfcMassDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 24
-               yield return new IfcMeasureInformation("IfcMassFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 25
-               yield return new IfcMeasureInformation("IfcMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 26
-               yield return new IfcMeasureInformation("IfcMassPerLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 27
-               yield return new IfcMeasureInformation("IfcModulusOfElasticityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 28
-               yield return new IfcMeasureInformation("IfcMoistureDiffusivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 29
-               yield return new IfcMeasureInformation("IfcMolecularWeightMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 30
-               yield return new IfcMeasureInformation("IfcMomentOfInertiaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 31
-               yield return new IfcMeasureInformation("IfcPHMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 32
-               yield return new IfcMeasureInformation("IfcPlanarForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 33
-               yield return new IfcMeasureInformation("IfcPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 34
-               yield return new IfcMeasureInformation("IfcPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 35
-               yield return new IfcMeasureInformation("IfcPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 36
-               yield return new IfcMeasureInformation("IfcRadioActivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 37
-               yield return new IfcMeasureInformation("IfcRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 38
-               yield return new IfcMeasureInformation("IfcRotationalFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 39
-               yield return new IfcMeasureInformation("IfcSectionModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 40
-               yield return new IfcMeasureInformation("IfcSoundPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 41
-               yield return new IfcMeasureInformation("IfcSoundPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 42
-               yield return new IfcMeasureInformation("IfcSpecificHeatCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 43
-               yield return new IfcMeasureInformation("IfcTemperatureRateOfChangeMeasure", new[] { "Ifc4", "Ifc4x3" }); // 44
-               yield return new IfcMeasureInformation("IfcText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 45
-               yield return new IfcMeasureInformation("IfcThermalConductivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 46
-               yield return new IfcMeasureInformation("IfcThermalTransmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 47
-               yield return new IfcMeasureInformation("IfcThermodynamicTemperatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 48
-               yield return new IfcMeasureInformation("IfcTimeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 49
-               yield return new IfcMeasureInformation("IfcTorqueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 50
-               yield return new IfcMeasureInformation("IfcVaporPermeabilityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 51
-               yield return new IfcMeasureInformation("IfcVolumeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 52
-               yield return new IfcMeasureInformation("IfcVolumetricFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }); // 53
+               yield return new IfcMeasureInformation("IfcAmountOfSubstanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcAreaDensityMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcAreaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcDynamicViscosityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricCapacitanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricChargeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricConductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricCurrentMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcElectricVoltageMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcEnergyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcHeatFluxDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcHeatingValueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcIlluminanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcIonConcentrationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcIsothermalMoistureCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcLabel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcLinearVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcLuminousFluxMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcLuminousIntensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMassDensityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMassFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMassMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMassPerLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcModulusOfElasticityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMoistureDiffusivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMolecularWeightMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcMomentOfInertiaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPHMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPlanarForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcRadioActivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcRotationalFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcSectionModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcSoundPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcSoundPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcSpecificHeatCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcTemperatureRateOfChangeMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcThermalConductivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcThermalTransmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcThermodynamicTemperatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcTimeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcTorqueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcVaporPermeabilityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcVolumeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcVolumetricFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
             }
         }
     }

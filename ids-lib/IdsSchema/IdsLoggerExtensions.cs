@@ -6,6 +6,17 @@ namespace IdsLib.IdsSchema;
 
 internal static class IdsLoggerExtensions
 {
+    internal static Audit.Status ReportInvalidApplicability(this ILogger? logger, BaseContext context, string scenarioMessage)
+    {
+        logger?.LogError("Invalid applicability: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
+        return Audit.Status.IdsContentError;
+    }
+    internal static Audit.Status ReportIncompatibleClauses(this ILogger? logger, BaseContext context, string scenarioMessage)
+    {
+        logger?.LogError("Inconsistent clauses: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
+        return Audit.Status.IdsContentError;
+    }
+
     internal static Audit.Status ReportUnexpectedScenario(this ILogger? logger, string scenarioMessage, BaseContext context)
     {
         logger?.LogCritical("Unhandled scenario: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);

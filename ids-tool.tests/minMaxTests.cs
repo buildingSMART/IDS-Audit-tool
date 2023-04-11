@@ -1,12 +1,6 @@
 ﻿using FluentAssertions;
 using IdsLib.IdsSchema;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using Xunit;
 
