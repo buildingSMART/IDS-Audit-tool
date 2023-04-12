@@ -139,3 +139,11 @@ We are planning to a number of audits (checked ones are implemented)
 ## Feature Roadmap
 
 - [ ] Implement Run with streams (as opposed to disk files)
+  - [ ] Get schema settings dependent on IDS version from streams
+    - [ ] from url
+    - [ ] from library resource 
+    - [ ] need seekable stream to be able to restart reading after version is identified
+  - [ ] Isolate configuration for running audit on single entities (i.e. stream and file)
+  - [ ] define and implement interface for feedback on location of issues 
+    - [ ] in files (line, position)
+    - [ ] in streams (offset)
