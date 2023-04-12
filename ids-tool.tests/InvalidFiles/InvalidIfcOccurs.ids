@@ -12,12 +12,9 @@
 				<ids:entity>
 					<ids:name>
 						<xs:restriction base="xs:string">
-							<xs:pattern value="IFCCOVERING"/>
+							<xs:pattern value="IFCWALL"/>
 						</xs:restriction>
 					</ids:name>
-					<ids:predefinedType>
-						<ids:simpleValue>CLADDING</ids:simpleValue>
-					</ids:predefinedType>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>

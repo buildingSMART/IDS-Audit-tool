@@ -1,15 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.IdsSchema.IdsNodes;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
-using Xbim.InformationSpecifications;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsPattern : BaseContext, IStringListMatcher
+internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
 {
     private readonly string pattern;
     public XsPattern(XmlReader reader, BaseContext? parent) : base(reader, parent)
@@ -24,13 +23,23 @@ internal class XsPattern : BaseContext, IStringListMatcher
             matches = new List<string>();
             return IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext);
         }
+        return (TryMatch(candidateStrings, ignoreCase, out matches))
+            ? Audit.Status.Ok
+            : IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext);
+    }
+
+    public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
+    {
+        if (!EnsureRegex(out var _, ignoreCase))
+        {
+            matches = Enumerable.Empty<string>();   
+            return false;
+        }
         if (ignoreCase)
             matches = candidateStrings.Where(x => compiledCaseInsensitiveRegex!.IsMatch(x)).ToList();
         else
             matches = candidateStrings.Where(x => compiledCaseSensitiveRegex!.IsMatch(x)).ToList();
-        return !matches.Any()
-            ? IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext)
-            : Audit.Status.Ok;
+        return matches.Any();
     }
 
     private Regex? compiledCaseSensitiveRegex;
@@ -61,5 +70,11 @@ internal class XsPattern : BaseContext, IStringListMatcher
             // logger?.LogError("Invalid pattern constraint: {pattern}", pattern);
             return false;
         }
+    }
+
+    public IEnumerable<string> GetDicreteValues()
+    {
+        // we can parse the regex and see if there are simple token recognition that can be implemented
+        yield break;
     }
 }

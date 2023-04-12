@@ -27,29 +27,18 @@ namespace IdsLib.IfcSchema.TypeFilters
 
 		public IIfcTypeConstraint Intersect(IIfcTypeConstraint? other)
 		{
+
 			if (other is null)
-                return IfcConcreteTypeList.Empty;
+                return this;
             if (this.IsEmpty || other.IsEmpty)
-                return IfcConcreteTypeList.Empty;
+                return Empty;
             return new IfcConcreteTypeList(
                 this.ConcreteTypes.Intersect(other.ConcreteTypes)
                 );
         }
 
-        // todo: this is a bit of a hack at the moment, there is probably a more efficient way
-        // for example a null constraint could mean no constraint, but  
-        // but that needs to be reflected in the property of the interface and in the intersect logic
-        //
-        internal const string SpecialTopClassName = "*";
-
         internal static IfcConcreteTypeList FromTopClass(SchemaInfo schema, string topClassName)
         {
-            if (topClassName == SpecialTopClassName)
-            {
-                // special case for no filter at all
-                var allConcreteNames = schema.Where(x => x.Type == ClassType.Concrete).Select(y => y.Name);
-                return new IfcConcreteTypeList(allConcreteNames);
-            }
             var topClass = schema[topClassName.ToUpperInvariant()];
             if (topClass == null)
                 return Empty;

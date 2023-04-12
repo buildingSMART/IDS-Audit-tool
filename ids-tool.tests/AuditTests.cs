@@ -59,6 +59,9 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -67,6 +70,7 @@ public class AuditTests : BuildingSmartRepoFiles
 
     [Theory]
     [InlineData("ValidFiles/nested_entity.ids")]
+    [InlineData("ValidFiles/property.ids")]
     public void FullAuditPass(string path)
     {
         var f = new FileInfo(path);

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace IdsLib.IfcSchema
@@ -11,7 +10,10 @@ namespace IdsLib.IfcSchema
     /// </summary>
     public partial class SchemaInfo : IEnumerable<ClassInfo>
     {
-        private readonly IfcSchemaVersions version;
+        /// <summary>
+        /// The version of the schema represented in the info
+        /// </summary>
+        public IfcSchemaVersions Version { get; }
 
         /// <summary>
         /// Provides access to the property sets of the schema
@@ -23,7 +25,7 @@ namespace IdsLib.IfcSchema
         /// </summary>
         public SchemaInfo(IfcSchemaVersions schemaVersion)
         {
-            version = schemaVersion;
+            Version = schemaVersion;
             Classes = new Dictionary<string, ClassInfo>();
             AttributesToAllClasses = new Dictionary<string, string[]>();
             AttributesToTopClasses = new Dictionary<string, string[]>();
@@ -224,6 +226,91 @@ namespace IdsLib.IfcSchema
             public ClassAttributeMode Connection { get; set; }
         }
 
+        internal static IEnumerable<string> PossibleTypesForPropertySets(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames)
+        {
+            IEnumerable<string> ret = Enumerable.Empty<string>();
+            foreach (var psetName in possiblePsetNames)
+            {
+                IEnumerable<string>? thisPsetTypes = null;
+                foreach (var schema in GetSchemas(version))
+                {
+                    var propSet = schema.PropertySets.Where(x => x.Name == psetName).FirstOrDefault();
+                    if (propSet is null)
+                    {
+                        thisPsetTypes = Enumerable.Empty<string>();
+                        break;
+                    }
+                    
+                    if (thisPsetTypes == null)
+                        thisPsetTypes = schema.GetAllConcreteFrom(propSet.ApplicableClasses);
+                    else
+                        thisPsetTypes = thisPsetTypes.Intersect(schema.GetAllConcreteFrom(propSet.ApplicableClasses));
+                }
+                thisPsetTypes ??= Enumerable.Empty<string>();
+                ret = ret.Union(thisPsetTypes);
+            }
+            return ret.Distinct();
+        }
+
+        private IEnumerable<string> GetAllConcreteFrom(IList<string> startingClassNames)
+        {
+            IEnumerable<string>? ret = null;
+            foreach (var className in startingClassNames)
+            {
+                if (!Classes.TryGetValue(className, out var cls))
+                    continue;
+                if (ret is null)
+                    ret = cls.MatchingConcreteClasses.Select(x => x.Name);
+                else
+                    ret = ret.Union(cls.MatchingConcreteClasses.Select(x => x.Name)).Distinct();
+            }
+            if (ret is null)
+                return Enumerable.Empty<string>();
+            return ret;
+        }
+
+        internal static IEnumerable<string> SharedPropertyNames(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames)
+        {
+            IEnumerable<string> ret = Enumerable.Empty<string>();
+            foreach (var psetName in possiblePsetNames)
+            {
+                IEnumerable<string>? thisPsetProperties = null;
+                foreach (var schema in GetSchemas(version))
+                {
+                    var propSet = schema.PropertySets.Where(x=>x.Name == psetName).FirstOrDefault();
+                    if (propSet is null)
+                    {
+                        thisPsetProperties = Enumerable.Empty<string>();
+                        break;
+                    }    
+                    if (thisPsetProperties == null)
+                        thisPsetProperties = propSet.PropertyNames;
+                    else
+                        thisPsetProperties = thisPsetProperties.Intersect(propSet.PropertyNames);
+                }
+                thisPsetProperties ??= Enumerable.Empty<string>();
+                ret = ret.Union(thisPsetProperties);
+            }
+            return ret;
+        }
+
+        // todo: this is probably a performance problem, we could be caching in memory
+        internal static IEnumerable<string> SharedPropertySetNames(IfcSchemaVersions version)
+        {
+            IEnumerable<string>? ret = null;
+            foreach (var schema in GetSchemas(version))
+            {
+                if (ret == null)
+                    ret = schema.PropertySets.Select(x => x.Name);
+                else
+                    ret = ret.Intersect(schema.PropertySets.Select(x => x.Name));
+            }
+            if (ret is null)
+                return Enumerable.Empty<string>();
+            return ret;
+        }
+
+
 
         //private static List<string>? allSchemaAttributes = null;
 
@@ -338,5 +425,7 @@ namespace IdsLib.IfcSchema
             if (schemaVersions.HasFlag(IfcSchemaVersions.Ifc4x3))
                 yield return SchemaIfc4x3;
         }
+
+        
     }
 }

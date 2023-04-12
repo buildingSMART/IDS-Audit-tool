@@ -1,12 +1,11 @@
 ﻿using IdsLib.IfcSchema;
+using IdsLib.IfcSchema.TypeFilters;
 using Microsoft.Extensions.Logging;
-using System;
-using System.IO;
 using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsProperty : BaseContext, IIdsRequirementFacet
+internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
     private static readonly string[] SpecificationArray = { "specification" };
     private readonly MinMaxOccur minMaxOccurr;
@@ -21,28 +20,101 @@ internal class IdsProperty : BaseContext, IIdsRequirementFacet
             measureMatcher = null;
     }
 
-    public bool IsValid => true;
+    public bool IsValid { get; private set; } = false;
+
+    public bool IsRequired => minMaxOccurr.IsRequired; 
+
+    public IIfcTypeConstraint? TypesFilter {get; private set;}
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
         if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
             return retStatus;
         var requiredSchemaVersions = spec.SchemaVersions;
-        var names = GetChildNodes("name");
-        
+        IsValid = false;
+
+        // property set and name are compulsory
+        var pset = GetChildNodes("propertySet").FirstOrDefault();
+        var psetMatcher = pset?.GetListMatcher();
+        if (psetMatcher is null)
+            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "propertySet");
+
+        var name = GetChildNodes("name").FirstOrDefault();
+        var nameMatcher = name?.GetListMatcher();
+        if (nameMatcher is null)
+            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
+
+        // we are keeping the stricter type to ensure that it is valid across multiple schemas
+        // depending on the schema version of IfcRelDefinesByProperties the filter needs to be
+        // - IfcObject in ifc2x3 
+        // - IfcObjectDefinition in Ifc4 
+        // - IfcObjectDefinition in ifc4x3
+        // 
+        TypesFilter = requiredSchemaVersions.HasFlag(IfcSchemaVersions.Ifc2x3)
+            ? new IfcInheritanceTypeConstraint("IFCOBJECT", requiredSchemaVersions)
+            : new IfcInheritanceTypeConstraint("IFCOBJECTDEFINITION", requiredSchemaVersions);
+
+        // initiate valid measures, will constrain later if there's a known property
+        var validMeasureNames = SchemaInfo.AllMeasures
+                .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
+                .Select(y => y.IfcMeasureClassName);
+        IsValid = true;
+
+
+        if (IsRequired)
+        {
+            var validPsetNames = SchemaInfo.SharedPropertySetNames(requiredSchemaVersions);
+            if (psetMatcher.TryMatch(validPsetNames, false, out var possiblePsetNames))
+            {
+                // see if there's a match with standard property sets
+                var validPropNames = SchemaInfo.SharedPropertyNames(requiredSchemaVersions, possiblePsetNames);
+                var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possibleClasses, "property names", requiredSchemaVersions);
+                if (nameMatch != Audit.Status.Ok)
+                    return SetInvalid();
+
+                // todo: we could also limit the validity of the IfcMeasure to the values coming from the metadata for the property
+
+                // limit the validity of the type
+                var validTypes = SchemaInfo.PossibleTypesForPropertySets(requiredSchemaVersions, possiblePsetNames);
+                TypesFilter = new IfcConcreteTypeList(validTypes);
+            }
+            else if (psetMatcher is IStringPrefixMatcher ssm && ssm.MatchesPrefix("Pset_"))
+            {
+                IsValid = false;
+                TypesFilter = null;
+                return IdsLoggerExtensions.ReportReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
+            }
+            else
+            {
+                // todo: optional strict rule to implement on property name
+                // we can check if the property name is one of the standard and suggest to move it to the standard pset
+                // this could be done via the IFiniteStringMatcher
+            }
+        }
+        else
+        {
+            TypesFilter = null;
+            IsValid = true;
+        }
+
         var ret = Audit.Status.Ok;
         if (measureMatcher is not null)
         {
-            var validMeasureNames = SchemaInfo.AllMeasures
-                .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
-                .Select(y => y.IfcMeasureClassName);
-            var result = measureMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "measure names", requiredSchemaVersions);
-            ret |= result;
+            ret |= measureMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "measure names", requiredSchemaVersions);   
         }
+        if (ret != Audit.Status.Ok)
+            IsValid = false;
         return ret;
     }
 
-    public Audit.Status PerformAuditAsRequirement(ILogger? logger)
+    private Audit.Status SetInvalid()
+    {
+        TypesFilter = null;
+        IsValid = false;
+        return Audit.Status.IdsContentError;
+    }
+
+    public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
             return logger.ReportInvalidOccurr(this, minMaxOccurr);

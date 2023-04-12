@@ -51,6 +51,13 @@ internal static class IdsLoggerExtensions
         return Audit.Status.IdsContentError;
     }
 
+    internal static Audit.Status ReportReservedStringMatched(this ILogger? logger, BaseContext context, string part, string field)
+    {
+        logger?.LogError("Reserved {part} for {field} at `{tp}`, line {line}, position {pos}.", part, field, context.type, context.StartLineNumber, context.StartLinePosition);
+        return Audit.Status.IdsContentError;
+    }
+
+
     internal static Audit.Status ReportNoStringMatcher(this ILogger? logger, BaseContext context, string field)
     {
         logger?.LogError("Empty string matcher for `{field}` on `{tp}` at line {line}, position {pos}.", field, context.type, context.StartLineNumber, context.StartLinePosition);

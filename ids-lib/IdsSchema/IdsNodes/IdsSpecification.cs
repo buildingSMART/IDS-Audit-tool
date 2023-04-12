@@ -1,4 +1,5 @@
 ﻿using IdsLib.IfcSchema;
+using IdsLib.IfcSchema.TypeFilters;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -41,12 +42,12 @@ internal class IdsSpecification : BaseContext
 
         var reqs = GetChildNode<IdsFacetCollection>("requirements");
         if (applic is not null && reqs is not null
-            && !applic.ValidTypes.IsEmpty // if they are empty an error would already be notified
-            && !reqs.ValidTypes.IsEmpty
+            && !IfcTypeConstraint.IsNotNullAndEmpty(applic.TypesFilter) // if they are empty an error would already be notified
+            && !IfcTypeConstraint.IsNotNullAndEmpty(reqs.TypesFilter)
             )
         {
-            var totalFilters = applic.ValidTypes.Intersect(reqs.ValidTypes);
-            if (totalFilters.IsEmpty)
+            var totalFilters = IfcTypeConstraint.Intersect(applic.TypesFilter, reqs.TypesFilter);
+            if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
                 ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "impossible match of applicability and requirements");
         }
 

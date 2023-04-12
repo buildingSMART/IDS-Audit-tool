@@ -8,6 +8,6 @@ namespace IdsLib.IdsSchema.IdsNodes
         /// Collection of the only valid types determined by the facet, 
         /// used for auditing of compatibility of multiple facets together 
         /// </summary>
-        IIfcTypeConstraint ValidTypes { get; }
+        IIfcTypeConstraint? TypesFilter { get; }
     }
 }

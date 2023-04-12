@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal partial class IdsSimpleValue : BaseContext, IStringListMatcher
+internal partial class IdsSimpleValue : BaseContext, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
     internal string Content = string.Empty;
 
@@ -19,12 +19,27 @@ internal partial class IdsSimpleValue : BaseContext, IStringListMatcher
 
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
+        if (!TryMatch(candidateStrings, ignoreCase, out matches))
+            return IdsLoggerExtensions.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext);
+        return Audit.Status.Ok;
+    }
+
+    public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
+    {
         var compCase = ignoreCase
             ? System.StringComparison.OrdinalIgnoreCase
             : System.StringComparison.Ordinal;
         matches = candidateStrings.Where(x => x.Equals(Content, compCase)).ToList();
-        if (!matches.Any())
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext);
-        return Audit.Status.Ok;
+        return matches.Any();
+    }
+
+    public bool MatchesPrefix(string prefixString)
+    {
+        return Content.StartsWith(prefixString);
+    }
+
+    public IEnumerable<string> GetDicreteValues()
+    {
+        yield return Content;
     }
 }

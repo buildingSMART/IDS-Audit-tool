@@ -29,4 +29,19 @@ public class IfcSchemaTests
             od!.MatchingConcreteClasses.Count().Should().BeInRange(minChildrenCount, maxChildrenCount);
         }
     }
+
+    [Fact]
+    public void HasPropertySets()
+    {
+        var schemas = SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions);
+        foreach (var schema in schemas)
+        {
+            schema.PropertySets.Should().NotBeNull();
+            // Pset_ActionRequest is in all schemas
+            var psetar = schema.PropertySets.FirstOrDefault(x => x.Name == "Pset_ActionRequest");
+            psetar.Should().NotBeNull();
+        }
+    }
+
+
 }

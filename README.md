@@ -73,7 +73,7 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] Predefined types Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Prefefined types are tested against values provided from the schema.
       - [x] Meaningful test cases
-      - [ ] Should we handle User-defined behaviour as special case?
+      - [ ] Question: Should we handle User-defined behaviour as special case?
     - [x] IfcTypeNames
       - [x] IfcType Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Simple type names are audited
@@ -88,21 +88,25 @@ We are planning to a number of audits (checked ones are implemented)
         - [x] Multiple values allowed	
   - [ ] properties 
     - [x] Prepare metadata infrastructure
-    - [ ] Is it correct that names are case sensitive?
-    - [ ] no extensions of standard PSETs
-      - [ ] properties are limited to the agreed set
+    - [x] prop and pset names are treated as case sensitive
+    - [x] no extensions of standard PSETs
+      - [x] properties are limited to the agreed set
     - [ ] No misplacement of properties
       - [ ] Property with a recognised name (e.g. IsExternal) should not be outside of the agreed pset.
         - [ ] Perhaps return a warning for userdefined property
         - [ ] Warning or error as configuration (strict)
-    - [ ] Includes IFC type inheritance?
-    - [ ] Reserved prefix
-      - [ ] No custom pset can start with "PSET_" this prefix is reserved for the standard
-  - [ ] Measures
-    - [x] If a value is provided then it needs to be checked
-    - [x] Test cases added
-    - [ ] Discuss with IDS group: clarify the list of valid measures 
-    - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
+    - [x] Includes IFC type inheritance
+    - [x] Reserved prefix
+      - [x] No custom pset can start with "PSET_" this prefix is reserved for the standard
+        - [x] SimpleValues
+        - [x] Enumerations
+        - [ ] Regexes (this is not trivial to implement)
+    - [ ] property Measures
+      - [x] If a value is provided then it is checked against a closed list
+      - [x] Test cases added
+      - [ ] Discuss with IDS group: clarify the list of valid measures 
+      - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
+      - [ ] Further constrain IfcMeasure for identified properties in standard sets
   - [x] Cardinality for facets (in requirements)
     - [x] partOf
     - [x] classification
@@ -116,20 +120,21 @@ We are planning to a number of audits (checked ones are implemented)
   - [x] Min and Max values are intrinsically valid (xml constraints)
   - [x] Min and Max values are restricted to agreed patterns (IDS implementation agreement)
 - [ ] Type coherence audits
-  - [ ] Extend with prohibited clauses (currently only dealing with required)
+  - [x] Excludes prohibited and optional clauses
   - [x] Coherence between applicability and requirements
     - [x] Inconsistent types between applicability and requirements
-  - [ ] Type constraining Facets
+  - [x] Explicit Type constraining Facets
     - [x] PartOf (depending on relation)
     - [x] Entity
-    - [ ] Property sets
-      - [ ] determine type constraint by standard property sets
-    - [ ] Material
-      - [ ] Option: could be constraining types depending on implicit set or relations
+    - [x] Property sets
+      - [x] determine type constraint by standard property sets
     - [ ] Attribute
-      - [ ] Option: could be defining type depending on attribute name 
+      - [ ] limit type depending on attribute name
+  - [ ] Implicit Type constraining Facets
+    - [ ] Material
+      - [ ] could be constraining types depending on implicit set or relations
     - [ ] Classification
-      - [ ] Option: could be constraining types depending on implicit set or relations
+      - [ ] could be constraining types depending on implicit set or relations
 
 ## Feature Roadmap
 

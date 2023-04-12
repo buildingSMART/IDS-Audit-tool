@@ -22,13 +22,18 @@ internal class StringListMatcher : IStringListMatcher
 
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
-        var compCase = ignoreCase
-                    ? System.StringComparison.OrdinalIgnoreCase
-                    : System.StringComparison.Ordinal;
-        matches = candidateStrings.Where(x => x.Equals(value, compCase)).ToList();
-        if (!matches.Any())
+        if (!TryMatch(candidateStrings, ignoreCase, out matches))
             return IdsLoggerExtensions.ReportInvalidListMatcher(context, value, logger, listToMatchName, schemaContext);
         return Audit.Status.Ok;
+    }
+
+    public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
+    {
+        var compCase = ignoreCase
+            ? StringComparison.OrdinalIgnoreCase
+            : StringComparison.Ordinal;
+        matches = candidateStrings.Where(x => x.Equals(value, compCase)).ToList();
+        return matches.Any();
     }
 
     /// <summary>

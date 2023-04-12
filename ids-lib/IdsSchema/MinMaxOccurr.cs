@@ -13,6 +13,8 @@ internal class MinMaxOccur
         return $"[{minString}..{maxString}]";
     }
 
+    internal bool IsRequired => minString == "1";
+
     public MinMaxOccur(XmlReader reader)
     {
         // both default to "1" according to xml:xs specifications

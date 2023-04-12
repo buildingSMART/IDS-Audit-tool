@@ -28,6 +28,16 @@ internal class XsLength : BaseContext, IStringListMatcher
            : Audit.Status.IdsContentError;
     }
 
+    public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
+    {
+        if (!int.TryParse(value, out var len))
+        {
+            matches = Enumerable.Empty<string>();
+            return false;
+        }
+        matches = candidateStrings.Where(x => x.Length == len).ToList();
+        return matches.Any();
+    }
 
     protected internal override Audit.Status PerformAudit(ILogger? logger)
     {

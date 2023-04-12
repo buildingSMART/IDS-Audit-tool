@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd">
+	<ids:info>
+		<ids:title>Example of property</ids:title>
+		<ids:copyright>Claudio Benghi</ids:copyright>
+		<ids:date>2023-04-12</ids:date>
+	</ids:info>
+	<ids:specifications>
+		<ids:specification name="Wall with common property" minOccurs="1" maxOccurs="unbounded" ifcVersion="IFC2X3">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property maxOccurs="unbounded">
+					<ids:propertySet>
+						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>AcousticRating</ids:simpleValue>
+					</ids:name>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification name="IFCACTUATORTYPE with measure property" minOccurs="1" maxOccurs="unbounded" ifcVersion="IFC2X3">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCACTUATORTYPE</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property maxOccurs="unbounded" measure="IfcPowerMeasure">
+					<ids:propertySet>
+						<ids:simpleValue>Pset_ActuatorTypeElectricActuator</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>ActuatorInputPower</ids:simpleValue>
+					</ids:name>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+	</ids:specifications>
+</ids:ids>

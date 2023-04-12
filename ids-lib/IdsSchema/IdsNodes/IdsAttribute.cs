@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsAttribute : BaseContext, IIdsRequirementFacet
+internal class IdsAttribute : BaseContext, IIdsFacet
 {
     private static readonly string[] SpecificationArray = { "specification" };
     
@@ -45,10 +45,5 @@ internal class IdsAttribute : BaseContext, IIdsRequirementFacet
             ret |= result;
         }
         return ret;
-    }
-
-    public Audit.Status PerformAuditAsRequirement(ILogger? logger)
-    {
-        return Audit.Status.Ok;
     }
 }

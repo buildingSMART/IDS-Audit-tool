@@ -7,51 +7,33 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsFacetCollection : BaseContext, IIfcTypeConstraintProvider
 {
-    private readonly IfcSchema.IfcSchemaVersions schemaVersions = IfcSchema.IfcSchemaVersions.IfcNoVersion;
-
-    private static readonly string[] SpecificationArray = { "specification" };
-    /// <summary>
-    /// This class is used for Auditing facets as requirements
-    /// </summary>
-    public IdsFacetCollection(System.Xml.XmlReader reader, BaseContext? parent, ILogger? logger) : base(reader, parent)
+    public IdsFacetCollection(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
-        if (TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var _))
-            schemaVersions = spec.SchemaVersions;
     }
 
-    private IIfcTypeConstraint? validTypes = null;
+    private IIfcTypeConstraint? typeFilter = null;
     internal IEnumerable<IIdsFacet> ChildFacets => Children.OfType<IIdsFacet>();
 
-    public IIfcTypeConstraint ValidTypes
+    private bool typesFilterInitialized = false;
+
+    public IIfcTypeConstraint? TypesFilter
     {
         get
         {
-            if (validTypes is null) 
+            if (!typesFilterInitialized) 
             {
-                IIfcTypeConstraint? flt = null;
+                typeFilter = null;
                 foreach (var provider in Children.OfType<IIfcTypeConstraintProvider>())
                 {
-                    if (provider is IIdsFacet facet)
-                    {
-                        if (!facet.IsValid)
-                            continue;
-                    }
-                    if (flt is null)
-                        flt = provider.ValidTypes;
-                    else
-                        flt = flt.Intersect(provider.ValidTypes);
-                    if (flt.IsEmpty)
-                    {
-                        break;
-                    }
+                    if (provider is IIdsCardinalityFacet card && !card.IsRequired)
+                        continue;
+                    typeFilter = IfcTypeConstraint.Intersect(typeFilter, provider.TypesFilter);
+                    if (IfcTypeConstraint.IsNotNullAndEmpty(typeFilter))
+                        break;                    
                 }
-
-                validTypes = flt ?? new IfcInheritanceTypeConstraint(
-                    IfcConcreteTypeList.SpecialTopClassName, 
-                    schemaVersions 
-                    );
+                typesFilterInitialized = true;
             }
-            return validTypes!;
+            return typeFilter;
         }
     }
 
@@ -60,13 +42,13 @@ internal class IdsFacetCollection : BaseContext, IIfcTypeConstraintProvider
         var ret = Audit.Status.Ok;
         if (type == "requirements")
         {
-            foreach (var extendedRequirement in Children.OfType<IIdsRequirementFacet>())
+            foreach (var extendedRequirement in Children.OfType<IIdsCardinalityFacet>())
             {
-                ret |= extendedRequirement.PerformAuditAsRequirement(logger);
+                ret |= extendedRequirement.PerformCardinalityAudit(logger);
             }
         }
-        if (!ChildFacets.Any(x=>!x.IsValid) && ValidTypes.IsEmpty)
-            ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "impossible match of constraints in requirements list");
+        if (!ChildFacets.Any(x=>!x.IsValid) && IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
+            ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "impossible match of constraints in set");
         return ret;
     }
 }

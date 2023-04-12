@@ -17,8 +17,8 @@ internal class IdsXmlHelpers
         {
             // ids
             "specification" => new IdsSpecification(reader, parent, logger),
-            "requirements" => new IdsFacetCollection(reader, parent, logger),
-            "applicability" => new IdsFacetCollection(reader, parent, logger),
+            "requirements" => new IdsFacetCollection(reader, parent),
+            "applicability" => new IdsFacetCollection(reader, parent),
             "simpleValue" => new IdsSimpleValue(reader, parent),
             "entity" => new IdsEntity(reader, parent),
             "attribute" => new IdsAttribute(reader, parent),

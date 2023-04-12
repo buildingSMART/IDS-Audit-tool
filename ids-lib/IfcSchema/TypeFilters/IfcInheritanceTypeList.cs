@@ -60,12 +60,11 @@ namespace IdsLib.IfcSchema.TypeFilters
 		public IIfcTypeConstraint Intersect(IIfcTypeConstraint? other)
 		{
 			if (other is null)
-                return IfcConcreteTypeList.Empty;
-            // todo: there's room form optimizing this method if the other is also of type IfcInheritanceTypeConstraint
+				return this;
             if (this.IsEmpty || other.IsEmpty)
 				return IfcConcreteTypeList.Empty;
 			return new IfcConcreteTypeList(
-				this.ConcreteTypes.Intersect(other.ConcreteTypes)
+				ConcreteTypes.Intersect(other.ConcreteTypes)
 				);
 		}
 	}

@@ -10,11 +10,10 @@ namespace IdsLib.IdsSchema.IdsNodes;
 internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 {
     private static readonly string[] SpecificationArray = { "specification" };
-    private IIfcTypeConstraint validTypes;
+    public IIfcTypeConstraint? TypesFilter { get; private set; } = null;
 
     public IdsEntity(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
-        validTypes = IfcConcreteTypeList.Empty;
         IsValid = false;
     }
 
@@ -38,8 +37,8 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
         if (ret != Audit.Status.Ok)
             return SetInvalid();
 
-        IsValid = true;        
-        validTypes = new IfcConcreteTypeList(possibleClasses);
+        IsValid = true;
+        TypesFilter = new IfcConcreteTypeList(possibleClasses);
 
         // predefined types that are common for the possibleClasses across defined schemas
         var type = GetChildNodes("predefinedType").FirstOrDefault();
@@ -78,10 +77,8 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 
     private Audit.Status SetInvalid()
     {
-        validTypes = IfcConcreteTypeList.Empty;
+        TypesFilter = null;
         IsValid = false;
         return Audit.Status.IdsContentError;
     }
-
-    public IIfcTypeConstraint ValidTypes => validTypes;
 }

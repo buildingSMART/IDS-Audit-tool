@@ -6,18 +6,20 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsPartOf : BaseContext, IIdsRequirementFacet, IIfcTypeConstraintProvider
+internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
 	private static readonly string[] SpecificationArray = { "specification" };
 	private readonly MinMaxOccur minMaxOccurr;
 	private readonly string relation;
-	private IIfcTypeConstraint validTypes;
+    
+    public IIfcTypeConstraint? TypesFilter { get; private set; }
 
-	public IdsPartOf(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public bool IsRequired => minMaxOccurr.IsRequired;
+
+    public IdsPartOf(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
 	{
         minMaxOccurr = new MinMaxOccur(reader);
 		relation = reader.GetAttribute("relation") ?? string.Empty;
-		validTypes = IfcConcreteTypeList.Empty;
 	}
 
     public bool IsValid { get; private set; } = true;
@@ -43,45 +45,52 @@ internal class IdsPartOf : BaseContext, IIdsRequirementFacet, IIfcTypeConstraint
         // this triggers a log error if there's anything but a single match
         ret |= relMatcher.HasSingleMatch(possibleRelationNames, false, logger, out var matchedRelationName, "relation names", requiredSchemaVersions);
 
+        // if the facet is not required we don't check if it makes sense semantically
+        if (!IsRequired)
+        {
+            IsValid = true;
+            TypesFilter = null;
+        }
+
         // if we have a match then there are other constraints we can evaluate on the
         // types of both sides of the relation
         //
         if (matchedRelationName is null)
-        {
-            return ret;
-        }
+            return SetInvalid();
         var relationInfo = SchemaInfo.AllPartOfRelations.FirstOrDefault(x => x.IfcName == matchedRelationName);
         if (relationInfo is null)
         {
             ret |= IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
-            return ret;
+            return SetInvalid(ret);
         }
 
         // Entities of the partOf need to be of type of relationInfo.ManySideIfcType
-        validTypes = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
-        if (validTypes.IsEmpty)
+        TypesFilter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
+        if (IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
         {
             ret |= IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
-            return ret;
+            return SetInvalid(ret);
         }
 
         // The entity needs to be of type of relationInfo.OneSideIfcType
         if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
         {
             ret |= IdsLoggerExtensions.ReportInvalidEmtpyValue(logger, this, "entity");
-            return ret;
+            return SetInvalid(ret);
         }
 
         IsValid = true;
         var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OneSideIfcType, requiredSchemaVersions);
-        var possible = validChildEntityType.Intersect(childEntity.ValidTypes);
+        var possible = validChildEntityType.Intersect(childEntity.TypesFilter);
         if (possible.IsEmpty)
+        {
             ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "relation not compatible with provided child entity");
-
+            return SetInvalid(ret);
+        }
         return ret;
     }
 
-	public Audit.Status PerformAuditAsRequirement(ILogger? logger)
+	public Audit.Status PerformCardinalityAudit(ILogger? logger)
 	{
 		var ret = Audit.Status.Ok;
 		if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
@@ -91,6 +100,11 @@ internal class IdsPartOf : BaseContext, IIdsRequirementFacet, IIfcTypeConstraint
 		}
 		return ret;
 	}
+    private Audit.Status SetInvalid(Audit.Status status = Audit.Status.IdsContentError)
+    {
+        TypesFilter = null;
+        IsValid = false;
+        return status;
+    }
 
-	public IIfcTypeConstraint ValidTypes => validTypes;
 }

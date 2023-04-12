@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsFacet : BaseContext, IIdsRequirementFacet
+internal class IdsFacet : BaseContext, IIdsCardinalityFacet
 {
     private readonly MinMaxOccur minMaxOccurr;
     public IdsFacet(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
@@ -13,7 +13,9 @@ internal class IdsFacet : BaseContext, IIdsRequirementFacet
 
     public bool IsValid => true;
 
-    public Audit.Status PerformAuditAsRequirement(ILogger? logger)
+    public bool IsRequired => minMaxOccurr.IsRequired;
+
+    public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
