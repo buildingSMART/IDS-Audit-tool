@@ -1,4 +1,4 @@
-// generated code via xbim.xids.generator using Xbim.Essentials 5.9.0.408 -, any changes made directly here will be lost
+// generated code via ids-lib.codegen using Xbim.Essentials 5.9.0.408 -, any changes made directly here will be lost
 
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace IdsLib.IfcSchema
 	{
 		private static partial SchemaInfo GetClassesIFC2x3()
 		{
-			var schema = new SchemaInfo() {
+			var schema = new SchemaInfo(IfcSchemaVersions.Ifc2x3) {
 				new ClassInfo("IfcAngularDimension", "IfcDimensionCurveDirectedCallout", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc2x3.PresentationDimensioningResource", new[] { "Contents" }),
 				new ClassInfo("IfcDimensionCurveDirectedCallout", "IfcDraughtingCallout", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc2x3.PresentationDimensioningResource", new[] { "Contents" }),
 				new ClassInfo("IfcDraughtingCallout", "IfcGeometricRepresentationItem", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc2x3.PresentationDimensioningResource", new[] { "Contents" }),
@@ -786,7 +786,7 @@ namespace IdsLib.IfcSchema
 
 		private static partial SchemaInfo GetClassesIFC4() 
 		{
-			var schema = new SchemaInfo() {
+			var schema = new SchemaInfo(IfcSchemaVersions.Ifc4) {
 				new ClassInfo("IfcStrippedOptional", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4", new[] { "" }),
 				new ClassInfo("IfcApplication", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4.UtilityResource", new[] { "ApplicationDeveloper", "Version", "ApplicationFullName", "ApplicationIdentifier" }),
 				new ClassInfo("IfcGloballyUniqueId", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4.UtilityResource", new[] { "" }),
@@ -1726,7 +1726,7 @@ namespace IdsLib.IfcSchema
 
         private static partial SchemaInfo GetClassesIFC4x3() 
 		{
-			var schema = new SchemaInfo() {
+			var schema = new SchemaInfo(IfcSchemaVersions.Ifc4x3) {
 				new ClassInfo("IfcBorehole", "IfcGeotechnicalAssembly", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4x3.SharedInfrastructureElements", new[] { "GlobalId", "OwnerHistory", "Name", "Description", "ObjectType", "ObjectPlacement", "Representation", "Tag" }),
 				new ClassInfo("IfcGeotechnicalAssembly", "IfcGeotechnicalElement", ClassType.Abstract, Enumerable.Empty<string>(), "Ifc4x3.SharedInfrastructureElements", new[] { "GlobalId", "OwnerHistory", "Name", "Description", "ObjectType", "ObjectPlacement", "Representation", "Tag" }),
 				new ClassInfo("IfcGeotechnicalElement", "IfcElement", ClassType.Abstract, Enumerable.Empty<string>(), "Ifc4x3.SharedInfrastructureElements", new[] { "GlobalId", "OwnerHistory", "Name", "Description", "ObjectType", "ObjectPlacement", "Representation", "Tag" }),

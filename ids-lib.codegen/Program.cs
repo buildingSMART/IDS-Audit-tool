@@ -30,7 +30,11 @@ internal class Program
 
         EvaluateContent(
             IfcSchema_PartOfRelationGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");
+            @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");        
+        
+        EvaluateContent(
+            IfcSchema_PropertiesGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.Properties.g.cs");
     }
 
     private static void EvaluateContent(string content, string destinationPath)

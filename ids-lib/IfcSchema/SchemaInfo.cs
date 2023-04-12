@@ -11,14 +11,23 @@ namespace IdsLib.IfcSchema
     /// </summary>
     public partial class SchemaInfo : IEnumerable<ClassInfo>
     {
+        private readonly IfcSchemaVersions version;
+
+        /// <summary>
+        /// Provides access to the property sets of the schema
+        /// </summary>
+        public IList<PropertySetInfo> PropertySets { get; }
+
         /// <summary>
         /// Provides metadata on IFC schemas, to support the correct compilation of the XIDS
         /// </summary>
-        public SchemaInfo()
+        public SchemaInfo(IfcSchemaVersions schemaVersion)
         {
+            version = schemaVersion;
             Classes = new Dictionary<string, ClassInfo>();
             AttributesToAllClasses = new Dictionary<string, string[]>();
             AttributesToTopClasses = new Dictionary<string, string[]>();
+            PropertySets = PropertySetInfo.GetSchema(schemaVersion)!;
         }
 
         /// <summary>

@@ -87,7 +87,8 @@ We are planning to a number of audits (checked ones are implemented)
         - [x] Regex matches
         - [x] Multiple values allowed	
   - [ ] properties 
-    - [ ] All audits are case insensitive
+    - [x] Prepare metadata infrastructure
+    - [ ] Is it correct that names are case sensitive?
     - [ ] no extensions of standard PSETs
       - [ ] properties are limited to the agreed set
     - [ ] No misplacement of properties
@@ -97,11 +98,11 @@ We are planning to a number of audits (checked ones are implemented)
     - [ ] Includes IFC type inheritance?
     - [ ] Reserved prefix
       - [ ] No custom pset can start with "PSET_" this prefix is reserved for the standard
-    - [ ] Measures
-      - [x] If a value is provided then it needs to be checked
-      - [x] Test cases added
-      - [ ] Discuss with IDS group: clarify the list of valid measures 
-      - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
+  - [ ] Measures
+    - [x] If a value is provided then it needs to be checked
+    - [x] Test cases added
+    - [ ] Discuss with IDS group: clarify the list of valid measures 
+    - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
   - [x] Cardinality for facets (in requirements)
     - [x] partOf
     - [x] classification
