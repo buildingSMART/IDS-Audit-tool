@@ -9,15 +9,15 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using IdsLib.IdsSchema;
-using System.Diagnostics;
 using IdsLib.IdsSchema.IdsNodes;
-using System.Collections.Concurrent;
+using System.Data;
+using System.Runtime;
 
 namespace IdsLib;
 
 /// <summary>
 /// Main static class for the execution of the audit functions of the tool.
-/// See the <see cref="Run(IdsLib.IAuditOptions, ILogger?)"/> and <see cref="Run(Stream, IdsLib.IAuditOptions, ILogger?)"/> for more details.
+/// See the <see cref="Run(IdsLib.IBatchAuditOptions, ILogger?)"/> and <see cref="Run(Stream, IdsLib.SingleAuditOptions, ILogger?)"/> for more details.
 /// </summary>
 public static partial class Audit
 {
@@ -55,18 +55,23 @@ public static partial class Audit
         /// A custom XSD was passed, but it could not be used because of an error in its content or structure.
         /// </summary>
         XsdSchemaError = 1 << 5,
+        /// <summary>
+        /// An unmanged error occurred in the main audit methods. Please contact the authors to address the problem.
+        /// </summary>
+        UnhandledError = 1 << 6,
     }
 
     /// <summary>
-    /// Main entry point to access the library features, when dealing with streams
-    /// This is currently not implemented, while we work out the best way to pass streams
-    /// to the underlying XML APIs that we use in <see cref="Run(IAuditOptions, ILogger?)"/>.
+    /// Main entry point to access the library features via streams.
     /// </summary>
-    /// <exception cref="NotImplementedException"></exception>
-    [Obsolete("Still not implemeted; it's not to be considered obsolete, rather a reminder of work to do.")]
-    public static Status Run(Stream idsSource, IAuditOptions opts, ILogger? logger = null)
+    public static Status Run(Stream idsSource, SingleAuditOptions opts, ILogger? logger = null)
     {
-        throw new NotImplementedException("Will come soon.");
+        var auditSettings = new AuditHelper(logger, opts);
+        var xsett = GetSchemaSettings(opts.IdsVersion, logger);
+        if (xsett is null)
+            return Status.NotImplementedError;
+        FinalizeSettings(xsett);
+        return AuditStreamAsync(idsSource, auditSettings, xsett, logger).Result;
     }
 
     /// <summary>
@@ -75,7 +80,7 @@ public static partial class Audit
     /// <param name="opts">configuraion options for the execution of audits</param>
     /// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed</param>
     /// <returns>A status enum</returns>
-    public static Status Run(IAuditOptions opts, ILogger? logger = null)
+    public static Status Run(IBatchAuditOptions opts, ILogger? logger = null)
     {
         Status retvalue = Status.Ok;
         if (string.IsNullOrEmpty(opts.InputSource) && !opts.SchemaFiles.Any())
@@ -84,7 +89,7 @@ public static partial class Audit
             logger?.LogWarning("No audits are required, with the options passed.");
             retvalue |= Status.InvalidOptionsError;
         }
-        else if (string.IsNullOrEmpty(opts.InputSource)) 
+        else if (string.IsNullOrEmpty(opts.InputSource))
         {
             // No ids, but we have a schemafile => check the schema itself
             opts.AuditSchemaDefinition = true;
@@ -127,7 +132,7 @@ public static partial class Audit
         }
         // inform on the config
         logger?.LogInformation("Auditing: {audits}.", string.Join(", ", auditsList.ToArray()));
-        
+
         // start audit
         if (opts.AuditSchemaDefinition)
         {
@@ -139,13 +144,13 @@ public static partial class Audit
         if (Directory.Exists(opts.InputSource))
         {
             var t = new DirectoryInfo(opts.InputSource);
-            var ret = ProcessFolder(t, new AuditInfo(opts, logger), logger);
+            var ret = ProcessFolder(t, opts, logger);
             return CompleteWith(ret, logger);
         }
         else if (File.Exists(opts.InputSource))
         {
             var t = new FileInfo(opts.InputSource);
-            var ret = ProcessSingleFile(t, new AuditInfo(opts, logger), logger);
+            var ret = ProcessSingleFile(t, opts, logger);
             return CompleteWith(ret, logger);
         }
         logger?.LogError("Invalid input source '{missingSource}'", opts.InputSource);
@@ -158,107 +163,158 @@ public static partial class Audit
         return ret;
     }
 
-    private async static Task<Status> AuditIdsComplianceAsync(AuditInfo c, FileInfo theFile, ILogger? logger)
+    private async static Task<Status> AuditIdsComplianceAsync(IBatchAuditOptions options, FileInfo theFile, ILogger? logger)
     {
-        c.ValidatingFile = theFile.FullName;
-
         XmlReaderSettings rSettings;
-        if (c.Options.SchemaFiles.Any())
+        if (options.SchemaFiles.Any())
         {
             // we load the schema settings from the configuration options
-            rSettings = GetSchemaSettings(c.Options.SchemaFiles, logger);
+            rSettings = GetSchemaSettings(options.SchemaFiles, logger);
         }
         else
         {
-            // we load the schema settings from the file
+            // we determine the schema version from the file
             var info = IdsXmlHelpers.GetIdsInformationAsync(theFile).Result;
-            if (info.Version == IdsVersion.Invalid)
+            var vrs = info.Version;
+            var loc = info.SchemaLocation;
+
+            if (vrs == IdsVersion.Invalid)
             {
-                logger?.LogError("IDS schema version not found, or not recognised ({vrs}).", info.SchemaLocation);
+                logger?.LogError("IDS schema version not found, or not recognised ({vrs}).", loc);
                 return Status.IdsStructureError;
             }
-            var sett = GetSchemaSettings(info.Version, logger);
+            var sett = GetSchemaSettings(vrs, logger);
             if (sett is null)
             {
-                logger?.LogError("Embedded schema not found for IDS version {vrs}.", info.Version);
+                logger?.LogError("Embedded schema not found for IDS version {vrs}.", vrs);
                 return Status.NotImplementedError;
             }
             rSettings = sett;
         }
+        FinalizeSettings(rSettings);
+
+        var opts = new AuditProcessOptions()
+        {
+            OmitIdsContentAudit = options.OmitIdsContentAudit ||
+                (!string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern) && Regex.IsMatch(theFile.FullName, options.OmitIdsContentAuditPattern, RegexOptions.IgnoreCase))
+        };
+        var auditSettings = new AuditHelper(logger, opts);
+
+        using var stream = File.OpenRead(theFile.FullName);
+        return await AuditStreamAsync(stream, auditSettings, rSettings, logger);
+    }
+
+    private static void FinalizeSettings(XmlReaderSettings rSettings)
+    {
         rSettings.ValidationType = ValidationType.Schema;
         rSettings.Async = true;
-        rSettings.ValidationEventHandler += new ValidationEventHandler(c.ValidationReporter);
         rSettings.IgnoreComments = true;
         rSettings.IgnoreWhitespace = true;
+    }
 
-        using var src = File.OpenRead(theFile.FullName);
-        var reader = XmlReader.Create(src, rSettings);
+    private static async Task<Status> AuditStreamAsync(Stream theStream, AuditHelper auditSettings, XmlReaderSettings rSettings, ILogger? logger)
+    {
+        Status contentStatus = Status.Ok;
+        XmlReader reader;
+        try
+        {
+            // the creation is inside a try block because there might be problems with when 
+            // using schemas from the end user
+            //
+            reader = XmlReader.Create(theStream, rSettings);
+        }
+        catch (Exception ex)
+        {
+            logger?.LogCritical("{exceptionType}: {exceptionMessage}", ex.GetType().Name, ex.Message);
+            return auditSettings.SchemaStatus | contentStatus | Status.XsdSchemaError;
+        }
+#if false
+        int tot = 0;
+        foreach (XmlSchema item in rSettings.Schemas.Schemas())
+        {
+            tot += item.Elements.Names.Count;
+        }
+        logger?.LogDebug("XmlReaderSettings has {schemaCount} schemas and {tot} elements", rSettings.Schemas.Count, tot);
+#endif 
         var cntRead = 0;
         var elementsStack = new Stack<BaseContext>(); // we prepare the stack to evaluate the IDS content
         BaseContext? current = null;
-        Status contentStatus = Status.Ok;
+        rSettings.ValidationEventHandler += new ValidationEventHandler(auditSettings.ValidationReporter);
 
-        bool omitContent = c.Options.OmitIdsContentAudit
-            ||
-            (!string.IsNullOrWhiteSpace(c.Options.OmitIdsContentAuditPattern) && Regex.IsMatch(theFile.FullName, c.Options.OmitIdsContentAuditPattern, RegexOptions.IgnoreCase));
-
-        while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
+        try
         {
-            cntRead++;
-            if (!omitContent) // content audit can be omitted, but the while loop is still executed
+            while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
             {
-                switch (reader.NodeType)
+                cntRead++;
+                if (!auditSettings.Options.OmitIdsContentAudit) // content audit can be omitted, but the while loop is still executed
                 {
-                    case XmlNodeType.Element:
-                        // Debug.WriteLine($"Start Element {reader.LocalName}");
-                        BaseContext? parent = null;
+                    switch (reader.NodeType)
+                    {
+                        case XmlNodeType.Element:
+                            // Debug.WriteLine($"Start Element {reader.LocalName}");
+                            BaseContext? parent = null;
 #if NETSTANDARD2_0
-                        if (elementsStack.Count > 0)
-                            parent = elementsStack.Peek();
+                            if (elementsStack.Count > 0)
+                                parent = elementsStack.Peek();
 #else
-                        if (elementsStack.TryPeek(out var peeked))
-                            parent = peeked;
+                            if (elementsStack.TryPeek(out var peeked))
+                                parent = peeked;
 #endif
-                        var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
+                            var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
 
-                        // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
-                        if (!reader.IsEmptyElement)
-                            elementsStack.Push(newContext);
-                        else
-                            contentStatus |= newContext.PerformAudit(logger); // invoking audit empty element
-                        current = newContext; 
-                        break;
-                    
-                    case XmlNodeType.Text:
-                        // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
-                        current!.SetContent(reader.GetValueAsync().Result);
-                        break;
-                    case XmlNodeType.EndElement:
-                        // Debug.WriteLine($"End Element {reader.LocalName}");
-                        var closing = elementsStack.Pop();
-                        // Debug.WriteLine($"  auditing {closing.type} on end element");
-                        contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
-                        break;
-                    default:
-                        // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
-                        break;
+                            // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
+                            if (!reader.IsEmptyElement)
+                                elementsStack.Push(newContext);
+                            else
+                                contentStatus |= newContext.PerformAudit(logger); // invoking audit empty element
+                            current = newContext;
+                            break;
+
+                        case XmlNodeType.Text:
+                            // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
+                            current!.SetContent(reader.GetValueAsync().Result);
+                            break;
+                        case XmlNodeType.EndElement:
+                            // Debug.WriteLine($"End Element {reader.LocalName}");
+                            var closing = elementsStack.Pop();
+                            // Debug.WriteLine($"  auditing {closing.type} on end element");
+                            contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
+                            break;
+                        default:
+                            // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
+                            break;
+                    }
                 }
             }
         }
-        c.Logger?.LogDebug("Read {fullname}, {cntRead} elements.", theFile.FullName, cntRead);
-        return c.Status | contentStatus;
+        catch (XmlSchemaValidationException svex)
+        {
+            logger?.LogError("{exceptionType}: {exceptionMessage}", svex.GetType().Name, svex.Message);
+            return auditSettings.SchemaStatus | contentStatus | Status.IdsStructureError;
+        }
+        catch (Exception ex)
+        {
+            logger?.LogError("{exceptionType}: {exceptionMessage}", ex.GetType().Name, ex.Message);
+            return auditSettings.SchemaStatus | contentStatus | Status.UnhandledError;
+        }
+        finally
+        {
+            reader.Dispose();
+            rSettings.ValidationEventHandler -= new ValidationEventHandler(auditSettings.ValidationReporter);
+        }
+        auditSettings.Logger?.LogDebug("Completed reading {cntRead} xml elements.", cntRead);
+        return auditSettings.SchemaStatus | contentStatus;
     }
 
     private static XmlReaderSettings? GetSchemaSettings(IdsVersion vrs, ILogger? logger)
     {
         var rSettings = new XmlReaderSettings();
-        var files = GetSchemaFiles(vrs, logger);
-        if (!files.Any())
+        var schemas = GetSchemasByVersion(vrs, logger);
+        if (!schemas.Any())
             return null;
-        foreach (var schema in files) // from GetSchemaSettings
+        foreach (var schema in schemas)
         {
-            var tns = GetSchemaNamespace(schema);
-            rSettings.Schemas.Add(tns, schema.FullName);
+            rSettings.Schemas.Add(schema);
         }
         return rSettings;
     }
@@ -266,74 +322,101 @@ public static partial class Audit
     private static XmlReaderSettings GetSchemaSettings(IEnumerable<string> diskSchemas, ILogger? logger)
     {
         var rSettings = new XmlReaderSettings();
-        foreach (var schema in GetSchemaFiles(diskSchemas, logger)) // from GetSchemaSettings
+        var imports = new List<string>();
+        foreach (var diskSchema in diskSchemas) 
         {
-            var tns = GetSchemaNamespace(schema);
-            rSettings.Schemas.Add(tns, schema.FullName);
+            using var reader = File.OpenText(diskSchema);
+            var schema = XmlSchema.Read(reader, null);
+            if (schema is null)
+            {
+                logger?.LogError("XSD\t{schemaFile}\tSchema error.", diskSchema);
+                continue;
+            }
+            foreach (var location in schema.Includes.OfType<XmlSchemaImport>().Select(x => x.SchemaLocation))
+            {
+                if (location is null)
+                    continue;
+                imports.Add(location);
+            }
+
+            rSettings.Schemas.Add(schema);
+        }
+        // also get required reference schemas
+        foreach (var schema in GetSchemasFromImports(logger, imports))
+        {
+            rSettings.Schemas.Add(schema);
         }
         return rSettings;
     }
 
-    static readonly ConcurrentDictionary<string, string> NameSpaces = new();
-
-    private static string GetSchemaNamespace(FileInfo schemaFile)
+    private static IEnumerable<XmlSchema> GetSchemasFromImports(ILogger? logger, IEnumerable<string> imports)
     {
-        if (NameSpaces.ContainsKey(schemaFile.FullName))
-            return NameSpaces[schemaFile.FullName];
-
-        string tns = "";
-        var re = new Regex(@"targetNamespace=""(?<tns>[^""]*)""");
-        var t = File.ReadAllText(schemaFile.FullName);
-        var m = re.Match(t);
-        if (m.Success)
+        var distinct = imports.Distinct();
+        foreach (var schema in distinct) 
         {
-            tns = m.Groups["tns"].Value;
+            switch (schema)
+            {
+                case "http://www.w3.org/2001/xml.xsd":
+                    yield return GetSchema("xml.xsd")!;
+                    yield return GetSchema("xsdschema.xsd")!;
+                    break;
+                case "https://www.w3.org/2001/XMLSchema.xsd":
+                    break;
+                case "http://www.w3.org/2001/XMLSchema-instance":
+                    break;
+                default:
+                    logger?.LogError("Unexpected import schema {schema}.", schema);
+                    break;
+            }
         }
-        NameSpaces.TryAdd(schemaFile.FullName, tns);
-        return tns;
     }
 
-
-    private static Status ProcessSingleFile(FileInfo theFile, AuditInfo c, ILogger? logger)
+    private static Status ProcessSingleFile(FileInfo theFile, IBatchAuditOptions options, ILogger? logger)
     {
         Status ret = Status.Ok;
         logger?.LogInformation("Auditing file: `{filename}`.", theFile.FullName);
-        ret |= AuditIdsComplianceAsync(c, theFile, logger).Result;
+        ret |= AuditIdsComplianceAsync(options, theFile, logger).Result;
         return ret;
     }
 
-    private static Status ProcessFolder(DirectoryInfo directoryInfo, AuditInfo c, ILogger? logger)
+    private static Status ProcessFolder(DirectoryInfo directoryInfo, IBatchAuditOptions options, ILogger? logger)
     {
-        string idsExtension = c.Options.InputExtension;
 #if NETSTANDARD2_0
-        var allIdss = directoryInfo.GetFiles($"*.{idsExtension}", SearchOption.AllDirectories).ToList();
+        var allIdss = directoryInfo.GetFiles($"*.{options.InputExtension}", SearchOption.AllDirectories).ToList();
 #else
         var eop = new EnumerationOptions() { RecurseSubdirectories = true, MatchCasing = MatchCasing.CaseInsensitive };
-        var allIdss = directoryInfo.GetFiles($"*.{idsExtension}", eop).ToList();
+        var allIdss = directoryInfo.GetFiles($"*.{options.InputExtension}", eop).ToList();
 #endif
         Status ret = Status.Ok;
         var tally = 0;
         foreach (var ids in allIdss.OrderBy(x => x.FullName))
         {
-            var sgl = ProcessSingleFile(ids, c, logger);
+            var sgl = ProcessSingleFile(ids, options, logger);
             ret |= sgl;
             tally++;
         }
         var fileCardinality = tally != 1 ? "files" : "file";
-        c.Logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
+        logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
         return ret;
     }
 
-    private static Status PerformSchemaCheck(IAuditOptions auditOptions, ILogger? logger)
+    private static Status PerformSchemaCheck(IBatchAuditOptions auditOptions, ILogger? logger)
     {
         Status ret = Status.Ok;
         var rSettings = new XmlReaderSettings();
-        foreach (var schemaFile in GetSchemaFiles(auditOptions.SchemaFiles, logger)) // within PerformSchemaCheck
+        foreach (var schemaFile in auditOptions.SchemaFiles) // within PerformSchemaCheck
         {
             try
             {
-                var ns = GetSchemaNamespace(schemaFile);
-                rSettings.Schemas.Add(ns, schemaFile.FullName);
+                using var reader = File.OpenText(schemaFile);
+                var schema = XmlSchema.Read(reader, null);
+                if (schema is null) 
+                {
+                    logger?.LogError("XSD\t{schemaFile}\tSchema error.", schemaFile);
+                    ret |= Status.XsdSchemaError;
+                    continue;
+                }
+                rSettings.Schemas.Add(schema);
             }
             catch (XmlSchemaException ex)
             {
@@ -349,89 +432,34 @@ public static partial class Audit
         return ret;
     }
 
-    /// <summary>
-    /// Provides access to the latest XSD schema, saved as a file in the temporary directory.
-    /// This is useful because some of Microsoft's XML APIs rely on files rather than streams.
-    /// </summary>
-    /// <returns>A valid FileInfo class if successful, null on failure.</returns>
-    public static FileInfo? GetLatestIdsSchema()
-    {
-        var file = ExtractResources(new[] {"ids.xsd"}).FirstOrDefault();
-        if (file is null)
-            return null;
-        return new FileInfo(file);
-    }
-
-    private static IEnumerable<FileInfo> GetSchemaFiles(IdsVersion vrs, ILogger? logger = null)
+    private static IEnumerable<XmlSchema> GetSchemasByVersion(IdsVersion vrs, ILogger? logger = null)
     {
         List<string> resourceList;
         switch (vrs)
         {
             case IdsVersion.Ids0_9:
+            case IdsVersion.Ids1_0:
                 resourceList = new List<string> { "xsdschema.xsd", "xml.xsd", "ids.xsd" };
                 break;
             default:
                 logger?.LogError("Embedded schema for version {vrs} not implemented.", vrs);
                 yield break;
         }
-        List<string> saved = ExtractResources(resourceList, logger);
-        foreach (var item in saved)
+        foreach (var item in resourceList.Select(x => GetSchema(x)))
         {
-            var f = new FileInfo(item);
-            if (f.Exists)
-                yield return f;
+            if (item is not null)
+                yield return item;
         }
+        
     }
-
-    private static IEnumerable<FileInfo> GetSchemaFiles(IEnumerable<string> userDiskFiles, ILogger? logger)
+        
+    private static XmlSchema GetSchema(string name)
     {
-        var resourceList = new List<string> { "xsdschema.xsd", "xml.xsd" };
-        List<string> saved = ExtractResources(resourceList, logger);
-        foreach (var item in userDiskFiles.Union(saved))
-        {
-            var f = new FileInfo(item);
-            if (f.Exists)
-                yield return f;
-        }
-    }
-
-    private static readonly ConcurrentDictionary<string, string> resourceToFile = new();
-
-    private static List<string> ExtractResources(IEnumerable<string> resourcesIdentifiers, ILogger? logger = null)
-    {
-        // get the resources
-        var resolvedFiles = new List<string>();
-        var assembly = Assembly.GetExecutingAssembly();
-        foreach (var resourceIdentifier in resourcesIdentifiers)
-        {
-            if (resourceToFile.TryGetValue(resourceIdentifier, out var file))
-            {
-                resolvedFiles.Add(file);
-            }
-            else
-            {
-                string resourceName = assembly.GetManifestResourceNames()
-                    .Single(str => str.EndsWith(resourceIdentifier));
-                using var stream = assembly.GetManifestResourceStream(resourceName);
-                if (stream == null)
-                {
-                    logger?.LogError("Error extracting resource: {schema}", resourceIdentifier);
-                    continue;
-                }
-                using var reader = new StreamReader(stream);
-                string result = reader.ReadToEnd();
-                var tempFile = Path.GetTempFileName();
-                File.WriteAllText(tempFile, result);
-                
-                // try to add, if cannot be done, get it from the dic,
-                // it must have been added in the meanwhile to the static dictionary
-                //
-                if (resourceToFile.TryAdd(resourceIdentifier, tempFile))
-                    resolvedFiles.Add(tempFile);
-                else
-                    resolvedFiles.Add(resourceToFile[resourceIdentifier]);
-            }
-        }
-        return resolvedFiles;
+        var fullName = "IdsLib.Resources.XsdSchemas." + name;
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fullName)
+                ?? throw new NotImplementedException("Null resource stream.");
+        var schema = XmlSchema.Read(stream, null)
+            ?? throw new NotImplementedException("Invalid resource stream.");
+        return schema;
     }
 }

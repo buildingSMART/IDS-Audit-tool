@@ -28,6 +28,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="bsFiles\badIds.xsd">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="bsFiles\ids.xsd">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="bsFiles\ids093.xsd">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

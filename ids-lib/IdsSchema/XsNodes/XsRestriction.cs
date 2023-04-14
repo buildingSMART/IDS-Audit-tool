@@ -1,12 +1,7 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
 using Microsoft.Extensions.Logging;
-using Microsoft.Win32.SafeHandles;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace IdsLib.IdsSchema.XsNodes;

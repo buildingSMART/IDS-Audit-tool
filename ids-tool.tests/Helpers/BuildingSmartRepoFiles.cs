@@ -11,7 +11,7 @@ public class BuildingSmartRepoFiles
     {
         get
         {
-            DirectoryInfo? d = new DirectoryInfo(".");
+            var d = new DirectoryInfo(".");
             while (d is not null)
             {
                 var subIDS = d.GetDirectories("IDS").FirstOrDefault();
@@ -22,9 +22,38 @@ public class BuildingSmartRepoFiles
             return ".";
         }
     }
+
+    private static string IdsToolRepoPath
+    {
+        get
+        {
+            DirectoryInfo? d = new(".");
+            while (d is not null)
+            {
+                var solution = d.GetFiles("ids-tool.sln").FirstOrDefault();
+                if (solution != null)
+                    return d.FullName;
+                d = d.Parent;
+            }
+            return ".";
+        }
+    }
+
     private static string IdsTestcasesPath => Path.Combine(IdsDocumentationPath, "testcases");
     private static string IdsDevelopmentPath => Path.Combine(IdsRepoPath, @"Development");
     private static string IdsDocumentationPath => Path.Combine(IdsRepoPath, @"Documentation");
+
+    public static FileInfo GetIdsToolSchema()
+    {
+        var schema = Path.Combine(IdsToolRepoPath, "ids-lib", "Resources", "XsdSchemas", "ids.xsd");
+        return new FileInfo(schema);
+    }
+
+    public static FileInfo GetIdsTestSuiteSchema()
+    {
+        var schema = Path.Combine(IdsToolRepoPath, "ids-tool.tests", "bsFiles", "ids.xsd");
+        return new FileInfo(schema);
+    }
 
     public static FileInfo GetIdsSchema()
     {

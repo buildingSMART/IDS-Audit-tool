@@ -19,6 +19,28 @@ internal static class LoggerAndAuditHelpers
         return AuditWithOptions(c, OutputHelper, null, -1);
     }
 
+    internal static Audit.Status AuditWithStream(Stream stream, SingleAuditOptions s, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
+    {
+        // we can only run once because we don't want to rewind the stream
+        if (expectedWarnAndErrors == -1)
+        {
+            ILogger logg = GetXunitLogger(OutputHelper);
+            var checkResult = Audit.Run(stream, s, logg); // run for xunit output of logging
+            if (expectedOutcome.HasValue)
+                checkResult.Should().Be(expectedOutcome.Value);
+            return checkResult;
+        }
+        else
+        {
+            var loggerMock = new Mock<ILogger<AuditTests>>();
+            var checkResult = Audit.Run(stream, s, loggerMock.Object); // run for testing of log errors and warnings
+            if (expectedOutcome.HasValue)
+                checkResult.Should().Be(expectedOutcome.Value);
+            CheckErrorsAndWarnings(loggerMock, expectedWarnAndErrors);
+            return checkResult;
+        }
+    }
+
     internal static Audit.Status AuditWithOptions(AuditOptions c, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
     {
         ILogger logg = GetXunitLogger(OutputHelper);
@@ -40,17 +62,17 @@ internal static class LoggerAndAuditHelpers
         errorAndWarnings.Count().Should().Be(expectedErrCount, "mismatch with expected error/warning count");
     }
 
-    private static ILogger GetXunitLogger(ITestOutputHelper helper)
+    internal static ILogger GetXunitLogger(ITestOutputHelper helper)
     {
         var services = new ServiceCollection()
-                    .AddLogging((builder) => builder.AddXUnit(helper));
+                    .AddLogging((builder) => builder.AddXUnit(helper).SetMinimumLevel(LogLevel.Debug));
         IServiceProvider provider = services.BuildServiceProvider();
         var logg = provider.GetRequiredService<ILogger<AuditTests>>();
         Assert.NotNull(logg);
         return logg;
     }
 
-    internal static void FullAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors)
+    internal static void FullAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors = -1)
     {
         var c = new AuditOptions()
         {
@@ -60,6 +82,15 @@ internal static class LoggerAndAuditHelpers
         AuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
+    internal static void FullAudit(Stream stream, ITestOutputHelper xunitOutputHelper, Audit.Status status, int numErr = -1)
+    {
+        var s = new SingleAuditOptions()
+        {
+            OmitIdsContentAudit = false,
+            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9
+        };
+        AuditWithStream(stream, s, xunitOutputHelper, status, numErr);
+    }
 
     internal static void OmitContentAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors)
     {
@@ -67,9 +98,10 @@ internal static class LoggerAndAuditHelpers
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
-            SchemaFiles = new[] { "/bsFiles/ids093.xsd" }
+            SchemaFiles = new[] { "bsFiles/ids.xsd" }
         };
         AuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
+    
 }

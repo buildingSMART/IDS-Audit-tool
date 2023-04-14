@@ -62,7 +62,8 @@ namespace IdsLib.codegen
         public static IEnumerable<UpdatableFile> GetAllUpdatable(DirectoryInfo solutionDir)
         {
             return UpdateDocumentationUnits(solutionDir)
-                .Concat(UpdateEmbeddedSchema(solutionDir));
+                .Concat(UpdateEmbeddedSchema(solutionDir))
+                .Concat(UpdateTestingSchema(solutionDir));
         }
 
         private static IEnumerable<UpdatableFile> UpdateDocumentationUnits(DirectoryInfo solutionDir)
@@ -97,6 +98,23 @@ namespace IdsLib.codegen
                 if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, new FileInfo(destination)))
                     yield break;
                 yield return new UpdatableFile("Ids schema file", sourceFile.FullName, destination);
+            }
+        }
+
+        private static IEnumerable<UpdatableFile> UpdateTestingSchema(DirectoryInfo solutionDir)
+        {
+            var sourceFile = BuildingSmartRepoFiles.GetDevelopment("ids.xsd");
+            if (sourceFile.Exists)
+            {
+                var destination = Path.Combine(
+                   solutionDir.FullName,
+                    "ids-tool.tests",
+                    "bsFiles",
+                    "ids.xsd"
+                    );
+                if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, new FileInfo(destination)))
+                    yield break;
+                yield return new UpdatableFile("testing ids schema file", sourceFile.FullName, destination);
             }
         }
 

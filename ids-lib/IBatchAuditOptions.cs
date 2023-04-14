@@ -3,9 +3,9 @@
 namespace IdsLib;
 
 /// <summary>
-/// This interface contains the parameters to configure the execution of the audit.
+/// This interface contains the parameters to configure a complex execution of the audit.
 /// </summary>
-public interface IAuditOptions
+public interface IBatchAuditOptions
 {
     /// <summary>
     /// XSD schema to load, this is useful when testing changes in the schema (e.g. GitHub repo).

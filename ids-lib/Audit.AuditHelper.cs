@@ -6,22 +6,20 @@ namespace IdsLib;
 
 public static partial class Audit
 {
-    private class AuditInfo
+    private class AuditHelper
     {
-        public IAuditOptions Options { get; }
-
         internal ILogger? Logger;
 
-        public AuditInfo(IAuditOptions opts, ILogger? logger)
+        public AuditProcessOptions Options { get; }
+
+        public AuditHelper(ILogger? logger, AuditProcessOptions options)
         {
-            Options = opts;
             Logger = logger;
+            Options = options;
         }
 
-        public string? ValidatingFile { get; set; }
-
-        public Status Status { get; internal set; }
-
+        public Status SchemaStatus { get; internal set; }
+        
         public void ValidationReporter(object? sender, ValidationEventArgs e)
         {
             var location = "position unknown";
@@ -32,12 +30,12 @@ public static partial class Audit
             if (e.Severity == XmlSeverityType.Warning)
             {
                 Logger?.LogWarning("XML WARNING at {location}; {message}", location, e.Message);
-                Status |= Status.IdsStructureError;
+                SchemaStatus |= Status.IdsStructureError;
             }
             else if (e.Severity == XmlSeverityType.Error)
             {
                 Logger?.LogError("XML ERROR at {location}; {message}", location, e.Message);
-                Status |= Status.IdsStructureError;
+                SchemaStatus |= Status.IdsStructureError;
             }
         }
     }

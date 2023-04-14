@@ -138,12 +138,16 @@ We are planning to a number of audits (checked ones are implemented)
 
 ## Feature Roadmap
 
-- [ ] Implement Run with streams (as opposed to disk files)
-  - [ ] Get schema settings dependent on IDS version from streams
+- [x] Implement Run with streams (as opposed to disk files)
+  - [x] Get schema settings dependent on IDS version from streams
     - [ ] from url
-    - [ ] from library resource 
+    - [x] from library resource 
     - [ ] need seekable stream to be able to restart reading after version is identified
-  - [ ] Isolate configuration for running audit on single entities (i.e. stream and file)
-  - [ ] define and implement interface for feedback on location of issues 
-    - [ ] in files (line, position)
-    - [ ] in streams (offset)
+      - [ ] Implement test with non seekable stream
+      - [ ] Perhaps use streambuffer on passed stream to solve
+  - [x] Isolate configuration for running audit on single entities (i.e. stream and file)
+  - [x] test that Line and Position are available in all streams as well as fileStream.
+  - [x] Added test cases
+    - [x] Multiple files
+    - [x] Seekable and non seekable network stream
+    

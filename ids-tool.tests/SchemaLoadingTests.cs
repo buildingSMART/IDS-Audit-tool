@@ -4,11 +4,18 @@ using idsTool.tests.Helpers;
 using IdsTool;
 using System.IO;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace idsTool.tests;
 
 public class SchemaLoadingTests : BuildingSmartRepoFiles
 {
+    public SchemaLoadingTests(ITestOutputHelper outputHelper)
+    {
+        XunitOutputHelper = outputHelper;
+    }
+    private ITestOutputHelper XunitOutputHelper { get; }
+
     /// <summary>
     /// In case this test fails, see <see cref="AuditTests.FullAuditOfDevelopmentFilesOk"/> for issues in the file.
     /// </summary>
@@ -22,7 +29,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
         };
-        var checkResult = Audit.Run(c);
+        var checkResult = Audit.Run(c, LoggerAndAuditHelpers.GetXunitLogger(XunitOutputHelper));
         checkResult.Should().Be(Audit.Status.Ok);
     }
 
