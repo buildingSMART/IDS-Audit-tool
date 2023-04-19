@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using IdsLib.IdsSchema;
 using IdsLib.IdsSchema.IdsNodes;
 using System.Data;
-using System.Runtime;
 
 namespace IdsLib;
 

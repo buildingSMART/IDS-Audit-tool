@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
-using IdsLib;
 using idsTool.tests.Helpers;
-using System.IO;
 using Xunit;
 
 namespace idsTool.tests

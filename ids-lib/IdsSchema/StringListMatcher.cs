@@ -1,11 +1,8 @@
-﻿using IdsLib.IfcSchema;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Xml;
 
 namespace IdsLib.IdsSchema;
 

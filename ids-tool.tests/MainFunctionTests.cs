@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using IdsLib;
 using idsTool.tests.Helpers;
 using IdsTool;
 using System.Collections.Generic;

@@ -2,9 +2,7 @@
 using IdsLib;
 using idsTool.tests.Helpers;
 using IdsTool;
-using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;

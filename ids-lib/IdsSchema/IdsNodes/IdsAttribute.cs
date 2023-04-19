@@ -1,6 +1,5 @@
 ﻿using IdsLib.IfcSchema;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;

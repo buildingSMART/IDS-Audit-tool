@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System.Net.Http.Headers;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
