@@ -144,6 +144,7 @@ public class AuditTests : BuildingSmartRepoFiles
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
         var stream = Request.GetResponse().GetResponseStream();
         stream.Should().NotBeNull();
+        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.Ok);
         Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
     }
 
