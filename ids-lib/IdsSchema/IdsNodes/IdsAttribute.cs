@@ -1,18 +1,22 @@
 ﻿using IdsLib.IfcSchema;
+using IdsLib.IfcSchema.TypeFilters;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsAttribute : BaseContext, IIdsFacet
+internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
 {
     private static readonly string[] SpecificationArray = { "specification" };
     
     public IdsAttribute(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
+        IsValid = false;
     }
 
     public bool IsValid { get; private set; }
+
+    public IIfcTypeConstraint? TypesFilter { get; private set; } = null;
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
@@ -27,22 +31,28 @@ internal class IdsAttribute : BaseContext, IIdsFacet
             return Audit.Status.IdsContentError;
         }
         var requiredSchemaVersions = spec.SchemaVersions;
-        var names = GetChildNodes("name");
+        var name = GetChildNodes("name").FirstOrDefault(); // name must exist
+        var sm = name?.GetListMatcher();
+
+        // the first child must be a valid string matcher
+        if (sm is null)
+            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
         
-        var ret = Audit.Status.Ok;
-        foreach (var name in names)
-        {
-            // the first child must be a valid string matcher
-            if (!name.Children.Any())
-                return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
-            if (name.Children[0] is not IStringListMatcher sm)
-                return IdsLoggerExtensions.ReportInvalidStringMatcher(logger, name.Children[0], "name");
-            var ValidClassNames = SchemaInfo.AllAttributes
-                .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
-                .Select(y => y.IfcAttributeName);
-            var result = sm.DoesMatch(ValidClassNames, false, logger, out var matches, "attribute names", requiredSchemaVersions);
-            ret |= result;
-        }
+        var validAttributeNames = SchemaInfo.AllAttributes
+            .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
+            .Select(y => y.IfcAttributeName);
+        var ret = sm.DoesMatch(validAttributeNames, false, logger, out var matches, "attribute names", requiredSchemaVersions);
+        if (ret != Audit.Status.Ok)
+            return SetInvalid();
+        IsValid = true;
+        // if we have valid attributes we can restrict the valid types depending on them
+        TypesFilter = new IfcConcreteTypeList(SchemaInfo.SharedClassesForAttributes(requiredSchemaVersions, matches));
         return ret;
+    }
+    private Audit.Status SetInvalid()
+    {
+        TypesFilter = null;
+        IsValid = false;
+        return Audit.Status.IdsContentError;
     }
 }

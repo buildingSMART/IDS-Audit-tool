@@ -43,6 +43,9 @@
 		<None Update="InvalidFiles\empty.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="InvalidFiles\InvalidAttributeForClass.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="InvalidFiles\InvalidCustomPsetBecauseOfPrefix.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

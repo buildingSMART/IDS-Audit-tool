@@ -69,7 +69,7 @@
       <ids:requirements>
         <ids:attribute>
           <ids:name>
-            <ids:simpleValue>Name</ids:simpleValue>
+            <ids:simpleValue>SelfIntersect</ids:simpleValue>
           </ids:name>
         </ids:attribute>
       </ids:requirements>

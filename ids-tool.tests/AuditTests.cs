@@ -77,6 +77,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]

@@ -128,8 +128,8 @@ We are planning to a number of audits (checked ones are implemented)
     - [x] Entity
     - [x] Property sets
       - [x] determine type constraint by standard property sets
-    - [ ] Attribute
-      - [ ] limit type depending on attribute name
+    - [x] Attribute
+      - [x] limit type depending on attribute name
   - [ ] Implicit Type constraining Facets
     - [ ] Material
       - [ ] could be constraining types depending on implicit set or relations

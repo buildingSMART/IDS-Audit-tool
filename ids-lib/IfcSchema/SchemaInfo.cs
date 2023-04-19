@@ -136,7 +136,7 @@ namespace IdsLib.IfcSchema
             }
         }
 
-        
+
         private static void SetTypeObject(SchemaInfo t, string topTypeObjectClass)
         {
             foreach (var cls in t.Classes.Values)
@@ -240,7 +240,7 @@ namespace IdsLib.IfcSchema
                         thisPsetTypes = Enumerable.Empty<string>();
                         break;
                     }
-                    
+
                     if (thisPsetTypes == null)
                         thisPsetTypes = schema.GetAllConcreteFrom(propSet.ApplicableClasses);
                     else
@@ -266,6 +266,29 @@ namespace IdsLib.IfcSchema
             }
             if (ret is null)
                 return Enumerable.Empty<string>();
+            return ret;
+        }
+
+        /// <summary>
+        /// the set of classes that satisfy the attributes across all provided schemas
+        /// </summary>
+        internal static IEnumerable<string> SharedClassesForAttributes(IfcSchemaVersions version, IEnumerable<string> attributes)
+        {
+            IEnumerable<string> ret = Enumerable.Empty<string>();
+            foreach (var attributeName in attributes)
+            {
+                IEnumerable<string>? thisAttributeClasses = null;
+                foreach (var schema in GetSchemas(version))
+                {
+                    var attributeClasses = schema.GetAttributeClasses(attributeName);
+                    if (thisAttributeClasses == null)
+                        thisAttributeClasses = attributeClasses;
+                    else
+                        thisAttributeClasses = thisAttributeClasses.Intersect(attributeClasses);
+                }
+                thisAttributeClasses ??= Enumerable.Empty<string>();
+                ret = ret.Union(thisAttributeClasses);
+            }
             return ret;
         }
 
