@@ -86,6 +86,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -97,6 +98,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]
@@ -105,6 +107,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
     public void FullAuditFailWithStream(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -126,13 +129,11 @@ public class AuditTests : BuildingSmartRepoFiles
             Timeout = new TimeSpan(0, 0, 30)
         };
         _httpClient.DefaultRequestHeaders.Clear();
-        using (var response = await _httpClient.GetAsync(NetworkIds))
-        {
-            response.EnsureSuccessStatusCode();
-            var stream = await response.Content.ReadAsStreamAsync();
-            LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.Ok);
-            stream.Seek(0, SeekOrigin.Begin);
-        }
+        using var response = await _httpClient.GetAsync(NetworkIds);
+        response.EnsureSuccessStatusCode();
+        var stream = await response.Content.ReadAsStreamAsync();
+        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.Ok);
+        stream.Seek(0, SeekOrigin.Begin);
     }
 
     [Fact]

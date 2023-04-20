@@ -93,14 +93,17 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] properties are limited to the agreed set
     - [ ] No misplacement of properties
       - [ ] Property with a recognised name (e.g. IsExternal) should not be outside of the agreed pset.
-        - [ ] Perhaps return a warning for userdefined property
-        - [ ] Warning or error as configuration (strict)
+        - [ ] Discuss: 
+          - [ ] perhaps just consider this a warning for userdefined property sets
+          - [ ] warning or error as configuration (strict mode?)
     - [x] Includes IFC type inheritance
-    - [x] Reserved prefix
-      - [x] No custom pset can start with "PSET_" this prefix is reserved for the standard
-        - [x] SimpleValues
-        - [x] Enumerations
-        - [ ] Regexes (this is not trivial to implement)
+    - [ ] Reserved prefix (partial implementation)
+      - [ ] No custom pset can start with "PSET_" this prefix is reserved for the standard
+        - [ ] If a pset name does not match one of the valid names it triggers an error
+          - [x] SimpleValues
+          - [x] Enumerations
+          - [ ] Regexes (this is not trivial to implement)
+            - [ ] can the regex match any string starting with PSet_**** 
     - [ ] property Measures
       - [x] If a value is provided then it is checked against a closed list
       - [x] Test cases added
@@ -119,7 +122,7 @@ We are planning to a number of audits (checked ones are implemented)
 - [x] Cardinality
   - [x] Min and Max values are intrinsically valid (xml constraints)
   - [x] Min and Max values are restricted to agreed patterns (IDS implementation agreement)
-- [ ] Type coherence audits
+- [x] Type coherence audits
   - [x] Excludes prohibited and optional clauses
   - [x] Coherence between applicability and requirements
     - [x] Inconsistent types between applicability and requirements
@@ -130,11 +133,11 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] determine type constraint by standard property sets
     - [x] Attribute
       - [x] limit type depending on attribute name
-  - [ ] Implicit Type constraining Facets
-    - [ ] Material
-      - [ ] could be constraining types depending on implicit set or relations
-    - [ ] Classification
-      - [ ] could be constraining types depending on implicit set or relations
+  - [x] Implicit Type constraining Facets
+    - [x] Material and Classification both require a relation inheriting from IfcRelAssociates
+      - [x] for Ifc4x3 - IfcObjectDefinition and IfcPropertyDefinition
+      - [x] for Ifc4 - IfcObjectDefinition and IfcPropertyDefinition
+      - [x] for Ifc2x3 - IfcRoot
 
 ## Feature Roadmap
 

@@ -8,8 +8,7 @@ namespace IdsLib.IdsSchema.IdsNodes
     }
     internal interface IStringPrefixMatcher
     {
-        // the case of xs:restriction is not easy to test
-        // perhaps https://github.com/moodmosaic/Fare can help with regexes
+        // the case of xs:restriction is not easy to test for regexes
         bool MatchesPrefix(string prefixString);
     }
 }

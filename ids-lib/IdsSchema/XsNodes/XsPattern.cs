@@ -74,7 +74,11 @@ internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
 
     public IEnumerable<string> GetDicreteValues()
     {
+        // todo: GetDicreteValues() for regexes is not implemented
         // we can parse the regex and see if there are simple token recognition that can be implemented
+        // perhaps https://github.com/moodmosaic/Fare can help 
         yield break;
     }
+
+    // todo: IStringPrefixMatcher.MatchesPrefix is not implemented for regexes, but it could be useful to fully enforce pset_ naming constraints
 }

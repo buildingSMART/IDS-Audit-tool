@@ -23,8 +23,8 @@ internal class IdsXmlHelpers
             "entity" => new IdsEntity(reader, parent),
             "attribute" => new IdsAttribute(reader, parent),
             "partOf" => new IdsPartOf(reader, parent),
-            "classification" => new IdsFacet(reader, parent),
             "property" => new IdsProperty(reader, parent),
+            "classification" => new IdsFacet(reader, parent),
             "material" => new IdsFacet(reader, parent),
             // xs
             "restriction" => new XsRestriction(reader, parent),
