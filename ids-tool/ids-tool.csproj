@@ -5,7 +5,7 @@
 		<RootNamespace>IdsTool</RootNamespace>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageProjectUrl>https://github.com/CBenghi/ids-tool/</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/buildingSMART/IDS-Audit-tool/</PackageProjectUrl>
 		<Copyright>Claudio Benghi</Copyright>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
@@ -18,7 +18,7 @@
 		<AssemblyVersion>1.0.13</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
-		<RepositoryUrl>https://github.com/CBenghi/ids-tool.git</RepositoryUrl>
+		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>Moved to net6.</PackageReleaseNotes>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>

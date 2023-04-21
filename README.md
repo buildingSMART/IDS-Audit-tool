@@ -1,68 +1,29 @@
-# IDS-Tool
+# IDS-Audit-Tool
 
-This repository contains a tool used for quality assurance of IDS files according to the buildingSMART standard.
+This repository contains software used for quality assurance of IDS files according to the buildingSMART standard.
 
 It is comprised of two major components:
 
-- a reusalble dll that can be embedded in other applications, and 
-- a command line tool for direct usage.
+- an executable command-line tool for direct usage from a console, and
+- a reusable library that can be embedded in other applications.
 
-The tool itself is a .NET console application tha returns errors and warnings
-on the files, in order to verify their correctness.
+## Components
 
-## Usage
+Both components are implemented using Microsoft .NET, and can be used under multiple operating systems.
 
-Executing `ids-tool help` provides the following guidance for available commands.
+### Executable console application
 
-```
-=== ids-tool - utility tool for buildingSMART IDS files.
-ids-tool 1.0.10
-Claudio Benghi
+The tool itself is a .NET console application tha returns feedback on ids files that you want to test.
 
-  audit        Audits for ids schemas and ids files.
+If you are a final user, [read the tool documentation](ids-tool/README.md).
 
-  errorcode    provides description of tool's error code, useful when providing useer feedback in batch commands.
+### Library
 
-  help         Display more information on a specific command.
+If you are a developer, [read the library documentation](ids-lib/README.md).
 
-  version      Display version information.
-```
+## Audit Road-map
 
-`ids-tool help <command>` provides guidance on the options available for that command.
-
-### the Audit command
-
-Options for the `audit` verb are as follows:
-
-```
-  -x, --xsd            XSD schema(s) to load, this is useful when testing changes in the schema (e.g. GitHub repo). If
-                       this is not specified, an embedded schema is adopted depending on the each ids's declaration of
-                       version.
-
-  -s, --schema         (Default: false) Check validity of the xsd schema(s) passed with the `xsd` option. This is useful
-                       for the development of the schema and it is in use in the official repository for quality
-                       assurance purposes.
-
-  -e, --extension      (Default: ids) When passing a folder as source, this defines which files to audit by extension.
-
-  -c, --omitContent    Skips the audit of the agreed limitation of IDS contents.
-
-  --help               Display this help screen.
-
-  --version            Display version information.
-
-  source (pos. 0)      Input IDS to be processed; it can be a file or a folder.
-```
-
-## File Auditing Examples
-
-Simple usage: `ids-tool audit path-to-some-file` or `ids-tool audit path-to-some-folder`.
-
-If no option is specificed all available audits are performed on the IDS files.
-
-## Audit Roadmap
-
-We are planning to a number of audits (checked ones are implemented)
+We are planning to implement a number of audits (the ones with a check-mark are completed)
 
 - [x] XSD Schema check
   - [x] Use Xsd from disk
@@ -71,9 +32,9 @@ We are planning to a number of audits (checked ones are implemented)
   - [x] IfcEntity
     - [x] Predefined types
       - [x] Predefined types Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
-      - [x] Prefefined types are tested against values provided from the schema.
+      - [x] Predefined types are tested against values provided from the schema.
       - [x] Meaningful test cases
-      - [ ] Question: Should we handle User-defined behaviour as special case?
+      - [ ] Question: Should we handle User-defined behavior as special case?
     - [x] IfcTypeNames
       - [x] IfcType Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Simple type names are audited
@@ -85,29 +46,29 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] Simple attribute names are audited
       - [x] More complex case of type match need to be audited
         - [x] Regex matches
-        - [x] Multiple values allowed	
-  - [ ] properties 
+        - [x] Multiple values allowed
+  - [ ] Properties
     - [x] Prepare metadata infrastructure
-    - [x] prop and pset names are treated as case sensitive
-    - [x] no extensions of standard PSETs
+    - [x] Prop and PSet names are treated as case sensitive
+    - [x] no extensions of standard PSets
       - [x] properties are limited to the agreed set
     - [ ] No misplacement of properties
-      - [ ] Property with a recognised name (e.g. IsExternal) should not be outside of the agreed pset.
-        - [ ] Discuss: 
-          - [ ] perhaps just consider this a warning for userdefined property sets
+      - [ ] Property with a recognized name (e.g. IsExternal) should not be outside of the agreed PSet.
+        - [ ] Options to discuss:
+          - [ ] perhaps just consider this a warning for user-defined property sets
           - [ ] warning or error as configuration (strict mode?)
     - [x] Includes IFC type inheritance
     - [ ] Reserved prefix (partial implementation)
-      - [ ] No custom pset can start with "PSET_" this prefix is reserved for the standard
-        - [ ] If a pset name does not match one of the valid names it triggers an error
+      - [ ] No custom PSet can start with "PSet_" this prefix is reserved for the standard
+        - [ ] If a PSet name does not match one of the valid names it triggers an error
           - [x] SimpleValues
           - [x] Enumerations
-          - [ ] Regexes (this is not trivial to implement)
-            - [ ] can the regex match any string starting with PSet_**** 
-    - [ ] property Measures
+          - [ ] Regular expressions: (this is not trivial to implement, but we have a working solution to be included if considered appropriate)
+            - [ ] can the regex match any string starting with "PSet_".
+    - [ ] Property Measures
       - [x] If a value is provided then it is checked against a closed list
       - [x] Test cases added
-      - [ ] Discuss with IDS group: clarify the list of valid measures 
+      - [ ] Discuss with IDS group: clarify the list of valid measures.
       - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
       - [ ] Further constrain IfcMeasure for identified properties in standard sets
   - [x] Cardinality for facets (in requirements)
@@ -139,18 +100,17 @@ We are planning to a number of audits (checked ones are implemented)
       - [x] for Ifc4 - IfcObjectDefinition and IfcPropertyDefinition
       - [x] for Ifc2x3 - IfcRoot
 
-## Feature Roadmap
+## APIs
 
-- [x] Implement Run with streams (as opposed to disk files)
+- [x] Run with streams (as opposed to disk files)
   - [x] Get schema settings dependent on IDS version from streams
     - [ ] from url
-    - [x] from library resource 
+      - [ ] would require buildingSmart to ensure service
+    - [x] from library resources
     - [ ] need seekable stream to be able to restart reading after version is identified
       - [ ] Implement test with non seekable stream
-      - [ ] Perhaps use streambuffer on passed stream to solve
   - [x] Isolate configuration for running audit on single entities (i.e. stream and file)
   - [x] test that Line and Position are available in all streams as well as fileStream.
   - [x] Added test cases
     - [x] Multiple files
     - [x] Seekable and non seekable network stream
-    

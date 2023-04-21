@@ -4,9 +4,9 @@
 		<id>ids-tool.CommandLine</id>
 		<authors>Claudio Benghi</authors>
 		<description>CLI deployment of the ids-tool</description>
-		<projectUrl>https://github.com/CBenghi/ids-tool/</projectUrl>
+		<projectUrl>https://github.com/buildingSMART/IDS-Audit-tool/</projectUrl>
 		<version>$version$</version>
-		<iconUrl>https://raw.githubusercontent.com/CBenghi/ids-tool/main/graphics/icon.png</iconUrl>
+		<iconUrl>https://raw.githubusercontent.com/buildingSMART/IDS-Audit-tool/main/graphics/icon.png</iconUrl>
 		<releaseNotes>$releaseNotes$</releaseNotes>
 		<copyright>$copyright$</copyright>
 		<license type="expression">MIT</license>

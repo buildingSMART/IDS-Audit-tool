@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-tool", "ids-tool\ids-to
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8598765E-2D31-499E-B837-F0D39A3FD971}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -14,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-tool.tests", "ids-tool.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-lib", "ids-lib\ids-lib.csproj", "{86E64254-0B99-44C5-B774-D0BA2937ECC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ids-lib.codegen", "ids-lib.codegen\ids-lib.codegen.csproj", "{B4BF756F-4399-480C-A475-CF60D587AD02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-lib.codegen", "ids-lib.codegen\ids-lib.codegen.csproj", "{B4BF756F-4399-480C-A475-CF60D587AD02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

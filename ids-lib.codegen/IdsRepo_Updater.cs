@@ -1,9 +1,70 @@
 ﻿using idsTool.tests.Helpers;
+using System.Diagnostics;
+using System.Text;
 
 namespace IdsLib.codegen
 {
     internal class IdsRepo_Updater
     {
+        internal static DirectoryInfo? GetSolutionDirectory()
+        {
+            DirectoryInfo? d = new(".");
+            while (d is not null)
+            {
+                var subIDS = d.GetFiles("ids-tool.sln").FirstOrDefault();
+                if (subIDS != null)
+                    return d;
+                d = d.Parent;
+            }
+            return null;
+        }
+
+        internal static string ExecuteCommandLine(string argumentsString, bool strip = true)
+        {
+            var d = GetSolutionDirectory();
+            var pathInclude = "Release";
+#if DEBUG
+            pathInclude = "Debug";
+#endif
+
+            var toolPath = (d?.GetFiles("ids-tool.exe", SearchOption.AllDirectories).FirstOrDefault(x=>x.FullName.Contains(pathInclude))
+                ?? throw new Exception("Tool binary not found."));
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = toolPath.FullName,
+                    Arguments = argumentsString,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+            StringBuilder sb = new();
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream || !proc.StandardError.EndOfStream)
+            {
+                var line = proc.StandardOutput.ReadLine();
+                if (line is not null)
+                    sb.AppendLine(line);
+
+                line = proc.StandardError.ReadLine();
+                if (line is not null)
+                    sb.AppendLine(line);
+            }
+            if (!strip)
+                return sb.ToString();
+            // remove first 3 lines
+            var retArr = sb.ToString();
+            string[] lines = retArr
+                .Split(Environment.NewLine)
+                .Skip(3)
+                .ToArray();
+            string ret = string.Join(Environment.NewLine, lines);
+            return ret.Trim('\r', '\n');
+        }
+
         internal class UpdatableFile
         {
             public string Name { get; set; }
@@ -17,6 +78,8 @@ namespace IdsLib.codegen
                 Destination = destination;
             }
         }
+
+        
 
         /// <summary>
         /// 
@@ -112,18 +175,7 @@ namespace IdsLib.codegen
             }
         }
 
-        private static DirectoryInfo? GetSolutionDirectory()
-        {
-            DirectoryInfo? d = new(".");
-            while (d is not null)
-            {
-                var subIDS = d.GetFiles("ids-tool.sln").FirstOrDefault();
-                if (subIDS != null)
-                    return d;
-                d = d.Parent;
-            }
-            return null;
-        }
+        
 
 
 

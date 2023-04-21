@@ -35,17 +35,21 @@ internal class Program
         EvaluateContent(
             IfcSchema_PropertiesGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.Properties.g.cs");
+        
+        EvaluateContent(
+            IdsTool_DocumentationUpdater.Execute(),
+            @"ids-tool\README.md");
     }
 
-    private static void EvaluateContent(string content, string destinationPath)
+    private static void EvaluateContent(string content, string solutionDestinationPath)
     {
-        Console.Write($"Evaluating: {destinationPath}... ");
-        var destPath = new DirectoryInfo(@"..\..\..\..\");
-        var dest = Path.Combine(destPath.FullName, destinationPath);
+        Console.Write($"Evaluating: {solutionDestinationPath}... ");
+        var destinationPathFolder = new DirectoryInfo(@"..\..\..\..\");
+        var destinationFullName = Path.Combine(destinationPathFolder.FullName, solutionDestinationPath);
 
-        if (File.Exists(dest))
+        if (File.Exists(destinationFullName))
         {
-            var current = File.ReadAllText(dest);
+            var current = File.ReadAllText(destinationFullName);
             if (content == current)
             {
                 Message($"no change.", ConsoleColor.Green);
@@ -53,7 +57,7 @@ internal class Program
             }
         }
 
-        File.WriteAllText(dest, content);
+        File.WriteAllText(destinationFullName, content);
         Message($"updated.", ConsoleColor.DarkYellow);
     }
 

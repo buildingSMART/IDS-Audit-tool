@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageProjectUrl>https://github.com/CBenghi/ids-tool/</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/buildingSMART/IDS-Audit-tool</PackageProjectUrl>
 		<Copyright>Claudio Benghi</Copyright>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<LangVersion>latest</LangVersion>
@@ -15,7 +15,7 @@
 		</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>IDS, buildingSmart</PackageTags>
-		<RepositoryUrl>https://github.com/CBenghi/ids-tool.git</RepositoryUrl>
+		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>First implementation.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
