@@ -15,8 +15,16 @@ using System.Data;
 namespace IdsLib;
 
 /// <summary>
-/// Main static class for the execution of the audit functions of the tool.
-/// See the <see cref="Run(IdsLib.IBatchAuditOptions, ILogger?)"/> and <see cref="Run(Stream, IdsLib.SingleAuditOptions, ILogger?)"/> for more details.
+/// Main static class for invoking the audit functions.
+/// 
+/// If you wish to audit a single file, the best entry point is <see cref="Run(Stream, SingleAuditOptions, ILogger?)"/>.
+/// This method allows you to run audits on the provided stream.
+/// 
+/// For more complex auditing scenarios (e.g. those used by the tool), some automation can be achieved with <see cref="Run(IdsLib.IBatchAuditOptions, ILogger?)"/>.
+/// 
+/// Both APIs provide a return value that can be interpreted to determine if errors have been found.
+/// 
+/// For more detailed feedback on the specific location of issues encountered, you must pass an <see cref="ILogger"/> interface, and collect events.
 /// </summary>
 public static partial class Audit
 {
@@ -55,18 +63,22 @@ public static partial class Audit
         /// </summary>
         XsdSchemaError = 1 << 5,
         /// <summary>
-        /// An unmanged error occurred in the main audit methods. Please contact the authors to address the problem.
+        /// An unmanaged error occurred in the main audit methods. Please contact the authors to address the problem.
         /// </summary>
         UnhandledError = 1 << 6,
     }
 
     /// <summary>
-    /// Main entry point to access the library features via streams.
+    /// Main entry point to access the library features via a stream to read the IDS content.
     /// </summary>
-    public static Status Run(Stream idsSource, SingleAuditOptions opts, ILogger? logger = null)
+    /// <param name="idsSource">the stream providing access to the content of the IDS to be audited</param>
+    /// <param name="options">specifies the behaviour of the audit</param>
+    /// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed and any issues encountered</param>
+    /// <returns>A status enum that summarizes the result for all audits on the single stream</returns>
+    public static Status Run(Stream idsSource, SingleAuditOptions options, ILogger? logger = null)
     {
-        var auditSettings = new AuditHelper(logger, opts);
-        var xsett = GetSchemaSettings(opts.IdsVersion, logger);
+        var auditSettings = new AuditHelper(logger, options);
+        var xsett = GetSchemaSettings(options.IdsVersion, logger);
         if (xsett is null)
             return Status.NotImplementedError;
         FinalizeSettings(xsett);
@@ -74,52 +86,52 @@ public static partial class Audit
     }
 
     /// <summary>
-    /// main entry point to access the library features, when dealing with files on the disk
+    /// Entry point to access the library features in batch mode either on directories or single files
     /// </summary>
-    /// <param name="opts">configuraion options for the execution of audits</param>
+    /// <param name="options">configuration options for the execution of audits</param>
     /// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed</param>
-    /// <returns>A status enum</returns>
-    public static Status Run(IBatchAuditOptions opts, ILogger? logger = null)
+    /// <returns>A status enum that summarizes the result for all audits executed</returns>
+    public static Status Run(IBatchAuditOptions options, ILogger? logger = null)
     {
         Status retvalue = Status.Ok;
-        if (string.IsNullOrEmpty(opts.InputSource) && !opts.SchemaFiles.Any())
+        if (string.IsNullOrEmpty(options.InputSource) && !options.SchemaFiles.Any())
         {
             // no IDS and no schema => nothing to do
             logger?.LogWarning("No audits are required, with the options passed.");
             retvalue |= Status.InvalidOptionsError;
         }
-        else if (string.IsNullOrEmpty(opts.InputSource))
+        else if (string.IsNullOrEmpty(options.InputSource))
         {
             // No ids, but we have a schemafile => check the schema itself
-            opts.AuditSchemaDefinition = true;
+            options.AuditSchemaDefinition = true;
         }
-        if (!string.IsNullOrWhiteSpace(opts.OmitIdsContentAuditPattern))
+        if (!string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern))
         {
             try
             {
                 // we are trying to see if the 
-                var r = new Regex(opts.OmitIdsContentAuditPattern);
+                var r = new Regex(options.OmitIdsContentAuditPattern);
             }
             catch (ArgumentException)
             {
-                logger?.LogWarning("Invalid OmitIdsContentAuditPattern `{pattern}`.", opts.OmitIdsContentAuditPattern);
+                logger?.LogWarning("Invalid OmitIdsContentAuditPattern `{pattern}`.", options.OmitIdsContentAuditPattern);
                 retvalue |= Status.InvalidOptionsError;
             }
         }
         if (retvalue.HasFlag(Status.InvalidOptionsError))
         {
-            logger?.LogError("No audit performed.", opts.OmitIdsContentAuditPattern);
+            logger?.LogError("No audit performed.", options.OmitIdsContentAuditPattern);
             return retvalue;
         }
 
         var auditsList = new List<string>();
-        if (!string.IsNullOrEmpty(opts.InputSource))
+        if (!string.IsNullOrEmpty(options.InputSource))
             auditsList.Add("Ids structure");
-        if (opts.AuditSchemaDefinition)
+        if (options.AuditSchemaDefinition)
             auditsList.Add("Xsd schemas correctness");
-        if (!opts.OmitIdsContentAudit)
+        if (!options.OmitIdsContentAudit)
         {
-            if (!string.IsNullOrWhiteSpace(opts.OmitIdsContentAuditPattern))
+            if (!string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern))
                 auditsList.Add("Ids content (omitted on regex match)");
             else
                 auditsList.Add("Ids content");
@@ -133,26 +145,26 @@ public static partial class Audit
         logger?.LogInformation("Auditing: {audits}.", string.Join(", ", auditsList.ToArray()));
 
         // start audit
-        if (opts.AuditSchemaDefinition)
+        if (options.AuditSchemaDefinition)
         {
-            retvalue |= PerformSchemaCheck(opts, logger);
+            retvalue |= PerformSchemaCheck(options, logger);
             if (retvalue != Status.Ok)
                 return retvalue;
         }
 
-        if (Directory.Exists(opts.InputSource))
+        if (Directory.Exists(options.InputSource))
         {
-            var t = new DirectoryInfo(opts.InputSource);
-            var ret = ProcessFolder(t, opts, logger);
+            var t = new DirectoryInfo(options.InputSource);
+            var ret = ProcessFolder(t, options, logger);
             return CompleteWith(ret, logger);
         }
-        else if (File.Exists(opts.InputSource))
+        else if (File.Exists(options.InputSource))
         {
-            var t = new FileInfo(opts.InputSource);
-            var ret = ProcessSingleFile(t, opts, logger);
+            var t = new FileInfo(options.InputSource);
+            var ret = ProcessSingleFile(t, options, logger);
             return CompleteWith(ret, logger);
         }
-        logger?.LogError("Invalid input source '{missingSource}'", opts.InputSource);
+        logger?.LogError("Invalid input source '{missingSource}'", options.InputSource);
         return Status.NotFoundError;
     }
 

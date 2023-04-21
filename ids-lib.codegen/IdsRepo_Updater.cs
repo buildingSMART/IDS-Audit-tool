@@ -1,5 +1,6 @@
 ﻿using idsTool.tests.Helpers;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace IdsLib.codegen
@@ -175,9 +176,24 @@ namespace IdsLib.codegen
             }
         }
 
-        
-
-
+        internal static FileInfo GetLibraryDocumentation()
+        {
+            var solutionDirectory = GetSolutionDirectory();
+            if (solutionDirectory == null)
+                throw new ArgumentNullException(nameof(solutionDirectory));
+            var libDir = new DirectoryInfo(
+                Path.Combine(solutionDirectory.FullName, "ids-lib")
+                );
+            if (!libDir.Exists) 
+                throw new ArgumentNullException(nameof(solutionDirectory));
+            var pathInclude = "Release";
+#if DEBUG
+            pathInclude = "Debug";
+#endif
+            var libPath = (libDir?.GetFiles("ids-lib.dll", SearchOption.AllDirectories).FirstOrDefault(x => x.FullName.Contains(pathInclude))
+                ?? throw new Exception("lib binary not found."));
+            return libPath;
+        }
 
         internal static bool Exists
         {

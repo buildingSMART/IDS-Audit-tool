@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0-1.final" />
     <PackageReference Include="Xbim.Essentials" Version="5.9.408-develop" />
     <PackageReference Include="Xbim.Properties" Version="6.0.10" />
+    <PackageReference Include="XmlDocMarkdown.Core" Version="2.9.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ids-tool.tests\ids-tool.tests.csproj" />

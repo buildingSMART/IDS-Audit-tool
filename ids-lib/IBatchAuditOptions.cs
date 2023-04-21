@@ -3,7 +3,7 @@
 namespace IdsLib;
 
 /// <summary>
-/// This interface contains the parameters to configure a complex execution of the audit.
+/// This interface contains the parameters to configure a complex execution of the audit in a batch scenario.
 /// </summary>
 public interface IBatchAuditOptions
 {

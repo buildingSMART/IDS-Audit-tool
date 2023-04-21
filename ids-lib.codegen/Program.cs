@@ -1,4 +1,6 @@
-﻿namespace IdsLib.codegen;
+﻿using XmlDocMarkdown.Core;
+
+namespace IdsLib.codegen;
 
 internal class Program
 {
@@ -39,6 +41,8 @@ internal class Program
         EvaluateContent(
             IdsTool_DocumentationUpdater.Execute(),
             @"ids-tool\README.md");
+
+        IdsLib_DocumentationUpdater.Execute();
     }
 
     private static void EvaluateContent(string content, string solutionDestinationPath)
