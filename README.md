@@ -114,3 +114,19 @@ We are planning to implement a number of audits (the ones with a check-mark are 
   - [x] Added test cases
     - [x] Multiple files
     - [x] Seekable and non seekable network stream
+
+## Testing
+
+The solution has an automated test project for quality control that helps reduce code regressions.
+
+Some of the tests are designed to audit the ids files available in the main [buildingSMART IDS repository](https://github.com/buildingSMART/IDS). 
+This is useful for debugging and coherence checks against the main documentation site.
+If such reposioty is not found under the same parent folder of this one, those tests are marked as `skipped`.
+
+To enable them, clone the two repositories next to each other under an arbitrary parent folder:
+
+- Arbitrary parent folder
+  - [...]
+  - IDS repository
+  - IDS Audit tool repository
+  - [...]

@@ -74,6 +74,11 @@ public class BuildingSmartRepoFiles
     {
         // start from current directory and look in relative position for the bs IDS repository
         var d = new DirectoryInfo(IdsTestcasesPath);
+        if (!d.Exists)
+        {
+            yield return new object[] { "" };
+            yield break;
+        }
         foreach (var f in d.GetFiles("*.ids", SearchOption.AllDirectories))
         {
             yield return new object[] { f.FullName.Replace(d.FullName, "") };
@@ -93,6 +98,13 @@ public class BuildingSmartRepoFiles
     {
         // start from current directory and look in relative position for the bs IDS repository
         var d = new DirectoryInfo(IdsDevelopmentPath);
+        if (!d.Exists)
+        {
+            // returning a single invalid entry so that it can be skipped
+            yield return new object[] { "" };
+            yield break;
+        }
+            
         foreach (var f in d.GetFiles("*.ids", SearchOption.AllDirectories))
         {
             yield return new object[] { f.FullName.Replace(d.FullName, "") };

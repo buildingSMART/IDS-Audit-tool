@@ -20,10 +20,11 @@ public class AuditTests : BuildingSmartRepoFiles
     }
     private ITestOutputHelper XunitOutputHelper { get; }
 
-    [Theory]
+    [SkippableTheory]
     [MemberData(nameof(GetDevelopmentIdsFiles))]
     public void FullAuditOfDevelopmentFilesOk(string developmentIdsFile)
     {
+        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetDevelopmentFileInfo(developmentIdsFile);
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
@@ -32,6 +33,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [MemberData(nameof(GetTestCaseIdsFiles))]
     public void OmitContentAuditOfDocumentationFilesOk(string developmentIdsFile)
     {
+        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetTestCaseFileInfo(developmentIdsFile);
         var c = new AuditOptions()
         {
@@ -41,7 +43,7 @@ public class AuditTests : BuildingSmartRepoFiles
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
         // hack to provide milder error because we don't have control on the test case generator
-        Skip.If(auditResult != Audit.Status.Ok);
+        Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
         auditResult.Should().Be(Audit.Status.Ok);
     }
 
@@ -49,6 +51,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [MemberData(nameof(GetTestCaseIdsFiles))]
     public void AuditOfDocumentationPassFilesOk(string developmentIdsFile)
     {
+        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetTestCaseFileInfo(developmentIdsFile);
         var c = new AuditOptions()
         {
@@ -58,7 +61,7 @@ public class AuditTests : BuildingSmartRepoFiles
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
         // hack to provide milder error because we don't have control on the test case generator
-        Skip.If(auditResult != Audit.Status.Ok);
+        Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
         auditResult.Should().Be(Audit.Status.Ok);
     }
 

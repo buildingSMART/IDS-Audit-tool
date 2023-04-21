@@ -13,7 +13,7 @@ namespace idsTool.tests
             toolSchema.Should().NotBeNull();
 
             var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-            Skip.IfNot(repoSchema.Exists);
+            Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
             var sameContent = BuildingSmartRepoFiles.FilesAreIdentical(repoSchema, toolSchema);
             sameContent.Should().BeTrue("embedded schema and repository schema should be identical");
@@ -26,7 +26,7 @@ namespace idsTool.tests
             toolSchema.Should().NotBeNull();
 
             var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-            Skip.IfNot(repoSchema.Exists);
+            Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
             var sameContent = BuildingSmartRepoFiles.FilesAreIdentical(repoSchema, toolSchema);
             sameContent.Should().BeTrue("testing schema and repository schema should be identical");
