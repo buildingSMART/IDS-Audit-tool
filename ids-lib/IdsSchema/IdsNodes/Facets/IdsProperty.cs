@@ -68,12 +68,17 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
             {
                 // see if there's a match with standard property sets
                 var validPropNames = SchemaInfo.SharedPropertyNames(requiredSchemaVersions, possiblePsetNames);
-                var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possibleClasses, "property names", requiredSchemaVersions);
+                var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, "property names", requiredSchemaVersions);
                 if (nameMatch != Audit.Status.Ok)
                     return SetInvalid();
 
-                // todo: we could also limit the validity of the IfcMeasure to the values coming from the metadata for the property
-
+                // limit the validity of the IfcMeasure to the value coming from the metadata for the property
+                var limit = SchemaInfo.ValidMeasureForAllProperties(requiredSchemaVersions, possiblePsetNames, possiblePropertyNames);
+                if (limit is null)
+                    validMeasureNames = Enumerable.Empty<string>();                
+                else
+                    validMeasureNames = new string[] { limit };
+                
                 // limit the validity of the type
                 var validTypes = SchemaInfo.PossibleTypesForPropertySets(requiredSchemaVersions, possiblePsetNames);
                 TypesFilter = new IfcConcreteTypeList(validTypes);
@@ -100,7 +105,7 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
         var ret = Audit.Status.Ok;
         if (measureMatcher is not null)
         {
-            ret |= measureMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "measure names", requiredSchemaVersions);   
+            ret |= measureMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "measure names", requiredSchemaVersions);
         }
         if (ret != Audit.Status.Ok)
             IsValid = false;

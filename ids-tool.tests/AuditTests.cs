@@ -90,6 +90,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -111,6 +112,7 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
     public void FullAuditFailWithStream(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);

@@ -21,20 +21,19 @@ If you are a final user, [read the tool documentation](ids-tool/README.md).
 
 If you are a developer, [read the library documentation](ids-lib/README.md).
 
-## Audit Road-map
+## Audit features
 
 We are planning to implement a number of audits (the ones with a check-mark are completed)
 
 - [x] XSD Schema check
   - [x] Use Xsd from disk
   - [x] Use relevant Xsd from resource
-- [ ] IFC Schema check (individual facets)
+- [x] IFC Schema check (individual facets)
   - [x] IfcEntity
     - [x] Predefined types
       - [x] Predefined types Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Predefined types are tested against values provided from the schema.
       - [x] Meaningful test cases
-      - [ ] Question: Should we handle User-defined behavior as special case?
     - [x] IfcTypeNames
       - [x] IfcType Names are hardcoded in the library (Ifc2x3, Ifc4, Ifc4x3)
       - [x] Simple type names are audited
@@ -47,30 +46,20 @@ We are planning to implement a number of audits (the ones with a check-mark are 
       - [x] More complex case of type match need to be audited
         - [x] Regex matches
         - [x] Multiple values allowed
-  - [ ] Properties
+  - [x] Properties
     - [x] Prepare metadata infrastructure
     - [x] Prop and PSet names are treated as case sensitive
     - [x] no extensions of standard PSets
       - [x] properties are limited to the agreed set
-    - [ ] No misplacement of properties
-      - [ ] Property with a recognized name (e.g. IsExternal) should not be outside of the agreed PSet.
-        - [ ] Options to discuss:
-          - [ ] perhaps just consider this a warning for user-defined property sets
-          - [ ] warning or error as configuration (strict mode?)
     - [x] Includes IFC type inheritance
-    - [ ] Reserved prefix (partial implementation)
-      - [ ] No custom PSet can start with "PSet_" this prefix is reserved for the standard
-        - [ ] If a PSet name does not match one of the valid names it triggers an error
-          - [x] SimpleValues
-          - [x] Enumerations
-          - [ ] Regular expressions: (this is not trivial to implement, but we have a working solution to be included if considered appropriate)
-            - [ ] can the regex match any string starting with "PSet_".
-    - [ ] Property Measures
-      - [x] If a value is provided then it is checked against a closed list
+    - [x] Reserved prefix 
+      - [x] No custom PSet can mandate a property starting with "PSet_" this prefix is reserved for the standard
+        - [x] SimpleValues
+        - [x] Enumerations
+    - [x] Property Measures
+      - [x] If a value is provided, it is checked against a closed list
       - [x] Test cases added
-      - [ ] Discuss with IDS group: clarify the list of valid measures.
-      - [ ] Discuss with IDS group: clarify the case sensitivity logic (currently PascalCase based on Development files)
-      - [ ] Further constrain IfcMeasure for identified properties in standard sets
+      - [x] Constrain IfcMeasure for identified properties in standard PSets
   - [x] Cardinality for facets (in requirements)
     - [x] partOf
     - [x] classification
@@ -102,18 +91,39 @@ We are planning to implement a number of audits (the ones with a check-mark are 
 
 ## APIs
 
-- [x] Run with streams (as opposed to disk files)
-  - [x] Get schema settings dependent on IDS version from streams
-    - [ ] from url
-      - [ ] would require buildingSmart to ensure service
-    - [x] from library resources
-    - [ ] need seekable stream to be able to restart reading after version is identified
-      - [ ] Implement test with non seekable stream
-  - [x] Isolate configuration for running audit on single entities (i.e. stream and file)
-  - [x] test that Line and Position are available in all streams as well as fileStream.
-  - [x] Added test cases
-    - [x] Multiple files
-    - [x] Seekable and non seekable network stream
+- [ ] Single IDS audit
+  - [x] Run with stream and version enum
+    - [x] Schema is taken from embedded resource
+    - [ ] Schema is taken from url
+      - [ ] requires buildingSmart to ensure content is available online
+  - [ ] Run with stream and no version
+- [x] Batch IDS audits on files and folders
+  - [x] Get schema dependent on IDS content
+  - [x] Load custom schema from file
+  - [x] Load schema depending on IDS declaration
+
+## Matters to be addressed by the standard
+
+- [ ] Property facet
+  - [ ] No misplacement of properties (ON HOLD)
+    - [ ] Property with a recognized name (e.g. IsExternal) should not be outside of the agreed PSet.
+      - [ ] Options to discuss:
+        - [ ] perhaps just consider this a warning for user-defined property sets
+        - [ ] warning or error as configuration (strict mode?)
+  - [ ] Reserved prefix 
+    - [ ] can the regex match any string starting with "PSet_".
+      - [ ] we have a working solution to be included, but it may raise the technical complexity for implementers considerably
+      - [ ] Perhaps one for the strict mode?
+  - [ ] Measures
+    - [ ] Clarify the list of valid measures.
+      - [ ] Only concrete measures? 
+      - [ ] Do they follow inheritance?
+    - [ ] Clarify the case sensitivity logic of measures (currently PascalCase based on Development files)  
+  - [ ] Clarify Misplacement of properties
+    - [ ] if a predefined property name has to be restricted to the predefined property set
+    - [ ] Look at IfcPropertyNameCoherenceAcrossSchemas for list of times where this does not happen for the predefined property sets
+- [ ] Entity facet
+  - [ ] Should we handle User-defined behavior as special case?
 
 ## Testing
 

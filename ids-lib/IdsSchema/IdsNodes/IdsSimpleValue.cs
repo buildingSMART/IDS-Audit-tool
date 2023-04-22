@@ -20,7 +20,7 @@ internal partial class IdsSimpleValue : BaseContext, IStringListMatcher, IString
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext);
+            return IdsLoggerExtensions.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 

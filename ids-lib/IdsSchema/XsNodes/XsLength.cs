@@ -18,7 +18,7 @@ internal class XsLength : BaseContext, IStringListMatcher
         if (!int.TryParse(value, out var len)) 
         {
             matches = Enumerable.Empty<string>();   
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext);
+            return IdsLoggerExtensions.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
         }
         matches = candidateStrings.Where(x=>x.Length == len).ToList();
         return matches.Any()

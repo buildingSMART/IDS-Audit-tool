@@ -349,7 +349,7 @@ namespace IdsLib.IfcSchema
         //    }
         //}
 
-        private static SchemaInfo? schemaIFC2x3;
+        private static SchemaInfo? schemaIfc2x3;
         /// <summary>
         /// Static property for the Ifc2x3 schema
         /// </summary>
@@ -357,16 +357,16 @@ namespace IdsLib.IfcSchema
         {
             get
             {
-                if (schemaIFC2x3 == null)
+                if (schemaIfc2x3 == null)
                 {
                     var t = GetClassesIFC2x3();
                     GetRelationTypesIFC2x3(t);
                     GetAttributesIFC2x3(t);
                     SetTypeObject(t, "IfcTypeObject");
                     t.LinkTree();
-                    schemaIFC2x3 = t;
+                    schemaIfc2x3 = t;
                 }
-                return schemaIFC2x3;
+                return schemaIfc2x3;
             }
         }
 
@@ -449,6 +449,23 @@ namespace IdsLib.IfcSchema
                 yield return SchemaIfc4x3;
         }
 
-        
+        internal static string? ValidMeasureForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
+        {
+            string? ret = null;
+            foreach (var schema in GetSchemas(version))
+            {
+                var propsMatchingRequirements = schema.PropertySets.Where(x => possiblePsetNames.Contains(x.Name)).SelectMany(pset => pset.Properties.Where(prop => possiblePropertyNames.Contains(prop.Name)));
+                foreach (var prop in propsMatchingRequirements)
+                {
+                    if (!prop.HasDataType(out var dt))
+                        return null;
+                    if (ret is null)
+                        ret = dt;
+                    else if (ret != dt)
+                        return null;
+                }
+            }
+            return ret;
+        }
     }
 }

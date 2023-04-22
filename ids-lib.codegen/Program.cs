@@ -1,4 +1,5 @@
-﻿using XmlDocMarkdown.Core;
+﻿using System.Runtime.CompilerServices;
+using XmlDocMarkdown.Core;
 
 namespace IdsLib.codegen;
 
@@ -12,40 +13,47 @@ internal class Program
             Message("Local code updated, need to restart the generation.", ConsoleColor.Yellow);
             return;
         }
-        
-        EvaluateContent(
+        var GeneratedContentChanged = false;
+
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassAndAttributeNamesGenerator.Execute(), 
-            @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs"
-            );
+            @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
 
-        EvaluateContent(
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_MeasureNamesGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs");
+            @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs") | GeneratedContentChanged;
 
-        EvaluateContent(
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs");
+            @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs") | GeneratedContentChanged;
 
-        EvaluateContent(
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_AttributesGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs");
+            @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs") | GeneratedContentChanged;
 
-        EvaluateContent(
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_PartOfRelationGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs");        
-        
-        EvaluateContent(
-            IfcSchema_PropertiesGenerator.Execute(),
-            @"ids-lib\IfcSchema\SchemaInfo.Properties.g.cs");
-        
-        EvaluateContent(
-            IdsTool_DocumentationUpdater.Execute(),
-            @"ids-tool\README.md");
+            @"ids-lib\IfcSchema\SchemaInfo.PartOfRelations.g.cs") | GeneratedContentChanged;
 
+        GeneratedContentChanged = EvaluateContentChanged(
+            IfcSchema_PropertiesGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.Properties.g.cs") | GeneratedContentChanged;
+
+        GeneratedContentChanged = EvaluateContentChanged(
+            IdsTool_DocumentationUpdater.Execute(),
+            @"ids-tool\README.md") | GeneratedContentChanged;
+
+        if (GeneratedContentChanged)
+        {
+            Message("Generated code updated, need to restart the generation.", ConsoleColor.Yellow);
+            return;
+        }
+
+        // documentation changes do not require restart of code generation
         IdsLib_DocumentationUpdater.Execute();
     }
 
-    private static void EvaluateContent(string content, string solutionDestinationPath)
+    private static bool EvaluateContentChanged(string content, string solutionDestinationPath)
     {
         Console.Write($"Evaluating: {solutionDestinationPath}... ");
         var destinationPathFolder = new DirectoryInfo(@"..\..\..\..\");
@@ -57,12 +65,13 @@ internal class Program
             if (content == current)
             {
                 Message($"no change.", ConsoleColor.Green);
-                return;
+                return false;
             }
         }
 
         File.WriteAllText(destinationFullName, content);
         Message($"updated.", ConsoleColor.DarkYellow);
+        return true;
     }
 
     private static void Message(string v, ConsoleColor messageColor)

@@ -50,19 +50,15 @@ public class IdsInformation
     {
         get
         {
-
             return SchemaLocation switch
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 "http://standards.buildingsmart.org/IDS/ids_05.xsd" => IdsVersion.Ids0_5, // todo: this is invalid and needs to be fixed in the IDS repository
-#pragma warning restore CS0618 // Type or member is obsolete
                 "http://standards.buildingsmart.org/IDS  ids_09.xsd" => IdsVersion.Ids0_9, // todo: this is invalid and needs to be fixed in the IDS repository
                 "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd" => IdsVersion.Ids0_9,
                 "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_1_0.xsd" => IdsVersion.Ids1_0,
                 "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd" => IdsVersion.Ids0_9,
                 _ => IdsVersion.Invalid,
             };
-
         }
     }
 

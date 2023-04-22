@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IdsLib.IdsSchema;
 
@@ -70,16 +72,24 @@ internal static class IdsLoggerExtensions
 
     internal static Audit.Status ReportBadMatcher(ILogger? logger, BaseContext context, string expected)
     {
-        logger?.LogError("Invalid type `{tp}` to match `{expected}` at line {line}, position {pos}.", context.type, expected, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Invalid type `{elementType}` to match `{expected}` at line {line}, position {pos}.", context.type, expected, context.StartLineNumber, context.StartLinePosition);
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportInvalidListMatcher(BaseContext xmlContext, string value, ILogger? logger, string listToMatchName, IfcSchema.IfcSchemaVersions? schemaContext)
+    internal static Audit.Status ReportInvalidListMatcher(BaseContext xmlContext, string value, ILogger? logger, string nameOflistToMatch, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
     {
-        if (schemaContext.HasValue)
-            logger?.LogError("Invalid value `{val}` in {tp} to match `{expected}` in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, listToMatchName, schemaContext.Value, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+        if (!candidateStrings.Any())
+            logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (no valid values exist) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
         else
-            logger?.LogError("Invalid value `{val}` in {tp} to match `{expected}` at line {line}, position {pos}.", value, xmlContext.type, listToMatchName, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+        {
+            var count = candidateStrings.Count();
+            if (count == 1)
+                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (the only acceped value is `{acceptedValue}`) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+            else if (count < 6)
+                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (acceped values are {acceptedValues}) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+            else
+                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` ({acceptedValuesCount} acceped values exist) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, count, schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+        }
         return Audit.Status.IdsContentError;
     }
 

@@ -21,11 +21,11 @@ internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
         if (!EnsureRegex(out var _, ignoreCase))
         {
             matches = new List<string>();
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext);
+            return IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
         }
         return (TryMatch(candidateStrings, ignoreCase, out matches))
             ? Audit.Status.Ok
-            : IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext);
+            : IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
     }
 
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)

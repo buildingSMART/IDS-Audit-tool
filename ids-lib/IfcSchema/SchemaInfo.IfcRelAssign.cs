@@ -19,7 +19,7 @@ namespace IdsLib.IfcSchema
             {
                 lock (staticLocker)
                 {
-                    ifc2x3RelAssignClasses ??= schemaIFC2x3!["IFCROOT"]!.MatchingConcreteClasses.Select(x=>x.Name).ToArray();
+                    ifc2x3RelAssignClasses ??= SchemaIfc2x3["IFCROOT"]!.MatchingConcreteClasses.Select(x=>x.Name).ToArray();
                     return ifc2x3RelAssignClasses;
                 }
             }
@@ -31,8 +31,8 @@ namespace IdsLib.IfcSchema
                 lock (staticLocker)
                 {
                     ifc4RelAssignClasses ??=
-                            schemaIfc4!["IFCOBJECTDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name).Union(
-                            schemaIfc4!["IFCPROPERTYDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name)
+                            SchemaIfc4["IFCOBJECTDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name).Union(
+                            SchemaIfc4["IFCPROPERTYDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name)
                             ).ToArray();
                     return ifc4RelAssignClasses;
                 }
@@ -45,8 +45,8 @@ namespace IdsLib.IfcSchema
                 lock (staticLocker)
                 {
                     ifc4x3RelAssignClasses ??=
-                            schemaIfc4x3!["IFCOBJECTDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name).Union(
-                            schemaIfc4x3!["IFCPROPERTYDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name)
+                            SchemaIfc4x3["IFCOBJECTDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name).Union(
+                            SchemaIfc4x3["IFCPROPERTYDEFINITION"]!.MatchingConcreteClasses.Select(x => x.Name)
                             ).ToArray();
                     return ifc4x3RelAssignClasses;
                 }
