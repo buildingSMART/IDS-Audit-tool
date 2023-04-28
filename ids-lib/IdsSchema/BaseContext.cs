@@ -80,7 +80,7 @@ internal class BaseContext
     {
         if (!TryGetUpperNodes(context, typeNames, out var nodes))
         {
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
+            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -88,7 +88,7 @@ internal class BaseContext
         if (nodes[0] is not T spec)
         {
             node = default;
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
+            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
             status = Audit.Status.IdsStructureError;
             return false;
         }

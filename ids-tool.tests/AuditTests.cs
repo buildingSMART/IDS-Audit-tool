@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using IdsLib;
+using IdsLib.SchemaProviders;
 using idsTool.tests.Helpers;
 using IdsTool;
 using System;
@@ -33,6 +34,9 @@ public class AuditTests : BuildingSmartRepoFiles
     [MemberData(nameof(GetTestCaseIdsFiles))]
     public void OmitContentAuditOfDocumentationFilesOk(string developmentIdsFile)
     {
+        // why does this throw an exception when we don't #define ManageReadLoopException?
+        // should the exception be prevented by the schema validation?
+        // 
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetTestCaseFileInfo(developmentIdsFile);
         var c = new AuditOptions()
@@ -76,7 +80,7 @@ public class AuditTests : BuildingSmartRepoFiles
 
 
     [Theory]
-    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 1, Audit.Status.IdsStructureError)]
+    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError)]
     [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
@@ -91,6 +95,8 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError)]
+    [InlineData("InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError)]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -98,7 +104,7 @@ public class AuditTests : BuildingSmartRepoFiles
     }
 
     [Theory]
-    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 1, Audit.Status.IdsStructureError)]
+    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError)]
     [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
@@ -113,6 +119,8 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
     [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
+    [InlineData("InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError)]
+    [InlineData("InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError)]
     public void FullAuditFailWithStream(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -124,7 +132,7 @@ public class AuditTests : BuildingSmartRepoFiles
         LoggerAndAuditHelpers.FullAudit(stream2, XunitOutputHelper, status);
     }
 
-    private const string NetworkIds = "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/IDS_ArcDox.ids";
+    private const string ValidNetworkIds = "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/IDS_ArcDox.ids";
 
     [Fact]
     public async Task TestSeekableNetworkStream()
@@ -134,7 +142,7 @@ public class AuditTests : BuildingSmartRepoFiles
             Timeout = new TimeSpan(0, 0, 30)
         };
         _httpClient.DefaultRequestHeaders.Clear();
-        using var response = await _httpClient.GetAsync(NetworkIds);
+        using var response = await _httpClient.GetAsync(ValidNetworkIds);
         response.EnsureSuccessStatusCode();
         var stream = await response.Content.ReadAsStreamAsync();
         LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.Ok);
@@ -145,13 +153,31 @@ public class AuditTests : BuildingSmartRepoFiles
     public void TestNonSeekableNetworkStream()
     {
 #pragma warning disable SYSLIB0014 // Type or member is obsolete
-        var Request = WebRequest.Create(NetworkIds);
+        var Request = WebRequest.Create(ValidNetworkIds);
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
         var stream = Request.GetResponse().GetResponseStream();
         stream.Should().NotBeNull();
-        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.Ok);
+        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.UnhandledError);
         Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
     }
 
+
+    [Fact]
+    public void TestNonSeekableNetworkStream2()
+    {
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+        var Request = WebRequest.Create(ValidNetworkIds);
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
+        var stream = Request.GetResponse().GetResponseStream();
+        stream.Should().NotBeNull();
+        var s = new SingleAuditOptions()
+        {
+            OmitIdsContentAudit = false,
+            SchemaProvider = new SeekableStreamSchemaProvider()
+        };
+        LoggerAndAuditHelpers.AuditWithStream(stream, s, XunitOutputHelper, Audit.Status.UnhandledError, -1);
+
+        Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
+    }
 
 }

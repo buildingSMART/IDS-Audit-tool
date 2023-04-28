@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using XmlDocMarkdown.Core;
-
-namespace IdsLib.codegen;
+﻿namespace IdsLib.codegen;
 
 internal class Program
 {

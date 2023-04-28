@@ -2,6 +2,7 @@
 using IdsLib;
 using idsTool.tests.Helpers;
 using IdsTool;
+using Microsoft.Extensions.Logging;
 using System.IO;
 using Xunit;
 using Xunit.Abstractions;
@@ -46,7 +47,8 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
         };
-        var checkResult = Audit.Run(c);
+        ILogger logg = LoggerAndAuditHelpers.GetXunitLogger(XunitOutputHelper);
+        var checkResult = Audit.Run(c, logg);
         checkResult.Should().Be(expected);
     }
 }

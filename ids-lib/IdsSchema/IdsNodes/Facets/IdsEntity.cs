@@ -57,7 +57,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
                 var c = s[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
+                    ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
                     continue;
                 }
                 if (possiblePredefined == null)

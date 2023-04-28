@@ -59,7 +59,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         var relationInfo = SchemaInfo.AllPartOfRelations.FirstOrDefault(x => x.IfcName == matchedRelationName);
         if (relationInfo is null)
         {
-            ret |= IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
+            ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
             return SetInvalid(ret);
         }
 
@@ -67,7 +67,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         TypesFilter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
         if (IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
         {
-            ret |= IdsLoggerExtensions.ReportUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
+            ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
             return SetInvalid(ret);
         }
 

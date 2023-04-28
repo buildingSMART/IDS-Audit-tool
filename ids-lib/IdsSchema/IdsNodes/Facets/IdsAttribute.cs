@@ -22,12 +22,12 @@ internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
     {
         if (!TryGetUpperNodes(this, SpecificationArray, out var nodes))
         {
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, "Missing specification for attribute.", this);
+            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, "Missing specification for attribute.", this);
             return Audit.Status.IdsStructureError;
         }
         if (nodes[0] is not IdsSpecification spec)
         {
-            IdsLoggerExtensions.ReportUnexpectedScenario(logger, "Invalid specification for attribute.", this);
+            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, "Invalid specification for attribute.", this);
             return Audit.Status.IdsContentError;
         }
         var requiredSchemaVersions = spec.SchemaVersions;

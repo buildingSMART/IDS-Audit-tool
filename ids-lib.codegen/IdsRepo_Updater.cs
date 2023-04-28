@@ -1,6 +1,5 @@
 ﻿using idsTool.tests.Helpers;
 using System.Diagnostics;
-using System.Reflection.Metadata;
 using System.Text;
 
 namespace IdsLib.codegen

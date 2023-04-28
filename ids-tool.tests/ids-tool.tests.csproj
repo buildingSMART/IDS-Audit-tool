@@ -31,6 +31,15 @@
 		<None Update="bsFiles\badIds.xsd">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="bsFiles\empty.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="bsFiles\empty.xsd">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="bsFiles\damaged.xsd">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="bsFiles\ids.xsd">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -40,8 +49,17 @@
 		<None Update="bsFiles\IDS_ucms_prefab_pipes_IFC2x3.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="bsFiles\noImportsIds.xsd">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="InvalidFiles\empty.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\structureAndContentFailure.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\xsdFailure.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="InvalidFiles\InvalidMeasureForstandardProperty.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

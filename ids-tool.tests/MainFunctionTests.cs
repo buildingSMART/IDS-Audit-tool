@@ -12,7 +12,9 @@ namespace idsTool.tests;
 public class MainFunctionTests
 {
     private const string schemaFile = @"bsFiles/ids.xsd";
-    private const string badSchemaFile = @"bsFiles/badIds.xsd";
+    private const string noImportSchemaFile = @"bsFiles/noImportsIds.xsd";
+    private const string emptySchemaFile = @"bsFiles/empty.xsd";
+    private const string damagedSchemaFile = @"bsFiles/damaged.xsd";
     private const string idsFile = @"bsFiles/IDS_ucms_prefab_pipes_IFC2x3.ids";
 
     public MainFunctionTests(ITestOutputHelper outputHelper)
@@ -33,12 +35,15 @@ public class MainFunctionTests
         ret.Should().Be(Status.Ok);
     }
 
-    [Fact]
-    public void RunProvidingBadSchemaFailsGracefully()
+    [Theory]
+    [InlineData(noImportSchemaFile)]
+    [InlineData(emptySchemaFile)]
+    [InlineData(damagedSchemaFile)]
+    public void RunProvidingBadSchemaFailsGracefully(string fileName)
     {
         var c = new AuditOptions
         {
-            SchemaFiles = new List<string> { badSchemaFile },
+            SchemaFiles = new List<string> { fileName },
             InputSource = idsFile
         };
         var ret = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
