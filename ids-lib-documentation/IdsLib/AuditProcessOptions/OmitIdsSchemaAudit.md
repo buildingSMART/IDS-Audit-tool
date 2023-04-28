@@ -1,9 +1,9 @@
-# AuditProcessOptions.OmitIdsContentAudit property
+# AuditProcessOptions.OmitIdsSchemaAudit property
 
-If set to true skips the audit of the semantic aspects of the IDS.
+If set to true skips the audit of the structural aspects of the IDS.
 
 ```csharp
-public virtual bool OmitIdsContentAudit { get; set; }
+public virtual bool OmitIdsSchemaAudit { get; set; }
 ```
 
 ## See Also

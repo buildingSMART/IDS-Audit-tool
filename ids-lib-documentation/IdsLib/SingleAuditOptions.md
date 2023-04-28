@@ -1,6 +1,6 @@
 # SingleAuditOptions class
 
-Configuration parameters needed to setup the execution of a single file audit. The [`IdsVersion`](./SingleAuditOptions/IdsVersion.md) property is currently required to avoid the need to seek the stream, then resume the audit once the version is detected from the content. Future versions will attempt to relax this requirement. Ensure that the properties of the base class [`AuditProcessOptions`](./AuditProcessOptions.md) are also populated.
+Configuration parameters needed to setup the audit of a single IDS. The [`IdsVersion`](./SingleAuditOptions/IdsVersion.md) property is currently required to avoid the need to seek the stream, then resume the audit once the version is detected from the content. Future versions will attempt to relax this requirement. Ensure that the properties of the base class [`AuditProcessOptions`](./AuditProcessOptions.md) are also populated.
 
 ```csharp
 public class SingleAuditOptions : AuditProcessOptions

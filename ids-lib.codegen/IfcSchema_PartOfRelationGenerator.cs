@@ -11,13 +11,14 @@ public class IfcSchema_PartOfRelationGenerator
         {
             Schemas.Add(schema);
             if (manyType != ManyType)
-                throw new ArgumentException("Inconsistent type across schemas on enumerable side of the relation, we need to rethink auditing logic.");
+                throw new ArgumentException($"Inconsistent type across schemas on enumerable side of the {RelationName} relation ({manyType} vs. {ManyType}), we need to rethink auditing logic.");
             if (oneType != OneType)
-                throw new ArgumentException("Inconsistent type across schemas on one-side of the relation, we need to rethink auditing logic.");
+                throw new ArgumentException($"Inconsistent type across schemas on one-side of the {RelationName} relation ({oneType} vs. {OneType}), we need to rethink auditing logic.");
         }
 
-        public GenOneToManyRelationInfo(string schema, string oneType, string enumerableType)
+        public GenOneToManyRelationInfo(string relationName, string schema, string oneType, string enumerableType)
         {
+            RelationName = relationName;
             OneType = oneType;
             ManyType = enumerableType;
             Schemas = new List<string>() { schema };
@@ -26,6 +27,7 @@ public class IfcSchema_PartOfRelationGenerator
         internal List<string> Schemas { get; set; } 
         internal string ManyType { get; set; } 
         internal string OneType { get; set; } 
+        internal string RelationName { get; set; } 
     }
 
     internal static string Execute()
@@ -56,7 +58,7 @@ public class IfcSchema_PartOfRelationGenerator
                     if (measureInfos.TryGetValue(daRelation, out var lst))
                         lst.AddSchema(schema, oneExpressType.Name, manyType.Name);
                     else
-                        measureInfos.Add(daRelation, new GenOneToManyRelationInfo(schema, oneExpressType.Name, manyType.Name));                    
+                        measureInfos.Add(daRelation, new GenOneToManyRelationInfo(daRelation, schema, oneExpressType.Name, manyType.Name));                    
                 }
                 catch 
                 {

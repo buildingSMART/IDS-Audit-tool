@@ -11,7 +11,11 @@ public class AuditProcessOptions
 | name | description |
 | --- | --- |
 | [AuditProcessOptions](AuditProcessOptions/AuditProcessOptions.md)() | The default constructor. |
-| virtual [OmitIdsContentAudit](AuditProcessOptions/OmitIdsContentAudit.md) { get; set; } | If set to true skips the audit of the semantic aspects of the IDS, which results in a basic test of the adherence to the xsd schema. |
+| virtual [OmitIdsContentAudit](AuditProcessOptions/OmitIdsContentAudit.md) { get; set; } | If set to true skips the audit of the semantic aspects of the IDS. |
+| virtual [OmitIdsSchemaAudit](AuditProcessOptions/OmitIdsSchemaAudit.md) { get; set; } | If set to true skips the audit of the structural aspects of the IDS. |
+| virtual [SchemaProvider](AuditProcessOptions/SchemaProvider.md) { get; set; } | Defines the specific schemas to be loaded for the validation. |
+| virtual [XmlWarningAction](AuditProcessOptions/XmlWarningAction.md) { get; set; } | The action taken when an IDS file contains warnings about its structure defined by XSD Schema |
+| enum [XmlWarningBehaviour](AuditProcessOptions.XmlWarningBehaviour.md) | Options for the reporting action taken when encountering Xsd warning in IDS files |
 
 ## See Also
 

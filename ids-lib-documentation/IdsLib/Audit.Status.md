@@ -15,10 +15,11 @@ public enum Status
 | NotImplementedError | `0x1` | The tool did not complete all the audits, because some aspect of the process are not implemented yet |
 | InvalidOptionsError | `0x2` | The options provided in input are incomplete or inconsistent. |
 | NotFoundError | `0x4` | A resources passed via file name was not found. |
-| IdsStructureError | `0x8` | When auditing an IDS, ne or more errors encountered in the XML structure (includes XSD compliance errors). |
+| IdsStructureError | `0x8` | When auditing an IDS, one or more errors were encountered in the XML structure (includes XSD compliance errors). Depending on the [`XmlWarningAction`](./AuditProcessOptions/XmlWarningAction.md) property, this might include XSD schema warnings. |
 | IdsContentError | `0x10` | When auditing an IDS, one or more errors encountered auditing against the implementation agreement. |
-| XsdSchemaError | `0x20` | A custom XSD was passed, but it could not be used because of an error in its content or structure. |
-| UnhandledError | `0x40` | An unmanaged error occurred in the main audit methods. Please contact the authors to address the problem. |
+| XsdSchemaError | `0x40` | A custom XSD was passed, but it could not be used because of an error in its content or structure. |
+| UnhandledError | `0x80` | An unmanaged error occurred in the main audit methods. Please contact the authors to address the problem. |
+| IdsStructureWarning | `0x100` | When auditing an IDS, one or more warnings were encountered in the XML structure as defined by the XSD schemas. Triggering this status is configurable using the [`XmlWarningAction`](./AuditProcessOptions/XmlWarningAction.md) property. |
 
 ## See Also
 

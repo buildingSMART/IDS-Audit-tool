@@ -3,12 +3,12 @@
 Entry point to access the library features in batch mode either on directories or single files
 
 ```csharp
-public static Status Run(IBatchAuditOptions options, ILogger? logger = null)
+public static Status Run(IBatchAuditOptions batchOptions, ILogger? logger = null)
 ```
 
 | parameter | description |
 | --- | --- |
-| options | configuration options for the execution of audits |
+| batchOptions | configuration options for the execution of audits on a file or folder |
 | logger | the optional logger provides fine-grained feedback on all the audits performed |
 
 ## Return Value
