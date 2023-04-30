@@ -15,7 +15,8 @@
 		</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>IDS, buildingSmart</PackageTags>
-		<AssemblyVersion>1.0.13</AssemblyVersion>
+		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
+		<AssemblyVersion>1.0.14</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>

@@ -4,7 +4,9 @@ using IdsLib.SchemaProviders;
 using idsTool.tests.Helpers;
 using IdsTool;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -79,24 +81,30 @@ public class AuditTests : BuildingSmartRepoFiles
     }
 
 
+    public static IEnumerable<object[]> GetInvalidCases()
+    {
+        yield return new object[] { "InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError };
+        yield return new object[] { "InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidMeasureForStandardPsetProperty.ids", 2, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError };
+        yield return new object[] { "InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
+    }
+
+
     [Theory]
-    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError)]
-    [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError)]
-    [InlineData("InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError)]
+    [MemberData(nameof(GetInvalidCases))]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
@@ -104,26 +112,17 @@ public class AuditTests : BuildingSmartRepoFiles
     }
 
     [Theory]
-    [InlineData("InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError)]
-    [InlineData("InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/InvalidMeasureForStandardProperty.ids", 2, Audit.Status.IdsContentError)]
-    [InlineData("InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError)]
-    [InlineData("InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError)]
+    [MemberData(nameof(GetInvalidCases))]
     public void FullAuditFailWithStream(string path, int numErr, Audit.Status status)
     {
         var f = new FileInfo(path);
+        if (!f.Exists) 
+            return; // when a case matchiing error happens in linux, we can exit gracefully
+
+        var d = f.Directory!; // if the file exists, the directory must also
+        var t = d.GetFiles(Path.ChangeExtension(f.Name, "*")).Single();
+        t.Name.Should().Be(f.Name);
+
         using var stream = f.OpenRead();
         LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, status, numErr);
 

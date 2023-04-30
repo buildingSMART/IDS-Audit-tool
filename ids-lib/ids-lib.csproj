@@ -19,7 +19,8 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>First implementation.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<AssemblyVersion>1.0.18</AssemblyVersion>
+		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
+		<AssemblyVersion>1.0.19</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
