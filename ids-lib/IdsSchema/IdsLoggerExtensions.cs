@@ -94,7 +94,7 @@ internal static class IdsLoggerExtensions
             else if (count < 6)
                 logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
             else
-                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, count, schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
         }
         return Audit.Status.IdsContentError;
     }
