@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 
 namespace IdsLib.IdsSchema.IdsNodes;

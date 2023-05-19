@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -32,7 +33,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         var requiredSchemaVersions = spec.SchemaVersions;
         if (string.IsNullOrEmpty(relation))
         {
-            ret |= IdsLoggerExtensions.ReportInvalidEmtpyValue(logger, this, "relation");
+            ret |= IdsMessage.ReportInvalidEmtpyValue(logger, this, "relation");
             return ret;
         }
 
@@ -59,7 +60,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         var relationInfo = SchemaInfo.AllPartOfRelations.FirstOrDefault(x => x.IfcName == matchedRelationName);
         if (relationInfo is null)
         {
-            ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
+            ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
             return SetInvalid(ret);
         }
 
@@ -67,14 +68,14 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         TypesFilter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
         if (IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
         {
-            ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
+            ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
             return SetInvalid(ret);
         }
 
         // The entity needs to be of type of relationInfo.OneSideIfcType
         if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
         {
-            ret |= IdsLoggerExtensions.ReportInvalidEmtpyValue(logger, this, "entity");
+            ret |= IdsMessage.ReportInvalidEmtpyValue(logger, this, "entity");
             return SetInvalid(ret);
         }
 
@@ -83,7 +84,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         var possible = validChildEntityType.Intersect(childEntity.TypesFilter);
         if (possible.IsEmpty)
         {
-            ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "relation not compatible with provided child entity");
+            ret |= IdsMessage.ReportIncompatibleClauses(logger, this, "relation not compatible with provided child entity");
             return SetInvalid(ret);
         }
         return ret;

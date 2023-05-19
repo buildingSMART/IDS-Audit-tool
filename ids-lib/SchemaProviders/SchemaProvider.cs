@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,8 @@ namespace IdsLib.SchemaProviders
                     tmpResources = new List<string> { "xsdschema.xsd", "xml.xsd", "ids.xsd" };
                     break;
                 case IdsVersion.Invalid:
-                    logger?.LogError("Embedded schemas for version {vrs} cannot be resolved.", vrs);
-                    ret = Audit.Status.IdsContentError;
-                    break;
                 default:
-                    logger?.LogError("Embedded schema for version {vrs} not implemented.", vrs);
-                    ret = Audit.Status.NotImplementedError;
+                    ret |= IdsToolMessages.ReportInvalidSchemaVersion(logger, vrs);
                     break;
             }
             schemas = tmpResources.Select(x => GetSchema(x)).ToList();
@@ -50,7 +47,7 @@ namespace IdsLib.SchemaProviders
                     case "http://www.w3.org/2001/XMLSchema-instance":
                         break;
                     default:
-                        logger?.LogError("Unexpected import schema {schema}.", schema);
+                        XsdMessages.ReportUnexpectedSchema(logger, schema);
                         break;
                 }
             }

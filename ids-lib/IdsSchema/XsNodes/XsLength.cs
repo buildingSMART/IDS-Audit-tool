@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -18,7 +19,7 @@ internal class XsLength : BaseContext, IStringListMatcher
         if (!int.TryParse(value, out var len)) 
         {
             matches = Enumerable.Empty<string>();   
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessage.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
         }
         matches = candidateStrings.Where(x=>x.Length == len).ToList();
         return matches.Any()

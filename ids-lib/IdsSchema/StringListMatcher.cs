@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,7 @@ internal class StringListMatcher : IStringListMatcher
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsLoggerExtensions.ReportInvalidListMatcher(context, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessage.ReportInvalidListMatcher(context, value, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 
@@ -48,7 +49,7 @@ internal class StringListMatcher : IStringListMatcher
             catch (Exception)
             {
                 var count = matches.Count();
-                ret |= IdsLoggerExtensions.ReportInvalidListMatcherCount(context, value, logger, listToMatchName, count, schemaContext);
+                ret |= IdsMessage.ReportInvalidListMatcherCount(context, value, logger, listToMatchName, count, schemaContext);
                 singleMatch = null;
                 return ret;
             }

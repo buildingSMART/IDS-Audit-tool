@@ -1,6 +1,7 @@
 ﻿using System.Xml.Schema;
 using System.Xml;
 using Microsoft.Extensions.Logging;
+using IdsLib.Messages;
 
 namespace IdsLib;
 
@@ -34,16 +35,16 @@ public static partial class Audit
                 switch (Options.XmlWarningAction)
                 {
                     case AuditProcessOptions.XmlWarningBehaviour.ReportAsInformation:
-                        Logger?.LogInformation("Schema compliance warning at {location}; {message}", location, e.Message);
+                        IdsMessage.ReportSchemaComplianceWarning(Logger, LogLevel.Information, location, e.Message);
                         // status is not changed
                         break;
                     case AuditProcessOptions.XmlWarningBehaviour.ReportAsWarning:
-                        Logger?.LogWarning("Schema compliance warning at {location}; {message}", location, e.Message);
+						IdsMessage.ReportSchemaComplianceWarning(Logger, LogLevel.Warning, location, e.Message);
                         SchemaStatus |= Status.IdsStructureWarning;
                         break;
                     case AuditProcessOptions.XmlWarningBehaviour.ReportAsError:
-                        // the type reported is an error, but its original nature of warning is retained to help debug
-                        Logger?.LogError("Schema compliance warning at {location}; {message}", location, e.Message);
+						// the type is reported as an error, but its original nature of warning is retained to help debug
+						IdsMessage.ReportSchemaComplianceWarning(Logger, LogLevel.Error, location, e.Message);
                         SchemaStatus |= Status.IdsStructureError;
                         break;
                     default: // nothing to do
@@ -52,7 +53,7 @@ public static partial class Audit
             }
             else if (e.Severity == XmlSeverityType.Error)
             {
-                Logger?.LogError("Schema compliance error at {location}; {message}", location, e.Message);
+				IdsMessage.ReportSchemaComplianceError(Logger, LogLevel.Error, location, e.Message);
                 SchemaStatus |= Status.IdsStructureError;
             }
         }

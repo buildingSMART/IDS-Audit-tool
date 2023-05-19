@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -27,16 +28,16 @@ internal class IdsSpecification : BaseContext
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
             ret |= logger.ReportInvalidOccurr(this, minMaxOccurr);
         if (SchemaVersions == IfcSchemaVersions.IfcNoVersion)
-            ret |= logger.ReportInvalidSchemaVersion(SchemaVersions, this);
+            ret |= IdsMessage.ReportInvalidSchemaVersion(logger, SchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");
         if (applic is null)
         {
-            ret |= IdsLoggerExtensions.ReportInvalidApplicability(logger, this, "not found");
+            ret |= IdsMessage.ReportInvalidApplicability(logger, this, "not found");
             return ret;
         }
         if (!applic.ChildFacets.Any())
         {
-            ret |= IdsLoggerExtensions.ReportInvalidApplicability(logger, this, "one condition is required at minimum");
+            ret |= IdsMessage.ReportInvalidApplicability(logger, this, "one condition is required at minimum");
             return ret;
         }
 
@@ -48,7 +49,7 @@ internal class IdsSpecification : BaseContext
         {
             var totalFilters = IfcTypeConstraint.Intersect(applic.TypesFilter, reqs.TypesFilter);
             if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
-                ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "impossible match of applicability and requirements");
+                ret |= IdsMessage.ReportIncompatibleClauses(logger, this, "impossible match of applicability and requirements");
         }
 
         return base.PerformAudit(logger) | ret;

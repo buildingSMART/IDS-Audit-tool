@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml;
 using System.Diagnostics.CodeAnalysis;
+using IdsLib.Messages;
 
 namespace IdsLib.IdsSchema;
 
@@ -80,7 +81,7 @@ internal class BaseContext
     {
         if (!TryGetUpperNodes(context, typeNames, out var nodes))
         {
-            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
+			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -88,7 +89,7 @@ internal class BaseContext
         if (nodes[0] is not T spec)
         {
             node = default;
-            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
+			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
             status = Audit.Status.IdsStructureError;
             return false;
         }

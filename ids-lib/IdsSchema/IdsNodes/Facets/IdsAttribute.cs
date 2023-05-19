@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -22,12 +23,12 @@ internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
     {
         if (!TryGetUpperNodes(this, SpecificationArray, out var nodes))
         {
-            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, "Missing specification for attribute.", this);
+			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, "Missing specification for attribute.", this);
             return Audit.Status.IdsStructureError;
         }
         if (nodes[0] is not IdsSpecification spec)
         {
-            IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, "Invalid specification for attribute.", this);
+			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, "Invalid specification for attribute.", this);
             return Audit.Status.IdsContentError;
         }
         var requiredSchemaVersions = spec.SchemaVersions;
@@ -36,7 +37,7 @@ internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
 
         // the first child must be a valid string matcher
         if (sm is null)
-            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessage.ReportNoStringMatcher(logger, this, "name");
         
         var validAttributeNames = SchemaInfo.AllAttributes
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)

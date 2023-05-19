@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ internal class XsEnumeration : BaseContext, IStringListMatcher, IStringPrefixMat
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessage.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 

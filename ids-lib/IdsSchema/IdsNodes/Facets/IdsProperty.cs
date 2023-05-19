@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -37,12 +38,12 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
         var pset = GetChildNodes("propertySet").FirstOrDefault();
         var psetMatcher = pset?.GetListMatcher();
         if (psetMatcher is null)
-            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "propertySet");
+            return IdsMessage.ReportNoStringMatcher(logger, this, "propertySet");
 
         var name = GetChildNodes("name").FirstOrDefault();
         var nameMatcher = name?.GetListMatcher();
         if (nameMatcher is null)
-            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessage.ReportNoStringMatcher(logger, this, "name");
 
         // we are keeping the stricter type to ensure that it is valid across multiple schemas
         // depending on the schema version of IfcRelDefinesByProperties the filter needs to be
@@ -87,7 +88,7 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
             {
                 IsValid = false;
                 TypesFilter = null;
-                return IdsLoggerExtensions.ReportReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
+                return IdsMessage.ReportReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
             }
             else
             {

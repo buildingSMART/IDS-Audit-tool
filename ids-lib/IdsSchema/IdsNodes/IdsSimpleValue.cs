@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ internal partial class IdsSimpleValue : BaseContext, IStringListMatcher, IString
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessage.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 

@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using System;
 
 namespace IdsLib.IfcSchema;
@@ -16,7 +17,7 @@ internal static class IfcSchemaHelper
                 "IFC2X3" => IfcSchemaVersions.Ifc2x3,
                 "IFC4" => IfcSchemaVersions.Ifc4,
                 "IFC4X3" => IfcSchemaVersions.Ifc4x3,
-                _ => logger.ReportInvalidSchemaString(ver, context) 
+                _ => IdsMessage.ReportInvalidSchemaString(logger, ver, context) 
             };
         }
         return ret;

@@ -1,5 +1,6 @@
 ﻿using IdsLib.IdsSchema;
 using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.IO;
@@ -15,8 +16,8 @@ namespace IdsLib.SchemaProviders
             if (!source.CanSeek)
             {
                 schemas = Enumerable.Empty<XmlSchema>();
-                logger?.LogCritical("The provided stream must be able to seek to detect the schema version from its content.");
-                return Audit.Status.UnhandledError;
+				return IdsToolMessages.ReportUnseekableStream(logger);
+                
             }
             var originalPosition = source.Position;
             source.Seek(0, SeekOrigin.Begin);
@@ -25,7 +26,7 @@ namespace IdsLib.SchemaProviders
             if (!info.IsIds)
             {
                 schemas = Enumerable.Empty<XmlSchema>();
-                return IdsLoggerExtensions.ReportUnexpectedScenario(logger, !string.IsNullOrWhiteSpace(info.StatusMessage)
+                return IdsToolMessages.ReportUnexpectedScenario(logger, !string.IsNullOrWhiteSpace(info.StatusMessage)
                         ? info.StatusMessage
                         : "The stream provided does not contain a recognised IDS."
                     );
@@ -34,8 +35,7 @@ namespace IdsLib.SchemaProviders
             if (info.Version == IdsVersion.Invalid)
             {
                 schemas = Enumerable.Empty<XmlSchema>();
-                logger?.LogCritical("{errorMessage}", "Unrecognised location.");
-                return Audit.Status.IdsStructureError;
+                return IdsToolMessages.ReportInvalidVersion(logger);
             }
             return GetResourceSchemasByVersion(info.Version, logger, out schemas);
         }

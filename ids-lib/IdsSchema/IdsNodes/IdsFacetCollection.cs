@@ -1,4 +1,5 @@
 ﻿using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,7 @@ internal class IdsFacetCollection : BaseContext, IIfcTypeConstraintProvider
             }
         }
         if (!ChildFacets.Any(x=>!x.IsValid) && IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
-            ret |= IdsLoggerExtensions.ReportIncompatibleClauses(logger, this, "impossible match of constraints in set");
+            ret |= IdsMessage.ReportIncompatibleClauses(logger, this, "impossible match of constraints in set");
         return ret;
     }
 }

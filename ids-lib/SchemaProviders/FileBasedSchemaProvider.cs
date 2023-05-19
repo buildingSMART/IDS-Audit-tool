@@ -1,4 +1,4 @@
-﻿using IdsLib.IdsSchema.IdsNodes;
+﻿using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -23,9 +23,9 @@ namespace IdsLib.SchemaProviders
         void ValidationCallback(object? sender, ValidationEventArgs args)
         {
             if (args.Severity == XmlSeverityType.Warning)
-                validationLogger?.LogWarning("{message}", args.Message);            
+                XsdMessages.ReportSchemaIssue(validationLogger, LogLevel.Warning, args.Message);
             else
-                validationLogger?.LogError("{message}", args.Message);
+                XsdMessages.ReportSchemaIssue(validationLogger, LogLevel.Error, args.Message);
             validationStatus = Audit.Status.XsdSchemaError;
         }
 
@@ -38,8 +38,7 @@ namespace IdsLib.SchemaProviders
             {
                 if (!File.Exists(diskSchema))
                 {
-                    logger?.LogError("File `{schemaFile}` not found.", diskSchema);
-                    ret |= Audit.Status.NotFoundError;
+                    ret |= IdsToolMessages.ReportSourceNotFound(logger, diskSchema);
                     continue;
                 }
                 try
@@ -54,8 +53,7 @@ namespace IdsLib.SchemaProviders
                     }
                     if (schema is null)
                     {
-                        logger?.LogError("Error reading XSD Schema from `{schemaFile}`.", diskSchema);
-                        ret |= Audit.Status.XsdSchemaError;
+                        ret |= IdsToolMessages.ReportInvalidXsdSource(logger, diskSchema);
                         continue;
                     }
                     foreach (var location in schema.Includes.OfType<XmlSchemaImport>().Select(x => x.SchemaLocation))
@@ -68,10 +66,9 @@ namespace IdsLib.SchemaProviders
                 }
                 catch (Exception)
                 {
-                    logger?.LogError("Error reading XSD Schema from `{schemaFile}`.", diskSchema);
-                    ret |= Audit.Status.XsdSchemaError;
+                    ret |= IdsToolMessages.ReportInvalidXsdSource(logger, diskSchema);
                 }
-                
+
             }
             // also get required reference schemas
             foreach (var schema in GetResourceSchemasFromImports(logger, imports))

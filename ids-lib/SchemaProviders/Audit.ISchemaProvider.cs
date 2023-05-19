@@ -1,5 +1,4 @@
-﻿using IdsLib.IdsSchema.IdsNodes;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Schema;

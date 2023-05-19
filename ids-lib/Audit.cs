@@ -8,9 +8,9 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using IdsLib.IdsSchema;
-using IdsLib.IdsSchema.IdsNodes;
 using System.Data;
 using IdsLib.SchemaProviders;
+using IdsLib.Messages;
 
 namespace IdsLib;
 
@@ -97,12 +97,11 @@ public static partial class Audit
     {
         Status retvalue = Status.Ok;
         if (string.IsNullOrEmpty(batchOptions.InputSource) && !batchOptions.SchemaFiles.Any())
-        {
-            // no IDS and no schema => nothing to do
-            logger?.LogWarning("No audits are required, with the options passed.");
-            retvalue |= Status.InvalidOptionsError;
-        }
-        else if (string.IsNullOrEmpty(batchOptions.InputSource))
+		{
+			// no IDS and no schema => nothing to do
+			retvalue |= IdsToolMessages.ReportNoActionRequired(logger);
+		}
+		else if (string.IsNullOrEmpty(batchOptions.InputSource))
         {
             // No ids, but we have a schemafile => check the schema itself
             batchOptions.AuditSchemaDefinition = true;
@@ -116,35 +115,35 @@ public static partial class Audit
             }
             catch (ArgumentException)
             {
-                logger?.LogWarning("Invalid OmitIdsContentAuditPattern `{pattern}`.", batchOptions.OmitIdsContentAuditPattern);
-                retvalue |= Status.InvalidOptionsError;
+                retvalue |= IdsToolMessages.ReportInvalidPattern(logger, batchOptions.OmitIdsContentAuditPattern);
             }
         }
         if (retvalue.HasFlag(Status.InvalidOptionsError))
         {
-            logger?.LogError("No audit performed.", batchOptions.OmitIdsContentAuditPattern);
+			IdsToolMessages.ReportNoAudit(logger);
             return retvalue;
         }
 
-        var auditsList = new List<string>();
+        var auditsList = new ActionCollection();
         if (!string.IsNullOrEmpty(batchOptions.InputSource))
-            auditsList.Add("Ids structure");
+            auditsList.Add(Action.IdsStructure);
         if (batchOptions.AuditSchemaDefinition)
-            auditsList.Add("Xsd schemas correctness");
+            auditsList.Add(Action.XsdCorrectness);
         if (!batchOptions.OmitIdsContentAudit)
         {
             if (!string.IsNullOrWhiteSpace(batchOptions.OmitIdsContentAuditPattern))
-                auditsList.Add("Ids content (omitted on regex match)");
+                auditsList.Add(Action.IdsContentWithOmissions);
             else
-                auditsList.Add("Ids content");
+                auditsList.Add(Action.IdsContent);
         }
         if (!auditsList.Any())
         {
-            logger?.LogError("Invalid options.");
-            return Status.InvalidOptionsError;
+            return IdsToolMessages.ReportInvalidOptions(logger);
         }
+
         // inform on the config
-        logger?.LogInformation("Auditing: {audits}.", string.Join(", ", auditsList.ToArray()));
+        
+        IdsToolMessages.ReportActions(logger, auditsList);
 
         // start audit
         if (batchOptions.AuditSchemaDefinition)
@@ -166,11 +165,10 @@ public static partial class Audit
             var ret = ProcessSingleFile(t, batchOptions, logger);
             return CompleteWith(ret, logger);
         }
-        logger?.LogError("Invalid input source '{missingSource}'", batchOptions.InputSource);
-        return Status.NotFoundError;
-    }
+        return IdsToolMessages.ReportInvalidSource(logger, batchOptions.InputSource);
+	}
 
-    private static Status CompleteWith(Status ret, ILogger? writer)
+	private static Status CompleteWith(Status ret, ILogger? writer)
     {
         writer?.LogInformation("Completed with status: {status}.", ret);
         return ret;
@@ -272,7 +270,8 @@ public static partial class Audit
         if (!auditSettings.Options.OmitIdsSchemaAudit)
             rSettings.ValidationEventHandler -= new ValidationEventHandler(auditSettings.ValidationReporter);
 
-        auditSettings.Logger?.LogDebug("Completed reading {cntRead} xml elements.", cntRead);
+        IdsToolMessages.ReportReadCount(logger, cntRead);
+
         return auditSettings.SchemaStatus | contentStatus;
     }
 
@@ -290,15 +289,11 @@ public static partial class Audit
             destSchemas.Compile();
             var names = destSchemas.GlobalElements.Names.OfType<XmlQualifiedName>().Select(x => x.ToString());
             if (!names.Contains("http://standards.buildingsmart.org/IDS:ids"))
-            {
-                logger?.LogError("Ids definition missing in schema.");
-                return Status.XsdSchemaError;
-            }
+                return XsdMessages.ReportMissingIdsDefinition(logger);
         }
         catch (Exception ex)
         {
-            logger?.LogError("Schema compilation error: {message}", ex.Message);
-            return Status.XsdSchemaError;
+			return XsdMessages.ReportXsdCompilationError(logger, ex.Message);
         }
         return ret;
 
@@ -307,7 +302,7 @@ public static partial class Audit
     private static Status ProcessSingleFile(FileInfo theFile, IBatchAuditOptions batchOptions, ILogger? logger)
     {
         Status ret = Status.Ok;
-        logger?.LogInformation("Auditing file: `{filename}`.", theFile.FullName);
+        IdsToolMessages.ReportFileProcessingStarted(logger, theFile.FullName);
         ret |= AuditIdsComplianceAsync(batchOptions, theFile, logger).Result;
         return ret;
     }
@@ -328,9 +323,9 @@ public static partial class Audit
             ret |= sgl;
             tally++;
         }
-        var fileCardinality = tally != 1 ? "files" : "file";
-        logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
-        return ret;
+		IdsToolMessages.ReportFileProcessingEnded(logger, tally);
+
+		return ret;
     }
 
     /// todo: remove, possibly relocate to <see cref="FileBasedSchemaProvider"/>.
@@ -346,21 +341,18 @@ public static partial class Audit
                 var schema = XmlSchema.Read(reader, null);
                 if (schema is null)
                 {
-                    logger?.LogError("XSD\t{schemaFile}\tSchema error.", schemaFile);
-                    ret |= Status.XsdSchemaError;
-                    continue;
+                    ret |= XsdMessages.ReportNullSchema(logger, schemaFile);
+					continue;
                 }
                 rSettings.Schemas.Add(schema);
             }
             catch (XmlSchemaException ex)
             {
-                logger?.LogError("XSD\t{schemaFile}\tSchema error: {errMessage} at line {line}, position {pos}.", schemaFile, ex.Message, ex.LineNumber, ex.LinePosition);
-                ret |= Status.XsdSchemaError;
+				ret |= XsdMessages.ReportSchemaException(logger, schemaFile, ex.Message, ex.LineNumber, ex.LinePosition);
             }
             catch (Exception ex)
             {
-                logger?.LogError("XSD\t{schemaFile}\tSchema error: {errMessage}.", schemaFile, ex.Message);
-                ret |= Status.XsdSchemaError;
+				ret |= XsdMessages.ReportException(logger, schemaFile, ex.Message);
             }
         }
         return ret;

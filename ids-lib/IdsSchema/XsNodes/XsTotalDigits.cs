@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -15,7 +16,7 @@ internal class XsTotalDigits : BaseContext, IStringListMatcher
     {
         // totalDigits in invalid when it comes to string
         matches = Enumerable.Empty<string>();
-        return IdsLoggerExtensions.ReportInvalidXsFacet(logger, this, "use `length` instead");
+        return IdsMessage.ReportInvalidXsFacet(logger, this, "use `length` instead");
     }
 
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)

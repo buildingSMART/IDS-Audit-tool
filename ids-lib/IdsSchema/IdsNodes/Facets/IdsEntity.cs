@@ -1,5 +1,6 @@
 ﻿using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
         // one child must be a valid string matcher
         var sm = name?.GetListMatcher();
         if (sm is null)
-            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessage.ReportNoStringMatcher(logger, this, "name");
         var ValidClassNames = SchemaInfo.AllClasses
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
             .Select(y => y.UpperCaseName);
@@ -46,7 +47,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 
         var predefinedTypeMatcher = type.GetListMatcher();
         if (predefinedTypeMatcher is null)
-            return IdsLoggerExtensions.ReportNoStringMatcher(logger, this, "predefinedType");
+            return IdsMessage.ReportNoStringMatcher(logger, this, "predefinedType");
 
         var schemas = SchemaInfo.GetSchemas(spec.SchemaVersions);
         List<string>? possiblePredefined = null;
@@ -57,7 +58,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
                 var c = s[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsLoggerExtensions.ReportLocatedUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
+                    ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
                     continue;
                 }
                 if (possiblePredefined == null)
@@ -67,7 +68,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
             }
         }
         if (possiblePredefined == null)
-            ret |= IdsLoggerExtensions.ReportInvalidDataConfiguration(logger, this, "No valid predefinedType configuration for Entity");
+            ret |= IdsMessage.ReportInvalidDataConfiguration(logger, this, "No valid predefinedType configuration for Entity");
         else
             ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", requiredSchemaVersions);
         

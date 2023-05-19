@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMat
             !string.IsNullOrWhiteSpace(baseAsString) &&
             baseAsString != "xs:string"
             )
-            return IdsLoggerExtensions.ReportBadType(logger, this, baseAsString);
+            return IdsMessage.ReportBadType(logger, this, baseAsString);
         var ret = Audit.Status.Ok;
         foreach (var child in Children)
         {

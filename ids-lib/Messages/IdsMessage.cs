@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using IdsLib.IdsSchema;
+using IdsLib.IfcSchema;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IdsLib.IdsSchema;
+namespace IdsLib.Messages;
 
-internal static class IdsLoggerExtensions
+internal static class IdsMessage
 {
     internal static Audit.Status ReportInvalidApplicability(this ILogger? logger, BaseContext context, string scenarioMessage)
     {
@@ -17,32 +19,21 @@ internal static class IdsLoggerExtensions
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportUnexpectedScenario(this ILogger? logger, string scenarioMessage)
-    {
-        logger?.LogCritical("Unhandled scenario: {message}", scenarioMessage);
-        return Audit.Status.NotImplementedError;
-    }
+	internal static Audit.Status ReportInvalidOccurr(this ILogger? logger, BaseContext context, MinMaxOccur minMax)
+	{
+		minMax.Audit(out var occurError);
+		logger?.LogError("Invalid occurrence on `{tp}` at line {line}, position {pos}. {occurError}.", context.type, context.StartLineNumber, context.StartLinePosition, occurError);
+		return MinMaxOccur.ErrorStatus;
+	}
 
-    internal static Audit.Status ReportLocatedUnexpectedScenario(this ILogger? logger, string scenarioMessage, BaseContext context)
-    {
-        logger?.LogCritical("Unhandled scenario: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
-        return Audit.Status.NotImplementedError;
-    }
-    internal static Audit.Status ReportInvalidOccurr(this ILogger? logger, BaseContext context, MinMaxOccur minMax) 
-    {
-        minMax.Audit(out var occurError);
-        logger?.LogError("Invalid occurrence on `{tp}` at line {line}, position {pos}. {occurError}.", context.type, context.StartLineNumber, context.StartLinePosition, occurError);
-        return MinMaxOccur.ErrorStatus;
-    }
-
-    /// <summary>
-    /// Report an invalid XML structure within a facet
-    /// </summary>
-    /// <param name="logger">optional logging destination</param>
-    /// <param name="context">Provides indication of the position of the error in the file</param>
-    /// <param name="alternative">if an alternative solution is preferred, it can be suggested here with no punctuation at the end</param>
-    /// <returns>The error status associated with this problem</returns>
-    internal static Audit.Status ReportInvalidXsFacet(this ILogger? logger, BaseContext context, string alternative)
+	/// <summary>
+	/// Report an invalid XML structure within a facet
+	/// </summary>
+	/// <param name="logger">optional logging destination</param>
+	/// <param name="context">Provides indication of the position of the error in the file</param>
+	/// <param name="alternative">if an alternative solution is preferred, it can be suggested here with no punctuation at the end</param>
+	/// <returns>The error status associated with this problem</returns>
+	internal static Audit.Status ReportInvalidXsFacet(this ILogger? logger, BaseContext context, string alternative)
     {
         if (string.IsNullOrWhiteSpace(alternative))
             logger?.LogError("Invalid context for `{tp}` at line {line}, position {pos}.", context.type, context.StartLineNumber, context.StartLinePosition);
@@ -120,5 +111,25 @@ internal static class IdsLoggerExtensions
         return Audit.Status.IdsContentError;
     }
 
+	internal static void ReportSchemaComplianceWarning(ILogger? logger, LogLevel level, string location, string message)
+	{
+        logger?.Log(level, "Schema compliance warning at {location}; {message}", location, message);
+	}
+
+	internal static void ReportSchemaComplianceError(ILogger? logger, LogLevel error, string location, string message)
+	{
+		logger?.LogError("Schema compliance error at {location}; {message}", location, message);
+	}
+
+	internal static Audit.Status ReportInvalidSchemaVersion(ILogger? logger, IfcSchemaVersions version, BaseContext context)
+	{
+		logger?.LogError("Invalid schema version '{vers}' in {tp} at line {line}, position {pos}.", version, context.type, context.StartLineNumber, context.StartLinePosition);
+		return Audit.Status.IdsContentError;
+	}
+	internal static IfcSchemaVersions ReportInvalidSchemaString(ILogger? logger, string version, BaseContext context)
+	{
+		logger?.LogError("Invalid schema version '{vers}' in {tp} at line {line}, position {pos}.", version, context.type, context.StartLineNumber, context.StartLinePosition);
+		return IfcSchemaVersions.IfcNoVersion;
+	}
 
 }

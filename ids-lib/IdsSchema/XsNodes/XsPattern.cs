@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
         if (!EnsureRegex(out var _, ignoreCase))
         {
             matches = new List<string>();
-            return IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessage.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
         }
         return (TryMatch(candidateStrings, ignoreCase, out matches))
             ? Audit.Status.Ok
-            : IdsLoggerExtensions.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
+            : IdsMessage.ReportInvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
     }
 
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
@@ -67,7 +68,6 @@ internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
         catch (Exception ex)
         {
             errorMessage = ex.Message;
-            // logger?.LogError("Invalid pattern constraint: {pattern}", pattern);
             return false;
         }
     }
