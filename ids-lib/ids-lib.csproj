@@ -58,10 +58,6 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Properties\" />
-	</ItemGroup>
-
 	<!--
 	If the expected destination folder exists on the local machine, this target copies the produced nupkg there too.
 	We are using forward slashes as they work on all OSs, but this is really only useful on windows at the moment.
