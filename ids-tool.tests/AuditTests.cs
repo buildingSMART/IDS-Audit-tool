@@ -100,8 +100,10 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/InvalidMeasureForStandardPsetProperty.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError };
         yield return new object[] { "InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEnumerationDoubleValues.ids", 3, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEnumerationIntegerValues.ids", 3, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcRestrictionType.ids", 1, Audit.Status.IdsContentError };
     }
-
 
     [Theory]
     [MemberData(nameof(GetInvalidCases))]

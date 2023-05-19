@@ -1,29 +1,73 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
 internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
-    private readonly string baseAsString;
-    public XsRestriction(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    internal enum BaseTypes
     {
-        baseAsString = reader.GetAttribute("base") ?? string.Empty;
+        Invalid,
+        Undefined,
+        XsString,
+		XsBoolean,
+        XsInteger,
+        XsDouble,
+        XsFloat,
+        XsDecimal,
+		XsDuration,
+		XsDateTime,
+		XsDate,
+		XsAnyUri,
+	}
+
+    private string BaseAsString { get; init; }
+    internal BaseTypes Base { get; init; }
+
+	internal static readonly string[] RestrictionIdentificationArray = { "restriction" };
+
+	public XsRestriction(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    {
+        BaseAsString = reader.GetAttribute("base") ?? string.Empty;
+        Base = GetBaseFrom(BaseAsString);
     }
 
-    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+	private static BaseTypes GetBaseFrom(string baseAsString)
+	{
+        return baseAsString switch
+        {
+            "" => BaseTypes.Undefined,
+            "xs:string" => BaseTypes.XsString,
+			"xs:boolean" => BaseTypes.XsBoolean,
+			"xs:integer" => BaseTypes.XsInteger,
+			"xs:double" => BaseTypes.XsDouble,
+			"xs:float" => BaseTypes.XsFloat,
+			"xs:decimal" => BaseTypes.XsDecimal,
+			"xs:duration" => BaseTypes.XsDuration,
+			"xs:dateTime" => BaseTypes.XsDateTime,
+			"xs:date" => BaseTypes.XsDate,
+			"xs:anyUri" => BaseTypes.XsAnyUri,
+			_ => BaseTypes.Invalid
+        };
+	}
+
+	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
+		var ret = Audit.Status.Ok;
         matches =  Enumerable.Empty<string>();
         if ( // todo: discuss with group: do we want to force the base type requirement for strings?
-            !string.IsNullOrWhiteSpace(baseAsString) &&
-            baseAsString != "xs:string"
+            !string.IsNullOrWhiteSpace(BaseAsString) &&
+            BaseAsString != "xs:string"
             )
-            return IdsMessage.ReportBadType(logger, this, baseAsString);
-        var ret = Audit.Status.Ok;
+            return IdsMessage.ReportBadType(logger, this, BaseAsString);
+        
         foreach (var child in Children)
         {
             // only matcher values are reported
@@ -61,8 +105,8 @@ internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMat
     {
         matches = Enumerable.Empty<string>();
         if ( // todo: discuss with group: do we want to force the base type requirement for strings?
-            !string.IsNullOrWhiteSpace(baseAsString) &&
-            baseAsString != "xs:string"
+            !string.IsNullOrWhiteSpace(BaseAsString) &&
+            BaseAsString != "xs:string"
             )
             return false;
         foreach (var child in Children)
@@ -80,7 +124,9 @@ internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMat
 
     protected internal override Audit.Status PerformAudit(ILogger? logger)
     {
-        // todo: are there constraints to enforce between the types of the children in XS:Restriction?
-        return base.PerformAudit(logger);
+		var ret = Audit.Status.Ok;
+		if (Base == BaseTypes.Invalid)
+			ret |= IdsMessage.ReportBadType(logger, this, BaseAsString);
+        return ret;
     }
 }

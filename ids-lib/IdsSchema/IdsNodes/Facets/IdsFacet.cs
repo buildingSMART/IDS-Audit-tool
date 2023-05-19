@@ -35,11 +35,9 @@ internal class IdsFacet : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintP
         private set => typesFilter = value;
     }
 
-    private static readonly string[] SpecificationArray = { "specification" };
-
     protected internal override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
+        if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;
         var requiredSchemaVersions = spec.SchemaVersions;
         if (IsRequired)

@@ -8,7 +8,6 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-	private static readonly string[] SpecificationArray = { "specification" };
 	private readonly MinMaxOccur minMaxOccurr;
 	private readonly string relation;
     
@@ -27,7 +26,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
         IsValid = false;
-        if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
+        if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;
         var ret = Audit.Status.Ok;
         var requiredSchemaVersions = spec.SchemaVersions;
@@ -60,7 +59,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         var relationInfo = SchemaInfo.AllPartOfRelations.FirstOrDefault(x => x.IfcName == matchedRelationName);
         if (relationInfo is null)
         {
-            ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
+            ret |= IdsToolMessages.ReportUnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
             return SetInvalid(ret);
         }
 
@@ -68,7 +67,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
         TypesFilter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
         if (IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
         {
-            ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
+            ret |= IdsToolMessages.ReportUnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
             return SetInvalid(ret);
         }
 

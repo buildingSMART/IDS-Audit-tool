@@ -58,15 +58,12 @@ namespace IdsLib.Messages
 			logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
 		}
 
-		internal static Audit.Status ReportUnexpectedScenario(ILogger? logger, string scenarioMessage)
+		internal static Audit.Status ReportUnexpectedScenario(ILogger? logger, string scenarioMessage, BaseContext? context = null)
 		{
-			logger?.LogCritical("Unhandled scenario: {message}", scenarioMessage);
-			return Audit.Status.NotImplementedError;
-		}
-
-		internal static Audit.Status ReportLocatedUnexpectedScenario(ILogger? logger, string scenarioMessage, BaseContext context)
-		{
-			logger?.LogCritical("Unhandled scenario: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
+			if (context is null)
+				logger?.LogCritical("Unhandled scenario: {message}", scenarioMessage);
+			else
+				logger?.LogCritical("Unhandled scenario: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
 			return Audit.Status.NotImplementedError;
 		}
 

@@ -53,7 +53,7 @@ public static partial class Audit
             }
             else if (e.Severity == XmlSeverityType.Error)
             {
-				IdsMessage.ReportSchemaComplianceError(Logger, LogLevel.Error, location, e.Message);
+				IdsMessage.ReportSchemaComplianceError(Logger, location, e.Message);
                 SchemaStatus |= Status.IdsStructureError;
             }
         }

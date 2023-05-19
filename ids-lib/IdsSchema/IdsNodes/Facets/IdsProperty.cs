@@ -8,7 +8,6 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private static readonly string[] SpecificationArray = { "specification" };
     private readonly MinMaxOccur minMaxOccurr;
     private readonly IStringListMatcher? measureMatcher;
     public IdsProperty(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
@@ -29,7 +28,7 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
+        if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;
         var requiredSchemaVersions = spec.SchemaVersions;
         IsValid = false;

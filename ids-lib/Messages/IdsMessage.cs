@@ -1,6 +1,8 @@
 ﻿using IdsLib.IdsSchema;
+using IdsLib.IdsSchema.XsNodes;
 using IdsLib.IfcSchema;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -116,7 +118,7 @@ internal static class IdsMessage
         logger?.Log(level, "Schema compliance warning at {location}; {message}", location, message);
 	}
 
-	internal static void ReportSchemaComplianceError(ILogger? logger, LogLevel error, string location, string message)
+	internal static void ReportSchemaComplianceError(ILogger? logger, string location, string message)
 	{
 		logger?.LogError("Schema compliance error at {location}; {message}", location, message);
 	}
@@ -132,4 +134,9 @@ internal static class IdsMessage
 		return IfcSchemaVersions.IfcNoVersion;
 	}
 
+	internal static Audit.Status ReportBadValue(ILogger? logger, BaseContext context, string value, XsRestriction.BaseTypes baseType)
+	{
+		logger?.LogError("Invalid value '{vers}' for base type '{baseType}' in {tp} at line {line}, position {pos}.", value, baseType, context.type, context.StartLineNumber, context.StartLinePosition);
+        return Audit.Status.IdsContentError;
+	}
 }

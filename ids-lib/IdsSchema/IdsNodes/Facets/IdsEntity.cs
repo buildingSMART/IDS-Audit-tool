@@ -1,4 +1,5 @@
-﻿using IdsLib.IfcSchema;
+﻿using IdsLib.IdsSchema.XsNodes;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
@@ -9,7 +10,6 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 {
-    private static readonly string[] SpecificationArray = { "specification" };
     public IIfcTypeConstraint? TypesFilter { get; private set; } = null;
 
     public IdsEntity(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
@@ -21,7 +21,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNode<IdsSpecification>(logger, this, SpecificationArray, out var spec, out var retStatus))
+        if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;        
         var requiredSchemaVersions = spec.SchemaVersions;
         var name = GetChildNodes("name").FirstOrDefault();
@@ -58,7 +58,7 @@ internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
                 var c = s[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
+                    ret |= IdsToolMessages.ReportUnexpectedScenario(logger, $"class metadata for {ifcClass} not found required schema.", this);
                     continue;
                 }
                 if (possiblePredefined == null)

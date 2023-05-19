@@ -7,9 +7,7 @@ using System.Linq;
 namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
-{
-    private static readonly string[] SpecificationArray = { "specification" };
-    
+{   
     public IdsAttribute(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
     {
         IsValid = false;
@@ -21,14 +19,14 @@ internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNodes(this, SpecificationArray, out var nodes))
+        if (!TryGetUpperNodes(this, IdsSpecification.SpecificationIdentificationArray, out var nodes))
         {
-			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, "Missing specification for attribute.", this);
+			IdsToolMessages.ReportUnexpectedScenario(logger, "Missing specification for attribute.", this);
             return Audit.Status.IdsStructureError;
         }
         if (nodes[0] is not IdsSpecification spec)
         {
-			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, "Invalid specification for attribute.", this);
+			IdsToolMessages.ReportUnexpectedScenario(logger, "Invalid specification for attribute.", this);
             return Audit.Status.IdsContentError;
         }
         var requiredSchemaVersions = spec.SchemaVersions;

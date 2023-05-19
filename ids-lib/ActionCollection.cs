@@ -9,7 +9,7 @@ namespace IdsLib
 	/// </summary>
 	public class ActionCollection: IFormattable
 	{
-		private List<Action> action = new List<Action>();
+		private readonly List<Action> action = new();
 
 		/// <inheritdoc />
 		public override string ToString()
@@ -41,7 +41,7 @@ namespace IdsLib
 			return action;
 		}
 
-		private string ToFriendlyString(Action x)
+		private static string ToFriendlyString(Action x)
 		{
 			return x switch
 			{
@@ -66,7 +66,7 @@ namespace IdsLib
 		/// <summary>
 		/// Checks that any schema provided is valid
 		/// </summary>
-		XsdCorrectness,		
+		XsdCorrectness,
 		/// <summary>
 		/// Checks the implementation agreement of the IDS content
 		/// </summary>

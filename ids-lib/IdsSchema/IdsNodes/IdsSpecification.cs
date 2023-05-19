@@ -8,7 +8,9 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsSpecification : BaseContext
 {
-    private readonly MinMaxOccur minMaxOccurr;
+	internal static readonly string[] SpecificationIdentificationArray = { "specification" };
+
+	private readonly MinMaxOccur minMaxOccurr;
     internal readonly IfcSchemaVersions SchemaVersions = IfcSchemaVersions.IfcNoVersion;
 
     private readonly BaseContext? parent;

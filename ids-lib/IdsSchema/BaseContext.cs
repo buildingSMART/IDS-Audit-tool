@@ -77,11 +77,20 @@ internal class BaseContext
         return TryGetUpperNodes(start.Parent, ref nodes, typeNames);
     }
 
-    protected static bool TryGetUpperNode<T>(ILogger? logger, BaseContext context, string[] typeNames, [NotNullWhen(true)] out T? node, out Audit.Status status)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="logger"></param>
+    /// <param name="startingNode"></param>
+    /// <param name="typeNames">array o</param>
+    /// <param name="node"></param>
+    /// <param name="status">provide status error if return is unsecceessful</param>
+    protected static bool TryGetUpperNode<T>(ILogger? logger, BaseContext startingNode, string[] typeNames, [NotNullWhen(true)] out T? node, out Audit.Status status)
     {
-        if (!TryGetUpperNodes(context, typeNames, out var nodes))
+        if (!TryGetUpperNodes(startingNode, typeNames, out var nodes))
         {
-			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", context);
+			IdsToolMessages.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -89,7 +98,7 @@ internal class BaseContext
         if (nodes[0] is not T spec)
         {
             node = default;
-			IdsToolMessages.ReportLocatedUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", context);
+			IdsToolMessages.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
             status = Audit.Status.IdsStructureError;
             return false;
         }
@@ -98,32 +107,31 @@ internal class BaseContext
         return true;
     }
 
-
-    protected static bool TryGetUpperNodes(BaseContext start, string[] typeNames, out List<BaseContext> nodes)
+    protected static bool TryGetUpperNodes(BaseContext startingNode, string[] typeNames, out List<BaseContext> nodes)
     {
         var span = new ReadOnlySpan<string>(typeNames);
         nodes = new List<BaseContext>();
-        return TryGetUpperNodes(start, ref nodes, span);
+        return TryGetUpperNodes(startingNode, ref nodes, span);
     }
 
-    protected static bool TryGetUpperNodes(BaseContext start, ref List<BaseContext> nodes, ReadOnlySpan<string> typeNames)
+    protected static bool TryGetUpperNodes(BaseContext startingNode, ref List<BaseContext> nodes, ReadOnlySpan<string> typeNames)
     {
-        if (start.Parent is null)
+        if (startingNode.Parent is null)
             return false;
-        if (start.Parent.type == typeNames[0])
+        if (startingNode.Parent.type == typeNames[0])
         {
             // found
-            nodes.Add(start.Parent);
+            nodes.Add(startingNode.Parent);
             if (typeNames.Length > 1) // more to search
 #if NETSTANDARD2_0
-                return TryGetUpperNodes(start.Parent, ref nodes, typeNames.Slice(1));
+                return TryGetUpperNodes(startingNode.Parent, ref nodes, typeNames.Slice(1));
 #else
-                return TryGetUpperNodes(start.Parent, ref nodes, typeNames[1..]);
+                return TryGetUpperNodes(startingNode.Parent, ref nodes, typeNames[1..]);
 #endif
             return true; // all found
         }
         // not found, search on the parent, instead
-        return TryGetUpperNodes(start.Parent, ref nodes, typeNames);
+        return TryGetUpperNodes(startingNode.Parent, ref nodes, typeNames);
     }
 
     protected IEnumerable<BaseContext> GetChildNodes(string name)
