@@ -8,10 +8,10 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsEnumeration : BaseContext, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
+internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
     private readonly string value;
-    public XsEnumeration(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public XsEnumeration(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         value = reader.GetAttribute("value") ?? string.Empty;
     }

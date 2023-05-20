@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsAttribute : BaseContext, IIdsFacet, IIfcTypeConstraintProvider
+internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 {   
-    public IdsAttribute(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsAttribute(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
     }

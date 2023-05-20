@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
+internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
     internal enum BaseTypes
     {
@@ -33,7 +33,7 @@ internal class XsRestriction : BaseContext, IStringListMatcher, IStringPrefixMat
 
 	internal static readonly string[] RestrictionIdentificationArray = { "restriction" };
 
-	public XsRestriction(XmlReader reader, BaseContext? parent) : base(reader, parent)
+	public XsRestriction(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         BaseAsString = reader.GetAttribute("base") ?? string.Empty;
         Base = GetBaseFrom(BaseAsString);

@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsFacetCollection : BaseContext, IIfcTypeConstraintProvider
+internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
 {
-    public IdsFacetCollection(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsFacetCollection(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
     }
 

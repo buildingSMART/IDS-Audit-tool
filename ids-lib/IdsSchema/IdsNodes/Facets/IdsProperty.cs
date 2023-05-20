@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
+internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
     private readonly MinMaxOccur minMaxOccurr;
     private readonly IStringListMatcher? measureMatcher;
-    public IdsProperty(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         minMaxOccurr = new MinMaxOccur(reader);
         var measure = reader.GetAttribute("measure") ?? string.Empty;
@@ -122,7 +122,7 @@ internal class IdsProperty : BaseContext, IIdsCardinalityFacet, IIfcTypeConstrai
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            return logger.ReportInvalidOccurr(this, minMaxOccurr);
+            return IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
         return Audit.Status.Ok;
     }
 }

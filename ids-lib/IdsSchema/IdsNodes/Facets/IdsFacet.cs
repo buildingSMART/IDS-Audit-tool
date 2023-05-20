@@ -8,12 +8,12 @@ namespace IdsLib.IdsSchema.IdsNodes;
 /// <summary>
 /// This is used for Classification and Material
 /// </summary>
-internal class IdsFacet : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
+internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
     private readonly MinMaxOccur minMaxOccurr;
     
 
-    public IdsFacet(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsFacet(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         minMaxOccurr = new MinMaxOccur(reader);
     }
@@ -50,7 +50,7 @@ internal class IdsFacet : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintP
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
         {
-            logger.ReportInvalidOccurr(this, minMaxOccurr);
+			IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
             ret |= MinMaxOccur.ErrorStatus;
             IsValid = false;
         }

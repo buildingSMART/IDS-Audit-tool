@@ -220,8 +220,8 @@ public static partial class Audit
         var reader = XmlReader.Create(theStream, rSettings);
 
         var cntRead = 0;
-        var elementsStack = new Stack<BaseContext>(); // prepare the stack to evaluate the IDS content
-        BaseContext? current = null;
+        var elementsStack = new Stack<IdsXmlNode>(); // prepare the stack to evaluate the IDS content
+        IdsXmlNode? current = null;
         while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
         {
             cntRead++;
@@ -231,7 +231,7 @@ public static partial class Audit
                 {
                     case XmlNodeType.Element:
                         // Debug.WriteLine($"Start Element {reader.LocalName}");
-                        BaseContext? parent = null;
+                        IdsXmlNode? parent = null;
 #if NETSTANDARD2_0
                         if (elementsStack.Count > 0)
                             parent = elementsStack.Peek();

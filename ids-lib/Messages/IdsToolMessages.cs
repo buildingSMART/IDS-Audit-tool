@@ -58,43 +58,43 @@ namespace IdsLib.Messages
 			logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
 		}
 
-		internal static Audit.Status ReportUnexpectedScenario(ILogger? logger, string scenarioMessage, BaseContext? context = null)
+		internal static Status ReportUnexpectedScenario(ILogger? logger, string scenarioMessage, IdsXmlNode? context = null)
 		{
 			if (context is null)
 				logger?.LogCritical("Unhandled scenario: {message}", scenarioMessage);
 			else
 				logger?.LogCritical("Unhandled scenario: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
-			return Audit.Status.NotImplementedError;
+			return Status.NotImplementedError;
 		}
 
 		internal static Status ReportUnseekableStream(ILogger? logger)
 		{
 			logger?.LogCritical("The provided stream must be able to seek to detect the schema version from its content.");
-			return Audit.Status.UnhandledError;
+			return Status.UnhandledError;
 		}
 
 		internal static Status ReportInvalidVersion(ILogger? logger)
 		{
 			logger?.LogCritical("Unrecognised version from location value.");
-			return Audit.Status.IdsStructureError;
+			return Status.IdsStructureError;
 		}
 
 		internal static Status ReportSourceNotFound(ILogger? logger, string diskSchema)
 		{
 			logger?.LogError("File `{schemaFile}` not found.", diskSchema);
-			return Audit.Status.NotFoundError;
+			return Status.NotFoundError;
 		}
 
 		internal static Status ReportInvalidXsdSource(ILogger? logger, string diskSchema)
 		{
 			logger?.LogError("Error reading XSD Schema from `{schemaFile}`.", diskSchema);
-			return Audit.Status.XsdSchemaError;
+			return Status.XsdSchemaError;
 		}
 
-		internal static Audit.Status ReportInvalidSchemaVersion(ILogger? logger, IdsVersion vrs)
+		internal static Status ReportInvalidSchemaVersion(ILogger? logger, IdsVersion vrs)
 		{
 			logger?.LogError("Embedded schema for version {vrs} not implemented.", vrs);
-			return Audit.Status.NotImplementedError;
+			return Status.NotImplementedError;
 		}
 	}
 }

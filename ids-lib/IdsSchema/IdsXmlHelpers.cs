@@ -11,7 +11,7 @@ namespace IdsLib.IdsSchema;
 
 internal class IdsXmlHelpers
 {
-    internal static BaseContext GetContextFromElement(XmlReader reader, BaseContext? parent, ILogger? logger)
+    internal static IdsXmlNode GetContextFromElement(XmlReader reader, IdsXmlNode? parent, ILogger? logger)
     {
         return reader.LocalName switch
         {
@@ -33,7 +33,7 @@ internal class IdsXmlHelpers
             "pattern" => new XsPattern(reader, parent),
             "length" => new XsLength(reader, parent),
             // default
-            _ => new BaseContext(reader, parent),
+            _ => new IdsXmlNode(reader, parent),
         };
     }
 

@@ -10,12 +10,12 @@ using IdsLib.Messages;
 namespace IdsLib.IdsSchema;
 
 [DebuggerDisplay("{type} (Line {StartLineNumber}, Pos {StartLinePosition})")]
-internal class BaseContext
+internal class IdsXmlNode
 {
     protected internal readonly string type;
 
-    private BaseContext? parent;
-    protected virtual internal BaseContext? Parent
+    private IdsXmlNode? parent;
+    protected virtual internal IdsXmlNode? Parent
     {
         get => parent;
         private set
@@ -25,9 +25,9 @@ internal class BaseContext
         }
     }
 
-    protected internal readonly List<BaseContext> Children = new();
+    protected internal readonly List<IdsXmlNode> Children = new();
 
-    private void AddChild(BaseContext child)
+    private void AddChild(IdsXmlNode child)
     {
         Children.Add(child);
     }
@@ -35,7 +35,7 @@ internal class BaseContext
     internal int StartLineNumber { get; set; } = 0;
     internal int StartLinePosition { get; set; } = 0;
 
-    public BaseContext(XmlReader reader, BaseContext? parent)
+    public IdsXmlNode(XmlReader reader, IdsXmlNode? parent)
     {
         Parent = parent;
         type = reader.LocalName;
@@ -61,7 +61,7 @@ internal class BaseContext
         // nothing to do for the base entity
     }
 
-    protected static bool TryGetUpperNodes(BaseContext start, ref List<BaseContext> nodes, params string[] typeNames)
+    protected static bool TryGetUpperNodes(IdsXmlNode start, ref List<IdsXmlNode> nodes, params string[] typeNames)
     {
         if (start.Parent is null)
             return false;
@@ -86,7 +86,7 @@ internal class BaseContext
     /// <param name="typeNames">array o</param>
     /// <param name="node"></param>
     /// <param name="status">provide status error if return is unsecceessful</param>
-    protected static bool TryGetUpperNode<T>(ILogger? logger, BaseContext startingNode, string[] typeNames, [NotNullWhen(true)] out T? node, out Audit.Status status)
+    protected static bool TryGetUpperNode<T>(ILogger? logger, IdsXmlNode startingNode, string[] typeNames, [NotNullWhen(true)] out T? node, out Audit.Status status)
     {
         if (!TryGetUpperNodes(startingNode, typeNames, out var nodes))
         {
@@ -107,14 +107,14 @@ internal class BaseContext
         return true;
     }
 
-    protected static bool TryGetUpperNodes(BaseContext startingNode, string[] typeNames, out List<BaseContext> nodes)
+    protected static bool TryGetUpperNodes(IdsXmlNode startingNode, string[] typeNames, out List<IdsXmlNode> nodes)
     {
         var span = new ReadOnlySpan<string>(typeNames);
-        nodes = new List<BaseContext>();
+        nodes = new List<IdsXmlNode>();
         return TryGetUpperNodes(startingNode, ref nodes, span);
     }
 
-    protected static bool TryGetUpperNodes(BaseContext startingNode, ref List<BaseContext> nodes, ReadOnlySpan<string> typeNames)
+    protected static bool TryGetUpperNodes(IdsXmlNode startingNode, ref List<IdsXmlNode> nodes, ReadOnlySpan<string> typeNames)
     {
         if (startingNode.Parent is null)
             return false;
@@ -134,7 +134,7 @@ internal class BaseContext
         return TryGetUpperNodes(startingNode.Parent, ref nodes, typeNames);
     }
 
-    protected IEnumerable<BaseContext> GetChildNodes(string name)
+    protected IEnumerable<IdsXmlNode> GetChildNodes(string name)
     {
         return Children.Where(x => x.type == name);
     }

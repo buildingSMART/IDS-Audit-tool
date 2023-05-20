@@ -9,10 +9,10 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsPattern : BaseContext, IStringListMatcher, IFiniteStringMatcher
+internal class XsPattern : IdsXmlNode, IStringListMatcher, IFiniteStringMatcher
 {
     private readonly string pattern;
-    public XsPattern(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public XsPattern(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         pattern = reader.GetAttribute("value") ?? string.Empty;
     }

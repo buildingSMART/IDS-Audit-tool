@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraintProvider
+internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
 	private readonly MinMaxOccur minMaxOccurr;
 	private readonly string relation;
@@ -15,7 +15,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
 
     public bool IsRequired => minMaxOccurr.IsRequired;
 
-    public IdsPartOf(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsPartOf(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
 	{
         minMaxOccurr = new MinMaxOccur(reader);
 		relation = reader.GetAttribute("relation") ?? string.Empty;
@@ -94,7 +94,7 @@ internal class IdsPartOf : BaseContext, IIdsCardinalityFacet, IIfcTypeConstraint
 		var ret = Audit.Status.Ok;
 		if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
 		{
-			logger.ReportInvalidOccurr(this, minMaxOccurr);
+			IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
 			ret |= MinMaxOccur.ErrorStatus;
 		}
 		return ret;

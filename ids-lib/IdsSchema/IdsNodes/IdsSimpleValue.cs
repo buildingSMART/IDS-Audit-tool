@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal partial class IdsSimpleValue : BaseContext, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
+internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
     internal string Content = string.Empty;
 
-    public IdsSimpleValue(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsSimpleValue(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
     }
 

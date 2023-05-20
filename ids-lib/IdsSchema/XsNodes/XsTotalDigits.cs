@@ -6,9 +6,9 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsTotalDigits : BaseContext, IStringListMatcher
+internal class XsTotalDigits : IdsXmlNode, IStringListMatcher
 {
-    public XsTotalDigits(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public XsTotalDigits(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {        
     }
 

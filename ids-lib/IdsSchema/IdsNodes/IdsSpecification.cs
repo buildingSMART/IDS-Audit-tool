@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsSpecification : BaseContext
+internal class IdsSpecification : IdsXmlNode
 {
 	internal static readonly string[] SpecificationIdentificationArray = { "specification" };
 
 	private readonly MinMaxOccur minMaxOccurr;
     internal readonly IfcSchemaVersions SchemaVersions = IfcSchemaVersions.IfcNoVersion;
 
-    private readonly BaseContext? parent;
-    protected override internal BaseContext? Parent => parent;
+    private readonly IdsXmlNode? parent;
+    protected override internal IdsXmlNode? Parent => parent;
     
-    public IdsSpecification(System.Xml.XmlReader reader, BaseContext? parent, ILogger? logger) : base(reader, null)
+    public IdsSpecification(System.Xml.XmlReader reader, IdsXmlNode? parent, ILogger? logger) : base(reader, null)
     {
         this.parent = parent;
         minMaxOccurr = new MinMaxOccur(reader);
@@ -28,7 +28,7 @@ internal class IdsSpecification : BaseContext
     {
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            ret |= logger.ReportInvalidOccurr(this, minMaxOccurr);
+            ret |= IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
         if (SchemaVersions == IfcSchemaVersions.IfcNoVersion)
             ret |= IdsMessage.ReportInvalidSchemaVersion(logger, SchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");

@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsEntity : BaseContext, IIfcTypeConstraintProvider, IIdsFacet
+internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 {
     public IIfcTypeConstraint? TypesFilter { get; private set; } = null;
 
-    public IdsEntity(System.Xml.XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public IdsEntity(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
     }

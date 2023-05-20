@@ -11,8 +11,8 @@ namespace IdsLib.IdsSchema;
 internal class StringListMatcher : IStringListMatcher
 {
     private readonly string value;
-    private readonly BaseContext context;
-    public StringListMatcher(string value, BaseContext context)
+    private readonly IdsXmlNode context;
+    public StringListMatcher(string value, IdsXmlNode context)
     {
         this.value = value;
         this.context = context;

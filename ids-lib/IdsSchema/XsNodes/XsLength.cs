@@ -6,10 +6,10 @@ using System.Xml;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
-internal class XsLength : BaseContext, IStringListMatcher
+internal class XsLength : IdsXmlNode, IStringListMatcher
 {
     private readonly string value;
-    public XsLength(XmlReader reader, BaseContext? parent) : base(reader, parent)
+    public XsLength(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         value = reader.GetAttribute("value") ?? string.Empty;
     }
