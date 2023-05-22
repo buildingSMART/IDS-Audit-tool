@@ -8,7 +8,7 @@ namespace IdsLib.IfcSchema;
 public class IfcAttributeInformation
 {
     /// <summary>
-    /// Name of the attribute as a string
+    /// relationXmlAttributeName of the attribute as a string
     /// </summary>
     public string IfcAttributeName { get; }
     /// <summary>

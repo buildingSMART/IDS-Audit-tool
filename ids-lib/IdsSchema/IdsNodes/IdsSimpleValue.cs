@@ -21,7 +21,7 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsMessage.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessages.ReportInvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 

@@ -11,6 +11,7 @@ using IdsLib.IdsSchema;
 using System.Data;
 using IdsLib.SchemaProviders;
 using IdsLib.Messages;
+using IdsLib.IdsSchema.IdsNodes;
 
 namespace IdsLib;
 
@@ -221,6 +222,7 @@ public static partial class Audit
 
         var cntRead = 0;
         var elementsStack = new Stack<IdsXmlNode>(); // prepare the stack to evaluate the IDS content
+        int iSpecification = 1;
         IdsXmlNode? current = null;
         while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
         {
@@ -230,7 +232,6 @@ public static partial class Audit
                 switch (reader.NodeType)
                 {
                     case XmlNodeType.Element:
-                        // Debug.WriteLine($"Start Element {reader.LocalName}");
                         IdsXmlNode? parent = null;
 #if NETSTANDARD2_0
                         if (elementsStack.Count > 0)
@@ -240,6 +241,11 @@ public static partial class Audit
                             parent = peeked;
 #endif
                         var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
+                        if (newContext is IdsSpecification spec)
+							// parents of IdsSpecification do not retain children for Garbage Collection purposes
+                            // so we need to set the positional index manually
+							spec.PositionalIndex = iSpecification++;
+                        
 
                         // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
                         if (!reader.IsEmptyElement)

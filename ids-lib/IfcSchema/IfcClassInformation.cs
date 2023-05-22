@@ -10,12 +10,12 @@ namespace IdsLib.IfcSchema;
 public class IfcClassInformation
 {
     /// <summary>
-    /// Name of the attribute as a string, stored in PascalCase
+    /// relationXmlAttributeName of the attribute as a string, stored in PascalCase
     /// </summary>
     public string PascalCaseName { get; }
 
     /// <summary>
-    /// Name of the attribute as a string, converted to UPPERCASE
+    /// relationXmlAttributeName of the attribute as a string, converted to UPPERCASE
     /// </summary>
     public string UpperCaseName => PascalCaseName.ToUpperInvariant();
 

@@ -8,26 +8,38 @@ using System.Linq;
 
 namespace IdsLib.Messages;
 
-internal static class IdsMessage
+internal static class IdsMessages
 {
-    internal static Audit.Status ReportInvalidApplicability(ILogger? logger, IdsXmlNode context, string scenarioMessage)
+
+	// todo: create resource for internationalization
+	// todo: add error code 
+	// todo: add configuration to return :p style location
+	//       e.g. ("Inconsistent clauses: {message} on {location:p}.", scenarioMessage, context.GetNodeIdentification());
+
+	internal static Audit.Status ReportInvalidApplicability(ILogger? logger, IdsXmlNode context, string scenarioMessage)
     {
-        logger?.LogError("Invalid applicability: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Invalid applicability. {message} on {location}.", 101, scenarioMessage, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
     internal static Audit.Status ReportIncompatibleClauses(ILogger? logger, IdsXmlNode context, string scenarioMessage)
     {
-        logger?.LogError("Inconsistent clauses: {message} on `{tp}` at line {line}, position {pos}.", scenarioMessage, context.type, context.StartLineNumber, context.StartLinePosition);
+		logger?.LogError("Error {errorCode}: Inconsistent clauses: {message} on {location}.", 201, scenarioMessage, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
-	internal static Audit.Status ReportInvalidOccurr(ILogger? logger, IdsXmlNode context, MinMaxOccur minMax)
+	internal static Audit.Status ReportInvalidCardinality(ILogger? logger, IdsXmlNode context, MinMaxCardinality minMax)
 	{
 		minMax.Audit(out var occurError);
-		logger?.LogError("Invalid occurrence on `{tp}` at line {line}, position {pos}. {occurError}.", context.type, context.StartLineNumber, context.StartLinePosition, occurError);
-		return MinMaxOccur.ErrorStatus;
+		logger?.LogError("Error {errorCode}: Invalid cardinality on {location}. {occurError}.", 301, context.GetNodeIdentification(), occurError);
+		return MinMaxCardinality.ErrorStatus;
 	}
+
+    internal static Audit.Status ReportUnexpectedScenario(ILogger? logger, string scenarioMessage, IdsXmlNode context)
+    {
+        logger?.LogCritical("Error {errorCode}: Unhandled scenario: {message} on {location}.", 501, scenarioMessage, context.GetNodeIdentification());
+        return Audit.Status.NotImplementedError;
+    }
 
 	/// <summary>
 	/// Report an invalid XML structure within a facet
@@ -39,92 +51,98 @@ internal static class IdsMessage
 	internal static Audit.Status ReportInvalidXsFacet(ILogger? logger, IdsXmlNode context, string alternative)
     {
         if (string.IsNullOrWhiteSpace(alternative))
-            logger?.LogError("Invalid context for `{tp}` at line {line}, position {pos}.", context.type, context.StartLineNumber, context.StartLinePosition);
+            logger?.LogError("Error {errorCode}: Invalid context on {location}.", 302, context.GetNodeIdentification());
         else
-            logger?.LogError("Invalid context for `{tp}` at line {line}, position {pos}; {alternative}.", context.type, context.StartLineNumber, context.StartLinePosition, alternative);
+            logger?.LogError("Error {errorCode}: Invalid context on {location}; {alternative}.", 302, context.GetNodeIdentification(), alternative);
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportReservedStringMatched(ILogger? logger, IdsXmlNode context, string part, string field)
+    internal static Audit.Status ReportReservedStringMatched(ILogger? logger, IdsXmlNode context, string keyword, string field)
     {
-        logger?.LogError("Reserved {part} for {field} at `{tp}`, line {line}, position {pos}.", part, field, context.type, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Reserved keyword '{part}' for {field} on {location}.", 401, keyword, field, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
     internal static Audit.Status ReportNoStringMatcher(ILogger? logger, IdsXmlNode context, string field)
     {
-        logger?.LogError("Empty string matcher for `{field}` on `{tp}` at line {line}, position {pos}.", field, context.type, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Empty string matcher for `{field}` on {location}.", 102, field, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportBadType(ILogger? logger, IdsXmlNode context, string baseAsString)
+    internal static Audit.Status ReportRestrictionBadType(ILogger? logger, IdsXmlNode context, string baseAsString)
     {
-        logger?.LogError("Invalid type `{base}` on `{tp}` at line {line}, position {pos}.", baseAsString, context.type, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Invalid type `{base}` on {location}.", 303, baseAsString, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportInvalidListMatcher(IdsXmlNode xmlContext, string value, ILogger? logger, string nameOflistToMatch, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
+	internal static Audit.Status ReportRestrictionEmptyContent(ILogger? logger, IdsXmlNode context)
+	{
+		logger?.LogError("Error {errorCode}: No details on {location}.", 304, context.GetNodeIdentification());
+		return Audit.Status.IdsContentError;
+	}
+
+	internal static Audit.Status ReportInvalidListMatcher(IdsXmlNode xmlContext, string value, ILogger? logger, string nameOflistToMatch, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
     {
         if (!candidateStrings.Any())
-            logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (no valid values exist) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+            logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (no valid values exist) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, schemaContext, xmlContext.GetNodeIdentification());
         else
         {
             var count = candidateStrings.Count();
             if (count == 1)
-                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+                logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.GetPositionalIdentifier());
             else if (count < 6)
-                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+                logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.GetPositionalIdentifier());
             else
-                logger?.LogError("Invalid value `{value}` in {elementType} to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} at line {line}, position {pos}.", value, xmlContext.type, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+                logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.GetPositionalIdentifier());
         }
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportInvalidListMatcherCount(IdsXmlNode xmlContext, string value, ILogger? logger, string listToMatchName, int numberOfMatches, IfcSchema.IfcSchemaVersions? schemaContext)
+    internal static Audit.Status ReportInvalidListMatcherCount(IdsXmlNode xmlContext, string value, ILogger? logger, string listToMatchName, int numberOfMatches, IfcSchema.IfcSchemaVersions schemaContext)
     {
-        if (schemaContext.HasValue)
-            logger?.LogError("Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} at line {line}, position {pos}.", numberOfMatches, value, xmlContext.type, listToMatchName, schemaContext.Value, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
-        else
-            logger?.LogError("Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` at line {line}, position {pos}.", numberOfMatches, value, xmlContext.type, listToMatchName, xmlContext.StartLineNumber, xmlContext.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} on {location}.", 104, numberOfMatches, value, xmlContext.type, listToMatchName, schemaContext, xmlContext.GetPositionalIdentifier());
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportInvalidDataConfiguration(ILogger? logger, IdsXmlNode context, string message)
+    internal static Audit.Status ReportInvalidDataConfiguration(ILogger? logger, IdsXmlNode context, string field)
     {
-        logger?.LogError("{message}, node `{tp}` at line {line}, position {pos}.", message, context.type, context.StartLineNumber, context.StartLinePosition);
+		// no valid configuration option exists for field given the context
+		logger?.LogError("Error {errorCode}: {message}, on {location}.", 105, field, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
-    internal static Audit.Status ReportInvalidEmtpyValue(ILogger? logger, IdsXmlNode context, string emptyFieldName)
+    internal static Audit.Status ReportInvalidEmtpyValue(ILogger? logger, IdsXmlNode context, string emptyAttributeName)
     {
-        logger?.LogError("Invalid empty field {message} in node `{tp}` at line {line}, position {pos}.", emptyFieldName, context.type, context.StartLineNumber, context.StartLinePosition);
+        logger?.LogError("Error {errorCode}: Invalid empty attribute {attributeName} on {location}.", 106, emptyAttributeName, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
     }
 
 	internal static void ReportSchemaComplianceWarning(ILogger? logger, LogLevel level, string location, string message)
 	{
-        logger?.Log(level, "Schema compliance warning at {location}; {message}", location, message);
+        logger?.Log(level, "Error {errorCode}: Schema compliance warning on {location}; {message}", location, message);
 	}
 
 	internal static void ReportSchemaComplianceError(ILogger? logger, string location, string message)
 	{
-		logger?.LogError("Schema compliance error at {location}; {message}", location, message);
+		logger?.LogError("Error {errorCode}: Schema compliance error on {location}; {message}", location, message);
 	}
 
 	internal static Audit.Status ReportInvalidSchemaVersion(ILogger? logger, IfcSchemaVersions version, IdsXmlNode context)
 	{
-		logger?.LogError("Invalid schema version '{vers}' in {tp} at line {line}, position {pos}.", version, context.type, context.StartLineNumber, context.StartLinePosition);
+		logger?.LogError("Error {errorCode}: Invalid schema version '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 	internal static IfcSchemaVersions ReportInvalidSchemaString(ILogger? logger, string version, IdsXmlNode context)
 	{
-		logger?.LogError("Invalid schema version '{vers}' in {tp} at line {line}, position {pos}.", version, context.type, context.StartLineNumber, context.StartLinePosition);
+		logger?.LogError("Error {errorCode}: Invalid schema version '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
 		return IfcSchemaVersions.IfcNoVersion;
 	}
 
-	internal static Audit.Status ReportBadValue(ILogger? logger, IdsXmlNode context, string value, XsRestriction.BaseTypes baseType)
+	internal static Audit.Status ReportBadConstraintValue(ILogger? logger, IdsXmlNode context, string value, XsRestriction.BaseTypes baseType)
 	{
-		logger?.LogError("Invalid value '{vers}' for base type '{baseType}' in {tp} at line {line}, position {pos}.", value, baseType, context.type, context.StartLineNumber, context.StartLinePosition);
+		logger?.LogError("Error {errorCode}: Invalid value '{vers}' for base type '{baseType}' on {location}.", 305, value, baseType, context.GetNodeIdentification());
         return Audit.Status.IdsContentError;
 	}
+
+
 }

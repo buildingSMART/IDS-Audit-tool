@@ -6,6 +6,8 @@ using System.Linq;
 using System.Xml;
 using System.Diagnostics.CodeAnalysis;
 using IdsLib.Messages;
+using System.Text;
+using IdsLib.IdsSchema.IdsNodes;
 
 namespace IdsLib.IdsSchema;
 
@@ -34,8 +36,42 @@ internal class IdsXmlNode
 
     internal int StartLineNumber { get; set; } = 0;
     internal int StartLinePosition { get; set; } = 0;
+    internal int PositionalIndex { get; set; } = 1; // 1 based index
 
-    public IdsXmlNode(XmlReader reader, IdsXmlNode? parent)
+    internal string GetPositionalIdentifier()
+    {
+        StringBuilder sb = new StringBuilder();
+        if (Parent != null)
+        {
+            Parent.GetPositionalIdentifier(sb);
+        }
+        return sb.ToString();
+    }
+
+	internal void GetPositionalIdentifier(StringBuilder sb)
+	{
+		if (Parent != null)
+		{
+			Parent.GetPositionalIdentifier(sb);
+		}
+        if (PositionalIndex == 1)
+            sb.Append($"/{type}");
+        else
+			sb.Append($"/{type}{PositionalIndex}");
+	}
+
+    internal NodeIdentification GetNodeIdentification()
+    {
+        return new NodeIdentification()
+        {
+            PositionalIdentifier = GetPositionalIdentifier(),
+            StartLineNumber = StartLineNumber,
+            StartLinePosition = StartLinePosition,
+            NodeType = type,
+        };
+	}
+
+	public IdsXmlNode(XmlReader reader, IdsXmlNode? parent)
     {
         Parent = parent;
         type = reader.LocalName;
@@ -44,6 +80,8 @@ internal class IdsXmlNode
             StartLineNumber = li.LineNumber;
             StartLinePosition = li.LinePosition;
         }
+        if (Parent != null)
+			PositionalIndex = Parent.Children.Count;		
     }
 
     /// <summary>
@@ -90,7 +128,7 @@ internal class IdsXmlNode
     {
         if (!TryGetUpperNodes(startingNode, typeNames, out var nodes))
         {
-			IdsToolMessages.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
+			IdsMessages.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -98,7 +136,7 @@ internal class IdsXmlNode
         if (nodes[0] is not T spec)
         {
             node = default;
-			IdsToolMessages.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
+			IdsMessages.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
             status = Audit.Status.IdsStructureError;
             return false;
         }

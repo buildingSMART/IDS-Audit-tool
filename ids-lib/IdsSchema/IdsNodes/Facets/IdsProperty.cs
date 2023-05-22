@@ -8,11 +8,11 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private readonly MinMaxOccur minMaxOccurr;
+    private readonly MinMaxCardinality minMaxOccurr;
     private readonly IStringListMatcher? measureMatcher;
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-        minMaxOccurr = new MinMaxOccur(reader);
+        minMaxOccurr = new MinMaxCardinality(reader);
         var measure = reader.GetAttribute("measure") ?? string.Empty;
         if (!string.IsNullOrEmpty(measure))
             measureMatcher = new StringListMatcher(measure, this);
@@ -37,12 +37,12 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         var pset = GetChildNodes("propertySet").FirstOrDefault();
         var psetMatcher = pset?.GetListMatcher();
         if (psetMatcher is null)
-            return IdsMessage.ReportNoStringMatcher(logger, this, "propertySet");
+            return IdsMessages.ReportNoStringMatcher(logger, this, "propertySet");
 
         var name = GetChildNodes("name").FirstOrDefault();
         var nameMatcher = name?.GetListMatcher();
         if (nameMatcher is null)
-            return IdsMessage.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessages.ReportNoStringMatcher(logger, this, "name");
 
         // we are keeping the stricter type to ensure that it is valid across multiple schemas
         // depending on the schema version of IfcRelDefinesByProperties the filter needs to be
@@ -87,7 +87,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             {
                 IsValid = false;
                 TypesFilter = null;
-                return IdsMessage.ReportReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
+                return IdsMessages.ReportReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
             }
             else
             {
@@ -122,7 +122,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            return IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
+            return IdsMessages.ReportInvalidCardinality(logger, this, minMaxOccurr);
         return Audit.Status.Ok;
     }
 }

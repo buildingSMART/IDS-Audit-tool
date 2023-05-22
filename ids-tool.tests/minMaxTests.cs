@@ -19,7 +19,7 @@ namespace idsTool.tests
         public void OptionalConfigurationValid()
         {
             var r = GetReader(""" minOccurs="0" maxOccurs="unbounded" """);
-            var t = new MinMaxOccur(r);
+            var t = new MinMaxCardinality(r);
             t.Audit(out var _).Should().Be(IdsLib.Audit.Status.Ok);
         }
 
@@ -27,7 +27,7 @@ namespace idsTool.tests
         public void ProhibitedConfigurationValid()
         {
             var r = GetReader(""" minOccurs="0" maxOccurs="0" """);
-            var t = new MinMaxOccur(r);
+            var t = new MinMaxCardinality(r);
             t.Audit(out var _).Should().Be(IdsLib.Audit.Status.Ok);
         }
 
@@ -42,10 +42,10 @@ namespace idsTool.tests
             audit.Should().Be(IdsLib.Audit.Status.IdsContentError);
         }
 
-        private static MinMaxOccur GetMM(string attributeString)
+        private static MinMaxCardinality GetMM(string attributeString)
         {
             var r = GetReader(attributeString);
-            var t = new MinMaxOccur(r);
+            var t = new MinMaxCardinality(r);
             return t;
         }
 

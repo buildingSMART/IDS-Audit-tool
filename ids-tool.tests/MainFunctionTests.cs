@@ -15,6 +15,7 @@ public class MainFunctionTests
     private const string noImportSchemaFile = @"bsFiles/noImportsIds.xsd";
     private const string emptySchemaFile = @"bsFiles/empty.xsd";
     private const string damagedSchemaFile = @"bsFiles/damaged.xsd";
+    private const string UnterminatedSchemaFile = @"bsFiles/Unterminated.xsd";
     private const string idsFile = @"bsFiles/IDS_ucms_prefab_pipes_IFC2x3.ids";
 
     public MainFunctionTests(ITestOutputHelper outputHelper)
@@ -39,6 +40,7 @@ public class MainFunctionTests
     [InlineData(noImportSchemaFile)]
     [InlineData(emptySchemaFile)]
     [InlineData(damagedSchemaFile)]
+    [InlineData(UnterminatedSchemaFile)]
     public void RunProvidingBadSchemaFailsGracefully(string fileName)
     {
         var c = new AuditOptions

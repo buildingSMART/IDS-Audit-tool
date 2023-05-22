@@ -16,7 +16,7 @@ internal class IdsXmlHelpers
         return reader.LocalName switch
         {
             // ids
-            "specification" => new IdsSpecification(reader, parent, logger),
+            IdsSpecification.NodeSignature => new IdsSpecification(reader, parent, logger),
             "requirements" => new IdsFacetCollection(reader, parent),
             "applicability" => new IdsFacetCollection(reader, parent),
             "simpleValue" => new IdsSimpleValue(reader, parent),
@@ -94,7 +94,7 @@ internal class IdsXmlHelpers
                         //    Debug.WriteLine("Text Node: {0}", await reader.GetValueAsync());
                         //    break;
                         //case XmlNodeType.EndElement:
-                        //    Debug.WriteLine("End Element {0}", reader.Name);
+                        //    Debug.WriteLine("End Element {0}", reader.relationXmlAttributeName);
                         //    break;
                         //default:
                         //    Debug.WriteLine("Other node {0} with value {1}", reader.NodeType, reader.Value);

@@ -19,23 +19,15 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 
     internal protected override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNodes(this, IdsSpecification.SpecificationIdentificationArray, out var nodes))
-        {
-			IdsToolMessages.ReportUnexpectedScenario(logger, "Missing specification for attribute.", this);
-            return Audit.Status.IdsStructureError;
-        }
-        if (nodes[0] is not IdsSpecification spec)
-        {
-			IdsToolMessages.ReportUnexpectedScenario(logger, "Invalid specification for attribute.", this);
-            return Audit.Status.IdsContentError;
-        }
-        var requiredSchemaVersions = spec.SchemaVersions;
+		if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
+			return retStatus;
+		var requiredSchemaVersions = spec.SchemaVersions;
         var name = GetChildNodes("name").FirstOrDefault(); // name must exist
         var sm = name?.GetListMatcher();
 
         // the first child must be a valid string matcher
         if (sm is null)
-            return IdsMessage.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessages.ReportNoStringMatcher(logger, this, "name");
         
         var validAttributeNames = SchemaInfo.AllAttributes
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)

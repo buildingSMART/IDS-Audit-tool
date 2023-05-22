@@ -10,15 +10,15 @@ namespace IdsLib.IfcSchema;
 public class IfcOneToManyRelationInformation
 {
     /// <summary>
-    /// Name of the IFC entity for the relation
+    /// relationXmlAttributeName of the IFC entity for the relation
     /// </summary>
     public string IfcName { get; set; }
     /// <summary>
-    /// Name of the IFC entity on the one-side of the one-to-many relation
+    /// relationXmlAttributeName of the IFC entity on the one-side of the one-to-many relation
     /// </summary>
     public string OneSideIfcType { get; set; }
     /// <summary>
-    /// Name of the IFC entity on the many-side of the one-to-many relation
+    /// relationXmlAttributeName of the IFC entity on the many-side of the one-to-many relation
     /// </summary>
     public string ManySideIfcType { get; set; } 
     /// <summary>

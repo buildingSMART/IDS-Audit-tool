@@ -9,12 +9,12 @@ namespace IdsLib
 	/// </summary>
 	public class ActionCollection: IFormattable
 	{
-		private readonly List<Action> action = new();
+		private readonly List<Action> actions = new();
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return string.Join(", ", action.Select(x=> ToFriendlyString(x)).ToArray());
+			return string.Join(", ", actions.Select(x=> ToFriendlyString(x)).ToArray());
 		}
 
 		/// <inheritdoc />
@@ -25,12 +25,12 @@ namespace IdsLib
 
 		internal void Add(Action idsStructure)
 		{
-			action.Add(idsStructure);
+			actions.Add(idsStructure);
 		}
 
 		internal bool Any()
 		{
-			return action.Any();
+			return actions.Any();
 		}
 
 		/// <summary>
@@ -38,7 +38,7 @@ namespace IdsLib
 		/// </summary>
 		public IEnumerable<Action> GetActions()
 		{
-			return action;
+			return actions;
 		}
 
 		private static string ToFriendlyString(Action x)

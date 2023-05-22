@@ -10,7 +10,7 @@ namespace IdsLib.IfcSchema;
 public class IfcMeasureInformation
 {
     /// <summary>
-    /// Name of the entity as a string, stored in PascalCase
+    /// relationXmlAttributeName of the entity as a string, stored in PascalCase
     /// </summary>
     public string IfcMeasureClassName { get; }
     /// <summary>

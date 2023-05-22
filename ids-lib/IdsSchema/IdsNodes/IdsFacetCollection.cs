@@ -49,7 +49,7 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
             }
         }
         if (!ChildFacets.Any(x=>!x.IsValid) && IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
-            ret |= IdsMessage.ReportIncompatibleClauses(logger, this, "impossible match of constraints in set");
+            ret |= IdsMessages.ReportIncompatibleClauses(logger, this, "impossible match of constraints in set");
         return ret;
     }
 }

@@ -19,7 +19,7 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsMessage.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessages.ReportInvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 
@@ -59,24 +59,24 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
                 break;
             case XsRestriction.BaseTypes.XsBoolean: 
                 if (value != "false" && value != "true")
-                    ret |= IdsMessage.ReportBadValue(logger, this, value, restriction.Base);
+                    ret |= IdsMessages.ReportBadConstraintValue(logger, this, value, restriction.Base);
                 break;
             case XsRestriction.BaseTypes.XsInteger: 
 				if (!regexInteger.IsMatch(value))
-					ret |= IdsMessage.ReportBadValue(logger, this, value, restriction.Base);
+					ret |= IdsMessages.ReportBadConstraintValue(logger, this, value, restriction.Base);
 				break;
             case XsRestriction.BaseTypes.XsDouble: 
             case XsRestriction.BaseTypes.XsFloat:
             case XsRestriction.BaseTypes.XsDecimal:
 				if (!regexFloating.IsMatch(value))
-					ret |= IdsMessage.ReportBadValue(logger, this, value, restriction.Base);
+					ret |= IdsMessages.ReportBadConstraintValue(logger, this, value, restriction.Base);
 				break;
             case XsRestriction.BaseTypes.XsDuration: // todo: implement duration, discuss 
             case XsRestriction.BaseTypes.XsDateTime: // todo: implement date time value filter
             case XsRestriction.BaseTypes.XsDate: // todo: implement date value filter
             case XsRestriction.BaseTypes.XsAnyUri: // todo: implement Uri value filter
             default:
-                ret |= IdsToolMessages.ReportUnexpectedScenario(logger, "base type evaluation not implemented.", this);
+                ret |= IdsMessages.ReportUnexpectedScenario(logger, "base type evaluation not implemented.", this);
                 break;
         }
         return ret;

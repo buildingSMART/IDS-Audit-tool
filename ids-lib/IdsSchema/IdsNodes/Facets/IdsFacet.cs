@@ -10,12 +10,12 @@ namespace IdsLib.IdsSchema.IdsNodes;
 /// </summary>
 internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private readonly MinMaxOccur minMaxOccurr;
+    private readonly MinMaxCardinality minMaxOccurr;
     
 
     public IdsFacet(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-        minMaxOccurr = new MinMaxOccur(reader);
+        minMaxOccurr = new MinMaxCardinality(reader);
     }
 
     public bool IsValid { get; private set; } = true;
@@ -50,8 +50,8 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
         {
-			IdsMessage.ReportInvalidOccurr(logger, this, minMaxOccurr);
-            ret |= MinMaxOccur.ErrorStatus;
+			IdsMessages.ReportInvalidCardinality(logger, this, minMaxOccurr);
+            ret |= MinMaxCardinality.ErrorStatus;
             IsValid = false;
         }
         return ret;

@@ -2,7 +2,7 @@
 
 namespace IdsLib.IdsSchema;
 
-internal class MinMaxOccur
+internal class MinMaxCardinality
 {
     private readonly string minString;
     private readonly string maxString;
@@ -14,7 +14,7 @@ internal class MinMaxOccur
 
     internal bool IsRequired => minString == "1";
 
-    public MinMaxOccur(XmlReader reader)
+    public MinMaxCardinality(XmlReader reader)
     {
         // both default to "1" according to xml:xs specifications
         minString = reader.GetAttribute("minOccurs") ?? "1"; 
