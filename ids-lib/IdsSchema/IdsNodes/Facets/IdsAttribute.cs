@@ -27,7 +27,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 
         // the first child must be a valid string matcher
         if (sm is null)
-            return IdsMessages.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessages.Report102NoStringMatcher(logger, this, "name");
         
         var validAttributeNames = SchemaInfo.AllAttributes
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)

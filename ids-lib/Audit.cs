@@ -245,6 +245,11 @@ public static partial class Audit
 							// parents of IdsSpecification do not retain children for Garbage Collection purposes
                             // so we need to set the positional index manually
 							spec.PositionalIndex = iSpecification++;
+                        while (auditSettings.BufferedValidationIssues.Any())
+                        {
+                            var t = auditSettings.BufferedValidationIssues.Dequeue();
+                            t.Notify(logger, newContext);
+                        }
                         
 
                         // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack

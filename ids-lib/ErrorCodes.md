@@ -14,12 +14,14 @@
 | 107  | Invalid schema identification |
 | 200  | integration issues            |
 | 201  | Incompatible clauses          |
-| 300  | schema clauses                |
+| 300  | Schema clauses                |
 | 301  | Invalid cardinality           |
 | 302  | Invalid xs facet              |
 | 303  | Invalid base type             |
 | 304  | Invalid empty restriction     |
 | 305  | Invalid Constraint Value      |
+| 306  | Schema validation error       |
+| 307  | Schema validation warning     |
 | 400  | Ifc errors                    |
 | 401  | Reserved keyword              |
 | 500  | Application errors            |

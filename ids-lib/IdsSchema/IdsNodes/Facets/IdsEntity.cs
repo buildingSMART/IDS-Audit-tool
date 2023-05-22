@@ -29,7 +29,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         // one child must be a valid string matcher
         var sm = name?.GetListMatcher();
         if (sm is null)
-            return IdsMessages.ReportNoStringMatcher(logger, this, "name");
+            return IdsMessages.Report102NoStringMatcher(logger, this, "name");
         var ValidClassNames = SchemaInfo.AllClasses
             .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
             .Select(y => y.UpperCaseName);
@@ -47,7 +47,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 
         var predefinedTypeMatcher = type.GetListMatcher();
         if (predefinedTypeMatcher is null)
-            return IdsMessages.ReportNoStringMatcher(logger, this, "predefinedType");
+            return IdsMessages.Report102NoStringMatcher(logger, this, "predefinedType");
 
         var schemas = SchemaInfo.GetSchemas(spec.SchemaVersions);
         List<string>? possiblePredefined = null;
@@ -58,7 +58,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                 var c = s[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsMessages.ReportUnexpectedScenario(logger, $"class metadata for {ifcClass} not found in required schema.", this);
+                    ret |= IdsMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in required schema.", this);
                     continue;
                 }
                 if (possiblePredefined == null)
@@ -68,7 +68,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
             }
         }
         if (possiblePredefined == null)
-            ret |= IdsMessages.ReportInvalidDataConfiguration(logger, this, "predefinedType");
+            ret |= IdsMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
         else
             // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
             ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", requiredSchemaVersions);

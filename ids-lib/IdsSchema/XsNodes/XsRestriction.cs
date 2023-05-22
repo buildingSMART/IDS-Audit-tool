@@ -66,7 +66,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
             !string.IsNullOrWhiteSpace(BaseAsString) &&
             BaseAsString != "xs:string"
             )
-            return IdsMessages.ReportRestrictionBadType(logger, this, BaseAsString);
+            return IdsMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         
         foreach (var child in Children)
         {
@@ -126,9 +126,9 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
     {
 		var ret = Audit.Status.Ok;
 		if (Base == BaseTypes.Invalid)
-			ret |= IdsMessages.ReportRestrictionBadType(logger, this, BaseAsString);
+			ret |= IdsMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         if (!Children.Any())
-            IdsMessages.ReportRestrictionEmptyContent(logger, this);
+            IdsMessages.Report304RestrictionEmptyContent(logger, this);
 		return ret;
     }
 }

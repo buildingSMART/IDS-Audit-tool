@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using IdsLib.Messages;
 using static IdsLib.Audit;
 using System.Collections.Generic;
+using System;
 
 namespace IdsLib;
 
@@ -32,6 +33,18 @@ internal class AuditHelper
             Line = line;
             Position = pos;
             Schema = schema;
+		}
+
+		internal void Notify(ILogger? logger, IdsSchema.IdsXmlNode newContext)
+		{
+            var loc =  newContext.GetNodeIdentification();
+            loc.StartLineNumber = Line ;
+            loc.StartLinePosition = Position;
+            loc.NodeType = newContext.type;
+            if (Schema == Original.SchemaError)
+                IdsMessages.ReportSchema306ComplianceError(logger, loc, Message);
+            else
+                IdsMessages.ReportSchema307ComplianceWarning(logger, Level, loc, Message);
 		}
 	}
 
@@ -64,14 +77,14 @@ internal class AuditHelper
             switch (Options.XmlWarningAction)
             {
                 case AuditProcessOptions.XmlWarningBehaviour.ReportAsInformation:
-                    IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Information, location, e.Message);
+                    //IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Information, location, e.Message);
                     BufferedValidationIssues.Enqueue(new BufferedValidationIssue(
                         LogLevel.Information, e.Message, line, pos, BufferedValidationIssue.Original.SchemaWarning
 						));
 					// status is not changed
 					break;
                 case AuditProcessOptions.XmlWarningBehaviour.ReportAsWarning:
-                    IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Warning, location, e.Message);
+                    //IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Warning, location, e.Message);
 					BufferedValidationIssues.Enqueue(new BufferedValidationIssue(
 						LogLevel.Warning, e.Message, line, pos, BufferedValidationIssue.Original.SchemaWarning
 						));
@@ -79,7 +92,7 @@ internal class AuditHelper
                     break;
                 case AuditProcessOptions.XmlWarningBehaviour.ReportAsError:
                     // the type is reported as an error, but its original nature of warning is retained to help debug
-                    IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Error, location, e.Message);
+                    //IdsMessages.ReportSchemaComplianceWarning(Logger, LogLevel.Error, location, e.Message);
 					BufferedValidationIssues.Enqueue(new BufferedValidationIssue(
 						LogLevel.Error, e.Message, line, pos, BufferedValidationIssue.Original.SchemaWarning
 						));
@@ -91,7 +104,7 @@ internal class AuditHelper
         }
         else if (e.Severity == XmlSeverityType.Error)
         {
-            IdsMessages.ReportSchemaComplianceError(Logger, location, e.Message);
+            //IdsMessages.ReportSchemaComplianceError(Logger, location, e.Message);
 			BufferedValidationIssues.Enqueue(new BufferedValidationIssue(
 						LogLevel.Error, e.Message, line, pos, BufferedValidationIssue.Original.SchemaError
 						));

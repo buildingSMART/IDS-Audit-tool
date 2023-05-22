@@ -21,7 +21,7 @@ internal class StringListMatcher : IStringListMatcher
     public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsMessages.ReportInvalidListMatcher(context, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsMessages.Report103InvalidListMatcher(context, value, logger, listToMatchName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 
@@ -49,7 +49,7 @@ internal class StringListMatcher : IStringListMatcher
             catch (Exception)
             {
                 var count = matches.Count();
-                ret |= IdsMessages.ReportInvalidListMatcherCount(context, value, logger, listToMatchName, count, schemaContext);
+                ret |= IdsMessages.Report104InvalidListMatcherCount(context, value, logger, listToMatchName, count, schemaContext);
                 singleMatch = null;
                 return ret;
             }

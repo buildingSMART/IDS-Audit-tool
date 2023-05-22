@@ -128,7 +128,7 @@ internal class IdsXmlNode
     {
         if (!TryGetUpperNodes(startingNode, typeNames, out var nodes))
         {
-			IdsMessages.ReportUnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
+			IdsMessages.Report501UnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -136,7 +136,7 @@ internal class IdsXmlNode
         if (nodes[0] is not T spec)
         {
             node = default;
-			IdsMessages.ReportUnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
+			IdsMessages.Report501UnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
             status = Audit.Status.IdsStructureError;
             return false;
         }

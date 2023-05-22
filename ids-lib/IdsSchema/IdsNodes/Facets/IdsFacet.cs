@@ -50,7 +50,7 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
         {
-			IdsMessages.ReportInvalidCardinality(logger, this, minMaxOccurr);
+			IdsMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
             ret |= MinMaxCardinality.ErrorStatus;
             IsValid = false;
         }
