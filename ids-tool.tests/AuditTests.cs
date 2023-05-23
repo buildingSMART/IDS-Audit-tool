@@ -111,11 +111,28 @@ public class AuditTests : BuildingSmartRepoFiles
     [MemberData(nameof(GetInvalidCases))]
     public void FullAuditFail(string path, int numErr, Audit.Status status)
     {
-        var f = new FileInfo(path);
-        LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, status, numErr);
+		PathCaseSensitiveMatch(path).Should().BeTrue();
+		var f = new FileInfo(path);
+		LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, status, numErr);
     }
 
-    [Theory]
+	private bool PathCaseSensitiveMatch(string path)
+	{
+        var parts = path.Split('/', '\\');
+        var d = new DirectoryInfo(".");
+        foreach (var part in parts)
+        {
+			var dir = d.GetDirectories().FirstOrDefault(x => x.Name == part);
+            if (dir is not null)
+                d = dir;
+            else
+				return d.GetFiles().Any(x => x.Name == part);
+        }
+        return true;
+	}
+
+
+	[Theory]
     [MemberData(nameof(GetInvalidCases))]
     public void FullAuditFailWithStream(string path, int numErr, Audit.Status status)
     {
