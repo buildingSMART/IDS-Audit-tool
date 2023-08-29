@@ -12,7 +12,7 @@
 | 105  | No valid option exist         |
 | 106  | Invalid empty attribute       |
 | 107  | Invalid schema identification |
-| 200  | integration issues            |
+| 200  | Integration issues            |
 | 201  | Incompatible clauses          |
 | 300  | Schema clauses                |
 | 301  | Invalid cardinality           |
