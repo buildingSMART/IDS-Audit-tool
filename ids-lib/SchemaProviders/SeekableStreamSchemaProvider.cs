@@ -35,7 +35,7 @@ namespace IdsLib.SchemaProviders
             if (info.Version == IdsVersion.Invalid)
             {
                 schemas = Enumerable.Empty<XmlSchema>();
-                return IdsToolMessages.ReportInvalidVersion(logger);
+                return IdsToolMessages.ReportInvalidVersion(info.SchemaLocation, logger);
             }
             return GetResourceSchemasByVersion(info.Version, logger, out schemas);
         }

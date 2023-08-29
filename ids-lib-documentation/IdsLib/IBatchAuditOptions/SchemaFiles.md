@@ -3,7 +3,7 @@
 XSD schema to load, this is useful when testing changes in the schema (e.g. GitHub repo).
 
 ```csharp
-public IEnumerable<string> SchemaFiles { get; set; }
+public IEnumerable<string> SchemaFiles { get; }
 ```
 
 ## See Also

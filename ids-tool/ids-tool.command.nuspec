@@ -3,7 +3,7 @@
 	<metadata>
 		<id>ids-tool.CommandLine</id>
 		<authors>Claudio Benghi</authors>
-		<description>CLI deployment of the ids-tool</description>
+		<description>CLI deployment of the ids-audit-tool</description>
 		<projectUrl>https://github.com/buildingSMART/IDS-Audit-tool/</projectUrl>
 		<version>$version$</version>
 		<iconUrl>https://raw.githubusercontent.com/buildingSMART/IDS-Audit-tool/main/graphics/icon.png</iconUrl>

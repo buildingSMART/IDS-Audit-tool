@@ -16,10 +16,10 @@ namespace IdsLib.IfcSchema
         {
             get
             {
-               yield return new IfcOneToManyRelationInformation("IfcRelAggregates", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
-               yield return new IfcOneToManyRelationInformation("IfcRelAssignsToGroup", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcGroup", "IfcObjectDefinition");
-               yield return new IfcOneToManyRelationInformation("IfcRelContainedInSpatialStructure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcSpatialStructureElement", "IfcProduct");
-               yield return new IfcOneToManyRelationInformation("IfcRelNests", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
+               yield return new IfcOneToManyRelationInformation("IFCRELAGGREGATES", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
+               yield return new IfcOneToManyRelationInformation("IFCRELASSIGNSTOGROUP", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcGroup", "IfcObjectDefinition");
+               yield return new IfcOneToManyRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcSpatialStructureElement", "IfcProduct");
+               yield return new IfcOneToManyRelationInformation("IFCRELNESTS", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
             }
         }
     }

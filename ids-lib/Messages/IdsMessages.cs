@@ -8,13 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace IdsLib.Messages;
+/// <summary>
+/// todo: create resource for internationalization
+/// todo: add configuration to return :p style location <see cref="NodeIdentification.ToString(string?, IFormatProvider?)"/>, that defines the :p style
+///       e.g. ("Inconsistent clauses: {message} on {location:p}.", scenarioMessage, context.GetNodeIdentification());
+/// </summary>
 
 internal static class IdsMessages
 {
-	// todo: create resource for internationalization
-	// todo: add configuration to return :p style location
-	//       e.g. ("Inconsistent clauses: {message} on {location:p}.", scenarioMessage, context.GetNodeIdentification());
-
 	internal static Audit.Status Report101InvalidApplicability(ILogger? logger, IdsXmlNode context, string scenarioMessage)
 	{
 		logger?.LogError("Error {errorCode}: Invalid applicability. {message} on {location}.", 101, scenarioMessage, context.GetNodeIdentification());
@@ -35,11 +36,11 @@ internal static class IdsMessages
 		{
 			var count = candidateStrings.Count();
 			if (count == 1)
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.GetPositionalIdentifier());
+				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.GetNodeIdentification());
 			else if (count < 6)
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.GetPositionalIdentifier());
+				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.GetNodeIdentification());
 			else
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.GetPositionalIdentifier());
+				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.GetNodeIdentification());
 		}
 		return Audit.Status.IdsContentError;
 	}
@@ -47,7 +48,7 @@ internal static class IdsMessages
 
 	internal static Audit.Status Report104InvalidListMatcherCount(IdsXmlNode xmlContext, string value, ILogger? logger, string listToMatchName, int numberOfMatches, IfcSchema.IfcSchemaVersions schemaContext)
 	{
-		logger?.LogError("Error {errorCode}: Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} on {location}.", 104, numberOfMatches, value, xmlContext.type, listToMatchName, schemaContext, xmlContext.GetPositionalIdentifier());
+		logger?.LogError("Error {errorCode}: Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} on {location}.", 104, numberOfMatches, value, xmlContext.type, listToMatchName, schemaContext, xmlContext.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 

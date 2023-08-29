@@ -8,7 +8,7 @@
 	<ids:specifications>
 		<ids:specification name="Wall with common property" minOccurs="1" maxOccurs="unbounded" ifcVersion="IFC2X3">
 			<ids:applicability>
-        <ids:property>
+        <ids:property datatype="IFCLABEL">
           <ids:propertySet>
             <!-- this is not enough, ok -->
             <xs:restriction />
@@ -21,7 +21,7 @@
         </ids:property>
       </ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded">
+				<ids:property maxOccurs="unbounded" datatype="IFCLABEL">
           <!-- this is required, and cannot be empty, ok via schema -->
 					<ids:propertySet />
 					<ids:name>
@@ -39,7 +39,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded" measure="IfcPowerMeasure">
+				<ids:property maxOccurs="unbounded" datatype="IFCPOWERMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_ActuatorTypeElectricActuator</ids:simpleValue>
 					</ids:propertySet>

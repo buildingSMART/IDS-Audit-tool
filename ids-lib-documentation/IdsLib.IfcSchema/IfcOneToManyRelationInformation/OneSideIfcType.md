@@ -1,6 +1,6 @@
 # IfcOneToManyRelationInformation.OneSideIfcType property
 
-Name of the IFC entity on the one-side of the one-to-many relation
+relationXmlAttributeName of the IFC entity on the one-side of the one-to-many relation
 
 ```csharp
 public string OneSideIfcType { get; set; }

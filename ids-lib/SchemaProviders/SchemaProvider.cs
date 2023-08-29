@@ -39,12 +39,15 @@ namespace IdsLib.SchemaProviders
                 switch (schema)
                 {
                     case "http://www.w3.org/2001/xml.xsd":
+                    case "https://www.w3.org/2001/xml.xsd":
                         yield return GetSchema("xml.xsd")!;
                         yield return GetSchema("xsdschema.xsd")!;
                         break;
+                    case "http://www.w3.org/2001/XMLSchema.xsd":
                     case "https://www.w3.org/2001/XMLSchema.xsd":
                         break;
                     case "http://www.w3.org/2001/XMLSchema-instance":
+                    case "https://www.w3.org/2001/XMLSchema-instance":
                         break;
                     default:
                         XsdMessages.ReportUnexpectedSchema(logger, schema);

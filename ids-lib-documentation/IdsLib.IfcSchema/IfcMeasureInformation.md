@@ -11,7 +11,7 @@ public class IfcMeasureInformation
 | name | description |
 | --- | --- |
 | [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Default constructor, ensures static nullable analysis |
-| [IfcMeasureClassName](IfcMeasureInformation/IfcMeasureClassName.md) { get; } | Name of the entity as a string, stored in PascalCase |
+| [IfcMeasureClassName](IfcMeasureInformation/IfcMeasureClassName.md) { get; } | relationXmlAttributeName of the entity as a string, stored in PascalCase |
 | [ValidSchemaVersions](IfcMeasureInformation/ValidSchemaVersions.md) { get; } | Versions of the schema that contain the class |
 
 ## See Also

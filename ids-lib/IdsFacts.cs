@@ -12,7 +12,8 @@ internal class IdsFacts
             "http://standards.buildingsmart.org/IDS  ids_09.xsd" => IdsVersion.Ids0_9, // todo: this is invalid and needs to be fixed in the IDS repository
             "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd" => IdsVersion.Ids0_9,
             "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_1_0.xsd" => IdsVersion.Ids1_0,
-            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd" => IdsVersion.Ids0_9,
+            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd" => IdsVersion.Ids1_0,
+            "http://standards.buildingsmart.org/IDS ids.xsd" => IdsVersion.Ids1_0,
             _ => IdsVersion.Invalid,
         };
     }

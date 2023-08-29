@@ -13,7 +13,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         minMaxOccurr = new MinMaxCardinality(reader);
-        var measure = reader.GetAttribute("measure") ?? string.Empty;
+        var measure = reader.GetAttribute("datatype") ?? string.Empty;
         if (!string.IsNullOrEmpty(measure))
             measureMatcher = new StringListMatcher(measure, this);
         else
@@ -57,7 +57,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         // initiate valid measures, will constrain later if there's a known property
         var validMeasureNames = SchemaInfo.AllMeasures
                 .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
-                .Select(y => y.IfcMeasureClassName);
+                .Select(y => y.IfcMeasureClassName.ToUpperInvariant());
         IsValid = true;
 
 

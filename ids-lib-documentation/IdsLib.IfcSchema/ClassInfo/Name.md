@@ -1,6 +1,6 @@
 # ClassInfo.Name property
 
-Name string
+relationXmlAttributeName string
 
 ```csharp
 public string Name { get; }

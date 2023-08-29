@@ -11,11 +11,11 @@ public interface IBatchAuditOptions
 | name | description |
 | --- | --- |
 | [AuditSchemaDefinition](IBatchAuditOptions/AuditSchemaDefinition.md) { get; set; } | Check validity of the xsd schema(s) passed with the [`SchemaFiles`](./IBatchAuditOptions/SchemaFiles.md) parameter. |
-| [InputExtension](IBatchAuditOptions/InputExtension.md) { get; set; } | This is used to define the extension to load when passing a folder in the [`InputSource`](./IBatchAuditOptions/InputSource.md) parameter. In doubt set it to "ids". |
-| [InputSource](IBatchAuditOptions/InputSource.md) { get; set; } | Input IDS to be processed; it can be a file or a folder. |
-| [OmitIdsContentAudit](IBatchAuditOptions/OmitIdsContentAudit.md) { get; set; } | If set to true skips the audit of the semantic aspects of the IDS. |
-| [OmitIdsContentAuditPattern](IBatchAuditOptions/OmitIdsContentAuditPattern.md) { get; set; } | Regex applied to file name to omit the audit of the semantic aspects of the IDS. This can be useful to omit strict audit of files that are known to have content issues (e.g. failing documentation of the buildingSMART IDS website). |
-| [SchemaFiles](IBatchAuditOptions/SchemaFiles.md) { get; set; } | XSD schema to load, this is useful when testing changes in the schema (e.g. GitHub repo). |
+| [InputExtension](IBatchAuditOptions/InputExtension.md) { get; } | This is used to define the extension to load when passing a folder in the [`InputSource`](./IBatchAuditOptions/InputSource.md) parameter. In doubt set it to "ids". |
+| [InputSource](IBatchAuditOptions/InputSource.md) { get; } | Input IDS to be processed; it can be a file or a folder. |
+| [OmitIdsContentAudit](IBatchAuditOptions/OmitIdsContentAudit.md) { get; } | If set to true skips the audit of the semantic aspects of the IDS. |
+| [OmitIdsContentAuditPattern](IBatchAuditOptions/OmitIdsContentAuditPattern.md) { get; } | Regex applied to file name to omit the audit of the semantic aspects of the IDS. This can be useful to omit strict audit of files that are known to have content issues (e.g. failing documentation of the buildingSMART IDS website). |
+| [SchemaFiles](IBatchAuditOptions/SchemaFiles.md) { get; } | XSD schema to load, this is useful when testing changes in the schema (e.g. GitHub repo). |
 
 ## See Also
 

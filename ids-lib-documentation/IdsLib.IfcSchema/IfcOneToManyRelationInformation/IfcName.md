@@ -1,6 +1,6 @@
 # IfcOneToManyRelationInformation.IfcName property
 
-Name of the IFC entity for the relation
+relationXmlAttributeName of the IFC entity for the relation
 
 ```csharp
 public string IfcName { get; set; }

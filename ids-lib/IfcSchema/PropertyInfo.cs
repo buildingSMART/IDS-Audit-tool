@@ -37,7 +37,7 @@ public static class IPropertyTypeInfoExtensions
             dataType = null;
             return false;
         }
-        dataType = svp.DataType;
+        dataType = svp.DataType.ToUpperInvariant();
         return true;
     }
 }

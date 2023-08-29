@@ -9,7 +9,7 @@
 		<!-- should fail because IfcRelNests cannot be child of an IFC2DCOMPOSITECURVE -->
 		<ids:specification ifcVersion="IFC2X3" name="Aachen test" maxOccurs="unbounded">
 			<ids:applicability>
-				<ids:partOf relation="IfcRelNests">
+				<ids:partOf relation="IFCRELNESTS">
 					<ids:entity>
 						<ids:name>
 							<ids:simpleValue>IFC2DCOMPOSITECURVE</ids:simpleValue>
@@ -18,7 +18,7 @@
 				</ids:partOf>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded">
+				<ids:property maxOccurs="unbounded" datatype="IFCLABEL"> 
 					<ids:propertySet>
 						<ids:simpleValue>SomeValidPset</ids:simpleValue>
 					</ids:propertySet>

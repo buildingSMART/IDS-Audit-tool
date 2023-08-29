@@ -11,9 +11,9 @@ public class IfcOneToManyRelationInformation
 | name | description |
 | --- | --- |
 | [IfcOneToManyRelationInformation](IfcOneToManyRelationInformation/IfcOneToManyRelationInformation.md)(…) | Default constructor, ensures static nullable analysis |
-| [IfcName](IfcOneToManyRelationInformation/IfcName.md) { get; set; } | Name of the IFC entity for the relation |
-| [ManySideIfcType](IfcOneToManyRelationInformation/ManySideIfcType.md) { get; set; } | Name of the IFC entity on the many-side of the one-to-many relation |
-| [OneSideIfcType](IfcOneToManyRelationInformation/OneSideIfcType.md) { get; set; } | Name of the IFC entity on the one-side of the one-to-many relation |
+| [IfcName](IfcOneToManyRelationInformation/IfcName.md) { get; set; } | relationXmlAttributeName of the IFC entity for the relation |
+| [ManySideIfcType](IfcOneToManyRelationInformation/ManySideIfcType.md) { get; set; } | relationXmlAttributeName of the IFC entity on the many-side of the one-to-many relation |
+| [OneSideIfcType](IfcOneToManyRelationInformation/OneSideIfcType.md) { get; set; } | relationXmlAttributeName of the IFC entity on the one-side of the one-to-many relation |
 | [ValidSchemaVersions](IfcOneToManyRelationInformation/ValidSchemaVersions.md) { get; set; } | Schema version in which the relation exists |
 
 ## See Also

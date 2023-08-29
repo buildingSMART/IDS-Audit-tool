@@ -21,7 +21,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded">
+				<ids:property maxOccurs="unbounded" datatype="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction>
 							<xs:pattern value="anas.*"/>

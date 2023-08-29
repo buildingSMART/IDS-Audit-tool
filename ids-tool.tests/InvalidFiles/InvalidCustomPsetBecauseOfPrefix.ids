@@ -17,7 +17,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1" maxOccurs="unbounded">
+				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCLABEL">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_InvalidCustomPsetBecauseOfPrefix</ids:simpleValue>
 					</ids:propertySet>
@@ -25,7 +25,7 @@
 						<ids:simpleValue>CustomName</ids:simpleValue>
 					</ids:name>
 				</ids:property>
-				<ids:property minOccurs="1" maxOccurs="unbounded">
+				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction base="xs:string">
 							<xs:enumeration value="SomeValid"/>
@@ -37,7 +37,7 @@
 						<ids:simpleValue>CustomName</ids:simpleValue>
 					</ids:name>
 				</ids:property>
-				<ids:property minOccurs="1" maxOccurs="unbounded">
+				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction base="xs:string">
 							<!-- this is not allowed but currently not recognised -->

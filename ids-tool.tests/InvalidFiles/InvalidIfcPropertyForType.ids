@@ -21,7 +21,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1" maxOccurs="unbounded">
+				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCIDENTIFIER">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>

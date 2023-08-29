@@ -58,6 +58,7 @@ We are planning to implement a number of audits (the ones with a check-mark are 
         - [x] Enumerations
     - [x] Property Measures
       - [x] If a value is provided, it is checked against a closed list
+        - [ ] Discuss the scope of the list, currently only measures, IFCTEXT and IFCLABEL (but it's now datatype, so we should probably expand).
       - [x] Test cases added
       - [x] Constrain IfcMeasure for identified properties in standard PSets
   - [x] Cardinality for facets (in requirements)
@@ -118,7 +119,7 @@ We are planning to implement a number of audits (the ones with a check-mark are 
     - [ ] Clarify the list of valid measures.
       - [ ] Only concrete measures? 
       - [ ] Do they follow inheritance?
-    - [ ] Clarify the case sensitivity logic of measures (currently PascalCase based on Development files)  
+    - [ ] Clarify the case sensitivity logic of measures (currently UPPERCASE based on Development files)  
   - [ ] Clarify Misplacement of properties
     - [ ] if a predefined property name has to be restricted to the predefined property set
     - [ ] Look at IfcPropertyNameCoherenceAcrossSchemas for list of times where this does not happen for the predefined property sets

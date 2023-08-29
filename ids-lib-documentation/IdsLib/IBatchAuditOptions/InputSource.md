@@ -3,7 +3,7 @@
 Input IDS to be processed; it can be a file or a folder.
 
 ```csharp
-public string InputSource { get; set; }
+public string InputSource { get; }
 ```
 
 ## See Also

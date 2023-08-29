@@ -1,6 +1,6 @@
 # IfcClassInformation.PascalCaseName property
 
-Name of the attribute as a string, stored in PascalCase
+relationXmlAttributeName of the attribute as a string, stored in PascalCase
 
 ```csharp
 public string PascalCaseName { get; }

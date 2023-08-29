@@ -3,7 +3,7 @@
 Regex applied to file name to omit the audit of the semantic aspects of the IDS. This can be useful to omit strict audit of files that are known to have content issues (e.g. failing documentation of the buildingSMART IDS website).
 
 ```csharp
-public string OmitIdsContentAuditPattern { get; set; }
+public string OmitIdsContentAuditPattern { get; }
 ```
 
 ## See Also

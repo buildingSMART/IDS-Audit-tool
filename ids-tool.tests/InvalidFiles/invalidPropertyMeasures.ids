@@ -18,7 +18,7 @@
 			</ids:applicability>
 			<ids:requirements>
 				<!-- not a valid measure class -->
-				<ids:property maxOccurs="unbounded" measure="IfcDoor">
+				<ids:property maxOccurs="unbounded" datatype="IfcDoor">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
@@ -27,7 +27,7 @@
 					</ids:name>
 				</ids:property>
 				<!-- not a valid measure class -->
-				<ids:property maxOccurs="unbounded" measure="IFCDOOR">
+				<ids:property maxOccurs="unbounded" datatype="IFCDOOR">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
@@ -36,7 +36,7 @@
 					</ids:name>
 				</ids:property>
 				<!-- valid measure class for schema -->
-				<ids:property maxOccurs="unbounded" measure="IfcText">
+				<ids:property maxOccurs="unbounded" datatype="IFCTEXT">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
@@ -45,7 +45,7 @@
 					</ids:name>
 				</ids:property>
 				<!-- Invalid measure class for schema -->
-				<ids:property maxOccurs="unbounded" measure="IfcAreaDensityMeasure">
+				<ids:property maxOccurs="unbounded" datatype="IFCAREADENSITYMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>

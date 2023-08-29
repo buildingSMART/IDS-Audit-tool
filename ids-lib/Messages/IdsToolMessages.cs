@@ -70,9 +70,9 @@ namespace IdsLib.Messages
 			return Status.UnhandledError;
 		}
 
-		internal static Status ReportInvalidVersion(ILogger? logger)
+		internal static Status ReportInvalidVersion(string providedSchemaLocation, ILogger? logger)
 		{
-			logger?.LogCritical("Unrecognised version from location value.");
+			logger?.LogCritical("Unrecognised version from location value ({providedLocation}).", providedSchemaLocation);
 			return Status.IdsStructureError;
 		}
 

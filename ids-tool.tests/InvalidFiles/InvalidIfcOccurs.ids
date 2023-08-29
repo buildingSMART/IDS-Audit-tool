@@ -21,7 +21,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1">
+				<ids:property minOccurs="1" datatype="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction>
 							<xs:pattern value="anas.*"/>
@@ -41,7 +41,7 @@
 					</ids:system>
 				</ids:classification>
 				<!-- Ensure test for property facets -->
-				<ids:property minOccurs="4" maxOccurs="2">
+				<ids:property minOccurs="4" maxOccurs="2" datatype="IFCLABEL">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
@@ -56,7 +56,7 @@
 					</ids:value>
 				</ids:material>
 				<!-- Ensure test for partOf facets -->
-				<ids:partOf relation="IfcRelAggregates" minOccurs="4" maxOccurs="2">
+				<ids:partOf relation="IFCRELAGGREGATES" minOccurs="4" maxOccurs="2">
 					<ids:entity>
 						<ids:name>
 							<ids:simpleValue>IFCCOVERING</ids:simpleValue>

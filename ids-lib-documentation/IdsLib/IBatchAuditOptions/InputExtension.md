@@ -3,7 +3,7 @@
 This is used to define the extension to load when passing a folder in the [`InputSource`](./InputSource.md) parameter. In doubt set it to "ids".
 
 ```csharp
-public string InputExtension { get; set; }
+public string InputExtension { get; }
 ```
 
 ## See Also

@@ -17,7 +17,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1" maxOccurs="unbounded">
+				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCAREAMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>CustomPset</ids:simpleValue>
 					</ids:propertySet>

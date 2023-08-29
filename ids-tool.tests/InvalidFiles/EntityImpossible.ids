@@ -16,7 +16,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:partOf relation="IfcRelNests" minOccurs="1" maxOccurs="unbounded">
+				<ids:partOf relation="IFCRELNESTS" minOccurs="1" maxOccurs="unbounded">
 					<ids:entity>
 						<ids:name>
 							<ids:simpleValue>IFCWALL</ids:simpleValue>

@@ -15,7 +15,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded">
+				<ids:property maxOccurs="unbounded" datatype="IFCLABEL">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
@@ -34,7 +34,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property maxOccurs="unbounded" measure="IfcPowerMeasure">
+				<ids:property maxOccurs="unbounded" datatype="IFCPOWERMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_ActuatorTypeElectricActuator</ids:simpleValue>
 					</ids:propertySet>

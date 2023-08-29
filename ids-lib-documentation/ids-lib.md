@@ -4,6 +4,8 @@
 
 | public type | description |
 | --- | --- |
+| enum [Action](./IdsLib/Action.md) | Types of controls that the tools performs, resulting from the evaluation of options provided |
+| class [ActionCollection](./IdsLib/ActionCollection.md) | Provides an expressive way to present the collection of actions that the tool is performing |
 | static class [Audit](./IdsLib/Audit.md) | Main static class for invoking the audit functions. If you wish to audit a single file, the best entry point is [`Run`](./IdsLib/Audit/Run.md). This method allows you to run audits on the provided stream. For more complex auditing scenarios (e.g. those used by the tool), some automation can be achieved with [`Run`](./IdsLib/Audit/Run.md). Both APIs provide a return value that can be interpreted to determine if errors have been found. For more detailed feedback on the specific location of issues encountered, you must pass an ILogger interface, and collect events. |
 | class [AuditProcessOptions](./IdsLib/AuditProcessOptions.md) | Configuration parameters required within the inner loop of the audit. |
 | interface [IBatchAuditOptions](./IdsLib/IBatchAuditOptions.md) | This interface contains the parameters to configure a complex execution of the audit in a batch scenario. |
@@ -15,6 +17,7 @@
 | --- | --- |
 | class [IdsInformation](./IdsLib.IdsSchema.IdsNodes/IdsInformation.md) | Status information of an IDS source |
 | enum [IdsVersion](./IdsLib.IdsSchema.IdsNodes/IdsVersion.md) | Enumeration to identify a single IDS version. |
+| class [NodeIdentification](./IdsLib.IdsSchema.IdsNodes/NodeIdentification.md) | Provides a way to identify the element of the xml with line/poistion or relative index inside the IDS |
 
 ## IdsLib.IfcSchema namespace
 

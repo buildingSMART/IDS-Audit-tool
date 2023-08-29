@@ -14,7 +14,7 @@
 				</entity>
 			</applicability>
 			<requirements>
-				<partOf relation="IfcRelNests" minOccurs="1" maxOccurs="unbounded">
+				<partOf relation="IFCRELNESTS" minOccurs="1" maxOccurs="unbounded">
 					<entity>
 						<name><simpleValue>IFCFURNITURE</simpleValue></name>
 						<predefinedType><simpleValue>SOFA</simpleValue></predefinedType>

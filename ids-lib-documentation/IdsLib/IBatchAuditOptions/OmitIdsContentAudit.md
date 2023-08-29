@@ -3,7 +3,7 @@
 If set to true skips the audit of the semantic aspects of the IDS.
 
 ```csharp
-public bool OmitIdsContentAudit { get; set; }
+public bool OmitIdsContentAudit { get; }
 ```
 
 ## See Also

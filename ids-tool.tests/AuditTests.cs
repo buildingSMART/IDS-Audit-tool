@@ -154,7 +154,7 @@ public class AuditTests : BuildingSmartRepoFiles
 
     private const string ValidNetworkIds = "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/IDS_ArcDox.ids";
 
-    [Fact]
+    [SkippableFact]
     public async Task TestSeekableNetworkStream()
     {
         var _httpClient = new HttpClient

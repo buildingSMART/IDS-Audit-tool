@@ -14,7 +14,7 @@
         <!-- At least one facet -->
       </ids:applicability>
       <ids:requirements>
-        <ids:property minOccurs="1" maxOccurs="unbounded">
+        <ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCLABEL">
           <ids:propertySet>
             <xs:restriction>
               <xs:pattern value="anas.*"/>
