@@ -59,6 +59,7 @@ We are planning to implement a number of audits (the ones with a check-mark are 
     - [x] Property Measures
       - [x] If a value is provided, it is checked against a closed list
         - [ ] Discuss the scope of the list, currently only measures, IFCTEXT and IFCLABEL (but it's now datatype, so we should probably expand).
+        - [ ] The attribute is required, but it can be empty, is that valid?
       - [x] Test cases added
       - [x] Constrain IfcMeasure for identified properties in standard PSets
   - [x] Cardinality for facets (in requirements)

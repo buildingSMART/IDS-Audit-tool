@@ -58,9 +58,29 @@ public class IfcSchema_MeasureNamesGenerator
 
     private static IEnumerable<string> GetExtraMeasureNames()
     {
-        yield return "IfcText";
+        // all inheriting from string in ifc4x3 dev 7079993
+        yield return "IfcDate";
+        yield return "IfcDateTime";
+        yield return "IfcDescriptiveMeasure";
+        yield return "IfcDuration";
+        yield return "IfcFontStyle";
+        yield return "IfcFontVariant";
+        yield return "IfcFontWeight";
+        yield return "IfcGloballyUniqueId";
+        yield return "IfcIdentifier";
         yield return "IfcLabel";
-        yield return "IfcThermalTransmittanceMeasure";
+        yield return "IfcPresentableText";
+        yield return "IfcText";
+        yield return "IfcTextAlignment";
+        yield return "IfcTextDecoration";
+        yield return "IfcTextFontName";
+        yield return "IfcTextTransformation";
+        yield return "IfcTime";
+        yield return "IfcURIReference";
+        yield return "IfcWellKnownTextLiteral";
+
+        // extra measure
+		yield return "IfcThermalTransmittanceMeasure";
     }
 
     private static IEnumerable<string> GetDocumentationMeasureNames()
