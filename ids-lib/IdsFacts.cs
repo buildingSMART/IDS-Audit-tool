@@ -15,6 +15,7 @@ internal class IdsFacts
             "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_1_0.xsd" => IdsVersion.Ids1_0,
             "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd" => IdsVersion.Ids1_0,
             "http://standards.buildingsmart.org/IDS ids.xsd" => IdsVersion.Ids1_0,
+            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" => IdsVersion.Ids1_0,
             _ => IdsVersion.Invalid,
         };
     }

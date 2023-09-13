@@ -58,28 +58,38 @@ public class IfcSchema_MeasureNamesGenerator
 
     private static IEnumerable<string> GetExtraMeasureNames()
     {
-        // all inheriting from string in ifc4x3 dev 7079993
+		// IfcSimpleValue classes:
+		yield return "IfcBinary";
+        yield return "IfcBoolean";
         yield return "IfcDate";
         yield return "IfcDateTime";
-        yield return "IfcDescriptiveMeasure";
         yield return "IfcDuration";
-        yield return "IfcFontStyle";
-        yield return "IfcFontVariant";
-        yield return "IfcFontWeight";
-        yield return "IfcGloballyUniqueId";
         yield return "IfcIdentifier";
+        yield return "IfcInteger";
         yield return "IfcLabel";
-        yield return "IfcPresentableText";
+        yield return "IfcLogical";
+        yield return "IfcPositiveInteger";
+        yield return "IfcReal";
         yield return "IfcText";
-        yield return "IfcTextAlignment";
-        yield return "IfcTextDecoration";
-        yield return "IfcTextFontName";
-        yield return "IfcTextTransformation";
         yield return "IfcTime";
+        yield return "IfcTimeStamp";
         yield return "IfcURIReference";
-        yield return "IfcWellKnownTextLiteral";
 
-        // extra measure
+		// all inheriting from string in ifc4x3 dev 7079993 that are not in the previous list
+        // todo: these need to be discussed for 1.0.
+		yield return "IfcDescriptiveMeasure";
+		yield return "IfcFontStyle";
+		yield return "IfcFontVariant";
+		yield return "IfcFontWeight";
+		yield return "IfcGloballyUniqueId";
+		yield return "IfcPresentableText";
+		yield return "IfcTextAlignment";
+		yield return "IfcTextDecoration";
+		yield return "IfcTextFontName";
+		yield return "IfcTextTransformation";
+		yield return "IfcWellKnownTextLiteral";
+
+		// extra measure
 		yield return "IfcThermalTransmittanceMeasure";
     }
 

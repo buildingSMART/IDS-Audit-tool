@@ -49,14 +49,9 @@ namespace idsTool.tests
 
             // nothing to audit
 
-
-
-
-
-
-
 		}
 
+        // This ensures that the schema in the tool is aligned with the version of the IDS repository
 		[SkippableFact]
         public void XsdSchemaIsAlignedWithIdsRepository()
         {
@@ -70,7 +65,8 @@ namespace idsTool.tests
             sameContent.Should().BeTrue("embedded schema and repository schema should be identical");
         }
 
-        [SkippableFact]
+		// This ensures that the schema in the testing of the tool is aligned with the version of the IDS repository
+		[SkippableFact]
         public void XsdTestSuiteSchemaIsAlignedWithIdsRepository()
         {
             var toolSchema = BuildingSmartRepoFiles.GetIdsTestSuiteSchema();

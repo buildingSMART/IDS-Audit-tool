@@ -7,7 +7,8 @@ namespace idsTool.tests.Helpers;
 
 public class BuildingSmartRepoFiles
 {
-    private static string IdsRepoPath
+	// attempts to find the root for the buildingsmart's ids standard repository
+	private static string IdsRepoPath
     {
         get
         {
@@ -16,13 +17,20 @@ public class BuildingSmartRepoFiles
             {
                 var subIDS = d.GetDirectories("IDS").FirstOrDefault();
                 if (subIDS != null)
-                    return subIDS.FullName;
+                {
+                    if (
+                        subIDS.GetDirectories("Development").Any()
+                        && subIDS.GetDirectories(".nuke").Any()
+                        )
+                        return subIDS.FullName;
+                }
                 d = d.Parent;
             }
             return ".";
         }
     }
 
+    // attempts to find the root for the ids tool solution
     private static string IdsToolRepoPath
     {
         get
@@ -39,9 +47,9 @@ public class BuildingSmartRepoFiles
         }
     }
 
-    private static string IdsTestcasesPath => Path.Combine(IdsDocumentationPath, "testcases");
-    private static string IdsDevelopmentPath => Path.Combine(IdsRepoPath, @"Development");
-    private static string IdsDocumentationPath => Path.Combine(IdsRepoPath, @"Documentation");
+    private static string IdsRepositoryTestcasesPath => Path.Combine(IdsRepositoryDocumentationPath, "testcases");
+    private static string IdsRepositoryDevelopmentPath => Path.Combine(IdsRepoPath, @"Development");
+    private static string IdsRepositoryDocumentationPath => Path.Combine(IdsRepoPath, @"Documentation");
 
     public static FileInfo GetIdsToolSchema()
     {
@@ -57,13 +65,13 @@ public class BuildingSmartRepoFiles
 
     public static FileInfo GetIdsSchema()
     {
-        var schema = Path.Combine(IdsDevelopmentPath, "ids.xsd");
+        var schema = Path.Combine(IdsRepositoryDevelopmentPath, "ids.xsd");
         return new FileInfo(schema);
     }
 
-    internal static FileInfo GetTestCaseFileInfo(string idsFile)
+    internal static FileInfo GetDocumentationTestCaseFileInfo(string idsFile)
     {
-        var d = new DirectoryInfo(IdsTestcasesPath);
+        var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
         var comb = d.FullName + idsFile;
         var f = new FileInfo(comb);
         f.Exists.Should().BeTrue("test file must be found");
@@ -73,7 +81,7 @@ public class BuildingSmartRepoFiles
     public static IEnumerable<object[]> GetTestCaseIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository
-        var d = new DirectoryInfo(IdsTestcasesPath);
+        var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
         if (!d.Exists)
         {
             yield return new object[] { "" };
@@ -87,7 +95,7 @@ public class BuildingSmartRepoFiles
 
     internal static FileInfo GetDevelopmentFileInfo(string idsFile)
     {
-        var d = new DirectoryInfo(IdsDevelopmentPath);
+        var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
         var comb = d.FullName + idsFile;
         var f = new FileInfo(comb);
         f.Exists.Should().BeTrue("test file must be found");
@@ -97,7 +105,7 @@ public class BuildingSmartRepoFiles
     public static IEnumerable<object[]> GetDevelopmentIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository
-        var d = new DirectoryInfo(IdsDevelopmentPath);
+        var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
         if (!d.Exists)
         {
             // returning a single invalid entry so that it can be skipped
@@ -113,12 +121,12 @@ public class BuildingSmartRepoFiles
 
     public static FileInfo GetDocumentation(string fileName)
     {
-        return new FileInfo(Path.Combine(IdsDocumentationPath, fileName));
+        return new FileInfo(Path.Combine(IdsRepositoryDocumentationPath, fileName));
     }
 
     public static FileInfo GetDevelopment(string fileName)
     {
-        return new FileInfo(Path.Combine(IdsDevelopmentPath, fileName));
+        return new FileInfo(Path.Combine(IdsRepositoryDevelopmentPath, fileName));
     }
 
     public static bool FilesAreIdentical(FileInfo repoSchema, FileInfo toolSchema)

@@ -41,9 +41,10 @@ public class IdsInfoTests : BuildingSmartRepoFiles
     public async Task CanReadIdsTestCases(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetTestCaseFileInfo(idsFile);
-        var t = await IdsXmlHelpers.GetIdsInformationAsync(f);
-        t.Should().NotBeNull();
-        t.Version.Should().NotBe(IdsVersion.Invalid);
+        FileInfo f = GetDocumentationTestCaseFileInfo(idsFile);
+        var idsInformation = await IdsXmlHelpers.GetIdsInformationAsync(f);
+        idsInformation.Should().NotBeNull();
+        var schemaVersion = idsInformation.Version;
+        schemaVersion.Should().NotBe(IdsVersion.Invalid, $"{f.FullName}, as a documentation case, should have a valid schema version");
     }
 }

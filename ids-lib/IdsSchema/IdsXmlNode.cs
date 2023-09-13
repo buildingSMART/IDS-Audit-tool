@@ -45,6 +45,7 @@ internal class IdsXmlNode
         {
             Parent.GetPositionalIdentifier(sb);
         }
+        GetPositionalIdentifier(sb);
         return sb.ToString();
     }
 
@@ -54,10 +55,7 @@ internal class IdsXmlNode
 		{
 			Parent.GetPositionalIdentifier(sb);
 		}
-        if (PositionalIndex == 1)
-            sb.Append($"/{type}");
-        else
-			sb.Append($"/{type}{PositionalIndex}");
+		sb.Append($"/{type}{PositionalIndex}");
 	}
 
     internal NodeIdentification GetNodeIdentification()
@@ -81,7 +79,7 @@ internal class IdsXmlNode
             StartLinePosition = li.LinePosition;
         }
         if (Parent != null)
-			PositionalIndex = Parent.Children.Count;		
+            PositionalIndex = Parent.Children.Where(x=>x.type == type).Count(); // this should reflect the number of children already encountered, which corresponds to this item's progressive number (1-based).
     }
 
     /// <summary>

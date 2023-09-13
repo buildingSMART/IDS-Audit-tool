@@ -40,7 +40,7 @@ public class AuditTests : BuildingSmartRepoFiles
         // should the exception be prevented by the schema validation?
         // 
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetTestCaseFileInfo(developmentIdsFile);
+        FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new AuditOptions()
         {
             InputSource = f.FullName,
@@ -49,16 +49,22 @@ public class AuditTests : BuildingSmartRepoFiles
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
         // hack to provide milder error because we don't have control on the test case generator
-        Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
+        // Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
         auditResult.Should().Be(Audit.Status.Ok);
     }
 
+
+    /// <summary>
+    /// this test skips the content evaluation on ids files that are expected to fail, 
+    /// because they could be failing due to invalid content.
+    /// It still checks them for issues at schema level.
+    /// </summary>
     [SkippableTheory]
     [MemberData(nameof(GetTestCaseIdsFiles))]
     public void AuditOfDocumentationPassFilesOk(string developmentIdsFile)
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetTestCaseFileInfo(developmentIdsFile);
+        FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new AuditOptions()
         {
             InputSource = f.FullName,
@@ -67,7 +73,7 @@ public class AuditTests : BuildingSmartRepoFiles
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
         // hack to provide milder error because we don't have control on the test case generator
-        Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
+        // Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
         auditResult.Should().Be(Audit.Status.Ok);
     }
 

@@ -227,53 +227,59 @@ public static partial class Audit
         while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
         {
             cntRead++;
-            if (!auditSettings.Options.OmitIdsContentAudit) // content audit can be omitted, but the while loop is still executed
+
+            switch (reader.NodeType)
             {
-                switch (reader.NodeType)
-                {
-                    case XmlNodeType.Element:
-                        IdsXmlNode? parent = null;
+                // audits are performed on closing the element end, so that all the children are available for evaluation.
+                // but empty elements (e.g., <someElement />) are audited upon opening, as there are no children to evaluate
+                //
+                case XmlNodeType.Element:
+                    IdsXmlNode? parent = null;
 #if NETSTANDARD2_0
                         if (elementsStack.Count > 0)
                             parent = elementsStack.Peek();
 #else
-                        if (elementsStack.TryPeek(out var peeked))
-                            parent = peeked;
+                    if (elementsStack.TryPeek(out var peeked))
+                        parent = peeked;
 #endif
-                        var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
-                        if (newContext is IdsSpecification spec)
-							// parents of IdsSpecification do not retain children for Garbage Collection purposes
-                            // so we need to set the positional index manually
-							spec.PositionalIndex = iSpecification++;
-                        while (auditSettings.BufferedValidationIssues.Any())
-                        {
-                            var t = auditSettings.BufferedValidationIssues.Dequeue();
-                            t.Notify(logger, newContext);
-                        }
-                        
+                    var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
+                    if (newContext is IdsSpecification spec)
+                        // parents of IdsSpecification do not retain children for Garbage Collection purposes
+                        // so we need to set the positional index manually
+                        spec.PositionalIndex = iSpecification++;
+                    while (auditSettings.BufferedValidationIssues.Any())
+                    {
+                        var t = auditSettings.BufferedValidationIssues.Dequeue();
+                        t.Notify(logger, newContext);
+                    }
 
-                        // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
-                        if (!reader.IsEmptyElement)
-                            elementsStack.Push(newContext);
-                        else
-                            contentStatus |= newContext.PerformAudit(logger); // invoking audit empty element
-                        current = newContext;
-                        break;
+                    // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
+                    if (!reader.IsEmptyElement)
+                        elementsStack.Push(newContext);
+                    else
+                    {
+						if (!auditSettings.Options.OmitIdsContentAudit)
+							contentStatus |= newContext.PerformAudit(logger); // invoking audit on empty element happens immediately
+                    }
+                    current = newContext;
+                    break;
 
-                    case XmlNodeType.Text:
-                        // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
-                        current!.SetContent(reader.GetValueAsync().Result);
-                        break;
-                    case XmlNodeType.EndElement:
-                        // Debug.WriteLine($"End Element {reader.LocalName}");
-                        var closing = elementsStack.Pop();
-                        // Debug.WriteLine($"  auditing {closing.type} on end element");
+                case XmlNodeType.Text:
+                    // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
+                    current!.SetContent(reader.GetValueAsync().Result);
+                    break;
+                case XmlNodeType.EndElement:
+                    // Debug.WriteLine($"End Element {reader.LocalName}");
+                    var closing = elementsStack.Pop();
+                    // Debug.WriteLine($"  auditing {closing.type} on end element");
+                    if (!auditSettings.Options.OmitIdsContentAudit)
+                    {
                         contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
-                        break;
-                    default:
-                        // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
-                        break;
-                }
+                    }
+                    break;
+                default:
+                    // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
+                    break;
             }
         }
 
