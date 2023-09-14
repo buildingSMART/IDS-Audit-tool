@@ -1,22 +1,40 @@
 ﻿using System;
+using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsFacts
 {
-    internal static IdsVersion GetVersionFromLocation(string location)
+    internal static IdsVersion GetVersionFromLocation(string location, Microsoft.Extensions.Logging.ILogger? logger = null)
     {
-        return location switch
+        switch (location)
         {
-            "http://standards.buildingsmart.org/IDS/ids_05.xsd" => IdsVersion.Ids0_5, // todo: this is invalid and needs to be fixed in the IDS repository
-            "http://standards.buildingsmart.org/IDS  ids_09.xsd" => IdsVersion.Ids0_9, // todo: this is invalid and needs to be fixed in the IDS repository
-            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd" => IdsVersion.Ids0_9, // todo: this is invalid and needs to be fixed in the IDS repository
-			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" => IdsVersion.Ids0_9,
-            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_1_0.xsd" => IdsVersion.Ids1_0,
-            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd" => IdsVersion.Ids1_0,
-            "http://standards.buildingsmart.org/IDS ids.xsd" => IdsVersion.Ids1_0,
-            "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" => IdsVersion.Ids1_0,
-            _ => IdsVersion.Invalid,
+            case "http://standards.buildingsmart.org/IDS/ids_05.xsd":
+                IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+                return IdsVersion.Ids0_5; // todo: this is invalid and needs to be fixed in the IDS repository
+            case "http://standards.buildingsmart.org/IDS  ids_09.xsd":
+				IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+				return IdsVersion.Ids0_9; // todo: this is invalid and needs to be fixed in the IDS repository
+            case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_09.xsd":
+				IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+				return IdsVersion.Ids0_9; // todo: this is invalid and needs to be fixed in the IDS repository
+            case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids_1_0.xsd":
+				IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+				return IdsVersion.Ids1_0;
+            case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/ids.xsd":
+				IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+				return IdsVersion.Ids1_0;
+            case "http://standards.buildingsmart.org/IDS ids.xsd":
+				IdsMessages.Report108UnsupportedIdsSchema(logger, location);
+				return IdsVersion.Ids1_0;
+            // the following are the only canonical versions accepted
+			case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd":
+				return IdsVersion.Ids0_9;
+			case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd":
+                return IdsVersion.Ids1_0;
+            default:
+                return IdsVersion.Invalid;
         };
     }
 }

@@ -32,7 +32,7 @@ internal class IdsSpecification : IdsXmlNode
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
             ret |= IdsMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
         if (SchemaVersions == IfcSchemaVersions.IfcNoVersion)
-            ret |= IdsMessages.Report107InvalidSchemaVersion(logger, SchemaVersions, this);
+            ret |= IdsMessages.Report107InvalidIfcSchemaVersion(logger, SchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");
         if (applic is null)
         {

@@ -65,16 +65,21 @@ internal static class IdsMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report107InvalidSchemaVersion(ILogger? logger, IfcSchemaVersions version, IdsXmlNode context)
+	internal static Audit.Status Report107InvalidIfcSchemaVersion(ILogger? logger, IfcSchemaVersions version, IdsXmlNode context)
 	{
 		logger?.LogError("Error {errorCode}: Invalid schema version '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static IfcSchemaVersions Report107InvalidSchemaString(ILogger? logger, string version, IdsXmlNode context)
+	internal static IfcSchemaVersions Report107InvalidIfcSchemaString(ILogger? logger, string version, IdsXmlNode context)
 	{
 		logger?.LogError("Error {errorCode}: Invalid schema version '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
 		return IfcSchemaVersions.IfcNoVersion;
+	}
+
+	internal static void Report108UnsupportedIdsSchema(ILogger? logger, string version)
+	{
+		logger?.LogError("Error {errorCode}: Unsupported schema version '{vers}' on `ids` element, please use 'http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd' instead.", 108, version);
 	}
 
 	internal static Audit.Status Report201IncompatibleClauses(ILogger? logger, IdsXmlNode context, string scenarioMessage)

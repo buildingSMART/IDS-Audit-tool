@@ -1,9 +1,9 @@
-# IdsInformation.Version property
+# IdsInformation.GetVersion method
 
-The IDS version detected from the source, without any logging feedback.
+The IDS version detected from the source, providing logging feedback.
 
 ```csharp
-public IdsVersion Version { get; }
+public IdsVersion GetVersion(ILogger? logger = null)
 ```
 
 ## See Also

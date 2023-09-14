@@ -19,9 +19,16 @@ public class IdsInformation
     /// </summary>
     public string StatusMessage { get; internal set; } = string.Empty;
     /// <summary>
-    /// The IDS version detected from the source.
+    /// The IDS version detected from the source, providing logging feedback.
     /// </summary>
-    public IdsVersion Version
+    public IdsVersion GetVersion(Microsoft.Extensions.Logging.ILogger? logger = null)
+    {
+        return IdsFacts.GetVersionFromLocation(SchemaLocation, logger);
+    }
+	/// <summary>
+	/// The IDS version detected from the source, without any logging feedback.
+	/// </summary>
+	public IdsVersion Version
     {
         get
         {
@@ -29,7 +36,7 @@ public class IdsInformation
         }
     }
 
-    internal static IdsInformation CreateInvalid(string InvalidMessage)
+	internal static IdsInformation CreateInvalid(string InvalidMessage)
     {
         return new IdsInformation
         {

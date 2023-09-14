@@ -224,7 +224,9 @@ public static partial class Audit
         var elementsStack = new Stack<IdsXmlNode>(); // prepare the stack to evaluate the IDS content
         int iSpecification = 1;
         IdsXmlNode? current = null;
-        while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
+        var prevSchemaStatus = auditSettings.SchemaStatus;
+
+		while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
         {
             cntRead++;
 
@@ -249,8 +251,18 @@ public static partial class Audit
                         spec.PositionalIndex = iSpecification++;
                     while (auditSettings.BufferedValidationIssues.Any())
                     {
-                        var t = auditSettings.BufferedValidationIssues.Dequeue();
-                        t.Notify(logger, newContext);
+                        var queuedIssue = auditSettings.BufferedValidationIssues.Dequeue();
+                        if (
+                            newContext.type == "attribute"
+                            &&
+                            (queuedIssue.Message.Contains("minOccurs") || queuedIssue.Message.Contains("maxOccurs"))
+                            )
+                        {
+                            // this could fail under some circumstances, but it's a temporary workaround
+                            auditSettings.SchemaStatus = prevSchemaStatus;
+                            continue;
+						}
+                        queuedIssue.Notify(logger, newContext);
                     }
 
                     // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
@@ -281,7 +293,8 @@ public static partial class Audit
                     // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
                     break;
             }
-        }
+			prevSchemaStatus = auditSettings.SchemaStatus;
+		}
 
         reader.Dispose();
         if (!auditSettings.Options.OmitIdsSchemaAudit)

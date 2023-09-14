@@ -32,12 +32,13 @@ namespace IdsLib.SchemaProviders
                     );
 
             }
-            if (info.Version == IdsVersion.Invalid)
+            var version = info.GetVersion(logger);
+			if (version == IdsVersion.Invalid)
             {
                 schemas = Enumerable.Empty<XmlSchema>();
                 return IdsToolMessages.ReportInvalidVersion(info.SchemaLocation, logger);
             }
-            return GetResourceSchemasByVersion(info.Version, logger, out schemas);
+            return GetResourceSchemasByVersion(version, logger, out schemas);
         }
     }
 

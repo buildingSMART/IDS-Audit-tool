@@ -14,7 +14,8 @@ public class IdsInformation
 | [IsIds](IdsInformation/IsIds.md) { get; } | Boolean value that determines if the source is considered a valid IDS |
 | [SchemaLocation](IdsInformation/SchemaLocation.md) { get; } | The declared schema location of the source |
 | [StatusMessage](IdsInformation/StatusMessage.md) { get; } | A status message associated with the source. Empty if all is good. |
-| [Version](IdsInformation/Version.md) { get; } | The IDS version detected from the source. |
+| [Version](IdsInformation/Version.md) { get; } | The IDS version detected from the source, without any logging feedback. |
+| [GetVersion](IdsInformation/GetVersion.md)(…) | The IDS version detected from the source, providing logging feedback. |
 
 ## See Also
 
