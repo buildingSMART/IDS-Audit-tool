@@ -6,9 +6,17 @@ using System.Xml.Schema;
 
 namespace IdsLib.SchemaProviders
 {
-    internal class FixedVersionSchemaProvider : SchemaProvider, Audit.ISchemaProvider
+    /// <summary>
+    /// A schema provider based on a specific recognised version
+    /// </summary>
+    public class FixedVersionSchemaProvider : SchemaProvider, Audit.ISchemaProvider
     {
         private readonly IdsVersion fixedVersion;
+
+        /// <summary>
+        /// Public constructor
+        /// </summary>
+        /// <param name="vrs">The fixed schema version</param>
         public FixedVersionSchemaProvider(IdsVersion vrs)
         {
             fixedVersion = vrs;

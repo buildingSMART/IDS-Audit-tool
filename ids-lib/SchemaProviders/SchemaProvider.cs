@@ -9,7 +9,7 @@ using System.Xml.Schema;
 
 namespace IdsLib.SchemaProviders
 {
-    internal abstract class SchemaProvider
+    public abstract class SchemaProvider
     {
         protected static Audit.Status GetResourceSchemasByVersion(IdsVersion vrs, ILogger? logger, out IEnumerable<XmlSchema> schemas)
         {
@@ -31,6 +31,13 @@ namespace IdsLib.SchemaProviders
         }
 
         // todo: change to return status and out parameter for schemas
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="imports"></param>
+        /// <returns></returns>
         protected static IEnumerable<XmlSchema> GetResourceSchemasFromImports(ILogger? logger, IEnumerable<string> imports)
         {
             var distinct = imports.Distinct();
