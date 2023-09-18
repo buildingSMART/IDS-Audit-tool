@@ -22,6 +22,9 @@ namespace IdsLib.SchemaProviders
             fixedVersion = vrs;
         }
 
+        /// <summary>
+        /// standard Implementation of the resolver.
+        /// </summary>
         public Audit.Status GetSchemas(Stream vrs, ILogger? logger, out IEnumerable<XmlSchema> schemas)
         {
             return GetResourceSchemasByVersion(fixedVersion, logger, out schemas);

@@ -9,8 +9,14 @@ using System.Xml.Schema;
 
 namespace IdsLib.SchemaProviders
 {
+    /// <summary>
+    /// Abstract class to provide methods to arbitrarily resolve xsd schemas
+    /// </summary>
     public abstract class SchemaProvider
     {
+        /// <summary>
+        /// By version
+        /// </summary>
         protected static Audit.Status GetResourceSchemasByVersion(IdsVersion vrs, ILogger? logger, out IEnumerable<XmlSchema> schemas)
         {
             var ret = Audit.Status.Ok;
@@ -63,6 +69,9 @@ namespace IdsLib.SchemaProviders
             }
         }
 
+        /// <summary>
+        /// Resolves the actual schema to load.
+        /// </summary>
         protected static XmlSchema GetSchema(string name)
         {
             var fullName = "IdsLib.Resources.XsdSchemas." + name;
