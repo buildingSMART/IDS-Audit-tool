@@ -43,5 +43,26 @@ public class IfcSchemaTests
         }
     }
 
+    [Fact]
+    public void CanParseMeasure()
+    {
+        foreach (var measure in IdsLib.IfcSchema.SchemaInfo.AllMeasures)
+        {
+            // srtict
+            var res = SchemaInfo.TryParseIfcMeasure(measure.IfcMeasureClassName, out _, true);
+            res.Should().BeFalse($"{measure.IfcMeasureClassName} is not capitalized");
+
+			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcMeasureClassName}", out _, true);
+			res.Should().BeFalse("class does not exist");
+
+            // tolerant 
+			res = SchemaInfo.TryParseIfcMeasure(measure.IfcMeasureClassName.ToUpperInvariant(), out _, false);
+            res.Should().BeTrue();
+
+			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcMeasureClassName}".ToUpperInvariant(), out _, false);
+			res.Should().BeFalse("class does not exist");
+		}
+    }
+
 
 }

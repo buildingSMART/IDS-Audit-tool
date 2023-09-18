@@ -41,7 +41,7 @@ internal class IdsSpecification : IdsXmlNode
         }
         if (!applic.ChildFacets.Any())
         {
-            ret |= IdsMessages.Report101InvalidApplicability(logger, this, "one condition is required at minimum");
+            ret |= IdsMessages.Report101InvalidApplicability(logger, this, "One condition is required at minimum");
             return ret;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace IdsLib.IfcSchema
@@ -63,10 +64,33 @@ namespace IdsLib.IfcSchema
             }
         }
 
-        /// <summary>
-        /// Add a new classInfo to the collection
-        /// </summary>
-        public void Add(ClassInfo classToAdd)
+		/// <summary>
+		/// Attempts to convert a string value to an instance of the IfcMeasureInformation
+		/// </summary>
+		/// <param name="value">the string to parse</param>
+		/// <param name="found"></param>
+		/// <param name="strict">if true only accepts capitalized data, otherwise tolerates case inconsistencies</param>
+		/// <returns>true if a match is found</returns>
+		public static bool TryParseIfcMeasure(string value, [NotNullWhen(true)] out IfcMeasureInformation found, bool strict = true)
+		{
+			if (value == null)
+			{
+				found = null;
+				return false;
+			}
+			if (strict)
+			{
+				found = AllMeasures.FirstOrDefault(x => x.IfcMeasureClassName.ToUpper() == value);
+				return found != null;
+			}
+			found = AllMeasures.FirstOrDefault(x => x.IfcMeasureClassName.Equals(value, StringComparison.InvariantCultureIgnoreCase));
+			return found != null;
+		}
+
+		/// <summary>
+		/// Add a new classInfo to the collection
+		/// </summary>
+		public void Add(ClassInfo classToAdd)
         {
             linked = false;
             Classes ??= new Dictionary<string, ClassInfo>();
