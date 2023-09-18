@@ -85,16 +85,32 @@ public static partial class Audit
     public static Status Run(Stream idsSource, SingleAuditOptions options, ILogger? logger = null)
     {
         var auditSettings = new AuditHelper(logger, options);
-        return AuditStreamAsync(idsSource, auditSettings, logger).Result; // in  run(stream)
+        var t = AuditStreamAsync(idsSource, auditSettings, logger); // in  run(stream)
+        t.Wait();
+        return t.Result;
+        // return AuditStreamAsync(idsSource, auditSettings, logger).Result; // in  run(stream)
     }
 
-    /// <summary>
-    /// Entry point to access the library features in batch mode either on directories or single files
-    /// </summary>
-    /// <param name="batchOptions">configuration options for the execution of audits on a file or folder</param>
-    /// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed</param>
-    /// <returns>A status enum that summarizes the result for all audits executed</returns>
-    public static Status Run(IBatchAuditOptions batchOptions, ILogger? logger = null)
+	/// <summary>
+	/// Main entry point to access the library features via a stream to read the IDS content.
+	/// </summary>
+	/// <param name="idsSource">the stream providing access to the content of the IDS to be audited</param>
+	/// <param name="options">specifies the behaviour of the audit</param>
+	/// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed and any issues encountered</param>
+	/// <returns>A status enum that summarizes the result for all audits on the single stream</returns>
+	public static Task<Status> RunAsync(Stream idsSource, SingleAuditOptions options, ILogger? logger = null)
+	{
+		var auditSettings = new AuditHelper(logger, options);
+		return AuditStreamAsync(idsSource, auditSettings, logger); // in  run(stream)
+	}
+
+	/// <summary>
+	/// Entry point to access the library features in batch mode either on directories or single files
+	/// </summary>
+	/// <param name="batchOptions">configuration options for the execution of audits on a file or folder</param>
+	/// <param name="logger">the optional logger provides fine-grained feedback on all the audits performed</param>
+	/// <returns>A status enum that summarizes the result for all audits executed</returns>
+	public static Status Run(IBatchAuditOptions batchOptions, ILogger? logger = null)
     {
         Status retvalue = Status.Ok;
         if (string.IsNullOrEmpty(batchOptions.InputSource) && !batchOptions.SchemaFiles.Any())
