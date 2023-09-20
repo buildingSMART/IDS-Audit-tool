@@ -7,6 +7,8 @@
 		<RootNamespace>idsTool.tests</RootNamespace>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<ItemGroup>
