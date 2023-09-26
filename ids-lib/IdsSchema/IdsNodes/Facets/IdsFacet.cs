@@ -41,7 +41,12 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
             return retStatus;
         var requiredSchemaVersions = spec.SchemaVersions;
         if (IsRequired)
-            TypesFilter = new IfcConcreteTypeList(SchemaInfo.GetRelAsssignClasses(requiredSchemaVersions));
+        {
+            if (type == "classification")
+                TypesFilter = new IfcConcreteTypeList(SchemaInfo.GetRelAsssignClassificationClasses(requiredSchemaVersions));
+            else
+                TypesFilter = new IfcConcreteTypeList(SchemaInfo.GetRelAsssignClasses(requiredSchemaVersions));
+        }
         return base.PerformAudit(logger);
     }
 

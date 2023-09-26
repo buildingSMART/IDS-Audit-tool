@@ -11,6 +11,7 @@ public static class Audit
 | name | description |
 | --- | --- |
 | static [Run](Audit/Run.md)(…) | Main entry point to access the library features via a stream to read the IDS content. (2 methods) |
+| static [RunAsync](Audit/RunAsync.md)(…) | Main entry point to access the library features via a stream to read the IDS content. |
 | interface [ISchemaProvider](Audit.ISchemaProvider.md) | An interface to allow the specification of schemas to be loaded when reading the IDS xml file. |
 | [Flags] enum [Status](Audit.Status.md) | Summary return status of the audit functions |
 

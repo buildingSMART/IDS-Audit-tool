@@ -69,6 +69,8 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         }
         if (possiblePredefined == null)
             ret |= IdsMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
+        else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
+            return ret;
         else
             // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
             ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", requiredSchemaVersions);

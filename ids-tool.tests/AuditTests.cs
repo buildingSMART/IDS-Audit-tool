@@ -33,7 +33,7 @@ public class AuditTests : BuildingSmartRepoFiles
     }
 
     [SkippableTheory]
-    [MemberData(nameof(GetTestCaseIdsFiles))]
+    [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public void OmitContentAuditOfDocumentationFilesOk(string developmentIdsFile)
     {
         // why does this throw an exception when we don't #define ManageReadLoopException?
@@ -60,7 +60,7 @@ public class AuditTests : BuildingSmartRepoFiles
     /// It still checks them for issues at schema level.
     /// </summary>
     [SkippableTheory]
-    [MemberData(nameof(GetTestCaseIdsFiles))]
+    [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public void AuditOfDocumentationPassFilesOk(string developmentIdsFile)
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
@@ -77,7 +77,28 @@ public class AuditTests : BuildingSmartRepoFiles
         auditResult.Should().Be(Audit.Status.Ok);
     }
 
-    [Theory]
+	/// <summary>
+	/// this test skips the content evaluation on ids files that are expected to fail, 
+	/// because they could be failing due to invalid content.
+	/// It still checks them for issues at schema level.
+	/// </summary>
+	[SkippableTheory]
+	[MemberData(nameof(GetIfcOpenShellTestCaseIdsFiles))]
+	public void AuditOfIfcOpenShellTestFilesOk(string developmentIdsFile)
+	{
+		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		FileInfo f = GetIfcOpenShellTestCaseFileInfo(developmentIdsFile);
+		var c = new AuditOptions()
+		{
+			InputSource = f.FullName,
+			SchemaFiles = new[] { "bsFiles/ids.xsd" }
+		};
+        XunitOutputHelper.WriteLine($"Auditing case: {developmentIdsFile.Replace("_", " ")}");
+		var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
+		auditResult.Should().Be(Audit.Status.Ok);
+	}
+
+	[Theory]
     [InlineData("ValidFiles/nested_entity.ids")]
     [InlineData("ValidFiles/property.ids")]
     public void FullAuditPass(string path)
@@ -158,7 +179,8 @@ public class AuditTests : BuildingSmartRepoFiles
         LoggerAndAuditHelpers.FullAudit(stream2, XunitOutputHelper, status);
     }
 
-    private const string ValidNetworkIds = "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/IDS_ArcDox.ids";
+	// todo: update tfk-regenerate-testcase-ids to master branch
+	private const string ValidNetworkIds = "https://github.com/buildingSMART/IDS/raw/tfk-regenerate-testcase-ids/Development/IDS_ArcDox.ids";
 
     [SkippableFact]
     public async Task TestSeekableNetworkStream()

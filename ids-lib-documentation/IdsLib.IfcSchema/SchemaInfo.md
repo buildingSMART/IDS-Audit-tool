@@ -27,6 +27,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [AllMeasures](SchemaInfo/AllMeasures.md) { get; } | The names of classes across all schemas. |
 | static [AllPartOfRelations](SchemaInfo/AllPartOfRelations.md) { get; } | The names of classes across all schemas. |
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
+| static [TryParseIfcMeasure](SchemaInfo/TryParseIfcMeasure.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |
 | enum [ClassAttributeMode](SchemaInfo.ClassAttributeMode.md) | Relation that allows to connect an available attribute to an entity |
 | struct [ClassRelationInfo](SchemaInfo.ClassRelationInfo.md) | A structure contianing information about the ways in which an attribute is related to a class |
 

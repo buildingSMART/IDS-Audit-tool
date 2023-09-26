@@ -1,12 +1,37 @@
 ﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace idsTool.tests.Helpers;
 
 public class BuildingSmartRepoFiles
 {
+	// attempts to find the root for the IfcOpenShell's test
+	private static string IfcOpenShellPath
+	{
+		get
+		{
+			var d = new DirectoryInfo(".");
+			while (d is not null)
+			{
+				var subIDS = d.GetDirectories("IfcOpenShell").FirstOrDefault();
+				if (subIDS != null)
+				{
+					if (
+						subIDS.GetDirectories("choco").Any()
+						&& subIDS.GetDirectories("src").Any()
+						)
+						return subIDS.FullName;
+				}
+				d = d.Parent;
+			}
+			return ".";
+		}
+	}
+
 	// attempts to find the root for the buildingsmart's ids standard repository
 	private static string IdsRepoPath
     {
@@ -47,6 +72,7 @@ public class BuildingSmartRepoFiles
         }
     }
 
+    private static string IfcOpenShellTestcasesPath => Path.Combine(IfcOpenShellPath, "src", "ifctester", "test", "build", "testcases");
     private static string IdsRepositoryTestcasesPath => Path.Combine(IdsRepositoryDocumentationPath, "testcases");
     private static string IdsRepositoryDevelopmentPath => Path.Combine(IdsRepoPath, @"Development");
     private static string IdsRepositoryDocumentationPath => Path.Combine(IdsRepoPath, @"Documentation");
@@ -78,22 +104,43 @@ public class BuildingSmartRepoFiles
         return f;
     }
 
-    public static IEnumerable<object[]> GetTestCaseIdsFiles()
+	internal static FileInfo GetIfcOpenShellTestCaseFileInfo(string idsFile)
+	{
+		var d = new DirectoryInfo(IfcOpenShellTestcasesPath);
+		var comb = d.FullName + idsFile;
+		var f = new FileInfo(comb);
+		f.Exists.Should().BeTrue("test file must be found");
+		return f;
+	}
+
+	public static IEnumerable<object[]> GetIdsRepositoryTestCaseIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository
         var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
-        if (!d.Exists)
-        {
-            yield return new object[] { "" };
-            yield break;
-        }
-        foreach (var f in d.GetFiles("*.ids", SearchOption.AllDirectories))
-        {
-            yield return new object[] { f.FullName.Replace(d.FullName, "") };
-        }
+        return GetIdsOrEmpty(d);
     }
 
-    internal static FileInfo GetDevelopmentFileInfo(string idsFile)
+	private static IEnumerable<object[]> GetIdsOrEmpty(DirectoryInfo d)
+	{
+		if (!d.Exists)
+		{
+			yield return new object[] { "" };
+			yield break;
+		}
+		foreach (var f in d.GetFiles("*.ids", SearchOption.AllDirectories))
+		{
+			yield return new object[] { f.FullName.Replace(d.FullName, "") };
+		}
+	}
+
+	public static IEnumerable<object[]> GetIfcOpenShellTestCaseIdsFiles()
+	{
+		// start from current directory and look in relative position for the bs IDS repository
+		var d = new DirectoryInfo(IfcOpenShellTestcasesPath);
+        return GetIdsOrEmpty(d);
+	}
+
+	internal static FileInfo GetDevelopmentFileInfo(string idsFile)
     {
         var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
         var comb = d.FullName + idsFile;
