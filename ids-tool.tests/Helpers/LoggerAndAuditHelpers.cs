@@ -3,7 +3,8 @@ using IdsLib;
 using IdsTool;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Moq;
+using NSubstitute;
+using NSubstitute.Core;
 using System;
 using System.IO;
 using System.Linq;
@@ -32,8 +33,8 @@ internal static class LoggerAndAuditHelpers
         }
         else
         {
-            var loggerMock = new Mock<ILogger<AuditTests>>();
-            var checkResult = Audit.Run(stream, s, loggerMock.Object); // run for testing of log errors and warnings
+            var loggerMock = Substitute.For<ILogger<AuditTests>>();
+            var checkResult = Audit.Run(stream, s, loggerMock); // run for testing of log errors and warnings
             if (expectedOutcome.HasValue)
                 checkResult.Should().Be(expectedOutcome.Value);
             CheckErrorsAndWarnings(loggerMock, expectedWarnAndErrors);
@@ -49,20 +50,28 @@ internal static class LoggerAndAuditHelpers
             checkResult.Should().Be(expectedOutcome.Value);
         if (expectedWarnAndErrors == -1)
             return checkResult;
-        var loggerMock = new Mock<ILogger<AuditTests>>();
-        Audit.Run(c, loggerMock.Object); // run for testing of log errors and warnings
+        var loggerMock = Substitute.For<ILogger<AuditTests>>();
+        Audit.Run(c, loggerMock); // run for testing of log errors and warnings
         CheckErrorsAndWarnings(loggerMock, expectedWarnAndErrors);
         return checkResult;
     }
 
-    private static void CheckErrorsAndWarnings(Mock<ILogger<AuditTests>> loggerMock, int expectedErrCount)
-    {
-        var loggingCalls = loggerMock.Invocations.Select(x => x.ToString() ?? "").ToArray(); // this creates the array of logging calls
-        var errorAndWarnings = loggingCalls.Where(x => x.Contains("LogLevel.Error") || x.Contains("LogLevel.Warning"));
-        errorAndWarnings.Count().Should().Be(expectedErrCount, "mismatch with expected error/warning count");
+	private static void CheckErrorsAndWarnings<T>(ILogger<T> loggerMock, int expectedWarnAndErrors)
+	{
+        var loggingCalls = loggerMock.ReceivedCalls().Select(x => GetFirstArg(x)).ToArray(); // this creates the array of logging calls
+        var errorAndWarnings = loggingCalls.Where(x => x == "Error" || x == "Warning");
+        errorAndWarnings.Count().Should().Be(expectedWarnAndErrors, "mismatch with expected error/warning count");
     }
 
-    internal static ILogger GetXunitLogger(ITestOutputHelper helper)
+	private static string GetFirstArg(ICall x)
+	{
+        var first = x.GetOriginalArguments().FirstOrDefault();
+        if (first != null)
+            return first.ToString() ?? "";
+        return "<null>";
+	}
+
+	internal static ILogger GetXunitLogger(ITestOutputHelper helper)
     {
         var services = new ServiceCollection()
                     .AddLogging((builder) => builder.AddXUnit(helper).SetMinimumLevel(LogLevel.Debug));
