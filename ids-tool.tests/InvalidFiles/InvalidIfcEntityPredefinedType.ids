@@ -6,61 +6,61 @@
 		<ids:date>2021-09-17</ids:date>
 	</ids:info>
 	<ids:specifications>
-		<ids:specification ifcVersion="IFC2X3 IFC4" name="binder" maxOccurs="unbounded">
+		<ids:specification ifcVersion="IFC4X3" name="binder" maxOccurs="unbounded">
 			<ids:applicability>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<!-- this is ok -->
 						<xs:restriction base="xs:string">
-							<xs:enumeration value="CLADDING"/>
-							<xs:enumeration value="MEMBRANE"/>
+							<xs:enumeration value="BLOSSCURVE"/>
+							<xs:enumeration value="CONSTANTCANT"/>
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<!-- Thi is ok -->
-						<ids:simpleValue>CLADDING</ids:simpleValue>
+						<ids:simpleValue>COSINECURVE</ids:simpleValue>
 					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
-					</ids:name>
-					<ids:predefinedType>
-						<!-- Thi is ok -->
-						<xs:restriction base="xs:string">
-							<xs:pattern value="CLADDING|MEMBRANE"/>
-						</xs:restriction>
-					</ids:predefinedType>
-				</ids:entity>
-				<ids:entity>
-					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<!-- Thi is ok -->
 						<xs:restriction base="xs:string">
-							<xs:pattern value="CLAD*ING|MEMBRANE"/>
+							<xs:pattern value="HELMERTCURVE|LINEARTRANSITION"/>
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
+					</ids:name>
+					<ids:predefinedType>
+						<!-- Thi is ok -->
+						<xs:restriction base="xs:string">
+							<xs:pattern value="HELM*TCURVE|LINEARTRANSITION"/>
+						</xs:restriction>
+					</ids:predefinedType>
+				</ids:entity>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
@@ -69,13 +69,13 @@
 							<!-- this is NOT ok -->
 							<xs:enumeration value="SOMEOTHERINVALID"/>
 							<!-- this is NOT ok -->
-							<xs:enumeration value="cladding"/>
+							<xs:enumeration value="lineartransition"/>
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
@@ -86,12 +86,12 @@
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
-						<ids:simpleValue>IFCCOVERING</ids:simpleValue>
+						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok bacause of case -->
-							<xs:pattern value="cladding"/>
+							<xs:pattern value="lineartransition"/>
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
