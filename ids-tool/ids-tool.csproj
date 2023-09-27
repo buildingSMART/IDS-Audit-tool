@@ -16,13 +16,14 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>IDS, buildingSmart</PackageTags>
 		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
-		<AssemblyVersion>1.0.41</AssemblyVersion>
+		<AssemblyVersion>1.0.42</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>Moved to net6.</PackageReleaseNotes>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
 	</PropertyGroup>
 
 	<!-- required for tool deployment -->
@@ -38,6 +39,18 @@
 			copyright=$(Copyright)
 		</NuspecProperties>
 	</PropertyGroup>
+  <!-- 
+	the following two targets tag the "product version" with version and commit hash 
+	such information is visible in the exe proprty information dialog.
+  
+  this requires the <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
+	-->
+  <Target Name="InitializeSourceControlInformation" />
+  <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
+    <Exec Command="git describe --long --always --dirty --exclude=* --abbrev=8" ConsoleToMSBuild="True" IgnoreExitCode="False">
+      <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
+    </Exec>
+  </Target>
 
 	<!-- Executes /t:Publish for all target frameworks before packing-->
 	<Target Name="PublishAll" BeforeTargets="GenerateNuspec">
