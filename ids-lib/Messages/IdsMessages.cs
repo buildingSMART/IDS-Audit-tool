@@ -84,9 +84,9 @@ internal static class IdsMessages
 		logger?.LogError("Error {errorCode}: Unsupported schema version '{vers}' on `ids` element, please use 'http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd' instead.", 108, version);
 	}
 
-	internal static Audit.Status Report201IncompatibleClauses(ILogger? logger, IdsXmlNode context, string scenarioMessage)
+	internal static Audit.Status Report201IncompatibleClauses(ILogger? logger, IdsXmlNode locationContext, SchemaInfo schemaInfo, string scenarioMessage)
 	{
-		logger?.LogError("Error {errorCode}: Inconsistent clauses: {message} on {location}.", 201, scenarioMessage, context.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Inconsistent clauses for {ifcSchema} : {message} on {location}.", 201, schemaInfo.Version, scenarioMessage, locationContext.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 

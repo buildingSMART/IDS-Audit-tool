@@ -2,6 +2,7 @@
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -18,39 +19,30 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
         minMaxOccurr = new MinMaxCardinality(reader);
     }
 
-    public bool IsValid { get; private set; } = true;
+	/// <inheritdoc />
+	public bool IsValid { get; private set; } = true;
 
-    public bool IsRequired => minMaxOccurr.IsRequired;
+	/// <inheritdoc />
+	public bool IsRequired => minMaxOccurr.IsRequired;
 
-    private IIfcTypeConstraint? typesFilter;
-    public IIfcTypeConstraint? TypesFilter
-    {
-        get
-        {
-            if (!IsRequired)
-                return null;
-            return typesFilter;
-        }
-
-        private set => typesFilter = value;
-    }
+	/// <inheritdoc />
+	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
+	{
+		if (!IsRequired)
+			return null;
+		if (type == "classification")
+			return new IfcConcreteTypeList(schema.GetRelAsssignClassificationClasses());
+		else
+			return new IfcConcreteTypeList(schema.GetRelAsssignClasses());
+	}
 
     protected internal override Audit.Status PerformAudit(ILogger? logger)
     {
-        if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
-            return retStatus;
-        var requiredSchemaVersions = spec.SchemaVersions;
-        if (IsRequired)
-        {
-            if (type == "classification")
-                TypesFilter = new IfcConcreteTypeList(SchemaInfo.GetRelAsssignClassificationClasses(requiredSchemaVersions));
-            else
-                TypesFilter = new IfcConcreteTypeList(SchemaInfo.GetRelAsssignClasses(requiredSchemaVersions));
-        }
         return base.PerformAudit(logger);
     }
 
-    public Audit.Status PerformCardinalityAudit(ILogger? logger)
+	/// <inheritdoc />
+	public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)

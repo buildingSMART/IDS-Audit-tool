@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace IdsLib.IfcSchema;
 
@@ -27,7 +29,7 @@ public enum IfcSchemaVersions
     /// <summary>
     /// Matches includes version Ifc4x3
     /// </summary>
-    /// [IfcSchema(true)]
+    [IfcSchema(true)]
     Ifc4x3 = 1 << 2,
     /// <summary>
     /// Matches includes all valid Ifc versions
@@ -56,4 +58,10 @@ internal static class IfcSchema
         }
         return ret;
     }
+
+    internal static bool TryGetSchemaInformation(this IfcSchemaVersions schemas, out IEnumerable<SchemaInfo> schemaInfo)
+    {
+		return SchemaInfo.TryGetSchemaInformation(schemas, out schemaInfo);
+	}
+
 }

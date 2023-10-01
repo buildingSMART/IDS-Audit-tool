@@ -9,6 +9,7 @@ namespace IdsLib.IfcSchema.TypeFilters
 		/// </summary>
 		IEnumerable<string> ConcreteTypes { get; }
 		IIfcTypeConstraint Intersect(IIfcTypeConstraint? other);
+		IIfcTypeConstraint Union(IIfcTypeConstraint? other);
 		bool IsEmpty { get; }
 	}
 

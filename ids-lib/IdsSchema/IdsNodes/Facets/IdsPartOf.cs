@@ -2,6 +2,8 @@
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace IdsLib.IdsSchema.IdsNodes;
@@ -11,11 +13,21 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 	private const string relationXmlAttributeName = "relation";
 	private readonly MinMaxCardinality minMaxOccurr;
 	private readonly string relationValue;
-    
-    
-    public IIfcTypeConstraint? TypesFilter { get; private set; }
+	
+    /// <summary>
+	/// prepared typefilters per schema version
+	/// </summary>
+	private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = new();
 
-    public bool IsRequired => minMaxOccurr.IsRequired;
+	/// <inheritdoc />
+	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
+	{
+		if (typeFilters.TryGetValue(schema, out var typeFilter))
+			return typeFilter;
+		return null;
+	}
+
+	public bool IsRequired => minMaxOccurr.IsRequired;
 
     public IdsPartOf(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
 	{
@@ -50,7 +62,8 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
         if (!IsRequired)
         {
             IsValid = true;
-            TypesFilter = null;
+            typeFilters.Clear();
+            return ret;
         }
 
         // if we have a match then there are other constraints we can evaluate on the
@@ -65,31 +78,40 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
             return SetInvalid(ret);
         }
 
-        // Entities of the partOf need to be of type of relationInfo.ManySideIfcType
-        TypesFilter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, requiredSchemaVersions);
-        if (IfcTypeConstraint.IsNotNullAndEmpty(TypesFilter))
+		
+		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
+        foreach (var schema in schemas)
         {
-            ret |= IdsMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
-            return SetInvalid(ret);
-        }
+			// Entities of the partOf need to be of type of relationInfo.ManySideIfcType
+            // 
+			var filter = new IfcInheritanceTypeConstraint(relationInfo.ManySideIfcType, schema.Version);
+            if (IfcTypeConstraint.IsNotNullAndEmpty(filter))
+            {
+                ret |= IdsMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.ManySideIfcType}", this);
+                return SetInvalid(ret);
+            }
+            typeFilters.Add(schema, filter);
 
-        // The entity needs to be of type of relationInfo.OneSideIfcType
-        if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
-        {
-            ret |= IdsMessages.Report106InvalidEmtpyValue(logger, this, "entity");
-            return SetInvalid(ret);
-        }
+            // The entity needs to be of type of relationInfo.OneSideIfcType
+            //
+            if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
+            {
+                ret |= IdsMessages.Report106InvalidEmtpyValue(logger, this, "entity");
+                return SetInvalid(ret);
+            }
 
-        IsValid = true;
-        var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OneSideIfcType, requiredSchemaVersions);
-        var possible = validChildEntityType.Intersect(childEntity.TypesFilter);
-        if (possible.IsEmpty)
-        {
-            ret |= IdsMessages.Report201IncompatibleClauses(logger, this, "relation not compatible with provided child entity");
-            return SetInvalid(ret);
+            var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OneSideIfcType, schema.Version);
+            var possible = validChildEntityType.Intersect(childEntity.GetTypesFilter(schema));
+            if (possible.IsEmpty)
+            {
+                ret |= IdsMessages.Report201IncompatibleClauses(logger, this, schema, "relation not compatible with provided child entity");
+                return SetInvalid(ret);
+            }
+            
         }
-        return ret;
-    }
+		IsValid = true;
+		return ret;
+	}
 
 	public Audit.Status PerformCardinalityAudit(ILogger? logger)
 	{
@@ -103,8 +125,8 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 	}
     private Audit.Status SetInvalid(Audit.Status status = Audit.Status.IdsContentError)
     {
-        TypesFilter = null;
-        IsValid = false;
+		typeFilters.Clear();
+		IsValid = false;
         return status;
     }
 

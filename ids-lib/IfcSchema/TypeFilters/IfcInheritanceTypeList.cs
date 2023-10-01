@@ -23,6 +23,7 @@ namespace IdsLib.IfcSchema.TypeFilters
 			this.requiredSchemaVersions = requiredSchemaVersions;
 		}
 
+		/// <inheritdoc/>
 		public IEnumerable<string> ConcreteTypes
 		{
 			get
@@ -54,8 +55,10 @@ namespace IdsLib.IfcSchema.TypeFilters
 			}
 		}
 
+		/// <inheritdoc/>
 		public bool IsEmpty => string.IsNullOrEmpty(upperInvariantTopType) || requiredSchemaVersions == IfcSchemaVersions.IfcNoVersion;
 
+		/// <inheritdoc/>
 		public IIfcTypeConstraint Intersect(IIfcTypeConstraint? other)
 		{
 			if (other is null)
@@ -64,6 +67,20 @@ namespace IdsLib.IfcSchema.TypeFilters
 				return IfcConcreteTypeList.Empty;
 			return new IfcConcreteTypeList(
 				ConcreteTypes.Intersect(other.ConcreteTypes)
+				);
+		}
+
+		/// <inheritdoc/>
+		public IIfcTypeConstraint Union(IIfcTypeConstraint? other)
+		{
+			if (other is null)
+				return this;
+			if (other.IsEmpty)
+				return this;
+			if (this.IsEmpty)
+				return other;
+			return new IfcConcreteTypeList(
+				ConcreteTypes.Union(other.ConcreteTypes)
 				);
 		}
 	}

@@ -53,7 +53,7 @@ namespace IdsLib.IfcSchema
     public partial class ClassInfo
     {
         /// <summary>
-        /// relationXmlAttributeName string
+        /// Class Name as string (stored as camelcase, convert to upper for valid IDS class names)
         /// </summary>
         public string Name { get; private set; }
 

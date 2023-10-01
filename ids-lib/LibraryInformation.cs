@@ -16,11 +16,15 @@ namespace IdsLib
 		/// <summary>
 		/// Static field with the short commit hash at compilation time
 		/// </summary>
-		public static string Commit => ThisAssembly.Git.Commit + (ThisAssembly.Git.IsDirty ? " dirty" : "");
+		public static string Commit => ThisAssembly.Git.Commit;
 		/// <summary>
 		/// Static field with the full SHA hash at compilation time
 		/// </summary>
-		public static string Sha => ThisAssembly.Git.Sha + (ThisAssembly.Git.IsDirty ? " dirty" : "");
+		public static string Sha => ThisAssembly.Git.Sha;
+		/// <summary>
+		/// Static field with informing of possible dirty repository on compilation. When compiled remotely it does not necessarily mean that the code differs from the commit.
+		/// </summary>
+		public static bool Isdirty => ThisAssembly.Git.IsDirty;
 		/// <summary>
 		/// Static field with the full datetime string of the commit.
 		/// </summary>
@@ -28,6 +32,6 @@ namespace IdsLib
 		/// <summary>
 		/// Static field with hardcoded DLL version number. 
 		/// </summary>
-		public static string AssemblyVersion => "1.0.42";
+		public static string AssemblyVersion => "1.0.43";
 	}
 }

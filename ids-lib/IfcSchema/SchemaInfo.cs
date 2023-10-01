@@ -473,7 +473,15 @@ namespace IdsLib.IfcSchema
                 yield return SchemaIfc4x3;
         }
 
-        internal static string? ValidMeasureForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
+		internal static bool TryGetSchemaInformation(IfcSchemaVersions schemas, out IEnumerable<SchemaInfo> schemaInfo)
+		{
+			var ret = new List<SchemaInfo>(GetSchemas(schemas));
+			schemaInfo = ret;
+			return ret.Any();
+		}
+
+
+		internal static string? ValidMeasureForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
         {
             string? ret = null;
             foreach (var schema in GetSchemas(version))

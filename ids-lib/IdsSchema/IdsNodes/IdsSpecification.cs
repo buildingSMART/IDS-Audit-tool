@@ -46,14 +46,23 @@ internal class IdsSpecification : IdsXmlNode
         }
 
         var reqs = GetChildNode<IdsFacetCollection>("requirements");
-        if (applic is not null && reqs is not null
-            && !IfcTypeConstraint.IsNotNullAndEmpty(applic.TypesFilter) // if they are empty an error would already be notified
-            && !IfcTypeConstraint.IsNotNullAndEmpty(reqs.TypesFilter)
-            )
+        if (applic is not null && reqs is not null)
         {
-            var totalFilters = IfcTypeConstraint.Intersect(applic.TypesFilter, reqs.TypesFilter);
-            if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
-                ret |= IdsMessages.Report201IncompatibleClauses(logger, this, "impossible match of applicability and requirements");
+            if (SchemaVersions.TryGetSchemaInformation(out var schemaInfos))
+            {
+                foreach (var schemaInfo in schemaInfos)
+                {
+                    var aF = applic.GetTypesFilter(schemaInfo);
+                    var rF = reqs.GetTypesFilter(schemaInfo);
+					if (!IfcTypeConstraint.IsNotNullAndEmpty(aF) // if they are empty an error would already be notified
+                        && !IfcTypeConstraint.IsNotNullAndEmpty(rF))
+                    {
+                        var totalFilters = IfcTypeConstraint.Intersect(aF, rF);
+                        if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
+                            ret |= IdsMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of applicability and requirements");
+                    }
+                }
+            }
         }
 
         return base.PerformAudit(logger) | ret;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using IdsLib.IfcSchema.TypeFilters;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace IdsLib.IfcSchema
@@ -118,58 +119,63 @@ namespace IdsLib.IfcSchema
 			}
 		}
 
-		internal static IEnumerable<string> GetRelAsssignClasses(IfcSchemaVersions version)
+        private static IIfcTypeConstraint? relAssignPropertyClassesIfc2x3 = null;
+        private static IIfcTypeConstraint? relAssignPropertyClassesIfc4 = null;
+        private static IIfcTypeConstraint? relAssignPropertyClassesIfc4x3 = null;
+
+		internal IIfcTypeConstraint? GetRelAssignPropertyClasses
         {
-            if (version == IfcSchemaVersions.IfcNoVersion)
-                return Enumerable.Empty<string>();
-            // valid classes are the intersection of the schemas
-            IEnumerable<string>? ret = null;
-            if (version.HasFlag(IfcSchemaVersions.Ifc2x3))
-                ret = Ifc2x3RelAssignClasses;
-            if (version.HasFlag(IfcSchemaVersions.Ifc4))
+            get
             {
-                if (ret == null)
-                    ret = Ifc4RelAssignClasses;
-                else
-                    ret = ret.Intersect(Ifc4RelAssignClasses);
-            }
-            if (version.HasFlag(IfcSchemaVersions.Ifc4x3))
-            {
-                if (ret == null)
-                    ret = Ifc4x3RelAssignClasses;
-                else
-                    ret = ret.Intersect(Ifc4x3RelAssignClasses);
-            }
-            if (ret == null)
-                return Enumerable.Empty<string>();
-            return ret;
+                if (relAssignPropertyClassesIfc2x3 == null)
+                {
+                    // prepare the static values
+                    relAssignPropertyClassesIfc2x3 = new IfcInheritanceTypeConstraint("IFCOBJECT", IfcSchemaVersions.Ifc2x3);
+					relAssignPropertyClassesIfc2x3 = relAssignPropertyClassesIfc2x3.Union(new IfcInheritanceTypeConstraint("IFCMATERIAL", IfcSchemaVersions.Ifc2x3));
+
+					relAssignPropertyClassesIfc4 = new IfcInheritanceTypeConstraint("IFCOBJECTDEFINITION", IfcSchemaVersions.Ifc4);
+					relAssignPropertyClassesIfc4 = relAssignPropertyClassesIfc4.Union(new IfcInheritanceTypeConstraint("IFCMATERIALDEFINITION", IfcSchemaVersions.Ifc4));
+
+					relAssignPropertyClassesIfc4x3 = new IfcInheritanceTypeConstraint("IFCOBJECTDEFINITION", IfcSchemaVersions.Ifc4x3);
+					relAssignPropertyClassesIfc4x3 = relAssignPropertyClassesIfc4x3.Union(new IfcInheritanceTypeConstraint("IFCMATERIALDEFINITION", IfcSchemaVersions.Ifc4x3));
+					relAssignPropertyClassesIfc4x3 = relAssignPropertyClassesIfc4x3.Union(new IfcInheritanceTypeConstraint("IFCPROFILEDEF", IfcSchemaVersions.Ifc4x3));
+				}
+				
+				switch (Version)
+				{
+					case IfcSchemaVersions.Ifc2x3:
+						return relAssignPropertyClassesIfc2x3;
+					case IfcSchemaVersions.Ifc4:
+						return relAssignPropertyClassesIfc4;
+					case IfcSchemaVersions.Ifc4x3:
+						return relAssignPropertyClassesIfc4x3;
+                    default:
+                        return null;
+				}
+                
+			}
         }
 
-		internal static IEnumerable<string> GetRelAsssignClassificationClasses(IfcSchemaVersions version)
+		internal IEnumerable<string> GetRelAsssignClasses()
+        {
+            if (Version == IfcSchemaVersions.Ifc2x3)
+                return Ifc2x3RelAssignClasses;
+            if (Version == IfcSchemaVersions.Ifc4)
+                return Ifc4RelAssignClasses;
+            if (Version == IfcSchemaVersions.Ifc4x3)
+                return Ifc4x3RelAssignClasses;
+            return Enumerable.Empty<string>();
+        }
+
+		internal IEnumerable<string> GetRelAsssignClassificationClasses()
 		{
-			if (version == IfcSchemaVersions.IfcNoVersion)
-				return Enumerable.Empty<string>();
-			// valid classes are the intersection of the schemas
-			IEnumerable<string>? ret = null;
-			if (version.HasFlag(IfcSchemaVersions.Ifc2x3))
-				ret = Ifc2x3RelAssignClasses;
-			if (version.HasFlag(IfcSchemaVersions.Ifc4))
-			{
-				if (ret == null)
-					ret = Ifc4RelAssignClassificationClasses;
-				else
-					ret = ret.Intersect(Ifc4RelAssignClassificationClasses);
-			}
-			if (version.HasFlag(IfcSchemaVersions.Ifc4x3))
-			{
-				if (ret == null)
-					ret = Ifc4x3RelAssignClassificationClasses;
-				else
-					ret = ret.Intersect(Ifc4x3RelAssignClassificationClasses);
-			}
-			if (ret == null)
-				return Enumerable.Empty<string>();
-			return ret;
+            if (Version == IfcSchemaVersions.Ifc2x3)
+                return Ifc2x3RelAssignClasses;
+			if (Version == IfcSchemaVersions.Ifc4)
+				return Ifc4RelAssignClassificationClasses;
+			if (Version == IfcSchemaVersions.Ifc4x3)
+				return Ifc4x3RelAssignClassificationClasses;
+			return Enumerable.Empty<string>();
 		}
 
 	}

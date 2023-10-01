@@ -3,16 +3,29 @@ using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 {
-    public IIfcTypeConstraint? TypesFilter { get; private set; } = null;
+    /// <summary>
+    /// prepared typefilters per schema version
+    /// </summary>
+    private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = new();
 
-    public IdsEntity(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
+	/// <inheritdoc />
+	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
+    {
+        if (typeFilters.TryGetValue(schema, out var typeFilter)) 
+            return typeFilter; 
+        return null;
+    }
+
+	public IdsEntity(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
     }
@@ -30,57 +43,60 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         var sm = name?.GetListMatcher();
         if (sm is null)
             return IdsMessages.Report102NoStringMatcher(logger, this, "name");
-        var ValidClassNames = SchemaInfo.AllClasses
-            .Where(x => (x.ValidSchemaVersions & requiredSchemaVersions) == requiredSchemaVersions)
-            .Select(y => y.UpperCaseName);
-        var ret = sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity names", requiredSchemaVersions);
-        if (ret != Audit.Status.Ok)
-            return SetInvalid();
 
-        IsValid = true;
-        TypesFilter = new IfcConcreteTypeList(possibleClasses);
-
-        // predefined types that are common for the possibleClasses across defined schemas
-        var type = GetChildNodes("predefinedType").FirstOrDefault();
-        if (type is null)
-            return ret;
-
-        var predefinedTypeMatcher = type.GetListMatcher();
-        if (predefinedTypeMatcher is null)
-            return IdsMessages.Report102NoStringMatcher(logger, this, "predefinedType");
-
-        var schemas = SchemaInfo.GetSchemas(spec.SchemaVersions);
-        List<string>? possiblePredefined = null;
-        foreach (var s in schemas)
+        // we introduce a schema-by-schema evaluation of the valid classes
+        //
+        requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
+        Audit.Status ret = Audit.Status.Ok;
+		IsValid = true;
+		foreach (var schema in schemas)
         {
+            var ValidClassNames = schema
+                .Select(y => y.Name.ToUpperInvariant());
+			ret |= sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity names", schema.Version);
+            if (ret != Audit.Status.Ok)
+                return SetInvalid();
+            typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
+
+            // predefined types that are common for the possibleClasses across defined schemas
+            var predefinedType = GetChildNodes("predefinedType").FirstOrDefault();
+            if (predefinedType is null)
+                continue;
+
+            var predefinedTypeMatcher = predefinedType.GetListMatcher();
+            if (predefinedTypeMatcher is null)
+                return IdsMessages.Report102NoStringMatcher(logger, this, "predefinedType");
+
+            
+            List<string>? possiblePredefined = null;
             foreach (var ifcClass in possibleClasses)
             {
-                var c = s[ifcClass];
+                var c = schema[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in required schema.", this);
+                    ret |= IdsMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in schema {schema.Version}.", this);
                     continue;
                 }
                 if (possiblePredefined == null)
                     possiblePredefined = new List<string>(c.PredefinedTypeValues);
-                else 
+                else
                     possiblePredefined = possiblePredefined.Intersect(c.PredefinedTypeValues).ToList();
             }
+            
+            if (possiblePredefined == null)
+                ret |= IdsMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
+            else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
+                return ret;
+            else
+                // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
+                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", schema.Version);
         }
-        if (possiblePredefined == null)
-            ret |= IdsMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
-        else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
-            return ret;
-        else
-            // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
-            ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", requiredSchemaVersions);
-        
         return ret;
     }
 
     private Audit.Status SetInvalid()
     {
-        TypesFilter = null;
+        typeFilters.Clear();
         IsValid = false;
         return Audit.Status.IdsContentError;
     }
