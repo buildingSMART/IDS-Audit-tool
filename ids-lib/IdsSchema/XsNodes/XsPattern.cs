@@ -29,7 +29,17 @@ internal class XsPattern : IdsXmlNode, IStringListMatcher, IFiniteStringMatcher
             : IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
     }
 
-    public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
+	protected internal override Audit.Status PerformAudit(ILogger? logger)
+	{
+        var ret = Audit.Status.Ok;
+        if (!EnsureRegex(out var _, false))
+        {
+            ret = IdsErrorMessages.Report109InvalidRegex(this, pattern, logger);
+		}
+        return base.PerformAudit(logger) | ret;
+	}
+
+	public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
     {
         if (!EnsureRegex(out var _, ignoreCase))
         {
@@ -58,7 +68,7 @@ internal class XsPattern : IdsXmlNode, IStringListMatcher, IFiniteStringMatcher
             return true;
         try
         {
-            var preProcess = XmlRegex.Preprocess(pattern);
+            var preProcess = XmlRegex.Preprocess(pattern, false);
             if (!ignoreCase)
                 compiledCaseSensitiveRegex = new Regex(preProcess, RegexOptions.Compiled | RegexOptions.Singleline);
             else

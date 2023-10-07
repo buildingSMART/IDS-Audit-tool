@@ -144,7 +144,16 @@
 		<None Update="InvalidFiles\smallcross_gif.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\Issue 08 - Regex pattern.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="IssueFiles\Issue 11 - IfcLogical.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="IssueFiles\Issue 14 - ids file test.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="IssueFiles\Issue 09 - XML structure.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="ValidFiles\IDS_aachen_example.ids">

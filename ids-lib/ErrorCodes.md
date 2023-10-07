@@ -1,4 +1,4 @@
-# List of error codes for Ids-Audit-Tool
+# List of error codes for Ids-Audit
 
 ## Errors
 
@@ -12,6 +12,8 @@
 | 105  | No valid option exist             |
 | 106  | Invalid empty attribute           |
 | 107  | Invalid IFC schema identification |
+| 108  | Unsupported Ids Schema            |
+| 109  | Invalid regex					   |
 | 200  | Integration issues                |
 | 201  | Incompatible clauses              |
 | 300  | Schema clauses                    |
@@ -26,3 +28,7 @@
 | 401  | Reserved keyword                  |
 | 500  | Application errors                |
 | 501  | Unexpected scenario               |
+| 502  | XML Schema Exception              |
+| 503  | Processing Exception              |
+| 504  | IDS Schema version not Embedded   |
+

@@ -42,9 +42,9 @@ internal class AuditHelper
             loc.StartLinePosition = Position;
             loc.NodeType = newContext.type;
             if (Schema == Original.SchemaError)
-                IdsErrorMessages.ReportSchema306ComplianceError(logger, loc, Message);
+                IdsErrorMessages.Report306SchemaComplianceError(logger, loc, Message);
             else
-                IdsErrorMessages.ReportSchema307ComplianceWarning(logger, Level, loc, Message);
+                IdsErrorMessages.Report307SchemaComplianceWarning(logger, Level, loc, Message);
 		}
 	}
 

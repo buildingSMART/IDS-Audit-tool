@@ -48,12 +48,12 @@ We are planning to implement a number of audits (the ones with a check-mark are 
         - [x] Multiple values allowed
   - [x] Properties
     - [x] Prepare metadata infrastructure
-    - [x] Prop and PSet names are treated as case sensitive
-    - [x] no extensions of standard PSets
+    - [x] Prop and PropertySet names are treated as case sensitive
+    - [x] no extensions of standard `Psets`
       - [x] properties are limited to the agreed set
     - [x] Includes IFC type inheritance
     - [x] Reserved prefix 
-      - [x] No custom PSet can mandate a property starting with "PSet_" this prefix is reserved for the standard
+      - [x] No custom PropertySet can mandate a property starting with "Pset_" this prefix is reserved for the standard
         - [x] SimpleValues
         - [x] Enumerations
     - [x] Property Measures
@@ -61,7 +61,7 @@ We are planning to implement a number of audits (the ones with a check-mark are 
         - [ ] Discuss the scope of the list, currently only measures, IFCTEXT and IFCLABEL (but it's now datatype, so we should probably expand).
         - [ ] The attribute is required, but it can be empty, is that valid?
       - [x] Test cases added
-      - [x] Constrain IfcMeasure for identified properties in standard PSets
+      - [x] Constrain datatype for properties identified in standard Psets
   - [x] Cardinality for facets (in requirements)
     - [x] partOf
     - [x] classification
@@ -113,7 +113,7 @@ We are planning to implement a number of audits (the ones with a check-mark are 
         - [ ] perhaps just consider this a warning for user-defined property sets
         - [ ] warning or error as configuration (strict mode?)
   - [ ] Reserved prefix 
-    - [ ] can the regex match any string starting with "PSet_".
+    - [ ] can the regex match any string starting with "Pset_".
       - [ ] we have a working solution to be included, but it may raise the technical complexity for implementers considerably
       - [ ] Perhaps one for the strict mode?
   - [ ] Measures

@@ -84,6 +84,12 @@ internal static class IdsErrorMessages
 		logger?.LogError("Error {errorCode}: Unsupported schema version '{vers}' on `ids` element, please use 'http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd' instead.", 108, version);
 	}
 
+	internal static Audit.Status Report109InvalidRegex(IdsXmlNode locationContext, string pattern, ILogger? logger)
+	{
+		logger?.LogError("Error {errorCode}: Ivalid pattern string '{pattern}' on {location}.", 109, pattern, locationContext.GetNodeIdentification());
+		return Audit.Status.IdsContentError;
+	}
+
 	internal static Audit.Status Report201IncompatibleClauses(ILogger? logger, IdsXmlNode locationContext, SchemaInfo schemaInfo, string scenarioMessage)
 	{
 		logger?.LogError("Error {errorCode}: Inconsistent clauses for {ifcSchema} : {message} on {location}.", 201, schemaInfo.Version, scenarioMessage, locationContext.GetNodeIdentification());
@@ -131,12 +137,12 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static void ReportSchema306ComplianceError(ILogger? logger, NodeIdentification location, string message)
+	internal static void Report306SchemaComplianceError(ILogger? logger, NodeIdentification location, string message)
 	{
 		logger?.LogError("Error {errorCode}: Schema compliance error on {location}; {message}", 306, location, message);
 	}
 
-	internal static void ReportSchema307ComplianceWarning(ILogger? logger, LogLevel level, NodeIdentification location, string message)
+	internal static void Report307SchemaComplianceWarning(ILogger? logger, LogLevel level, NodeIdentification location, string message)
 	{
 		logger?.Log(level, "Error {errorCode}: Schema compliance warning on {location}; {message}", 307, location, message);
 	}
@@ -152,4 +158,6 @@ internal static class IdsErrorMessages
 		logger?.LogCritical("Error {errorCode}: Unhandled scenario: {message} on {location}.", 501, scenarioMessage, context.GetNodeIdentification());
 		return Audit.Status.NotImplementedError;
 	}
+
+	
 }

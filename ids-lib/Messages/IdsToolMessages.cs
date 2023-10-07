@@ -1,6 +1,8 @@
 ﻿using IdsLib.IdsSchema;
 using IdsLib.IdsSchema.IdsNodes;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Xml;
 using static IdsLib.Audit;
 
 namespace IdsLib.Messages
@@ -42,17 +44,17 @@ namespace IdsLib.Messages
 			return Status.NotFoundError;
 		}
 
-		internal static void ReportReadCount(ILogger? logger, int cntRead)
+		internal static void InformReadCount(ILogger? logger, int cntRead)
 		{
-			logger?.LogDebug("Completed reading {cntRead} xml elements.", cntRead);
+			logger?.LogInformation("Completed reading {cntRead} xml elements.", cntRead);
 		}
 
-		internal static void ReportFileProcessingStarted(ILogger? logger, string fullName)
+		internal static void InformFileProcessingStarted(ILogger? logger, string fullName)
 		{
 			logger?.LogInformation("Auditing file: `{filename}`.", fullName);
 		}
 
-		internal static void ReportFileProcessingEnded(ILogger? logger, int tally)
+		internal static void InformFileProcessingEnded(ILogger? logger, int tally)
 		{
 			var fileCardinality = tally != 1 ? "files" : "file";
 			logger?.LogInformation("{tally} {fileCardinality} processed.", tally, fileCardinality);
@@ -88,9 +90,21 @@ namespace IdsLib.Messages
 			return Status.XsdSchemaError;
 		}
 
-		internal static Status ReportInvalidSchemaVersion(ILogger? logger, IdsVersion vrs)
+		internal static Status Report502XmlSchemaException(ILogger? logger, XmlException ex_xml)
 		{
-			logger?.LogError("Embedded schema for version {vrs} not implemented.", vrs);
+			logger?.LogError("Error {errorCode}: XML Exception. Error message: {}", 502, ex_xml);
+			return Status.IdsStructureError;
+		}
+
+		internal static Status Report503Exception(ILogger? logger, Exception ex)
+		{
+			logger?.LogError("Error {errorCode}: Generic Exception. Error message: {}", 503, ex);
+			return Status.UnhandledError;
+		}
+
+		internal static Status Report504NotImplementedIdsSchemaVersion(ILogger? logger, IdsVersion vrs)
+		{
+			logger?.LogError("Error {errorCode}: Embedded schema for version {vrs} not implemented.", 504, vrs);
 			return Status.NotImplementedError;
 		}
 	}

@@ -242,81 +242,91 @@ public static partial class Audit
         IdsXmlNode? current = null;
         var prevSchemaStatus = auditSettings.SchemaStatus;
 
-		while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
+        try
         {
-            cntRead++;
-
-            switch (reader.NodeType)
+            while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
             {
-                // audits are performed on closing the element end, so that all the children are available for evaluation.
-                // but empty elements (e.g., <someElement />) are audited upon opening, as there are no children to evaluate
-                //
-                case XmlNodeType.Element:
-                    IdsXmlNode? parent = null;
+                cntRead++;
+
+                switch (reader.NodeType)
+                {
+                    // audits are performed on closing the element end, so that all the children are available for evaluation.
+                    // but empty elements (e.g., <someElement />) are audited upon opening, as there are no children to evaluate
+                    //
+                    case XmlNodeType.Element:
+                        IdsXmlNode? parent = null;
 #if NETSTANDARD2_0
                         if (elementsStack.Count > 0)
                             parent = elementsStack.Peek();
 #else
-                    if (elementsStack.TryPeek(out var peeked))
-                        parent = peeked;
+                        if (elementsStack.TryPeek(out var peeked))
+                            parent = peeked;
 #endif
-                    var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
-                    if (newContext is IdsSpecification spec)
-                        // parents of IdsSpecification do not retain children for Garbage Collection purposes
-                        // so we need to set the positional index manually
-                        spec.PositionalIndex = iSpecification++;
-                    while (auditSettings.BufferedValidationIssues.Any())
-                    {
-                        var queuedIssue = auditSettings.BufferedValidationIssues.Dequeue();
-                        if (
-                            newContext.type == "attribute"
-                            &&
-                            (queuedIssue.Message.Contains("minOccurs") || queuedIssue.Message.Contains("maxOccurs"))
-                            )
+                        var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
+                        if (newContext is IdsSpecification spec)
+                            // parents of IdsSpecification do not retain children for Garbage Collection purposes
+                            // so we need to set the positional index manually
+                            spec.PositionalIndex = iSpecification++;
+                        while (auditSettings.BufferedValidationIssues.Any())
                         {
-                            // this could fail under some circumstances, but it's a temporary workaround
-                            auditSettings.SchemaStatus = prevSchemaStatus;
-                            continue;
-						}
-                        queuedIssue.Notify(logger, newContext);
-                    }
+                            var queuedIssue = auditSettings.BufferedValidationIssues.Dequeue();
+                            if (
+                                newContext.type == "attribute"
+                                &&
+                                (queuedIssue.Message.Contains("minOccurs") || queuedIssue.Message.Contains("maxOccurs"))
+                                )
+                            {
+                                // this could fail under some circumstances, but it's a temporary workaround
+                                auditSettings.SchemaStatus = prevSchemaStatus;
+                                continue;
+                            }
+                            queuedIssue.Notify(logger, newContext);
+                        }
 
-                    // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
-                    if (!reader.IsEmptyElement)
-                        elementsStack.Push(newContext);
-                    else
-                    {
-						if (!auditSettings.Options.OmitIdsContentAudit)
-							contentStatus |= newContext.PerformAudit(logger); // invoking audit on empty element happens immediately
-                    }
-                    current = newContext;
-                    break;
+                        // we only push on the stack if it's not empty, e.g.: <some /> does not go on the stack
+                        if (!reader.IsEmptyElement)
+                            elementsStack.Push(newContext);
+                        else
+                        {
+                            if (!auditSettings.Options.OmitIdsContentAudit)
+                                contentStatus |= newContext.PerformAudit(logger); // invoking audit on empty element happens immediately
+                        }
+                        current = newContext;
+                        break;
 
-                case XmlNodeType.Text:
-                    // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
-                    current!.SetContent(reader.GetValueAsync().Result);
-                    break;
-                case XmlNodeType.EndElement:
-                    // Debug.WriteLine($"End Element {reader.LocalName}");
-                    var closing = elementsStack.Pop();
-                    // Debug.WriteLine($"  auditing {closing.type} on end element");
-                    if (!auditSettings.Options.OmitIdsContentAudit)
-                    {
-                        contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
-                    }
-                    break;
-                default:
-                    // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
-                    break;
+                    case XmlNodeType.Text:
+                        // Debug.WriteLine($"  Text Node: {reader.GetValueAsync().Result}");
+                        current!.SetContent(reader.GetValueAsync().Result);
+                        break;
+                    case XmlNodeType.EndElement:
+                        // Debug.WriteLine($"End Element {reader.LocalName}");
+                        var closing = elementsStack.Pop();
+                        // Debug.WriteLine($"  auditing {closing.type} on end element");
+                        if (!auditSettings.Options.OmitIdsContentAudit)
+                        {
+                            contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
+                        }
+                        break;
+                    default:
+                        // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
+                        break;
+                }
+                prevSchemaStatus = auditSettings.SchemaStatus;
             }
-			prevSchemaStatus = auditSettings.SchemaStatus;
+			IdsToolMessages.InformReadCount(logger, cntRead);
 		}
-
-        reader.Dispose();
+		catch (XmlException ex_xml)
+        {
+            contentStatus = contentStatus | IdsToolMessages.Report502XmlSchemaException(logger, ex_xml);
+		}
+		catch (Exception ex)
+		{
+			contentStatus = contentStatus | IdsToolMessages.Report503Exception(logger, ex);
+		}
+		reader.Dispose();
         if (!auditSettings.Options.OmitIdsSchemaAudit)
             rSettings.ValidationEventHandler -= new ValidationEventHandler(auditSettings.ValidationReporter);
 
-        IdsToolMessages.ReportReadCount(logger, cntRead);
 
         return auditSettings.SchemaStatus | contentStatus;
     }
@@ -348,7 +358,7 @@ public static partial class Audit
     private static Status ProcessSingleFile(FileInfo theFile, IBatchAuditOptions batchOptions, ILogger? logger)
     {
         Status ret = Status.Ok;
-        IdsToolMessages.ReportFileProcessingStarted(logger, theFile.FullName);
+        IdsToolMessages.InformFileProcessingStarted(logger, theFile.FullName);
         ret |= AuditIdsComplianceAsync(batchOptions, theFile, logger).Result;
         return ret;
     }
@@ -369,7 +379,7 @@ public static partial class Audit
             ret |= sgl;
             tally++;
         }
-		IdsToolMessages.ReportFileProcessingEnded(logger, tally);
+		IdsToolMessages.InformFileProcessingEnded(logger, tally);
 
 		return ret;
     }

@@ -115,7 +115,7 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
-        yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError };
@@ -165,7 +165,7 @@ public class AuditTests : BuildingSmartRepoFiles
     {
         var f = new FileInfo(path);
         if (!f.Exists) 
-            return; // when a case matchiing error happens in linux, we can exit gracefully
+            return; // when a case matching error happens in linux, we can exit gracefully
 
         var d = f.Directory!; // if the file exists, the directory must also
         var t = d.GetFiles(Path.ChangeExtension(f.Name, "*")).Single();

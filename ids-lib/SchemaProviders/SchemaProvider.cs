@@ -29,7 +29,7 @@ namespace IdsLib.SchemaProviders
                     break;
                 case IdsVersion.Invalid:
                 default:
-                    ret |= IdsToolMessages.ReportInvalidSchemaVersion(logger, vrs);
+                    ret |= IdsToolMessages.Report504NotImplementedIdsSchemaVersion(logger, vrs);
                     break;
             }
             schemas = tmpResources.Select(x => GetSchema(x)).ToList();
