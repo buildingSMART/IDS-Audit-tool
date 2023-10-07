@@ -9,6 +9,7 @@
 | static class [Audit](./IdsLib/Audit.md) | Main static class for invoking the audit functions. If you wish to audit a single file, the best entry point is [`Run`](./IdsLib/Audit/Run.md). This method allows you to run audits on the provided stream. For more complex auditing scenarios (e.g. those used by the tool), some automation can be achieved with [`Run`](./IdsLib/Audit/Run.md). Both APIs provide a return value that can be interpreted to determine if errors have been found. For more detailed feedback on the specific location of issues encountered, you must pass an ILogger interface, and collect events. |
 | class [AuditProcessOptions](./IdsLib/AuditProcessOptions.md) | Configuration parameters required within the inner loop of the audit. |
 | interface [IBatchAuditOptions](./IdsLib/IBatchAuditOptions.md) | This interface contains the parameters to configure a complex execution of the audit in a batch scenario. |
+| static class [LibraryInformation](./IdsLib/LibraryInformation.md) | General information on the assembly without reflection. This is useful for environments that do not allow to load information from the DLL dynamically (e.g. Blazor). |
 | class [SingleAuditOptions](./IdsLib/SingleAuditOptions.md) | Configuration parameters needed to setup the audit of a single IDS. The [`IdsVersion`](./IdsLib/SingleAuditOptions/IdsVersion.md) property is currently required to avoid the need to seek the stream, then resume the audit once the version is detected from the content. Future versions will attempt to relax this requirement. Ensure that the properties of the base class [`AuditProcessOptions`](./IdsLib/AuditProcessOptions.md) are also populated. |
 
 ## IdsLib.IdsSchema.IdsNodes namespace
@@ -17,7 +18,7 @@
 | --- | --- |
 | class [IdsInformation](./IdsLib.IdsSchema.IdsNodes/IdsInformation.md) | Status information of an IDS source |
 | enum [IdsVersion](./IdsLib.IdsSchema.IdsNodes/IdsVersion.md) | Enumeration to identify a single IDS version. |
-| class [NodeIdentification](./IdsLib.IdsSchema.IdsNodes/NodeIdentification.md) | Provides a way to identify the element of the xml with line/poistion or relative index inside the IDS |
+| class [NodeIdentification](./IdsLib.IdsSchema.IdsNodes/NodeIdentification.md) | Provides a way to identify the element of the xml with line/poistion or relative index inside the IDS Instances of this class are passed as a parameter in the ILogger calls, and by default it presents the location by line and number. A custom implementation of ILogger allows you to cast the received state parameter to IReadOnlyList&lt;KeyValuePair&lt;string, object&gt;&gt; and receive instances of NodeIdentification as parameters, to access the precise identifier. |
 
 ## IdsLib.IfcSchema namespace
 

@@ -11,7 +11,7 @@ namespace IdsLib
 	/// 
 	/// This is useful for environments that do not allow to load information from the DLL dynamically (e.g. Blazor).
 	/// </summary>
-	public class LibraryInformation
+	public static class LibraryInformation
 	{
 		/// <summary>
 		/// Static field with the short commit hash at compilation time
@@ -32,6 +32,6 @@ namespace IdsLib
 		/// <summary>
 		/// Static field with hardcoded DLL version number. 
 		/// </summary>
-		public static string AssemblyVersion => "1.0.43";
+		public static string AssemblyVersion => "1.0.44";
 	}
 }

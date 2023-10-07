@@ -14,7 +14,7 @@ public class ClassInfo
 | [DirectAttributes](ClassInfo/DirectAttributes.md) { get; } | List of attribute names for the type |
 | [FunctionalType](ClassInfo/FunctionalType.md) { get; } | Is the class |
 | [MatchingConcreteClasses](ClassInfo/MatchingConcreteClasses.md) { get; } | All matching concrete classes, including self and entire subclass tree |
-| [Name](ClassInfo/Name.md) { get; } | relationXmlAttributeName string |
+| [Name](ClassInfo/Name.md) { get; } | Class Name as string (stored as camelcase, convert to upper for valid IDS class names) |
 | [NameSpace](ClassInfo/NameSpace.md) { get; } | The namespace of the class |
 | [Parent](ClassInfo/Parent.md) { get; } | Resolved parent Classinfo |
 | [ParentName](ClassInfo/ParentName.md) { get; } | Parent name as string |

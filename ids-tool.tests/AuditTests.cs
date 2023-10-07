@@ -24,11 +24,11 @@ public class AuditTests : BuildingSmartRepoFiles
     private ITestOutputHelper XunitOutputHelper { get; }
 
     [SkippableTheory]
-    [MemberData(nameof(GetDevelopmentIdsFiles))]
+    [MemberData(nameof(GetIdsRepositoryDevelopmentIdsFiles))]
     public void FullAuditOfDevelopmentFilesOk(string developmentIdsFile)
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetDevelopmentFileInfo(developmentIdsFile);
+        FileInfo f = GetIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
 

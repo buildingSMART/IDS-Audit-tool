@@ -140,7 +140,7 @@ public class BuildingSmartRepoFiles
         return GetIdsOrEmpty(d);
 	}
 
-	internal static FileInfo GetDevelopmentFileInfo(string idsFile)
+	internal static FileInfo GetIdsRepositoryDevelopmentFileInfo(string idsFile)
     {
         var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
         var comb = d.FullName + idsFile;
@@ -149,7 +149,7 @@ public class BuildingSmartRepoFiles
         return f;
     }
 
-    public static IEnumerable<object[]> GetDevelopmentIdsFiles()
+    public static IEnumerable<object[]> GetIdsRepositoryDevelopmentIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository
         var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);

@@ -42,7 +42,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         // one child must be a valid string matcher
         var sm = name?.GetListMatcher();
         if (sm is null)
-            return IdsMessages.Report102NoStringMatcher(logger, this, "name");
+            return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
         // we introduce a schema-by-schema evaluation of the valid classes
         //
@@ -65,7 +65,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 
             var predefinedTypeMatcher = predefinedType.GetListMatcher();
             if (predefinedTypeMatcher is null)
-                return IdsMessages.Report102NoStringMatcher(logger, this, "predefinedType");
+                return IdsErrorMessages.Report102NoStringMatcher(logger, this, "predefinedType");
 
             
             List<string>? possiblePredefined = null;
@@ -74,7 +74,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                 var c = schema[ifcClass];
                 if (c is null)
                 {
-                    ret |= IdsMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in schema {schema.Version}.", this);
+                    ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in schema {schema.Version}.", this);
                     continue;
                 }
                 if (possiblePredefined == null)
@@ -84,7 +84,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
             }
             
             if (possiblePredefined == null)
-                ret |= IdsMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
+                ret |= IdsErrorMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
             else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
                 return ret;
             else

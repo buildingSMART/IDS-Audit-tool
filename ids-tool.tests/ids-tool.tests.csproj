@@ -144,6 +144,9 @@
 		<None Update="InvalidFiles\smallcross_gif.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\Issue 14 - ids file test.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="ValidFiles\IDS_aachen_example.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

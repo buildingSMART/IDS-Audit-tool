@@ -1,6 +1,6 @@
 # ClassInfo.Name property
 
-relationXmlAttributeName string
+Class Name as string (stored as camelcase, convert to upper for valid IDS class names)
 
 ```csharp
 public string Name { get; }

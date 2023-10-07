@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -9,6 +10,9 @@ namespace IdsLib.IdsSchema.IdsNodes
 {
 	/// <summary>
 	/// Provides a way to identify the element of the xml with line/poistion or relative index inside the IDS
+	/// Instances of this class are passed as a parameter in the <see cref="ILogger"/> calls, and by default it presents the location by line and number.
+	/// 
+	/// A custom implementation of ILogger allows you to cast the received state parameter to IReadOnlyList&lt;KeyValuePair&lt;string, object&gt;&gt; and receive instances of NodeIdentification as parameters, to access the precise identifier.
 	/// </summary>
 	public class NodeIdentification : IFormattable
 	{

@@ -16,7 +16,7 @@ namespace IdsLib.Messages;
 
 /// Reminder: when adding an error code here also add to the ErrorCodes.md in the lib.
 
-internal static class IdsMessages
+internal static class IdsErrorMessages
 {
 	internal static Audit.Status Report101InvalidApplicability(ILogger? logger, IdsXmlNode context, string scenarioMessage)
 	{

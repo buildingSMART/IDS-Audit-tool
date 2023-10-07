@@ -39,7 +39,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
         var sm = name?.GetListMatcher();
         // the first child must be a valid string matcher
         if (sm is null)
-            return IdsMessages.Report102NoStringMatcher(logger, this, "name");
+            return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
         Audit.Status ret = Audit.Status.Ok;
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);

@@ -16,7 +16,7 @@ internal class XsTotalDigits : IdsXmlNode, IStringListMatcher
     {
         // totalDigits in invalid when it comes to string
         matches = Enumerable.Empty<string>();
-        return IdsMessages.Report302InvalidXsFacet(logger, this, "use `length` instead");
+        return IdsErrorMessages.Report302InvalidXsFacet(logger, this, "use `length` instead");
     }
 
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)

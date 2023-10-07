@@ -30,18 +30,18 @@ internal class IdsSpecification : IdsXmlNode
     {
         var ret = Audit.Status.Ok;
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            ret |= IdsMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+            ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
         if (SchemaVersions == IfcSchemaVersions.IfcNoVersion)
-            ret |= IdsMessages.Report107InvalidIfcSchemaVersion(logger, SchemaVersions, this);
+            ret |= IdsErrorMessages.Report107InvalidIfcSchemaVersion(logger, SchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");
         if (applic is null)
         {
-            ret |= IdsMessages.Report101InvalidApplicability(logger, this, "applicability not found");
+            ret |= IdsErrorMessages.Report101InvalidApplicability(logger, this, "applicability not found");
             return ret;
         }
         if (!applic.ChildFacets.Any())
         {
-            ret |= IdsMessages.Report101InvalidApplicability(logger, this, "One condition is required at minimum");
+            ret |= IdsErrorMessages.Report101InvalidApplicability(logger, this, "One condition is required at minimum");
             return ret;
         }
 
@@ -59,7 +59,7 @@ internal class IdsSpecification : IdsXmlNode
                     {
                         var totalFilters = IfcTypeConstraint.Intersect(aF, rF);
                         if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
-                            ret |= IdsMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of applicability and requirements");
+                            ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of applicability and requirements");
                     }
                 }
             }

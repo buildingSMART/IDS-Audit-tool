@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<paths>
+		<left>..\\IDS\Documentation\testcases\</left>
+		<right>..\\IfcOpenShell\src\ifctester\test\build\testcases\</right>
+		<filter>.ids;.ifc</filter>
+		<subfolders>1</subfolders>
+		<left-readonly>0</left-readonly>
+		<right-readonly>0</right-readonly>
+	</paths>
+</project>

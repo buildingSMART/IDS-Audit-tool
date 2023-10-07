@@ -41,10 +41,6 @@ internal class IdsXmlNode
     internal string GetPositionalIdentifier()
     {
         StringBuilder sb = new StringBuilder();
-        if (Parent != null)
-        {
-            Parent.GetPositionalIdentifier(sb);
-        }
         GetPositionalIdentifier(sb);
         return sb.ToString();
     }
@@ -126,7 +122,7 @@ internal class IdsXmlNode
     {
         if (!TryGetUpperNodes(startingNode, typeNames, out var nodes))
         {
-			IdsMessages.Report501UnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
+			IdsErrorMessages.Report501UnexpectedScenario(logger, $"Missing {typeof(T).Name} ", startingNode);
             node = default;
             status = Audit.Status.IdsStructureError;
             return false;
@@ -134,7 +130,7 @@ internal class IdsXmlNode
         if (nodes[0] is not T spec)
         {
             node = default;
-			IdsMessages.Report501UnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
+			IdsErrorMessages.Report501UnexpectedScenario(logger, $"Invalid {typeof(T).Name} ", startingNode);
             status = Audit.Status.IdsStructureError;
             return false;
         }

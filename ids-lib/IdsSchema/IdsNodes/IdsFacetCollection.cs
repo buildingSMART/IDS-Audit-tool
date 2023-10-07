@@ -56,7 +56,7 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
             foreach (var schemaInfo in schemaInfos)
             {
 				if (!ChildFacets.Any(x => !x.IsValid) && IfcTypeConstraint.IsNotNullAndEmpty(GetTypesFilter(schemaInfo)))
-					ret |= IdsMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of constraints in set");
+					ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of constraints in set");
 			}
         }
         return ret;

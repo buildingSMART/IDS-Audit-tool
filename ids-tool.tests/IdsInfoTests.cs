@@ -26,11 +26,11 @@ public class IdsInfoTests : BuildingSmartRepoFiles
     }
 
     [SkippableTheory]
-    [MemberData(nameof(GetDevelopmentIdsFiles))]
+    [MemberData(nameof(GetIdsRepositoryDevelopmentIdsFiles))]
     public async Task CanReadIdsDevelopmentFiles(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetDevelopmentFileInfo(idsFile);
+        FileInfo f = GetIdsRepositoryDevelopmentFileInfo(idsFile);
         var t = await IdsXmlHelpers.GetIdsInformationAsync(f);
         t.Should().NotBeNull();
         t.Version.Should().NotBe(IdsVersion.Invalid);

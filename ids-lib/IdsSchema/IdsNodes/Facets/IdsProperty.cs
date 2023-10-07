@@ -11,15 +11,15 @@ namespace IdsLib.IdsSchema.IdsNodes;
 internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
     private readonly MinMaxCardinality minMaxOccurr;
-    private readonly IStringListMatcher? measureMatcher;
+    private readonly IStringListMatcher? datatypeMatcher;
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         minMaxOccurr = new MinMaxCardinality(reader);
         var measure = reader.GetAttribute("datatype") ?? string.Empty;
         if (!string.IsNullOrEmpty(measure))
-            measureMatcher = new StringListMatcher(measure, this);
+            datatypeMatcher = new StringListMatcher(measure, this);
         else
-            measureMatcher = null;
+            datatypeMatcher = null;
     }
 
     public bool IsValid { get; private set; } = false;
@@ -50,12 +50,12 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         var pset = GetChildNodes("propertySet").FirstOrDefault();
         var psetMatcher = pset?.GetListMatcher();
         if (psetMatcher is null)
-            return IdsMessages.Report102NoStringMatcher(logger, this, "propertySet");
+            return IdsErrorMessages.Report102NoStringMatcher(logger, this, "propertySet");
 
         var name = GetChildNodes("name").FirstOrDefault();
         var nameMatcher = name?.GetListMatcher();
         if (nameMatcher is null)
-            return IdsMessages.Report102NoStringMatcher(logger, this, "name");
+            return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
 		// we are keeping the stricter type to ensure that it is valid across multiple schemas
 		// depending on the schema version of IfcRelDefinesByProperties the filter needs to be
@@ -111,7 +111,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 else if (psetMatcher is IStringPrefixMatcher ssm && ssm.MatchesPrefix("Pset_"))
                 {
                     IsValid = false;
-                    return IdsMessages.Report401ReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
+                    return IdsErrorMessages.Report401ReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
                 }
                 else
                 {
@@ -125,9 +125,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 				typeFilters.Add(schema, filter);
 				IsValid = true;
             }
-			if (measureMatcher is not null)
+			if (datatypeMatcher is not null)
 			{
-				ret |= measureMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "measure names", schema.Version);
+				ret |= datatypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "datatype", schema.Version);
 			}
 			if (ret != Audit.Status.Ok)
 				IsValid = false;
@@ -146,7 +146,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            return IdsMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+            return IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
         return Audit.Status.Ok;
     }
 }
