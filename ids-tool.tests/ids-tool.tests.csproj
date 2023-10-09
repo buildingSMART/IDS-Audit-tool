@@ -144,6 +144,9 @@
 		<None Update="InvalidFiles\smallcross_gif.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\IDS Repo\IDS Issue 195 - base restriction.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="IssueFiles\Issue 08 - Regex pattern.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -168,6 +171,10 @@
 		<None Update="ValidFiles\Restriction\enumeration.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="IssueFiles\IDS Repo\" />
 	</ItemGroup>
 
 

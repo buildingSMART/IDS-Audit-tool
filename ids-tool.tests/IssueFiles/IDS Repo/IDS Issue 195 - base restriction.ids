@@ -1,0 +1,34 @@
+<ids xmlns="http://standards.buildingsmart.org/IDS"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+    <info>
+        <title>Ifc logical is an acceptable datatype in properties</title>
+    </info>
+    <specifications>
+        <specification name="Ifc logical is an acceptable datatype in properties" ifcVersion="IFC2X3 IFC4" minOccurs="1" maxOccurs="unbounded">
+            <applicability>
+                <entity>
+                    <name>
+                        <simpleValue>IFCWALL</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property datatype="IFCLABEL" minOccurs="1" maxOccurs="unbounded">
+                    <propertySet>
+                        <simpleValue>Foo_Bar</simpleValue>
+                    </propertySet>
+                    <name>
+                        <simpleValue>Foo</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction>
+                            <xs:enumeration value="IFCSTAIR"/>
+                            <xs:enumeration value="IFCSTAIRFLIGHT"/>
+                        </xs:restriction>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+    </specifications>
+</ids>
