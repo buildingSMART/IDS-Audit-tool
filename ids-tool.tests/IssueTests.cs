@@ -21,21 +21,21 @@ namespace idsTool.tests
 		[Fact]
 		public void Issue08_RegexPattern()
 		{
-			var f = new FileInfo("IssueFiles\\Issue 08 - Regex pattern.ids");
+			var f = new FileInfo("IssueFiles/Issue 08 - Regex pattern.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 1);
 		}
 
 		[Fact]
 		public void Issue09_XmlStructure()
 		{
-			var f = new FileInfo("IssueFiles\\Issue 09 - XML structure.ids");
+			var f = new FileInfo("IssueFiles/Issue 09 - XML structure.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsStructureError, 1);
 		}
 
 		[Fact]
 		public void Issue11_IfcLogicalIsValidDatatype()
 		{
-			var f = new FileInfo("IssueFiles\\Issue 11 - IfcLogical.ids");
+			var f = new FileInfo("IssueFiles/Issue 11 - IfcLogical.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
 		}
 	}
