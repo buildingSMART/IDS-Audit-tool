@@ -47,14 +47,14 @@ namespace idsTool.tests
 		}
 
 		[Theory]
-		[InlineData("InvalidFiles\\InvalidAttributeForClass.ids", new [] { "/ids1/specifications1/specification1" })]
-		[InlineData("IssueFiles\\Issue 14 - ids file test.ids", new [] { 
+		[InlineData("InvalidFiles/InvalidAttributeForClass.ids", new [] { "/ids1/specifications1/specification1" })]
+		[InlineData("IssueFiles/Issue 14 - ids file test.ids", new [] { 
 			"/ids1/specifications1/specification1/applicability1/attribute2/name1/restriction1",
 			"/ids1/specifications1/specification1/applicability1",
 			"/ids1/specifications1/specification2", 
 			})]
-		[InlineData("InvalidFiles\\InvalidIfcPartOf.ids", new [] { "/ids1/specifications1/specification1/applicability1/partOf1" })]
-		[InlineData("InvalidFiles\\InvalidAttributeNames.ids", new[] { 
+		[InlineData("InvalidFiles/InvalidIfcPartOf.ids", new [] { "/ids1/specifications1/specification1/applicability1/partOf1" })]
+		[InlineData("InvalidFiles/InvalidAttributeNames.ids", new[] { 
 			"/ids1/specifications1/specification1/requirements1/attribute1/name1/simpleValue1",
 			"/ids1/specifications1/specification3/requirements1/attribute1/name1/simpleValue1",
 			})]
