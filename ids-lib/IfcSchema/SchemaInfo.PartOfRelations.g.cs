@@ -12,16 +12,38 @@ namespace IdsLib.IfcSchema
         /// <summary>
         /// The names of classes across all schemas.
         /// </summary>
-        public static IEnumerable<IfcOneToManyRelationInformation> AllPartOfRelations
+        public IEnumerable<PartOfRelationInformation> AllPartOfRelations
         {
             get
             {
-               yield return new IfcOneToManyRelationInformation("IFCRELAGGREGATES", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
-               yield return new IfcOneToManyRelationInformation("IFCRELASSIGNSTOGROUP", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcGroup", "IfcObjectDefinition");
-               yield return new IfcOneToManyRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcSpatialStructureElement", "IfcProduct");
-               yield return new IfcOneToManyRelationInformation("IFCRELNESTS", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "IfcObjectDefinition", "IfcObjectDefinition");
+                if (Version == IfcSchemaVersions.Ifc2x3)
+                {
+                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALSTRUCTUREELEMENT", "IFCPRODUCT");
+                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
+                }
+                if (Version == IfcSchemaVersions.Ifc4)
+                {
+                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
+                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
+                }
+                if (Version == IfcSchemaVersions.Ifc4x3)
+                {
+                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
+                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
+                }
             }
         }
     }
 }
-

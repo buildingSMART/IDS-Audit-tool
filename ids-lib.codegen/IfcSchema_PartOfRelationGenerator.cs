@@ -1,42 +1,19 @@
 ﻿using System.Text;
 using Xbim.Common.Metadata;
+using static NSubstitute.Arg;
 
 namespace IdsLib.codegen;
 
 public class IfcSchema_PartOfRelationGenerator
 {
-    private class GenOneToManyRelationInfo
-    {
-        public void AddSchema(string schema, string oneType, string manyType)
-        {
-            Schemas.Add(schema);
-            if (manyType != ManyType)
-                throw new ArgumentException($"Inconsistent type across schemas on enumerable side of the {RelationName} relation ({manyType} vs. {ManyType}), we need to rethink auditing logic.");
-            if (oneType != OneType)
-                throw new ArgumentException($"Inconsistent type across schemas on one-side of the {RelationName} relation ({oneType} vs. {OneType}), we need to rethink auditing logic.");
-        }
-
-        public GenOneToManyRelationInfo(string relationName, string schema, string oneType, string enumerableType)
-        {
-            RelationName = relationName;
-            OneType = oneType;
-            ManyType = enumerableType;
-            Schemas = new List<string>() { schema };
-        }
-
-        internal List<string> Schemas { get; set; } 
-        internal string ManyType { get; set; } 
-        internal string OneType { get; set; } 
-        internal string RelationName { get; set; } 
-    }
-
     internal static string Execute()
     {
         var relationNames = GetRelationNames();
 
-        var measureInfos = new Dictionary<string, GenOneToManyRelationInfo>();
+        var schemaInfos = new Dictionary<string, StringBuilder>();
         foreach (var schema in Program.schemas)
         {
+            var sb = new StringBuilder();
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
             var metaD = ExpressMetaData.GetMetadata(module);
             foreach (var daRelation in relationNames)
@@ -46,34 +23,39 @@ public class IfcSchema_PartOfRelationGenerator
                     var t = metaD.ExpressType(daRelation.ToUpperInvariant());
                     if (t is null)
                         continue;
-                    
-                    var propOnManySide = t.Properties.Single(x => x.Value.EnumerableType is not null).Value;
-                    var manyType = propOnManySide.EnumerableType;
-                    var manyExpressType = metaD.ExpressType(manyType.Name.ToUpperInvariant());
 
-                    var propOnOneSide = t.Properties.Single(x => x.Value.EnumerableType is null && x.Value.Name.StartsWith("Relating")).Value;
-                    var oneType = propOnOneSide.PropertyInfo.PropertyType;
-                    var oneExpressType = metaD.ExpressType(oneType.Name.ToUpperInvariant());
+                    var propOnPartSide = t.Properties.SingleOrDefault(x => x.Value.EnumerableType is not null).Value;
+                    Type? partType = null;
+					if (propOnPartSide is not null)
+                    {
+						partType = propOnPartSide.EnumerableType;
+                    }
+					else
+                    {
+						propOnPartSide = t.Properties.Single(x => x.Value.EnumerableType is null && x.Value.Name.StartsWith("Related")).Value;
+						partType = propOnPartSide.PropertyInfo.PropertyType;
+					}
+					var partExpressType = metaD.ExpressType(partType.Name.ToUpperInvariant());
 
-                    if (measureInfos.TryGetValue(daRelation, out var lst))
-                        lst.AddSchema(schema, oneExpressType.Name, manyType.Name);
-                    else
-                        measureInfos.Add(daRelation, new GenOneToManyRelationInfo(daRelation, schema, oneExpressType.Name, manyType.Name));                    
+					var propOnOwnerSide = t.Properties.Single(x => x.Value.EnumerableType is null && x.Value.Name.StartsWith("Relating")).Value;
+                    var ownerType = propOnOwnerSide.PropertyInfo.PropertyType;
+                    var ownerExpressType = metaD.ExpressType(ownerType.Name.ToUpperInvariant());
+
+					sb.AppendLine($"""                    yield return new PartOfRelationInformation("{daRelation}", "{ownerExpressType.Name.ToUpperInvariant()}", "{partExpressType.Name.ToUpperInvariant()}");""");
                 }
                 catch 
                 {
                     continue;
                 }                
             }
+            schemaInfos.Add(schema.ToString(), sb);
         }
         var source = stub;
-        var sbMeasures = new StringBuilder();
-        foreach (var clNm in measureInfos.Keys.OrderBy(x => x))
+        foreach (var schema in schemaInfos.Keys.OrderBy(x => x))
         {
-            var relInfo = measureInfos[clNm];
-            sbMeasures.AppendLine($"""               yield return new IfcOneToManyRelationInformation("{clNm}", {CodeHelpers.NewStringArray(relInfo.Schemas)}, "{relInfo.OneType}", "{relInfo.ManyType}");""");
+			source = source.Replace($"<PlaceHolderRelations{schema}>\r\n", schemaInfos[schema].ToString());
         }
-        source = source.Replace($"<PlaceHolderRelations>\r\n", sbMeasures.ToString());
+        
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         return source;
     }
@@ -102,16 +84,26 @@ namespace IdsLib.IfcSchema
         /// <summary>
         /// The names of classes across all schemas.
         /// </summary>
-        public static IEnumerable<IfcOneToManyRelationInformation> AllPartOfRelations
+        public IEnumerable<PartOfRelationInformation> AllPartOfRelations
         {
             get
             {
-<PlaceHolderRelations>
+                if (Version == IfcSchemaVersions.Ifc2x3)
+                {
+<PlaceHolderRelationsIfc2x3>
+                }
+                if (Version == IfcSchemaVersions.Ifc4)
+                {
+<PlaceHolderRelationsIfc4>
+                }
+                if (Version == IfcSchemaVersions.Ifc4x3)
+                {
+<PlaceHolderRelationsIfc4x3>
+                }
             }
         }
     }
 }
-
 ";
 
 }

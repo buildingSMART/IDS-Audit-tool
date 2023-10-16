@@ -14,6 +14,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [SchemaIfc2x3](SchemaInfo/SchemaIfc2x3.md) { get; } | Static property for the Ifc2x3 schema |
 | static [SchemaIfc4](SchemaInfo/SchemaIfc4.md) { get; } | Static property for the Ifc4 schema |
 | static [SchemaIfc4x3](SchemaInfo/SchemaIfc4x3.md) { get; } | Static property for the Ifc4 schema |
+| [AllPartOfRelations](SchemaInfo/AllPartOfRelations.md) { get; } | The names of classes across all schemas. |
 | [Item](SchemaInfo/Item.md) { get; } | Get the classinfo by name string. |
 | [PropertySets](SchemaInfo/PropertySets.md) { get; } | Provides access to the property sets of the schema |
 | [Version](SchemaInfo/Version.md) { get; } | The version of the schema represented in the info |
@@ -25,7 +26,6 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. |
 | static [AllClasses](SchemaInfo/AllClasses.md) { get; } | The names of classes across all schemas. |
 | static [AllMeasures](SchemaInfo/AllMeasures.md) { get; } | The names of classes across all schemas. |
-| static [AllPartOfRelations](SchemaInfo/AllPartOfRelations.md) { get; } | The names of classes across all schemas. |
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
 | static [TryParseIfcMeasure](SchemaInfo/TryParseIfcMeasure.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |
 | enum [ClassAttributeMode](SchemaInfo.ClassAttributeMode.md) | Relation that allows to connect an available attribute to an entity |

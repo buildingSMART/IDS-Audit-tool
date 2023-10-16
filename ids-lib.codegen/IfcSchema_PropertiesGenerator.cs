@@ -5,11 +5,11 @@ namespace IdsLib.codegen;
 
 public class IfcSchema_PropertiesGenerator
 {
-    /// <summary>
-    /// Computes the GetPropertiesIFC2x3 and GetPropertiesIFC4 of the PropertySetInfo.Generated.cs file 
-    /// Depends on the Xbim.Properties assembly.
-    /// </summary>
-    public static string Execute()
+	/// <summary>
+	/// Computes the GetPropertiesIFC2x3, GetPropertiesIFC4 and GetPropertiesIFC4x3 of the PropertySetInfo.Generated.cs file 
+	/// Depends on the Xbim.Properties assembly.
+	/// </summary>
+	public static string Execute()
     {
         var source = stub;
         var schemas = new[] { Xbim.Properties.Version.IFC2x3, Xbim.Properties.Version.IFC4, Xbim.Properties.Version.IFC4x3 };

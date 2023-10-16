@@ -31,12 +31,12 @@
 | class [IfcAttributeInformation](./IdsLib.IfcSchema/IfcAttributeInformation.md) | Metadata container for attributes of entities in IfcSchema |
 | class [IfcClassInformation](./IdsLib.IfcSchema/IfcClassInformation.md) | Metadata container for entities of an IfcSchema |
 | class [IfcMeasureInformation](./IdsLib.IfcSchema/IfcMeasureInformation.md) | Metadata container for entities containing measures of an IfcSchema |
-| class [IfcOneToManyRelationInformation](./IdsLib.IfcSchema/IfcOneToManyRelationInformation.md) | Metadata container for relations that are primarily one-to-many between IFC entities |
 | class [IfcSchemaAttribute](./IdsLib.IfcSchema/IfcSchemaAttribute.md) | Metadata attribute to define if a value of [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) identifies a single version of the schema |
 | [Flags] enum [IfcSchemaVersions](./IdsLib.IfcSchema/IfcSchemaVersions.md) | Enumerations for the identification of multiple schema versions. |
 | interface [IPropertyTypeInfo](./IdsLib.IfcSchema/IPropertyTypeInfo.md) | Generalised metadata on IFC properties |
 | static class [IPropertyTypeInfoExtensions](./IdsLib.IfcSchema/IPropertyTypeInfoExtensions.md) | Static class to contain extension method helpers for [`IPropertyTypeInfo`](./IdsLib.IfcSchema/IPropertyTypeInfo.md). |
 | class [NamedPropertyType](./IdsLib.IfcSchema/NamedPropertyType.md) | Schema metadata for properties with name |
+| class [PartOfRelationInformation](./IdsLib.IfcSchema/PartOfRelationInformation.md) | Metadata container for relations that are primarily one-to-many between IFC entities |
 | class [PropertySetInfo](./IdsLib.IfcSchema/PropertySetInfo.md) | Information about standard property sets defined from bS |
 | class [SchemaInfo](./IdsLib.IfcSchema/SchemaInfo.md) | Provides static methods to get the collection of classes in the published schemas. |
 | class [SingleValuePropertyType](./IdsLib.IfcSchema/SingleValuePropertyType.md) | Schema metadata for single value properties |
