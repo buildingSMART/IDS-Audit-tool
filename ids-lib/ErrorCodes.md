@@ -25,7 +25,7 @@
 | 306  | Schema validation error           |
 | 307  | Schema validation warning         |
 | 400  | Ifc errors                        |
-| 401  | Reserved keyword                  |
+| 401  | Reserved prefix                   |
 | 500  | Application errors                |
 | 501  | Unexpected scenario               |
 | 502  | XML Schema Exception              |

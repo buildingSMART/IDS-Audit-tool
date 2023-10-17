@@ -9,7 +9,9 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
 {
     internal string Content = string.Empty;
 
-    public IdsSimpleValue(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
+    public string Value => Content;
+
+	public IdsSimpleValue(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
     }
 
@@ -18,10 +20,10 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
         Content = contentString ?? string.Empty;
     }     
 
-    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsErrorMessages.Report103InvalidListMatcher(this, Content, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsErrorMessages.Report103InvalidListMatcher(this, Content, logger, variableName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 

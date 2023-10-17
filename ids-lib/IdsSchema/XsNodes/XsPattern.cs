@@ -17,16 +17,16 @@ internal class XsPattern : IdsXmlNode, IStringListMatcher, IFiniteStringMatcher
         pattern = reader.GetAttribute("value") ?? string.Empty;
     }
 
-    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!EnsureRegex(out var _, ignoreCase))
         {
             matches = new List<string>();
-            return IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, variableName, schemaContext, candidateStrings);
         }
         return (TryMatch(candidateStrings, ignoreCase, out matches))
             ? Audit.Status.Ok
-            : IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, listToMatchName, schemaContext, candidateStrings);
+            : IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, variableName, schemaContext, candidateStrings);
     }
 
 	protected internal override Audit.Status PerformAudit(ILogger? logger)

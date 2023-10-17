@@ -16,10 +16,10 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         value = reader.GetAttribute("value") ?? string.Empty;
     }
 
-    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
-            return IdsErrorMessages.Report103InvalidListMatcher(this, value, logger, listToMatchName, schemaContext, candidateStrings);
+            return IdsErrorMessages.Report103InvalidListMatcher(this, value, logger, variableName, schemaContext, candidateStrings);
         return Audit.Status.Ok;
     }
 
@@ -44,6 +44,8 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 
     readonly Regex regexInteger = new(@"^[+-]?(\d+)$", RegexOptions.Compiled);
 	readonly Regex regexFloating = new(@"^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$", RegexOptions.Compiled);
+
+    public string Value => value;
 
 	protected internal override Audit.Status PerformAudit(ILogger? logger)
 	{

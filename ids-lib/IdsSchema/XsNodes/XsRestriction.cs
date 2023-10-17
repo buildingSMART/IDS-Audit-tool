@@ -31,6 +31,8 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
     private string BaseAsString { get; init; }
     internal BaseTypes Base { get; init; }
 
+    public string Value => string.Join(",", GetDicreteValues());
+
 	internal static readonly string[] RestrictionIdentificationArray = { "restriction" };
 
 	public XsRestriction(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
@@ -58,7 +60,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         };
 	}
 
-	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string listToMatchName, IfcSchema.IfcSchemaVersions schemaContext)
+	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
 		var ret = Audit.Status.Ok;
         matches =  Enumerable.Empty<string>();
@@ -77,7 +79,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
                 // this would let xs:annotation pass with no issues
                 continue;
             }
-            ret |= ismv.DoesMatch(candidateStrings, ignoreCase, logger, out var thisM, listToMatchName, schemaContext);
+            ret |= ismv.DoesMatch(candidateStrings, ignoreCase, logger, out var thisM, variableName, schemaContext);
             if (thisM.Any())
                 matches = matches.Union(thisM);   
         }

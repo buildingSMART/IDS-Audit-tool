@@ -3,19 +3,19 @@ using Xbim.Common.Metadata;
 
 namespace IdsLib.codegen;
 
-public class IfcSchema_MeasureNamesGenerator
+public class IfcSchema_DatatypeNamesGenerator
 {
     internal static string Execute()
     {
-        var measureNames = GetAllMeasureNames();
+        var datatypeNames = GetAllDatatypeNames();
 
-        var measureInfos = new Dictionary<string, List<string>>();
+        var datatypeInfos = new Dictionary<string, List<string>>();
         var attNames = new Dictionary<string, List<string>>();
         foreach (var schema in Program.schemas)
         {
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
             var metaD = ExpressMetaData.GetMetadata(module);
-            foreach (var daMeasure in measureNames)
+            foreach (var daMeasure in datatypeNames)
             {
                 // measure class names
                 try
@@ -23,13 +23,13 @@ public class IfcSchema_MeasureNamesGenerator
                     var t = metaD.ExpressType(daMeasure.ToUpperInvariant());
                     if (t is null)
                         continue;
-                    if (measureInfos.TryGetValue(daMeasure, out var lst))
+                    if (datatypeInfos.TryGetValue(daMeasure, out var lst))
                     {
                         lst.Add(schema);
                     }
                     else
                     {
-                        measureInfos.Add(daMeasure, new List<string>() { schema });
+                        datatypeInfos.Add(daMeasure, new List<string>() { schema });
                     }
                 }
                 catch 
@@ -40,9 +40,9 @@ public class IfcSchema_MeasureNamesGenerator
         }
         var source = stub;
         var sbMeasures = new StringBuilder();
-        foreach (var clNm in measureInfos.Keys.OrderBy(x => x))
+        foreach (var clNm in datatypeInfos.Keys.OrderBy(x => x))
         {
-            var schemes = measureInfos[clNm];
+            var schemes = datatypeInfos[clNm];
             sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
         }
         source = source.Replace($"<PlaceHolderMeasures>\r\n", sbMeasures.ToString());
@@ -50,11 +50,93 @@ public class IfcSchema_MeasureNamesGenerator
         return source;
     }
 
-    private static IEnumerable<string> GetAllMeasureNames()
+    private static IEnumerable<string> GetAllDatatypeNames()
     {
-        return GetDocumentationMeasureNames().
-            Concat(GetExtraMeasureNames());
+        return GetDocumentationMeasureNames()
+            .Concat(GetExtraMeasureNames())
+            .Concat(GetPropsDatatypes())
+            .Distinct();
     }
+
+	// this list is taken from the properties. 
+	// a debug statement in IfcSchema_PropertiesGenerator can help updating it.
+	private static IEnumerable<string> GetPropsDatatypes()
+    {
+		yield return "IfcText";
+		yield return "IfcLabel";
+		yield return "IfcCountMeasure";
+		yield return "IfcBoolean";
+		yield return "IfcPowerMeasure";
+		yield return "IfcVolumetricFlowRateMeasure";
+		yield return "IfcPressureMeasure";
+		yield return "IfcForceMeasure";
+		yield return "IfcLengthMeasure";
+		yield return "IfcPlaneAngleMeasure";
+		yield return "IfcTorqueMeasure";
+		yield return "IfcPositiveRatioMeasure";
+		yield return "IfcThermodynamicTemperatureMeasure";
+		yield return "IfcPositiveLengthMeasure";
+		yield return "IfcMassMeasure";
+		yield return "IfcReal";
+		yield return "IfcAreaMeasure";
+		yield return "IfcInteger";
+		yield return "IfcIdentifier";
+		yield return "IfcVolumeMeasure";
+		yield return "IfcLogical";
+		yield return "IfcRotationalFrequencyMeasure";
+		yield return "IfcTimeMeasure";
+		yield return "IfcThermalTransmittanceMeasure";
+		yield return "IfcNormalisedRatioMeasure";
+		yield return "IfcLinearVelocityMeasure";
+		yield return "IfcMassPerLengthMeasure";
+		yield return "IfcElectricVoltageMeasure";
+		yield return "IfcElectricResistanceMeasure";
+		yield return "IfcElectricCurrentMeasure";
+		yield return "IfcPositivePlaneAngleMeasure";
+		yield return "IfcMassFlowRateMeasure";
+		yield return "IfcLuminousFluxMeasure";
+		yield return "IfcIlluminanceMeasure";
+		yield return "IfcSoundPressureMeasure";
+		yield return "IfcHeatFluxDensityMeasure";
+		yield return "IfcRatioMeasure";
+		yield return "IfcFrequencyMeasure";
+		yield return "IfcThermalResistanceMeasure";
+		yield return "IfcThermalConductivityMeasure";
+		yield return "IfcPlanarForceMeasure";
+		yield return "IfcAreaDensityMeasure";
+		yield return "IfcMassDensityMeasure";
+		yield return "IfcDate";
+		yield return "IfcEnergyMeasure";
+		yield return "IfcSpecificHeatCapacityMeasure";
+		yield return "IfcMolecularWeightMeasure";
+		yield return "IfcHeatingValueMeasure";
+		yield return "IfcIsothermalMoistureCapacityMeasure";
+		yield return "IfcMoistureDiffusivityMeasure";
+		yield return "IfcVaporPermeabilityMeasure";
+		yield return "IfcDynamicViscosityMeasure";
+		yield return "IfcModulusOfElasticityMeasure";
+		yield return "IfcThermalExpansionCoefficientMeasure";
+		yield return "IfcIonConcentrationMeasure";
+		yield return "IfcPHMeasure";
+		yield return "IfcDateTime";
+		yield return "IfcNonNegativeLengthMeasure";
+		yield return "IfcSectionModulusMeasure";
+		yield return "IfcMomentOfInertiaMeasure";
+		yield return "IfcWarpingConstantMeasure";
+		yield return "IfcDuration";
+		yield return "IfcTemperatureRateOfChangeMeasure";
+		yield return "IfcComplexNumber";
+		yield return "IfcTime";
+		yield return "IfcURIReference";
+		yield return "IfcAccelerationMeasure";
+		yield return "IfcNumericMeasure";
+		yield return "IfcSoundPowerLevelMeasure";
+		yield return "IfcIntegerCountRateMeasure";
+		yield return "IfcElectricChargeMeasure";
+		yield return "IfcElectricCapacitanceMeasure";
+		yield return "IfcInductanceMeasure";
+		yield return "IfcAngularVelocityMeasure";
+	}
 
     private static IEnumerable<string> GetExtraMeasureNames()
     {
@@ -91,6 +173,9 @@ public class IfcSchema_MeasureNamesGenerator
 
 		// extra measure
 		yield return "IfcThermalTransmittanceMeasure";
+
+
+
     }
 
     private static IEnumerable<string> GetDocumentationMeasureNames()

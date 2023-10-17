@@ -48,7 +48,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 			var validAttributeNames = SchemaInfo.AllAttributes
 			.Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
 			.Select(y => y.IfcAttributeName);
-			ret |= sm.DoesMatch(validAttributeNames, false, logger, out var matches, "attribute names", schema.Version);
+			ret |= sm.DoesMatch(validAttributeNames, false, logger, out var matches, "attribute name", schema.Version);
 			if (ret != Audit.Status.Ok)
 				return SetInvalid();
 			// if we have valid attributes we can restrict the valid types depending on them

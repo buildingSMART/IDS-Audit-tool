@@ -16,11 +16,15 @@ namespace IdsLib.IfcSchema
         {
             get
             {
+               yield return new IfcMeasureInformation("IfcAccelerationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcAmountOfSubstanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcAngularVelocityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcAreaDensityMeasure", new[] { "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcAreaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcBinary", new[] { "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcBoolean", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcComplexNumber", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcCountMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcDate", new[] { "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcDateTime", new[] { "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcDescriptiveMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
@@ -43,7 +47,9 @@ namespace IdsLib.IfcSchema
                yield return new IfcMeasureInformation("IfcHeatingValueMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcIdentifier", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcIlluminanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcInductanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcInteger", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcIntegerCountRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcIonConcentrationMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcIsothermalMoistureCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcLabel", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
@@ -60,10 +66,16 @@ namespace IdsLib.IfcSchema
                yield return new IfcMeasureInformation("IfcMoistureDiffusivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcMolecularWeightMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcMomentOfInertiaMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcNonNegativeLengthMeasure", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcNormalisedRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcNumericMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPHMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPlanarForceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPositiveInteger", new[] { "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPositiveLengthMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPositivePlaneAngleMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcPositiveRatioMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPresentableText", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
@@ -72,6 +84,7 @@ namespace IdsLib.IfcSchema
                yield return new IfcMeasureInformation("IfcReal", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcRotationalFrequencyMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcSectionModulusMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcSoundPowerLevelMeasure", new[] { "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcSoundPowerMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcSoundPressureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcSpecificHeatCapacityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
@@ -82,6 +95,8 @@ namespace IdsLib.IfcSchema
                yield return new IfcMeasureInformation("IfcTextFontName", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcTextTransformation", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcThermalConductivityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcThermalExpansionCoefficientMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcThermalResistanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcThermalTransmittanceMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcThermodynamicTemperatureMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcTime", new[] { "Ifc4", "Ifc4x3" });
@@ -92,6 +107,7 @@ namespace IdsLib.IfcSchema
                yield return new IfcMeasureInformation("IfcVaporPermeabilityMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcVolumeMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcVolumetricFlowRateMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
+               yield return new IfcMeasureInformation("IfcWarpingConstantMeasure", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" });
                yield return new IfcMeasureInformation("IfcWellKnownTextLiteral", new[] { "Ifc4x3" });
             }
         }

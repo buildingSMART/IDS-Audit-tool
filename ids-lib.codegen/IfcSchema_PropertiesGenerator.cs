@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using Xbim.Properties;
 
 namespace IdsLib.codegen;
@@ -13,6 +14,7 @@ public class IfcSchema_PropertiesGenerator
     {
         var source = stub;
         var schemas = new[] { Xbim.Properties.Version.IFC2x3, Xbim.Properties.Version.IFC4, Xbim.Properties.Version.IFC4x3 };
+        List<string> propTypes = new List<string>();
 
         foreach (var schema in schemas)
         {
@@ -33,7 +35,8 @@ public class IfcSchema_PropertiesGenerator
                     if (prop.PropertyType.PropertyValueType is TypePropertySingleValue singleV)
                     {
                         var t = $"new SingleValuePropertyType(\"{prop.Name}\", \"{singleV.DataType.Type}\"){def}";
-                        richProp.Add(t);
+                        propTypes.Add(singleV.DataType.Type.ToString());
+						richProp.Add(t);
                     }
                     else if (prop.PropertyType.PropertyValueType is TypePropertyBoundedValue range)
                     {
@@ -98,6 +101,10 @@ public class IfcSchema_PropertiesGenerator
             source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
         }
         // context.AddSource("generated2.cs", source);
+        foreach (var item in propTypes.Distinct())
+        {
+            Debug.WriteLine($"""yield return "{item}"; """);
+        }
 
         source = source.Replace($"<PlaceHolderVersion>\r\n", VersionHelper.GetFileVersion(typeof(Definitions<>)));
         return source;

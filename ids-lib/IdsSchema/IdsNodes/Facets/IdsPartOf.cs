@@ -2,7 +2,6 @@
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,14 +43,7 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
             return retStatus;
         var ret = Audit.Status.Ok;
         var requiredSchemaVersions = spec.SchemaVersions;
-        if (string.IsNullOrEmpty(relationValue))
-        {
-            ret |= IdsErrorMessages.Report106InvalidEmtpyValue(logger, this, relationXmlAttributeName);
-            return ret;
-        }
-
         // relation child is always a valid string matcher
-        var relMatcher = new StringListMatcher(relationValue, this);
        
 
         // if the facet is not required we don't check if it makes sense semantically
@@ -65,47 +57,51 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         foreach (var schema in schemas)
         {
-			var possibleRelationNames = schema.AllPartOfRelations.Select(y => y.RelationIfcName);
-			// this triggers a log error if there's anything but a single match
-			ret |= relMatcher.HasSingleMatch(possibleRelationNames, false, logger, out var matchedRelationName, "relation names", requiredSchemaVersions);
-
-			// if we have a match then there are other constraints we can evaluate on the
-			// types of both sides of the relation
-			//
-			if (matchedRelationName is null)
-				return SetInvalid();
-			var relationInfo = schema.AllPartOfRelations.FirstOrDefault(x => x.RelationIfcName == matchedRelationName);
-			if (relationInfo is null)
+			if (!string.IsNullOrEmpty(relationValue))
 			{
-				ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
-				return SetInvalid(ret);
+				var relMatcher = new StringListMatcher(relationValue, this);
+				var possibleRelationNames = schema.AllPartOfRelations.Select(y => y.RelationIfcName);
+				// this triggers a log error if there's anything but a single match
+				ret |= relMatcher.HasSingleMatch(possibleRelationNames, false, logger, out var matchedRelationName, "relation name", schema.Version);
+
+				// if we have a match then there are other constraints we can evaluate on the
+				// types of both sides of the relation
+				//
+				if (matchedRelationName is null)
+					return SetInvalid();
+				var relationInfo = schema.AllPartOfRelations.FirstOrDefault(x => x.RelationIfcName == matchedRelationName);
+				if (relationInfo is null)
+				{
+					ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
+					return SetInvalid(ret);
+				}
+
+				// Entities of the partOf need to be of type of relationInfo.PartIfcType
+				// 
+				var filter = new IfcInheritanceTypeConstraint(relationInfo.PartIfcType, schema.Version);
+				if (IfcTypeConstraint.IsNotNullAndEmpty(filter))
+				{
+					ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.PartIfcType}", this);
+					return SetInvalid(ret);
+				}
+				typeFilters.Add(schema, filter);
+
+				// The entity needs to be of type of relationInfo.OwnerIfcType
+				//
+				if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
+				{
+					ret |= IdsErrorMessages.Report106InvalidEmtpyValue(logger, this, "entity");
+					return SetInvalid(ret);
+				}
+
+				var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OwnerIfcType, schema.Version);
+				var possible = validChildEntityType.Intersect(childEntity.GetTypesFilter(schema));
+				if (possible.IsEmpty)
+				{
+					ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schema, "relation not compatible with provided child entity");
+					return SetInvalid(ret);
+				}
 			}
-
-			// Entities of the partOf need to be of type of relationInfo.ManySideIfcType
-			// 
-			var filter = new IfcInheritanceTypeConstraint(relationInfo.PartIfcType, schema.Version);
-            if (IfcTypeConstraint.IsNotNullAndEmpty(filter))
-            {
-                ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.PartIfcType}", this);
-                return SetInvalid(ret);
-            }
-            typeFilters.Add(schema, filter);
-
-            // The entity needs to be of type of relationInfo.OneSideIfcType
-            //
-            if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
-            {
-                ret |= IdsErrorMessages.Report106InvalidEmtpyValue(logger, this, "entity");
-                return SetInvalid(ret);
-            }
-
-            var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OwnerIfcType, schema.Version);
-            var possible = validChildEntityType.Intersect(childEntity.GetTypesFilter(schema));
-            if (possible.IsEmpty)
-            {
-                ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schema, "relation not compatible with provided child entity");
-                return SetInvalid(ret);
-            }
         }
 		IsValid = true;
 		return ret;

@@ -30,27 +30,26 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report103InvalidListMatcher(IdsXmlNode xmlContext, string value, ILogger? logger, string nameOflistToMatch, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
+	internal static Audit.Status Report103InvalidListMatcher(IdsXmlNode xmlContext, string value, ILogger? logger, string variableName, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
 	{
 		if (!candidateStrings.Any())
-			logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (no valid values exist) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, schemaContext, xmlContext.GetNodeIdentification());
+			logger?.LogError("Error {errorCode}: Invalid {variableName} `{value}` (no valid values exist) in the context of {schemaContext} on {location}.", 103, variableName, value, schemaContext, xmlContext.GetNodeIdentification());
 		else
 		{
 			var count = candidateStrings.Count();
 			if (count == 1)
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, candidateStrings.First(), schemaContext, xmlContext.GetNodeIdentification());
+				logger?.LogError("Error {errorCode}: Invalid {variableName} `{value}` (the only accepted value is `{acceptedValue}`) in the context of {schemaContext} on {location}.", 103, variableName, value, candidateStrings.First(), schemaContext, xmlContext.GetNodeIdentification());
 			else if (count < 6)
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` (accepted values are {acceptedValues}) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, string.Join(",", candidateStrings), schemaContext, xmlContext.GetNodeIdentification());
+				logger?.LogError("Error {errorCode}: Invalid {variableName} `{value}` (accepted values are {acceptedValues}) in the context of {schemaContext} on {location}.", 103, variableName, value, string.Join(",", candidateStrings), schemaContext, xmlContext.GetNodeIdentification());
 			else
-				logger?.LogError("Error {errorCode}: Invalid value `{value}` to match `{nameOflistToMatch}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} on {location}.", 103, value, nameOflistToMatch, count, candidateStrings.Take(5), schemaContext, xmlContext.GetNodeIdentification());
+				logger?.LogError("Error {errorCode}: Invalid {variableName} `{value}` ({acceptedValuesCount} accepted values exist, starting with {acceptedValues}...) in the context of {schemaContext} on {location}.", 103, variableName, value, count, candidateStrings.Take(5), schemaContext, xmlContext.GetNodeIdentification());
 		}
 		return Audit.Status.IdsContentError;
 	}
 
-
-	internal static Audit.Status Report104InvalidListMatcherCount(IdsXmlNode xmlContext, string value, ILogger? logger, string listToMatchName, int numberOfMatches, IfcSchema.IfcSchemaVersions schemaContext)
+	internal static Audit.Status Report104InvalidListMatcherCount(IdsXmlNode xmlContext, string value, ILogger? logger, string variableName, int numberOfMatches, IfcSchema.IfcSchemaVersions schemaContext)
 	{
-		logger?.LogError("Error {errorCode}: Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} on {location}.", 104, numberOfMatches, value, xmlContext.type, listToMatchName, schemaContext, xmlContext.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid number of matches ({count}) for `{val}` in {tp} to match `{expected}` in the context of {schemaContext} on {location}.", 104, numberOfMatches, value, xmlContext.type, variableName, schemaContext, xmlContext.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
@@ -147,10 +146,10 @@ internal static class IdsErrorMessages
 		logger?.Log(level, "Error {errorCode}: Schema compliance warning on {location}; {message}", 307, location, message);
 	}
 
-	internal static Audit.Status Report401ReservedStringMatched(ILogger? logger, IdsXmlNode context, string keyword, string field)
+	internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)
 	{
-		logger?.LogError("Error {errorCode}: Reserved keyword '{part}' for {field} on {location}.", 401, keyword, field, context.GetNodeIdentification());
-		return Audit.Status.IdsContentError;
+		logger?.LogError("Error {errorCode}: Reserved prefix '{prefix}' for {field} ({matcherValue}) in the context of {schema} on {location}.", 401, prefix, field, value, schema.Version, context.GetNodeIdentification());        
+        return Audit.Status.IdsContentError;
 	}
 
 	internal static Audit.Status Report501UnexpectedScenario(ILogger? logger, string scenarioMessage, IdsXmlNode context)

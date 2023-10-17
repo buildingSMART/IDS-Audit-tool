@@ -17,7 +17,7 @@ internal class Program
             @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(
-            IfcSchema_MeasureNamesGenerator.Execute(),
+            IfcSchema_DatatypeNamesGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(

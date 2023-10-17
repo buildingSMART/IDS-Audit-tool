@@ -93,7 +93,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 {
                     // see if there's a match with standard property sets
                     var validPropNames = SchemaInfo.SharedPropertyNames(schema.Version, possiblePsetNames);
-                    var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, "property names", schema.Version);
+                    var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, "property name", schema.Version);
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
 
@@ -111,7 +111,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 else if (psetMatcher is IStringPrefixMatcher ssm && ssm.MatchesPrefix("Pset_"))
                 {
                     IsValid = false;
-                    return IdsErrorMessages.Report401ReservedStringMatched(logger, this, "prefix 'Pset_'", "property set name");
+                    return IdsErrorMessages.Report401ReservedPrefix(logger, this, "Pset_", "property set name", schema, ssm.Value);
                 }
                 else
                 {

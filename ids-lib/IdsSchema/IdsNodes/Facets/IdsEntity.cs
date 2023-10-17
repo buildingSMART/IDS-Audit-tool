@@ -53,7 +53,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         {
             var ValidClassNames = schema
                 .Select(y => y.Name.ToUpperInvariant());
-			ret |= sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity names", schema.Version);
+			ret |= sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity name", schema.Version);
             if (ret != Audit.Status.Ok)
                 return SetInvalid();
             typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
@@ -89,7 +89,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                 return ret;
             else
                 // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
-                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedTypes", schema.Version);
+                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedType", schema.Version);
         }
         return ret;
     }

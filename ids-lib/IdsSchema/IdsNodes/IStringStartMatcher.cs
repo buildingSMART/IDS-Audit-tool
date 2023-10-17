@@ -10,5 +10,7 @@ namespace IdsLib.IdsSchema.IdsNodes
     {
         // the case of xs:restriction is not easy to test for regexes
         bool MatchesPrefix(string prefixString);
+        // the string value for error feedback
+        string Value { get; }
     }
 }
