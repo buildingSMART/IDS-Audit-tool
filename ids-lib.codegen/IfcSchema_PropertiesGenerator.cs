@@ -14,7 +14,7 @@ public class IfcSchema_PropertiesGenerator
     {
         var source = stub;
         var schemas = new[] { Xbim.Properties.Version.IFC2x3, Xbim.Properties.Version.IFC4, Xbim.Properties.Version.IFC4x3 };
-        List<string> propTypes = new List<string>();
+        List<string> propTypes = new();
 
         foreach (var schema in schemas)
         {
@@ -35,7 +35,7 @@ public class IfcSchema_PropertiesGenerator
                     if (prop.PropertyType.PropertyValueType is TypePropertySingleValue singleV)
                     {
                         var t = $"new SingleValuePropertyType(\"{prop.Name}\", \"{singleV.DataType.Type}\"){def}";
-                        propTypes.Add(singleV.DataType.Type.ToString());
+                        propTypes.Add(singleV.DataType.Type.ToString()!);
 						richProp.Add(t);
                     }
                     else if (prop.PropertyType.PropertyValueType is TypePropertyBoundedValue range)

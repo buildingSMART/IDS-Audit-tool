@@ -25,7 +25,7 @@ namespace idsTool.tests
 		// This class checks if there are any classes that have a closed list (i.e. lacking USERDEFINED).
 		public void CheckAnyBoundedPredefinedTypesFails()
 		{
-			StringBuilder sb = new StringBuilder();
+			var sb = new StringBuilder();
 			var schemas = new SchemaInfo[] { SchemaInfo.SchemaIfc2x3, SchemaInfo.SchemaIfc4, SchemaInfo.SchemaIfc4x3 };
 			var SomeLackingUserDefinedInPredefined = false;
 			foreach (var schema in schemas)

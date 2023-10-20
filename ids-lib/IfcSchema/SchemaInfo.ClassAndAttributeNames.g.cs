@@ -9,10 +9,17 @@ namespace IdsLib.IfcSchema
 {
     public partial class SchemaInfo
     {
-        /// <summary>
-        /// The names of classes across all schemas.
-        /// </summary>
-        public static IEnumerable<IfcClassInformation> AllClasses
+		/// <summary>
+		/// This is obsolete since the name was misleading, use <see cref="AllConcreteClasses"/> instead.
+		/// </summary>
+		[Obsolete("Use AllConcreteClasses instead.")]
+		public static IEnumerable<IfcClassInformation> AllClasses => AllConcreteClasses;
+        
+
+		/// <summary>
+		/// The names of all concrete classes across known IFC schemas.
+		/// </summary>
+		public static IEnumerable<IfcClassInformation> AllConcreteClasses
         {
             get
             {

@@ -35,9 +35,11 @@ namespace idsTool.tests
 			var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
 			Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
-            Opts o = new Opts();
-            o.Schemas.Add(repoSchema.FullName);
-            o.InputSource = repoSchema.Directory!.FullName;
+			var o = new Opts
+			{
+				InputSource = repoSchema.Directory!.FullName
+			};
+			o.Schemas.Add(repoSchema.FullName);
 
             var ret = Audit.Run(o, LoggerAndAuditHelpers.GetXunitLogger(XunitOutputHelper));
 			ret.Should().Be(Audit.Status.Ok);

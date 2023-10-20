@@ -24,10 +24,12 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetAttributeRelations](SchemaInfo/GetAttributeRelations.md)(…) | Provides information of classes that have an attribute and the form of the relation to it. See  for similar function with different return type. |
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. |
-| static [AllClasses](SchemaInfo/AllClasses.md) { get; } | The names of classes across all schemas. |
+| static [AllConcreteClasses](SchemaInfo/AllConcreteClasses.md) { get; } | The names of all concrete classes across known IFC schemas. |
 | static [AllMeasures](SchemaInfo/AllMeasures.md) { get; } | The names of classes across all schemas. |
+| static [GetConcreteClassesFrom](SchemaInfo/GetConcreteClassesFrom.md)(…) | Returns a list of the concrete class names that implement a given top class. When multiple schema flags are passed the list is the non-repeating union of the values of each schema |
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
 | static [TryParseIfcMeasure](SchemaInfo/TryParseIfcMeasure.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |
+| static [TrySearchTopClass](SchemaInfo/TrySearchTopClass.md)(…) | Attempts to identify a single top class inheritance from a list of class names |
 | enum [ClassAttributeMode](SchemaInfo.ClassAttributeMode.md) | Relation that allows to connect an available attribute to an entity |
 | struct [ClassRelationInfo](SchemaInfo.ClassRelationInfo.md) | A structure contianing information about the ways in which an attribute is related to a class |
 

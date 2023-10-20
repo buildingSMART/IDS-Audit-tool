@@ -8,26 +8,74 @@ namespace idsTool.tests;
 public class IfcSchemaTests
 {
     [Fact]
-    public void CanGetConcreteClasses()
+    public void CanGetAConcreteClass()
     {
-        var root = SchemaInfo.AllClasses.FirstOrDefault(x => x.PascalCaseName == "IfcWall");
-        root.Should().NotBeNull();
-        root!.ValidSchemaVersions.Should().NotBe(IfcSchemaVersions.IfcNoVersion);
-        root.ValidSchemaVersions.Should().Be(IfcSchemaVersions.IfcAllVersions);
-    }
+        var wall = SchemaInfo.AllConcreteClasses.FirstOrDefault(x => x.PascalCaseName == "IfcWall");
+        wall.Should().NotBeNull();
+        wall!.ValidSchemaVersions.Should().NotBe(IfcSchemaVersions.IfcNoVersion);
+        wall.ValidSchemaVersions.Should().Be(IfcSchemaVersions.IfcAllVersions);
 
-    [Theory]
+		var element = SchemaInfo.AllConcreteClasses.FirstOrDefault(x => x.PascalCaseName == "IfcElement");
+		element.Should().BeNull();
+	}
+
+	[Fact]
+	public void CanGetConcreteSubclasses()
+	{
+        // try the first set
+		var elements = SchemaInfo.GetConcreteClassesFrom("IfcElement", IfcSchemaVersions.IfcAllVersions).Select(x=>x.ToUpperInvariant());
+        elements.Should().NotBeNull();
+        var cnt = elements.Count();
+        var dist = elements.Distinct();
+        dist.Count().Should().Be(cnt);
+
+        // try the reverse
+        bool found = SchemaInfo.TrySearchTopClass(elements, IfcSchemaVersions.IfcAllVersions, out var topClass);
+        found.Should().BeTrue();
+        topClass.Should().NotBeNull();
+        topClass.Should().Be("IfcElement");
+
+        // now with a single schema
+		elements = SchemaInfo.GetConcreteClassesFrom("IfcBuildingElement", IfcSchemaVersions.Ifc2x3).Select(x => x.ToUpperInvariant());
+		elements.Count().Should().BeLessThan(cnt);
+		// let's try the reverse
+		found = SchemaInfo.TrySearchTopClass(elements, IfcSchemaVersions.Ifc2x3, out topClass);
+		found.Should().BeTrue();
+		topClass.Should().NotBeNull();
+		topClass.Should().Be("IfcBuildingElement");
+
+		
+	}
+
+	[Theory]
     [InlineData("IFCOBJECTDEFINITION", 194,366)]
     [InlineData("IFCWALL",2, 3)]
+    [InlineData("IFCNOTEXISTING",-1, -1)]
     public void GetSubClasses(string className, int minChildrenCount, int maxChildrenCount)
     {
         var schemas = SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions);
         foreach (var schema in schemas)
         {
             var od = schema[className];
-            od.Should().NotBeNull();
-            od!.MatchingConcreteClasses.Count().Should().BeInRange(minChildrenCount, maxChildrenCount);
+            if (minChildrenCount == -1 || maxChildrenCount == -1)
+            {
+                od.Should().BeNull();
+            }
+            else
+            {
+                od.Should().NotBeNull();
+                od!.MatchingConcreteClasses.Count().Should().BeInRange(minChildrenCount, maxChildrenCount);
+            }
         }
+    }
+
+    [Fact]
+    public void CanIdentifySingleSchemas() 
+    {
+		IfcSchemaVersions.IfcAllVersions.IsSingleSchema().Should().BeFalse();
+		IfcSchemaVersions.IfcNoVersion.IsSingleSchema().Should().BeFalse();
+        IfcSchemaVersions.Ifc2x3.IsSingleSchema().Should().BeTrue();
+        IfcSchemaVersions.Ifc4x3.IsSingleSchema().Should().BeTrue();
     }
 
     [Fact]

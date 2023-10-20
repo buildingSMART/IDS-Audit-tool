@@ -1,6 +1,6 @@
 # ClassInfo class
 
-Contains information on relevant standard properties of IFC classes
+Complext metedata container for properties of IFC classes
 
 ```csharp
 public class ClassInfo

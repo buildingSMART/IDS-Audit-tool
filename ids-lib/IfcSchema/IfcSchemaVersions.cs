@@ -38,30 +38,4 @@ public enum IfcSchemaVersions
     IfcAllVersions = (1 << 3) - 1
 }
 
-internal static class IfcSchema
-{
-    internal static IfcSchemaVersions GetSchema(IEnumerable<string> schemas)
-    {
-        IfcSchemaVersions ret = IfcSchemaVersions.IfcNoVersion;
-        foreach (var scheme in schemas)
-        {
-            IfcSchemaVersions v = scheme switch
-            {
-                "Ifc2x3" => IfcSchemaVersions.Ifc2x3,
-                "Ifc4" => IfcSchemaVersions.Ifc4,
-                "Ifc4x3" => IfcSchemaVersions.Ifc4x3,
-                _ => IfcSchemaVersions.IfcNoVersion,
-            };
-            if (v == IfcSchemaVersions.IfcNoVersion)
-                continue;
-            ret |= v;
-        }
-        return ret;
-    }
 
-    internal static bool TryGetSchemaInformation(this IfcSchemaVersions schemas, out IEnumerable<SchemaInfo> schemaInfo)
-    {
-		return SchemaInfo.TryGetSchemaInformation(schemas, out schemaInfo);
-	}
-
-}

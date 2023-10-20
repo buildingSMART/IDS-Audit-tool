@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
@@ -483,5 +484,164 @@ namespace IdsLib.IfcSchema
             }
             return ret;
         }
-    }
+
+        /// <summary>
+        /// Returns a list of the concrete class names that implement a given top class.
+        /// When multiple schema flags are passed the list is the non-repeating union of the values of each schema
+        /// </summary>
+        /// <returns>A non null enumerable that might be empty if the topClass is not found or no schema is provided</returns>
+        public static IEnumerable<string> GetConcreteClassesFrom(string topClass, IfcSchemaVersions schemaVersions)
+        {
+            if (schemaVersions.IsSingleSchema())
+            {
+				var schema = GetSchemas(IfcSchemaVersions.IfcAllVersions).First();
+                if (schema is null)
+                    return Enumerable.Empty<string>();
+                var top = schema[topClass];
+                if (top is null)
+                    return Enumerable.Empty<string>();
+				return top.MatchingConcreteClasses.Select(x=>x.Name);
+			}
+
+			var schemas = GetSchemas(IfcSchemaVersions.IfcAllVersions);
+            List<string> ret = new();
+			foreach (var schema in schemas)
+            {
+                var top = schema[topClass];
+                if (top is null)
+                    continue;
+                ret = ret.Union(top.MatchingConcreteClasses.Select(x => x.Name)).ToList();
+			}
+            return ret;
+        }
+
+        /// <summary>
+        /// the inner dictionary maps a type built as [TYPE]_[COUNT] to the topClass
+        /// </summary>
+        readonly private static Dictionary<IfcSchemaVersions, Dictionary<string, string>> inheritanceListCache = new();
+
+
+        /// <summary>
+        /// Attempts to identify a single top class inheritance from a list of class names
+        /// </summary>
+        /// <param name="concreteClassNames">the enumeration of class names must be uppercase</param>
+        /// <param name="schemas">the schemas in which the concrete classes are found</param>
+        /// <param name="topClass">The resulting name of the schema (PascalCase)</param>
+        /// <returns>true if a single top class can be found, false otherwise</returns>
+		public static bool TrySearchTopClass(IEnumerable<string> concreteClassNames, IfcSchemaVersions schemas, [NotNullWhen(true)] out string? topClass)
+		{
+            var sorted = concreteClassNames.OrderBy(x => x).ToList();
+            if (sorted.Count == 0)
+            {
+                topClass = null;
+                return false;
+            }
+			if (sorted.Count == 1)
+			{
+                var first = sorted.First();
+				topClass = GetAllClassesFor(schemas).Where(x=>x.ToUpperInvariant() == first).FirstOrDefault();
+				return topClass is not null;
+			}
+
+            if (!inheritanceListCache.TryGetValue(schemas, out var dic))
+            {
+				Dictionary<string, List<string>> tempHashes = new();
+				foreach (var className in GetAllClassesFor(schemas))
+				{
+					var t = GetConcreteClassesFrom(className, schemas).OrderBy(x => x).ToList();
+					var hash = $"{t.First().ToUpper()}_{t.Count}";
+					if (tempHashes.TryGetValue(hash, out var list))
+					{
+						list.Add(className);
+					}
+					else
+					{
+						tempHashes.Add(hash, new List<string>() { className });
+					}
+					// Debug.WriteLine($"{className}\t{t.First()}\t{t.Count}");
+				}
+
+				// now prepare the cahced dictionary
+				dic = new Dictionary<string, string>();
+				foreach (var pair in tempHashes)
+                {
+                    // skip the single ones
+                    if (pair.Key.EndsWith("_1"))
+                        continue;
+                    if (pair.Value.Count > 1)
+                    {
+                        // there's more than one possible match, we have to establish which one is the closest to the list (i.e. drop the higher abstract class)
+                        if (TryGetMostSpecific(pair.Value, schemas, out var specific))
+                        {
+							dic.Add(pair.Key, specific);
+						}
+                        else
+                        {
+                            // here it's unresolved, e.g. the case of IfcBuildingElement that has been renamed to IfcBuiltElement
+                        }
+                    }
+                    else
+                    {
+                        // a single 
+                        dic.Add(pair.Key, pair.Value.First());
+                    }
+                }
+			}
+
+			// search a match
+			var seekHash = $"{sorted.First().ToUpper()}_{sorted.Count}";
+            if (dic.TryGetValue(seekHash, out var candidateClassName))
+            {
+				// now we have a candidate, but we need to make sure that all the items match
+				var schemaConcretes = GetConcreteClassesFrom(candidateClassName, schemas).OrderBy(x => x).Select(x=>x.ToUpperInvariant()).ToList();
+                if (schemaConcretes.SequenceEqual(sorted))
+                {
+                    topClass = candidateClassName;
+                    return true;
+                }
+			}
+           
+			topClass = null;
+            return false;
+		}
+
+
+        private static bool TryGetMostSpecific(IEnumerable<string> classNames, IfcSchemaVersions schemas, [NotNullWhen(true)] out string? specific)
+        {
+            var schemaInfos = GetSchemas(schemas);
+            List<string> parentNames = new();
+            foreach (var schema in schemaInfos)
+            {
+                foreach (var className in classNames)
+                {
+                    var c = schema[className];
+                    if (c == null)
+                        continue;
+                    var parentName = c.ParentName;
+                    if (string.IsNullOrEmpty(parentName))
+                        continue;
+                    parentNames.Add(parentName);
+                }
+            }
+            var left = classNames.Except(parentNames).ToList();
+            if (left.Count == 1)
+            {
+                specific = left.First();
+                return true;
+            }
+            specific = null;
+            return false;
+		}
+
+		private static IEnumerable<string> GetAllClassesFor(IfcSchemaVersions versions)
+		{
+			var schemaInfos = GetSchemas(versions);
+			var allSchemaClassNames = new List<string>();
+			foreach (var schema in schemaInfos)
+			{
+                allSchemaClassNames = allSchemaClassNames.Union(schema.Select(x => x.Name)).ToList();
+			}
+            return allSchemaClassNames;
+		}
+	}
 }

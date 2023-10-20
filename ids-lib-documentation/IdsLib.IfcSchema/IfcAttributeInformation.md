@@ -11,7 +11,7 @@ public class IfcAttributeInformation
 | name | description |
 | --- | --- |
 | [IfcAttributeInformation](IfcAttributeInformation/IfcAttributeInformation.md)(…) | Default constructor, ensures static nullable analysis |
-| [IfcAttributeName](IfcAttributeInformation/IfcAttributeName.md) { get; } | relationXmlAttributeName of the attribute as a string |
+| [IfcAttributeName](IfcAttributeInformation/IfcAttributeName.md) { get; } | Name of the attribute as a string |
 | [ValidSchemaVersions](IfcAttributeInformation/ValidSchemaVersions.md) { get; } | Schemas in which the attribute can be found. |
 
 ## See Also

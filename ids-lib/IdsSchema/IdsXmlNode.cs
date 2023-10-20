@@ -40,17 +40,14 @@ internal class IdsXmlNode
 
     internal string GetPositionalIdentifier()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
         GetPositionalIdentifier(sb);
         return sb.ToString();
     }
 
 	internal void GetPositionalIdentifier(StringBuilder sb)
 	{
-		if (Parent != null)
-		{
-			Parent.GetPositionalIdentifier(sb);
-		}
+		Parent?.GetPositionalIdentifier(sb);
 		sb.Append($"/{type}{PositionalIndex}");
 	}
 

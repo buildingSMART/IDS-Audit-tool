@@ -65,7 +65,7 @@ namespace idsTool.tests
 				OmitIdsContentAudit = false,
 				SchemaProvider = new FixedVersionSchemaProvider(IdsVersion.Ids0_9)
 			};
-			FileInfo f = new FileInfo(file);
+			var f = new FileInfo(file);
 			using var stream = f.OpenRead();
 			var logger = new IdentificationLogger();
 			var res = Audit.Run(stream, s, logger);

@@ -63,12 +63,9 @@ internal class AuditHelper
     public void ValidationReporter(object? sender, ValidationEventArgs e)
     {
         int line = 0, pos = 0;
-        // preparing location
-        var location = "position unknown";
-        if (sender is IXmlLineInfo rdr)
+		if (sender is IXmlLineInfo rdr)
         {
-            location = $"line {rdr.LineNumber}, position {rdr.LinePosition}";
-            line = rdr.LineNumber;
+			line = rdr.LineNumber;
             pos = rdr.LinePosition;
         }
         // reporting issues

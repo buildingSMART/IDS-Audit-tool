@@ -140,19 +140,14 @@ namespace IdsLib.IfcSchema
 					relAssignPropertyClassesIfc4x3 = relAssignPropertyClassesIfc4x3.Union(new IfcInheritanceTypeConstraint("IFCMATERIALDEFINITION", IfcSchemaVersions.Ifc4x3));
 					relAssignPropertyClassesIfc4x3 = relAssignPropertyClassesIfc4x3.Union(new IfcInheritanceTypeConstraint("IFCPROFILEDEF", IfcSchemaVersions.Ifc4x3));
 				}
-				
-				switch (Version)
+
+				return Version switch
 				{
-					case IfcSchemaVersions.Ifc2x3:
-						return relAssignPropertyClassesIfc2x3;
-					case IfcSchemaVersions.Ifc4:
-						return relAssignPropertyClassesIfc4;
-					case IfcSchemaVersions.Ifc4x3:
-						return relAssignPropertyClassesIfc4x3;
-                    default:
-                        return null;
-				}
-                
+					IfcSchemaVersions.Ifc2x3 => relAssignPropertyClassesIfc2x3,
+					IfcSchemaVersions.Ifc4 => relAssignPropertyClassesIfc4,
+					IfcSchemaVersions.Ifc4x3 => relAssignPropertyClassesIfc4x3,
+					_ => null,
+				};
 			}
         }
 

@@ -1,6 +1,6 @@
 # IfcAttributeInformation.IfcAttributeName property
 
-relationXmlAttributeName of the attribute as a string
+Name of the attribute as a string
 
 ```csharp
 public string IfcAttributeName { get; }

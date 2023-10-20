@@ -317,11 +317,11 @@ public static partial class Audit
 		}
 		catch (XmlException ex_xml)
         {
-            contentStatus = contentStatus | IdsToolMessages.Report502XmlSchemaException(logger, ex_xml);
+            contentStatus |= IdsToolMessages.Report502XmlSchemaException(logger, ex_xml);
 		}
 		catch (Exception ex)
 		{
-			contentStatus = contentStatus | IdsToolMessages.Report503Exception(logger, ex);
+			contentStatus |= IdsToolMessages.Report503Exception(logger, ex);
 		}
 		reader.Dispose();
         if (!auditSettings.Options.OmitIdsSchemaAudit)

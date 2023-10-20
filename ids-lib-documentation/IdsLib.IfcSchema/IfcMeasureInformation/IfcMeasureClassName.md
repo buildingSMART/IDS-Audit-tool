@@ -1,6 +1,6 @@
 # IfcMeasureInformation.IfcMeasureClassName property
 
-relationXmlAttributeName of the entity as a string, stored in PascalCase
+Name of the entity as a string, stored in PascalCase
 
 ```csharp
 public string IfcMeasureClassName { get; }

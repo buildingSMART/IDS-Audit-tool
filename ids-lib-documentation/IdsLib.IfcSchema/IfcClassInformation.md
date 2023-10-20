@@ -1,6 +1,6 @@
 # IfcClassInformation class
 
-Metadata container for entities of an IfcSchema
+Simplistic metadata container for entities of an IfcSchema
 
 ```csharp
 public class IfcClassInformation
@@ -11,8 +11,8 @@ public class IfcClassInformation
 | name | description |
 | --- | --- |
 | [IfcClassInformation](IfcClassInformation/IfcClassInformation.md)(…) | Default constructor, ensures static nullable analysis |
-| [PascalCaseName](IfcClassInformation/PascalCaseName.md) { get; } | relationXmlAttributeName of the attribute as a string, stored in PascalCase |
-| [UpperCaseName](IfcClassInformation/UpperCaseName.md) { get; } | relationXmlAttributeName of the attribute as a string, converted to UPPERCASE |
+| [PascalCaseName](IfcClassInformation/PascalCaseName.md) { get; } | Name of the class as a string, stored in PascalCase |
+| [UpperCaseName](IfcClassInformation/UpperCaseName.md) { get; } | Name of the class as a string, converted to UPPERCASE |
 | [ValidSchemaVersions](IfcClassInformation/ValidSchemaVersions.md) { get; } | Versions of the schema that contain the class |
 
 ## See Also

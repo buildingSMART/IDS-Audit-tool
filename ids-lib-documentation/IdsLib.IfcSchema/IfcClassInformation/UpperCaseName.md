@@ -1,6 +1,6 @@
 # IfcClassInformation.UpperCaseName property
 
-relationXmlAttributeName of the attribute as a string, converted to UPPERCASE
+Name of the class as a string, converted to UPPERCASE
 
 ```csharp
 public string UpperCaseName { get; }

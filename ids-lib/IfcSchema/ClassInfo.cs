@@ -47,7 +47,7 @@ namespace IdsLib.IfcSchema
     }
 
     /// <summary>
-    /// Contains information on relevant standard properties of IFC classes
+    /// Complext metedata container for properties of IFC classes
     /// </summary>
     [DebuggerDisplay("{Name}")]
     public partial class ClassInfo

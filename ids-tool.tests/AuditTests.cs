@@ -143,7 +143,7 @@ public class AuditTests : BuildingSmartRepoFiles
 		LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, status, numErr);
     }
 
-	private bool PathCaseSensitiveMatch(string path)
+	private static bool PathCaseSensitiveMatch(string path)
 	{
         var parts = path.Split('/', '\\');
         var d = new DirectoryInfo(".");

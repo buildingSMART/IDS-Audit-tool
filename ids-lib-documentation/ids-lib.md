@@ -24,15 +24,16 @@
 
 | public type | description |
 | --- | --- |
-| class [ClassInfo](./IdsLib.IfcSchema/ClassInfo.md) | Contains information on relevant standard properties of IFC classes |
+| class [ClassInfo](./IdsLib.IfcSchema/ClassInfo.md) | Complext metedata container for properties of IFC classes |
 | enum [ClassType](./IdsLib.IfcSchema/ClassType.md) | Information on the potential use of the class |
 | class [EnumerationPropertyType](./IdsLib.IfcSchema/EnumerationPropertyType.md) | Schema metadata for enumeration properties |
 | enum [FunctionalType](./IdsLib.IfcSchema/FunctionalType.md) | the IFC classes we present can be classified with regards to their potential role in the IfcRelDefinesByType relation. |
 | class [IfcAttributeInformation](./IdsLib.IfcSchema/IfcAttributeInformation.md) | Metadata container for attributes of entities in IfcSchema |
-| class [IfcClassInformation](./IdsLib.IfcSchema/IfcClassInformation.md) | Metadata container for entities of an IfcSchema |
+| class [IfcClassInformation](./IdsLib.IfcSchema/IfcClassInformation.md) | Simplistic metadata container for entities of an IfcSchema |
 | class [IfcMeasureInformation](./IdsLib.IfcSchema/IfcMeasureInformation.md) | Metadata container for entities containing measures of an IfcSchema |
 | class [IfcSchemaAttribute](./IdsLib.IfcSchema/IfcSchemaAttribute.md) | Metadata attribute to define if a value of [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) identifies a single version of the schema |
 | [Flags] enum [IfcSchemaVersions](./IdsLib.IfcSchema/IfcSchemaVersions.md) | Enumerations for the identification of multiple schema versions. |
+| static class [IfcSchemaVersionsExtensions](./IdsLib.IfcSchema/IfcSchemaVersionsExtensions.md) | Provides utility methods for the [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) enum. |
 | interface [IPropertyTypeInfo](./IdsLib.IfcSchema/IPropertyTypeInfo.md) | Generalised metadata on IFC properties |
 | static class [IPropertyTypeInfoExtensions](./IdsLib.IfcSchema/IPropertyTypeInfoExtensions.md) | Static class to contain extension method helpers for [`IPropertyTypeInfo`](./IdsLib.IfcSchema/IPropertyTypeInfo.md). |
 | class [NamedPropertyType](./IdsLib.IfcSchema/NamedPropertyType.md) | Schema metadata for properties with name |

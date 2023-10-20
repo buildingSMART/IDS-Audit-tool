@@ -6,18 +6,18 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsFacts
 {
-    internal static IdsVersion GetVersionFromLocation(string location, Microsoft.Extensions.Logging.ILogger? logger = null)
-    {
-        switch (location)
-        {
-            // the following are the only canonical versions accepted
-			case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd":
-				return IdsVersion.Ids0_9;
-			case "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd":
-                return IdsVersion.Ids1_0;
-            default:
-                return IdsVersion.Invalid;
-        };
+#pragma warning disable IDE0060 // Remove unused parameter
+	internal static IdsVersion GetVersionFromLocation(string location, ILogger? logger = null)
+#pragma warning restore IDE0060 // Remove unused parameter
+	{
+		return location switch
+		{
+			// the following are the only canonical versions accepted
+			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" => IdsVersion.Ids0_9,
+			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" => IdsVersion.Ids1_0,
+			_ => IdsVersion.Invalid,
+		};
+		;
     }
 }
 
