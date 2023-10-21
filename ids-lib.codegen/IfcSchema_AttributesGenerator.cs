@@ -13,11 +13,10 @@ class IfcSchema_AttributesGenerator
     {
         var source = stub;
         
-        foreach (var schema in Program.schemas)
+        foreach (var schemaString in Program.schemas)
         {
-            System.Reflection.Module module = SchemaHelper.GetModule(schema);
+            System.Reflection.Module module = SchemaHelper.GetModule(schemaString);
             var metaD = ExpressMetaData.GetMetadata(module);
-
             var sb = new StringBuilder();
 
             // trying to find a set of classes that matches the property types
@@ -40,7 +39,7 @@ class IfcSchema_AttributesGenerator
                     }
                 }
             }
-            Debug.WriteLine($"{schema}");
+            Debug.WriteLine($"{schemaString}");
             foreach (var pair in typesByAttribute)
             {
                 var attribute = $"\"{pair.Key}\"";
@@ -63,7 +62,7 @@ class IfcSchema_AttributesGenerator
 
                 sb.AppendLine(line);
             }
-            source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
+            source = source.Replace($"<PlaceHolder{schemaString}>\r\n", sb.ToString());
         }
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         return source;

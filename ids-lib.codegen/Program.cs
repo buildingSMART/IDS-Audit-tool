@@ -79,5 +79,5 @@ internal class Program
         Console.ForegroundColor = restore;
     }
 
-    static internal string[] schemas = new[] { "Ifc2x3", "Ifc4", "Ifc4x3" };
+    static internal string[] schemas { get; } = new[] { "Ifc2x3", "Ifc4", "Ifc4x3" };
 }

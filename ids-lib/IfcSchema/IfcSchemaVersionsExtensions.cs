@@ -34,7 +34,7 @@ public static class IfcSchemaVersionsExtensions
         IfcSchemaVersions ret = IfcSchemaVersions.IfcNoVersion;
         foreach (var scheme in schemaStrings)
         {
-            IfcSchemaVersions v = scheme switch
+            IfcSchemaVersions v = scheme.ToUpperInvariant() switch
             {
 				IfcSchema2x3String => IfcSchemaVersions.Ifc2x3,
 				IfcSchema4String => IfcSchemaVersions.Ifc4,
