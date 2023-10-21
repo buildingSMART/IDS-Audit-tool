@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using IdsLib.IfcSchema;
+using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace idsTool.tests;
@@ -15,15 +17,25 @@ public class IfcSchemaTests
         wall!.ValidSchemaVersions.Should().NotBe(IfcSchemaVersions.IfcNoVersion);
         wall.ValidSchemaVersions.Should().Be(IfcSchemaVersions.IfcAllVersions);
 
-		var element = SchemaInfo.AllConcreteClasses.FirstOrDefault(x => x.PascalCaseName == "IfcElement");
-		element.Should().BeNull();
+        var element = SchemaInfo.AllConcreteClasses.FirstOrDefault(x => x.PascalCaseName == "IfcElement");
+        element.Should().BeNull();
+    }
+
+	[Fact]
+	public void CanBuildConcreteSubtree()
+	{
+		// Unrelated classes should not match
+		var noMatch = new[] { "IFCWALL", "IFCSLAB" };
+		var found = SchemaInfo.TrySearchTopClass(noMatch, IfcSchemaVersions.Ifc4, out _);
+		found.Should().BeFalse();
 	}
+
 
 	[Fact]
 	public void CanGetConcreteSubclasses()
 	{
         // try the first set
-		var elements = SchemaInfo.GetConcreteClassesFrom("IfcElement", IfcSchemaVersions.IfcAllVersions).Select(x=>x.ToUpperInvariant());
+		var elements = SchemaInfo.GetConcreteClassesFrom("IfcElement", IfcSchemaVersions.IfcAllVersions).Select(x=>x.ToUpperInvariant()).ToList();
         elements.Should().NotBeNull();
         var cnt = elements.Count();
         var dist = elements.Distinct();
@@ -35,8 +47,25 @@ public class IfcSchemaTests
         topClass.Should().NotBeNull();
         topClass.Should().Be("IfcElement");
 
-        // now with a single schema
-		elements = SchemaInfo.GetConcreteClassesFrom("IfcBuildingElement", IfcSchemaVersions.Ifc2x3).Select(x => x.ToUpperInvariant());
+        // add some other unrelated class and it should not match
+        //
+        var noMatch = elements.Concat(new[] { "IFCACTOR" });
+		found = SchemaInfo.TrySearchTopClass(noMatch, IfcSchemaVersions.IfcAllVersions, out _);
+        found.Should().BeFalse();
+
+		// remove even one concrete and it should not match
+		//
+		noMatch = elements.Except(new[] { "IFCWALL" });
+		found = SchemaInfo.TrySearchTopClass(noMatch, IfcSchemaVersions.IfcAllVersions, out _);
+		found.Should().BeFalse();
+
+        // Unrelated classes should not match
+        noMatch = new[] { "IFCWALL", "IFCSLAB" };
+		found = SchemaInfo.TrySearchTopClass(noMatch, IfcSchemaVersions.Ifc4, out _);
+		found.Should().BeFalse();
+
+		// now with a single schema
+		elements = SchemaInfo.GetConcreteClassesFrom("IfcBuildingElement", IfcSchemaVersions.Ifc2x3).Select(x => x.ToUpperInvariant()).ToList();
 		elements.Count().Should().BeLessThan(cnt);
 		// let's try the reverse
 		found = SchemaInfo.TrySearchTopClass(elements, IfcSchemaVersions.Ifc2x3, out topClass);
@@ -44,6 +73,7 @@ public class IfcSchemaTests
 		topClass.Should().NotBeNull();
 		topClass.Should().Be("IfcBuildingElement");
 
+        // 
 		
 	}
 

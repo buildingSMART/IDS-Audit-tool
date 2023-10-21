@@ -549,6 +549,8 @@ namespace IdsLib.IfcSchema
 				foreach (var className in GetAllClassesFor(schemas))
 				{
 					var t = GetConcreteClassesFrom(className, schemas).OrderBy(x => x).ToList();
+                    if (!t.Any())
+                        continue;
 					var hash = $"{t.First().ToUpper()}_{t.Count}";
 					if (tempHashes.TryGetValue(hash, out var list))
 					{
