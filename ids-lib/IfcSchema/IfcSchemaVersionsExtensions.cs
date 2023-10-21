@@ -10,20 +10,35 @@ namespace IdsLib.IfcSchema;
 public static class IfcSchemaVersionsExtensions
 {
     /// <summary>
-    /// Converts a set of IFC schema name strings to the relative enum value
+    /// Canonical string version of the schema version
     /// </summary>
-    /// <param name="schemasStrings">Enumerable strings to be evaluated</param>
-    /// <returns>A single enumeration value representing all the <paramref name="schemasStrings"/></returns>
-    public static IfcSchemaVersions GetSchema(IEnumerable<string> schemasStrings)
+    public const string IfcSchema2x3String = "Ifc2x3";
+
+	/// <summary>
+	/// Canonical string version of the schema version
+	/// </summary>
+	public const string IfcSchema4String = "Ifc4";
+
+	/// <summary>
+	/// Canonical string version of the schema version
+	/// </summary>
+	public const string IfcSchema4x3String = "Ifc4x3";
+
+	/// <summary>
+	/// Converts a set of IFC schema name strings to the relative enum value
+	/// </summary>
+	/// <param name="schemaStrings">Enumerable strings to be evaluated</param>
+	/// <returns>A single enumeration value representing all the <paramref name="schemaStrings"/></returns>
+	public static IfcSchemaVersions GetSchema(IEnumerable<string> schemaStrings)
     {
         IfcSchemaVersions ret = IfcSchemaVersions.IfcNoVersion;
-        foreach (var scheme in schemasStrings)
+        foreach (var scheme in schemaStrings)
         {
             IfcSchemaVersions v = scheme switch
             {
-                "Ifc2x3" => IfcSchemaVersions.Ifc2x3,
-                "Ifc4" => IfcSchemaVersions.Ifc4,
-                "Ifc4x3" => IfcSchemaVersions.Ifc4x3,
+				IfcSchema2x3String => IfcSchemaVersions.Ifc2x3,
+				IfcSchema4String => IfcSchemaVersions.Ifc4,
+				IfcSchema4x3String => IfcSchemaVersions.Ifc4x3,
                 _ => IfcSchemaVersions.IfcNoVersion,
             };
             if (v == IfcSchemaVersions.IfcNoVersion)
@@ -33,12 +48,40 @@ public static class IfcSchemaVersionsExtensions
         return ret;
     }
 
-    /// <summary>
-    /// Makes it easy to use the <see cref="SchemaInfo.TryGetSchemaInformation(IfcSchemaVersions, out IEnumerable{SchemaInfo})"/> directly from a schema enum.
-    /// </summary>
-    /// <param name="schemas">the enum to evaluate</param>
-    /// <param name="schemaInfo">the identified schema infos</param>
-    /// <returns>true if the values are matched</returns>
+	/// <summary>
+	/// Converts a set of IFC schema strings, concatenated in a single space separated string (useful for XML attribute reading).
+	/// </summary>
+	/// <param name="spaceSeparatedSchemaStrings">A single string possibly containing multiple space separated values to be evaluated</param>
+	/// <returns>A single enumeration value representing all the <paramref name="spaceSeparatedSchemaStrings"/></returns>
+	public static IfcSchemaVersions ParseXmlSchemasFromAttribute(this string spaceSeparatedSchemaStrings)
+	{
+		var tmp = spaceSeparatedSchemaStrings.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+		return GetSchema(tmp);
+	}
+
+	/// <summary>
+	/// Encodes a schemas enum to a string formatted as an enumerable XML attribute.
+	/// </summary>
+	/// <param name="versions">The versions enum to convert to XML attribute encoding</param>
+	/// <returns>the encoded string</returns>
+	public static string EncodeAsXmlSchemasAttribute(this IfcSchemaVersions versions)
+	{
+		List<string> schemas = new();
+		if (versions.HasFlag(IfcSchemaVersions.Ifc2x3))
+			schemas.Add(IfcSchema2x3String);
+		if (versions.HasFlag(IfcSchemaVersions.Ifc4))
+			schemas.Add(IfcSchema4String);
+		if (versions.HasFlag(IfcSchemaVersions.Ifc4x3))
+			schemas.Add(IfcSchema4x3String);
+		return string.Join(" ", schemas);
+	}
+
+	/// <summary>
+	/// Makes it easy to use the <see cref="SchemaInfo.TryGetSchemaInformation(IfcSchemaVersions, out IEnumerable{SchemaInfo})"/> directly from a schema enum.
+	/// </summary>
+	/// <param name="schemas">the enum to evaluate</param>
+	/// <param name="schemaInfo">the identified schema infos</param>
+	/// <returns>true if the values are matched</returns>
 	public static bool TryGetSchemaInformation(this IfcSchemaVersions schemas, out IEnumerable<SchemaInfo> schemaInfo)
     {
 		return SchemaInfo.TryGetSchemaInformation(schemas, out schemaInfo);

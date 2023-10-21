@@ -32,6 +32,6 @@ namespace IdsLib
 		/// <summary>
 		/// Static field with hardcoded DLL version number. 
 		/// </summary>
-		public static string AssemblyVersion => "1.0.48";
+		public static string AssemblyVersion => "1.0.49";
 	}
 }
