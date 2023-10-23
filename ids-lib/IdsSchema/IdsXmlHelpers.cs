@@ -17,7 +17,7 @@ internal class IdsXmlHelpers
         {
             // ids
             IdsSpecification.NodeSignature => new IdsSpecification(reader, parent, logger),
-			"Ids" => new IdsRootElement(reader, logger),
+			"ids" => new IdsRootElement(reader, logger),
             "requirements" => new IdsFacetCollection(reader, parent),
             "applicability" => new IdsFacetCollection(reader, parent),
             "simpleValue" => new IdsSimpleValue(reader, parent),

@@ -21,7 +21,8 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1" datatype="IFCLABEL">
+        <!-- Ensure test for property facets -->
+        <ids:property minOccurs="1" datatype="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction>
 							<xs:pattern value="anas.*"/>
