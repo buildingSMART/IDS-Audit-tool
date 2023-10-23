@@ -18,10 +18,10 @@ public class RestrictionAuditTests
     public void TestEntityNameAudit()
     {
         var f = new FileInfo("ValidFiles/Restriction/enumeration.ids");
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
         };
-        LoggerAndAuditHelpers.AuditWithOptions(c, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 1);
+        LoggerAndAuditHelpers.BatchAuditWithOptions(c, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 1);
     }
 }

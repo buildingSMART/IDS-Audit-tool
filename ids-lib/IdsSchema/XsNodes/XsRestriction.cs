@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
@@ -124,7 +125,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         return matches.Any();
     }
 
-    protected internal override Audit.Status PerformAudit(ILogger? logger)
+    protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
 		var ret = Audit.Status.Ok;
 		if (Base == BaseTypes.Invalid)

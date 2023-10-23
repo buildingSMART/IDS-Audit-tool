@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -39,11 +40,11 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 		return null;
 	}
 
-	internal protected override Audit.Status PerformAudit(ILogger? logger)
+	internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;
-        var requiredSchemaVersions = spec.SchemaVersions;
+        var requiredSchemaVersions = spec.IfcSchemaVersions;
         IsValid = false;
 
         // property set and name are compulsory

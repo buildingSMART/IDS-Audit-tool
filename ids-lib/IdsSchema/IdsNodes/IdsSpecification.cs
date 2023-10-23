@@ -3,6 +3,7 @@ using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -13,7 +14,7 @@ internal class IdsSpecification : IdsXmlNode
 	internal static readonly string[] SpecificationIdentificationArray = { NodeSignature };
 
 	private readonly MinMaxCardinality minMaxOccurr;
-    internal readonly IfcSchemaVersions SchemaVersions = IfcSchemaVersions.IfcNoVersion;
+    internal readonly IfcSchemaVersions IfcSchemaVersions = IfcSchemaVersions.IfcNoVersion;
 
     private readonly IdsXmlNode? parent;
     protected override internal IdsXmlNode? Parent => parent;
@@ -23,16 +24,21 @@ internal class IdsSpecification : IdsXmlNode
         this.parent = parent;
         minMaxOccurr = new MinMaxCardinality(reader);
         var vrs = reader.GetAttribute("ifcVersion") ?? string.Empty;
-        SchemaVersions = vrs.GetSchemaVersions(this, logger);
+        IfcSchemaVersions = vrs.GetSchemaVersions(this, logger);
     }
 
-    internal protected override Audit.Status PerformAudit(ILogger? logger)
+    internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         var ret = Audit.Status.Ok;
-        if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
-        if (SchemaVersions == IfcSchemaVersions.IfcNoVersion)
-            ret |= IdsErrorMessages.Report107InvalidIfcSchemaVersion(logger, SchemaVersions, this);
+
+		// version conditional audit
+		if (stateInfo.sourceIdsVersion == IdsVersion.Ids0_9_6)
+        {
+            if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
+                ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+        }
+        if (IfcSchemaVersions == IfcSchemaVersions.IfcNoVersion)
+            ret |= IdsErrorMessages.Report107InvalidIfcSchemaVersion(logger, IfcSchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");
         if (applic is null)
         {
@@ -48,7 +54,7 @@ internal class IdsSpecification : IdsXmlNode
         var reqs = GetChildNode<IdsFacetCollection>("requirements");
         if (applic is not null && reqs is not null)
         {
-            if (SchemaVersions.TryGetSchemaInformation(out var schemaInfos))
+            if (IfcSchemaVersions.TryGetSchemaInformation(out var schemaInfos))
             {
                 foreach (var schemaInfo in schemaInfos)
                 {
@@ -65,6 +71,6 @@ internal class IdsSpecification : IdsXmlNode
             }
         }
 
-        return base.PerformAudit(logger) | ret;
+        return base.PerformAudit(stateInfo, logger) | ret;
     }
 }

@@ -31,9 +31,9 @@ public partial class Program
         var writer = Console.Out;
         writer.WriteLine("=== ids-tool - utility tool for buildingSMART IDS files.");
         ILogger logger = loggerFactory.CreateLogger<Program>();
-        var t = Parser.Default.ParseArguments<AuditOptions, ErrorCodeOptions>(args)
+        var t = Parser.Default.ParseArguments<BatchAuditOptions, ErrorCodeOptions>(args)
           .MapResult(
-            (AuditOptions opts) => Audit.Run(opts, logger),
+            (BatchAuditOptions opts) => Audit.Run(opts, logger),
             (ErrorCodeOptions opts) => ErrorCodeOptions.Run(opts),
             errs => Audit.Status.InvalidOptionsError);
         if (!args.Any())

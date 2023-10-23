@@ -3,6 +3,7 @@ using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -13,7 +14,6 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
 {
     private readonly MinMaxCardinality minMaxOccurr;
     
-
     public IdsFacet(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         minMaxOccurr = new MinMaxCardinality(reader);
@@ -36,9 +36,9 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
 			return new IfcConcreteTypeList(schema.GetRelAsssignClasses());
 	}
 
-    protected internal override Audit.Status PerformAudit(ILogger? logger)
+    protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
-        return base.PerformAudit(logger);
+        return base.PerformAudit(stateInfo, logger);
     }
 
 	/// <inheritdoc />

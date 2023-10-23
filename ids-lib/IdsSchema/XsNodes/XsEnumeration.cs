@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
@@ -47,7 +48,7 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 
     public string Value => value;
 
-	protected internal override Audit.Status PerformAudit(ILogger? logger)
+	protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
 	{
 		Audit.Status ret = Audit.Status.Ok;
 		if (!TryGetUpperNode<XsRestriction>(logger, this, XsRestriction.RestrictionIdentificationArray, out var restriction, out var retStatus))

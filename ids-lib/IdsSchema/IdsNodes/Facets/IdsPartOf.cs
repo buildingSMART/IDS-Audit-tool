@@ -4,6 +4,7 @@ using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -36,15 +37,14 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 
     public bool IsValid { get; private set; } = true;
 
-    internal protected override Audit.Status PerformAudit(ILogger? logger)
+    internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         IsValid = false;
         if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
             return retStatus;
         var ret = Audit.Status.Ok;
-        var requiredSchemaVersions = spec.SchemaVersions;
+        var requiredSchemaVersions = spec.IfcSchemaVersions;
         // relation child is always a valid string matcher
-       
 
         // if the facet is not required we don't check if it makes sense semantically
         if (!IsRequired)

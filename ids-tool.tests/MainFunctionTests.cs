@@ -27,7 +27,7 @@ public class MainFunctionTests
     [Fact]
     public void CanRunProvidingSchema()
     {
-        var c = new AuditOptions
+        var c = new BatchAuditOptions
         {
             SchemaFiles = new List<string> { schemaFile },
             InputSource = idsFile
@@ -43,7 +43,7 @@ public class MainFunctionTests
     [InlineData(UnterminatedSchemaFile)]
     public void RunProvidingBadSchemaFailsGracefully(string fileName)
     {
-        var c = new AuditOptions
+        var c = new BatchAuditOptions
         {
             SchemaFiles = new List<string> { fileName },
             InputSource = idsFile
@@ -55,7 +55,7 @@ public class MainFunctionTests
     [Fact]
     public void CanRunWithNoSchema()
     {
-        var c = new AuditOptions
+        var c = new BatchAuditOptions
         {
             InputSource = idsFile
         };
@@ -69,7 +69,7 @@ public class MainFunctionTests
         // prepare the file to delete in the end
         var tmp = Path.GetTempFileName();
         File.Copy(idsFile, tmp, true);
-        var c = new AuditOptions
+        var c = new BatchAuditOptions
         {
             SchemaFiles = new List<string> { schemaFile },
             InputSource = tmp

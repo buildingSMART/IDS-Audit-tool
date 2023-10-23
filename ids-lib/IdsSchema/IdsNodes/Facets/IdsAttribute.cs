@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -30,11 +31,11 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 		return null;
 	}
 
-	internal protected override Audit.Status PerformAudit(ILogger? logger)
+	internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
 		if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
 			return retStatus;
-		var requiredSchemaVersions = spec.SchemaVersions;
+		var requiredSchemaVersions = spec.IfcSchemaVersions;
         var name = GetChildNodes("name").FirstOrDefault(); // name must exist
         var sm = name?.GetListMatcher();
         // the first child must be a valid string matcher

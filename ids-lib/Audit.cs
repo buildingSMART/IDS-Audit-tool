@@ -84,7 +84,7 @@ public static partial class Audit
     /// <returns>A status enum that summarizes the result for all audits on the single stream</returns>
     public static Status Run(Stream idsSource, SingleAuditOptions options, ILogger? logger = null)
     {
-        var auditSettings = new AuditHelper(logger, options);
+        var auditSettings = new IdsLib.AuditHelper(logger, options);
         var t = AuditStreamAsync(idsSource, auditSettings, logger); // in  run(stream)
         t.Wait();
         return t.Result;
@@ -100,7 +100,7 @@ public static partial class Audit
 	/// <returns>A status enum that summarizes the result for all audits on the single stream</returns>
 	public static Task<Status> RunAsync(Stream idsSource, SingleAuditOptions options, ILogger? logger = null)
 	{
-		var auditSettings = new AuditHelper(logger, options);
+		var auditSettings = new IdsLib.AuditHelper(logger, options);
 		return AuditStreamAsync(idsSource, auditSettings, logger); // in  run(stream)
 	}
 
@@ -203,7 +203,7 @@ public static partial class Audit
                 options.OmitIdsContentAudit ||
                 (!string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern) && Regex.IsMatch(theFile.FullName, options.OmitIdsContentAuditPattern, RegexOptions.IgnoreCase))
         };
-        var auditSettings = new AuditHelper(logger, opts);
+        var auditSettings = new IdsLib.AuditHelper(logger, opts);
         using var stream = File.OpenRead(theFile.FullName);
         return await AuditStreamAsync(stream, auditSettings, logger); // in AuditIdsComplianceAsync
     }
@@ -222,7 +222,12 @@ public static partial class Audit
         return rSettings;
     }
 
-    private static async Task<Status> AuditStreamAsync(Stream theStream, AuditHelper auditSettings, ILogger? logger)
+    internal record AuditStateInformation
+    {
+        internal IdsVersion sourceIdsVersion { get; set; } = IdsVersion.Invalid;
+	}
+
+    private static async Task<Status> AuditStreamAsync(Stream theStream, IdsLib.AuditHelper auditSettings, ILogger? logger)
     {
         Status contentStatus = Status.Ok;
         // the handler needs to be set before creating the reader,
@@ -241,8 +246,8 @@ public static partial class Audit
         int iSpecification = 1;
         IdsXmlNode? current = null;
         var prevSchemaStatus = auditSettings.SchemaStatus;
-
-        try
+        AuditStateInformation stateInfo = new();
+		try
         {
             while (await reader.ReadAsync()) // the loop reads the entire file to trigger validation events.
             {
@@ -262,8 +267,13 @@ public static partial class Audit
                         if (elementsStack.TryPeek(out var peeked))
                             parent = peeked;
 #endif
-                        var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // this is always not null
-                        if (newContext is IdsSpecification spec)
+                        // this is where the nodes are created according to the specific node type
+                        var newContext = IdsXmlHelpers.GetContextFromElement(reader, parent, logger); // newContext is always not null
+                        if (newContext is IdsRootElement root)
+                        {
+                            stateInfo.sourceIdsVersion = root.SchemaVersion;
+						}
+						if (newContext is IdsSpecification spec)
                             // parents of IdsSpecification do not retain children for Garbage Collection purposes
                             // so we need to set the positional index manually
                             spec.PositionalIndex = iSpecification++;
@@ -289,7 +299,7 @@ public static partial class Audit
                         else
                         {
                             if (!auditSettings.Options.OmitIdsContentAudit)
-                                contentStatus |= newContext.PerformAudit(logger); // invoking audit on empty element happens immediately
+                                contentStatus |= newContext.PerformAudit(stateInfo, logger); // invoking audit on empty element happens immediately
                         }
                         current = newContext;
                         break;
@@ -304,7 +314,7 @@ public static partial class Audit
                         // Debug.WriteLine($"  auditing {closing.type} on end element");
                         if (!auditSettings.Options.OmitIdsContentAudit)
                         {
-                            contentStatus |= closing.PerformAudit(logger); // invoking audit on end of element
+                            contentStatus |= closing.PerformAudit(stateInfo, logger); // invoking audit on end of element
                         }
                         break;
                     default:

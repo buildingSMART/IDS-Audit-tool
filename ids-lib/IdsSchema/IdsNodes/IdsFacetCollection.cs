@@ -5,14 +5,19 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
 {
-    public IdsFacetCollection(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
+	private readonly MinMaxCardinality minMaxOccurr;
+
+	public IdsFacetCollection(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-    }
+        // this is only relevant for applicability, but we can attempt to read it in any case.
+		minMaxOccurr = new MinMaxCardinality(reader);
+	}
 
     private IIfcTypeConstraint? typeFilter = null;
     internal IEnumerable<IIdsFacet> ChildFacets => Children.OfType<IIdsFacet>();
@@ -35,10 +40,9 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
             typesFilterInitialized = true;
         }
         return typeFilter;
-        
     }
 
-    protected internal override Audit.Status PerformAudit(ILogger? logger)
+    protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         var ret = Audit.Status.Ok;
         if (type == "requirements")
@@ -48,9 +52,17 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
                 ret |= extendedRequirement.PerformCardinalityAudit(logger);
             }
         }
+        else if (type == "applicability" && stateInfo.sourceIdsVersion == IdsVersion.Ids0_9_7)
+        {
+            if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
+            {
+                ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+            }
+        }
+
 		if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
 			return retStatus;
-		var requiredSchemaVersions = spec.SchemaVersions;
+		var requiredSchemaVersions = spec.IfcSchemaVersions;
         if (requiredSchemaVersions.TryGetSchemaInformation(out var schemaInfos))
         {
             foreach (var schemaInfo in schemaInfos)

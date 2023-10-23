@@ -15,9 +15,9 @@ namespace idsTool.tests.Helpers;
 
 internal static class LoggerAndAuditHelpers
 {
-    internal static Audit.Status AuditWithoutExpectations(AuditOptions c, ITestOutputHelper OutputHelper)
+    internal static Audit.Status AuditWithoutExpectations(BatchAuditOptions c, ITestOutputHelper OutputHelper)
     {
-        return AuditWithOptions(c, OutputHelper, null, -1);
+        return BatchAuditWithOptions(c, OutputHelper, null, -1);
     }
 
     internal static Audit.Status AuditWithStream(Stream stream, SingleAuditOptions s, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
@@ -42,7 +42,7 @@ internal static class LoggerAndAuditHelpers
         }
     }
 
-    internal static Audit.Status AuditWithOptions(AuditOptions c, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
+    internal static Audit.Status BatchAuditWithOptions(IBatchAuditOptions c, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
     {
         ILogger logg = GetXunitLogger(OutputHelper);
         var checkResult = Audit.Run(c, logg); // run for xunit output of logging
@@ -83,12 +83,12 @@ internal static class LoggerAndAuditHelpers
 
     internal static void FullAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors = -1)
     {
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = false,
         };
-        AuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
+        BatchAuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
     internal static void FullAudit(Stream stream, ITestOutputHelper xunitOutputHelper, Audit.Status status, int numErr = -1)
@@ -96,20 +96,20 @@ internal static class LoggerAndAuditHelpers
         var s = new SingleAuditOptions()
         {
             OmitIdsContentAudit = false,
-            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9
+            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_6
         };
         AuditWithStream(stream, s, xunitOutputHelper, status, numErr);
     }
 
     internal static void OmitContentAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors)
     {
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
             SchemaFiles = new[] { "bsFiles/ids.xsd" }
         };
-        AuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
+        BatchAuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
     

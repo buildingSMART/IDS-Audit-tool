@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
@@ -29,14 +30,14 @@ internal class XsPattern : IdsXmlNode, IStringListMatcher, IFiniteStringMatcher
             : IdsErrorMessages.Report103InvalidListMatcher(this, pattern, logger, variableName, schemaContext, candidateStrings);
     }
 
-	protected internal override Audit.Status PerformAudit(ILogger? logger)
+	protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
 	{
         var ret = Audit.Status.Ok;
         if (!EnsureRegex(out var _, false))
         {
             ret = IdsErrorMessages.Report109InvalidRegex(this, pattern, logger);
 		}
-        return base.PerformAudit(logger) | ret;
+        return base.PerformAudit(stateInfo, logger) | ret;
 	}
 
 	public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)

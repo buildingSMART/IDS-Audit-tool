@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using IdsLib.Messages;
 using System.Text;
 using IdsLib.IdsSchema.IdsNodes;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema;
 
@@ -75,12 +76,13 @@ internal class IdsXmlNode
             PositionalIndex = Parent.Children.Where(x=>x.type == type).Count(); // this should reflect the number of children already encountered, which corresponds to this item's progressive number (1-based).
     }
 
-    /// <summary>
-    /// The Audit method of the base context always succeeds
-    /// </summary>
-    /// <param name="logger">unused in the base class</param>
-    /// <returns><see cref="Audit.Status.Ok"/> in all circumstances, only overridden implementation determine failure behaviours</returns>
-    internal protected virtual Audit.Status PerformAudit(ILogger? logger)
+	/// <summary>
+	/// The Audit method of the base context always succeeds
+	/// </summary>
+	/// <param name="stateInfo">The state of the file audit can determine conditional auditing behaviours</param>
+	/// <param name="logger">unused in the base class</param>
+	/// <returns><see cref="Audit.Status.Ok"/> in all circumstances, only overridden implementation determine failure behaviours</returns>
+	internal protected virtual Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         return Audit.Status.Ok;
     }

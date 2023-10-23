@@ -24,7 +24,7 @@ namespace idsTool.tests
 			var assemblyLib = typeof(IdsLib.Audit).Assembly;
 			FileVersionInfo fileVersionLib = FileVersionInfo.GetVersionInfo(assemblyLib.Location);
 
-			var assemblyTool = typeof(IdsTool.AuditOptions).Assembly;
+			var assemblyTool = typeof(IdsTool.BatchAuditOptions).Assembly;
 			FileVersionInfo fileVersionTool = FileVersionInfo.GetVersionInfo(assemblyTool.Location);
 
 			fileVersionTool.FileVersion.Should().Be(fileVersionLib.FileVersion);

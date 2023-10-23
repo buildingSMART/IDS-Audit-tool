@@ -1,16 +1,26 @@
 ﻿using CommandLine;
 using IdsLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace IdsTool;
 
 /// <summary>
+/// Class has been renamed, use <see cref="BatchAuditOptions"/>
+/// </summary>
+[Obsolete("Class has been renamed to BatchAuditOptions")]
+public class AuditOptions
+{
+
+}
+
+/// <summary>
 /// Concrete class passed to the ids-tool library, when Running the audit.
 /// See <see cref="IBatchAuditOptions"/> for more details.
 /// </summary>
 [Verb("audit", HelpText = "Audits ids files and/or their xsd schema.")]
-public class AuditOptions : IBatchAuditOptions
+public class BatchAuditOptions : IBatchAuditOptions
 {
     /// <summary>
     /// <inheritdoc/>

@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
+using static idsTool.tests.IdsSchemaTests;
 
 namespace idsTool.tests;
 
@@ -32,7 +33,23 @@ public class AuditTests : BuildingSmartRepoFiles
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
 
-    [SkippableTheory]
+	[SkippableTheory]
+	[MemberData(nameof(GetIdsRepositoryDevelopmentIdsFiles))]
+	public void FullAuditOfDevelopmentFilesWithItsSchemaOk(string developmentIdsFile)
+	{
+		var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
+		Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
+		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		FileInfo f = GetIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
+
+        BatchOpts opt = new BatchOpts() {
+            InputSource = f.FullName
+        };
+		opt.Schemas.Add(repoSchema.FullName);
+		LoggerAndAuditHelpers.BatchAuditWithOptions(opt, XunitOutputHelper, Audit.Status.Ok, 0);
+	}
+
+	[SkippableTheory]
     [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public void OmitContentAuditOfDocumentationFilesOk(string developmentIdsFile)
     {
@@ -41,7 +58,7 @@ public class AuditTests : BuildingSmartRepoFiles
         // 
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
@@ -65,7 +82,7 @@ public class AuditTests : BuildingSmartRepoFiles
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAuditPattern = @"\\fail-",
@@ -88,7 +105,7 @@ public class AuditTests : BuildingSmartRepoFiles
 	{
 		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
 		FileInfo f = GetIfcOpenShellTestCaseFileInfo(developmentIdsFile);
-		var c = new AuditOptions()
+		var c = new BatchAuditOptions()
 		{
 			InputSource = f.FullName,
 			SchemaFiles = new[] { "bsFiles/ids.xsd" }

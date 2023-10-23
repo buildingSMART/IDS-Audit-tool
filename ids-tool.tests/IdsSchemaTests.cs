@@ -17,7 +17,7 @@ namespace idsTool.tests
 		}
 		private ITestOutputHelper XunitOutputHelper { get; }
 
-		public class Opts : IBatchAuditOptions
+		public class BatchOpts : IBatchAuditOptions
 		{
             public List<string> Schemas { get; set; } = new List<string>();  
             public bool AuditSchemaDefinition { get; set; } = true;
@@ -35,7 +35,7 @@ namespace idsTool.tests
 			var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
 			Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
-			var o = new Opts
+			var o = new BatchOpts
 			{
 				InputSource = repoSchema.Directory!.FullName
 			};

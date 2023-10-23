@@ -26,7 +26,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = GetIdsRepositoryDevelopmentFileInfo(idsFile);
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
@@ -42,7 +42,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     public void CanFailInvalidFileLoadingEmbeddedResourceSchema(string file, Audit.Status expected)
     {
         var f = new FileInfo(file);
-        var c = new AuditOptions()
+        var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,

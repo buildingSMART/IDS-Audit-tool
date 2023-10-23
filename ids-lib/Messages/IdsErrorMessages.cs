@@ -143,7 +143,7 @@ internal static class IdsErrorMessages
 
 	internal static void Report307SchemaComplianceWarning(ILogger? logger, LogLevel level, NodeIdentification location, string message)
 	{
-		logger?.Log(level, "Error {errorCode}: Schema compliance warning on {location}; {message}", 307, location, message);
+		logger?.Log(level, "{LogLevel} {errorCode}: Schema compliance warning on {location}; {message}", level, 307, location, message);
 	}
 
 	internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)

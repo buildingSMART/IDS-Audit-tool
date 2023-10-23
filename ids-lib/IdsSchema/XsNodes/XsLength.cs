@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.XsNodes;
 
@@ -38,9 +39,9 @@ internal class XsLength : IdsXmlNode, IStringListMatcher
         return matches.Any();
     }
 
-    protected internal override Audit.Status PerformAudit(ILogger? logger)
+    protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         // Debug.WriteLine($"Children: {Children.Count}");
-        return base.PerformAudit(logger);
+        return base.PerformAudit(stateInfo, logger);
     }
 }

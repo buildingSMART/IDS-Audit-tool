@@ -17,6 +17,7 @@ internal class IdsXmlHelpers
         {
             // ids
             IdsSpecification.NodeSignature => new IdsSpecification(reader, parent, logger),
+			"Ids" => new IdsRootElement(reader, logger),
             "requirements" => new IdsFacetCollection(reader, parent),
             "applicability" => new IdsFacetCollection(reader, parent),
             "simpleValue" => new IdsSimpleValue(reader, parent),
@@ -43,12 +44,6 @@ internal class IdsXmlHelpers
             throw new ArgumentNullException(nameof(fileInformation));
         using var fs = fileInformation.OpenRead();
         return await GetIdsInformationAsync(fs);
-    }
-
-    private enum ElementName
-    {
-        undefined,
-        ids,
     }
 
     public static async Task<IdsInformation> GetIdsInformationAsync(Stream stream)
@@ -79,8 +74,7 @@ internal class IdsXmlHelpers
                         {
                             case "ids":
                                 ret.IsIds = true;
-                                //currentElement = elementName.ids;
-                                ret.SchemaLocation = reader.GetAttribute("schemaLocation", "http://www.w3.org/2001/XMLSchema-instance") ?? string.Empty;
+                                ret.SchemaLocation = GetSchemaLocation(reader);
                                 return ret;
                             default:
                                 break;
@@ -108,4 +102,9 @@ internal class IdsXmlHelpers
         }
         return IdsInformation.CreateInvalid("No XML element found.");
     }
+
+	internal static string GetSchemaLocation(XmlReader reader)
+	{
+        return reader.GetAttribute("schemaLocation", "http://www.w3.org/2001/XMLSchema-instance") ?? string.Empty;
+	}
 }
