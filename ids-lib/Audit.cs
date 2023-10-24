@@ -272,6 +272,7 @@ public static partial class Audit
                         if (newContext is IdsRootElement root)
                         {
                             stateInfo.sourceIdsVersion = root.SchemaVersion;
+                            logger?.LogInformation("The file schema version is: {fileVersion}", stateInfo.sourceIdsVersion);
 						}
 						if (newContext is IdsSpecification spec)
                             // parents of IdsSpecification do not retain children for Garbage Collection purposes
