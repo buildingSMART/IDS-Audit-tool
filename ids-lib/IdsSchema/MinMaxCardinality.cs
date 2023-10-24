@@ -1,8 +1,9 @@
-﻿using System.Xml;
+﻿using System.Diagnostics.Contracts;
+using System.Xml;
 
 namespace IdsLib.IdsSchema;
 
-internal class MinMaxCardinality
+internal class MinMaxCardinality : ICardinality
 {
     private readonly string minString;
     private readonly string maxString;
@@ -12,7 +13,7 @@ internal class MinMaxCardinality
         return $"[{minString}..{maxString}]";
     }
 
-    internal bool IsRequired => minString == "1";
+    public bool IsRequired => minString == "1";
 
     public MinMaxCardinality(XmlReader reader)
     {
@@ -28,7 +29,7 @@ internal class MinMaxCardinality
     /// </summary>
     /// <param name="errorMessage">if invalid returns an errors string without punctuation.</param>
     /// <returns>the evaluated status</returns>
-    internal Audit.Status Audit(out string errorMessage)
+    public Audit.Status Audit(out string errorMessage)
     {
         uint max;
         if (maxString == "unbounded")

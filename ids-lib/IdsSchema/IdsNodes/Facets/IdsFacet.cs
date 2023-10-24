@@ -12,18 +12,18 @@ namespace IdsLib.IdsSchema.IdsNodes;
 /// </summary>
 internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private readonly MinMaxCardinality minMaxOccurr;
+    private readonly RequirementCardinality cardinality;
     
     public IdsFacet(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-        minMaxOccurr = new MinMaxCardinality(reader);
+        cardinality = new RequirementCardinality(reader);
     }
 
 	/// <inheritdoc />
 	public bool IsValid { get; private set; } = true;
 
 	/// <inheritdoc />
-	public bool IsRequired => minMaxOccurr.IsRequired;
+	public bool IsRequired => cardinality.IsRequired;
 
 	/// <inheritdoc />
 	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
@@ -45,9 +45,9 @@ internal class IdsFacet : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintPr
 	public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         var ret = Audit.Status.Ok;
-        if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
+        if (cardinality.Audit(out var _) != Audit.Status.Ok)
         {
-			IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+			IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
             ret |= MinMaxCardinality.ErrorStatus;
             IsValid = false;
         }

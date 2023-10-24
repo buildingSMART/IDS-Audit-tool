@@ -11,11 +11,11 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private readonly MinMaxCardinality minMaxOccurr;
+    private readonly RequirementCardinality minMaxOccurr;
     private readonly IStringListMatcher? datatypeMatcher;
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-        minMaxOccurr = new MinMaxCardinality(reader);
+        minMaxOccurr = new RequirementCardinality(reader);
         var measure = reader.GetAttribute("datatype") ?? string.Empty;
         if (!string.IsNullOrEmpty(measure))
             datatypeMatcher = new StringListMatcher(measure, this);

@@ -95,7 +95,7 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, MinMaxCardinality minMax)
+	internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, ICardinality minMax)
 	{
 		minMax.Audit(out var occurError);
 		logger?.LogError("Error {errorCode}: Invalid cardinality on {location}. {occurError}.", 301, context.GetNodeIdentification(), occurError);
