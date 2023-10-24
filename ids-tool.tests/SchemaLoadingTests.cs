@@ -39,6 +39,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     [InlineData("InvalidFiles/InvalidSchemaLocation.ids", Audit.Status.IdsStructureError)]
     [InlineData("InvalidFiles/InvalidElementInvalidContent.ids", Audit.Status.IdsStructureError)]
     [InlineData("ValidFiles/IDS_aachen_example.ids", Audit.Status.Ok)]
+    [InlineData("ValidFiles/entities_enumeration.ids", Audit.Status.Ok)]
     public void CanFailInvalidFileLoadingEmbeddedResourceSchema(string file, Audit.Status expected)
     {
         var f = new FileInfo(file);

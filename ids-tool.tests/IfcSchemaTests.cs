@@ -106,7 +106,9 @@ public class IfcSchemaTests
 		IfcSchemaVersions.IfcNoVersion.IsSingleSchema().Should().BeFalse();
         IfcSchemaVersions.Ifc2x3.IsSingleSchema().Should().BeTrue();
         IfcSchemaVersions.Ifc4x3.IsSingleSchema().Should().BeTrue();
-    }
+        var t = IfcSchemaVersions.Ifc4x3 | IfcSchemaVersions.Ifc2x3;
+        t.IsSingleSchema().Should().BeFalse();
+	}
 
     [Fact]
     public void HasPropertySets()

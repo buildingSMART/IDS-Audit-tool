@@ -115,6 +115,8 @@ internal static class EnumHelper
 	{
 		var type = enumVal.GetType();
 		var memInfo = type.GetMember(enumVal.ToString());
+		if (!memInfo.Any())
+			return null;
 		var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
 		return attributes.Any() ? (T)attributes[0] : null;
 	}

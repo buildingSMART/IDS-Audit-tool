@@ -299,7 +299,9 @@ public static partial class Audit
                         else
                         {
                             if (!auditSettings.Options.OmitIdsContentAudit)
+                            {
                                 contentStatus |= newContext.PerformAudit(stateInfo, logger); // invoking audit on empty element happens immediately
+                            }
                         }
                         current = newContext;
                         break;
@@ -362,7 +364,6 @@ public static partial class Audit
 			return XsdMessages.ReportXsdCompilationError(logger, ex.Message);
         }
         return ret;
-
     }
 
     private static Status ProcessSingleFile(FileInfo theFile, IBatchAuditOptions batchOptions, ILogger? logger)

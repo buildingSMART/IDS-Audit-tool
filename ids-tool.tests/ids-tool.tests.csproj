@@ -159,6 +159,9 @@
 		<None Update="IssueFiles\Issue 09 - XML structure.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="ValidFiles\entities_enumeration.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="ValidFiles\IDS_aachen_example.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
