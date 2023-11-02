@@ -144,5 +144,19 @@ public class IfcSchemaTests
 		}
     }
 
+    [Fact]
+    public void CanGetTopLevelClassesByAttribute()
+    {
+        // Issue #17
+        var allClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("Description");
+        var topLevelClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("Description", onlyTopClasses: true);
+        
+        topLevelClasses.Should().BeSubsetOf(allClasses);
+
+        topLevelClasses.Should().HaveCountLessThan(allClasses.Length);
+
+    }
+
+
 
 }
