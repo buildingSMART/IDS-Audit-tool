@@ -14,7 +14,7 @@ namespace idsTool.tests
         {
             var assembly = typeof(IdsLib.Audit).Assembly;
             FileVersionInfo fileVersion = FileVersionInfo.GetVersionInfo(assembly.Location);
-            // <== fix Xids.AssemblyVersion
+            // <== fix IdsLib.LibraryInformation.AssemblyVersion
             IdsLib.LibraryInformation.AssemblyVersion.Should().Be(fileVersion.FileVersion); 
         }
 
