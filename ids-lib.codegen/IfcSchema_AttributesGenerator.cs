@@ -52,7 +52,7 @@ class IfcSchema_AttributesGenerator
 
                     foreach (var sub in thisClass.AllSubTypes)
                     {
-                        OnlyTopClasses.Remove(sub.Name);
+                        OnlyTopClasses.Remove(sub.ExpressNameUpper);
                     }
                 }
 
