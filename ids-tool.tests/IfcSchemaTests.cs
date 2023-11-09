@@ -157,6 +157,19 @@ public class IfcSchemaTests
 
     }
 
+    [Fact]
+    public void OnlyTopLevelClassesShouldRemoveAllSubClasses()
+    {
+        // Issue #20
+        
+        var topLevelClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("ObjectType", onlyTopClasses: true);
+
+        topLevelClasses.Should().Contain("IFCOBJECT");
+
+        topLevelClasses.Should().NotContain("IFCPRODUCT");
+
+    }
+
 
 
 }
