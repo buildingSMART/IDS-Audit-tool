@@ -44,20 +44,26 @@ class IfcSchema_AttributesGenerator
             {
                 var attribute = $"\"{pair.Key}\"";
                 // trying to remove all subclasses
-                var OnlyTopClasses = pair.Value.ToList();
-                for (int i = 0; i < OnlyTopClasses.Count; i++)
+                var toRemove = new HashSet<string>();
+                var onlyTopClasses = pair.Value.ToList();
+                for (int i = 0; i < onlyTopClasses.Count; i++)
                 {
-                    var thisClassName = OnlyTopClasses[i];
+                    var thisClassName = onlyTopClasses[i];
                     var thisClass = metaD.ExpressType(thisClassName.ToUpperInvariant());
 
                     foreach (var sub in thisClass.AllSubTypes)
                     {
-                        OnlyTopClasses.Remove(sub.ExpressNameUpper);
+                        if(!toRemove.Contains(sub.ExpressNameUpper))
+                        {
+                            toRemove.Add(sub.ExpressNameUpper);
+                        }
                     }
                 }
 
                 var classesInQuotes = pair.Value.Select(x => $"\"{x}\"").ToArray();
-                var topClassesInQuotes = OnlyTopClasses.Select(x => $"\"{x}\"").ToArray();
+                var topClassesInQuotes = onlyTopClasses
+                    .Where(c=> !toRemove.Contains(c))
+                        .Select(x => $"\"{x}\"").ToArray();
                 var line = $"\t\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
 
                 sb.AppendLine(line);
