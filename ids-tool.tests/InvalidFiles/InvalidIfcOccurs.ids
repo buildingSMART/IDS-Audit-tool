@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd"
+				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd"
 				 >
 	<ids:info>
 		<ids:title>random example to show technical capabilities and usage</ids:title>
@@ -10,8 +10,8 @@
 	</ids:info>
 	<ids:specifications>
 		<!-- Error because default for max is 1 -->
-		<ids:specification ifcVersion="IFC2X3" name="binder" minOccurs="2">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC2X3" name="binder">
+			<ids:applicability minOccurs="2">
 				<ids:entity>
 					<ids:name>
 						<xs:restriction base="xs:string">
@@ -22,7 +22,7 @@
 			</ids:applicability>
 			<ids:requirements>
         <!-- Ensure test for property facets -->
-        <ids:property minOccurs="1" datatype="IFCLABEL">
+        <ids:property cardinality="Invalid" dataType="IFCLABEL">
 					<ids:propertySet>
 						<xs:restriction>
 							<xs:pattern value="anas.*"/>
@@ -36,13 +36,13 @@
 					</ids:value>
 				</ids:property>
 				<!-- Ensure test for classification facets -->
-				<ids:classification minOccurs="4" maxOccurs="2">
+				<ids:classification cardinality="Error">
 					<ids:system>
 						<ids:simpleValue>SystemName</ids:simpleValue>
 					</ids:system>
 				</ids:classification>
 				<!-- Ensure test for property facets -->
-				<ids:property minOccurs="4" maxOccurs="2" datatype="IFCLABEL">
+				<ids:property cardinality="" dataType="IFCLABEL">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
@@ -51,13 +51,13 @@
 					</ids:name>
 				</ids:property>
 				<!-- Ensure test for material facets -->
-				<ids:material minOccurs="4" maxOccurs="2">
+				<ids:material cardinality="invalid on material" >
 					<ids:value>
 						<ids:simpleValue>Material</ids:simpleValue>
 					</ids:value>
 				</ids:material>
 				<!-- Ensure test for partOf facets -->
-				<ids:partOf relation="IFCRELAGGREGATES" minOccurs="4" maxOccurs="2">
+				<ids:partOf relation="IFCRELAGGREGATES" cardinality="Optional">  <!-- Optional is not valid on partOf -->
 					<ids:entity>
 						<ids:name>
 							<ids:simpleValue>IFCCOVERING</ids:simpleValue>

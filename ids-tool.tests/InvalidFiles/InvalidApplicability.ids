@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd"
+				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd"
 				 >
   <ids:info>
     <ids:title>random example to show technical capabilities and usage</ids:title>
@@ -9,12 +9,12 @@
     <ids:date>2023-05-22</ids:date>
   </ids:info>
   <ids:specifications>
-    <ids:specification ifcVersion="IFC2X3" name="binder" maxOccurs="unbounded">
-      <ids:applicability>
+    <ids:specification ifcVersion="IFC2X3" name="binder" >
+      <ids:applicability maxOccurs="unbounded">
         <!-- At least one facet -->
       </ids:applicability>
       <ids:requirements>
-        <ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCLABEL">
+        <ids:property dataType="IFCLABEL">
           <ids:propertySet>
             <xs:restriction>
               <xs:pattern value="anas.*"/>
@@ -30,10 +30,10 @@
       </ids:requirements>
     </ids:specification>
 
-    <ids:specification ifcVersion="IFC2X3" name="binder" maxOccurs="unbounded">
+    <ids:specification ifcVersion="IFC2X3" name="binder">
       <!-- Missing applicability -->
       <ids:requirements>
-        <ids:property minOccurs="1" maxOccurs="unbounded">
+        <ids:property>
           <ids:propertySet>
             <xs:restriction>
               <xs:pattern value="anas.*"/>

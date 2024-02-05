@@ -1,4 +1,5 @@
-﻿using IdsLib.IfcSchema;
+﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
@@ -13,7 +14,6 @@ internal class IdsSpecification : IdsXmlNode
 
 	internal static readonly string[] SpecificationIdentificationArray = { NodeSignature };
 
-	private readonly MinMaxCardinality minMaxOccurr;
     internal readonly IfcSchemaVersions IfcSchemaVersions = IfcSchemaVersions.IfcNoVersion;
 
     private readonly IdsXmlNode? parent;
@@ -22,7 +22,7 @@ internal class IdsSpecification : IdsXmlNode
     public IdsSpecification(System.Xml.XmlReader reader, IdsXmlNode? parent, ILogger? logger) : base(reader, null)
     {
         this.parent = parent;
-        minMaxOccurr = new MinMaxCardinality(reader);
+
         var vrs = reader.GetAttribute("ifcVersion") ?? string.Empty;
         IfcSchemaVersions = vrs.GetSchemaVersions(this, logger);
     }
@@ -31,12 +31,6 @@ internal class IdsSpecification : IdsXmlNode
     {
         var ret = Audit.Status.Ok;
 
-		// version conditional audit
-		if (stateInfo.sourceIdsVersion == IdsVersion.Ids0_9_6)
-        {
-            if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-                ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
-        }
         if (IfcSchemaVersions == IfcSchemaVersions.IfcNoVersion)
             ret |= IdsErrorMessages.Report107InvalidIfcSchemaVersion(logger, IfcSchemaVersions, this);
         var applic = GetChildNode<IdsFacetCollection>("applicability");

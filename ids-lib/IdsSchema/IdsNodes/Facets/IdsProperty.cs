@@ -1,4 +1,5 @@
-﻿using IdsLib.IfcSchema;
+﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
@@ -11,12 +12,12 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
-    private readonly MinMaxCardinality minMaxOccurr;
+    private readonly ICardinality cardinality;
     private readonly IStringListMatcher? datatypeMatcher;
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
-        minMaxOccurr = new MinMaxCardinality(reader);
-        var measure = reader.GetAttribute("datatype") ?? string.Empty;
+        cardinality = new ConditionalCardinality(reader);
+        var measure = reader.GetAttribute("dataType") ?? string.Empty;
         if (!string.IsNullOrEmpty(measure))
             datatypeMatcher = new StringListMatcher(measure, this);
         else
@@ -25,7 +26,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 
     public bool IsValid { get; private set; } = false;
 
-    public bool IsRequired => minMaxOccurr.IsRequired;
+    public bool IsRequired => cardinality.IsRequired;
 
 	/// <summary>
 	/// prepared typefilters per schema version
@@ -146,8 +147,8 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
-        if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
-            return IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+        if (cardinality.Audit(out var _) != Audit.Status.Ok)
+            return IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
         return Audit.Status.Ok;
     }
 }

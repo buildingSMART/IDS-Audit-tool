@@ -55,6 +55,7 @@ public class IfcSchema_DatatypeNamesGenerator
         return GetDocumentationMeasureNames()
             .Concat(GetExtraMeasureNames())
             .Concat(GetPropsDatatypes())
+            .Select(x => x.ToUpperInvariant())
             .Distinct();
     }
 

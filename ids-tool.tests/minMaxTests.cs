@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using IdsLib.IdsSchema;
+using IdsLib.IdsSchema.Cardinality;
 using System.IO;
 using System.Xml;
 using Xunit;

@@ -1,13 +1,13 @@
 <ids xmlns="http://standards.buildingsmart.org/IDS" 
      xmlns:xs="http://www.w3.org/2001/XMLSchema" 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-     xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+     xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
     <info>
         <title>Entities can be specified as an enumeration 3/3</title>
     </info>
     <specifications>
-        <specification name="Entities can be specified as an enumeration 3/3" ifcVersion="IFC2X3 IFC4" minOccurs="1" maxOccurs="unbounded">
-            <applicability>
+        <specification name="Entities can be specified as an enumeration 3/3" ifcVersion="IFC2X3 IFC4">
+            <applicability maxOccurs="unbounded">
                 <entity>
                     <name>
                         <simpleValue>IFCWALL</simpleValue>

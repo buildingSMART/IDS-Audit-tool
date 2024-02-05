@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
 	<ids:info>
 		<ids:title>random example to show technical capabilities and usage</ids:title>
 		<ids:copyright>buildingSMART International Ltd</ids:copyright>
 		<ids:date>2021-09-17</ids:date>
 	</ids:info>
 	<ids:specifications>
-		<ids:specification ifcVersion="IFC4X3" name="binder" maxOccurs="unbounded">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC4X3" name="binder">
+			<ids:applicability maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
@@ -19,50 +19,50 @@
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<!-- this is ok -->
 						<xs:restriction base="xs:string">
 							<xs:enumeration value="BLOSSCURVE"/>
 							<xs:enumeration value="CONSTANTCANT"/>
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<!-- Thi is ok -->
 						<ids:simpleValue>COSINECURVE</ids:simpleValue>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<!-- Thi is ok -->
 						<xs:restriction base="xs:string">
 							<xs:pattern value="HELMERTCURVE|LINEARTRANSITION"/>
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<!-- Thi is ok -->
 						<xs:restriction base="xs:string">
 							<xs:pattern value="HELM*TCURVE|LINEARTRANSITION"/>
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok -->
 							<xs:enumeration value="INVALID"/>
@@ -71,29 +71,29 @@
 							<!-- this is NOT ok -->
 							<xs:enumeration value="lineartransition"/>
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok, because not found -->
 							<xs:pattern value="INVALID"/>							
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok bacause of case -->
 							<xs:pattern value="lineartransition"/>
 						</xs:restriction>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 			</ids:requirements>
 		</ids:specification>

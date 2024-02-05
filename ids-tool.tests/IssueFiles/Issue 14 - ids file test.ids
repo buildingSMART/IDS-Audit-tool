@@ -1,4 +1,4 @@
-<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
   <!--edited with usBIM.IDSeditor (http://www.accasoftware.com)-->
   <ids:info>
     <ids:title>Crowdsources information requirements</ids:title>

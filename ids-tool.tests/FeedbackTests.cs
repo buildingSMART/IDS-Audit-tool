@@ -63,7 +63,7 @@ namespace idsTool.tests
 			var s = new SingleAuditOptions()
 			{
 				OmitIdsContentAudit = false,
-				SchemaProvider = new FixedVersionSchemaProvider(IdsVersion.Ids0_9_6)
+				SchemaProvider = new FixedVersionSchemaProvider(IdsVersion.Ids0_9_7)
 			};
 			var f = new FileInfo(file);
 			using var stream = f.OpenRead();

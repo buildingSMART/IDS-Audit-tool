@@ -1,4 +1,5 @@
-﻿using IdsLib.IfcSchema;
+﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
@@ -52,7 +53,7 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
                 ret |= extendedRequirement.PerformCardinalityAudit(logger);
             }
         }
-        else if (type == "applicability" && stateInfo.sourceIdsVersion == IdsVersion.Ids0_9_7)
+        else if (type == "applicability")
         {
             if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
             {

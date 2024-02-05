@@ -31,6 +31,8 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         IsValid = false;
     }
 
+    private const string PRED_TYPE = "subType";
+
     public bool IsValid {get; private set;}
 
     internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
@@ -60,13 +62,13 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
             typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
 
             // predefined types that are common for the possibleClasses across defined schemas
-            var predefinedType = GetChildNodes("predefinedType").FirstOrDefault();
+            var predefinedType = GetChildNodes(PRED_TYPE).FirstOrDefault();
             if (predefinedType is null)
                 continue;
 
             var predefinedTypeMatcher = predefinedType.GetListMatcher();
             if (predefinedTypeMatcher is null)
-                return IdsErrorMessages.Report102NoStringMatcher(logger, this, "predefinedType");
+                return IdsErrorMessages.Report102NoStringMatcher(logger, this, PRED_TYPE);
 
             
             List<string>? possiblePredefined = null;
@@ -85,12 +87,12 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
             }
             
             if (possiblePredefined == null)
-                ret |= IdsErrorMessages.Report105InvalidDataConfiguration(logger, this, "predefinedType");
+                ret |= IdsErrorMessages.Report105InvalidDataConfiguration(logger, this, PRED_TYPE);
             else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
                 return ret;
             else
                 // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
-                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, "PredefinedType", schema.Version);
+                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, PRED_TYPE, schema.Version);
         }
         return ret;
     }

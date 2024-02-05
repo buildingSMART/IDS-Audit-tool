@@ -94,26 +94,7 @@ public class AuditTests : BuildingSmartRepoFiles
         auditResult.Should().Be(Audit.Status.Ok);
     }
 
-	/// <summary>
-	/// this test skips the content evaluation on ids files that are expected to fail, 
-	/// because they could be failing due to invalid content.
-	/// It still checks them for issues at schema level.
-	/// </summary>
-	[SkippableTheory]
-	[MemberData(nameof(GetIfcOpenShellTestCaseIdsFiles))]
-	public void AuditOfIfcOpenShellTestFilesOk(string developmentIdsFile)
-	{
-		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-		FileInfo f = GetIfcOpenShellTestCaseFileInfo(developmentIdsFile);
-		var c = new BatchAuditOptions()
-		{
-			InputSource = f.FullName,
-			SchemaFiles = new[] { "bsFiles/ids.xsd" }
-		};
-        XunitOutputHelper.WriteLine($"Auditing case: {developmentIdsFile.Replace("_", " ")}");
-		var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
-		auditResult.Should().Be(Audit.Status.Ok);
-	}
+	
 
 	[Theory]
     [InlineData("ValidFiles/nested_entity.ids")]
@@ -128,13 +109,13 @@ public class AuditTests : BuildingSmartRepoFiles
     public static IEnumerable<object[]> GetInvalidCases()
     {
         yield return new object[] { "InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError };
-        yield return new object[] { "InvalidFiles/InvalidIfcOccurs.ids", 6, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcOccurs.ids", 11, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError };
-        yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 3, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 4, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError };
@@ -197,7 +178,7 @@ public class AuditTests : BuildingSmartRepoFiles
     }
 
 	// todo: update tfk-regenerate-testcase-ids to master branch
-	private const string ValidNetworkIds = "https://github.com/buildingSMART/IDS/raw/tfk-regenerate-testcase-ids/Development/IDS_ArcDox.ids";
+	private const string ValidNetworkIds = "https://github.com/CBenghi/IDS/raw/facetsReview/Development/IDS_ArcDox.ids";
 
     [SkippableFact]
     public async Task TestSeekableNetworkStream()

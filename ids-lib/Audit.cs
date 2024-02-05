@@ -245,7 +245,6 @@ public static partial class Audit
         var elementsStack = new Stack<IdsXmlNode>(); // prepare the stack to evaluate the IDS content
         int iSpecification = 1;
         IdsXmlNode? current = null;
-        var prevSchemaStatus = auditSettings.SchemaStatus;
         AuditStateInformation stateInfo = new();
 		try
         {
@@ -278,19 +277,10 @@ public static partial class Audit
                             // parents of IdsSpecification do not retain children for Garbage Collection purposes
                             // so we need to set the positional index manually
                             spec.PositionalIndex = iSpecification++;
+
                         while (auditSettings.BufferedValidationIssues.Any())
                         {
                             var queuedIssue = auditSettings.BufferedValidationIssues.Dequeue();
-                            if (
-                                newContext.type == "attribute"
-                                &&
-                                (queuedIssue.Message.Contains("minOccurs") || queuedIssue.Message.Contains("maxOccurs"))
-                                )
-                            {
-                                // this could fail under some circumstances, but it's a temporary workaround
-                                auditSettings.SchemaStatus = prevSchemaStatus;
-                                continue;
-                            }
                             queuedIssue.Notify(logger, newContext);
                         }
 
@@ -314,17 +304,21 @@ public static partial class Audit
                     case XmlNodeType.EndElement:
                         // Debug.WriteLine($"End Element {reader.LocalName}");
                         var closing = elementsStack.Pop();
+                        while (auditSettings.BufferedValidationIssues.Any())
+                        {
+                            var queuedIssue = auditSettings.BufferedValidationIssues.Dequeue();
+                            queuedIssue.Notify(logger, closing);
+                        }
                         // Debug.WriteLine($"  auditing {closing.type} on end element");
                         if (!auditSettings.Options.OmitIdsContentAudit)
                         {
-                            contentStatus |= closing.PerformAudit(stateInfo, logger); // invoking audit on end of element
+                            contentStatus |= closing.PerformAudit(stateInfo, logger); // invoking audit happens on end of element normally
                         }
                         break;
                     default:
                         // Debug.WriteLine("Other node {0} with value '{1}'.", reader.NodeType, reader.Value);
                         break;
                 }
-                prevSchemaStatus = auditSettings.SchemaStatus;
             }
 			IdsToolMessages.InformReadCount(logger, cntRead);
 		}

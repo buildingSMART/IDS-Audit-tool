@@ -23,7 +23,7 @@ namespace IdsLib.SchemaProviders
             IEnumerable<string> tmpResources = Enumerable.Empty<string>();
             switch (vrs)
             {
-                case IdsVersion.Ids0_9_6:
+                case IdsVersion.Ids0_9_7:
                 case IdsVersion.Ids1_0:
                     tmpResources = new List<string> { "xsdschema.xsd", "xml.xsd", "ids.xsd" };
                     break;

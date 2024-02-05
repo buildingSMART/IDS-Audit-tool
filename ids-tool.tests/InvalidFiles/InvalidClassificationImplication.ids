@@ -2,7 +2,7 @@
 <ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" 
 				 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd"
+				 xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd"
 				 >
 	<ids:info>
 		<ids:title>Example on use of attributes (for student research)</ids:title>
@@ -10,8 +10,8 @@
 		<ids:date>2023-04-20</ids:date>
 	</ids:info>
 	<ids:specifications>
-		<ids:specification ifcVersion="IFC2X3" name="Aachen test" maxOccurs="unbounded">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC2X3" name="Aachen test">
+			<ids:applicability maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFC2DCOMPOSITECURVE</ids:simpleValue>
@@ -19,12 +19,16 @@
 				</ids:entity>			
 			</ids:applicability>
 			<ids:requirements>
-				<ids:classification maxOccurs="unbounded" />
+        <ids:classification>
+          <ids:system>
+            <ids:simpleValue>Uniclass</ids:simpleValue>
+          </ids:system>
+        </ids:classification>
 			</ids:requirements>
 		</ids:specification>
 
-		<ids:specification ifcVersion="IFC2X3" name="Aachen test" maxOccurs="unbounded">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC2X3" name="Aachen test">
+			<ids:applicability maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFC2DCOMPOSITECURVE</ids:simpleValue>
@@ -33,7 +37,11 @@
 			</ids:applicability>
 			<ids:requirements>
 				<!-- Making it optional does not trigger the type requirement, so this is ok -->
-				<ids:classification minOccurs="0" maxOccurs="unbounded" />
+        <ids:classification cardinality="Optional">
+          <ids:system>
+            <ids:simpleValue>Uniclass</ids:simpleValue>
+          </ids:system>
+        </ids:classification>
 			</ids:requirements>
 		</ids:specification>
 		

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
 	<ids:info>
 		<ids:title>random example to show technical capabilities and usage</ids:title>
 		<ids:copyright>buildingSMART International Ltd</ids:copyright>
@@ -7,21 +7,21 @@
 	</ids:info>
 	<ids:specifications>
 		<!-- Covering and wall property do not match -->
-		<ids:specification ifcVersion="IFC2X3" name="binder" minOccurs="1" maxOccurs="unbounded">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC2X3" name="binder">
+			<ids:applicability maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<xs:restriction base="xs:string">
 							<xs:pattern value="IFCCOVERING"/>
 						</xs:restriction>
 					</ids:name>
-					<ids:predefinedType>
+					<ids:subType>
 						<ids:simpleValue>CLADDING</ids:simpleValue>
-					</ids:predefinedType>
+					</ids:subType>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCIDENTIFIER">
+				<ids:property dataType="IFCIDENTIFIER">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>

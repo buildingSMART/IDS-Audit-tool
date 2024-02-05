@@ -29,7 +29,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
         var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
-            OmitIdsContentAudit = true,
+            OmitIdsContentAudit = false,
         };
         var checkResult = Audit.Run(c, LoggerAndAuditHelpers.GetXunitLogger(XunitOutputHelper));
         checkResult.Should().Be(Audit.Status.Ok);

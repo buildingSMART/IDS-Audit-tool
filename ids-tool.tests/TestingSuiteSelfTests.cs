@@ -15,25 +15,6 @@ namespace idsTool.tests
 	public class TestingSuiteSelfTests
 	{
 		[Fact]
-		public void IfcOpenShellRepositoryFileMethodsAreCoherent()
-		{
-			
-			var files = BuildingSmartRepoFiles.GetIfcOpenShellTestCaseIdsFiles();
-			files.Should().NotBeEmpty();
-			foreach (var file in files)
-			{
-				var Frststr = file.First();
-				Frststr.Should().BeOfType<string>();
-				var str = Frststr as string;
-				if (str == "") // repository not found
-					continue;
-				var f = BuildingSmartRepoFiles.GetIfcOpenShellTestCaseFileInfo(str!);
-				f.Should().NotBeNull();
-				f.Exists.Should().BeTrue($"{str} is returned from the automation code");
-			}
-		}
-
-		[Fact]
 		public void IdsRepositoryFileMethodsAreCoherent()
 		{
 			var files = BuildingSmartRepoFiles.GetIdsRepositoryTestCaseIdsFiles();

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
 	<ids:info>
 		<ids:title>Measure validity examples</ids:title>
 	</ids:info>
 	<ids:specifications>
-		<ids:specification ifcVersion="IFC2X3" name="Wall requirement" minOccurs="0" maxOccurs="unbounded">
-			<ids:applicability>
+		<ids:specification ifcVersion="IFC2X3" name="Wall requirement">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<xs:restriction>
@@ -16,7 +16,7 @@
 			</ids:applicability>
 			<ids:requirements>
 				<!-- We are getting all properties, and mandating they have an IfcText measure, this is not possible -->
-				<ids:property minOccurs="1" maxOccurs="unbounded" datatype="IFCTEXT">
+				<ids:property dataType="IFCTEXT">
 					<ids:propertySet>
 						<xs:restriction>
 							<xs:pattern value=".*"/>
@@ -31,9 +31,9 @@
 			</ids:requirements>
 		</ids:specification>
 		<!-- The Pset_WallCommon.IsExternal property is defined as IfcBoolean, IfcText is not an acceptable value-->
-		<ids:specification name="External wall requirement" ifcVersion="IFC2X3" minOccurs="0" maxOccurs="unbounded">
-			<ids:applicability>
-				<ids:property datatype="IFCTEXT">
+		<ids:specification name="External wall requirement" ifcVersion="IFC2X3">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTEXT">
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>

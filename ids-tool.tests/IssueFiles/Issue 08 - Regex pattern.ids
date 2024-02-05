@@ -1,12 +1,12 @@
 ﻿<ids xmlns="http://standards.buildingsmart.org/IDS"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
   <info>
     <title>Ifc logical is an acceptable datatype in properties</title>
   </info>
   <specifications>
-    <specification name="Ifc logical is an acceptable datatype in properties" ifcVersion="IFC2X3 IFC4" minOccurs="1" maxOccurs="unbounded">
-      <applicability>
+    <specification name="Ifc logical is an acceptable datatype in properties" ifcVersion="IFC2X3 IFC4">
+      <applicability maxOccurs="unbounded">
         <entity>
           <name>
             <simpleValue>IFCWALL</simpleValue>
@@ -14,18 +14,18 @@
         </entity>
       </applicability>
       <requirements>
-        <property datatype="IFCLABEL" minOccurs="1" maxOccurs="unbounded">
+        <property dataType="IFCLABEL">
           <propertySet>
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>
           <name>
             <xs:restriction>
-              <!-- Currently this is acceptede by the regex engine. -->
+              <!-- Currently this is accepted by the regex engine. -->
               <xs:pattern value="^Ambienti|Servizi|Terziario|Parti comuni${1}" />
             </xs:restriction>
           </name>
         </property>
-        <property datatype="IFCLABEL" minOccurs="1" maxOccurs="unbounded">
+        <property dataType="IFCLABEL">
           <propertySet>
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>

@@ -1,4 +1,5 @@
-﻿using IdsLib.IfcSchema;
+﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
@@ -9,19 +10,26 @@ using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
-{   
+internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider, IIdsCardinalityFacet
+{
+
+    private readonly ICardinality cardinality;
+
     public IdsAttribute(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
+        cardinality = new ConditionalCardinality(reader);
     }
 
     public bool IsValid { get; private set; }
 
-	/// <summary>
-	/// prepared typefilters per schema version
-	/// </summary>
-	private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = new();
+    /// <inheritdoc />
+    public bool IsRequired => cardinality.IsRequired;
+
+    /// <summary>
+    /// prepared typefilters per schema version
+    /// </summary>
+    private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = new();
 
 	/// <inheritdoc />
 	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
@@ -65,5 +73,18 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider
 		typeFilters.Clear();
         IsValid = false;
         return Audit.Status.IdsContentError;
+    }
+
+    /// <inheritdoc />
+    public Audit.Status PerformCardinalityAudit(ILogger? logger)
+    {
+        var ret = Audit.Status.Ok;
+        if (cardinality.Audit(out var _) != Audit.Status.Ok)
+        {
+            IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
+            ret |= MinMaxCardinality.CardinalityErrorStatus;
+            IsValid = false;
+        }
+        return ret;
     }
 }
