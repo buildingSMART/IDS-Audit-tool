@@ -10,8 +10,9 @@ public class IfcMeasureInformation
 
 | name | description |
 | --- | --- |
-| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Default constructor, ensures static nullable analysis |
-| [IfcMeasureClassName](IfcMeasureInformation/IfcMeasureClassName.md) { get; } | Name of the entity as a string, stored in PascalCase |
+| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Default constructor, ensures static nullable analysis (2 constructors) |
+| [DimensionalExponents](IfcMeasureInformation/DimensionalExponents.md) { get; } | Comma separated value of the basic unit exponents |
+| [IfcMeasureClassName](IfcMeasureInformation/IfcMeasureClassName.md) { get; } | Name of the entity as a string, stored in UPPERCASE |
 | [ValidSchemaVersions](IfcMeasureInformation/ValidSchemaVersions.md) { get; } | Versions of the schema that contain the class |
 
 ## See Also

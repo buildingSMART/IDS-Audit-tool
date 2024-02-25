@@ -114,7 +114,7 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 		if (cardinality.Audit(out var _) != Audit.Status.Ok)
 		{
 			IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
-			ret |= MinMaxCardinality.CardinalityErrorStatus;
+			ret |= CardinalityConstants.CardinalityErrorStatus;
 		}
 		return ret;
 	}

@@ -46,6 +46,7 @@ public class IfcSchema_PropertiesGenerator
                     }
                     else if (prop.PropertyType.PropertyValueType is TypePropertyEnumeratedValue enumV)
                     {
+                        
                         if (enumV.ConstantList.Any())
                         {
                             throw new Exception("Not implemented data structure.");
@@ -136,6 +137,9 @@ using System.Collections.Generic;
 
 namespace IdsLib.IfcSchema
 {
+    /// <summary>
+    /// For reference see <see cref=""IdsLib.codegen.IfcSchema_PropertiesGenerator""/>
+    /// </summary>
 	public partial class PropertySetInfo
 	{
 		static IEnumerable<PropertySetInfo> GetPropertiesIFC2x3()

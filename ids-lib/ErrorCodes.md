@@ -14,10 +14,12 @@
 | 107  | Invalid IFC schema identification |
 | 108  | Unsupported Ids Schema            |
 | 109  | Invalid regex					   |
-| 200  | Integration issues                |
+| 200  | Context depending issues          |
 | 201  | Incompatible clauses              |
+| 202  | Invalid cardinality configuration |
+| 203  | Incompatible constraints          |
 | 300  | Schema clauses                    |
-| 301  | Invalid cardinality               |
+| 301  | Invalid cardinality data		   |
 | 302  | Invalid xs facet                  |
 | 303  | Invalid base type                 |
 | 304  | Invalid empty restriction         |

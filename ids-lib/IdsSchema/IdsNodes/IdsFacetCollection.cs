@@ -20,26 +20,28 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
 		minMaxOccurr = new MinMaxCardinality(reader);
 	}
 
-    private IIfcTypeConstraint? typeFilter = null;
+    private Dictionary<IfcSchemaVersions, IIfcTypeConstraint?> typeFilterDic = new();
     internal IEnumerable<IIdsFacet> ChildFacets => Children.OfType<IIdsFacet>();
 
-    private bool typesFilterInitialized = false;
+    
 
     public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
 	{   
-        if (!typesFilterInitialized) 
+        if (typeFilterDic.TryGetValue(schema.Version, out var val))
         {
-            typeFilter = null;
-            foreach (var provider in Children.OfType<IIfcTypeConstraintProvider>())
-            {
-                if (provider is IIdsCardinalityFacet card && !card.IsRequired)
-                    continue;
-                typeFilter = IfcTypeConstraint.Intersect(typeFilter, provider.GetTypesFilter(schema));
-                if (IfcTypeConstraint.IsNotNullAndEmpty(typeFilter))
-                    break;                    
-            }
-            typesFilterInitialized = true;
+            return val;
         }
+
+        IIfcTypeConstraint? typeFilter = null;
+        foreach (var provider in Children.OfType<IIfcTypeConstraintProvider>())
+        {
+            if (provider is IIdsCardinalityFacet card && !card.IsRequired)
+                continue;
+            typeFilter = IfcTypeConstraint.Intersect(typeFilter, provider.GetTypesFilter(schema));
+            if (IfcTypeConstraint.IsNotNullAndEmpty(typeFilter))
+                break;
+        }
+        typeFilterDic.Add(schema.Version, typeFilter);
         return typeFilter;
     }
 

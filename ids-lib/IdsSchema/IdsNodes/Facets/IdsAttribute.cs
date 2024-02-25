@@ -15,6 +15,12 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 
     private readonly ICardinality cardinality;
 
+    /// <summary>
+    /// value is used when evaluating cardinality for requirements
+    /// </summary>
+    private IdsXmlNode? value { get; set; } = null;
+
+
     public IdsAttribute(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
@@ -50,6 +56,9 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
         if (sm is null)
             return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
+        value = GetChildNodes("value").FirstOrDefault(); 
+        
+
         Audit.Status ret = Audit.Status.Ok;
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         foreach (var schema in schemas)
@@ -65,7 +74,6 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 		}
 		IsValid = true;
 
-
 		return ret;
     }
     private Audit.Status SetInvalid()
@@ -79,11 +87,20 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
         var ret = Audit.Status.Ok;
-        if (cardinality.Audit(out var _) != Audit.Status.Ok)
+        if (cardinality.Audit(out var _) != Audit.Status.Ok) // this evaluates if the string in the xml is within the valid range
         {
             IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
-            ret |= MinMaxCardinality.CardinalityErrorStatus;
+            ret |= CardinalityConstants.CardinalityErrorStatus;
             IsValid = false;
+        }
+        else
+        {
+            if (cardinality is ConditionalCardinality crd && crd.enumerationValue == "optional" && IdsSimpleValue.IsNullOrEmpty(value))
+            {
+                IdsErrorMessages.Report202InvalidCardinalityContext(logger, this, cardinality, crd.enumerationValue, "it requires the specification of the 'value' constraint"); 
+                ret |= CardinalityConstants.CardinalityErrorStatus;
+                IsValid = false;
+            }
         }
         return ret;
     }

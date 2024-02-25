@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Text;
 using Xbim.Common.Metadata;
 
 namespace IdsLib.codegen;
@@ -14,21 +16,21 @@ public class IfcSchema_ClassGenerator
         foreach (var schema in Program.schemas)
         {
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
+            Debug.WriteLine(module.Name);
             var metaD = ExpressMetaData.GetMetadata(module);
 
             var sb = new StringBuilder();
 
             // trying to find a set of classes that matches the property types
-            List<string> HandledTypes = new();
-            foreach (var item in metaD.Types()) 
-            {
-                HandledTypes.Add(item.Name.ToUpperInvariant());
-            }
-
+            var HandledTypes = metaD.Types().Select(x=>x.Name.ToUpperInvariant()).ToList();
             foreach (var className in HandledTypes)
             {
                 var daType = metaD.ExpressType(className.ToUpperInvariant());
-
+                var t = daType.Type.GetInterfaces().Select(x => x.Name).Contains("IExpressValueType");
+                if (t ) //!string.IsNullOrEmpty(daType?.UnderlyingType?.Name))
+                {
+                    Debug.WriteLine($"{daType.Name}: {daType.UnderlyingType.Name} - {t}");
+                }
 
                 // Enriching schema with predefined types
                 var propPdefT = daType.Properties.Values.FirstOrDefault(x => x.Name == "PredefinedType");

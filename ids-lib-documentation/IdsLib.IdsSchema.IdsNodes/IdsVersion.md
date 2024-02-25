@@ -12,7 +12,9 @@ public enum IdsVersion
 | --- | --- | --- |
 | Invalid | `0` | Invalid or incomplete version information |
 | Ids0_9 | `1` | Version 0.9; this might be removed before first official release |
-| Ids1_0 | `2` | Version 1; this is not final until formal release. |
+| Ids0_9_6 | `2` | Version 0.9.6; this might be removed before first official release |
+| Ids0_9_7 | `3` | Version 0.9.6; this might be removed before first official release |
+| Ids1_0 | `4` | Version 1; this is not final until formal release. |
 
 ## See Also
 

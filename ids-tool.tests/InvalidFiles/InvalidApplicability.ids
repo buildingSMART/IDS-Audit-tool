@@ -33,7 +33,7 @@
     <ids:specification ifcVersion="IFC2X3" name="binder">
       <!-- Missing applicability -->
       <ids:requirements>
-        <ids:property>
+        <ids:property dataType="IFCTEXT">
           <ids:propertySet>
             <xs:restriction>
               <xs:pattern value="anas.*"/>

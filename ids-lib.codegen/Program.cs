@@ -71,7 +71,7 @@ internal class Program
         return true;
     }
 
-    private static void Message(string v, ConsoleColor messageColor)
+    internal static void Message(string v, ConsoleColor messageColor)
     {
         var restore = Console.ForegroundColor;
         Console.ForegroundColor = messageColor;

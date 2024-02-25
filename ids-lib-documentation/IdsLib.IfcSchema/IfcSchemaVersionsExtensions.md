@@ -10,8 +10,13 @@ public static class IfcSchemaVersionsExtensions
 
 | name | description |
 | --- | --- |
+| const [IfcSchema2x3String](IfcSchemaVersionsExtensions/IfcSchema2x3String.md) | Canonical string version of the schema version |
+| const [IfcSchema4String](IfcSchemaVersionsExtensions/IfcSchema4String.md) | Canonical string version of the schema version |
+| const [IfcSchema4x3String](IfcSchemaVersionsExtensions/IfcSchema4x3String.md) | Canonical string version of the schema version |
+| static [EncodeAsXmlSchemasAttribute](IfcSchemaVersionsExtensions/EncodeAsXmlSchemasAttribute.md)(…) | Encodes a schemas enum to a string formatted as an enumerable XML attribute. |
 | static [GetSchema](IfcSchemaVersionsExtensions/GetSchema.md)(…) | Converts a set of IFC schema name strings to the relative enum value |
 | static [IsSingleSchema](IfcSchemaVersionsExtensions/IsSingleSchema.md)(…) | Utility extension to help identify if the flag enum [`IfcSchemaVersions`](./IfcSchemaVersions.md) represents a single schema value. |
+| static [ParseXmlSchemasFromAttribute](IfcSchemaVersionsExtensions/ParseXmlSchemasFromAttribute.md)(…) | Converts a set of IFC schema strings, concatenated in a single space separated string (useful for XML attribute reading). |
 | static [TryGetSchemaInformation](IfcSchemaVersionsExtensions/TryGetSchemaInformation.md)(…) | Makes it easy to use the SchemaInfo}@) directly from a schema enum. |
 
 ## See Also

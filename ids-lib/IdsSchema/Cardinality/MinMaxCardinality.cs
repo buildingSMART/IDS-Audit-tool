@@ -21,7 +21,7 @@ internal class MinMaxCardinality : ICardinality
         maxString = reader.GetAttribute("maxOccurs") ?? "1";
     }
 
-    internal const Audit.Status CardinalityErrorStatus = IdsLib.Audit.Status.IdsContentError;
+    
 
     /// <summary>
     /// Audits the validity of an occurrence setting.
@@ -36,17 +36,17 @@ internal class MinMaxCardinality : ICardinality
         else if (!uint.TryParse(maxString, out max))
         {
             errorMessage = $"Invalid maxOccurs '{maxString}'";
-            return CardinalityErrorStatus;
+            return CardinalityConstants.CardinalityErrorStatus;
         }
         if (!uint.TryParse(minString, out var min))
         {
             errorMessage = $"Invalid minOccurs '{minString}'";
-            return CardinalityErrorStatus;
+            return CardinalityConstants.CardinalityErrorStatus;
         }
         if (max < min)
         {
             errorMessage = $"Invalid range '{minString}' to `{maxString}`";
-            return CardinalityErrorStatus;
+            return CardinalityConstants.CardinalityErrorStatus;
         }
         if (
             min > 1 ||
@@ -54,7 +54,7 @@ internal class MinMaxCardinality : ICardinality
             )
         {
             errorMessage = $"Invalid configuration for IDS implementation agreements {this}";
-            return CardinalityErrorStatus;
+            return CardinalityConstants.CardinalityErrorStatus;
         }
 
         errorMessage = string.Empty;

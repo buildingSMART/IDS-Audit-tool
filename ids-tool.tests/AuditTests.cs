@@ -70,7 +70,6 @@ public class AuditTests : BuildingSmartRepoFiles
         auditResult.Should().Be(Audit.Status.Ok);
     }
 
-
     /// <summary>
     /// this test skips the content evaluation on ids files that are expected to fail, 
     /// because they could be failing due to invalid content.
@@ -85,16 +84,14 @@ public class AuditTests : BuildingSmartRepoFiles
         var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
-            OmitIdsContentAuditPattern = @"\\fail-",
+            OmitIdsContentAuditPattern = @"\\invalid-",
             SchemaFiles = new[] { "bsFiles/ids.xsd" }
         };
         var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
         // hack to provide milder error because we don't have control on the test case generator
         // Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
         auditResult.Should().Be(Audit.Status.Ok);
-    }
-
-	
+    }	
 
 	[Theory]
     [InlineData("ValidFiles/nested_entity.ids")]
@@ -105,23 +102,26 @@ public class AuditTests : BuildingSmartRepoFiles
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
 
-
     public static IEnumerable<object[]> GetInvalidCases()
     {
         yield return new object[] { "InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError };
         yield return new object[] { "InvalidFiles/InvalidIfcOccurs.ids", 11, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidAttributeCardinality.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 4, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidPropertyCardinality.ids", 4, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidMaterialCardinality.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidClassification.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidMeasureForStandardPsetProperty.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError };
         yield return new object[] { "InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };

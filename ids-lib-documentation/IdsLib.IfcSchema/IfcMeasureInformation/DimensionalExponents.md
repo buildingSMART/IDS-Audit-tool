@@ -1,9 +1,9 @@
-# IfcMeasureInformation.IfcMeasureClassName property
+# IfcMeasureInformation.DimensionalExponents property
 
-Name of the entity as a string, stored in UPPERCASE
+Comma separated value of the basic unit exponents
 
 ```csharp
-public string IfcMeasureClassName { get; }
+public string DimensionalExponents { get; }
 ```
 
 ## See Also

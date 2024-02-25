@@ -25,7 +25,7 @@ internal class IdsXmlHelpers
             "attribute" => new IdsAttribute(reader, parent),
             "partOf" => new IdsPartOf(reader, parent),
             "property" => new IdsProperty(reader, parent),
-            "classification" => new IdsFacet(reader, parent),
+            "classification" => new IdsClassification(reader, parent),
             "material" => new IdsFacet(reader, parent),
             // xs
             "restriction" => new XsRestriction(reader, parent),

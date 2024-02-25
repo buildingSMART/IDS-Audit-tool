@@ -1,7 +1,10 @@
-﻿using IdsLib.Messages;
+﻿using IdsLib.IdsSchema.XsNodes;
+using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
@@ -44,5 +47,18 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
     public IEnumerable<string> GetDicreteValues()
     {
         yield return Content;
+    }
+
+    internal static bool IsNullOrEmpty(IdsXmlNode? parentNode)
+    {
+        if (parentNode is null)
+            return true;
+        var frst = parentNode.Children.FirstOrDefault();
+        return frst switch
+        {
+            IdsSimpleValue simple => simple.Content == string.Empty, // we need a spec, if it's empty then its null or empty
+            XsRestriction rest => rest.TryMatch(new[] { "" }, false, out _),// if it can match an empty string then it's not a valid value spec
+            _ => true,// if it's neither, then null
+        };
     }
 }

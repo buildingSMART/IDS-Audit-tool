@@ -54,12 +54,14 @@ internal class IdsSpecification : IdsXmlNode
                 {
                     var aF = applic.GetTypesFilter(schemaInfo);
                     var rF = reqs.GetTypesFilter(schemaInfo);
-					if (!IfcTypeConstraint.IsNotNullAndEmpty(aF) // if they are empty an error would already be notified
-                        && !IfcTypeConstraint.IsNotNullAndEmpty(rF))
+					if (
+                        !IfcTypeConstraint.IsNotNullAndEmpty(aF) // if they are empty an error would already be notified
+                        && !IfcTypeConstraint.IsNotNullAndEmpty(rF)
+                        )
                     {
                         var totalFilters = IfcTypeConstraint.Intersect(aF, rF);
                         if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
-                            ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of applicability and requirements");
+                            ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of types between applicability and requirements");
                     }
                 }
             }

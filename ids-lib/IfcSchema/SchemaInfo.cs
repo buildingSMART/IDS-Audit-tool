@@ -10,6 +10,7 @@ namespace IdsLib.IfcSchema
     /// <summary>
     /// Provides static methods to get the collection of classes in the published schemas.
     /// </summary>
+    [DebuggerDisplay("{Version}")]
     public partial class SchemaInfo : IEnumerable<ClassInfo>
     {
         /// <summary>

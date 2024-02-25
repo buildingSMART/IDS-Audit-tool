@@ -32,13 +32,20 @@ public static class IPropertyTypeInfoExtensions
     /// <returns>true if a type constraint is enforced</returns>
     public static bool HasDataType(this IPropertyTypeInfo property, [NotNullWhen(true)] out string? dataType)
     {
-        if (property is not SingleValuePropertyType svp)
+        if (property is SingleValuePropertyType svp)
         {
-            dataType = null;
-            return false;
+            dataType = svp.DataType.ToUpperInvariant();
+            return true;
         }
-        dataType = svp.DataType.ToUpperInvariant();
-        return true;
+        if (property is EnumerationPropertyType ep)
+        {
+            // We assume that enumerations are stored as labels, having had a look at a few example on bSmart
+            dataType = "IFCLABEL";
+            return true;
+        }
+
+        dataType = null;
+        return false;
     }
 }
 

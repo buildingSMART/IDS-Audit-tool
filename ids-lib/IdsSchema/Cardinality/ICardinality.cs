@@ -6,4 +6,9 @@
 
         Audit.Status Audit(out string errorMessage);
     }
+
+    internal static class CardinalityConstants
+    {
+        internal const Audit.Status CardinalityErrorStatus = IdsLib.Audit.Status.IdsContentError;
+    }
 }

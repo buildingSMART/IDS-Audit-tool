@@ -14,6 +14,10 @@ public class IfcMeasureInformation
     /// </summary>
     public string IfcMeasureClassName { get; }
     /// <summary>
+    /// Comma separated value of the basic unit exponents
+    /// </summary>
+    public string DimensionalExponents { get; } = string.Empty;
+    /// <summary>
     /// Versions of the schema that contain the class
     /// </summary>
     public IfcSchemaVersions ValidSchemaVersions { get; }
@@ -24,5 +28,17 @@ public class IfcMeasureInformation
     {
         IfcMeasureClassName = name;
         ValidSchemaVersions = IfcSchemaVersionsExtensions.GetSchema(schemas);
+    }
+    /// <summary>
+    /// Custom constructor for unit exponents
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="schemas"></param>
+    /// <param name="exponents"></param>
+    public IfcMeasureInformation(string name, IEnumerable<string> schemas, string exponents)
+    {
+        IfcMeasureClassName = name;
+        ValidSchemaVersions = IfcSchemaVersionsExtensions.GetSchema(schemas);
+        DimensionalExponents = exponents;
     }
 }

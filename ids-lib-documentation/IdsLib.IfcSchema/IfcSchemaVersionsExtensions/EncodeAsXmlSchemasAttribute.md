@@ -1,18 +1,18 @@
-# IfcSchemaVersionsExtensions.GetSchema method
+# IfcSchemaVersionsExtensions.EncodeAsXmlSchemasAttribute method
 
-Converts a set of IFC schema name strings to the relative enum value
+Encodes a schemas enum to a string formatted as an enumerable XML attribute.
 
 ```csharp
-public static IfcSchemaVersions GetSchema(IEnumerable<string> schemaStrings)
+public static string EncodeAsXmlSchemasAttribute(this IfcSchemaVersions versions)
 ```
 
 | parameter | description |
 | --- | --- |
-| schemaStrings | Enumerable strings to be evaluated |
+| versions | The versions enum to convert to XML attribute encoding |
 
 ## Return Value
 
-A single enumeration value representing all the *schemaStrings*
+the encoded string
 
 ## See Also
 

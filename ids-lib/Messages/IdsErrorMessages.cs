@@ -63,7 +63,7 @@ internal static class IdsErrorMessages
 
 	internal static Audit.Status Report106InvalidEmtpyValue(ILogger? logger, IdsXmlNode context, string emptyAttributeName)
 	{
-		logger?.LogError("Error {errorCode}: Invalid empty attribute {attributeName} on {location}.", 106, emptyAttributeName, context.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid empty value for {attributeName} on {location}.", 106, emptyAttributeName, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
@@ -96,21 +96,33 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, ICardinality minMax)
+    internal static Audit.Status Report202InvalidCardinalityContext(ILogger? logger, IdsXmlNode context, ICardinality cardinality, string cardinalityValue, string errorMessage)
+    {
+        logger?.LogError("Error {errorCode}: Invalid cardinality '{cardinalityValue}' on {location}, {occurError}.", 202, cardinalityValue, context.GetNodeIdentification(), errorMessage);
+        return CardinalityConstants.CardinalityErrorStatus;
+    }
+
+    internal static Audit.Status Report203IncompatibleConstraints(ILogger? logger, IdsXmlNode context, string errorMessage)
+    {
+        logger?.LogError("Error {errorCode}: Incompatible constraints on {location}, {errorMessage}.", 203, context.GetNodeIdentification(), errorMessage);
+        return Audit.Status.IdsContentError;
+    }
+
+    internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, ICardinality minMax)
 	{
 		minMax.Audit(out var cardinalityError);
 		logger?.LogError("Error {errorCode}: Invalid cardinality on {location}. {occurError}.", 301, context.GetNodeIdentification(), cardinalityError);
-		return MinMaxCardinality.CardinalityErrorStatus;
+		return CardinalityConstants.CardinalityErrorStatus;
 	}
 
-	/// <summary>
-	/// Report an invalid XML structure within a facet
-	/// </summary>
-	/// <param name="logger">optional logging destination</param>
-	/// <param name="context">Provides indication of the position of the error in the file</param>
-	/// <param name="alternative">if an alternative solution is preferred, it can be suggested here with no punctuation at the end</param>
-	/// <returns>The error status associated with this problem</returns>
-	internal static Audit.Status Report302InvalidXsFacet(ILogger? logger, IdsXmlNode context, string alternative)
+    /// <summary>
+    /// Report an invalid XML structure within a facet
+    /// </summary>
+    /// <param name="logger">optional logging destination</param>
+    /// <param name="context">Provides indication of the position of the error in the file</param>
+    /// <param name="alternative">if an alternative solution is preferred, it can be suggested here with no punctuation at the end</param>
+    /// <returns>The error status associated with this problem</returns>
+    internal static Audit.Status Report302InvalidXsFacet(ILogger? logger, IdsXmlNode context, string alternative)
 	{
 		if (string.IsNullOrWhiteSpace(alternative))
 			logger?.LogError("Error {errorCode}: Invalid context on {location}.", 302, context.GetNodeIdentification());
@@ -147,7 +159,7 @@ internal static class IdsErrorMessages
 		logger?.Log(level, "{LogLevel} {errorCode}: Schema compliance warning on {location}; {message}", level, 307, location, message);
 	}
 
-	internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)
+    internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)
 	{
 		logger?.LogError("Error {errorCode}: Reserved prefix '{prefix}' for {field} ({matcherValue}) in the context of {schema} on {location}.", 401, prefix, field, value, schema.Version, context.GetNodeIdentification());        
         return Audit.Status.IdsContentError;

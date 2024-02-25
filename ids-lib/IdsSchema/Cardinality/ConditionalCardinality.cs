@@ -9,27 +9,27 @@ namespace IdsLib.IdsSchema.Cardinality
 {
     internal class ConditionalCardinality : ICardinality
     {
-        private readonly string enumerationValue;
+        internal string enumerationValue { init;  get; } 
 
         public ConditionalCardinality(XmlReader reader)
         {
-            enumerationValue = reader.GetAttribute("cardinality") ?? "Required";
+            enumerationValue = reader.GetAttribute("cardinality") ?? "required";
         }
 
-        public bool IsRequired => enumerationValue == "Required";
+        public bool IsRequired => enumerationValue == "required";
 
         public Audit.Status Audit(out string errorMessage)
         {
             switch (enumerationValue)
             {
-                case "Required":
-                case "Prohibited":
-                case "Optional":
+                case "required":
+                case "prohibited":
+                case "optional":
                     errorMessage = string.Empty;
                     return IdsLib.Audit.Status.Ok;
                 default:
                     errorMessage = $"Invalid cardinality '{enumerationValue}'";
-                    return MinMaxCardinality.CardinalityErrorStatus;
+                    return CardinalityConstants.CardinalityErrorStatus;
             }
         }
     }

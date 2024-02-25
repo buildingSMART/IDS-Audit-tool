@@ -13,18 +13,24 @@ namespace IdsLib.IdsSchema.IdsNodes;
 internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintProvider
 {
     private readonly ICardinality cardinality;
-    private readonly IStringListMatcher? datatypeMatcher;
+    private readonly IStringListMatcher? dataTypeMatcher;
+    private readonly string dataType;
     public IdsProperty(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         cardinality = new ConditionalCardinality(reader);
-        var measure = reader.GetAttribute("dataType") ?? string.Empty;
-        if (!string.IsNullOrEmpty(measure))
-            datatypeMatcher = new StringListMatcher(measure, this);
+        dataType = reader.GetAttribute("dataType") ?? string.Empty;
+        if (!string.IsNullOrEmpty(dataType))
+            dataTypeMatcher = new StringListMatcher(dataType, this);
         else
-            datatypeMatcher = null;
+            dataTypeMatcher = null;
     }
 
     public bool IsValid { get; private set; } = false;
+
+    /// <summary>
+    /// value is used when evaluating cardinality for requirements
+    /// </summary>
+    private IdsXmlNode? value { get; set; } = null;
 
     public bool IsRequired => cardinality.IsRequired;
 
@@ -59,22 +65,29 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         if (nameMatcher is null)
             return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
-		// we are keeping the stricter type to ensure that it is valid across multiple schemas
-		// depending on the schema version of IfcRelDefinesByProperties the filter needs to be
-		//
-		// - IfcObject in ifc2x3 
-		// - IfcObjectDefinition in Ifc4 
-		// - IfcObjectDefinition in ifc4x3
-		// 
-		// todo: we need to add material properties (at least)...
-		// start from the following documentation to work out what other types are enabled:
-		// in ifc2x3 see https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/TC1/HTML/ifcmaterialpropertyresource/lexical/ifcextendedmaterialproperties.htm 
-		//     in ifc2x3 the connection does not allow for a pset in the pset
-		// in ifc4 see https://standards.buildingsmart.org/MVD/RELEASE/IFC4/ADD2_TC1/RV1_2/HTML/schema/ifcpropertyresource/lexical/ifcextendedproperties.htm (new in 4)
-		//     this is abstract and only subclass is ifcmaterialproperties pointing to IfcMaterialDefinition
-		// in ifc4x3 see https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcExtendedProperties.htm
-		//     two subclasses for materials (IfcMaterialDefinition) and profiles (IfcProfileDef)	
-		var ret = Audit.Status.Ok;
+        value = GetChildNodes("value").FirstOrDefault();
+        if (string.IsNullOrEmpty(dataType) && !IdsSimpleValue.IsNullOrEmpty(value))
+        {
+            return IdsErrorMessages.Report203IncompatibleConstraints(logger, this, "specifiying a 'value' requires a 'dataType'");
+        }
+
+
+        // we are keeping the stricter type to ensure that it is valid across multiple schemas
+        // depending on the schema version of IfcRelDefinesByProperties the filter needs to be
+        //
+        // - IfcObject in ifc2x3 
+        // - IfcObjectDefinition in Ifc4 
+        // - IfcObjectDefinition in ifc4x3
+        // 
+        // todo: we need to add material properties (at least)...
+        // start from the following documentation to work out what other types are enabled:
+        // in ifc2x3 see https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/TC1/HTML/ifcmaterialpropertyresource/lexical/ifcextendedmaterialproperties.htm 
+        //     in ifc2x3 the connection does not allow for a pset in the pset
+        // in ifc4 see https://standards.buildingsmart.org/MVD/RELEASE/IFC4/ADD2_TC1/RV1_2/HTML/schema/ifcpropertyresource/lexical/ifcextendedproperties.htm (new in 4)
+        //     this is abstract and only subclass is ifcmaterialproperties pointing to IfcMaterialDefinition
+        // in ifc4x3 see https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcExtendedProperties.htm
+        //     two subclasses for materials (IfcMaterialDefinition) and profiles (IfcProfileDef)	
+        var ret = Audit.Status.Ok;
 
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         foreach (var schema in schemas)
@@ -127,9 +140,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 				typeFilters.Add(schema, filter);
 				IsValid = true;
             }
-			if (datatypeMatcher is not null)
+			if (dataTypeMatcher is not null)
 			{
-				ret |= datatypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "datatype", schema.Version);
+				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "datatype", schema.Version);
 			}
 			if (ret != Audit.Status.Ok)
 				IsValid = false;
@@ -147,8 +160,24 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 
     public Audit.Status PerformCardinalityAudit(ILogger? logger)
     {
+        var ret = Audit.Status.Ok;
         if (cardinality.Audit(out var _) != Audit.Status.Ok)
-            return IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
-        return Audit.Status.Ok;
+            ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, cardinality);
+        else if (cardinality is ConditionalCardinality crd)
+        {
+            if (crd.enumerationValue == "optional" && string.IsNullOrEmpty(dataType))
+            {
+                IdsErrorMessages.Report202InvalidCardinalityContext(logger, this, cardinality, crd.enumerationValue, "it requires the specification of the 'dataType' constraint");
+                ret |= CardinalityConstants.CardinalityErrorStatus;
+                IsValid = false;
+            }
+            else if (crd.enumerationValue == "prohibited" && !string.IsNullOrEmpty(dataType))
+            {
+                IdsErrorMessages.Report202InvalidCardinalityContext(logger, this, cardinality, crd.enumerationValue, "it is not compatible with the specification of the 'dataType' constraint");
+                ret |= CardinalityConstants.CardinalityErrorStatus;
+                IsValid = false;
+            }
+        }
+        return ret;
     }
 }

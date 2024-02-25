@@ -63,6 +63,18 @@
 		<None Update="InvalidFiles\InvalidApplicability.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="InvalidFiles\InvalidAttributeCardinality.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\InvalidClassification.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\InvalidMaterialCardinality.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="InvalidFiles\InvalidPropertyCardinality.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="InvalidFiles\InvalidIfcRestrictionType.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

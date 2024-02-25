@@ -52,24 +52,31 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         Audit.Status ret = Audit.Status.Ok;
 		IsValid = true;
-		foreach (var schema in schemas)
+
+        // preload subtype for efficiency
+        var predefinedType = GetChildNodes(PRED_TYPE).FirstOrDefault();
+        IStringListMatcher? predefinedTypeMatcher = null;
+        if (predefinedType is not null)
         {
-            var ValidClassNames = schema
-                .Select(y => y.Name.ToUpperInvariant());
+            predefinedTypeMatcher = predefinedType.GetListMatcher();
+            if (predefinedTypeMatcher is null)
+            {
+                return IdsErrorMessages.Report102NoStringMatcher(logger, this, PRED_TYPE);
+            }
+        }
+
+        foreach (var schema in schemas)
+        {
+            var ValidClassNames = schema.Select(y => y.Name.ToUpperInvariant());
 			ret |= sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity name", schema.Version);
             if (ret != Audit.Status.Ok)
-                return SetInvalid();
+                continue;
             typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
 
-            // predefined types that are common for the possibleClasses across defined schemas
-            var predefinedType = GetChildNodes(PRED_TYPE).FirstOrDefault();
-            if (predefinedType is null)
-                continue;
-
-            var predefinedTypeMatcher = predefinedType.GetListMatcher();
-            if (predefinedTypeMatcher is null)
-                return IdsErrorMessages.Report102NoStringMatcher(logger, this, PRED_TYPE);
-
+            // now check predefined types that are common for the possibleClasses across defined schemas
+            
+            if (predefinedType is null || predefinedTypeMatcher is null)
+                continue;            
             
             List<string>? possiblePredefined = null;
             foreach (var ifcClass in possibleClasses)
@@ -83,24 +90,24 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                 if (possiblePredefined == null)
                     possiblePredefined = new List<string>(c.PredefinedTypeValues);
                 else
-                    possiblePredefined = possiblePredefined.Intersect(c.PredefinedTypeValues).ToList();
+                    possiblePredefined = possiblePredefined.Intersect(c.PredefinedTypeValues).ToList(); // using intersect because it has got to work for all classes matched
             }
-            
+
             if (possiblePredefined == null)
                 ret |= IdsErrorMessages.Report105InvalidDataConfiguration(logger, this, PRED_TYPE);
             else if (possiblePredefined.Contains("USERDEFINED")) // if a user defined option is available then any value is acceptable
-                return ret;
+                continue;
             else
                 // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
                 ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, PRED_TYPE, schema.Version);
         }
+        if (ret != Status.Ok)
+        {
+            typeFilters.Clear();
+            IsValid = false;
+        }
         return ret;
     }
 
-    private Audit.Status SetInvalid()
-    {
-        typeFilters.Clear();
-        IsValid = false;
-        return Audit.Status.IdsContentError;
-    }
+   
 }

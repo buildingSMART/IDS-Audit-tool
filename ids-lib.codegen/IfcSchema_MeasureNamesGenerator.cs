@@ -1,67 +1,119 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Text;
 using Xbim.Common.Metadata;
 
 namespace IdsLib.codegen;
+
+internal record typeMetadata
+{
+    public string Name { get; set; } 
+    public List<string> Schemas { get; set; } = new();
+    public string Exponents { get; set; } = string.Empty;
+
+    internal void AddSchema(string schema)
+    {
+        Schemas.Add(schema);
+    }
+}
 
 public class IfcSchema_DatatypeNamesGenerator
 {
     internal static string Execute()
     {
-        var datatypeNames = GetAllDatatypeNames();
 
-        var datatypeInfos = new Dictionary<string, List<string>>();
-        var attNames = new Dictionary<string, List<string>>();
+        // start from documented... detail the exponents
+        // then add their schemas and the others, with relevant schemas
+
+        var documentedMeasures = GetDocumentationMeasures().ToList();
+        var dTypes = documentedMeasures.ToDictionary(x => x.Name, x => x);
+
+        //var datatypeNames = GetAllDatatypeNames().ToList();
+        //var dttNames = new Dictionary<string, List<string>>();
+
+
+        
+
+
         foreach (var schema in Program.schemas)
         {
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
             var metaD = ExpressMetaData.GetMetadata(module);
-            foreach (var daMeasure in datatypeNames)
+
+            var values = GetExpressValues(metaD)
+                .Concat(GetEnumValueTypes(schema))
+                .Select(x=>x.ToUpperInvariant())
+                .Distinct();
+            foreach (var daDataType in values)
             {
-                // measure class names
-                try
+                if (dTypes.TryGetValue(daDataType, out var lst))
                 {
-                    var t = metaD.ExpressType(daMeasure.ToUpperInvariant());
-                    if (t is null)
-                        continue;
-                    if (datatypeInfos.TryGetValue(daMeasure, out var lst))
-                    {
-                        lst.Add(schema);
-                    }
-                    else
-                    {
-                        datatypeInfos.Add(daMeasure, new List<string>() { schema });
-                    }
+                    lst.AddSchema(schema);
                 }
-                catch 
+                else
                 {
-                    continue;
-                }                
+                    var t = new typeMetadata() { Name = daDataType };
+                    t.AddSchema(schema);
+                    dTypes.Add(daDataType, t);
+                }
             }
         }
+
+        foreach (var datatype in dTypes.Keys)
+        {
+            // check if measure is available
+            if (datatype.EndsWith("MEASURE"))
+            {
+                if (!documentedMeasures.Any(x=>x.Name == datatype.ToUpperInvariant()))
+                {
+                    Program.Message($"Warning: measure {datatype} is missing in documentation", ConsoleColor.DarkYellow);
+                }
+            }
+        }
+
+
         var source = stub;
         var sbMeasures = new StringBuilder();
-        foreach (var clNm in datatypeInfos.Keys.OrderBy(x => x))
+        foreach (var clNm in dTypes.Keys.OrderBy(x => x))
         {
-            var schemes = datatypeInfos[clNm];
-            sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
+            var schemas = dTypes[clNm].Schemas;
+            if (!string.IsNullOrEmpty(dTypes[clNm].Exponents))
+                sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemas)}, "{dTypes[clNm].Exponents}");""");
+            else
+                sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemas)});""");
         }
         source = source.Replace($"<PlaceHolderMeasures>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
+        
         return source;
+
     }
 
-    private static IEnumerable<string> GetAllDatatypeNames()
+    private static IEnumerable<string> GetExpressValues(ExpressMetaData metaD)
     {
-        return GetDocumentationMeasureNames()
-            .Concat(GetExtraMeasureNames())
-            .Concat(GetPropsDatatypes())
-            .Select(x => x.ToUpperInvariant())
-            .Distinct();
+        var HandledTypes = metaD.Types().Select(x => x.Name.ToUpperInvariant()).ToList();
+        foreach (var className in HandledTypes)
+        {
+            var daType = metaD.ExpressType(className.ToUpperInvariant());
+            var t = daType.Type.GetInterfaces().Select(x => x.Name).Contains("IExpressValueType");
+            if (t && !daType.UnderlyingType.Name.StartsWith("List"))
+            {
+                 yield return className;
+            }
+        }
     }
 
-	// this list is taken from the properties. 
-	// a debug statement in IfcSchema_PropertiesGenerator can help updating it.
-	private static IEnumerable<string> GetPropsDatatypes()
+    private static IEnumerable<string> GetEnumValueTypes(string schema)
+    {
+        System.Reflection.Module module = SchemaHelper.GetModule(schema);
+        var tp2 = module.GetTypes().Where(x => !string.IsNullOrEmpty(x.BaseType?.Name) && x.BaseType.Name == "Enum").ToList();
+        return tp2.Select(x => x.Name.ToUpperInvariant()).Where(x => x.EndsWith("ENUM") && x.StartsWith("IFC"));
+    }
+
+
+    // this list is taken from the properties. 
+    // a debug statement in IfcSchema_PropertiesGenerator can help updating it.
+    private static IEnumerable<string> GetPropsDatatypes()
     {
 		yield return "IfcText";
 		yield return "IfcLabel";
@@ -179,7 +231,7 @@ public class IfcSchema_DatatypeNamesGenerator
 
     }
 
-    private static IEnumerable<string> GetDocumentationMeasureNames()
+    private static IEnumerable<typeMetadata> GetDocumentationMeasures()
     {
         var markDown = File.ReadAllLines(@"buildingSMART\units.md");
         foreach (var line in markDown)
@@ -188,10 +240,10 @@ public class IfcSchema_DatatypeNamesGenerator
             var lineCells = modline.Split('|');
             if (lineCells.Length != 8)
                 continue;
-            var first = lineCells[1].Trim();
-            if (first.Contains(' ') ||  first.Contains('\t') || first.Contains('-'))
+            var firstCell = lineCells[1].Trim();
+            if (firstCell.Contains(' ') ||  firstCell.Contains('\t') || firstCell.Contains('-'))
                 continue;
-            yield return first;
+            yield return new typeMetadata() { Name = firstCell, Exponents = lineCells[5].Trim() };
         }
     }
 

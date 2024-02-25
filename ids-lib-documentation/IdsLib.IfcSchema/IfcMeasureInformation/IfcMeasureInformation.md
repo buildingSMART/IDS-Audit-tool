@@ -1,10 +1,31 @@
-# IfcMeasureInformation constructor
+# IfcMeasureInformation constructor (1 of 2)
 
 Default constructor, ensures static nullable analysis
 
 ```csharp
 public IfcMeasureInformation(string name, IEnumerable<string> schemas)
 ```
+
+## See Also
+
+* class [IfcMeasureInformation](../IfcMeasureInformation.md)
+* namespace [IdsLib.IfcSchema](../../ids-lib.md)
+
+---
+
+# IfcMeasureInformation constructor (2 of 2)
+
+Custom constructor for unit exponents
+
+```csharp
+public IfcMeasureInformation(string name, IEnumerable<string> schemas, string exponents)
+```
+
+| parameter | description |
+| --- | --- |
+| name |  |
+| schemas |  |
+| exponents |  |
 
 ## See Also
 
