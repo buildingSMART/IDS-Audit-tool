@@ -31,10 +31,6 @@ public class IfcSchema_DatatypeNamesGenerator
         //var datatypeNames = GetAllDatatypeNames().ToList();
         //var dttNames = new Dictionary<string, List<string>>();
 
-
-        
-
-
         foreach (var schema in Program.schemas)
         {
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
