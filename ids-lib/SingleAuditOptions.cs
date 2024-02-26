@@ -65,6 +65,6 @@ namespace IdsLib
         /// <summary>
         /// Defines what version of the schema we are auditing against.
         /// </summary>
-        public virtual IdsVersion IdsVersion { get; set; } = IdsVersion.Ids0_9_7;
+        public virtual IdsVersion IdsVersion { get; set; } = IdsFacts.DefaultIdsVersion;
     }
 }

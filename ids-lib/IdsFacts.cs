@@ -4,7 +4,10 @@ using Microsoft.Extensions.Logging;
 
 namespace IdsLib.IdsSchema.IdsNodes;
 
-internal class IdsFacts
+/// <summary>
+/// Collection of relevant IDS assumptions
+/// </summary>
+public class IdsFacts
 {
 #pragma warning disable IDE0060 // Remove unused parameter
 	internal static IdsVersion GetVersionFromLocation(string location, ILogger? logger = null)
@@ -20,6 +23,12 @@ internal class IdsFacts
 		};
 		;
     }
+
+	/// <summary>
+	/// The version of IDS schema to be assumed when running programmatically
+	/// </summary>
+	public const IdsVersion DefaultIdsVersion = IdsVersion.Ids0_9_7;
+
 }
 
 

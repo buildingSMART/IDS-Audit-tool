@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using IdsLib;
+using IdsLib.IdsSchema.IdsNodes;
 using IdsTool;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -91,14 +92,14 @@ internal static class LoggerAndAuditHelpers
         BatchAuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
-    internal static void FullAudit(Stream stream, ITestOutputHelper xunitOutputHelper, Audit.Status status, int numErr = -1)
+    internal static Audit.Status FullAudit(Stream stream, ITestOutputHelper xunitOutputHelper, Audit.Status? status = Audit.Status.Ok, int numErr = -1)
     {
         var s = new SingleAuditOptions()
         {
             OmitIdsContentAudit = false,
-            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_7
+            IdsVersion = IdsFacts.DefaultIdsVersion
         };
-        AuditWithStream(stream, s, xunitOutputHelper, status, numErr);
+        return AuditWithStream(stream, s, xunitOutputHelper, status, numErr);
     }
 
     internal static void OmitContentAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors)
