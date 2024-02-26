@@ -21,9 +21,9 @@
           <propertySet>
             <simpleValue>ePset_WallCommon</simpleValue>
           </propertySet>
-          <name>
+          <baseName>
             <simpleValue>Reference</simpleValue>
-          </name>
+          </baseName>
           <value>
             <simpleValue>Some</simpleValue>
           </value>
@@ -35,27 +35,27 @@
 					<propertySet>
 						<simpleValue>ePset_WallCommon</simpleValue>
 					</propertySet>
-					<name>
+          <baseName>
 						<simpleValue>Reference</simpleValue>
-					</name>
+					</baseName>
 				</property>
         <!-- a prohibited property cannot have dataType -->
         <property cardinality="prohibited" dataType="IFCLABEL">
           <propertySet>
             <simpleValue>ePset_WallCommon</simpleValue>
           </propertySet>
-          <name>
+          <baseName>
             <simpleValue>Reference</simpleValue>
-          </name>
+          </baseName>
         </property>
         <!-- any property cannot have value unless it has dataType -->
         <property>
           <propertySet>
             <simpleValue>ePset_WallCommon</simpleValue>
           </propertySet>
-          <name>
+          <baseName>
             <simpleValue>Reference</simpleValue>
-          </name>
+          </baseName>
           <value>
             <simpleValue>Some</simpleValue>
           </value>

@@ -21,9 +21,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_InvalidCustomPsetBecauseOfPrefix</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>CustomName</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 				<ids:property dataType="IFCLABEL">
 					<ids:propertySet>
@@ -33,9 +33,9 @@
 							<xs:enumeration value="SomeOtherValid"/>
 						</xs:restriction>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>CustomName</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 				<ids:property dataType="IFCLABEL">
 					<ids:propertySet>
@@ -44,9 +44,9 @@
 							<xs:pattern value="Pset_Custom.*"/>
 						</xs:restriction>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>CustomName</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

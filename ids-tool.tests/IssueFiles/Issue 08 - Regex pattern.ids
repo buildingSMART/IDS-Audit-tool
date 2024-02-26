@@ -18,22 +18,22 @@
           <propertySet>
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>
-          <name>
+          <baseName>
             <xs:restriction>
               <!-- Currently this is accepted by the regex engine. -->
               <xs:pattern value="^Ambienti|Servizi|Terziario|Parti comuni${1}" />
             </xs:restriction>
-          </name>
+          </baseName>
         </property>
         <property dataType="IFCLABEL">
           <propertySet>
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>
-          <name>
+          <baseName>
             <xs:restriction>
               <xs:pattern value="[Some" />
             </xs:restriction>
-          </name>
+          </baseName>
         </property>
       </requirements>
     </specification>

@@ -15,9 +15,9 @@
 							<xs:pattern value="IFCcoVERING"/>
 						</xs:restriction>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<ids:simpleValue>CLADDING</ids:simpleValue>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
@@ -27,9 +27,9 @@
 							<xs:pattern value="anas.*"/>
 						</xs:restriction>
 					</ids:propertySet>
-					<ids:name>
-						<ids:simpleValue>Anax</ids:simpleValue>
-					</ids:name>
+          <ids:baseName>
+            <ids:simpleValue>Anax</ids:simpleValue>
+          </ids:baseName>
 					<ids:value>
 						<ids:simpleValue>yes</ids:simpleValue>
 					</ids:value>

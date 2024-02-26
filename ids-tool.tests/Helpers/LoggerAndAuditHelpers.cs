@@ -96,7 +96,7 @@ internal static class LoggerAndAuditHelpers
         var s = new SingleAuditOptions()
         {
             OmitIdsContentAudit = false,
-            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_6
+            IdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_7
         };
         AuditWithStream(stream, s, xunitOutputHelper, status, numErr);
     }

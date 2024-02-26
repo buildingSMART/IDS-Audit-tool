@@ -28,9 +28,9 @@
 							<xs:pattern value="anas.*"/>
 						</xs:restriction>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>Anax</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 					<ids:value>
 						<ids:simpleValue>yes</ids:simpleValue>
 					</ids:value>
@@ -46,9 +46,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>Reference</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 				<!-- Ensure test for material facets -->
 				<ids:material cardinality="invalid on material" >

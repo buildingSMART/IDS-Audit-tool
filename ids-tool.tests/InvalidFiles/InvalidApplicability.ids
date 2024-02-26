@@ -20,9 +20,9 @@
               <xs:pattern value="anas.*"/>
             </xs:restriction>
           </ids:propertySet>
-          <ids:name>
+          <ids:baseName>
             <ids:simpleValue>Anax</ids:simpleValue>
-          </ids:name>
+          </ids:baseName>
           <ids:value>
             <ids:simpleValue>yes</ids:simpleValue>
           </ids:value>
@@ -39,9 +39,9 @@
               <xs:pattern value="anas.*"/>
             </xs:restriction>
           </ids:propertySet>
-          <ids:name>
+          <ids:baseName>
             <ids:simpleValue>Anax</ids:simpleValue>
-          </ids:name>
+          </ids:baseName>
           <ids:value>
             <ids:simpleValue>yes</ids:simpleValue>
           </ids:value>

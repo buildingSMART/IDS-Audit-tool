@@ -42,7 +42,7 @@ public enum IdsVersion
 	/// </summary>
 	Ids0_9_6,
 	/// <summary>
-	/// Version 0.9.6; this might be removed before first official release
+	/// Version 0.9.7; this might be removed before first official release
 	/// </summary>
 	Ids0_9_7,
 	/// <summary>

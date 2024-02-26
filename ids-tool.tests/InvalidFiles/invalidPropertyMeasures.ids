@@ -25,36 +25,36 @@
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>medium</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 				<!-- not a valid measure class -->
 				<ids:property dataType="IFCDOOR">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
-						<ids:simpleValue>medium</ids:simpleValue>
-					</ids:name>
+          <ids:baseName>
+            <ids:simpleValue>medium</ids:simpleValue>
+          </ids:baseName>
 				</ids:property>
 				<!-- valid measure class for schema -->
 				<ids:property dataType="IFCTEXT">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>medium</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 				<!-- Invalid measure class for schema -->
 				<ids:property dataType="IFCAREADENSITYMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>ePset_Pipe</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>medium</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

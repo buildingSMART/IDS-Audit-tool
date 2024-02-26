@@ -13,21 +13,21 @@
             <!-- this is not enough, ok -->
             <xs:restriction />
           </ids:propertySet>
-          <ids:name>
+          <ids:baseName>
             <xs:restriction base="xs:string">
               <xs:pattern value="MYPSET"/>
             </xs:restriction>
-          </ids:name>
+          </ids:baseName>
         </ids:property>
       </ids:applicability>
 			<ids:requirements>
 				<ids:property dataType="IFCLABEL">
           <!-- this is required, and cannot be empty, ok via schema -->
 					<ids:propertySet />
-					<ids:name>
-						<ids:simpleValue>AcousticRating</ids:simpleValue>
-					</ids:name>
-				</ids:property>
+          <ids:baseName>
+            <ids:simpleValue>AcousticRating</ids:simpleValue>
+          </ids:baseName>
+        </ids:property>
 			</ids:requirements>
 		</ids:specification>
 		<ids:specification name="IFCACTUATORTYPE with measure property" ifcVersion="IFC2X3">
@@ -43,11 +43,11 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_ActuatorTypeElectricActuator</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
             <xs:restriction base="xs:string">
               <xs:totalDigits value="10" />
             </xs:restriction>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

@@ -31,7 +31,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         IsValid = false;
     }
 
-    private const string PRED_TYPE = "subType";
+    private const string PRED_TYPE = "predefinedType";
 
     public bool IsValid {get; private set;}
 

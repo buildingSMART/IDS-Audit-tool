@@ -19,50 +19,50 @@
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<!-- this is ok -->
 						<xs:restriction base="xs:string">
 							<xs:enumeration value="BLOSSCURVE"/>
 							<xs:enumeration value="CONSTANTCANT"/>
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<!-- Thi is ok -->
 						<ids:simpleValue>COSINECURVE</ids:simpleValue>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<!-- Thi is ok -->
 						<xs:restriction base="xs:string">
 							<xs:pattern value="HELMERTCURVE|LINEARTRANSITION"/>
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<!-- Thi is ok -->
 						<xs:restriction base="xs:string">
 							<xs:pattern value="HELM*TCURVE|LINEARTRANSITION"/>
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok -->
 							<xs:enumeration value="INVALID"/>
@@ -71,29 +71,29 @@
 							<!-- this is NOT ok -->
 							<xs:enumeration value="lineartransition"/>
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok, because not found -->
 							<xs:pattern value="INVALID"/>							
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 				<ids:entity>
 					<ids:name>
 						<ids:simpleValue>IFCALIGNMENTCANTSEGMENT</ids:simpleValue>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<xs:restriction base="xs:string">
 							<!-- this is NOT ok bacause of case -->
 							<xs:pattern value="lineartransition"/>
 						</xs:restriction>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 			</ids:requirements>
 		</ids:specification>

@@ -15,9 +15,9 @@
 							<xs:pattern value="IFCCOVERING"/>
 						</xs:restriction>
 					</ids:name>
-					<ids:subType>
+					<ids:predefinedType>
 						<ids:simpleValue>CLADDING</ids:simpleValue>
-					</ids:subType>
+					</ids:predefinedType>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
@@ -25,9 +25,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>Reference</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

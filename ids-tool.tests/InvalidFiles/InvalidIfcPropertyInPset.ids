@@ -21,9 +21,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>InvalidName</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

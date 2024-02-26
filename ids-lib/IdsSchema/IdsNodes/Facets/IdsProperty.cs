@@ -47,6 +47,8 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 		return null;
 	}
 
+    private const string PropertyNodeName = "baseName";
+
 	internal protected override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
         if (!TryGetUpperNode<IdsSpecification>(logger, this, IdsSpecification.SpecificationIdentificationArray, out var spec, out var retStatus))
@@ -60,10 +62,11 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         if (psetMatcher is null)
             return IdsErrorMessages.Report102NoStringMatcher(logger, this, "propertySet");
 
-        var name = GetChildNodes("name").FirstOrDefault();
+
+        var name = GetChildNodes(PropertyNodeName).FirstOrDefault();
         var nameMatcher = name?.GetListMatcher();
         if (nameMatcher is null)
-            return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
+            return IdsErrorMessages.Report102NoStringMatcher(logger, this, PropertyNodeName);
 
         value = GetChildNodes("value").FirstOrDefault();
         if (string.IsNullOrEmpty(dataType) && !IdsSimpleValue.IsNullOrEmpty(value))
@@ -108,7 +111,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 {
                     // see if there's a match with standard property sets
                     var validPropNames = SchemaInfo.SharedPropertyNames(schema.Version, possiblePsetNames);
-                    var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, "property name", schema.Version);
+                    var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, $"property {PropertyNodeName}", schema.Version);
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
 
@@ -142,7 +145,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             }
 			if (dataTypeMatcher is not null)
 			{
-				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "datatype", schema.Version);
+				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "dataType", schema.Version);
 			}
 			if (ret != Audit.Status.Ok)
 				IsValid = false;

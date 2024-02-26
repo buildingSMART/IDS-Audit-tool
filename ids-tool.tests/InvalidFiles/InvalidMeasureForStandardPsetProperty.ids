@@ -22,11 +22,11 @@
 							<xs:pattern value=".*"/>
 						</xs:restriction>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<xs:restriction>
 							<xs:pattern value=".*"/>
 						</xs:restriction>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>
@@ -37,9 +37,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
-						<ids:simpleValue>IsExternal</ids:simpleValue>
-					</ids:name>
+          <ids:baseName>
+            <ids:simpleValue>IsExternal</ids:simpleValue>
+          </ids:baseName>
 					<ids:value>
 						<ids:simpleValue>TRUE</ids:simpleValue>
 					</ids:value>

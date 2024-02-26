@@ -22,9 +22,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>SomeValidPset</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>SomeValidName</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>

@@ -19,9 +19,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+					<ids:baseName>
 						<ids:simpleValue>AcousticRating</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>
@@ -38,9 +38,9 @@
 					<ids:propertySet>
 						<ids:simpleValue>Pset_ActuatorTypeElectricActuator</ids:simpleValue>
 					</ids:propertySet>
-					<ids:name>
+          <ids:baseName>
 						<ids:simpleValue>ActuatorInputPower</ids:simpleValue>
-					</ids:name>
+					</ids:baseName>
 				</ids:property>
 			</ids:requirements>
 		</ids:specification>
