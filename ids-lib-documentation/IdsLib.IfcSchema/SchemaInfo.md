@@ -25,7 +25,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. |
 | static [AllConcreteClasses](SchemaInfo/AllConcreteClasses.md) { get; } | The names of all concrete classes across known IFC schemas. |
-| static [AllMeasures](SchemaInfo/AllMeasures.md) { get; } | The names of classes across all schemas. |
+| static [AllDataTypes](SchemaInfo/AllDataTypes.md) { get; } | The names of dataType classes across all schemas. |
 | static [GetConcreteClassesFrom](SchemaInfo/GetConcreteClassesFrom.md)(…) | Returns a list of the concrete class names that implement a given top class. When multiple schema flags are passed the list is the non-repeating union of the values of each schema |
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
 | static [TryParseIfcMeasure](SchemaInfo/TryParseIfcMeasure.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |

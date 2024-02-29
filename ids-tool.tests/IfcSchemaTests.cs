@@ -126,21 +126,21 @@ public class IfcSchemaTests
     [Fact]
     public void CanParseMeasure()
     {
-        foreach (var measure in IdsLib.IfcSchema.SchemaInfo.AllMeasures)
+        foreach (var measure in IdsLib.IfcSchema.SchemaInfo.AllDataTypes)
         {
-            var badcase = measure.IfcMeasureClassName.Replace("IFC", "Ifc");
+            var badcase = measure.IfcDataTypeClassName.Replace("IFC", "Ifc");
             // strict
             var res = SchemaInfo.TryParseIfcMeasure(badcase, out _, true);
-            res.Should().BeFalse($"{measure.IfcMeasureClassName} is not capitalized");
+            res.Should().BeFalse($"{measure.IfcDataTypeClassName} is not capitalized");
 
-			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcMeasureClassName}", out _, true);
+			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcDataTypeClassName}", out _, true);
 			res.Should().BeFalse("class does not exist");
 
             // tolerant 
 			res = SchemaInfo.TryParseIfcMeasure(badcase, out _, false);
             res.Should().BeTrue();
 
-			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcMeasureClassName}".ToUpperInvariant(), out _, false);
+			res = SchemaInfo.TryParseIfcMeasure($"No{measure.IfcDataTypeClassName}".ToUpperInvariant(), out _, false);
 			res.Should().BeFalse("class does not exist");
 		}
     }

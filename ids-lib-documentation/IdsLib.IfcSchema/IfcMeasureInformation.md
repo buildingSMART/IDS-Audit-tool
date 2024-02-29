@@ -1,19 +1,25 @@
-# IfcMeasureInformation class
+# IfcMeasureInformation structure
 
-Metadata container for entities containing measures of an IfcSchema
+Metadata about measure conversion behaviours.
 
 ```csharp
-public class IfcMeasureInformation
+public struct IfcMeasureInformation
 ```
 
 ## Public Members
 
 | name | description |
 | --- | --- |
-| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Default constructor, ensures static nullable analysis (2 constructors) |
-| [DimensionalExponents](IfcMeasureInformation/DimensionalExponents.md) { get; } | Comma separated value of the basic unit exponents |
-| [IfcMeasureClassName](IfcMeasureInformation/IfcMeasureClassName.md) { get; } | Name of the entity as a string, stored in UPPERCASE |
-| [ValidSchemaVersions](IfcMeasureInformation/ValidSchemaVersions.md) { get; } | Versions of the schema that contain the class |
+| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | basic constructor |
+| [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit, e.g. 1 / s |
+| [Description](IfcMeasureInformation/Description.md) { get; } | A textual description, e.g. "Frequency" |
+| [Exponents](IfcMeasureInformation/Exponents.md) { get; } | Dimensional exponents useful for conversion to other units. |
+| [Id](IfcMeasureInformation/Id.md) { get; } | The string ID found in the XML persistence |
+| [IfcMeasure](IfcMeasureInformation/IfcMeasure.md) { get; } | String of the Ifc type expected |
+| [Unit](IfcMeasureInformation/Unit.md) { get; } | Full name of the unit, e.g. hertz |
+| [UnitSymbol](IfcMeasureInformation/UnitSymbol.md) { get; } | Symbol used to present the unit, e.g. Hz |
+| [UnitTypeEnum](IfcMeasureInformation/UnitTypeEnum.md) { get; } | The string value of the UnitType enum of a valid matching unit |
+| [GetUnit](IfcMeasureInformation/GetUnit.md)() | Returns the SI preferred unit. |
 
 ## See Also
 

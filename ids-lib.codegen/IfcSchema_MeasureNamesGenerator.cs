@@ -7,9 +7,10 @@ namespace IdsLib.codegen;
 
 internal record typeMetadata
 {
-    public string Name { get; set; } 
+    public string Name { get; set; } = string.Empty;
     public List<string> Schemas { get; set; } = new();
     public string Exponents { get; set; } = string.Empty;
+    public string[]? Fields { get; set; }
 
     internal void AddSchema(string schema)
     {
@@ -60,9 +61,10 @@ public class IfcSchema_DatatypeNamesGenerator
             // check if measure is available
             if (datatype.EndsWith("MEASURE"))
             {
-                if (!documentedMeasures.Any(x=>x.Name == datatype.ToUpperInvariant()))
+                if (!NonConvertibleMeasures.Contains(datatype) && !documentedMeasures.Any(x=>x.Name == datatype.ToUpperInvariant()))
                 {
-                    Program.Message($"Warning: measure {datatype} is missing in documentation", ConsoleColor.DarkYellow);
+                    Program.Message($"Warning: dataType {datatype} is missing in documentation", ConsoleColor.DarkYellow);
+                    Debug.WriteLine(datatype);
                 }
             }
         }
@@ -72,18 +74,26 @@ public class IfcSchema_DatatypeNamesGenerator
         var sbMeasures = new StringBuilder();
         foreach (var clNm in dTypes.Keys.OrderBy(x => x))
         {
-            var schemas = dTypes[clNm].Schemas;
-            if (!string.IsNullOrEmpty(dTypes[clNm].Exponents))
-                sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemas)}, "{dTypes[clNm].Exponents}");""");
+            var fnd = dTypes[clNm];		
+            if (fnd.Fields is not null)
+            {
+                var t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}")""";
+                sbMeasures.AppendLine($"""               yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t});""");
+            }
             else
-                sbMeasures.AppendLine($"""               yield return new IfcMeasureInformation("{clNm}", {CodeHelpers.NewStringArray(schemas)});""");
+                sbMeasures.AppendLine($"""               yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)});""");
         }
-        source = source.Replace($"<PlaceHolderMeasures>\r\n", sbMeasures.ToString());
+        source = source.Replace($"<PlaceHolderDataTypes>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         
         return source;
 
     }
+
+    public static IEnumerable<string> NonConvertibleMeasures { get; } =
+	[
+		"IFCCONTEXTDEPENDENTMEASURE","IFCCOUNTMEASURE","IFCDESCRIPTIVEMEASURE","IFCMONETARYMEASURE","IFCNORMALISEDRATIOMEASURE","IFCNUMERICMEASURE","IFCPOSITIVERATIOMEASURE","IFCRATIOMEASURE"
+    ];
 
     private static IEnumerable<string> GetExpressValues(ExpressMetaData metaD)
     {
@@ -222,9 +232,6 @@ public class IfcSchema_DatatypeNamesGenerator
 
 		// extra measure
 		yield return "IfcThermalTransmittanceMeasure";
-
-
-
     }
 
     private static IEnumerable<typeMetadata> GetDocumentationMeasures()
@@ -234,12 +241,18 @@ public class IfcSchema_DatatypeNamesGenerator
         {
             var modline = line.Trim(' ');
             var lineCells = modline.Split('|');
-            if (lineCells.Length != 8)
+            if (lineCells.Length != 9)
                 continue;
             var firstCell = lineCells[1].Trim();
             if (firstCell.Contains(' ') ||  firstCell.Contains('\t') || firstCell.Contains('-'))
                 continue;
-            yield return new typeMetadata() { Name = firstCell, Exponents = lineCells[5].Trim() };
+
+            var ret = new typeMetadata() {
+                Name = firstCell,
+                Exponents = lineCells[6].Trim(),
+                Fields = lineCells.Skip(1).Take(7).Select(x => x.Trim()).ToArray(),
+            };
+            yield return ret;
         }
     }
 
@@ -255,13 +268,13 @@ namespace IdsLib.IfcSchema
     public partial class SchemaInfo
     {
         /// <summary>
-        /// The names of classes across all schemas.
+        /// The names of dataType classes across all schemas.
         /// </summary>
-        public static IEnumerable<IfcMeasureInformation> AllMeasures
+        public static IEnumerable<IfcDataTypeInformation> AllDataTypes
         {
             get
             {
-<PlaceHolderMeasures>
+<PlaceHolderDataTypes>
             }
         }
     }

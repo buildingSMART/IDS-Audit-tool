@@ -99,9 +99,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             IIfcTypeConstraint filter = schema.GetRelAssignPropertyClasses!; // banged, because we should be guaranteed to have it.
 
             // initiate valid measures, will constrain later if there's a known property
-            var validMeasureNames = SchemaInfo.AllMeasures
+            var validMeasureNames = SchemaInfo.AllDataTypes
                     .Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
-                    .Select(y => y.IfcMeasureClassName.ToUpperInvariant());
+                    .Select(y => y.IfcDataTypeClassName.ToUpperInvariant());
             IsValid = true;
 
             if (IsRequired)

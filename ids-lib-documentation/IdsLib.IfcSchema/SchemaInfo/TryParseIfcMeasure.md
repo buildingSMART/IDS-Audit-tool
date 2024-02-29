@@ -3,7 +3,7 @@
 Attempts to convert a string value to an instance of the IfcMeasureInformation
 
 ```csharp
-public static bool TryParseIfcMeasure(string value, out IfcMeasureInformation? found, 
+public static bool TryParseIfcMeasure(string value, out IfcDataTypeInformation? found, 
     bool strict = true)
 ```
 
@@ -19,7 +19,7 @@ true if a match is found
 
 ## See Also
 
-* class [IfcMeasureInformation](../IfcMeasureInformation.md)
+* class [IfcDataTypeInformation](../IfcDataTypeInformation.md)
 * class [SchemaInfo](../SchemaInfo.md)
 * namespace [IdsLib.IfcSchema](../../ids-lib.md)
 

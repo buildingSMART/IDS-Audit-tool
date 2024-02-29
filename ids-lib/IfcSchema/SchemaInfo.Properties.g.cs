@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace IdsLib.IfcSchema
 {
     /// <summary>
-    /// For reference see <see cref="IdsLib.codegen.IfcSchema_PropertiesGenerator"/>
+    /// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
     /// </summary>
 	public partial class PropertySetInfo
 	{

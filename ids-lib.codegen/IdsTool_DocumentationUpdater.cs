@@ -9,6 +9,4 @@ internal class IdsTool_DocumentationUpdater
         stub = stub.Replace("$audithelp$", IdsRepo_Updater.ExecuteCommandLine("help audit"));
         return stub;
     }
-
-
 }

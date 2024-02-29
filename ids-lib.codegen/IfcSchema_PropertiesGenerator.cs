@@ -87,14 +87,9 @@ public class IfcSchema_PropertiesGenerator
                         var t = $"new NamedPropertyType(/* {prop.PropertyType.PropertyValueType?.GetType().Name} */\"{prop.Name}\"){def}";
                         richProp.Add(t);
                     }
-
-
-                    // prop.PropertyType
                 }
                 var cArr = NewStringArray(classes);
-
                 var rpArr = NewArray("IPropertyTypeInfo", richProp);
-
                 // sb.AppendLine($@"			// {string.Join(",", classes)}");
                 // sb.AppendLine($@"			yield return new PropertySetInfo(""{set.Name}"", {pArr}, {cArr});");
                 sb.AppendLine($@"			yield return new PropertySetInfo(""{set.Name}"", {rpArr}, {cArr});");
@@ -138,7 +133,7 @@ using System.Collections.Generic;
 namespace IdsLib.IfcSchema
 {
     /// <summary>
-    /// For reference see <see cref=""IdsLib.codegen.IfcSchema_PropertiesGenerator""/>
+    /// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
     /// </summary>
 	public partial class PropertySetInfo
 	{

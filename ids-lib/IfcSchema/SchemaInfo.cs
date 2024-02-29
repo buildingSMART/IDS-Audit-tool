@@ -73,7 +73,7 @@ namespace IdsLib.IfcSchema
 		/// <param name="found"></param>
 		/// <param name="strict">if true only accepts capitalized data, otherwise tolerates case inconsistencies</param>
 		/// <returns>true if a match is found</returns>
-		public static bool TryParseIfcMeasure(string value, [NotNullWhen(true)] out IfcMeasureInformation? found, bool strict = true)
+		public static bool TryParseIfcMeasure(string value, [NotNullWhen(true)] out IfcDataTypeInformation? found, bool strict = true)
 		{
 			if (value == null)
 			{
@@ -82,10 +82,10 @@ namespace IdsLib.IfcSchema
 			}
 			if (strict)
 			{
-				found = AllMeasures.FirstOrDefault(x => x.IfcMeasureClassName.ToUpper() == value);
+				found = AllDataTypes.FirstOrDefault(x => x.IfcDataTypeClassName.ToUpper() == value);
 				return found != null;
 			}
-			found = AllMeasures.FirstOrDefault(x => x.IfcMeasureClassName.Equals(value, StringComparison.InvariantCultureIgnoreCase));
+			found = AllDataTypes.FirstOrDefault(x => x.IfcDataTypeClassName.Equals(value, StringComparison.InvariantCultureIgnoreCase));
 			return found != null;
 		}
 

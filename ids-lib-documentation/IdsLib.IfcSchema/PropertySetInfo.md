@@ -2,7 +2,7 @@
 
 Information about standard property sets defined from bS
 
-For reference see !:IdsLib.codegen.IfcSchema_PropertiesGenerator
+For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
 
 ```csharp
 public class PropertySetInfo

@@ -4,6 +4,8 @@ using idsTool.tests.Helpers;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -80,5 +82,28 @@ namespace idsTool.tests
             var schemasAreIdentical = BuildingSmartRepoFiles.FilesAreIdentical(repoSchema, toolSchema);
             schemasAreIdentical.Should().BeTrue("testing schema and repository schema should be identical");
         }
+
+        [SkippableFact]
+        public async void BuildingSmartWebServerShouldReturnSchemaCorrectly()
+        {
+
+            var urls = new[] {
+				// "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/ids.xsd",
+				"http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" 
+            };
+
+            foreach (var url in urls)
+            {
+                HttpClient c = new HttpClient();
+                var t = await c.GetAsync(url);
+                var tp = t.Content.Headers.ContentType;
+                Skip.If(tp is null);
+                Skip.If(tp!.ToString() != "text/xml");
+
+                //var request = HttpWebRequest.Create(url) as HttpWebRequest;
+                //var response = request.GetResponse() as HttpWebResponse;
+                //var contentType = response?.ContentType;				
+            }
+		}
     }
 }
