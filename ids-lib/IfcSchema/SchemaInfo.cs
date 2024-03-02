@@ -151,12 +151,12 @@ namespace IdsLib.IfcSchema
             {
                 if (schemaIfc4x3 == null)
                 {
-                    var t = GetClassesIFC4x3();
-                    GetRelationTypesIFC4x3(t);
-                    GetAttributesIFC4x3(t);
-                    SetTypeObject(t, "IfcTypeObject");
-                    t.LinkTree();
-                    schemaIfc4x3 = t;
+                    var tmpSchema = GetClassesIFC4x3();
+                    GetRelationTypesIFC4x3(tmpSchema);
+                    GetAttributesIFC4x3(tmpSchema);
+                    SetTypeObject(tmpSchema, "IfcTypeObject");
+                    tmpSchema.LinkTree();
+                    schemaIfc4x3 = tmpSchema;
                 }
                 return schemaIfc4x3;
             }
@@ -395,7 +395,6 @@ namespace IdsLib.IfcSchema
                     tpC.FunctionalType = FunctionalType.TypeOfElement;
             }
         }
-
 
         private static partial SchemaInfo GetClassesIFC2x3();
 
@@ -646,5 +645,23 @@ namespace IdsLib.IfcSchema
 			}
             return allSchemaClassNames;
 		}
+
+		//static partial void GetObjects2TypeMappingsIFC2x3(SchemaInfo destinationSchema)
+  //      {
+  //          destinationSchema.AddObjType("", "");
+  //      }
+
+		//private void AddObjType(string objName, string objTypeName)
+		//{
+  //          var fnd = this[objName.ToUpper()];
+  //          if (fnd == null)
+  //              return;
+  //          fnd.RelationTypeClasses
+		//}
+
+		//static partial void GetObjects2TypeMappingsIFC4(SchemaInfo destinationSchema);
+		//static partial void GetObjects2TypeMappingsIFC4x3(SchemaInfo destinationSchema);
+
+
 	}
 }
