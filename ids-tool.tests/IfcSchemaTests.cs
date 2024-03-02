@@ -21,7 +21,15 @@ public class IfcSchemaTests
         element.Should().BeNull();
     }
 
-	[Fact]
+    [Fact]
+    public void CanGetConcreteClassProps()
+    {
+        var wall = SchemaInfo.SchemaIfc2x3["IFCWALL"];// .FirstOrDefault(x => x.PascalCaseName == "IfcWall");
+        wall.Should().NotBeNull();
+        wall!.FunctionalType.Should().Be(FunctionalType.ElementWithTypes);
+	}
+
+    [Fact]
 	public void CanBuildConcreteSubtree()
 	{
 		// Unrelated classes should not match

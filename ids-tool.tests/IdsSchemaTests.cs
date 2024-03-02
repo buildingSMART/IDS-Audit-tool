@@ -83,27 +83,26 @@ namespace idsTool.tests
             schemasAreIdentical.Should().BeTrue("testing schema and repository schema should be identical");
         }
 
-        [SkippableFact]
-        public async void BuildingSmartWebServerShouldReturnSchemaCorrectly()
+        [SkippableTheory]
+        [InlineData("http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd")]
+        [InlineData("http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd")]
+        [InlineData("https://www.w3.org/2001/03/xml.xsd")]
+        public async void BuildingSmartWebServerShouldReturnSchemaCorrectly(string url)
         {
+            // see https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons
+            //
+            /// If an XML document -- that is, the unprocessed, source XML document -- is readable by casual users, 
+            /// text/xml is preferable to application/xml. MIME user agents (and web user agents) that do not 
+            /// have explicit support for text/xml will treat it as text/plain, for example, by displaying the 
+            /// XML MIME entity as plain text. Application/xml is preferable when the XML MIME entity is unreadable by casual users.
+            /// 
+            var acceptable = new[] { "application/xml", "text/xml" };
 
-            var urls = new[] {
-				// "https://raw.githubusercontent.com/buildingSMART/IDS/master/Development/ids.xsd",
-				"http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" 
-            };
-
-            foreach (var url in urls)
-            {
-                HttpClient c = new HttpClient();
-                var t = await c.GetAsync(url);
-                var tp = t.Content.Headers.ContentType;
-                Skip.If(tp is null);
-                Skip.If(tp!.ToString() != "text/xml");
-
-                //var request = HttpWebRequest.Create(url) as HttpWebRequest;
-                //var response = request.GetResponse() as HttpWebResponse;
-                //var contentType = response?.ContentType;				
-            }
-		}
+			var c = new HttpClient();
+            var t = await c.GetAsync(url);
+            var tp = t.Content.Headers.ContentType;
+            Skip.If(tp is null, "contentype is null");
+            Skip.If(!acceptable.Contains(tp.ToString()), $"contentype is `{tp}` is not in the acceptable range.");
+        }
     }
 }
