@@ -18,6 +18,9 @@
     <ProjectReference Include="..\ids-tool.tests\ids-tool.tests.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="buildingSMART\IFC_TYPES_MAPPING_BPS.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="buildingSMART\units.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

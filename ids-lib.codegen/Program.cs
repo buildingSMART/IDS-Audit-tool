@@ -12,7 +12,11 @@ internal class Program
         }
         var GeneratedContentChanged = false;
 
-        GeneratedContentChanged = EvaluateContentChanged(
+		GeneratedContentChanged = EvaluateContentChanged(
+			IfcSchema_ObjectToTypeGenerator.Execute(),
+			@"ids-lib\IfcSchema\SchemaInfo.ObjectTypes.g.cs") | GeneratedContentChanged;
+
+		GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassAndAttributeNamesGenerator.Execute(), 
             @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
 
