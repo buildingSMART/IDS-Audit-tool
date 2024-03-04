@@ -64,7 +64,7 @@ class IfcSchema_AttributesGenerator
                 var topClassesInQuotes = onlyTopClasses
                     .Where(c=> !toRemove.Contains(c))
                         .Select(x => $"\"{x}\"").ToArray();
-                var line = $"\t\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
+                var line = $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
 
                 sb.AppendLine(line);
             }
@@ -77,24 +77,23 @@ class IfcSchema_AttributesGenerator
 
 using System;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+public partial class SchemaInfo
 {
-	public partial class SchemaInfo
+	static partial void GetAttributesIFC2x3(SchemaInfo destinationSchema)
 	{
-		static partial void GetAttributesIFC2x3(SchemaInfo destinationSchema)
-		{
 <PlaceHolderIfc2x3>
-		}
+	}
 
-		static partial void GetAttributesIFC4(SchemaInfo destinationSchema)
-		{
+	static partial void GetAttributesIFC4(SchemaInfo destinationSchema)
+	{
 <PlaceHolderIfc4>
-		}
+	}
 
-        static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema)
-		{
+    static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema)
+	{
 <PlaceHolderIfc4x3>
-		}
 	}
 }
 ";

@@ -16,8 +16,6 @@ internal class Program
 			IfcSchema_ObjectToTypeGenerator.Execute(),
 			@"ids-lib\IfcSchema\SchemaInfo.ObjectTypes.g.cs") | GeneratedContentChanged;
 
-        return;
-
 		GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassAndAttributeNamesGenerator.Execute(), 
             @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
@@ -41,8 +39,6 @@ internal class Program
         GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_PropertiesGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.Properties.g.cs") | GeneratedContentChanged;
-
-        
 
         GeneratedContentChanged = EvaluateContentChanged(
             IdsTool_DocumentationUpdater.Execute(),

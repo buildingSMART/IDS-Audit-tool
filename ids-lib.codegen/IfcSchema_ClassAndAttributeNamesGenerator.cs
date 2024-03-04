@@ -66,41 +66,39 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
 using System;
 using System.Collections.Generic;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+public partial class SchemaInfo
 {
-    public partial class SchemaInfo
-    {
-		/// <summary>
-		/// This is obsolete since the name was misleading, use <see cref=""AllConcreteClasses""/> instead.
-		/// </summary>
-		[Obsolete(""Use AllConcreteClasses instead."")]
-		public static IEnumerable<IfcClassInformation> AllClasses => AllConcreteClasses;
+	/// <summary>
+	/// This is obsolete since the name was misleading, use <see cref=""AllConcreteClasses""/> instead.
+	/// </summary>
+	[Obsolete(""Use AllConcreteClasses instead."")]
+	public static IEnumerable<IfcClassInformation> AllClasses => AllConcreteClasses;
         
 
-		/// <summary>
-		/// The names of all concrete classes across known IFC schemas.
-		/// </summary>
-		public static IEnumerable<IfcClassInformation> AllConcreteClasses
+	/// <summary>
+	/// The names of all concrete classes across known IFC schemas.
+	/// </summary>
+	public static IEnumerable<IfcClassInformation> AllConcreteClasses
+    {
+        get
         {
-            get
-            {
 <PlaceHolderClasses>
-            }
         }
+    }
 
-        /// <summary>
-        /// The names of all attributes across all schemas.
-        /// </summary>
-        public static IEnumerable<IfcAttributeInformation> AllAttributes
+    /// <summary>
+    /// The names of all attributes across all schemas.
+    /// </summary>
+    public static IEnumerable<IfcAttributeInformation> AllAttributes
+    {
+        get
         {
-            get
-            {
 <PlaceHolderAttributes>
-            }
         }
     }
 }
-
 ";
 
 }

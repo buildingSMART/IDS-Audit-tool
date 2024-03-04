@@ -28,7 +28,6 @@ public class IdsFacts
 	/// The version of IDS schema to be assumed when running programmatically
 	/// </summary>
 	public const IdsVersion DefaultIdsVersion = IdsVersion.Ids0_9_7;
-
 }
 
 

@@ -9,12 +9,11 @@ public class IfcSchema_ObjectToTypeGenerator
 {
     private record TypeObjRel
     {
-        public string ObjectName { get; set; }    
-        public string TypeName { get; set; }    
-		
+		public string ObjectName { get; set; } = string.Empty;
+        public string TypeName { get; set; } = string.Empty;
 	}
 
-    private IEnumerable<TypeObjRel> GetTypeObjRels(string schema)
+    private static IEnumerable<TypeObjRel> GetTypeObjRels(string schema)
     {
 		List<string> prevTypes = new List<string>();
 		var mappings = File.ReadAllLines(@"buildingSMART\IFC_TYPES_MAPPING_BPS.csv");
@@ -49,7 +48,8 @@ public class IfcSchema_ObjectToTypeGenerator
 			var thisT = $"{objectName}/{typeName}";
 			if (prevTypes.Contains(thisT))
 				continue;
-			yield return new TypeObjRel() { ObjectName = objectName, TypeName = typeName };
+			prevTypes.Add(thisT);
+			yield return new TypeObjRel() { ObjectName = objectName.ToUpperInvariant(), TypeName = typeName.ToUpperInvariant() };
 		}
 	}
 
@@ -65,23 +65,46 @@ public class IfcSchema_ObjectToTypeGenerator
             Debug.WriteLine(item);
         }
 		var source = stub;
-        var schemas = new[] { Xbim.Properties.Version.IFC2x3, Xbim.Properties.Version.IFC4, Xbim.Properties.Version.IFC4x3 };
-		var sourceSchemas = new[] { "IFC4", "IFC4", "IFC4X3_ADD1" }; // we are trying to get ifc2x3 from the data of IFC4
+		var genSchemas = new[] { IfcSchema.SchemaInfo.SchemaIfc4, IfcSchema.SchemaInfo.SchemaIfc4x3 };
+        var sourceSchemas = new[] { "IFC4", "IFC4X3_ADD1" }; 
 		
-		for (int i = 0; i < schemas.Length; i++)
+		for (int i = 0; i < genSchemas.Length; i++)
         {
-			Xbim.Properties.Version schema = schemas[i];
+			var schema = genSchemas[i];
 			var sourceSchema = sourceSchemas[i];
+			var sb = new StringBuilder();
+			var rel = GetTypeObjRels(sourceSchema);
+			foreach (var pair in rel)
+			{
+				sb.AppendLine($"\t\tschema.AddRelationType(\"{pair.ObjectName}\", \"{pair.TypeName}\");");
+			}
+			var replace = $"<PlaceHolder{schema.Version}>\r\n";
+			source = source.Replace(replace, sb.ToString());
 
 		}
         source = source.Replace($"<PlaceHolderVersion>\r\n", VersionHelper.GetFileVersion(typeof(IfcWall)));
         return source;
     }
 
-    private const string stub = 
-        """
-        // programmatically generated from ids-lib.codegen using Xbim <PlaceHolderVersion>
+    private const string stub =
+		"""
+		// programmatically generated from ids-lib.codegen using Xbim <PlaceHolderVersion>
+		using System.Collections.Generic;
 
-        """;
+		namespace IdsLib.IfcSchema;
+
+		public partial class SchemaInfo
+		{
+			static partial void GetRelationTypesIFC4(SchemaInfo schema)
+			{
+		<PlaceHolderIfc4>
+			}
+
+			static partial void GetRelationTypesIFC4x3(SchemaInfo schema)
+			{
+		<PlaceHolderIfc4x3>
+			}
+		}
+		""";
 
 }

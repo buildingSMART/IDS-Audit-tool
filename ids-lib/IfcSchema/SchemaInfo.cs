@@ -131,10 +131,10 @@ namespace IdsLib.IfcSchema
                 if (schemaIfc4 == null)
                 {
                     var t = GetClassesIFC4();
-                    GetRelationTypesIFC4(t);
                     GetAttributesIFC4(t);
                     SetTypeObject(t, "IfcTypeObject");
                     t.LinkTree();
+                    GetRelationTypesIFC4(t);
                     schemaIfc4 = t;
                 }
                 return schemaIfc4;
@@ -152,10 +152,10 @@ namespace IdsLib.IfcSchema
                 if (schemaIfc4x3 == null)
                 {
                     var tmpSchema = GetClassesIFC4x3();
-                    GetRelationTypesIFC4x3(tmpSchema);
                     GetAttributesIFC4x3(tmpSchema);
                     SetTypeObject(tmpSchema, "IfcTypeObject");
                     tmpSchema.LinkTree();
+                    GetRelationTypesIFC4x3(tmpSchema);
                     schemaIfc4x3 = tmpSchema;
                 }
                 return schemaIfc4x3;
@@ -271,8 +271,20 @@ namespace IdsLib.IfcSchema
                         thisPsetTypes = schema.GetAllConcreteFrom(propSet.ApplicableClasses);
                     else
                         thisPsetTypes = thisPsetTypes.Intersect(schema.GetAllConcreteFrom(propSet.ApplicableClasses));
-                }
+
+                    // We now need to expand to the types of the objects
+                    var typeObjects = new List<string>();
+                    foreach (var item in thisPsetTypes)
+                    {
+                        var tp = schema[item];
+                        if (tp is not null && tp.RelationTypeClasses is not null)
+                            typeObjects.AddRange(tp.RelationTypeClasses);
+                    }
+                    if (typeObjects.Any())
+                        thisPsetTypes = thisPsetTypes.ToList().Concat(typeObjects.Distinct()).ToList();
+				}
                 thisPsetTypes ??= Enumerable.Empty<string>();
+
                 ret = ret.Union(thisPsetTypes);
             }
             return ret.Distinct();
@@ -370,10 +382,10 @@ namespace IdsLib.IfcSchema
                 if (schemaIfc2x3 == null)
                 {
                     var t = GetClassesIFC2x3();
-                    GetRelationTypesIFC2x3(t);
                     GetAttributesIFC2x3(t);
                     SetTypeObject(t, "IfcTypeObject");
                     t.LinkTree();
+                    GetRelationTypesIFC2x3(t);
                     schemaIfc2x3 = t;
                 }
                 return schemaIfc2x3;
@@ -384,16 +396,32 @@ namespace IdsLib.IfcSchema
         static partial void GetRelationTypesIFC4(SchemaInfo schema);
         static partial void GetRelationTypesIFC4x3(SchemaInfo schema);
 
-        internal void SetRelationType(string objClass, IEnumerable<string> typeClasses)
+        internal void AddRelationType(string objClass, params string[] typeClasses)
         {
             var c = this[objClass];
-            c?.SetTypeClasses(typeClasses);
-            foreach (var typeClass in typeClasses)
+            if (c is null)
             {
-                var tpC = this[typeClass];
-                if (tpC != null)
-                    tpC.FunctionalType = FunctionalType.TypeOfElement;
+                // Debug.WriteLine($"Did not find {objClass} in {Version}");
+                return;
             }
+            List<string> found = new List<string>();
+			foreach (var typeClass in typeClasses)
+			{
+				var tpC = this[typeClass];
+                if (tpC != null)
+                {
+                    tpC.FunctionalType = FunctionalType.TypeOfElement;
+                    found.Add(typeClass);
+				}
+			}
+            if (found.Any())
+            {
+                var t = $"\t\tschema.AddRelationType(\"{objClass}\", \"{found.First()}\");";
+				// Debug.WriteLine(t);
+				// Debug.WriteLine($"{objClass} {string.Join(",", found)}");
+				c.AddTypeClasses(found);
+            }
+			
         }
 
         private static partial SchemaInfo GetClassesIFC2x3();

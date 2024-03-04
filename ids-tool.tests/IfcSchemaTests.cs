@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using IdsLib.IfcSchema;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Xunit;
@@ -24,12 +25,35 @@ public class IfcSchemaTests
     [Fact]
     public void CanGetConcreteClassProps()
     {
-        var wall = SchemaInfo.SchemaIfc2x3["IFCWALL"];// .FirstOrDefault(x => x.PascalCaseName == "IfcWall");
+        var wall = SchemaInfo.SchemaIfc2x3["IFCWALL"];
         wall.Should().NotBeNull();
         wall!.FunctionalType.Should().Be(FunctionalType.ElementWithTypes);
+
+        foreach (var schema in SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions))
+        {
+            Debug.WriteLine($"{schema.Version}");
+            foreach (var item in schema)
+            {
+                if (item.FunctionalType == FunctionalType.ElementWithTypes)
+                {
+                    Debug.WriteLine($"{item.Name} {string.Join(",", item.RelationTypeClasses!)}");
+                }
+            }
+            Debug.WriteLine($"");
+        }        
 	}
 
     [Fact]
+	public void DebugTypeList()
+	{
+		foreach (var schema in SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions))
+		{
+			Debug.WriteLine($"{schema.Version}");
+			Debug.WriteLine($"");
+		}
+	}
+
+	[Fact]
 	public void CanBuildConcreteSubtree()
 	{
 		// Unrelated classes should not match
