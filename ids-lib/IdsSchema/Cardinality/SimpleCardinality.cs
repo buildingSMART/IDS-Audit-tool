@@ -17,6 +17,7 @@ namespace IdsLib.IdsSchema.Cardinality
         }
 
         public bool IsRequired => enumerationValue == "required";
+        public bool IsProhibited => enumerationValue == "prohibited";
 
         public Audit.Status Audit(out string errorMessage)
         {

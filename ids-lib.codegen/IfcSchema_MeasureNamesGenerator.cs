@@ -78,10 +78,10 @@ public class IfcSchema_DatatypeNamesGenerator
             if (fnd.Fields is not null)
             {
                 var t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}")""";
-                sbMeasures.AppendLine($"""               yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t});""");
+                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t});""");
             }
             else
-                sbMeasures.AppendLine($"""               yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)});""");
+                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)});""");
         }
         source = source.Replace($"<PlaceHolderDataTypes>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
@@ -263,19 +263,18 @@ public class IfcSchema_DatatypeNamesGenerator
 using System;
 using System.Collections.Generic;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+public partial class SchemaInfo
 {
-    public partial class SchemaInfo
+    /// <summary>
+    /// The names of dataType classes across all schemas.
+    /// </summary>
+    public static IEnumerable<IfcDataTypeInformation> AllDataTypes
     {
-        /// <summary>
-        /// The names of dataType classes across all schemas.
-        /// </summary>
-        public static IEnumerable<IfcDataTypeInformation> AllDataTypes
+        get
         {
-            get
-            {
 <PlaceHolderDataTypes>
-            }
         }
     }
 }

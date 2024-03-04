@@ -14,14 +14,15 @@ internal class MinMaxCardinality : ICardinality
 
     public bool IsRequired => minString == "1";
 
-    public MinMaxCardinality(XmlReader reader)
+    public bool IsProhibited => maxString == "0";
+
+
+	public MinMaxCardinality(XmlReader reader)
     {
         // both default to "1" according to xml:xs specifications
         minString = reader.GetAttribute("minOccurs") ?? "1";
         maxString = reader.GetAttribute("maxOccurs") ?? "1";
     }
-
-    
 
     /// <summary>
     /// Audits the validity of an occurrence setting.

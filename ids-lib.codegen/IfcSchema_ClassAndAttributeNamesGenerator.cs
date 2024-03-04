@@ -46,12 +46,12 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
         foreach (var clNm in classNames.Keys.OrderBy(x => x))
         {
             var schemes = classNames[clNm];
-            sbClasses.AppendLine($"""               yield return new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
+            sbClasses.AppendLine($"""            yield return new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
         }
         foreach (var clNm in attNames.Keys.OrderBy(x => x))
         {
             var schemes = attNames[clNm];
-            sbAtts.AppendLine($"""               yield return new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())});""");
+            sbAtts.AppendLine($"""            yield return new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())});""");
         }
         source = source.Replace($"<PlaceHolderClasses>\r\n", sbClasses.ToString());
         source = source.Replace($"<PlaceHolderAttributes>\r\n", sbAtts.ToString());

@@ -92,7 +92,7 @@ internal static class IdsErrorMessages
 
 	internal static Audit.Status Report201IncompatibleClauses(ILogger? logger, IdsXmlNode locationContext, SchemaInfo schemaInfo, string scenarioMessage)
 	{
-		logger?.LogError("Error {errorCode}: Inconsistent clauses for {ifcSchema} : {message} on {location}.", 201, schemaInfo.Version, scenarioMessage, locationContext.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Inconsistent clauses for {ifcSchema}: {message} on {location}.", 201, schemaInfo.Version, scenarioMessage, locationContext.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
@@ -107,8 +107,13 @@ internal static class IdsErrorMessages
         logger?.LogError("Error {errorCode}: Incompatible constraints on {location}, {errorMessage}.", 203, context.GetNodeIdentification(), errorMessage);
         return Audit.Status.IdsContentError;
     }
+	internal static Audit.Status Report204IncompatibleRequirements(ILogger? logger, IdsXmlNode context, string errorMessage)
+	{
+		logger?.LogError("Error {errorCode}: Incompatible requirements on {location}, {errorMessage}.", 204, context.GetNodeIdentification(), errorMessage);
+		return Audit.Status.IdsContentError;
+	}
 
-    internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, ICardinality minMax)
+	internal static Audit.Status Report301InvalidCardinality(ILogger? logger, IdsXmlNode context, ICardinality minMax)
 	{
 		minMax.Audit(out var cardinalityError);
 		logger?.LogError("Error {errorCode}: Invalid cardinality on {location}. {occurError}.", 301, context.GetNodeIdentification(), cardinalityError);

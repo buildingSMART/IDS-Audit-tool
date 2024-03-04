@@ -3,6 +3,7 @@
     internal interface ICardinality
     {
         bool IsRequired { get; }
+        bool IsProhibited { get; }
 
         Audit.Status Audit(out string errorMessage);
     }

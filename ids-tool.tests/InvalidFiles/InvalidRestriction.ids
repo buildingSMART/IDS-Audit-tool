@@ -30,6 +30,19 @@
             </xs:restriction>
           </ids:value>
 				</ids:property>
+        <ids:property dataType="IFCTEXT">
+          <ids:propertySet>
+            <ids:simpleValue>PsetTeresa</ids:simpleValue>
+          </ids:propertySet>
+          <ids:baseName>
+            <ids:simpleValue>Codice progetto</ids:simpleValue>
+          </ids:baseName>
+          <ids:value>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="CUP\d{8}"/>
+            </xs:restriction>
+          </ids:value>
+        </ids:property>
 			</ids:requirements>
 		</ids:specification>
 	</ids:specifications>

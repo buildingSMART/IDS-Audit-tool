@@ -92,7 +92,7 @@ public class IfcSchema_PropertiesGenerator
                 var rpArr = NewArray("IPropertyTypeInfo", richProp);
                 // sb.AppendLine($@"			// {string.Join(",", classes)}");
                 // sb.AppendLine($@"			yield return new PropertySetInfo(""{set.Name}"", {pArr}, {cArr});");
-                sb.AppendLine($@"			yield return new PropertySetInfo(""{set.Name}"", {rpArr}, {cArr});");
+                sb.AppendLine($@"		yield return new PropertySetInfo(""{set.Name}"", {rpArr}, {cArr});");
             }
             source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
         }
@@ -130,28 +130,28 @@ public class IfcSchema_PropertiesGenerator
 
 using System.Collections.Generic;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+/// <summary>
+/// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
+/// </summary>
+public partial class PropertySetInfo
 {
-    /// <summary>
-    /// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
-    /// </summary>
-	public partial class PropertySetInfo
+	static IEnumerable<PropertySetInfo> GetPropertiesIFC2x3()
 	{
-		static IEnumerable<PropertySetInfo> GetPropertiesIFC2x3()
-		{
 <PlaceHolderIFC2x3>
-		}
+	}
 
-		private static IEnumerable<PropertySetInfo> GetPropertiesIFC4()
-		{
+	private static IEnumerable<PropertySetInfo> GetPropertiesIFC4()
+	{
 <PlaceHolderIFC4>
-		}
+	}
 
-        private static IEnumerable<PropertySetInfo> GetPropertiesIFC4x3()
-		{
+    private static IEnumerable<PropertySetInfo> GetPropertiesIFC4x3()
+	{
 <PlaceHolderIFC4x3>
-		}
 	}
 }
+
 ";
 }

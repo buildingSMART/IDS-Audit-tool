@@ -5,45 +5,45 @@
 using System;
 using System.Collections.Generic;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+public partial class SchemaInfo
 {
-    public partial class SchemaInfo
+    /// <summary>
+    /// The names of classes across all schemas.
+    /// </summary>
+    public IEnumerable<PartOfRelationInformation> AllPartOfRelations
     {
-        /// <summary>
-        /// The names of classes across all schemas.
-        /// </summary>
-        public IEnumerable<PartOfRelationInformation> AllPartOfRelations
+        get
         {
-            get
+            if (Version == IfcSchemaVersions.Ifc2x3)
             {
-                if (Version == IfcSchemaVersions.Ifc2x3)
-                {
-                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALSTRUCTUREELEMENT", "IFCPRODUCT");
-                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
-                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
-                }
-                if (Version == IfcSchemaVersions.Ifc4)
-                {
-                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
-                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
-                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
-                }
-                if (Version == IfcSchemaVersions.Ifc4x3)
-                {
-                    yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
-                    yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
-                    yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
-                    yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
-                }
+                yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALSTRUCTUREELEMENT", "IFCPRODUCT");
+                yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
+            }
+            if (Version == IfcSchemaVersions.Ifc4)
+            {
+                yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
+                yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
+            }
+            if (Version == IfcSchemaVersions.Ifc4x3)
+            {
+                yield return new PartOfRelationInformation("IFCRELAGGREGATES", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELASSIGNSTOGROUP", "IFCGROUP", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELCONTAINEDINSPATIALSTRUCTURE", "IFCSPATIALELEMENT", "IFCPRODUCT");
+                yield return new PartOfRelationInformation("IFCRELNESTS", "IFCOBJECTDEFINITION", "IFCOBJECTDEFINITION");
+                yield return new PartOfRelationInformation("IFCRELVOIDSELEMENT", "IFCELEMENT", "IFCFEATUREELEMENTSUBTRACTION");
+                yield return new PartOfRelationInformation("IFCRELFILLSELEMENT", "IFCOPENINGELEMENT", "IFCELEMENT");
             }
         }
     }
 }
+

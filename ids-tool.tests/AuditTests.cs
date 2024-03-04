@@ -127,7 +127,7 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEnumerationDoubleValues.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEnumerationIntegerValues.ids", 3, Audit.Status.IdsContentError };
-        yield return new object[] { "InvalidFiles/InvalidIfcRestrictionType.ids", 1, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidRestriction.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidApplicability.ids", 3, Audit.Status.IdsContentError | Audit.Status.IdsStructureError };
         yield return new object[] { "InvalidFiles/Restrictions/InvalidRestrictions.ids", 4, Audit.Status.IdsContentError | Audit.Status.IdsStructureError };
     }

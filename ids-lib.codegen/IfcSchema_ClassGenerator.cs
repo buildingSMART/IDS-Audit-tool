@@ -58,7 +58,7 @@ public class IfcSchema_ClassGenerator
                 // Enriching schema with attribute names
                 var attnames = NewStringArray(daType.Properties.Values.Select(x => x.Name).ToArray());
 
-                sb.AppendLine($@"				new ClassInfo(""{daType.Name}"", ""{daType.SuperType?.Name}"", {abstractOrNot}, {predType}, ""{ns}"", {attnames}),");
+                sb.AppendLine($@"			new ClassInfo(""{daType.Name}"", ""{daType.SuperType?.Name}"", {abstractOrNot}, {predType}, ""{ns}"", {attnames}),");
             }
             source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
         }
@@ -75,34 +75,34 @@ public class IfcSchema_ClassGenerator
 
 using System.Linq;
 
-namespace IdsLib.IfcSchema
+namespace IdsLib.IfcSchema;
+
+public partial class SchemaInfo
 {
-	public partial class SchemaInfo
+	private static partial SchemaInfo GetClassesIFC2x3()
 	{
-		private static partial SchemaInfo GetClassesIFC2x3()
-		{
-			var schema = new SchemaInfo(IfcSchemaVersions.Ifc2x3) {
+		var schema = new SchemaInfo(IfcSchemaVersions.Ifc2x3) {
 <PlaceHolderIfc2x3>
-			};
-			return schema;
-		}
+		};
+		return schema;
+	}
 
-		private static partial SchemaInfo GetClassesIFC4() 
-		{
-			var schema = new SchemaInfo(IfcSchemaVersions.Ifc4) {
+	private static partial SchemaInfo GetClassesIFC4() 
+	{
+		var schema = new SchemaInfo(IfcSchemaVersions.Ifc4) {
 <PlaceHolderIfc4>
-			};
-			return schema;
-		}
+		};
+		return schema;
+	}
 
-        private static partial SchemaInfo GetClassesIFC4x3() 
-		{
-			var schema = new SchemaInfo(IfcSchemaVersions.Ifc4x3) {
+    private static partial SchemaInfo GetClassesIFC4x3() 
+	{
+		var schema = new SchemaInfo(IfcSchemaVersions.Ifc4x3) {
 <PlaceHolderIfc4x3>
-			};
-			return schema;
-		}
+		};
+		return schema;
 	}
 }
+
 ";
 }

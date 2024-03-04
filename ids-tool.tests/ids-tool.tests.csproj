@@ -75,7 +75,7 @@
 		<None Update="InvalidFiles\InvalidPropertyCardinality.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="InvalidFiles\InvalidIfcRestrictionType.ids">
+		<None Update="InvalidFiles\InvalidRestriction.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="InvalidFiles\InvalidIfcEnumerationIntegerValues.ids">

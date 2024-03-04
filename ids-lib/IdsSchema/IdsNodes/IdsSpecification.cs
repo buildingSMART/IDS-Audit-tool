@@ -45,8 +45,19 @@ internal class IdsSpecification : IdsXmlNode
             return ret;
         }
 
+        // Evaluation of compatibility between Requirement and Applicability
+        //
         var reqs = GetChildNode<IdsFacetCollection>("requirements");
-        if (applic is not null && reqs is not null)
+        if (applic.Cardinality.IsProhibited)
+        {
+            if (reqs is not null && reqs.ChildFacets.Any()) 
+            {
+				// trigger incompatible clauses
+				ret |= IdsErrorMessages.Report204IncompatibleRequirements(logger, this, "requirements are not allowed when applicability is prohibited.");
+			}
+        }
+
+        if (reqs is not null)
         {
             if (IfcSchemaVersions.TryGetSchemaInformation(out var schemaInfos))
             {

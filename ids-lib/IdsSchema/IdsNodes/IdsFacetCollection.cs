@@ -12,18 +12,16 @@ namespace IdsLib.IdsSchema.IdsNodes;
 
 internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
 {
-	private readonly MinMaxCardinality minMaxOccurr;
+	internal readonly ICardinality Cardinality;
 
 	public IdsFacetCollection(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         // this is only relevant for applicability, but we can attempt to read it in any case.
-		minMaxOccurr = new MinMaxCardinality(reader);
+		Cardinality = new MinMaxCardinality(reader);
 	}
 
     private Dictionary<IfcSchemaVersions, IIfcTypeConstraint?> typeFilterDic = new();
     internal IEnumerable<IIdsFacet> ChildFacets => Children.OfType<IIdsFacet>();
-
-    
 
     public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
 	{   
@@ -57,9 +55,9 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
         }
         else if (type == "applicability")
         {
-            if (minMaxOccurr.Audit(out var _) != Audit.Status.Ok)
+            if (Cardinality.Audit(out var _) != Audit.Status.Ok)
             {
-                ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, minMaxOccurr);
+                ret |= IdsErrorMessages.Report301InvalidCardinality(logger, this, Cardinality);
             }
         }
 
