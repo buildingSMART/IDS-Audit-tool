@@ -203,6 +203,13 @@ public static partial class Audit
                 options.OmitIdsContentAudit ||
                 (!string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern) && Regex.IsMatch(theFile.FullName, options.OmitIdsContentAuditPattern, RegexOptions.IgnoreCase))
         };
+        if (!options.OmitIdsContentAudit // the default is not to ignore
+            && !string.IsNullOrWhiteSpace(options.OmitIdsContentAuditPattern) 
+            && opts.OmitIdsContentAudit // and we are ignoring
+            )
+        {
+            logger?.LogInformation("Omitting content audit because of file name pattern match.");
+        }
         var auditSettings = new IdsLib.AuditHelper(logger, opts);
         using var stream = File.OpenRead(theFile.FullName);
         return await AuditStreamAsync(stream, auditSettings, logger); // in AuditIdsComplianceAsync

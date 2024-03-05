@@ -21,7 +21,7 @@
     },
     "audit documentation folder": {
       "commandName": "Project",
-      "commandLineArgs": "audit -x \"C:\\Data\\Dev\\BuildingSmart\\IDS\\Development\\ids.xsd\" -s \"C:\\Data\\Dev\\BuildingSmart\\IDS\\Documentation\\testcases\" -p \"\\\\Fail-\""
+      "commandLineArgs": "audit -x \"C:\\Data\\Dev\\BuildingSmart\\IDS\\Development\\ids.xsd\" -s \"C:\\Data\\Dev\\BuildingSmart\\IDS\\Documentation\\testcases\" -p \"\\\\invalid-\""
     }
   }
 }

@@ -82,7 +82,7 @@ public class IfcSchema_ObjectToTypeGenerator
 			source = source.Replace(replace, sb.ToString());
 
 		}
-        source = source.Replace($"<PlaceHolderVersion>\r\n", VersionHelper.GetFileVersion(typeof(IfcWall)));
+        source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(IfcWall)));
         return source;
     }
 

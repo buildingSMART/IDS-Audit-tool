@@ -71,7 +71,7 @@ public class IfcSchema_ClassGenerator
         return @$"new[] {{ ""{string.Join("\", \"", classes)}"" }}";
     }
 
-    private const string stub = @"// generated code via ids-lib.codegen using Xbim.Essentials <PlaceHolderVersion> -, any changes made directly here will be lost
+    private const string stub = @"// generated code via ids-lib.codegen using Xbim.Essentials <PlaceHolderVersion>, any changes to this file will be lost at next regeneration
 
 using System.Linq;
 

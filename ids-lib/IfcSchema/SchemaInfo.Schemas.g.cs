@@ -1,4 +1,4 @@
-// generated code via ids-lib.codegen using Xbim.Essentials 5.9.0.408 -, any changes made directly here will be lost
+// generated code via ids-lib.codegen using Xbim.Essentials 6.0.0.438, any changes to this file will be lost at next regeneration
 
 using System.Linq;
 

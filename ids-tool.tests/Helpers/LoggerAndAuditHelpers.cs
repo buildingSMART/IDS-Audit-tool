@@ -43,16 +43,16 @@ internal static class LoggerAndAuditHelpers
         }
     }
 
-    internal static Audit.Status BatchAuditWithOptions(IBatchAuditOptions c, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
+    internal static Audit.Status BatchAuditWithOptions(IBatchAuditOptions batchOptions, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
     {
         ILogger logg = GetXunitLogger(OutputHelper);
-        var checkResult = Audit.Run(c, logg); // run for xunit output of logging
+        var checkResult = Audit.Run(batchOptions, logg); // run for xunit output of logging
         if (expectedOutcome.HasValue)
             checkResult.Should().Be(expectedOutcome.Value);
         if (expectedWarnAndErrors == -1)
             return checkResult;
         var loggerMock = Substitute.For<ILogger<AuditTests>>();
-        Audit.Run(c, loggerMock); // run for testing of log errors and warnings
+        Audit.Run(batchOptions, loggerMock); // run for testing of log errors and warnings
         CheckErrorsAndWarnings(loggerMock, expectedWarnAndErrors);
         return checkResult;
     }
