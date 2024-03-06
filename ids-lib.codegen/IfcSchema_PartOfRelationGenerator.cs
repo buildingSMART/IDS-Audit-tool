@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using Xbim.Common.Metadata;
-using static NSubstitute.Arg;
 
 namespace IdsLib.codegen;
 

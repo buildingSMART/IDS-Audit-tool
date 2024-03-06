@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -95,12 +94,11 @@ public class BuildingSmartRepoFiles
         return new FileInfo(schema);
     }
 
-    internal static FileInfo GetDocumentationTestCaseFileInfo(string idsFile)
+    public static FileInfo GetDocumentationTestCaseFileInfo(string idsFile)
     {
         var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
         var comb = d.FullName + idsFile;
         var f = new FileInfo(comb);
-        f.Exists.Should().BeTrue("test file must be found");
         return f;
     }
     
@@ -125,12 +123,11 @@ public class BuildingSmartRepoFiles
 		}
 	}
     
-	internal static FileInfo GetIdsRepositoryDevelopmentFileInfo(string idsFile)
+	public static FileInfo GetIdsRepositoryDevelopmentFileInfo(string idsFile)
     {
         var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
         var comb = d.FullName + idsFile;
         var f = new FileInfo(comb);
-        f.Exists.Should().BeTrue("test file must be found");
         return f;
     }
 

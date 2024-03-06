@@ -16,7 +16,23 @@ namespace idsTool.tests.Helpers;
 
 internal static class LoggerAndAuditHelpers
 {
-    internal static Audit.Status AuditWithoutExpectations(BatchAuditOptions c, ITestOutputHelper OutputHelper)
+	public static FileInfo GetAndCheckIdsRepositoryDevelopmentFileInfo(string idsFile)
+    {
+		FileInfo f = BuildingSmartRepoFiles.GetIdsRepositoryDevelopmentFileInfo(idsFile);
+		f.Exists.Should().BeTrue("test file must be found");
+		return f;
+	}
+	public static FileInfo GetAndCheckDocumentationTestCaseFileInfo(string idsFile)
+    {
+		FileInfo f = BuildingSmartRepoFiles.GetDocumentationTestCaseFileInfo(idsFile);
+		f.Exists.Should().BeTrue("test file must be found");
+        return f;
+	}
+
+    
+
+
+	internal static Audit.Status AuditWithoutExpectations(BatchAuditOptions c, ITestOutputHelper OutputHelper)
     {
         return BatchAuditWithOptions(c, OutputHelper, null, -1);
     }

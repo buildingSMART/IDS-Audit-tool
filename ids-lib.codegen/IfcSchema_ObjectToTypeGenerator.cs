@@ -65,7 +65,7 @@ public class IfcSchema_ObjectToTypeGenerator
             Debug.WriteLine(item);
         }
 		var source = stub;
-		var genSchemas = new[] { IfcSchema.SchemaInfo.SchemaIfc4, IfcSchema.SchemaInfo.SchemaIfc4x3 };
+		var genSchemas = new[] { "Ifc4", "Ifc4x3" };
         var sourceSchemas = new[] { "IFC4", "IFC4X3_ADD1" }; 
 		
 		for (int i = 0; i < genSchemas.Length; i++)
@@ -78,7 +78,7 @@ public class IfcSchema_ObjectToTypeGenerator
 			{
 				sb.AppendLine($"\t\tschema.AddRelationType(\"{pair.ObjectName}\", \"{pair.TypeName}\");");
 			}
-			var replace = $"<PlaceHolder{schema.Version}>\r\n";
+			var replace = $"<PlaceHolder{schema}>\r\n";
 			source = source.Replace(replace, sb.ToString());
 
 		}

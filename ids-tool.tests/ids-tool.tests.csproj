@@ -27,6 +27,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ids-lib\ids-lib.csproj" />
 		<ProjectReference Include="..\ids-tool\ids-tool.csproj" />
+		<ProjectReference Include="..\SolutionTooling\SolutionTooling.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

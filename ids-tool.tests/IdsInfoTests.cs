@@ -30,7 +30,7 @@ public class IdsInfoTests : BuildingSmartRepoFiles
     public async Task CanReadIdsDevelopmentFiles(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetIdsRepositoryDevelopmentFileInfo(idsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(idsFile);
         var t = await IdsXmlHelpers.GetIdsInformationAsync(f);
         t.Should().NotBeNull();
         t.Version.Should().NotBe(IdsVersion.Invalid);
@@ -41,7 +41,7 @@ public class IdsInfoTests : BuildingSmartRepoFiles
     public async Task CanReadIdsTestCases(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetDocumentationTestCaseFileInfo(idsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(idsFile);
         var idsInformation = await IdsXmlHelpers.GetIdsInformationAsync(f);
         idsInformation.Should().NotBeNull();
         var schemaVersion = idsInformation.Version;

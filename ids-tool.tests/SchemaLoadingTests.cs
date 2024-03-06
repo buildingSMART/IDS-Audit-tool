@@ -25,7 +25,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     public void CanLoadEmbeddedResourceSchema(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetIdsRepositoryDevelopmentFileInfo(idsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(idsFile);
         var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,

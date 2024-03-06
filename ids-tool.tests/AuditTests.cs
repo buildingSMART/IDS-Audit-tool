@@ -29,7 +29,7 @@ public class AuditTests : BuildingSmartRepoFiles
     public void FullAuditOfDevelopmentFilesOk(string developmentIdsFile)
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
 
@@ -40,7 +40,7 @@ public class AuditTests : BuildingSmartRepoFiles
 		var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
 		Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-		FileInfo f = GetIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
+		FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
 
         BatchOpts opt = new BatchOpts() {
             InputSource = f.FullName
@@ -57,7 +57,7 @@ public class AuditTests : BuildingSmartRepoFiles
         // should the exception be prevented by the schema validation?
         // 
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,
@@ -80,7 +80,7 @@ public class AuditTests : BuildingSmartRepoFiles
     public void AuditOfDocumentationPassFilesOk(string developmentIdsFile)
     {
         Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
-        FileInfo f = GetDocumentationTestCaseFileInfo(developmentIdsFile);
+        FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new BatchAuditOptions()
         {
             InputSource = f.FullName,

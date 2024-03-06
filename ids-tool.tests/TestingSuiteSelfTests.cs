@@ -26,8 +26,7 @@ namespace idsTool.tests
 				var str = Frststr as string;
 				if (str == "") // repository not found
 					continue;
-				var f = BuildingSmartRepoFiles.GetDocumentationTestCaseFileInfo(str!);
-				f.Should().NotBeNull();
+				var f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(str!);
 				f.Exists.Should().BeTrue($"{str} is returned from the automation code");
 			}
 		}
