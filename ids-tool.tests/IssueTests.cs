@@ -38,5 +38,12 @@ namespace idsTool.tests
 			var f = new FileInfo("IssueFiles/Issue 11 - IfcLogical.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
 		}
+
+		[Fact]
+		public void Issue11_IfcPropertySetFound()
+		{
+			var f = new FileInfo("IssueFiles/Issue 25 - Pset_ConstructionOccurence.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
 	}
 }

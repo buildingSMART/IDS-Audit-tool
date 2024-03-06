@@ -100,6 +100,7 @@ namespace idsTool.tests
 
 			var c = new HttpClient();
             var t = await c.GetAsync(url);
+
             var tp = t.Content.Headers.ContentType;
             Skip.If(tp is null, "contentype is null");
             Skip.If(!acceptable.Contains(tp.ToString()), $"contentype is `{tp}` is not in the acceptable range.");
