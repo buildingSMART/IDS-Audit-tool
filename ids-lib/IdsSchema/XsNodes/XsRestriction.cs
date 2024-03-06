@@ -131,7 +131,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 		if (Base == BaseTypes.Invalid)
 			ret |= IdsErrorMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         if (!Children.Any())
-            IdsErrorMessages.Report304RestrictionEmptyContent(logger, this);
+            ret |= IdsErrorMessages.Report304RestrictionEmptyContent(logger, this);
 		return ret;
     }
 }

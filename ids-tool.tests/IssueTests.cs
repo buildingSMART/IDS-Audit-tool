@@ -40,10 +40,17 @@ namespace idsTool.tests
 		}
 
 		[Fact]
-		public void Issue11_IfcPropertySetFound()
+		public void Issue25_IfcPropertySetFound()
 		{
 			var f = new FileInfo("IssueFiles/Issue 25 - Pset_ConstructionOccurence.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
+
+		[Fact]
+		public void Issue_28_EmptyRestriction()
+		{
+			var f = new FileInfo("IssueFiles/Issue 28 - Empty restriction.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 1);
 		}
 	}
 }
