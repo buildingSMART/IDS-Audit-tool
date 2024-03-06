@@ -3,7 +3,7 @@
 Default constructor, ensures static nullable analysis
 
 ```csharp
-public IfcDataTypeInformation(string name, IEnumerable<string> schemas)
+public IfcDataTypeInformation(string name, IEnumerable<string> schemas, string type = "")
 ```
 
 ## See Also
@@ -19,7 +19,7 @@ Custom constructor for unit conversion
 
 ```csharp
 public IfcDataTypeInformation(string name, IEnumerable<string> schemas, 
-    IfcMeasureInformation ifcMeasureInformation)
+    IfcMeasureInformation ifcMeasureInformation, string type = "")
 ```
 
 ## See Also

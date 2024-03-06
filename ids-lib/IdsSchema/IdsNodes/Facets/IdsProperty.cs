@@ -5,6 +5,7 @@ using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using static IdsLib.Audit;
 
@@ -145,7 +146,29 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             }
 			if (dataTypeMatcher is not null)
 			{
-				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var matches, "dataType", schema.Version);
+				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var dtMatches, "dataType", schema.Version);
+                // if we have matches, we can test the value for compatible basetype
+                //
+                if (dtMatches.Any())
+                {
+                    foreach (var dtMatch in dtMatches)
+                    {
+                        if (SchemaInfo.TryParseIfcMeasure(dtMatch, out var fnd, false))
+                        {
+                            if (!string.IsNullOrEmpty(fnd.BackingType) && value is not null && value.HasXmlBaseType(out var baseType))
+                            {
+                                if (fnd.BackingType != baseType)
+                                {
+                                    if (string.IsNullOrEmpty(baseType))
+                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`");
+                                    else
+                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`");
+								}
+                            }
+                        }
+                    }
+                }
+
 			}
 			if (ret != Audit.Status.Ok)
 				IsValid = false;

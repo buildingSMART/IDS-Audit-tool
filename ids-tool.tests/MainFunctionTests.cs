@@ -27,6 +27,7 @@ public class MainFunctionTests
     [Fact]
     public void CanRunProvidingSchema()
     {
+        // when this test fails try getting an updated IDS from the IDS repository and try again.
         var c = new BatchAuditOptions
         {
             SchemaFiles = new List<string> { schemaFile },

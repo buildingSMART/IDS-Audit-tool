@@ -11,6 +11,7 @@ public class IfcDataTypeInformation
 | name | description |
 | --- | --- |
 | [IfcDataTypeInformation](IfcDataTypeInformation/IfcDataTypeInformation.md)(…) | Default constructor, ensures static nullable analysis (2 constructors) |
+| [BackingType](IfcDataTypeInformation/BackingType.md) { get; } | The XML type backing the datatype, if known. |
 | [IfcDataTypeClassName](IfcDataTypeInformation/IfcDataTypeClassName.md) { get; } | Name of the entity as a string, stored in UPPERCASE |
 | [Measure](IfcDataTypeInformation/Measure.md) { get; } | Metadata for unit of measure conversion, if relevant. |
 | [ValidSchemaVersions](IfcDataTypeInformation/ValidSchemaVersions.md) { get; } | Versions of the schema that contain the class |

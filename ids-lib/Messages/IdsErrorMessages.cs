@@ -136,9 +136,9 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string baseAsString)
+	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string description)
 	{
-		logger?.LogError("Error {errorCode}: Invalid type `{base}` on {location}.", 303, baseAsString, context.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid type {description} on {location}.", 303, description, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 

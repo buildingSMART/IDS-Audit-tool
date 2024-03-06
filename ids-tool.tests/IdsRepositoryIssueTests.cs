@@ -1,4 +1,5 @@
 ﻿using idsTool.tests.Helpers;
+using System;
 using System.IO;
 using Xunit;
 using Xunit.Abstractions;
@@ -13,7 +14,10 @@ namespace idsTool.tests
 		}
 		private ITestOutputHelper XunitOutputHelper { get; }
 
-		[Fact]
+		/// <summary>
+		/// This test is obsolete, it will be removed soon.
+		/// </summary>
+		[Obsolete]
 		public void Issue195_BaseRestrictionIsNotMandatory()
 		{
 			var f = new FileInfo("IssueFiles/IDS Repo/IDS Issue 195 - base restriction.ids");

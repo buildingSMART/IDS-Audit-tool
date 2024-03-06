@@ -17,7 +17,7 @@
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<ids:property dataType="IFCAREAMEASURE">
+				<ids:property dataType="IFCCOUNTMEASURE">
 					<ids:propertySet>
 						<ids:simpleValue>CustomPset</ids:simpleValue>
 					</ids:propertySet>

@@ -9,6 +9,7 @@ using IdsLib.Messages;
 using System.Text;
 using IdsLib.IdsSchema.IdsNodes;
 using static IdsLib.Audit;
+using IdsLib.IdsSchema.XsNodes;
 
 namespace IdsLib.IdsSchema;
 
@@ -179,4 +180,16 @@ internal class IdsXmlNode
     {
         return Children.OfType<IStringListMatcher>().FirstOrDefault();
     }
+
+	internal bool HasXmlBaseType([NotNullWhen(true)]out string? baseType)
+	{
+        var rest = GetChildNode<XsRestriction>("restriction");
+        if (rest is null)
+        {
+            baseType = null;
+            return false;
+        }
+        baseType = rest.BaseAsString;
+        return true;
+	}
 }

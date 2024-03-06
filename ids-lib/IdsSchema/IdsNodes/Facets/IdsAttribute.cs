@@ -20,7 +20,6 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
     /// </summary>
     private IdsXmlNode? value { get; set; } = null;
 
-
     public IdsAttribute(System.Xml.XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         IsValid = false;
@@ -58,7 +57,6 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 
         value = GetChildNodes("value").FirstOrDefault(); 
         
-
         Audit.Status ret = Audit.Status.Ok;
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         foreach (var schema in schemas)

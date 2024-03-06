@@ -2,10 +2,10 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd">
     <info>
-        <title>Ifc logical is an acceptable datatype in properties</title>
+        <title>Not sure of the purpose of this file</title>
     </info>
     <specifications>
-        <specification name="Ifc logical is an acceptable datatype in properties" ifcVersion="IFC2X3 IFC4">
+        <specification name="Not sure of the purpose of this file" ifcVersion="IFC4">
             <applicability maxOccurs="unbounded">
                 <entity>
                     <name>
@@ -22,7 +22,7 @@
                         <simpleValue>Foo</simpleValue>
                     </baseName>
                     <value>
-                        <xs:restriction>
+                        <xs:restriction base="xs:string">
                             <xs:enumeration value="IFCSTAIR"/>
                             <xs:enumeration value="IFCSTAIRFLIGHT"/>
                         </xs:restriction>

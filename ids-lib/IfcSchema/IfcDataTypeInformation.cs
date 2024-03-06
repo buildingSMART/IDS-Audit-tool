@@ -18,21 +18,28 @@ public class IfcDataTypeInformation
     /// </summary>
     public IfcMeasureInformation? Measure { get; } = null;
     /// <summary>
-    /// Versions of the schema that contain the class
+    /// The XML type backing the datatype, if known.
     /// </summary>
-    public IfcSchemaVersions ValidSchemaVersions { get; }
+	public string? BackingType { get; } = null;
+	/// <summary>
+	/// Versions of the schema that contain the class
+	/// </summary>
+	public IfcSchemaVersions ValidSchemaVersions { get; }
     /// <summary>
     /// Default constructor, ensures static nullable analysis
     /// </summary>
-    public IfcDataTypeInformation(string name, IEnumerable<string> schemas)
+    public IfcDataTypeInformation(string name, IEnumerable<string> schemas, string type = "")
     {
         IfcDataTypeClassName = name;
         ValidSchemaVersions = IfcSchemaVersionsExtensions.GetSchema(schemas);
+        if (!string.IsNullOrEmpty(type))
+            BackingType = type;
     }
+    
 	/// <summary>
 	/// Custom constructor for unit conversion
 	/// </summary>
-	public IfcDataTypeInformation(string name, IEnumerable<string> schemas, IfcMeasureInformation ifcMeasureInformation) : this(name, schemas)
+	public IfcDataTypeInformation(string name, IEnumerable<string> schemas, IfcMeasureInformation ifcMeasureInformation, string type = "") : this(name, schemas, type)
 	{
         Measure = ifcMeasureInformation;
 	}

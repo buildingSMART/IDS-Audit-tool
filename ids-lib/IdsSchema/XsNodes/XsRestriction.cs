@@ -29,7 +29,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 		XsAnyUri,
 	}
 
-    private string BaseAsString { get; init; }
+    internal string BaseAsString { get; init; }
     internal BaseTypes Base { get; init; }
 
     public string Value => string.Join(",", GetDicreteValues());
