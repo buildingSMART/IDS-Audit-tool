@@ -155,10 +155,17 @@ public class IfcSchema_DatatypeNamesGenerator
         
 	}
 
-	public static IEnumerable<string> NonConvertibleMeasures { get; } =
-	[
-		"IFCCONTEXTDEPENDENTMEASURE","IFCCOUNTMEASURE","IFCDESCRIPTIVEMEASURE","IFCMONETARYMEASURE","IFCNORMALISEDRATIOMEASURE","IFCNUMERICMEASURE","IFCPOSITIVERATIOMEASURE","IFCRATIOMEASURE"
-    ];
+    public static IEnumerable<string> NonConvertibleMeasures { get; } = new List<string>
+    {
+        "IFCCONTEXTDEPENDENTMEASURE",
+        "IFCCOUNTMEASURE",
+        "IFCDESCRIPTIVEMEASURE",
+        "IFCMONETARYMEASURE",
+        "IFCNORMALISEDRATIOMEASURE",
+        "IFCNUMERICMEASURE",
+        "IFCPOSITIVERATIOMEASURE",
+        "IFCRATIOMEASURE"
+    };
 
     private static IEnumerable<string> GetExpressValues(ExpressMetaData metaD)
     {
