@@ -31,15 +31,15 @@ public class IfcSchemaTests
 
         foreach (var schema in SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions))
         {
-            Debug.WriteLine($"{schema.Version}");
+            // Debug.WriteLine($"{schema.Version}");
             foreach (var item in schema)
             {
                 if (item.FunctionalType == FunctionalType.ElementWithTypes)
                 {
-                    Debug.WriteLine($"{item.Name} {string.Join(",", item.RelationTypeClasses!)}");
+                    // Debug.WriteLine($"{item.Name} {string.Join(",", item.RelationTypeClasses!)}");
                 }
             }
-            Debug.WriteLine($"");
+            // Debug.WriteLine($"");
         }        
 	}
 

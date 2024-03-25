@@ -74,7 +74,7 @@ namespace idsTool.tests
 			{
 				if (!foundPositions.Contains(expectedPositional))
 				{
-					Debug.WriteLine($"Found values are : {string.Join(", ", foundPositions)}");
+					// Debug.WriteLine($"Found values are : {string.Join(", ", foundPositions)}");
 				}
 				foundPositions.Contains(expectedPositional).Should().BeTrue();
 			}

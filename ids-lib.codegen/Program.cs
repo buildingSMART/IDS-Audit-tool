@@ -21,7 +21,7 @@ internal class Program
             @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(
-            IfcSchema_DatatypeNamesGenerator.Execute(),
+            IfcSchema_DatatypeNamesGenerator.Execute(out var dataTypeDictionary),
             @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(
@@ -29,7 +29,7 @@ internal class Program
             @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(
-            IfcSchema_AttributesGenerator.Execute(),
+            IfcSchema_AttributesGenerator.Execute(dataTypeDictionary),
             @"ids-lib\IfcSchema\SchemaInfo.Attributes.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(

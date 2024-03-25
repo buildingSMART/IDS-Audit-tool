@@ -102,7 +102,6 @@ public class BuildingSmartRepoFiles
         return f;
     }
     
-
 	public static IEnumerable<object[]> GetIdsRepositoryTestCaseIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository

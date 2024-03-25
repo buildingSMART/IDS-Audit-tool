@@ -11,7 +11,7 @@ internal record typeMetadata
     public List<string> Schemas { get; set; } = new();
     public string Exponents { get; set; } = string.Empty;
     public string[]? Fields { get; set; }
-    public string BackingType { get; set; } = string.Empty;
+    public string XmlBackingType { get; set; } = string.Empty;
 
     internal void AddSchema(string schema)
     {
@@ -21,27 +21,27 @@ internal record typeMetadata
     internal void SetBacking(string backing)
     {
 
-        if (BackingType ==  backing) 
+        if (XmlBackingType ==  backing) 
             return;
-        if (string.IsNullOrEmpty(BackingType))
+        if (string.IsNullOrEmpty(XmlBackingType))
         {
-            BackingType = backing;
+            XmlBackingType = backing;
             return;
         }
-        Debug.WriteLine($"Conflicting type for {Name}: {backing} vs. {BackingType}");
+        Debug.WriteLine($"Conflicting type for {Name}: {backing} vs. {XmlBackingType}");
     }
 }
     
 public class IfcSchema_DatatypeNamesGenerator
 {
-    internal static string Execute()
+    internal static string Execute(out Dictionary<string, typeMetadata> dataTypeDictionary)
     {
 
         // start from documented... detail the exponents
         // then add their schemas and the others, with relevant schemas
 
         var documentedMeasures = GetDocumentationMeasures().ToList();
-        var dTypes = documentedMeasures.ToDictionary(x => x.Name, x => x);
+		dataTypeDictionary = documentedMeasures.ToDictionary(x => x.Name, x => x);
 
         //var datatypeNames = GetAllDatatypeNames().ToList();
         //var dttNames = new Dictionary<string, List<string>>();
@@ -82,7 +82,7 @@ public class IfcSchema_DatatypeNamesGenerator
                 
 
 
-				if (dTypes.TryGetValue(daDataType, out var lst))
+				if (dataTypeDictionary.TryGetValue(daDataType, out var lst))
                 {
                     lst.AddSchema(schema);
                     lst.SetBacking(xmlType);
@@ -92,12 +92,12 @@ public class IfcSchema_DatatypeNamesGenerator
                     var t = new typeMetadata() { Name = daDataType };
                     t.AddSchema(schema);
 					t.SetBacking(xmlType);
-					dTypes.Add(daDataType, t);
+					dataTypeDictionary.Add(daDataType, t);
                 }
             }
         }
 
-        foreach (var datatype in dTypes.Keys)
+        foreach (var datatype in dataTypeDictionary.Keys)
         {
             // check if measure is available
             if (datatype.EndsWith("MEASURE"))
@@ -113,16 +113,16 @@ public class IfcSchema_DatatypeNamesGenerator
 
         var source = stub;
         var sbMeasures = new StringBuilder();
-        foreach (var clNm in dTypes.Keys.OrderBy(x => x))
+        foreach (var clNm in dataTypeDictionary.Keys.OrderBy(x => x))
         {
-            var fnd = dTypes[clNm];		
+            var fnd = dataTypeDictionary[clNm];		
             if (fnd.Fields is not null)
             {
                 var t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}")""";
-                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t}, "{fnd.BackingType}");""");
+                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t}, "{fnd.XmlBackingType}");""");
             }
             else
-                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, "{fnd.BackingType}");""");
+                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, "{fnd.XmlBackingType}");""");
         }
         source = source.Replace($"<PlaceHolderDataTypes>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
@@ -150,7 +150,7 @@ public class IfcSchema_DatatypeNamesGenerator
             return "xs:string";
         if (underlyingType == typeof(Nullable<bool>))
             return "xs:string";
-        Debug.WriteLine($"{underlyingType.Name}");
+        // Debug.WriteLine($"{underlyingType.Name}");
         return "";
         
 	}

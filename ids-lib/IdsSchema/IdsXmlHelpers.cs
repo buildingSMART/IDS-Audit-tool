@@ -79,7 +79,7 @@ internal class IdsXmlHelpers
                             default:
                                 break;
                         }
-                        Debug.WriteLine("Start Element {0}", reader.Name);
+                        // Debug.WriteLine("Start Element {0}", reader.Name);
                         break;
                         //case XmlNodeType.Attribute:
                         //    Debug.WriteLine("Attribute Node: {0}", await reader.GetValueAsync());

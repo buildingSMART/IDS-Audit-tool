@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net;
 
 namespace IdsLib.IfcSchema
 {
@@ -51,10 +52,15 @@ namespace IdsLib.IfcSchema
         /// </summary>
         private Dictionary<string, string[]> AttributesToTopClasses { get; set; }
 
-        /// <summary>
-        /// Get the classinfo by name string.
-        /// </summary>
-        public ClassInfo? this[string className]
+		/// <summary>
+		/// from the attribute name to the names of the minimum set of classes that declare the attribute (no subclasses).
+		/// </summary>
+		private Dictionary<string, string[]?> AttributesToValueTypes { get; set; }
+
+		/// <summary>
+		/// Get the classinfo by name string.
+		/// </summary>
+		public ClassInfo? this[string className]
         {
             get
             {
@@ -442,13 +448,19 @@ namespace IdsLib.IfcSchema
         static partial void GetAttributesIFC4(SchemaInfo destinationSchema);
         static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema);
 
-        private void AddAttribute(string attributeName, string[] topClassNames, string[] allClassNames)
+        private void AddAttribute(string attributeName, string[] topClassNames, string[] allClassNames, string[]? valueTypes = null)
         {
-            AttributesToAllClasses ??= new Dictionary<string, string[]>();
+            AttributesToAllClasses ??= new();
             AttributesToAllClasses.Add(attributeName, allClassNames);
 
-            AttributesToTopClasses ??= new Dictionary<string, string[]>();
+            AttributesToTopClasses ??= new();
             AttributesToTopClasses.Add(attributeName, topClassNames);
+
+            AttributesToValueTypes ??= new();
+            if (valueTypes is null)
+				AttributesToValueTypes.Add(attributeName, null);
+            else
+				AttributesToValueTypes.Add(attributeName, valueTypes);
         }
 
         /// <summary>
@@ -674,17 +686,31 @@ namespace IdsLib.IfcSchema
             return allSchemaClassNames;
 		}
 
+		internal IEnumerable<string> GetAttributesTypes(IEnumerable<string> matchingAttributeNames)
+		{
+            List<string> possible = new List<string>();
+            foreach(var attribute in matchingAttributeNames)
+            {
+                if (!AttributesToValueTypes.TryGetValue(attribute, out var types))
+                    continue;
+                if (types is null)
+                    continue;
+                possible.AddRange(types);
+            }
+            return possible.Distinct();
+		}
+
 		//static partial void GetObjects2TypeMappingsIFC2x3(SchemaInfo destinationSchema)
-  //      {
-  //          destinationSchema.AddObjType("", "");
-  //      }
+		//      {
+		//          destinationSchema.AddObjType("", "");
+		//      }
 
 		//private void AddObjType(string objName, string objTypeName)
 		//{
-  //          var fnd = this[objName.ToUpper()];
-  //          if (fnd == null)
-  //              return;
-  //          fnd.RelationTypeClasses
+		//          var fnd = this[objName.ToUpper()];
+		//          if (fnd == null)
+		//              return;
+		//          fnd.RelationTypeClasses
 		//}
 
 		//static partial void GetObjects2TypeMappingsIFC4(SchemaInfo destinationSchema);

@@ -3,8 +3,8 @@ using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using static IdsLib.Audit;
 
@@ -57,28 +57,73 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 
         value = GetChildNodes("value").FirstOrDefault(); 
         
-        Audit.Status ret = Audit.Status.Ok;
+        var ret = Audit.Status.Ok;
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
-        foreach (var schema in schemas)
-        {
-			var validAttributeNames = SchemaInfo.AllAttributes
-			.Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
-			.Select(y => y.IfcAttributeName);
-			ret |= sm.DoesMatch(validAttributeNames, false, logger, out var matches, "attribute name", schema.Version);
-			if (ret != Audit.Status.Ok)
-				return SetInvalid();
-			// if we have valid attributes we can restrict the valid types depending on them
-			typeFilters.Add(schema, new IfcConcreteTypeList(SchemaInfo.SharedClassesForAttributes(schema.Version, matches)));
-		}
 		IsValid = true;
+		foreach (var schema in schemas)
+        {
+            var validAttributeNames = (value is null)
+                ? SchemaInfo.AllAttributes // this one includes attributes that have entity types (e.g. UnitsInContext -> IFCUNITASSIGNMENT)
+                    .Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
+                    .Select(y => y.IfcAttributeName)
+                : schema.GetAttributeNames(); // this only considers attributes that have value type (e.g. LongName -> IFCLABEL)
+			var thisRet = sm.DoesMatch(validAttributeNames, false, logger, out var matchingAttributeNames, "attribute name", schema.Version);
+            if (thisRet != Audit.Status.Ok)
+            {
+                ret |= thisRet;
+                continue;
+            }
+
+            if (value != null)
+            {
+                // if a value is defined then the type must be value type
+                // we can also check that any value constraint matches the expected type
+                var possibleTypes = schema.GetAttributesTypes(matchingAttributeNames).ToList();
+                if (!possibleTypes.Any())
+                {
+					ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"no valid base type exists", schema);
+				}
+                else if (possibleTypes.Count == 1)
+                {
+                    var expected = possibleTypes.First();
+					if (value.HasXmlBaseType(out var baseType))
+					{
+						if (!possibleTypes.Contains(baseType))
+						{
+							if (string.IsNullOrEmpty(baseType))
+								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{expected}`", schema);
+							else
+								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{expected}`", schema);
+						}
+					}
+				}
+				else
+                {
+					if (value.HasXmlBaseType(out var baseType))
+					{
+						if (!possibleTypes.Contains(baseType))
+						{
+                            string expected = string.Join(", ", possibleTypes);
+							if (string.IsNullOrEmpty(baseType))
+								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected a close list ({expected})", schema);
+							else
+								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected a close list ({expected})", schema);
+						}
+					}
+				}
+                
+			}
+			// if we have valid attributes we can restrict the valid types depending on them
+			typeFilters.Add(schema, new IfcConcreteTypeList(SchemaInfo.SharedClassesForAttributes(schema.Version, matchingAttributeNames)));
+		}
+		
+        if (ret != Audit.Status.Ok)
+        {
+			typeFilters.Clear();
+			IsValid = false;
+		}
 
 		return ret;
-    }
-    private Audit.Status SetInvalid()
-    {
-		typeFilters.Clear();
-        IsValid = false;
-        return Audit.Status.IdsContentError;
     }
 
     /// <inheritdoc />

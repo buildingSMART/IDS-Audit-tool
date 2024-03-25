@@ -151,7 +151,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 //
                 if (dtMatches.Any())
                 {
-                    foreach (var dtMatch in dtMatches)
+                    // this if loop was added, but not used... this is suspicious.
+					// todo: should we fail only if all the dtMatches do not hit?
+					foreach (var dtMatch in dtMatches)
                     {
                         if (SchemaInfo.TryParseIfcMeasure(dtMatch, out var fnd, false))
                         {
@@ -160,9 +162,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                                 if (fnd.BackingType != baseType)
                                 {
                                     if (string.IsNullOrEmpty(baseType))
-                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`");
+                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
                                     else
-                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`");
+                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
 								}
                             }
                         }

@@ -16,7 +16,7 @@ public class IfcSchema_ClassGenerator
         foreach (var schema in Program.schemas)
         {
             System.Reflection.Module module = SchemaHelper.GetModule(schema);
-            Debug.WriteLine(module.Name);
+            // Debug.WriteLine(module.Name);
             var metaD = ExpressMetaData.GetMetadata(module);
 
             var sb = new StringBuilder();
@@ -27,10 +27,10 @@ public class IfcSchema_ClassGenerator
             {
                 var daType = metaD.ExpressType(className.ToUpperInvariant());
                 var t = daType.Type.GetInterfaces().Select(x => x.Name).Contains("IExpressValueType");
-                if (t ) //!string.IsNullOrEmpty(daType?.UnderlyingType?.Name))
-                {
-                    Debug.WriteLine($"{daType.Name}: {daType.UnderlyingType.Name} - {t}");
-                }
+                //if (t ) //!string.IsNullOrEmpty(daType?.UnderlyingType?.Name))
+                //{
+                //    Debug.WriteLine($"{daType.Name}: {daType.UnderlyingType.Name} - {t}");
+                //}
 
                 // Enriching schema with predefined types
                 var propPdefT = daType.Properties.Values.FirstOrDefault(x => x.Name == "PredefinedType");

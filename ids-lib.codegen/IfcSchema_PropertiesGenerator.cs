@@ -96,12 +96,6 @@ public class IfcSchema_PropertiesGenerator
             }
             source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
         }
-        // context.AddSource("generated2.cs", source);
-        foreach (var item in propTypes.Distinct())
-        {
-            Debug.WriteLine($"""yield return "{item}"; """);
-        }
-
         source = source.Replace($"<PlaceHolderVersion>\r\n", VersionHelper.GetFileVersion(typeof(Definitions<>)));
         return source;
     }

@@ -26,5 +26,5 @@ public static class LibraryInformation
 	/// <summary>
 	/// Static field with hardcoded DLL version number. 
 	/// </summary>
-	public static string AssemblyVersion => "1.0.65";
+	public static string AssemblyVersion => "1.0.66";
 }

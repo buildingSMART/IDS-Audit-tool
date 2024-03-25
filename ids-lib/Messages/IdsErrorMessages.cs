@@ -136,9 +136,16 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string description)
+	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string description, SchemaInfo? schema = null)
 	{
-		logger?.LogError("Error {errorCode}: Invalid type {description} on {location}.", 303, description, context.GetNodeIdentification());
+        if (schema is null)
+        {
+			logger?.LogError("Error {errorCode}: Invalid type; {description} on {location}.", 303, description, context.GetNodeIdentification());
+        }
+		else
+		{
+			logger?.LogError("Error {errorCode}: Invalid type for {schemaVersion}; {description} on {location}.", 303, schema.Version, description, context.GetNodeIdentification());
+		}
 		return Audit.Status.IdsContentError;
 	}
 

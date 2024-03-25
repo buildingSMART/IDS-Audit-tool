@@ -67,6 +67,9 @@
 		<None Update="InvalidFiles\InvalidAttributeCardinality.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="InvalidFiles\InvalidAttributeTypes.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="InvalidFiles\InvalidClassification.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

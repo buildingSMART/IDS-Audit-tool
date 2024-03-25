@@ -36,7 +36,7 @@ namespace IdsLib.IdsSchema.IdsNodes
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return $"'{NodeType}' element at line {StartLineNumber}, position {StartLinePosition}";
+			return $"`{NodeType}` element at line {StartLineNumber}, position {StartLinePosition}";
 		}
 		/// <summary>
 		/// Formats the value of the current instance using the required format.
