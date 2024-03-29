@@ -31,8 +31,9 @@ namespace IdsLib.IfcSchema
         {
             Version = schemaVersion;
             Classes = new Dictionary<string, ClassInfo>();
-            AttributesToAllClasses = new Dictionary<string, string[]>();
-            AttributesToTopClasses = new Dictionary<string, string[]>();
+            AttributesToAllClasses = [];
+			AttributesToTopClasses = [];
+            AttributesToValueTypes = [];
             PropertySets = PropertySetInfo.GetSchema(schemaVersion)!;
         }
 
@@ -73,13 +74,23 @@ namespace IdsLib.IfcSchema
         }
 
 		/// <summary>
+		/// Obsolete function, please use the direct replacement TryParseIfcDataType instead, with the same parameter structure
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use TryParseIfcDataType instead")]
+		public static bool TryParseIfcMeasure(string value, [NotNullWhen(true)] out IfcDataTypeInformation? found, bool strict = true)
+        {
+            return TryParseIfcDataType(value, out found, strict);
+		}
+
+		/// <summary>
 		/// Attempts to convert a string value to an instance of the IfcMeasureInformation
 		/// </summary>
-		/// <param name="value">the string to parse</param>
+		/// <param name="value">the dataType string to parse</param>
 		/// <param name="found"></param>
 		/// <param name="strict">if true only accepts capitalized data, otherwise tolerates case inconsistencies</param>
 		/// <returns>true if a match is found</returns>
-		public static bool TryParseIfcMeasure(string value, [NotNullWhen(true)] out IfcDataTypeInformation? found, bool strict = true)
+		public static bool TryParseIfcDataType(string value, [NotNullWhen(true)] out IfcDataTypeInformation? found, bool strict = true)
 		{
 			if (value == null)
 			{
@@ -94,6 +105,11 @@ namespace IdsLib.IfcSchema
 			found = AllDataTypes.FirstOrDefault(x => x.IfcDataTypeClassName.Equals(value, StringComparison.InvariantCultureIgnoreCase));
 			return found != null;
 		}
+
+		/// <summary>
+		/// A selection of all the measures available in <see cref="AllDataTypes"/>.
+		/// </summary>
+		public static IEnumerable<IfcMeasureInformation> AllMeasureInformation => AllDataTypes.Where(x => x.Measure is not null).Select(x => x.Measure!.Value);
 
 		/// <summary>
 		/// Add a new classInfo to the collection
@@ -410,7 +426,7 @@ namespace IdsLib.IfcSchema
                 // Debug.WriteLine($"Did not find {objClass} in {Version}");
                 return;
             }
-            List<string> found = new List<string>();
+            List<string> found = new();
 			foreach (var typeClass in typeClasses)
 			{
 				var tpC = this[typeClass];
@@ -422,7 +438,7 @@ namespace IdsLib.IfcSchema
 			}
             if (found.Any())
             {
-                var t = $"\t\tschema.AddRelationType(\"{objClass}\", \"{found.First()}\");";
+                // var t = $"\t\tschema.AddRelationType(\"{objClass}\", \"{found.First()}\");";
 				// Debug.WriteLine(t);
 				// Debug.WriteLine($"{objClass} {string.Join(",", found)}");
 				c.AddTypeClasses(found);

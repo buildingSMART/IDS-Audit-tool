@@ -155,7 +155,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 					// todo: should we fail only if all the dtMatches do not hit?
 					foreach (var dtMatch in dtMatches)
                     {
-                        if (SchemaInfo.TryParseIfcMeasure(dtMatch, out var fnd, false))
+                        if (SchemaInfo.TryParseIfcDataType(dtMatch, out var fnd, false))
                         {
                             if (!string.IsNullOrEmpty(fnd.BackingType) && value is not null && value.HasXmlBaseType(out var baseType))
                             {

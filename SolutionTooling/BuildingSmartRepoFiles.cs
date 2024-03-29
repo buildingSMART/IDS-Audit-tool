@@ -8,29 +8,6 @@ namespace idsTool.tests.Helpers;
 
 public class BuildingSmartRepoFiles
 {
-	// attempts to find the root for the IfcOpenShell's test
-	private static string IfcOpenShellPath
-	{
-		get
-		{
-			var d = new DirectoryInfo(".");
-			while (d is not null)
-			{
-				var subIDS = d.GetDirectories("IfcOpenShell").FirstOrDefault();
-				if (subIDS != null)
-				{
-					if (
-						subIDS.GetDirectories("choco").Any()
-						&& subIDS.GetDirectories("src").Any()
-						)
-						return subIDS.FullName;
-				}
-				d = d.Parent;
-			}
-			return ".";
-		}
-	}
-
 	// attempts to find the root for the buildingsmart's ids standard repository
 	private static string IdsRepoPath
     {

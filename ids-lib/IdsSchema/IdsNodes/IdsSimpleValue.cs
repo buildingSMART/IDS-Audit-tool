@@ -49,6 +49,8 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
         yield return Content;
     }
 
+    private static readonly string[] emptyStringArray = new[] { "" }; 
+
     internal static bool IsNullOrEmpty(IdsXmlNode? parentNode)
     {
         if (parentNode is null)
@@ -57,7 +59,7 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
         return frst switch
         {
             IdsSimpleValue simple => simple.Content == string.Empty, // we need a spec, if it's empty then its null or empty
-            XsRestriction rest => rest.TryMatch(new[] { "" }, false, out _),// if it can match an empty string then it's not a valid value spec
+            XsRestriction rest => rest.TryMatch(emptyStringArray, false, out _),// if it can match an empty string then it's not a valid value spec
             _ => true,// if it's neither, then null
         };
     }
