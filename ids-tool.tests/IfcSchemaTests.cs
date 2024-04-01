@@ -178,6 +178,18 @@ public class IfcSchemaTests
     }
 
     [Fact]
+    public void HasMeasureInfo()
+    {
+        var m = IdsLib.IfcSchema.SchemaInfo.AllMeasureInformation.ToList();
+        m.Should().HaveCount(83);
+        foreach (var measure in m)
+        {
+            Debug.WriteLine($"{measure.UnitSymbol}\t{measure.DefaultDisplay}");
+        }
+    }
+
+
+    [Fact]
     public void CanGetTopLevelClassesByAttribute()
     {
         // Issue #17

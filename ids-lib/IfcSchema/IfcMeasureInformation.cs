@@ -1,21 +1,24 @@
-﻿namespace IdsLib.IfcSchema;
+﻿using System.Diagnostics;
+
+namespace IdsLib.IfcSchema;
 
 /// <summary>
 /// Metadata about measure conversion behaviours.
 /// </summary>
+[DebuggerDisplay("{Id}, {Description}")]
 public readonly struct IfcMeasureInformation
 {
 	/// <summary>
 	/// basic constructor
 	/// </summary>
-	public IfcMeasureInformation(string measure, string description, string unit, string symbol, string defDisplayUnit, string exponents, string unitTypeEnum)
+	public IfcMeasureInformation(string measureId, string description, string unit, string unitSymbol, string defDisplayUnit, string exponents, string unitTypeEnum)
 	{
-		Id = measure;
-		IfcMeasure = measure;
+		Id = measureId;
+		IfcMeasure = measureId;
 		Description = description;
 		Unit = unit;
-		UnitSymbol = symbol;
-		DefaultDisplay = symbol;
+		UnitSymbol = unitSymbol;
+		DefaultDisplay = defDisplayUnit;
 		Exponents = DimensionalExponents.FromString(exponents) ?? new DimensionalExponents();
 		UnitTypeEnum = unitTypeEnum;
 	}

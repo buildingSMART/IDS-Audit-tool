@@ -217,7 +217,7 @@ public partial class SchemaInfo
             yield return new IfcDataTypeInformation("IFCMARINEPARTTYPEENUM", new[] { "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCMASSDENSITYMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCMASSDENSITYMEASURE","Mass density","","","Kg / m3","(-3, 1, 0, 0, 0, 0, 0)","IfcDerivedUnitEnum.MASSDENSITYUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCMASSFLOWRATEMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCMASSFLOWRATEMEASURE","Mass flow rate","","","Kg / s","(0, 1, -1, 0, 0, 0, 0)","IfcDerivedUnitEnum.MASSFLOWRATEUNIT"), "xs:double");
-            yield return new IfcDataTypeInformation("IFCMASSMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCMASSMEASURE","Mass","kilogram","","Kg","(0, 1, 0, 0, 0, 0, 0)","IfcUnitEnum.MASSUNIT"), "xs:double");
+            yield return new IfcDataTypeInformation("IFCMASSMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCMASSMEASURE","Mass","kilogram","Kg","Kg","(0, 1, 0, 0, 0, 0, 0)","IfcUnitEnum.MASSUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCMASSPERLENGTHMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCMASSPERLENGTHMEASURE","Mass per length","","","Kg / m","(-1, 1, 0, 0, 0, 0, 0)","IfcDerivedUnitEnum.MASSPERLENGTHUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCMECHANICALFASTENERTYPEENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCMEDICALDEVICETYPEENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
