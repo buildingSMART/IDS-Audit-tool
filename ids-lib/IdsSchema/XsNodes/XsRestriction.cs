@@ -13,24 +13,8 @@ namespace IdsLib.IdsSchema.XsNodes;
 
 internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatcher, IFiniteStringMatcher
 {
-    internal enum BaseTypes
-    {
-        Invalid,
-        Undefined,
-        XsString,
-		XsBoolean,
-        XsInteger,
-        XsDouble,
-        XsFloat,
-        XsDecimal,
-		XsDuration,
-		XsDateTime,
-		XsDate,
-		XsAnyUri,
-	}
-
     internal string BaseAsString { get; init; }
-    internal BaseTypes Base { get; init; }
+    internal XsTypes.BaseTypes Base { get; init; }
 
     public string Value => string.Join(",", GetDicreteValues());
 
@@ -39,27 +23,10 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 	public XsRestriction(XmlReader reader, IdsXmlNode? parent) : base(reader, parent)
     {
         BaseAsString = reader.GetAttribute("base") ?? string.Empty;
-        Base = GetBaseFrom(BaseAsString);
+        Base = XsTypes.GetBaseFrom(BaseAsString);
     }
 
-	private static BaseTypes GetBaseFrom(string baseAsString)
-	{
-        return baseAsString switch
-        {
-            "" => BaseTypes.Undefined,
-            "xs:string" => BaseTypes.XsString,
-			"xs:boolean" => BaseTypes.XsBoolean,
-			"xs:integer" => BaseTypes.XsInteger,
-			"xs:double" => BaseTypes.XsDouble,
-			"xs:float" => BaseTypes.XsFloat,
-			"xs:decimal" => BaseTypes.XsDecimal,
-			"xs:duration" => BaseTypes.XsDuration,
-			"xs:dateTime" => BaseTypes.XsDateTime,
-			"xs:date" => BaseTypes.XsDate,
-			"xs:anyUri" => BaseTypes.XsAnyUri,
-			_ => BaseTypes.Invalid
-        };
-	}
+	
 
 	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
@@ -128,7 +95,7 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
     protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
 		var ret = Audit.Status.Ok;
-		if (Base == BaseTypes.Invalid)
+		if (Base == XsTypes.BaseTypes.Invalid)
 			ret |= IdsErrorMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         if (!Children.Any())
             ret |= IdsErrorMessages.Report304RestrictionEmptyContent(logger, this);

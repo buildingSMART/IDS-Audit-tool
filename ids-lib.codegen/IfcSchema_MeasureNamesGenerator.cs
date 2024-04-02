@@ -75,7 +75,7 @@ public class IfcSchema_DatatypeNamesGenerator
                 }
                 else
                 {
-                    xmlType = MapToXml(tmpType.UnderlyingType);
+                    xmlType = MapToXml(tmpType.UnderlyingType, daDataType);
 					if (daDataType == "IFCCOUNTMEASURE") // exception for Xbim implementation quirkiness
 						xmlType = "xs:integer";
 				}
@@ -131,8 +131,19 @@ public class IfcSchema_DatatypeNamesGenerator
 
     }
 
-	private static string MapToXml(Type underlyingType)
+	private static string MapToXml(Type underlyingType, string daDataType)
 	{
+        switch (daDataType)
+        {
+            case "IFCDURATION":
+                return "xs:duration";
+			case "IFCDATETIME":
+				return "xs:dateTime";
+			case "IFCDATE":
+				return "xs:date";
+            case "IFCTIME":
+				return "xs:time";
+		}
         switch (underlyingType.Name)
         {
             case "Int64":

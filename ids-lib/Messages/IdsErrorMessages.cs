@@ -155,7 +155,7 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report305BadConstraintValue(ILogger? logger, IdsXmlNode context, string value, XsRestriction.BaseTypes baseType)
+	internal static Audit.Status Report305BadConstraintValue(ILogger? logger, IdsXmlNode context, string value, XsTypes.BaseTypes baseType)
 	{
 		logger?.LogError("Error {errorCode}: Invalid value '{vers}' for base type '{baseType}' on {location}.", 305, value, baseType, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;

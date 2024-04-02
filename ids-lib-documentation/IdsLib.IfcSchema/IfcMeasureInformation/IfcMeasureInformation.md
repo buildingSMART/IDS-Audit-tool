@@ -3,7 +3,7 @@
 basic constructor
 
 ```csharp
-public IfcMeasureInformation(string measure, string description, string unit, string symbol, 
+public IfcMeasureInformation(string measureId, string description, string unit, string unitSymbol, 
     string defDisplayUnit, string exponents, string unitTypeEnum)
 ```
 

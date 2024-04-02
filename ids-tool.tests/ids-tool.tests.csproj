@@ -182,6 +182,9 @@
 		<None Update="IssueFiles\Issue 28 - Empty restriction.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\Issue 30 - should return error.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="ValidFiles\entities_enumeration.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

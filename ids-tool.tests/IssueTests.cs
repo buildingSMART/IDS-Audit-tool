@@ -52,5 +52,12 @@ namespace idsTool.tests
 			var f = new FileInfo("IssueFiles/Issue 28 - Empty restriction.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 1);
 		}
+		
+		[Fact]
+		public void Issue_30_ShouldReturnError()
+		{
+			var f = new FileInfo("IssueFiles/Issue 30 - should return error.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 2);
+		}
 	}
 }

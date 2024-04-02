@@ -43,8 +43,7 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         return matches.Any();
     }
 
-    readonly Regex regexInteger = new(@"^[+-]?(\d+)$", RegexOptions.Compiled);
-	readonly Regex regexFloating = new(@"^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$", RegexOptions.Compiled);
+    
 
     public string Value => value;
 
@@ -56,30 +55,36 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 
         switch (restriction.Base)
         {
-            case XsRestriction.BaseTypes.Invalid: // notified in the the restriction already, do nothing here
-            case XsRestriction.BaseTypes.Undefined: // todo: to be discussed in group
-            case XsRestriction.BaseTypes.XsString:  // nothing 
+			case XsTypes.BaseTypes.XsAnyUri: // todo: implement Uri value filter
+			case XsTypes.BaseTypes.Invalid: // notified in the the restriction already, do nothing here
+            case XsTypes.BaseTypes.Undefined: // todo: to be discussed in group
+            case XsTypes.BaseTypes.XsString:  // nothing 
                 break;
-            case XsRestriction.BaseTypes.XsBoolean: 
+            case XsTypes.BaseTypes.XsBoolean: 
                 if (value != "false" && value != "true")
                     ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
                 break;
-            case XsRestriction.BaseTypes.XsInteger: 
-				if (!regexInteger.IsMatch(value))
+            case XsTypes.BaseTypes.XsInteger: 
+				if (!XsTypes.IsValid(value, restriction.Base))
 					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
 				break;
-            case XsRestriction.BaseTypes.XsDouble: 
-            case XsRestriction.BaseTypes.XsFloat:
-            case XsRestriction.BaseTypes.XsDecimal:
-				if (!regexFloating.IsMatch(value))
+            case XsTypes.BaseTypes.XsDouble: 
+            case XsTypes.BaseTypes.XsFloat:
+            case XsTypes.BaseTypes.XsDecimal:
+				if (!XsTypes.IsValid(value, restriction.Base))
 					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
 				break;
-            case XsRestriction.BaseTypes.XsDuration: // todo: implement duration, discuss 
-            case XsRestriction.BaseTypes.XsDateTime: // todo: implement date time value filter
-            case XsRestriction.BaseTypes.XsDate: // todo: implement date value filter
-            case XsRestriction.BaseTypes.XsAnyUri: // todo: implement Uri value filter
+            case XsTypes.BaseTypes.XsDuration:
+			case XsTypes.BaseTypes.XsDateTime: 
+			case XsTypes.BaseTypes.XsDate: 
+			case XsTypes.BaseTypes.XsTime: 
+				if (!XsTypes.IsValid(value, restriction.Base))
+					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
+                break;
+            
+            
             default:
-                ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, "base type evaluation not implemented.", this);
+                ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"type evaluation not implemented for `{restriction.Base}`", this);
                 break;
         }
         return ret;

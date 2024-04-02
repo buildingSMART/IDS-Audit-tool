@@ -702,10 +702,15 @@ namespace IdsLib.IfcSchema
             return allSchemaClassNames;
 		}
 
-		internal IEnumerable<string> GetAttributesTypes(IEnumerable<string> matchingAttributeNames)
+        /// <summary>
+        /// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
+        /// </summary>
+        /// <param name="attributeNames">The names of the attributes to evaluate</param>
+        /// <returns>string names of the types found in the evaluation of the attributes</returns>
+		public IEnumerable<string> GetAttributesTypes(IEnumerable<string> attributeNames)
 		{
             List<string> possible = new List<string>();
-            foreach(var attribute in matchingAttributeNames)
+            foreach(var attribute in attributeNames)
             {
                 if (!AttributesToValueTypes.TryGetValue(attribute, out var types))
                     continue;
@@ -715,23 +720,6 @@ namespace IdsLib.IfcSchema
             }
             return possible.Distinct();
 		}
-
-		//static partial void GetObjects2TypeMappingsIFC2x3(SchemaInfo destinationSchema)
-		//      {
-		//          destinationSchema.AddObjType("", "");
-		//      }
-
-		//private void AddObjType(string objName, string objTypeName)
-		//{
-		//          var fnd = this[objName.ToUpper()];
-		//          if (fnd == null)
-		//              return;
-		//          fnd.RelationTypeClasses
-		//}
-
-		//static partial void GetObjects2TypeMappingsIFC4(SchemaInfo destinationSchema);
-		//static partial void GetObjects2TypeMappingsIFC4x3(SchemaInfo destinationSchema);
-
 
 	}
 }

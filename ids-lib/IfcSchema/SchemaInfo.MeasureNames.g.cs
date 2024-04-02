@@ -92,8 +92,8 @@ public partial class SchemaInfo
             yield return new IfcDataTypeInformation("IFCCURVEINTERPOLATIONENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCDAMPERTYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCDATAORIGINENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
-            yield return new IfcDataTypeInformation("IFCDATE", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
-            yield return new IfcDataTypeInformation("IFCDATETIME", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
+            yield return new IfcDataTypeInformation("IFCDATE", new[] { "Ifc4", "Ifc4x3" }, "xs:date");
+            yield return new IfcDataTypeInformation("IFCDATETIME", new[] { "Ifc4", "Ifc4x3" }, "xs:dateTime");
             yield return new IfcDataTypeInformation("IFCDAYINMONTHNUMBER", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:integer");
             yield return new IfcDataTypeInformation("IFCDAYINWEEKNUMBER", new[] { "Ifc4", "Ifc4x3" }, "xs:integer");
             yield return new IfcDataTypeInformation("IFCDAYLIGHTSAVINGHOUR", new[] { "Ifc2x3" }, "xs:integer");
@@ -118,7 +118,7 @@ public partial class SchemaInfo
             yield return new IfcDataTypeInformation("IFCDUCTFITTINGTYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCDUCTSEGMENTTYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCDUCTSILENCERTYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
-            yield return new IfcDataTypeInformation("IFCDURATION", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
+            yield return new IfcDataTypeInformation("IFCDURATION", new[] { "Ifc4", "Ifc4x3" }, "xs:duration");
             yield return new IfcDataTypeInformation("IFCDYNAMICVISCOSITYMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCDYNAMICVISCOSITYMEASURE","Dynamic viscosity","","","Pa s","(-1, 1, -1, 0, 0, 0, 0)","IfcDerivedUnitEnum.DYNAMICVISCOSITYUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCEARTHWORKSCUTTYPEENUM", new[] { "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCEARTHWORKSFILLTYPEENUM", new[] { "Ifc4x3" }, "xs:string");
@@ -369,7 +369,7 @@ public partial class SchemaInfo
             yield return new IfcDataTypeInformation("IFCTHERMALRESISTANCEMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCTHERMALRESISTANCEMEASURE","Thermal resistance","","","m2 K / W","(0, -1, 3, 0, 1, 0, 0)","IfcDerivedUnitEnum.THERMALRESISTANCEUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCTHERMALTRANSMITTANCEMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCTHERMALTRANSMITTANCEMEASURE","Thermal transmittance","","","W / m2 K","(0, 1, -3, 0, -1, 0, 0)","IfcDerivedUnitEnum.THERMALTRANSMITTANCEUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCTHERMODYNAMICTEMPERATUREMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCTHERMODYNAMICTEMPERATUREMEASURE","Temperature","kelvin","°K","°K","(0, 0, 0, 0, 1, 0, 0)","IfcUnitEnum.THERMODYNAMICTEMPERATUREUNIT"), "xs:double");
-            yield return new IfcDataTypeInformation("IFCTIME", new[] { "Ifc4", "Ifc4x3" }, "xs:string");
+            yield return new IfcDataTypeInformation("IFCTIME", new[] { "Ifc4", "Ifc4x3" }, "xs:time");
             yield return new IfcDataTypeInformation("IFCTIMEMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCTIMEMEASURE","Time","second","s","s","(0, 0, 1, 0, 0, 0, 0)","IfcUnitEnum.TIMEUNIT"), "xs:double");
             yield return new IfcDataTypeInformation("IFCTIMESERIESDATATYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string");
             yield return new IfcDataTypeInformation("IFCTIMESERIESSCHEDULETYPEENUM", new[] { "Ifc2x3" }, "xs:string");

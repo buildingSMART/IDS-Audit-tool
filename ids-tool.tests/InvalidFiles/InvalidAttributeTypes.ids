@@ -76,5 +76,38 @@
       </requirements>
 		</specification>
 
+    <specification ifcVersion="IFC4" name="other name">
+      <applicability maxOccurs="unbounded">
+        <entity>
+          <name>
+            <simpleValue>IFCCOSTSCHEDULE</simpleValue>
+          </name>
+        </entity>
+      </applicability>
+      <requirements>
+        <attribute>
+          <name>
+            <simpleValue>UpdateDate</simpleValue>
+          </name>
+          <value>
+            <!-- UpdateDate is of datetime type. OK  -->
+            <xs:restriction base="xs:dateTime">
+              <xs:enumeration value="2002-05-30T09:00:00" />
+            </xs:restriction>
+          </value>
+        </attribute>
+        <attribute>
+          <name>
+            <simpleValue>UpdateDate</simpleValue>
+          </name>
+          <value>
+            <!-- UpdateDate is of datetime type. ERROR  -->
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="10" />
+            </xs:restriction>
+          </value>
+        </attribute>
+      </requirements>
+    </specification>
 	</specifications>
 </ids>
