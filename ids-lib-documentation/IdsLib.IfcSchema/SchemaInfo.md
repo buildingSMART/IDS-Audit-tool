@@ -22,6 +22,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetAttributeClasses](SchemaInfo/GetAttributeClasses.md)(…) | Returns names of the classes that have an attribute. /// See  for similar function with different return type. |
 | [GetAttributeNames](SchemaInfo/GetAttributeNames.md)() | Returns all attribute names in the schema |
 | [GetAttributeRelations](SchemaInfo/GetAttributeRelations.md)(…) | Provides information of classes that have an attribute and the form of the relation to it. See  for similar function with different return type. |
+| [GetAttributesTypes](SchemaInfo/GetAttributesTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. |
 | static [AllConcreteClasses](SchemaInfo/AllConcreteClasses.md) { get; } | The names of all concrete classes across known IFC schemas. |

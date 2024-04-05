@@ -21,6 +21,9 @@
     <None Update="buildingSMART\IFC_TYPES_MAPPING_BPS.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="buildingSMART\Pset_IFC4X3.ifc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="buildingSMART\units.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

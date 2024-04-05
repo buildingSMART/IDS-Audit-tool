@@ -21,6 +21,12 @@
 | enum [IdsVersion](./IdsLib.IdsSchema.IdsNodes/IdsVersion.md) | Enumeration to identify a single IDS version. |
 | class [NodeIdentification](./IdsLib.IdsSchema.IdsNodes/NodeIdentification.md) | Provides a way to identify the element of the xml with line/poistion or relative index inside the IDS Instances of this class are passed as a parameter in the ILogger calls, and by default it presents the location by line and number. A custom implementation of ILogger allows you to cast the received state parameter to IReadOnlyList&lt;KeyValuePair&lt;string, object&gt;&gt; and receive instances of NodeIdentification as parameters, to access the precise identifier. |
 
+## IdsLib.IdsSchema.XsNodes namespace
+
+| public type | description |
+| --- | --- |
+| static class [XsTypes](./IdsLib.IdsSchema.XsNodes/XsTypes.md) | Utility class for XSD type management |
+
 ## IdsLib.IfcSchema namespace
 
 | public type | description |
