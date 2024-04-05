@@ -94,7 +94,7 @@ namespace idsTool.tests
                     unexpectedMeasureTypes++;
                 }
             }
-            var expectedCount = 526;
+            var expectedCount = 587;
             unexpectedMeasureTypes.Should().Be(expectedCount, $"{expectedCount} is the count of acknowledged variations");
         }
     }

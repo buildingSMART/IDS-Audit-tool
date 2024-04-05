@@ -72,7 +72,15 @@ internal class IdsSpecification : IdsXmlNode
                     {
                         var totalFilters = IfcTypeConstraint.Intersect(aF, rF);
                         if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
-                            ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of types between applicability and requirements");
+                        {
+                            var appDesc = aF.ConcreteTypes.Count() > 5
+                                ? $"{aF.ConcreteTypes.Count()} types"
+                                : $"{string.Join(", ", aF.ConcreteTypes)}";
+							var reqDesc = rF.ConcreteTypes.Count() > 5
+								? $"{rF.ConcreteTypes.Count()} types"
+								: $"{string.Join(", ", rF.ConcreteTypes)}";
+							ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, $"impossible match of types between applicability ({appDesc}) and requirements ({reqDesc})");
+                        }
                     }
                 }
             }
