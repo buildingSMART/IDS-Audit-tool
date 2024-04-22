@@ -1,6 +1,6 @@
 # IfcDataTypeInformation class
 
-Metadata container for entities containing measures of an IfcSchema
+Metadata container for entities containing measures of an IfcSchema. Access the list from [`AllDataTypes`](./SchemaInfo/AllDataTypes.md).
 
 ```csharp
 public class IfcDataTypeInformation

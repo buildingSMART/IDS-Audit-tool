@@ -83,7 +83,7 @@ namespace idsTool.tests
             schemasAreIdentical.Should().BeTrue("testing schema and repository schema should be identical");
         }
 
-        [SkippableTheory]
+        [Theory]
         [InlineData("http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd")]
         [InlineData("http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd")]
         [InlineData("https://www.w3.org/2001/03/xml.xsd")]
@@ -100,10 +100,10 @@ namespace idsTool.tests
 
 			var c = new HttpClient();
             var t = await c.GetAsync(url);
-
-            var tp = t.Content.Headers.ContentType;
-            Skip.If(tp is null, "contentype is null");
-            Skip.If(!acceptable.Contains(tp.ToString()), $"contentype is `{tp}` is not in the acceptable range.");
+            Assert.NotNull(t.Content.Headers.ContentType);
+			var receivedContentType = t.Content.Headers.ContentType.MediaType;
+            receivedContentType.Should().NotBeNull();
+            receivedContentType.Should().BeOneOf(acceptable);   
         }
     }
 }

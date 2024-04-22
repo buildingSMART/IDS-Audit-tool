@@ -39,7 +39,7 @@
 | enum [FunctionalType](./IdsLib.IfcSchema/FunctionalType.md) | the IFC classes we present can be classified with regards to their potential role in the IfcRelDefinesByType relation. |
 | class [IfcAttributeInformation](./IdsLib.IfcSchema/IfcAttributeInformation.md) | Metadata container for attributes of entities in IfcSchema |
 | class [IfcClassInformation](./IdsLib.IfcSchema/IfcClassInformation.md) | Simplistic metadata container for entities of an IfcSchema |
-| class [IfcDataTypeInformation](./IdsLib.IfcSchema/IfcDataTypeInformation.md) | Metadata container for entities containing measures of an IfcSchema |
+| class [IfcDataTypeInformation](./IdsLib.IfcSchema/IfcDataTypeInformation.md) | Metadata container for entities containing measures of an IfcSchema. Access the list from [`AllDataTypes`](./IdsLib.IfcSchema/SchemaInfo/AllDataTypes.md). |
 | struct [IfcMeasureInformation](./IdsLib.IfcSchema/IfcMeasureInformation.md) | Metadata about measure conversion behaviours. |
 | class [IfcSchemaAttribute](./IdsLib.IfcSchema/IfcSchemaAttribute.md) | Metadata attribute to define if a value of [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) identifies a single version of the schema |
 | [Flags] enum [IfcSchemaVersions](./IdsLib.IfcSchema/IfcSchemaVersions.md) | Enumerations for the identification of multiple schema versions. |

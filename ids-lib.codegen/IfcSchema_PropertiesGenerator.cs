@@ -13,7 +13,7 @@ public class IfcSchema_PropertiesGenerator
 {
     private class propSetTempInfo
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 		public IEnumerable<string>? ApplicableClasses { get; set; }
 		public IEnumerable<string>? CsSourceOfProperties { get; set; }
 
@@ -36,6 +36,8 @@ public class IfcSchema_PropertiesGenerator
 				propsets = GetPsets(f).OrderBy(x => x.Name).ToArray();
 			foreach (var item in propsets)
 			{
+				if (item.ApplicableClasses is null)
+					continue;
 				var cArr = NewStringArray(item.ApplicableClasses);
 				if (item.CsSourceOfProperties is null)
 					continue;
@@ -54,8 +56,8 @@ public class IfcSchema_PropertiesGenerator
 		var psets = store.Instances.OfType<Xbim.Ifc4x3.Kernel.IfcPropertySetTemplate>();
 		foreach (var pset in psets)
 		{
-			propSetTempInfo ret = new propSetTempInfo() { Name = pset.Name };
-			var tmpClasses = pset.ApplicableEntity.Value.Value.ToString().Split(",");
+			propSetTempInfo ret = new propSetTempInfo() { Name = pset.Name ?? "" };
+			var tmpClasses = (pset.ApplicableEntity!.Value.Value.ToString() ?? "").Split(",");
 			ret.ApplicableClasses = tmpClasses.Select(x => RemovePredefinedType(x));
 			var props = new List<string>();
 			foreach (var proptemp in pset.HasPropertyTemplates.OrderBy(x=>x.Name.ToString()))
@@ -90,7 +92,7 @@ public class IfcSchema_PropertiesGenerator
 							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcTimeMeasure\"){def}");
 							break;
 						case IfcSimplePropertyTemplateTypeEnum.P_ENUMERATEDVALUE:
-							props.Add($"new EnumerationPropertyType(\"{singleV.Name}\", {NewStringArray(singleV.Enumerators.EnumerationValues.Select(x => x.Value.ToString()))} ){def}");
+							props.Add($"new EnumerationPropertyType(\"{singleV.Name}\", {NewStringArray(singleV.Enumerators.EnumerationValues.Select(x => x.Value.ToString() ?? ""))} ){def}");
 							break;
 						case IfcSimplePropertyTemplateTypeEnum.P_SINGLEVALUE:
 						case IfcSimplePropertyTemplateTypeEnum.P_REFERENCEVALUE:

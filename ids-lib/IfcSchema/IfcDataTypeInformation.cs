@@ -4,7 +4,8 @@ using System.Diagnostics;
 namespace IdsLib.IfcSchema;
 
 /// <summary>
-/// Metadata container for entities containing measures of an IfcSchema
+/// Metadata container for entities containing measures of an IfcSchema.
+/// Access the list from <see cref="SchemaInfo.AllDataTypes"/>.
 /// </summary>
 [DebuggerDisplay("{IfcDataTypeClassName} ({ValidSchemaVersions})")]
 public class IfcDataTypeInformation
