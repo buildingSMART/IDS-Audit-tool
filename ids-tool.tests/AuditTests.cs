@@ -108,7 +108,7 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/InvalidIfcOccurs.ids", 11, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidEntityNames.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError };
-        yield return new object[] { "InvalidFiles/InvalidAttributeTypes.ids", 4, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidAttributeTypes.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeCardinality.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 5, Audit.Status.IdsContentError };
@@ -130,7 +130,7 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/InvalidIfcEnumerationIntegerValues.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidRestriction.ids", 2, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidApplicability.ids", 3, Audit.Status.IdsContentError | Audit.Status.IdsStructureError };
-        yield return new object[] { "InvalidFiles/Restrictions/InvalidRestrictions.ids", 4, Audit.Status.IdsContentError | Audit.Status.IdsStructureError };
+        yield return new object[] { "InvalidFiles/Restrictions/InvalidRestrictions.ids", 5, Audit.Status.IdsContentError | Audit.Status.IdsStructureError };
     }
 
     [Theory]

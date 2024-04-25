@@ -136,16 +136,18 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string description, SchemaInfo? schema = null)
+	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string stringValue)
 	{
-        if (schema is null)
-        {
-			logger?.LogError("Error {errorCode}: Invalid type; {description} on {location}.", 303, description, context.GetNodeIdentification());
-        }
+		if (string.IsNullOrEmpty(stringValue))
+			logger?.LogError("Error {errorCode}: Invalid base type; empty string on {node}.", 303, context.GetNodeIdentification());
 		else
-		{
-			logger?.LogError("Error {errorCode}: Invalid type for {schemaVersion}; {description} on {location}.", 303, schema.Version, description, context.GetNodeIdentification());
-		}
+			logger?.LogError("Error {errorCode}: Invalid base type; `{stringValue}` on {node}.", 303, stringValue, context.GetNodeIdentification());
+		return Audit.Status.IdsContentError;
+	}
+
+	internal static Audit.Status Report303RestrictionBadType(ILogger? logger, IdsXmlNode context, string description, SchemaInfo schema)
+	{
+		logger?.LogError("Error {errorCode}: Invalid base type for {schemaVersion}; {errorDescription} on {node}.", 303, schema.Version, description, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 

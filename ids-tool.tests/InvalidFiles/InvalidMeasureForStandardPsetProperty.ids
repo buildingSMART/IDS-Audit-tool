@@ -8,7 +8,7 @@
 			<ids:applicability minOccurs="0" maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
-						<xs:restriction>
+						<xs:restriction base="xs:string">
 							<xs:pattern value="IFCWALL|IFCWALLSTANDARDCASE"/>
 						</xs:restriction>
 					</ids:name>
@@ -18,12 +18,12 @@
 				<!-- We are getting all properties, and mandating they have an IfcText measure, this is not possible -->
 				<ids:property dataType="IFCTEXT">
 					<ids:propertySet>
-						<xs:restriction>
+            <xs:restriction base="xs:string">
 							<xs:pattern value=".*"/>
 						</xs:restriction>
 					</ids:propertySet>
           <ids:baseName>
-						<xs:restriction>
+            <xs:restriction base="xs:string">
 							<xs:pattern value=".*"/>
 						</xs:restriction>
 					</ids:baseName>

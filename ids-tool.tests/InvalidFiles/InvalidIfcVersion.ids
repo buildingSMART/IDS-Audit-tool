@@ -23,7 +23,7 @@
 			<ids:requirements>
 				<ids:property dataType="IFCLABEL">
 					<ids:propertySet>
-						<xs:restriction>
+						<xs:restriction base="xs:string">
 							<xs:pattern value="anas.*"/>
 						</xs:restriction>
 					</ids:propertySet>

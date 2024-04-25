@@ -24,7 +24,7 @@
         <!-- Ensure test for property facets -->
         <ids:property cardinality="Invalid" dataType="IFCLABEL">
 					<ids:propertySet>
-						<xs:restriction>
+						<xs:restriction base="xs:string">
 							<xs:pattern value="anas.*"/>
 						</xs:restriction>
 					</ids:propertySet>

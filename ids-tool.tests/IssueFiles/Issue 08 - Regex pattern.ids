@@ -19,7 +19,7 @@
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>
           <baseName>
-            <xs:restriction>
+            <xs:restriction base="xs:string">
               <!-- Currently this is accepted by the regex engine. -->
               <xs:pattern value="^Ambienti|Servizi|Terziario|Parti comuni${1}" />
             </xs:restriction>
@@ -30,7 +30,7 @@
             <simpleValue>Foo_Bar</simpleValue>
           </propertySet>
           <baseName>
-            <xs:restriction>
+            <xs:restriction base="xs:string">
               <xs:pattern value="[Some" />
             </xs:restriction>
           </baseName>
