@@ -1,24 +1,35 @@
 ﻿using FluentAssertions;
+using FluentAssertions.Common;
 using idsTool.tests.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xbim.Common.Configuration;
 using Xbim.Ifc;
 using Xbim.Ifc4.Interfaces;
+using Xbim.IO.Parser;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace idsTool.tests
 {
-	public class IfcFilesTests : BuildingSmartRepoFiles
+	[Collection("Database collection")]
+
+	public class IfcFilesTests : BuildingSmartRepoFiles, IClassFixture<XbimFixture>
 	{
-		public IfcFilesTests(ITestOutputHelper outputHelper)
+		XbimFixture xbimContext;
+		public IfcFilesTests(XbimFixture fixture, ITestOutputHelper outputHelper)
 		{
-			XunitOutputHelper = outputHelper;
+			xbimContext = fixture;
+			XunitOutputHelper = outputHelper;		
 		}
+
 		private ITestOutputHelper XunitOutputHelper { get; }
 
 		[SkippableTheory]
@@ -38,9 +49,16 @@ namespace idsTool.tests
 				];
 
 			XunitOutputHelper.WriteLine($"Opening file `{ifcFile.FullName}`");
+			xbimContext.Logger.ClearReceivedCalls();
 			using var store = IfcStore.Open(ifcFile.FullName);
 			TestPredefinedType(store, musthave.Contains(ifcFile.Name));
+			if (ifcFile.Name == "bad.ifc")
+				xbimContext.Logger.ReceivedWithAnyArgs(1).Log(default, default);
+			else
+				xbimContext.Logger.ReceivedWithAnyArgs(0).Log(default, default);
 		}
+
+		
 
 		private void TestPredefinedType(IfcStore store, bool mustHaveObjType)
 		{
