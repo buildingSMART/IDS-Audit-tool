@@ -16,15 +16,15 @@ namespace idsTool.tests.Helpers;
 
 internal static class LoggerAndAuditHelpers
 {
-	public static FileInfo GetAndCheckIdsRepositoryDevelopmentFileInfo(string idsFile)
+	public static FileInfo GetAndCheckIdsRepositoryDevelopmentFileInfo(string theFile)
     {
-		FileInfo f = BuildingSmartRepoFiles.GetIdsRepositoryDevelopmentFileInfo(idsFile);
+		FileInfo f = BuildingSmartRepoFiles.GetIdsRepositoryDevelopmentFileInfo(theFile);
 		f.Exists.Should().BeTrue("test file must be found");
 		return f;
 	}
-	public static FileInfo GetAndCheckDocumentationTestCaseFileInfo(string idsFile)
+	public static FileInfo GetAndCheckDocumentationTestCaseFileInfo(string theFile)
     {
-		FileInfo f = BuildingSmartRepoFiles.GetDocumentationTestCaseFileInfo(idsFile);
+		FileInfo f = BuildingSmartRepoFiles.GetDocumentationTestCaseFileInfo(theFile);
 		f.Exists.Should().BeTrue("test file must be found");
         return f;
 	}

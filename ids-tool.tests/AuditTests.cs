@@ -93,6 +93,29 @@ public class AuditTests : BuildingSmartRepoFiles
         auditResult.Should().Be(Audit.Status.Ok);
     }	
 
+	/// <summary>
+	/// this test skips the content evaluation on ids files that are expected to fail, 
+	/// because they could be failing due to invalid content.
+	/// It still checks them for issues at schema level.
+	/// </summary>
+	[SkippableTheory]
+	[MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
+	public void AuditOfDocumentationInvalidFilesIsCoherent(string developmentIdsFile)
+	{
+		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
+		var c = new BatchAuditOptions()
+		{
+			InputSource = f.FullName,
+			SchemaFiles = new[] { "bsFiles/ids.xsd" }
+		};
+		var auditResult = LoggerAndAuditHelpers.AuditWithoutExpectations(c, XunitOutputHelper);
+		// hack to provide milder error because we don't have control on the test case generator
+		// Skip.If(auditResult != Audit.Status.Ok, "no control over sample folder.");
+        var exp = f.Name.StartsWith("invalid-") ? Audit.Status.IdsContentError : Audit.Status.Ok;
+		auditResult.Should().Be(exp);
+	}
+
 	[Theory]
     [InlineData("ValidFiles/nested_entity.ids")]
     [InlineData("ValidFiles/property.ids")]

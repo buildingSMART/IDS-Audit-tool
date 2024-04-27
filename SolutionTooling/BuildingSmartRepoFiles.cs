@@ -83,17 +83,23 @@ public class BuildingSmartRepoFiles
     {
         // start from current directory and look in relative position for the bs IDS repository
         var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
-        return GetIdsOrEmpty(d);
+        return GetFilesOrEmpty(d, "*.ids");
     }
+	public static IEnumerable<object[]> GetIdsRepositoryTestCaseIfcFiles()
+	{
+		// start from current directory and look in relative position for the bs IDS repository
+		var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
+		return GetFilesOrEmpty(d, "*.ifc");
+	}
 
-	private static IEnumerable<object[]> GetIdsOrEmpty(DirectoryInfo d)
+	private static IEnumerable<object[]> GetFilesOrEmpty(DirectoryInfo d, string searchPattern)
 	{
 		if (!d.Exists)
 		{
 			yield return new object[] { "" };
 			yield break;
 		}
-		foreach (var f in d.GetFiles("*.ids", SearchOption.AllDirectories))
+		foreach (var f in d.GetFiles(searchPattern, SearchOption.AllDirectories))
 		{
 			yield return new object[] { f.FullName.Replace(d.FullName, "") };
 		}
