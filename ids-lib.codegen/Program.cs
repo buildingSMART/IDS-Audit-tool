@@ -24,7 +24,11 @@ internal class Program
             IfcSchema_DatatypeNamesGenerator.Execute(out var dataTypeDictionary),
             @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs") | GeneratedContentChanged;
 
-        GeneratedContentChanged = EvaluateContentChanged(
+		GeneratedContentChanged = EvaluateContentChanged(
+			IfcSchema_DocumentationGenerator.Execute(dataTypeDictionary),
+			@"ids-lib.codegen\buildingSMART\DataTypes.md") | GeneratedContentChanged;
+
+		GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs") | GeneratedContentChanged;
 

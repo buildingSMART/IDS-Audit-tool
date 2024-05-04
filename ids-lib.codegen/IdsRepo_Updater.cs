@@ -98,11 +98,10 @@ namespace IdsLib.codegen
             if (!updatables.Any())
                 return false;
             
-            Console.WriteLine("Updates are available from the IDS repository:");
+            Console.WriteLine("There are file differences between this and the IDS repository:");
             foreach (var updatable in updatables)
                 Console.WriteLine($"- {updatable.Name}");
-
-            Console.WriteLine("Get these updates from IDS repository? (y/n)");
+            Console.WriteLine("Should these files be updated? (y/n)");
             var k = Console.ReadKey();
             Console.WriteLine();
             if (k.Key != ConsoleKey.Y)
@@ -120,10 +119,29 @@ namespace IdsLib.codegen
         {
             return UpdateDocumentationUnits(solutionDir)
                 .Concat(UpdateEmbeddedSchema(solutionDir))
+                .Concat(UpdateDataTypeDoc(solutionDir))
                 .Concat(UpdateTestingSchema(solutionDir));
         }
 
-        private static IEnumerable<UpdatableFile> UpdateDocumentationUnits(DirectoryInfo solutionDir)
+		private static IEnumerable<UpdatableFile> UpdateDataTypeDoc(DirectoryInfo solutionDir)
+		{
+			var source = Path.Combine(
+					solutionDir.FullName,
+					"ids-lib.codegen",
+					"buildingSMART",
+					"DataTypes.md"
+					);
+            var sourceFile = new FileInfo(source);
+			var destFile = BuildingSmartRepoFiles.GetDocumentation("DataTypes.md");
+			if (sourceFile.Exists)
+			{
+				if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, destFile))
+					yield break;
+				yield return new UpdatableFile("DataType documentation markdown", sourceFile.FullName, destFile.FullName);
+			}
+		}
+
+		private static IEnumerable<UpdatableFile> UpdateDocumentationUnits(DirectoryInfo solutionDir)
         {
             var sourceFile = BuildingSmartRepoFiles.GetDocumentation("units.md");
             if (sourceFile.Exists)
