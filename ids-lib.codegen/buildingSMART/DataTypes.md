@@ -1,4 +1,6 @@
-# DataTypes
+# Type constraining
+
+## DataTypes
 
 Property dataTypes can be set to any values according to the following table.
 
@@ -399,5 +401,21 @@ Columns of the table determine the validity of the type depending on the schema 
 | IFCWORKSCHEDULETYPEENUM                       | ❌      | ✔️      | ✔️      | xs:string             |
 | IFCYEARNUMBER                                 | ✔️      | ❌      | ❌      | xs:integer            |
 
+## XML base types
+
+The list of valid XML base types for the `base` attribute of `xs:restriction` is:
+
+| Base type   |
+| ----------- |
+| xs:boolean  |
+| xs:date     |
+| xs:dateTime |
+| xs:double   |
+| xs:duration |
+| xs:integer  |
+| xs:string   |
+| xs:time     |
+
+## Notes
 
 Please note, this document has been automatically generated via the IDS Audit Tool repository, any changes should be initiated there.
