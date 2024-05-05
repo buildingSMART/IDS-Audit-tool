@@ -1,38 +1,63 @@
-﻿using System;
+﻿using IdsLib.Messages;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using static IdsLib.Audit;
 
 namespace IdsLib.IdsSchema.XsNodes
 {
 	/// <summary>
 	/// Utility class for XSD type management
 	/// </summary>
-	public static class XsTypes
+	public static partial class XsTypes
 	{
-		private readonly static Regex regexInteger = new(@"^[+-]?(\d+)$", RegexOptions.Compiled);
-		private readonly static Regex regexFloating = new(@"^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$", RegexOptions.Compiled);
-		private readonly static Regex regexDuration = new(@"^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$", RegexOptions.Compiled);
-		private readonly static Regex regexDate = new(@"^\d{4}-\d{2}-\d{2}(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
-		private readonly static Regex regexTime = new(@"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
-		private readonly static Regex regexDateTime = new(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
+		internal static Status AuditStringValue(ILogger? logger, XsTypes.BaseTypes baseType, string value, IdsXmlNode node)
+		{
+			var ret = Status.Ok;
+			switch (baseType)
+			{
+				case XsTypes.BaseTypes.XsAnyUri: // todo: implement Uri value filter
+				case XsTypes.BaseTypes.Invalid: // notified in the the restriction already, do nothing here
+				case XsTypes.BaseTypes.Undefined: // todo: ensure this is notified somewhere
+				case XsTypes.BaseTypes.XsString:
+					break;                          // nothing to do
+				case XsTypes.BaseTypes.XsBoolean:
+				case XsTypes.BaseTypes.XsInteger:
+				case XsTypes.BaseTypes.XsDouble:
+				case XsTypes.BaseTypes.XsFloat:
+				case XsTypes.BaseTypes.XsDecimal:
+				case XsTypes.BaseTypes.XsDuration:
+				case XsTypes.BaseTypes.XsDateTime:
+				case XsTypes.BaseTypes.XsDate:
+				case XsTypes.BaseTypes.XsTime:
+					if (!XsTypes.IsValid(value, baseType))
+						ret = IdsErrorMessages.Report305BadConstraintValue(logger, node, value, baseType);
+					break;
+				default:
+					ret = IdsErrorMessages.Report501UnexpectedScenario(logger, $"type evaluation not implemented for `{baseType}`", node);
+					break;
+			}
+			return ret;
+		}
 
 		/// <summary>
 		/// Determines if a string value is compatible with a given type
 		/// </summary>
 		/// <param name="valueString">the string value to parse</param>
 		/// <param name="base">The expected base type</param>
-		/// <returns>TRUE if compatible, false otherwise</returns>
+		/// <returns>TRUE if compatible, FALSE otherwise</returns>
 		public static bool IsValid(string valueString, BaseTypes @base)
-		{ 
-			switch(@base)
+		{
+			switch (@base)
 			{
 				case BaseTypes.XsInteger:
 					return regexInteger.IsMatch(valueString);
 				case BaseTypes.XsDouble:
 				case BaseTypes.XsFloat:
 				case BaseTypes.XsDecimal:
-					return regexFloating.IsMatch(valueString);
+					return regexDouble.IsMatch(valueString);
 				case BaseTypes.XsDate:
 					return regexDate.IsMatch(valueString);
 				case BaseTypes.XsTime:
@@ -41,6 +66,16 @@ namespace IdsLib.IdsSchema.XsNodes
 					return regexDateTime.IsMatch(valueString);
 				case BaseTypes.XsDuration:
 					return regexDuration.IsMatch(valueString);
+				case BaseTypes.XsString:
+					return true;
+				case BaseTypes.Invalid:
+					return false;
+				case BaseTypes.Undefined:
+					return false;
+				case BaseTypes.XsBoolean:
+					return regexBoolean.IsMatch(valueString);
+				case BaseTypes.XsAnyUri: // todo: what is the regex for an URI?
+					break;
 			}
 			return false;
 		}

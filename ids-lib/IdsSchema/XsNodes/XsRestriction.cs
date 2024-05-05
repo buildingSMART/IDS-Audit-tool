@@ -3,6 +3,7 @@ using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml;
@@ -91,17 +92,19 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
     }
 
 	// taken from: https://www.w3.org/TR/xmlschema-2/
-	private Dictionary<XsTypes.BaseTypes, List<string>> validConstraints = new Dictionary<XsTypes.BaseTypes, List<string>>()
+	private Dictionary<XsTypes.BaseTypes, List<string>> validConstraintsDictionary = new Dictionary<XsTypes.BaseTypes, List<string>>()
     { 
-        {XsTypes.BaseTypes.XsString, ["pattern", "enumeration", "whiteSpace", "minLength", "maxLength", "length"] },
-        {XsTypes.BaseTypes.XsDouble, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsFloat, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsDuration, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsDateTime, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsTime, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsDate, ["pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-        {XsTypes.BaseTypes.XsDecimal, ["totalDigits", "fractionDigits", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
-    };
+        {XsTypes.BaseTypes.XsString, ["annotation", "pattern", "enumeration", "whiteSpace", "minLength", "maxLength", "length"] },
+        {XsTypes.BaseTypes.XsDouble, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsFloat, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsDuration, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsDateTime, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsTime, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsDate, ["annotation", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsDecimal, ["annotation", "totalDigits", "fractionDigits", "pattern", "enumeration", "whiteSpace", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
+        {XsTypes.BaseTypes.XsBoolean, ["annotation", "pattern", "whiteSpace"] },
+        {XsTypes.BaseTypes.XsInteger, ["annotation", "totalDigits", "fractionDigits", "pattern", "whiteSpace", "enumeration", "maxInclusive", "maxExclusive", "minInclusive", "minExclusive"] },
+	};
 
     protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
     {
@@ -112,19 +115,19 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
             ret |= IdsErrorMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         else
         {
-            if (validConstraints.TryGetValue(Base, out var constraints))
+            if (validConstraintsDictionary.TryGetValue(Base, out var validConstraints))
             {
                 foreach (var child in Children)
                 {
-                    if (!constraints!.Contains(child.type))
+                    if (!validConstraints!.Contains(child.type))
                     {
-
-                    }
+						ret |= IdsErrorMessages.Report308RestrictionInvalidFacet(logger, Base, child, validConstraints);
+					}
                 }
             }
             else
             {
-
+                Debug.WriteLine($"We need to implement the list of validConstraints for {Base}");
             }
         }
 

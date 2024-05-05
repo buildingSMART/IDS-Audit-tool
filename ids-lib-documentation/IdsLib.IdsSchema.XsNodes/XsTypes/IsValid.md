@@ -13,7 +13,7 @@ public static bool IsValid(string valueString, BaseTypes @base)
 
 ## Return Value
 
-TRUE if compatible, false otherwise
+TRUE if compatible, FALSE otherwise
 
 ## See Also
 

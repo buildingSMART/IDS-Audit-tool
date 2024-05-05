@@ -43,8 +43,6 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         return matches.Any();
     }
 
-    
-
     public string Value => value;
 
 	protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
@@ -52,41 +50,7 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 		Audit.Status ret = Audit.Status.Ok;
 		if (!TryGetUpperNode<XsRestriction>(logger, this, XsRestriction.RestrictionIdentificationArray, out var restriction, out var retStatus))
 			return retStatus;
-
-        switch (restriction.Base)
-        {
-			case XsTypes.BaseTypes.XsAnyUri: // todo: implement Uri value filter
-			case XsTypes.BaseTypes.Invalid: // notified in the the restriction already, do nothing here
-            case XsTypes.BaseTypes.Undefined: // todo: to be discussed in group
-            case XsTypes.BaseTypes.XsString:  // nothing 
-                break;
-            case XsTypes.BaseTypes.XsBoolean: 
-                if (value != "false" && value != "true")
-                    ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
-                break;
-            case XsTypes.BaseTypes.XsInteger: 
-				if (!XsTypes.IsValid(value, restriction.Base))
-					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
-				break;
-            case XsTypes.BaseTypes.XsDouble: 
-            case XsTypes.BaseTypes.XsFloat:
-            case XsTypes.BaseTypes.XsDecimal:
-				if (!XsTypes.IsValid(value, restriction.Base))
-					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
-				break;
-            case XsTypes.BaseTypes.XsDuration:
-			case XsTypes.BaseTypes.XsDateTime: 
-			case XsTypes.BaseTypes.XsDate: 
-			case XsTypes.BaseTypes.XsTime: 
-				if (!XsTypes.IsValid(value, restriction.Base))
-					ret |= IdsErrorMessages.Report305BadConstraintValue(logger, this, value, restriction.Base);
-                break;
-            
-            
-            default:
-                ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"type evaluation not implemented for `{restriction.Base}`", this);
-                break;
-        }
-        return ret;
+        ret |= XsTypes.AuditStringValue(logger, restriction.Base, value, this);
+		return ret;
 	}
 }

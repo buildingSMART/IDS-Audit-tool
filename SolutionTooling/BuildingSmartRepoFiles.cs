@@ -85,6 +85,7 @@ public class BuildingSmartRepoFiles
         var d = new DirectoryInfo(IdsRepositoryTestcasesPath);
         return GetFilesOrEmpty(d, "*.ids");
     }
+
 	public static IEnumerable<object[]> GetIdsRepositoryTestCaseIfcFiles()
 	{
 		// start from current directory and look in relative position for the bs IDS repository

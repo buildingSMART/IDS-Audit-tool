@@ -107,6 +107,16 @@
             </xs:restriction>
           </value>
         </attribute>
+
+        <attribute>
+          <name>
+            <simpleValue>UpdateDate</simpleValue>
+          </name>
+          <value>
+            <!-- UpdateDate is of datetime type. ERROR  -->
+            <simpleValue>10</simpleValue>
+          </value>
+        </attribute>
       </requirements>
     </specification>
 	</specifications>

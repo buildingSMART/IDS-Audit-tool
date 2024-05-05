@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IdsSchema.XsNodes;
 using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
@@ -157,16 +158,24 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                     {
                         if (SchemaInfo.TryParseIfcDataType(dtMatch, out var fnd, false))
                         {
-                            if (!string.IsNullOrEmpty(fnd.BackingType) && value is not null && value.HasXmlBaseType(out var baseType))
+                            if (!string.IsNullOrEmpty(fnd.BackingType) && value is not null)
                             {
-                                if (fnd.BackingType != baseType)
+                                if (value.HasXmlBaseType(out var baseType))
                                 {
-                                    if (string.IsNullOrEmpty(baseType))
-                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
-                                    else
-                                        ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
+                                    if (fnd.BackingType != baseType)
+                                    {
+                                        if (string.IsNullOrEmpty(baseType))
+                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
+                                        else
+                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
+                                    }
+                                }
+								else if (value.HasSimpleValue(out var simpleValueString))
+								{
+									ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(fnd.BackingType!), simpleValueString, value);
 								}
-                            }
+
+							}
                         }
                     }
                 }

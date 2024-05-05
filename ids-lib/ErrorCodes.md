@@ -27,6 +27,7 @@
 | 305  | Invalid Constraint Value               |
 | 306  | Schema validation error                |
 | 307  | Schema validation warning              |
+| 308  | Invalid facet type for xs:restriction	|
 | 400  | Ifc errors                             |
 | 401  | Reserved prefix                        |
 | 500  | Application errors                     |

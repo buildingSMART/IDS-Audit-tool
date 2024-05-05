@@ -192,4 +192,16 @@ internal class IdsXmlNode
         baseType = rest.BaseAsString;
         return true;
 	}
+
+	internal bool HasSimpleValue([NotNullWhen(true)] out string? simpleValueString)
+	{
+		var rest = GetChildNode<IdsSimpleValue>("simpleValue");
+		if (rest is null)
+		{
+			simpleValueString = null;
+			return false;
+		}
+		simpleValueString = rest.Value;
+		return true;
+	}
 }

@@ -159,7 +159,7 @@ internal static class IdsErrorMessages
 
 	internal static Audit.Status Report305BadConstraintValue(ILogger? logger, IdsXmlNode context, string value, XsTypes.BaseTypes baseType)
 	{
-		logger?.LogError("Error {errorCode}: Invalid value '{vers}' for base type '{baseType}' on {location}.", 305, value, baseType, context.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid value `{invalidStringValue}` for base type `{baseType}` on {location}.", 305, value, baseType, context.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
@@ -173,7 +173,13 @@ internal static class IdsErrorMessages
 		logger?.Log(level, "{LogLevel} {errorCode}: Schema compliance warning on {location}; {message}", level, 307, location, message);
 	}
 
-    internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)
+	internal static Audit.Status Report308RestrictionInvalidFacet(ILogger? logger, XsTypes.BaseTypes restrictionBase, IdsXmlNode invalidFacetType, IEnumerable<string> validFacetTypes)
+	{
+		logger?.LogError("Error {errorCode}: Invalid type `{invalidFacetType}` for restriction with base `{base}` (valid types are: {validTypes}) on {location}.", 308, invalidFacetType.type, restrictionBase, string.Join(", ", validFacetTypes), invalidFacetType.GetNodeIdentification());
+		return Audit.Status.IdsContentError;
+	}
+
+	internal static Audit.Status Report401ReservedPrefix(ILogger? logger, IdsXmlNode context, string prefix, string field, SchemaInfo schema, string value)
 	{
 		logger?.LogError("Error {errorCode}: Reserved prefix '{prefix}' for {field} ({matcherValue}) in the context of {schema} on {location}.", 401, prefix, field, value, schema.Version, context.GetNodeIdentification());        
         return Audit.Status.IdsContentError;

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using IdsLib.IdsSchema.XsNodes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Net;
 
@@ -719,6 +721,19 @@ namespace IdsLib.IfcSchema
                 possible.AddRange(types);
             }
             return possible.Distinct();
+		}
+
+		/// <summary>
+		/// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
+		/// </summary>
+		/// <param name="attributeNames">The names of the attributes to evaluate</param>
+		/// <returns>string names of the types found in the evaluation of the attributes</returns>
+		public IEnumerable<XsTypes.BaseTypes> GetAttributesXmlTypes(IEnumerable<string> attributeNames)
+		{
+            foreach (var stringAttribute in GetAttributesTypes(attributeNames))
+            {
+                yield return XsTypes.GetBaseFrom(stringAttribute);
+            }
 		}
 
 	}

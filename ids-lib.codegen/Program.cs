@@ -29,6 +29,10 @@ internal class Program
 			@"ids-lib.codegen\buildingSMART\DataTypes.md") | GeneratedContentChanged;
 
 		GeneratedContentChanged = EvaluateContentChanged(
+			XmlSchema_XsTypesGenerator.Execute(dataTypeDictionary),
+			@"ids-lib\IdsSchema\XsNodes\XsTypes.g.cs") | GeneratedContentChanged;
+
+		GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs") | GeneratedContentChanged;
 

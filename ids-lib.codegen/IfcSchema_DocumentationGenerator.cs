@@ -13,7 +13,7 @@ namespace IdsLib.codegen
 		{
 			var schemas = new string[] { "Ifc2x3", "Ifc4", "Ifc4x3" };
 
-			StringBuilder sbDataTypes = new StringBuilder();
+			var sbDataTypes = new StringBuilder();
 			foreach (var dataType in dataTypeDictionary.Values.OrderBy(x=>x.Name))
 			{
 				var checks = schemas.Select(x => dataType.Schemas.Contains(x) ? "✔️     " : "❌     ");
@@ -21,11 +21,12 @@ namespace IdsLib.codegen
 			}
 
 
-			StringBuilder sbXmlTypes = new StringBuilder();
+			var sbXmlTypes = new StringBuilder();
 			var xmlTypes = dataTypeDictionary.Values.Select(x => x.XmlBackingType).Where(str => !string.IsNullOrWhiteSpace(str)).Distinct();
 			foreach (var dataType in xmlTypes.OrderBy(x => x))
 			{
-				sbXmlTypes.AppendLine($"| {dataType,-11} |");
+				var t = XmlSchema_XsTypesGenerator.GetRegexString(dataType).Replace("|", "&#124;");
+				sbXmlTypes.AppendLine($"| {dataType,-11} | {t,-72} |");
 			}
 
 			var source = stub;
@@ -49,11 +50,16 @@ Columns of the table determine the validity of the type depending on the schema 
 
 ## XML base types
 
-The list of valid XML base types for the `base` attribute of `xs:restriction` is:
+The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
 
-| Base type   |
-| ----------- |
+| Base type   | string regex constraint                                                  |
+| ----------- | ------------------------------------------------------------------------ |
 <PlaceHolderXmlTypes>
+
+For example: 
+
+- To specify numbers: you must use a dot as the decimal separator, and not use a thousands separator (e.g. `4.2` is valid, but `1.234,5` is invalid). Scientific notation is allowed (e.g. `1e3` to represent `1000`). 
+- To specify boolean: valid values are `true` or `false`, `0`, or `1`.
 
 ## Notes
 

@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.Cardinality;
+using IdsLib.IdsSchema.XsNodes;
 using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using IdsLib.Messages;
@@ -78,17 +79,17 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
             {
                 // if a value is defined then the type must be value type
                 // we can also check that any value constraint matches the expected type
-                var possibleTypes = schema.GetAttributesTypes(matchingAttributeNames).ToList();
-                if (!possibleTypes.Any())
+                var possibleAttributeTypes = schema.GetAttributesTypes(matchingAttributeNames).ToList();
+                if (!possibleAttributeTypes.Any())
                 {
 					ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"no valid base type exists", schema);
 				}
-                else if (possibleTypes.Count == 1)
+                else if (possibleAttributeTypes.Count == 1)
                 {
-                    var expected = possibleTypes.First();
-					if (value.HasXmlBaseType(out var baseType))
+                    var expected = possibleAttributeTypes.First();
+					if (value.HasXmlBaseType(out var baseType)) // this is an xml constraint
 					{
-						if (!possibleTypes.Contains(baseType))
+						if (!possibleAttributeTypes.Contains(baseType))
 						{
 							if (string.IsNullOrEmpty(baseType))
 								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{expected}`", schema);
@@ -96,14 +97,18 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{expected}`", schema);
 						}
 					}
+                    else if (value.HasSimpleValue(out var simpleValueString))
+                    {
+                        ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(expected), simpleValueString, value);
+                    }
 				}
 				else
                 {
 					if (value.HasXmlBaseType(out var baseType))
 					{
-						if (!possibleTypes.Contains(baseType))
+						if (!possibleAttributeTypes.Contains(baseType))
 						{
-                            string expected = string.Join(", ", possibleTypes);
+                            string expected = string.Join(", ", possibleAttributeTypes);
 							if (string.IsNullOrEmpty(baseType))
 								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected a close list ({expected})", schema);
 							else
