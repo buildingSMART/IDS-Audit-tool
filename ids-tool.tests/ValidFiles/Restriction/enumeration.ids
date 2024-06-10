@@ -2,7 +2,7 @@
 <ids:ids 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" 
+	xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" 
 	xmlns:ids="http://standards.buildingsmart.org/IDS">
 	<ids:info>
 		<ids:title/>

@@ -1,10 +1,10 @@
-<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
   <!--edited with usBIM.IDSeditor (http://www.accasoftware.com)-->
   <ids:info>
     <ids:title>PilotTest</ids:title>
   </ids:info>
   <ids:specifications>
-    <ids:specification ifcVersion="IFC4X3" name="Specification IfcPile">
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="Specification IfcPile">
       <ids:applicability maxOccurs="unbounded">
         <ids:entity>
           <ids:name>

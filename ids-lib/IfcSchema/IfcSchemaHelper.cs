@@ -16,7 +16,7 @@ internal static class IfcSchemaHelper
             {
                 "IFC2X3" => IfcSchemaVersions.Ifc2x3,
                 "IFC4" => IfcSchemaVersions.Ifc4,
-                "IFC4X3" => IfcSchemaVersions.Ifc4x3,
+                "IFC4X3_ADD2" => IfcSchemaVersions.Ifc4x3,
                 _ => IdsErrorMessages.Report107InvalidIfcSchemaString(logger, ver, context) 
             };
         }

@@ -33,10 +33,17 @@ internal class SeekableStreamSchemaProvider : SchemaProvider, Audit.ISchemaProvi
 
         }
         var version = info.GetVersion(logger);
+        
+        
+
         if (version == IdsVersion.Invalid)
         {
             schemas = Enumerable.Empty<XmlSchema>();
             return IdsToolMessages.ReportInvalidVersion(info.SchemaLocation, logger);
+        }
+        else if (version != IdsVersion.Ids1_0)
+        {
+            logger?.LogWarning("Version {detectedVersion} is transitional, update to 1.0 before circulating.", version);
         }
         return GetResourceSchemasByVersion(version, logger, out schemas);
     }

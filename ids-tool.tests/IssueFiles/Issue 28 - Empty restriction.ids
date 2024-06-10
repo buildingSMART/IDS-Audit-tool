@@ -1,11 +1,11 @@
-﻿<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+﻿<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
   <!--edited with usBIM.IDSeditor 2.0.2.0 (http://www.accasoftware.com)-->
   <ids:info>
     <ids:title>New ids file2</ids:title>
     <ids:milestone>jhnkjn3333</ids:milestone>
   </ids:info>
   <ids:specifications>
-    <ids:specification ifcVersion="IFC4X3" name="Nuova Specifica">
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="Nuova Specifica">
       <ids:applicability minOccurs="1" maxOccurs="unbounded">
         <ids:entity>
           <ids:name>

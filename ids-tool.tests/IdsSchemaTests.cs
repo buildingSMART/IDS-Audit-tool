@@ -84,8 +84,8 @@ namespace idsTool.tests
         }
 
         [Theory]
-        [InlineData("http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd")]
         [InlineData("http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd")]
+        [InlineData("http://standards.buildingsmart.org/IDS/1.0/ids.xsd")]
         [InlineData("https://www.w3.org/2001/03/xml.xsd")]
         public async void BuildingSmartWebServerShouldReturnSchemaCorrectly(string url)
         {

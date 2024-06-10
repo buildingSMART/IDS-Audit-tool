@@ -16,7 +16,7 @@ public class IdsFacts
 		return location switch
 		{
 			// the following are the only canonical versions accepted
-			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.6/ids.xsd" => IdsVersion.Ids0_9_6,
+			// todo: we keep 0.9.7 transitionally, remove asap
 			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" => IdsVersion.Ids0_9_7,
 			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" => IdsVersion.Ids1_0,
 			_ => IdsVersion.Invalid,
@@ -27,7 +27,7 @@ public class IdsFacts
 	/// <summary>
 	/// The version of IDS schema to be assumed when running programmatically
 	/// </summary>
-	public const IdsVersion DefaultIdsVersion = IdsVersion.Ids0_9_7;
+	public const IdsVersion DefaultIdsVersion = IdsVersion.Ids1_0;
 }
 
 
