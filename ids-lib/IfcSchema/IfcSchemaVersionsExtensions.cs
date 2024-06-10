@@ -10,26 +10,31 @@ namespace IdsLib.IfcSchema;
 public static class IfcSchemaVersionsExtensions
 {
     /// <summary>
-    /// Canonical string version of the schema version
+    /// Canonical string version of the IFC2X3 schema version
     /// </summary>
     public const string IfcSchema2x3String = "IFC2X3";
 
 	/// <summary>
-	/// Canonical string version of the schema version
+	/// Canonical string version of the IFC4 schema version
 	/// </summary>
 	public const string IfcSchema4String = "IFC4";
 
 	/// <summary>
-	/// Canonical string version of the schema version
+	/// Canonical string version of the IFC4X3 schema version
 	/// </summary>
-	public const string IfcSchema4x3String = "IFC4X3";
+	public const string IfcSchema4x3String = "IFC4X3_ADD2";
 
-	/// <summary>
-	/// Converts a set of IFC schema name strings to the relative enum value
-	/// </summary>
-	/// <param name="schemaStrings">Enumerable strings to be evaluated</param>
-	/// <returns>A single enumeration value representing all the <paramref name="schemaStrings"/></returns>
-	public static IfcSchemaVersions GetSchema(IEnumerable<string> schemaStrings)
+    /// <summary>
+    /// Legacy string version of the IFC4X3 schema version
+    /// </summary>
+    public const string IfcSchema4x3StringLegacy = "IFC4X3";
+
+    /// <summary>
+    /// Converts a set of IFC schema name strings to the relative enum value
+    /// </summary>
+    /// <param name="schemaStrings">Enumerable strings to be evaluated</param>
+    /// <returns>A single enumeration value representing all the <paramref name="schemaStrings"/></returns>
+    public static IfcSchemaVersions GetSchema(IEnumerable<string> schemaStrings)
     {
         IfcSchemaVersions ret = IfcSchemaVersions.IfcNoVersion;
         foreach (var scheme in schemaStrings)
@@ -39,6 +44,7 @@ public static class IfcSchemaVersionsExtensions
 				IfcSchema2x3String => IfcSchemaVersions.Ifc2x3,
 				IfcSchema4String => IfcSchemaVersions.Ifc4,
 				IfcSchema4x3String => IfcSchemaVersions.Ifc4x3,
+                IfcSchema4x3StringLegacy => IfcSchemaVersions.Ifc4x3,
                 _ => IfcSchemaVersions.IfcNoVersion,
             };
             if (v == IfcSchemaVersions.IfcNoVersion)
