@@ -22,7 +22,7 @@ public static class IfcSchemaVersionsExtensions
 	/// <summary>
 	/// Canonical string version of the schema version
 	/// </summary>
-	public const string IfcSchema4x3String = "IFC4X3";
+	public const string IfcSchema4x3String = "IFC4X3_ADD2";
 
 	/// <summary>
 	/// Converts a set of IFC schema name strings to the relative enum value

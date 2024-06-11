@@ -33,8 +33,8 @@ namespace idsTool.tests
         }
 
         [Theory]
-        [InlineData(@"ValidFiles\CanonicalVersions\canonical-1.0.ids", 0)]
-        [InlineData(@"ValidFiles\CanonicalVersions\canonical-0.9.7.ids", 1)]
+        [InlineData(@"ValidFiles/CanonicalVersions/canonical-1.0.ids", 0)]
+        [InlineData(@"ValidFiles/CanonicalVersions/canonical-0.9.7.ids", 1)]
         public void CanAuditCanonicalVersions(string fileName, int warnings)
         {
 			var f = new FileInfo(fileName);
