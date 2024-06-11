@@ -552,7 +552,7 @@ namespace IdsLib.IfcSchema
         {
             if (schemaVersions.IsSingleSchema())
             {
-				var schema = GetSchemas(IfcSchemaVersions.IfcAllVersions).First();
+				var schema = GetSchemas(schemaVersions).First();
                 if (schema is null)
                     return Enumerable.Empty<string>();
                 var top = schema[topClass];
@@ -561,7 +561,7 @@ namespace IdsLib.IfcSchema
 				return top.MatchingConcreteClasses.Select(x=>x.Name);
 			}
 
-			var schemas = GetSchemas(IfcSchemaVersions.IfcAllVersions);
+			var schemas = GetSchemas(schemaVersions);
             List<string> ret = new();
 			foreach (var schema in schemas)
             {

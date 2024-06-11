@@ -105,8 +105,20 @@ public class IfcSchemaTests
 		topClass.Should().NotBeNull();
 		topClass.Should().Be("IfcBuildingElement");
 
-        // 
-		
+        // check that the passed schema is used
+		var wind = SchemaInfo.GetConcreteClassesFrom("IfcWindow", IfcSchemaVersions.Ifc4).Select(x => x.ToUpperInvariant()).ToList();
+        wind.Count().Should().Be(2);
+		wind = SchemaInfo.GetConcreteClassesFrom("IfcWindow", IfcSchemaVersions.Ifc2x3).Select(x => x.ToUpperInvariant()).ToList();
+		wind.Count().Should().Be(1);
+		wind = SchemaInfo.GetConcreteClassesFrom("IfcWindow", IfcSchemaVersions.Ifc4x3).Select(x => x.ToUpperInvariant()).ToList();
+		wind.Count().Should().Be(1);
+
+		var elements2x3 = SchemaInfo.GetConcreteClassesFrom("IfcBuiltElement", IfcSchemaVersions.Ifc2x3).Select(x => x.ToUpperInvariant()).ToList();
+        elements2x3.Should().HaveCount(0);
+		var elements4x3 = SchemaInfo.GetConcreteClassesFrom("IfcBuiltElement", IfcSchemaVersions.Ifc4x3).Select(x => x.ToUpperInvariant()).ToList();
+        elements4x3.Should().HaveCount(36);
+        
+
 	}
 
 	[Theory]
