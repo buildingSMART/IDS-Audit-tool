@@ -16,7 +16,7 @@ public class IdsFacts
 		return location switch
 		{
 			// the following are the only canonical versions accepted
-			// todo: we keep 0.9.7 transitionally, remove asap
+			// todo: we keep 0.9.7 transitionally
 			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd" => IdsVersion.Ids0_9_7,
 			"http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" => IdsVersion.Ids1_0,
 			_ => IdsVersion.Invalid,

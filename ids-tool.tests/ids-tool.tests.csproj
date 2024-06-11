@@ -186,6 +186,12 @@
 		<None Update="IssueFiles\Issue 30 - should return error.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="ValidFiles\CanonicalVersions\canonical-0.9.7.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="ValidFiles\CanonicalVersions\canonical-1.0.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="ValidFiles\entities_enumeration.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -201,6 +207,10 @@
 		<None Update="ValidFiles\Restriction\enumeration.ids">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ValidFiles\CanonicalVersions\" />
 	</ItemGroup>
 
 

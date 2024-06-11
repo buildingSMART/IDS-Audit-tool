@@ -3,6 +3,7 @@ using IdsLib;
 using idsTool.tests.Helpers;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -30,6 +31,15 @@ namespace idsTool.tests
 
             public IEnumerable<string> SchemaFiles => Schemas;		
         }
+
+        [Theory]
+        [InlineData(@"ValidFiles\CanonicalVersions\canonical-1.0.ids", 0)]
+        [InlineData(@"ValidFiles\CanonicalVersions\canonical-0.9.7.ids", 1)]
+        public void CanAuditCanonicalVersions(string fileName, int warnings)
+        {
+			var f = new FileInfo(fileName);
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, warnings);
+		}
 
 		[SkippableFact]
         public void AuditIdsRepositoryWithItsSchema()

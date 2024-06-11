@@ -24,7 +24,9 @@ public abstract class SchemaProvider
         switch (vrs)
         {
             case IdsVersion.Ids0_9_7:
-            case IdsVersion.Ids1_0:
+				tmpResources = new List<string> { "xsdschema.xsd", "xml.xsd", "ids097.xsd" };
+				break;
+			case IdsVersion.Ids1_0:
                 tmpResources = new List<string> { "xsdschema.xsd", "xml.xsd", "ids.xsd" };
                 break;
             case IdsVersion.Invalid:

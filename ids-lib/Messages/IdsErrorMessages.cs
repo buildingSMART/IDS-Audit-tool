@@ -75,7 +75,7 @@ internal static class IdsErrorMessages
 
 	internal static IfcSchemaVersions Report107InvalidIfcSchemaString(ILogger? logger, string version, IdsXmlNode context)
 	{
-		logger?.LogError("Error {errorCode}: Invalid schema version '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid schema version string '{vers}' on {location}.", 107, version, context.GetNodeIdentification());
 		return IfcSchemaVersions.IfcNoVersion;
 	}
 
