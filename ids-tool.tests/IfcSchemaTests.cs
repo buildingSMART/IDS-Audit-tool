@@ -109,7 +109,20 @@ public class IfcSchemaTests
 		
 	}
 
-	[Theory]
+    [Fact]
+    public void CanGetConcreteSubclassesForSpecificSchema()
+    {
+        // IFCCABLECARRIERSEGMENT is new in IFC4
+        var elements = SchemaInfo.GetConcreteClassesFrom("IFCCABLECARRIERSEGMENT", IfcSchemaVersions.Ifc4);
+        elements.Should().NotBeNull();
+        elements.Should().HaveCount(1);
+
+        elements = SchemaInfo.GetConcreteClassesFrom("IFCFACILITYPART", IfcSchemaVersions.Ifc4x3);
+        elements.Should().Contain("IfcRailwayPart");
+        elements.Should().HaveCount(5);
+    }
+
+        [Theory]
     [InlineData("IFCOBJECTDEFINITION", 194,366)]
     [InlineData("IFCWALL",2, 3)]
     [InlineData("IFCNOTEXISTING",-1, -1)]
