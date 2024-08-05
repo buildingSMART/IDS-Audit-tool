@@ -216,5 +216,21 @@ public class IfcSchemaTests
     }
 
 
+    [Fact]
+    public void AllSubClassesOfTypesAreIncludedAsPossibleTypesForPropertySets()
+    {
+        var psets = new[] { "Pset_ManufacturerTypeInformation" };
+        var classes = SchemaInfo.PossibleTypesForPropertySets(IfcSchemaVersions.Ifc2x3, psets).Select(e=> e.ToUpperInvariant());
+
+        // Sanity checking
+        classes.Should().Contain("IFCWALL");
+        classes.Should().Contain("IFCWALLTYPE");
+        classes.Should().Contain("IFCDISTRIBUTIONCONTROLELEMENT");
+
+        // Bug - IFC2x3 Type Subtypes were not being returned: Issue #39
+        classes.Should().Contain("IFCACTUATORTYPE"); 
+        classes.Should().Contain("IFCAIRTERMINALTYPE");
+    }
+
 
 }
