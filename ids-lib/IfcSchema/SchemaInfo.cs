@@ -304,7 +304,7 @@ namespace IdsLib.IfcSchema
                         if (tp is not null && tp.RelationTypeClasses is not null)
                         {
                             typeObjects.AddRange(tp.RelationTypeClasses);
-                            // RelationTypeClasses only includes immediate ancestores, so we need to include all subClasses of any TypeObjects
+                            // RelationTypeClasses only includes immediate ancestors, so we need to include all subClasses of any TypeObjects
                             // as these also are valid for the propertySet
                             var subTypes = tp.RelationTypeClasses.SelectMany(typ => schema[typ]!.SubClasses.Select(s => s.Name)).Distinct();
                             if(subTypes.Any())

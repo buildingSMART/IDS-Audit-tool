@@ -4,11 +4,11 @@
   </info>
   <specifications>
     <specification ifcVersion="IFC2X3" name="IfcActuatorType.ModelLabel"
-                   description="Issue is that there's no IFCACTUATOR in IFC2x3 so we get a false 'Inconsistent Clauses' 201 error">
+                   description="Issue is that there's no IFCACTUATOR instance in IFC2x3 so we get a false 'Inconsistent Clauses' 201 error, since subClasses were not being considered">
       <applicability minOccurs="0" maxOccurs="unbounded">
         <entity>
           <name>
-            <simpleValue>IFCDISTRIBUTIONCONTROLELEMENTTYPE</simpleValue>
+            <simpleValue>IFCACTUATORTYPE</simpleValue>
           </name>
         </entity>
       </applicability>
