@@ -18,7 +18,7 @@ internal static class LoggerAndAuditHelpers
 {
 	public static FileInfo GetAndCheckIdsRepositoryDevelopmentFileInfo(string theFile)
     {
-		FileInfo f = BuildingSmartRepoFiles.GetIdsRepositoryDevelopmentFileInfo(theFile);
+		FileInfo f = BuildingSmartRepoFiles.GetIdsRepositoryExampleFileInfo(theFile);
 		f.Exists.Should().BeTrue("test file must be found");
 		return f;
 	}

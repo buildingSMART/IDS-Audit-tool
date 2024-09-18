@@ -21,7 +21,7 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     /// In case this test fails, see <see cref="AuditTests.FullAuditOfDevelopmentFilesOk"/> for issues in the file.
     /// </summary>
     [SkippableTheory]
-    [MemberData(nameof(GetIdsRepositoryDevelopmentIdsFiles))]
+    [MemberData(nameof(GetIdsRepositoryExampleIdsFiles))]
     public void CanLoadEmbeddedResourceSchema(string idsFile)
     {
         Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");

@@ -20,7 +20,7 @@ public class BuildingSmartRepoFiles
                 if (subIDS != null)
                 {
                     if (
-                        subIDS.GetDirectories("Development").Any()
+                        subIDS.GetDirectories("RepositoryAutomation").Any()
                         && subIDS.GetDirectories(".nuke").Any()
                         )
                         return subIDS.FullName;
@@ -49,8 +49,9 @@ public class BuildingSmartRepoFiles
     }
 
     // private static string IfcOpenShellTestcasesPath => Path.Combine(IfcOpenShellPath, "src", "ifctester", "test", "build", "testcases");
-    private static string IdsRepositoryTestcasesPath => Path.Combine(IdsRepositoryDocumentationPath, "testcases");
-    private static string IdsRepositoryDevelopmentPath => Path.Combine(IdsRepoPath, @"Development");
+    private static string IdsRepositoryTestcasesPath => Path.Combine(IdsRepositoryDocumentationPath, "ImplementersDocumentation", "TestCases");
+    private static string IdsRepositorySchemaPath => Path.Combine(IdsRepoPath, @"Schema");
+    private static string IdsRepositoryExamplePath => Path.Combine(IdsRepoPath, "Documentation", @"Examples");
     private static string IdsRepositoryDocumentationPath => Path.Combine(IdsRepoPath, @"Documentation");
 
     public static FileInfo GetIdsToolSchema()
@@ -67,7 +68,7 @@ public class BuildingSmartRepoFiles
 
     public static FileInfo GetIdsSchema()
     {
-        var schema = Path.Combine(IdsRepositoryDevelopmentPath, "ids.xsd");
+        var schema = Path.Combine(IdsRepositorySchemaPath, "ids.xsd");
         return new FileInfo(schema);
     }
 
@@ -106,18 +107,18 @@ public class BuildingSmartRepoFiles
 		}
 	}
     
-	public static FileInfo GetIdsRepositoryDevelopmentFileInfo(string idsFile)
+	public static FileInfo GetIdsRepositoryExampleFileInfo(string idsFile)
     {
-        var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
+        var d = new DirectoryInfo(IdsRepositoryExamplePath);
         var comb = d.FullName + idsFile;
         var f = new FileInfo(comb);
         return f;
     }
 
-    public static IEnumerable<object[]> GetIdsRepositoryDevelopmentIdsFiles()
+    public static IEnumerable<object[]> GetIdsRepositoryExampleIdsFiles()
     {
         // start from current directory and look in relative position for the bs IDS repository
-        var d = new DirectoryInfo(IdsRepositoryDevelopmentPath);
+        var d = new DirectoryInfo(IdsRepositoryExamplePath);
         if (!d.Exists)
         {
             // returning a single invalid entry so that it can be skipped
@@ -136,9 +137,9 @@ public class BuildingSmartRepoFiles
         return new FileInfo(Path.Combine(IdsRepositoryDocumentationPath, fileName));
     }
 
-    public static FileInfo GetDevelopment(string fileName)
+    public static FileInfo GetSchemaPath(string fileName)
     {
-        return new FileInfo(Path.Combine(IdsRepositoryDevelopmentPath, fileName));
+        return new FileInfo(Path.Combine(IdsRepositorySchemaPath, fileName));
     }
 
     public static bool FilesAreIdentical(FileInfo repoSchema, FileInfo toolSchema)

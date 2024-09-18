@@ -302,7 +302,16 @@ namespace IdsLib.IfcSchema
                     {
                         var tp = schema[item];
                         if (tp is not null && tp.RelationTypeClasses is not null)
+                        {
                             typeObjects.AddRange(tp.RelationTypeClasses);
+                            // RelationTypeClasses only includes immediate ancestors, so we need to include all subClasses of any TypeObjects
+                            // as these also are valid for the propertySet
+                            var subTypes = tp.RelationTypeClasses.SelectMany(typ => schema[typ]!.SubClasses.Select(s => s.Name)).Distinct();
+                            if(subTypes.Any())
+                            {
+                                typeObjects.AddRange(subTypes);
+                            }
+                        }
                     }
                     if (typeObjects.Any())
                         thisPsetTypes = thisPsetTypes.ToList().Concat(typeObjects.Distinct()).ToList();
@@ -552,24 +561,24 @@ namespace IdsLib.IfcSchema
         {
             if (schemaVersions.IsSingleSchema())
             {
-				var schema = GetSchemas(schemaVersions).First();
+                var schema = GetSchemas(schemaVersions).First();
                 if (schema is null)
                     return Enumerable.Empty<string>();
                 var top = schema[topClass];
                 if (top is null)
                     return Enumerable.Empty<string>();
-				return top.MatchingConcreteClasses.Select(x=>x.Name);
-			}
+                return top.MatchingConcreteClasses.Select(x=>x.Name);
+            }
 
-			var schemas = GetSchemas(schemaVersions);
+            var schemas = GetSchemas(IfcSchemaVersions.IfcAllVersions);
             List<string> ret = new();
-			foreach (var schema in schemas)
+            foreach (var schema in schemas)
             {
                 var top = schema[topClass];
                 if (top is null)
                     continue;
                 ret = ret.Union(top.MatchingConcreteClasses.Select(x => x.Name)).ToList();
-			}
+            }
             return ret;
         }
 

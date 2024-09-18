@@ -160,7 +160,7 @@ namespace IdsLib.codegen
 
         private static IEnumerable<UpdatableFile> UpdateEmbeddedSchema(DirectoryInfo solutionDir)
         {
-            var sourceFile = BuildingSmartRepoFiles.GetDevelopment("ids.xsd");
+            var sourceFile = BuildingSmartRepoFiles.GetSchemaPath("ids.xsd");
             if (sourceFile.Exists)
             {
                 var destination = Path.Combine(
@@ -178,7 +178,7 @@ namespace IdsLib.codegen
 
         private static IEnumerable<UpdatableFile> UpdateTestingSchema(DirectoryInfo solutionDir)
         {
-            var sourceFile = BuildingSmartRepoFiles.GetDevelopment("ids.xsd");
+            var sourceFile = BuildingSmartRepoFiles.GetSchemaPath("ids.xsd");
             if (sourceFile.Exists)
             {
                 var destination = Path.Combine(
