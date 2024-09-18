@@ -59,5 +59,12 @@ namespace idsTool.tests
 			var f = new FileInfo("IssueFiles/Issue 30 - should return error.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 2);
 		}
-	}
+
+        [Fact]
+        public void Issue_39_SubClassesOfObjectTypesAllowPsets()
+        {
+            var f = new FileInfo("IssueFiles/Issue 39 - IfcTypeObjects allowed.ids");
+            LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+        }
+    }
 }
