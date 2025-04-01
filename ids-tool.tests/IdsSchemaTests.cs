@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -102,7 +103,7 @@ namespace idsTool.tests
         [InlineData("http://standards.buildingsmart.org/IDS/0.9.7/ids.xsd")]
         [InlineData("http://standards.buildingsmart.org/IDS/1.0/ids.xsd")]
         [InlineData("https://www.w3.org/2001/03/xml.xsd")]
-        public async void BuildingSmartWebServerShouldReturnSchemaCorrectly(string url)
+        public async Task BuildingSmartWebServerShouldReturnSchemaCorrectly(string url)
         {
             // see https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons
             //
