@@ -14,8 +14,8 @@
     <readme>README.md</readme>
 	</metadata>
 	<files>
-		<file src="$publishdir$net6.0\icon.png" target="icon.png" />
-		<file src="$publishdir$net6.0\**\*" target="tools/net6.0/" />
+		<file src="$publishdir$net8.0\icon.png" target="icon.png" />
+		<file src="$publishdir$net8.0\**\*" target="tools/net8.0/" />
     <file src="README.md" target="\" />
 	</files>
 </package>

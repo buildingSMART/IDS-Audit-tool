@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<IsPackable>false</IsPackable>
 		<IsPublishable>false</IsPublishable>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>idsTool.tests</RootNamespace>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
@@ -16,7 +16,7 @@
 		<PackageReference Include="FluentAssertions" Version="8.2.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="NSubstitute" Version="5.3.0" />
-		<PackageReference Include="Xbim.Essentials" Version="6.0.445" />
+		<PackageReference Include="Xbim.Essentials" Version="6.0.493" />
 		<PackageReference Include="xunit" Version="2.9.3" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
 			<PrivateAssets>all</PrivateAssets>
