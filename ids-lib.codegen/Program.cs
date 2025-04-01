@@ -12,27 +12,28 @@ internal class Program
         }
         var GeneratedContentChanged = false;
 
-		GeneratedContentChanged = EvaluateContentChanged(
-			IfcSchema_ObjectToTypeGenerator.Execute(),
-			@"ids-lib\IfcSchema\SchemaInfo.ObjectTypes.g.cs") | GeneratedContentChanged;
+        GeneratedContentChanged = EvaluateContentChanged(
+            IfcSchema_ObjectToTypeGenerator.Execute(),
+            @"ids-lib\IfcSchema\SchemaInfo.ObjectTypes.g.cs") | GeneratedContentChanged;
 
-		GeneratedContentChanged = EvaluateContentChanged(
-            IfcSchema_ClassAndAttributeNamesGenerator.Execute(), 
+        GeneratedContentChanged = EvaluateContentChanged(
+            IfcSchema_ClassAndAttributeNamesGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.ClassAndAttributeNames.g.cs") | GeneratedContentChanged;
 
         GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_DatatypeNamesGenerator.Execute(out var dataTypeDictionary),
             @"ids-lib\IfcSchema\SchemaInfo.MeasureNames.g.cs") | GeneratedContentChanged;
 
-		GeneratedContentChanged = EvaluateContentChanged(
-			IfcSchema_DocumentationGenerator.Execute(dataTypeDictionary),
-			@"ids-lib.codegen\buildingSMART\DataTypes.md") | GeneratedContentChanged;
+        // creates the datatypes md and compares it with the existing version
+        GeneratedContentChanged = EvaluateContentChanged(
+            IfcSchema_DocumentationGenerator.Execute(dataTypeDictionary),
+            @"ids-lib.codegen\buildingSMART\DataTypes.md") | GeneratedContentChanged;
 
-		GeneratedContentChanged = EvaluateContentChanged(
-			XmlSchema_XsTypesGenerator.Execute(dataTypeDictionary),
-			@"ids-lib\IdsSchema\XsNodes\XsTypes.g.cs") | GeneratedContentChanged;
+        GeneratedContentChanged = EvaluateContentChanged(
+            XmlSchema_XsTypesGenerator.Execute(dataTypeDictionary),
+            @"ids-lib\IdsSchema\XsNodes\XsTypes.g.cs") | GeneratedContentChanged;
 
-		GeneratedContentChanged = EvaluateContentChanged(
+        GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ClassGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.Schemas.g.cs") | GeneratedContentChanged;
 
@@ -87,7 +88,7 @@ internal class Program
     {
         var restore = Console.ForegroundColor;
         Console.ForegroundColor = messageColor;
-        Console.WriteLine(v); 
+        Console.WriteLine(v);
         Console.ForegroundColor = restore;
     }
 
