@@ -80,7 +80,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						Depending on the dataType attribute, values are expressed in the default unit documented at 
-						https://github.com/buildingSMART/IDS/blob/master/Documentation/units.md, and unit conversion might be required.
+						https://github.com/buildingSMART/IDS/blob/master/Documentation/UserManual/units.md, and unit conversion might be required.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -98,7 +98,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						Depending on the IFC type of the attribute, values are expressed in the default unit documented at 
-						https://github.com/buildingSMART/IDS/blob/master/Documentation/units.md, and unit conversion might be required.
+						https://github.com/buildingSMART/IDS/blob/master/Documentation/UserManual/units.md, and unit conversion might be required.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>

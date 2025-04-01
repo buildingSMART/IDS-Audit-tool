@@ -89,8 +89,13 @@ namespace idsTool.tests
             var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
             Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
-            var schemasAreIdentical = BuildingSmartRepoFiles.FilesAreIdentical(repoSchema, toolSchema);
-            schemasAreIdentical.Should().BeTrue("testing schema and repository schema should be identical");
+            repoSchema.Exists.Should().BeTrue();
+            toolSchema.Exists.Should().BeTrue();
+
+            var repoIdsText = File.ReadAllText(repoSchema.FullName);
+            var toolIdsText = File.ReadAllText(toolSchema.FullName);
+
+            repoIdsText.Should().Be(toolIdsText);
         }
 
         [Theory]

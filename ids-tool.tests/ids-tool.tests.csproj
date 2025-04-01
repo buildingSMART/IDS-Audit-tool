@@ -93,7 +93,7 @@
 		<None Update="InvalidFiles\InvalidMeasureForStandardPsetProperty.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="InvalidFiles\restrictions\InvalidRestrictions.ids">
+		<None Update="InvalidFiles\InvalidRestrictions.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="InvalidFiles\structureAndContentFailure.ids">
