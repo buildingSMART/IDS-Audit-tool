@@ -20,7 +20,7 @@
 		<PackageReleaseNotes>First implementation.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
-		<AssemblyVersion>1.0.80</AssemblyVersion>
+		<AssemblyVersion>1.0.81</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
