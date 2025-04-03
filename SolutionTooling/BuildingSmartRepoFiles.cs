@@ -154,6 +154,4 @@ public class BuildingSmartRepoFiles
 
         return repoContent.Equals(toolContent);
     }
-
-    
 }

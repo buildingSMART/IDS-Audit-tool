@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
+    <!-- when changing framework make sure to update the ids-tool.command.nuspec file to distribute the correct files -->
 		<TargetFrameworks>net8.0</TargetFrameworks>
 		<RootNamespace>IdsTool</RootNamespace>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -16,7 +17,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>IDS, buildingSmart</PackageTags>
 		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
-		<AssemblyVersion>1.0.79</AssemblyVersion>
+		<AssemblyVersion>1.0.80</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>
