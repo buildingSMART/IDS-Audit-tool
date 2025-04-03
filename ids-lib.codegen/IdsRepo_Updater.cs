@@ -1,6 +1,7 @@
 ﻿using idsTool.tests.Helpers;
 using System.Diagnostics;
 using System.Text;
+using static IdsLib.codegen.IdsRepo_Updater;
 
 namespace IdsLib.codegen
 {
@@ -99,8 +100,8 @@ namespace IdsLib.codegen
                 return false;
             
             Console.WriteLine("There are file differences between this and the IDS repository:");
-            foreach (var updatable in updatables)
-                Console.WriteLine($"- {updatable.Name}");
+			foreach (var updatable in updatables)
+                Console.WriteLine($"- {updatable.Name} (changing {updatable.Destination})");
             Console.WriteLine("Should these files be updated? (y/n)");
             var k = Console.ReadKey();
             Console.WriteLine();
@@ -132,7 +133,7 @@ namespace IdsLib.codegen
 					"DataTypes.md"
 					);
             var sourceFile = new FileInfo(source);
-			var destFile = BuildingSmartRepoFiles.GetDocumentation("DataTypes.md");
+			var destFile = BuildingSmartRepoFiles.GetDocumentation("DataTypes.md", "ImplementersDocumentation");
 			if (sourceFile.Exists)
 			{
 				if (BuildingSmartRepoFiles.FilesAreIdentical(sourceFile, destFile))
@@ -143,7 +144,7 @@ namespace IdsLib.codegen
 
 		private static IEnumerable<UpdatableFile> UpdateDocumentationUnits(DirectoryInfo solutionDir)
         {
-            var sourceFile = BuildingSmartRepoFiles.GetDocumentation("units.md");
+            var sourceFile = BuildingSmartRepoFiles.GetDocumentation("units.md", "UserManual");
             if (sourceFile.Exists)
             {
                 var destination = Path.Combine(

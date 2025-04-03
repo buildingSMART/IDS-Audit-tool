@@ -132,8 +132,10 @@ public class BuildingSmartRepoFiles
         }
     }
 
-    public static FileInfo GetDocumentation(string fileName)
+    public static FileInfo GetDocumentation(string fileName, string? folder = null)
     {
+        if (!string.IsNullOrWhiteSpace(folder))
+            return new FileInfo(Path.Combine(IdsRepositoryDocumentationPath, folder, fileName));
         return new FileInfo(Path.Combine(IdsRepositoryDocumentationPath, fileName));
     }
 
