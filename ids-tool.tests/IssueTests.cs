@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using IdsLib.IfcSchema;
 using idsTool.tests.Helpers;
 using Microsoft.Extensions.Logging;
 using System.IO;
@@ -10,7 +11,7 @@ namespace idsTool.tests
 {
 	public class IssueTests
 	{
-        public IssueTests(ITestOutputHelper outputHelper)
+		public IssueTests(ITestOutputHelper outputHelper)
 		{
 			XunitOutputHelper = outputHelper;
 		}
@@ -50,7 +51,7 @@ namespace idsTool.tests
 			var f = new FileInfo("IssueFiles/Issue 28 - Empty restriction.ids");
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 2);
 		}
-		
+
 		[Fact]
 		public void Issue_30_ShouldReturnError()
 		{
@@ -58,12 +59,12 @@ namespace idsTool.tests
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.IdsContentError, 2);
 		}
 
-        [Fact]
-        public void Issue_39_SubClassesOfObjectTypesAllowPsets()
-        {
-            var f = new FileInfo("IssueFiles/Issue 39 - IfcTypeObjects allowed.ids");
-            LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
-        }
+		[Fact]
+		public void Issue_39_SubClassesOfObjectTypesAllowPsets()
+		{
+			var f = new FileInfo("IssueFiles/Issue 39 - IfcTypeObjects allowed.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
 
 		[Fact]
 		public void Issue_49_ErrorLocation()
@@ -75,6 +76,13 @@ namespace idsTool.tests
 				&&
 				x.StartLinePosition == 12
 				).Should().BeTrue();
+		}
+		
+		[Fact]
+		public void Issue_44_MeasureEnumeration()
+		{
+			var t = SchemaInfo.AllMeasureInformation.FirstOrDefault(x => x.IfcMeasure == "IfcMagneticFluxMeasure");
+			t.Should().NotBeNull();
 		}
 	}
 }
