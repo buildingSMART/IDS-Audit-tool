@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NSubstitute.Core;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
@@ -22,15 +23,13 @@ internal static class LoggerAndAuditHelpers
 		f.Exists.Should().BeTrue("test file must be found");
 		return f;
 	}
+
 	public static FileInfo GetAndCheckDocumentationTestCaseFileInfo(string theFile)
     {
 		FileInfo f = BuildingSmartRepoFiles.GetDocumentationTestCaseFileInfo(theFile);
 		f.Exists.Should().BeTrue("test file must be found");
         return f;
 	}
-
-    
-
 
 	internal static Audit.Status AuditWithoutExpectations(BatchAuditOptions c, ITestOutputHelper OutputHelper)
     {
@@ -59,7 +58,14 @@ internal static class LoggerAndAuditHelpers
         }
     }
 
-    internal static Audit.Status BatchAuditWithOptions(IBatchAuditOptions batchOptions, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
+	private static void BatchAuditWithOptions(BatchAuditOptions batchOptions, ITestOutputHelper xunitOutputHelper, IdentificationLogger locLogger)
+	{
+		ILogger logg = GetXunitLogger(xunitOutputHelper);
+		var checkResult = Audit.Run(batchOptions, logg); // run for xunit output of logging
+		Audit.Run(batchOptions, locLogger); 		
+	}
+
+	internal static Audit.Status BatchAuditWithOptions(IBatchAuditOptions batchOptions, ITestOutputHelper OutputHelper, Audit.Status? expectedOutcome = Audit.Status.Ok, int expectedWarnAndErrors = 0)
     {
         ILogger logg = GetXunitLogger(OutputHelper);
         var checkResult = Audit.Run(batchOptions, logg); // run for xunit output of logging
@@ -124,10 +130,20 @@ internal static class LoggerAndAuditHelpers
         {
             InputSource = f.FullName,
             OmitIdsContentAudit = true,
-            SchemaFiles = new[] { "bsFiles/ids.xsd" }
+            SchemaFiles = ["bsFiles/ids.xsd"]
         };
         BatchAuditWithOptions(c, xunitOutputHelper, expectedOutcome, expectedWarnAndErrors);
     }
 
-    
+	internal static IList<NodeIdentification> FullAuditLocations(FileInfo f, ITestOutputHelper xunitOutputHelper, LogLevel error)
+	{
+		var c = new BatchAuditOptions()
+		{
+			InputSource = f.FullName,
+			OmitIdsContentAudit = false,
+		};
+		var loc = new IdentificationLogger(LogLevel.Error);
+		BatchAuditWithOptions(c, xunitOutputHelper, loc);
+        return loc.Identifications;
+	}
 }

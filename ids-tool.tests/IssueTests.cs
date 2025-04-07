@@ -1,10 +1,8 @@
-﻿using idsTool.tests.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using FluentAssertions;
+using idsTool.tests.Helpers;
+using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -66,5 +64,17 @@ namespace idsTool.tests
             var f = new FileInfo("IssueFiles/Issue 39 - IfcTypeObjects allowed.ids");
             LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
         }
-    }
+
+		[Fact]
+		public void Issue_49_ErrorLocation()
+		{
+			var f = new FileInfo("IssueFiles/Issue 49 - Error location.ids");
+			var t = LoggerAndAuditHelpers.FullAuditLocations(f, XunitOutputHelper, LogLevel.Error);
+			t.Any(x =>
+				x.StartLineNumber == 44
+				&&
+				x.StartLinePosition == 12
+				).Should().BeTrue();
+		}
+	}
 }

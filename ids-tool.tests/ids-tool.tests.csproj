@@ -189,6 +189,9 @@
 		<None Update="IssueFiles\Issue 30 - should return error.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\Issue 49 - Error location.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="ValidFiles\CanonicalVersions\canonical-0.9.7.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

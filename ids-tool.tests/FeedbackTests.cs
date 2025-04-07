@@ -2,10 +2,7 @@
 using IdsLib;
 using IdsLib.IdsSchema.IdsNodes;
 using IdsLib.SchemaProviders;
-using Microsoft.Extensions.Logging;
 using NSubstitute.Core;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,35 +14,6 @@ namespace idsTool.tests
 {
 	public class FeedbackTests
 	{
-
-		class IdentificationLogger : ILogger
-		{
-			public IDisposable? BeginScope<TState>(TState state) where TState : notnull
-			{
-				return null;
-			}
-
-			public bool IsEnabled(LogLevel logLevel)
-			{
-				return true;
-			}
-
-			internal IList<NodeIdentification> Identifications { get; set; } = new List<NodeIdentification>();
-
-			public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
-			{
-				// Debug.WriteLine(state.GetType());
-				if (state is IReadOnlyList<KeyValuePair<string, object>> vals)
-				{
-					var vls = vals.Where(x => x.Value is NodeIdentification).Select(sel=>sel.Value as NodeIdentification);
-                    foreach (var item in vls)
-                    {
-						Identifications.Add(item!);
-                    }
-                }
-			}
-		}
-
 		[Theory]
 		[InlineData("InvalidFiles/InvalidAttributeForClass.ids", new [] { "/ids1/specifications1/specification1" })]
 		[InlineData("IssueFiles/Issue 14 - ids file test.ids", new [] { 
