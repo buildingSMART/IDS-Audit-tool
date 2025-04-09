@@ -84,5 +84,12 @@ namespace idsTool.tests
 			var t = SchemaInfo.AllMeasureInformation.FirstOrDefault(x => x.IfcMeasure == "IfcMagneticFluxMeasure");
 			t.Should().NotBeNull();
 		}
+
+		[Fact]
+		public void Issue_45_MeasureEnumeration()
+		{
+			var f = new FileInfo("IssueFiles/Issue 45 - IfcMassMeasure.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
 	}
 }

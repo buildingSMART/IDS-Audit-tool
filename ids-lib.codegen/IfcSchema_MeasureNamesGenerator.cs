@@ -48,8 +48,9 @@ public class IfcSchema_DatatypeNamesGenerator
 
         foreach (var schema in Program.schemas)
         {
-            System.Reflection.Module module = SchemaHelper.GetModule(schema);
-            var metaD = ExpressMetaData.GetMetadata(module);
+			var factory = SchemaHelper.GetFactory(schema);
+			var module = SchemaHelper.GetModule(schema);
+            var metaD = ExpressMetaData.GetMetadata(factory);
 
             var values = GetExpressValues(metaD)
                 .Concat(GetEnumValueTypes(schema))
@@ -64,7 +65,7 @@ public class IfcSchema_DatatypeNamesGenerator
                 {
                     // this is the case of enums
                     var t = module.GetTypes().FirstOrDefault(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToUpperInvariant() == daDataType);
-                    if (t == null)
+                    if (t is null)
                     {
                         continue;
                     }
@@ -80,8 +81,6 @@ public class IfcSchema_DatatypeNamesGenerator
 						xmlType = "xs:integer";
 				}
                 
-
-
 				if (dataTypeDictionary.TryGetValue(daDataType, out var lst))
                 {
                     lst.AddSchema(schema);

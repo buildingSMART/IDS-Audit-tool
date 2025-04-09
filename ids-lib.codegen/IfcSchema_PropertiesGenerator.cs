@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection.Metadata;
+using System.IO.Compression;
 using System.Text;
-using Xbim.Common;
+using System.Xml;
 using Xbim.Ifc;
 using Xbim.Ifc4x3.Kernel;
 using Xbim.Properties;
@@ -16,7 +15,6 @@ public class IfcSchema_PropertiesGenerator
         public string Name { get; set; } = string.Empty;
 		public IEnumerable<string>? ApplicableClasses { get; set; }
 		public IEnumerable<string>? CsSourceOfProperties { get; set; }
-
 	}
 
 	/// <summary>
@@ -26,22 +24,25 @@ public class IfcSchema_PropertiesGenerator
 	public static string Execute()
     {
         var source = stub;
-		FileInfo f = new FileInfo("buildingSMART\\Pset_IFC4X3.ifc");
+		// FileInfo f = new FileInfo("buildingSMART\\Pset_IFC4X3.ifc");
+		FileInfo fxml = new FileInfo("buildingSMART\\annex-a-psd.zip");
         var schemas = new[] { Xbim.Properties.Version.IFC2x3, Xbim.Properties.Version.IFC4, Xbim.Properties.Version.IFC4x3 };
         foreach (var schema in schemas)
         {
             var sb = new StringBuilder();
-            var propsets = GetPsets(schema);
+            var propsets = GetPsets(schema).OrderBy(x => x.Name).ToArray();
+			//if (schema == Xbim.Properties.Version.IFC4x3)
+			//	propsets = GetPsets(f).OrderBy(x => x.Name).ToArray();
 			if (schema == Xbim.Properties.Version.IFC4x3)
-				propsets = GetPsets(f).OrderBy(x => x.Name).ToArray();
+				propsets = GetZipPsets(fxml).OrderBy(x => x.Name).ToArray();
 			foreach (var item in propsets)
 			{
 				if (item.ApplicableClasses is null)
 					continue;
-				var cArr = NewStringArray(item.ApplicableClasses);
+				var cArr = NewStringArray(item.ApplicableClasses.OrderBy(x=>x));
 				if (item.CsSourceOfProperties is null)
 					continue;
-				var rpArr = NewTypeArray("IPropertyTypeInfo", item.CsSourceOfProperties);	
+				var rpArr = NewTypeArray("IPropertyTypeInfo", item.CsSourceOfProperties.OrderBy(x=>x));	
 				sb.AppendLine($@"		yield return new PropertySetInfo(""{item.Name}"", {rpArr},{"\r\n"}				{cArr});");
 			}
             source = source.Replace($"<PlaceHolder{schema}>\r\n", sb.ToString());
@@ -49,6 +50,144 @@ public class IfcSchema_PropertiesGenerator
         source = source.Replace($"<PlaceHolderVersion>\r\n", VersionHelper.GetFileVersion(typeof(Definitions<>)));
         return source;
     }
+
+	private static IEnumerable<propSetTempInfo> GetZipPsets(FileInfo f)
+	{
+		var zp = ZipFile.OpenRead(f.FullName);
+
+		foreach (var entry in zp.Entries)
+		{
+			using var stream = entry.Open();			
+			var xmlDoc = new XmlDocument();
+			xmlDoc.Load(stream);
+			yield return GetZipPsets(xmlDoc);
+		}
+	}
+
+	private static propSetTempInfo? GetZipPsets(XmlDocument xmlDoc)
+	{
+		var root = xmlDoc.DocumentElement ?? throw new Exception("Invalid XML document");
+		var name = GetChildValue(root, "Name");
+		if (string.IsNullOrWhiteSpace(name))
+			throw new Exception("Invalid XML document, no name found");
+		var ret = new propSetTempInfo();
+		ret.Name = name;
+		ret.ApplicableClasses = TrimAfterSlash(GetChildValues(root, "ApplicableClasses", "ClassName")).ToList();
+		//ret.ApplicableClasses = GetChildValues(root, "ApplicableClasses", "ClassName").ToList();
+
+		var defsNodes = root.ChildNodes.OfType<XmlElement>().Where(x => x.Name == "PropertyDefs");
+		if (!defsNodes.Any())
+			defsNodes = root.ChildNodes.OfType<XmlElement>().Where(x => x.Name == "QtoDefs");
+
+		foreach (var defs in defsNodes)
+		{
+			List<string> propTypes = new List<string>();
+			var subDefs = defs.ChildNodes.OfType<XmlElement>().Where(x => x.Name == "PropertyDef");
+			if (!subDefs.Any())
+				subDefs = defs.ChildNodes.OfType<XmlElement>().Where(x => x.Name == "QtoDef");
+
+			foreach (var def in subDefs)
+			{
+				var t = GetProp(def);
+				if (!string.IsNullOrEmpty(t))
+					propTypes.Add(t);
+			}
+			ret.CsSourceOfProperties = propTypes;
+		}
+		return ret;
+	}
+
+	private static IEnumerable<string> TrimAfterSlash(IEnumerable<string> enumerable)
+	{
+		foreach (var item in enumerable)
+		{
+			var t = item.Split("/");
+			yield return t[0].Trim();
+		}
+	}
+
+	private static string GetProp(XmlElement definition)
+	{
+		var nm = GetChildValue(definition, "Name");
+		var def = GetDescriptionSpec(GetChildValue(definition, "Definition"));
+		var t = definition.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "PropertyType");
+		if (t is not null)
+			return GetProp(t, nm, def);
+		var t2 = definition.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "QtoType");
+		if (t2 is not null)
+		{
+			if (Enum.TryParse(t2.InnerText, out IfcSimplePropertyTemplateTypeEnum parsed))
+			{
+				return $"""new SingleValuePropertyType("{nm}", "{GetQtyUnderlyingType(parsed)}"){def}""";
+			}
+			throw new NotImplementedException(t2.InnerText);
+		}
+		throw new NotImplementedException($"Unknown type {t?.Name} for {nm}");
+	}
+
+	private static string GetProp(XmlElement t, string? nm, string def)
+	{
+		var t2 = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertySingleValue")
+			?? t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyBoundedValue");
+		if (t2 is not null)
+		{
+			var t3 = t2.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "DataType");
+			if (t3 is null)
+				throw new NotImplementedException($"Unknown type {t2.Name} for {nm}");
+			var tp = t3.GetAttribute("type");
+			return $"""new SingleValuePropertyType("{nm}", "{tp}"){def}""";
+
+		}
+		var tref = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyReferenceValue");
+		if (tref is not null)
+		{
+			var tp = tref.GetAttribute("reftype");
+			return $"""new SingleValuePropertyType("{nm}", "{tp}"){def}""";
+		}	
+		var tenum = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyEnumeratedValue");
+		if (tenum is not null)
+		{
+			var enumVals = GetChildValues(tenum, "EnumList", "EnumItem");
+			return $"""new EnumerationPropertyType("{nm}", {NewStringArray(enumVals.Select(x => x.ToString() ?? ""))} ){def}""";
+		}
+
+		var tList = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyListValue");
+		if (tList is not null)
+		{
+			return ""; // todo
+		}
+
+		var tTable = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyTableValue");
+		if (tTable is not null)
+		{
+			return ""; // todo
+		}
+
+		throw new NotImplementedException($"Unknown type {t.Name} for {nm}");
+
+	}
+
+	private static IEnumerable<string> GetChildValues(XmlElement root, string firstSub, string element)
+	{
+		var t = root.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == firstSub);
+		if (t is null)
+			yield break;
+		var t2 = t.ChildNodes.OfType<XmlElement>().Where(x => x.Name == element);
+		foreach (var item in t2)
+		{
+			var name = item.InnerText;
+			if (!string.IsNullOrWhiteSpace(name))
+				yield return name;
+		}
+	}
+
+	private static string? GetChildValue(XmlElement root, string stringName)
+	{
+		var t = root.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == stringName);
+		if (t is null)
+			return null;
+		return t.InnerText;
+	}
 
 	private static IEnumerable<propSetTempInfo> GetPsets(FileInfo f)
 	{
@@ -62,42 +201,29 @@ public class IfcSchema_PropertiesGenerator
 			var props = new List<string>();
 			foreach (var proptemp in pset.HasPropertyTemplates.OrderBy(x=>x.Name.ToString()))
 			{
-				string def = "";
-				if (!string.IsNullOrWhiteSpace(proptemp.Description))
-				{
-					def = $" {{ Definition = \"{EscapeCharacters(proptemp.Description)}\"}}";
-				}
+				string def = GetDescriptionSpec(proptemp.Description);
+
 				if (proptemp is IfcSimplePropertyTemplate singleV)
 				{
 					// P_REFERENCEVALUE can also be listed, but value cannot be specified.
-					// 
 					switch (singleV.TemplateType)
 					{
 						case IfcSimplePropertyTemplateTypeEnum.Q_AREA:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcAreaMeasure\"){def}");
-							break;
 						case IfcSimplePropertyTemplateTypeEnum.Q_WEIGHT:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcWeightMeasure\"){def}");
-							break;
 						case IfcSimplePropertyTemplateTypeEnum.Q_LENGTH:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcLengthMeasure\"){def}");
-							break;
 						case IfcSimplePropertyTemplateTypeEnum.Q_VOLUME:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcVolumeMeasure\"){def}");
-							break;
 						case IfcSimplePropertyTemplateTypeEnum.Q_COUNT:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcCountMeasure\"){def}");
-							break;
+						case IfcSimplePropertyTemplateTypeEnum.Q_NUMBER:
 						case IfcSimplePropertyTemplateTypeEnum.Q_TIME:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"IfcTimeMeasure\"){def}");
+							props.Add($"""new SingleValuePropertyType("{singleV.Name}", "{GetQtyUnderlyingType(singleV.TemplateType)}"){def}""");
 							break;
 						case IfcSimplePropertyTemplateTypeEnum.P_ENUMERATEDVALUE:
-							props.Add($"new EnumerationPropertyType(\"{singleV.Name}\", {NewStringArray(singleV.Enumerators.EnumerationValues.Select(x => x.Value.ToString() ?? ""))} ){def}");
+							props.Add($"""new EnumerationPropertyType("{singleV.Name}", {NewStringArray(singleV.Enumerators.EnumerationValues.Select(x => x.Value.ToString() ?? ""))} ){def}""");
 							break;
 						case IfcSimplePropertyTemplateTypeEnum.P_SINGLEVALUE:
 						case IfcSimplePropertyTemplateTypeEnum.P_REFERENCEVALUE:
 						case IfcSimplePropertyTemplateTypeEnum.P_BOUNDEDVALUE:
-							props.Add($"new SingleValuePropertyType(\"{singleV.Name}\", \"{singleV.PrimaryMeasureType}\"){def}");
+							props.Add($"""new SingleValuePropertyType("{singleV.Name}", "{singleV.PrimaryMeasureType}"){def}""");
 							break;
 						case IfcSimplePropertyTemplateTypeEnum.P_TABLEVALUE:
 						case IfcSimplePropertyTemplateTypeEnum.P_LISTVALUE:
@@ -110,6 +236,28 @@ public class IfcSchema_PropertiesGenerator
 			ret.CsSourceOfProperties = props;
 			yield return ret;
 		}
+	}
+
+	private static string GetQtyUnderlyingType(IfcSimplePropertyTemplateTypeEnum? q_AREA)
+	{
+		return q_AREA switch
+		{
+			IfcSimplePropertyTemplateTypeEnum.Q_AREA => "IfcAreaMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_WEIGHT => "IfcWeightMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_LENGTH => "IfcLengthMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_VOLUME => "IfcVolumeMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_COUNT => "IfcCountMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_TIME => "IfcTimeMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_NUMBER  => "IfcNumericMeasure",
+			_ => throw new NotImplementedException(q_AREA.ToString()),
+		};
+	}
+
+	private static string GetDescriptionSpec(Xbim.Ifc4x3.MeasureResource.IfcText? dsc)
+	{
+		return !string.IsNullOrWhiteSpace(dsc)
+							? $" {{ Definition = \"{EscapeCharacters(dsc)}\"}}"
+							: "";
 	}
 
 	private static string RemovePredefinedType(string x)

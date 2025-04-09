@@ -13,8 +13,8 @@ public class IfcSchema_PartOfRelationGenerator
         foreach (var schema in Program.schemas)
         {
             var sb = new StringBuilder();
-            System.Reflection.Module module = SchemaHelper.GetModule(schema);
-            var metaD = ExpressMetaData.GetMetadata(module);
+			var module = SchemaHelper.GetFactory(schema);
+			var metaD = ExpressMetaData.GetMetadata(module);
             foreach (var daRelation in relationNames)
             {
                 try

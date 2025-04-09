@@ -1,4 +1,4 @@
-// generated code via ids-lib.codegen using Xbim.Essentials 6.0.493.0, any changes to this file will be lost at next regeneration
+// generated code via ids-lib.codegen using Xbim.Essentials 6.0.517.0, any changes to this file will be lost at next regeneration
 
 using System.Linq;
 
@@ -787,7 +787,6 @@ public partial class SchemaInfo
 	private static partial SchemaInfo GetClassesIFC4() 
 	{
 		var schema = new SchemaInfo(IfcSchemaVersions.Ifc4) {
-			new ClassInfo("IfcStrippedOptional", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4", new[] { "" }),
 			new ClassInfo("IfcApplication", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4.UtilityResource", new[] { "ApplicationDeveloper", "Version", "ApplicationFullName", "ApplicationIdentifier" }),
 			new ClassInfo("IfcGloballyUniqueId", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4.UtilityResource", new[] { "" }),
 			new ClassInfo("IfcOwnerHistory", "", ClassType.Concrete, Enumerable.Empty<string>(), "Ifc4.UtilityResource", new[] { "OwningUser", "OwningApplication", "State", "ChangeAction", "LastModifiedDate", "LastModifyingUser", "LastModifyingApplication", "CreationDate" }),

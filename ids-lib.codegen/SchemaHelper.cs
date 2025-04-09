@@ -1,4 +1,7 @@
 ﻿using System.Reflection;
+using Xbim.Common;
+using Xbim.Common.Metadata;
+using Xbim.IO.Xml.BsConf;
 
 namespace IdsLib.codegen;
 
@@ -15,4 +18,20 @@ internal static class SchemaHelper
         else
             throw new NotImplementedException(schema.ToString());
     }
+
+	private static IEntityFactory f2x3 = new Xbim.Ifc2x3.EntityFactoryIfc2x3();
+	private static IEntityFactory f4 = new Xbim.Ifc4.EntityFactoryIfc4();
+	private static IEntityFactory f4x3 = new Xbim.Ifc4x3.EntityFactoryIfc4x3Add2();
+
+	internal static IEntityFactory GetFactory(string schema)
+	{
+		if (schema.Equals("IFC2X3", StringComparison.InvariantCultureIgnoreCase))
+			return f2x3;
+		else if (schema.Equals("IFC4", StringComparison.InvariantCultureIgnoreCase))
+			return f4;
+		else if (schema.Equals("IFC4X3", StringComparison.InvariantCultureIgnoreCase))
+			return f4x3;
+		else
+			throw new NotImplementedException(schema.ToString());
+	}
 }

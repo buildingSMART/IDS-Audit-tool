@@ -15,7 +15,7 @@ public class IfcSchema_ClassGenerator
         var source = stub;
         foreach (var schema in Program.schemas)
         {
-            System.Reflection.Module module = SchemaHelper.GetModule(schema);
+            var module = SchemaHelper.GetFactory(schema);
             // Debug.WriteLine(module.Name);
             var metaD = ExpressMetaData.GetMetadata(module);
 

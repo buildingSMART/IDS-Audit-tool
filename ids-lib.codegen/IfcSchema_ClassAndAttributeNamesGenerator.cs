@@ -11,8 +11,8 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
         var attNames = new Dictionary<string, List<string>>();
         foreach (var schema in Program.schemas)
         {
-            System.Reflection.Module module = SchemaHelper.GetModule(schema);
-            var metaD = ExpressMetaData.GetMetadata(module);
+            var factory = SchemaHelper.GetFactory(schema);
+            var metaD = ExpressMetaData.GetMetadata(factory);
             foreach (var daType in metaD.Types())
             {
                 // only concrete classes are valid

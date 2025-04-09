@@ -96,8 +96,8 @@ class IfcSchema_AttributesGenerator
         var source = stub;
         foreach (var schemaString in Program.schemas)
 		{
-			System.Reflection.Module module = SchemaHelper.GetModule(schemaString);
-			var metaD = ExpressMetaData.GetMetadata(module);
+			var factory = SchemaHelper.GetFactory(schemaString);
+			var metaD = ExpressMetaData.GetMetadata(factory);
 
 			// create a dictionary that defines the attributes 
 			var attributes = GetAttributes(metaD);

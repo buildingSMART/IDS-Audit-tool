@@ -328,7 +328,7 @@ Columns of the table determine the validity of the type depending on the schema 
 | IFCSTAIRFLIGHTTYPEENUM                        | ✔️      | ✔️      | ✔️      | xs:string             |
 | IFCSTAIRTYPEENUM                              | ✔️      | ✔️      | ✔️      | xs:string             |
 | IFCSTATEENUM                                  | ✔️      | ✔️      | ✔️      | xs:string             |
-| IFCSTRIPPEDOPTIONAL                           | ❌      | ✔️      | ✔️      | xs:boolean            |
+| IFCSTRIPPEDOPTIONAL                           | ❌      | ❌      | ✔️      | xs:boolean            |
 | IFCSTRUCTURALCURVEACTIVITYTYPEENUM            | ❌      | ✔️      | ✔️      | xs:string             |
 | IFCSTRUCTURALCURVEMEMBERTYPEENUM              | ❌      | ✔️      | ✔️      | xs:string             |
 | IFCSTRUCTURALCURVETYPEENUM                    | ✔️      | ❌      | ❌      | xs:string             |
