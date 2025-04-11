@@ -213,28 +213,30 @@ class IfcSchema_AttributesGenerator
         return "";
 	}
 
-	private const string stub = @"// generated code via ids-lib.codegen using Xbim.Essentials <PlaceHolderVersion> - any changes made directly here will be lost
+	private const string stub = """
+		// generated code via ids-lib.codegen using Xbim.Essentials <PlaceHolderVersion> - any changes made directly here will be lost
 
-using System;
+		using System;
 
-namespace IdsLib.IfcSchema; 
+		namespace IdsLib.IfcSchema; 
 
-public partial class SchemaInfo
-{
-	static partial void GetAttributesIFC2x3(SchemaInfo destinationSchema)
-	{
-<PlaceHolderIfc2x3>
-	}
+		public partial class SchemaInfo
+		{
+			static partial void GetAttributesIFC2x3(SchemaInfo destinationSchema)
+			{
+		<PlaceHolderIfc2x3>
+			}
 
-	static partial void GetAttributesIFC4(SchemaInfo destinationSchema)
-	{
-<PlaceHolderIfc4>
-	}
+			static partial void GetAttributesIFC4(SchemaInfo destinationSchema)
+			{
+		<PlaceHolderIfc4>
+			}
 
-    static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema)
-	{
-<PlaceHolderIfc4x3>
-	}
-}
-";
+		    static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema)
+			{
+		<PlaceHolderIfc4x3>
+			}
+		}
+
+		""";
 }

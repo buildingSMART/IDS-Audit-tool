@@ -10,7 +10,7 @@ public static class IPropertyTypeInfoExtensions
 
 | name | description |
 | --- | --- |
-| static [HasDataType](IPropertyTypeInfoExtensions/HasDataType.md)(…) | Extension method to determine if the property constrains a specific data type in the IFC schema |
+| static [HasDataTypes](IPropertyTypeInfoExtensions/HasDataTypes.md)(…) | Extension method to determine if the property constrains a specific data type in the IFC schema |
 
 ## See Also
 

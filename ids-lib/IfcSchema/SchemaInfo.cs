@@ -532,24 +532,21 @@ namespace IdsLib.IfcSchema
 			return ret.Any();
 		}
 
-
-		internal static string? ValidMeasureForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
+		internal static IEnumerable<string> ValidMeasuresForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
         {
-            string? ret = null;
+
+            List<string> ret = new();
             foreach (var schema in GetSchemas(version))
             {
                 var propsMatchingRequirements = schema.PropertySets.Where(x => possiblePsetNames.Contains(x.Name)).SelectMany(pset => pset.Properties.Where(prop => possiblePropertyNames.Contains(prop.Name)));
                 foreach (var prop in propsMatchingRequirements)
                 {
-                    if (!prop.HasDataType(out var dt))
-                        return null;
-                    if (ret is null)
-                        ret = dt;
-                    else if (ret != dt)
-                        return null;
+                    if (!prop.HasDataTypes(out var dt))
+                        continue;
+                    ret.AddRange(dt);
                 }
             }
-            return ret;
+            return ret.Distinct().ToList();
         }
 
         /// <summary>

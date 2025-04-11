@@ -30,21 +30,22 @@ public static class IPropertyTypeInfoExtensions
     /// <param name="property">The property to be evaluated</param>
     /// <param name="dataType">a nullable string if there's no constraint or the string name of the IFC class constraint</param>
     /// <returns>true if a type constraint is enforced</returns>
-    public static bool HasDataType(this IPropertyTypeInfo property, [NotNullWhen(true)] out string? dataType)
+    public static bool HasDataTypes(this IPropertyTypeInfo property, out IEnumerable<string> dataType)
     {
-        if (property is SingleValuePropertyType svp)
-        {
-            dataType = svp.DataType.ToUpperInvariant();
-            return true;
-        }
-        if (property is EnumerationPropertyType ep)
-        {
-            // We assume that enumerations are stored as labels, having had a look at a few example on bSmart
-            dataType = "IFCLABEL";
-            return true;
-        }
-
-        dataType = null;
+		switch (property)
+		{
+			case SingleValuePropertyType svp:
+                dataType = [svp.DataType.ToUpperInvariant()];
+				return true;
+			case EnumerationPropertyType ep:
+				// We assume that enumerations are stored as labels, having had a look at a few example on bSmart
+				dataType = ["IFCLABEL"];
+				return true;
+			case TableValuePropertyType tvp:
+				dataType = [tvp.DataType1.ToUpperInvariant(), tvp.DataType2.ToUpperInvariant()];
+				return true;
+		}
+        dataType = Enumerable.Empty<string>();
         return false;
     }
 }
@@ -85,6 +86,31 @@ public class EnumerationPropertyType : NamedPropertyType
     {
         EnumerationValues = values.ToList();
     }
+}
+
+/// <summary>
+/// Schema metadata for single value properties
+/// </summary>
+public class TableValuePropertyType : NamedPropertyType
+{
+	/// <summary>
+	/// minimal constructor
+	/// </summary>
+	public TableValuePropertyType(string name, string dataType1, string dataType2) : base(name)
+	{
+		DataType1 = dataType1;
+		DataType2 = dataType2;
+	}
+
+	/// <summary>
+	/// The base IFC datatype of the DefiningValue in the schema
+	/// </summary>
+	public string DataType1 { get; }
+
+	/// <summary>
+	/// The base IFC datatype of the DefinedValue in the schema
+	/// </summary>
+	public string DataType2 { get; }
 }
 
 /// <summary>

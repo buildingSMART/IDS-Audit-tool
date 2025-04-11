@@ -32,14 +32,16 @@ namespace idsTool.tests
                 {
                     foreach (var prop in pset.Properties)
                     {
-                        if (!prop.HasDataType(out var type))
+                        if (!prop.HasDataTypes(out var type))
+                            continue;
+                        if (type.Count() > 1)
                             continue;
 
-                        var fullPropName = $"{pset.Name}.{prop.Name}";
+						var fullPropName = $"{pset.Name}.{prop.Name}";
                         if (propToMeasure.TryGetValue(fullPropName, out var measures))
-                            measures.Add(type);
+                            measures.Add(type.First());
                         else
-                            propToMeasure.Add(fullPropName, new List<string>() { type });
+                            propToMeasure.Add(fullPropName, new List<string>() { type.First() });
                     }
                 }
             }
@@ -90,11 +92,11 @@ namespace idsTool.tests
 
                 if (distinctpropertySets.Length > 1)
                 {
-                    output.WriteLine($"{distinctpropertySets.Length} propety sets for {item.Key}: {string.Join(", ", distinctpropertySets)}");
+                    output.WriteLine($"{distinctpropertySets.Length} property sets for {item.Key}: {string.Join(", ", distinctpropertySets)}");
                     unexpectedMeasureTypes++;
                 }
             }
-            var expectedCount = 587;
+            var expectedCount = 606;
             unexpectedMeasureTypes.Should().Be(expectedCount, $"{expectedCount} is the count of acknowledged variations");
         }
     }

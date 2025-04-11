@@ -51,6 +51,7 @@
 | class [PropertySetInfo](./IdsLib.IfcSchema/PropertySetInfo.md) | Information about standard property sets defined from bS |
 | class [SchemaInfo](./IdsLib.IfcSchema/SchemaInfo.md) | Provides static methods to get the collection of classes in the published schemas. |
 | class [SingleValuePropertyType](./IdsLib.IfcSchema/SingleValuePropertyType.md) | Schema metadata for single value properties |
+| class [TableValuePropertyType](./IdsLib.IfcSchema/TableValuePropertyType.md) | Schema metadata for single value properties |
 
 ## IdsLib.SchemaProviders namespace
 

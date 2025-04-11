@@ -4,36 +4,47 @@
 		<ids:title>Measure validity examples</ids:title>
 	</ids:info>
 	<ids:specifications>
-		<ids:specification ifcVersion="IFC2X3" name="Wall requirement">
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Wall requirement">
 			<ids:applicability minOccurs="0" maxOccurs="unbounded">
 				<ids:entity>
 					<ids:name>
 						<xs:restriction base="xs:string">
-							<xs:pattern value="IFCWALL|IFCWALLSTANDARDCASE"/>
+							<xs:pattern value="IFCDISTRIBUTIONFLOWELEMENT"/>
 						</xs:restriction>
 					</ids:name>
 				</ids:entity>
 			</ids:applicability>
 			<ids:requirements>
-				<!-- We are getting all properties, and mandating they have an IfcText measure, this is not possible -->
-				<ids:property dataType="IFCTEXT">
-					<ids:propertySet>
-            <xs:restriction base="xs:string">
-							<xs:pattern value=".*"/>
-						</xs:restriction>
-					</ids:propertySet>
+        <ids:property dataType="IFCTEXT"> <!-- the only valid values are IfcFrequencyMeasure or IfcSoundPowerMeasure -->
+          <ids:propertySet>
+            <ids:simpleValue>Pset_SoundGeneration</ids:simpleValue>
+          </ids:propertySet>
           <ids:baseName>
-            <xs:restriction base="xs:string">
-							<xs:pattern value=".*"/>
-						</xs:restriction>
+            <ids:simpleValue>SoundCurve</ids:simpleValue>
 					</ids:baseName>
 				</ids:property>
+        <ids:property dataType="IFCSOUNDPOWERMEASURE"> <!-- this is valid -->
+          <ids:propertySet>
+            <ids:simpleValue>Pset_SoundGeneration</ids:simpleValue>
+          </ids:propertySet>
+          <ids:baseName>
+            <ids:simpleValue>SoundCurve</ids:simpleValue>
+          </ids:baseName>
+        </ids:property>
+        <ids:property dataType="IFCFREQUENCYMEASURE"> <!-- this is valid -->
+          <ids:propertySet>
+            <ids:simpleValue>Pset_SoundGeneration</ids:simpleValue>
+          </ids:propertySet>
+          <ids:baseName>
+            <ids:simpleValue>SoundCurve</ids:simpleValue>
+          </ids:baseName>
+        </ids:property>
 			</ids:requirements>
 		</ids:specification>
-		<!-- The Pset_WallCommon.IsExternal property is defined as IfcBoolean, IfcText is not an acceptable value-->
+		
 		<ids:specification name="External wall requirement" ifcVersion="IFC2X3">
 			<ids:applicability minOccurs="0" maxOccurs="unbounded">
-				<ids:property dataType="IFCTEXT">
+				<ids:property dataType="IFCTEXT"> <!-- The Pset_WallCommon.IsExternal property is defined as IfcBoolean, IfcText is not an acceptable value-->
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
 					</ids:propertySet>

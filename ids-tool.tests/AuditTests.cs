@@ -193,12 +193,13 @@ public class AuditTests : BuildingSmartRepoFiles
         var t = d.GetFiles(Path.ChangeExtension(f.Name, "*")).Single();
         t.Name.Should().Be(f.Name);
 
-        using var stream = f.OpenRead();
-        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, status, numErr);
+		// send without constraints to show the feedback
+		using var stream2 = f.OpenRead();
+		LoggerAndAuditHelpers.FullAudit(stream2, XunitOutputHelper, status);
 
-        // send again without constraints to show the feedback
-        using var stream2 = f.OpenRead();
-        LoggerAndAuditHelpers.FullAudit(stream2, XunitOutputHelper, status);
+        // send again with constraints to run the check
+		using var stream = f.OpenRead();
+        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, status, numErr);
     }
 
 	// todo: update tfk-regenerate-testcase-ids to master branch

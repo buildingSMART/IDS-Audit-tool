@@ -117,12 +117,8 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
 
-                    // limit the validity of the IfcMeasure to the value coming from the metadata for the property
-                    var limit = SchemaInfo.ValidMeasureForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames);
-                    if (limit is null)
-                        validMeasureNames = Enumerable.Empty<string>();
-                    else
-                        validMeasureNames = new string[] { limit };
+					// limit the validity of the IfcMeasure to the value coming from the metadata for the property
+					validMeasureNames = SchemaInfo.ValidMeasuresForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames);
 
                     // limit the validity of the type
                     var validTypes = SchemaInfo.PossibleTypesForPropertySets(schema.Version, possiblePsetNames);

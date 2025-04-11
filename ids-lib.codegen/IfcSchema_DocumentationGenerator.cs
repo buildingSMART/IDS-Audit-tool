@@ -36,35 +36,36 @@ namespace IdsLib.codegen
 			// Program.Message($"no change.", ConsoleColor.Green);
 		}
 
-		private const string stub = @"# Type constraining
+		private const string stub = """
+			# Type constraining
 
-## DataTypes
+			## DataTypes
 
-Property dataTypes can be set to any values according to the following table.
+			Property dataTypes can be set to any values according to the following table.
 
-Columns of the table determine the validity of the type depending on the schema version and the required `xs:base` type for any `xs:restriction` constraint.
+			Columns of the table determine the validity of the type depending on the schema version and the required `xs:base` type for any `xs:restriction` constraint.
 
-| dataType                                      | Ifc2x3 | Ifc4   | Ifc4x3 | Restriction base type |
-| --------------------------------------------- | ------ | ------ | ------ | --------------------- |
-<PlaceHolderDataTypes>
+			| dataType                                      | Ifc2x3 | Ifc4   | Ifc4x3 | Restriction base type |
+			| --------------------------------------------- | ------ | ------ | ------ | --------------------- |
+			<PlaceHolderDataTypes>
 
-## XML base types
+			## XML base types
 
-The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
+			The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
 
-| Base type   | string regex constraint                                                        |
-| ----------- | ------------------------------------------------------------------------------ |
-<PlaceHolderXmlTypes>
+			| Base type   | string regex constraint                                                        |
+			| ----------- | ------------------------------------------------------------------------------ |
+			<PlaceHolderXmlTypes>
 
-For example:
+			For example:
 
-- To specify numbers: you must use a dot as the decimal separator, and not use a thousands separator (e.g. `4.2` is valid, but `1.234,5` is invalid). Scientific notation is allowed (e.g. `1e3` to represent `1000`).
-- To specify boolean: valid values are `true` or `false`, `0`, or `1`.
+			- To specify numbers: you must use a dot as the decimal separator, and not use a thousands separator (e.g. `4.2` is valid, but `1.234,5` is invalid). Scientific notation is allowed (e.g. `1e3` to represent `1000`).
+			- To specify boolean: valid values are `true` or `false`, `0`, or `1`.
 
-## Notes
+			## Notes
 
-Please note, this document has been automatically generated via the IDS Audit Tool repository, any changes should be initiated there.
-";
+			Please note, this document has been automatically generated via the IDS Audit Tool repository, any changes should be initiated there.
 
+			""";
 	}
 }

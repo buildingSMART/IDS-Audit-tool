@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Text;
 using System.Xml;
@@ -157,17 +158,33 @@ public class IfcSchema_PropertiesGenerator
 		var tList = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyListValue");
 		if (tList is not null)
 		{
-			return ""; // todo
+			// todo: this case would have an enum of valid values, that we are ignoring.
+			var tp = GetChildNodes(tList, "ListValue", "DataType").First().GetAttribute("type");
+			return $"""new SingleValuePropertyType("{nm}", "{tp}"){def}""";
 		}
 
 		var tTable = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyTableValue");
 		if (tTable is not null)
 		{
-			return ""; // todo
+			var def1Val = GetChildNodes(tTable, "DefiningValue", "DataType").First().GetAttribute("type");
+			var def2Val = GetChildNodes(tTable, "DefinedValue", "DataType").First().GetAttribute("type");
+			return $"""new TableValuePropertyType("{nm}", "{def1Val}", "{def2Val}"){def}""";
 		}
 
 		throw new NotImplementedException($"Unknown type {t.Name} for {nm}");
 
+	}
+
+	private static IEnumerable<XmlElement> GetChildNodes(XmlElement root, string firstSub, string element)
+	{
+		var t = root.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == firstSub);
+		if (t is null)
+			yield break;
+		var t2 = t.ChildNodes.OfType<XmlElement>().Where(x => x.Name == element);
+		foreach (var item in t2)
+		{
+			yield return item;
+		}
 	}
 
 	private static IEnumerable<string> GetChildValues(XmlElement root, string firstSub, string element)
@@ -290,7 +307,6 @@ public class IfcSchema_PropertiesGenerator
 				if (prop.PropertyType.PropertyValueType is TypePropertySingleValue singleV)
 				{
 					var t = $"new SingleValuePropertyType(\"{prop.Name}\", \"{singleV.DataType.Type}\"){def}";
-					//propTypes.Add(singleV.DataType.Type.ToString()!);
 					richProp.Add(t);
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyBoundedValue range)
@@ -301,15 +317,10 @@ public class IfcSchema_PropertiesGenerator
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyEnumeratedValue enumV)
 				{
-
 					if (enumV.ConstantList.Any())
-					{
 						throw new Exception("Not implemented data structure.");
-					}
 					else
-					{
-						richProp.Add($"new EnumerationPropertyType(\"{prop.Name}\", {NewStringArray(enumV.EnumList.Items)} ){def}");
-					}
+						richProp.Add($"new EnumerationPropertyType(\"{prop.Name}\", {NewStringArray(enumV.EnumList.Items)} ){def}");					
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyReferenceValue refP)
 				{
@@ -318,8 +329,9 @@ public class IfcSchema_PropertiesGenerator
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyListValue lst)
 				{
-					// list values do not have a testing method, and are ignored
-					// e.g. they could have multiple values for the property
+					// todo: this case would have an enum of valid values, that we are ignoring.
+					var t = $"new SingleValuePropertyType(\"{prop.Name}\", \"{lst.ListValue.DataType.Type}\"){def}";
+					richProp.Add(t);
 				}
 				else if (prop.PropertyType.PropertyValueType is TypeSimpleProperty simple)
 				{
@@ -329,8 +341,11 @@ public class IfcSchema_PropertiesGenerator
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyTableValue table)
 				{
-					// list values do not have a testing method, and are ignored
-					// e.g. they could have multiple values for the property
+					if (table.DefiningValue is not null && table.DefinedValue is not null)
+					{
+						var t = $"""new TableValuePropertyType("{prop.Name}", "{table.DefiningValue.DataType.Type}", "{table.DefinedValue.DataType.Type}"){def}""";
+						richProp.Add(t);
+					}
 				}
 				else if (prop.PropertyType.PropertyValueType is TypeComplexProperty cmplex)
 				{
@@ -368,32 +383,32 @@ public class IfcSchema_PropertiesGenerator
         return @$"new {type}[] {{{"\r\n"}			{string.Join(",\r\n\t\t\t", values)} }}";
     }
 
-    private const string stub = @"// generated via source generation from ids-lib.codegen using Xbim.PropertySets <PlaceHolderVersion>
+    private const string stub = """
+		// generated via source generation from ids-lib.codegen using Xbim.PropertySets <PlaceHolderVersion>
 
-using System.Collections.Generic;
+		using System.Collections.Generic;
 
-namespace IdsLib.IfcSchema;
+		namespace IdsLib.IfcSchema;
 
-/// <summary>
-/// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
-/// </summary>
-public partial class PropertySetInfo
-{
-	static IEnumerable<PropertySetInfo> GetPropertiesIFC2x3()
-	{
-<PlaceHolderIFC2x3>
-	}
+		/// <summary>
+		/// For reference see IdsLib.codegen.IfcSchema_PropertiesGenerator
+		/// </summary>
+		public partial class PropertySetInfo
+		{
+			static IEnumerable<PropertySetInfo> GetPropertiesIFC2x3()
+			{
+		<PlaceHolderIFC2x3>
+			}
 
-	private static IEnumerable<PropertySetInfo> GetPropertiesIFC4()
-	{
-<PlaceHolderIFC4>
-	}
+			private static IEnumerable<PropertySetInfo> GetPropertiesIFC4()
+			{
+		<PlaceHolderIFC4>
+			}
 
-    private static IEnumerable<PropertySetInfo> GetPropertiesIFC4x3()
-	{
-<PlaceHolderIFC4x3>
-	}
-}
-
-";
+		    private static IEnumerable<PropertySetInfo> GetPropertiesIFC4x3()
+			{
+		<PlaceHolderIFC4x3>
+			}
+		}
+		""";
 }

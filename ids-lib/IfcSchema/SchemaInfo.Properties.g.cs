@@ -86,7 +86,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Weight of the air terminal box."} },
 				new [] { "IfcAirTerminalBoxType" });
 		yield return new PropertySetInfo("Pset_AirTerminalPHistory", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("CenterlineAirVelocity", "IfcLinearVelocityMeasure", "IfcLengthMeasure") { Definition = "Centerline air velocity versus distance from the diffuser and temperature differential; a function of distance from diffuser and temperature difference between supply air and room air."},
+			new TableValuePropertyType("InductionRatio", "IfcReal", "IfcLengthMeasure") { Definition = "Induction ratio versus distance from the diffuser and its discharge direction; induction ratio (or entrainment ratio) is the ratio of the volumetric flow rate in the jet to the volumetric flow rate at the air terminal"} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_AirTerminalTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("CoreType", new [] { "SHUTTERBLADE", "CURVEDBLADE", "REMOVABLE", "REVERSIBLE", "NONE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Identifies the way the core of the AirTerminal is constructed."},
@@ -108,7 +109,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NeckArea", "IfcAreaMeasure") { Definition = "Neck area of the air terminal."},
 			new SingleValuePropertyType("TemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Temperature range within which the air terminal is designed to operate."},
 			new SingleValuePropertyType("ThrowLength", "IfcLengthMeasure") { Definition = "The horizontal or vertical axial distance an airstream travels after leaving an AirTerminal before the maximum stream velocity is reduced to a specified terminal velocity under isothermal conditions at the upper value of the AirFlowrateRange."},
-			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Weight of the air terminal."} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Weight of the air terminal."},
+			new TableValuePropertyType("AirFlowrateVersusFlowControlElement", "IfcVolumetricFlowRateMeasure", "IfcPositiveRatioMeasure") { Definition = "Air flowrate versus flow control element position at nominal pressure drop."} },
 				new [] { "IfcAirTerminalType" });
 		yield return new PropertySetInfo("Pset_AirTerminalTypeRectangular", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("FaceType", new [] { "FOURWAYPATTERN", "SINGLEDEFLECTION", "DOUBLEDEFLECTION", "SIGHTPROOF", "EGGCRATE", "PERFORATED", "LOUVERED", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Identifies how the terminal face of an AirTerminal is constructed."} },
@@ -187,11 +189,14 @@ public partial class PropertySetInfo
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_BoilerTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("OperatingMode", new [] { "FIXED", "TWOSTEP", "MODULATING", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Identifies the operating mode of the boiler."},
+			new SingleValuePropertyType("HeatOutput", "IfcReal") { Definition = "Total nominal heat output as listed by the Boiler manufacturer. For water boilers, it is a function of inlet versus outlet temperature. For steam boilers, it is a function of inlet temperature versus steam pressure."},
 			new SingleValuePropertyType("HeatTransferSurfaceArea", "IfcAreaMeasure") { Definition = "Total heat transfer area of the vessel."},
 			new SingleValuePropertyType("IsWaterStorageHeater", "IfcBoolean") { Definition = "This is used to identify if the boiler has storage capacity (TRUE). If FALSE, then there is no storage capacity built into the boiler, such as an instantaneous hot water heater."},
+			new SingleValuePropertyType("NominalEfficiency", "IfcReal") { Definition = "The nominal efficiency of the boiler as defined by the manufacturer. For water boilers, a function of inlet versus outlet temperature. For steam boilers, a function of inlet temperature versus steam pressure."},
 			new SingleValuePropertyType("NominalEnergyConsumption", "IfcPowerMeasure") { Definition = "Nominal fuel consumption rate required to produce the total boiler heat output."},
 			new SingleValuePropertyType("NominalPartLoadRatio", "IfcReal") { Definition = "Allowable part load ratio range."},
 			new SingleValuePropertyType("OutletTemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable outlet temperature of either the water or the steam."},
+			new SingleValuePropertyType("PartialLoadEfficiencyCurves", "IfcReal") { Definition = "Boiler efficiency as a function of the partial load factor; E = f (partialLaodfactor)."},
 			new SingleValuePropertyType("PressureRating", "IfcPressureMeasure") { Definition = "Nominal pressure rating of the boiler as rated by ASME Boiler and Pressure Vessel Code Section IV, Rules for Construction of Heating Boilers, and Section I, Rules for Construction of Power Boilers"},
 			new SingleValuePropertyType("WaterInletTemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable water inlet temperature range."},
 			new SingleValuePropertyType("WaterStorageCapacity", "IfcVolumeMeasure") { Definition = "Water storage capacity."},
@@ -226,11 +231,15 @@ public partial class PropertySetInfo
 				new [] { "IfcBuildingStorey" });
 		yield return new PropertySetInfo("Pset_BuildingUse", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("MarketCategory", "IfcLabel") { Definition = "Category of use e.g. residential, commercial, recreation etc."},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableFuture", "IfcLabel") { Definition = "A list of the sub categories of property that are expected to be available in the future expressed in terms of IfcLabel"},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableNow", "IfcLabel") { Definition = "A list of the sub categories of property that are currently available expressed in terms of IfcLabel"},
 			new SingleValuePropertyType("MarketSubCategory", "IfcLabel") { Definition = "Subset of category of use e.g. multi-family, 2 bedroom, low rise"},
 			new SingleValuePropertyType("NarrativeText", "IfcText") { Definition = "Added information relating to the adjacent building use that is not appropriate to the general descriptive text associated with an entity through the inherited IfcRoot.Description"},
 			new SingleValuePropertyType("PlanningControlStatus", "IfcLabel") { Definition = "Label of zoning category or class, or planning control category for the site or facility."},
 			new SingleValuePropertyType("RentalRatesInCategoryFuture", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property expected to be available in the future in the required category."},
 			new SingleValuePropertyType("RentalRatesInCategoryNow", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property currently available in the required category."},
+			new SingleValuePropertyType("TenureModesAvailableFuture", "IfcLabel") { Definition = "A list of the tenure modes that are expected to be available in the future expressed in terms of IfcLabel"},
+			new SingleValuePropertyType("TenureModesAvailableNow", "IfcLabel") { Definition = "A list of the tenure modes that are currently available expressed in terms of IfcLabel"},
 			new SingleValuePropertyType("VacancyRateInCategoryFuture", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category expected in the future"},
 			new SingleValuePropertyType("VacancyRateInCategoryNow", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category currently"} },
 				new [] { "IfcBuilding" });
@@ -322,7 +331,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("PrimarySurfaceArea", "IfcAreaMeasure") { Definition = "Primary heat transfer surface area of the tubes and headers."},
 			new SingleValuePropertyType("SecondarySurfaceArea", "IfcAreaMeasure") { Definition = "Secondary heat transfer surface area created by fins."},
 			new SingleValuePropertyType("SensibleHeatRatio", "IfcReal") { Definition = "Air-side sensible heat ratio, or fraction of sensible heat transfer to the total heat transfer."},
-			new SingleValuePropertyType("WetCoilFraction", "IfcPositiveRatioMeasure") { Definition = "Fraction of coil surface area that is wet (0-1)."} },
+			new SingleValuePropertyType("WetCoilFraction", "IfcPositiveRatioMeasure") { Definition = "Fraction of coil surface area that is wet (0-1)."},
+			new TableValuePropertyType("TotalUACurves", "IfcReal", "IfcReal") { Definition = "Total UA curves, UA - air and water velocities, UA = [(C1 * AirFlowRate^0.8)^-1 + (C2 * WaterFlowRate^0.8)^-1]^-1."},
+			new TableValuePropertyType("WaterPressureDropCurve", "IfcReal", "IfcReal") { Definition = "Water pressure drop curve, pressure drop – flow rate curve, WaterPressureDrop = f(WaterflowRate)."} },
 				new [] { "IfcCoilType" });
 		yield return new PropertySetInfo("Pset_ColumnCommon", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FireRating", "IfcLabel") { Definition = "Fire rating for this object.\nIt is given according to the national fire safety classification."},
@@ -332,7 +343,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Slope", "IfcPlaneAngleMeasure") { Definition = "Slope angle - relative to horizontal (0.0 degrees).\nThe shape information is provided in addition to the shape representation and the geometric parameters used within. In cases of inconsistency between the geometric parameters and the shape properties, provided in the attached property, the geometric parameters take precedence. "} },
 				new [] { "IfcColumn" });
 		yield return new PropertySetInfo("Pset_CompressorPHistory", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("FullLoadRatioCurve", "IfcReal") { Definition = "Ratio of actual power to full load power as a quadratic function of part load, at certain condensing and evaporating temperature, FracFullLoadPower = f ( PartLoadRatio)."} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_CompressorTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("PowerSource", new [] { "MOTORDRIVEN", "ENGINEDRIVEN", "GASTURBINE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Type of power driving the compressor"},
@@ -500,7 +511,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("OpenPressureDrop", "IfcPressureMeasure") { Definition = "Total pressure drop across damper."},
 			new SingleValuePropertyType("TemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Temperature range."},
 			new SingleValuePropertyType("TemperatureRating", "IfcThermodynamicTemperatureMeasure") { Definition = "Temperature rating."},
-			new SingleValuePropertyType("TorqueRange", "IfcTorqueMeasure") { Definition = "Torque range."} },
+			new SingleValuePropertyType("TorqueRange", "IfcTorqueMeasure") { Definition = "Torque range."},
+			new TableValuePropertyType("LeakageCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Leakage versus pressure drop; Leakage = f (pressure)."},
+			new TableValuePropertyType("LossCoefficentCurve", "IfcReal", "IfcReal") { Definition = "Loss coefficient – blade position angle curve; ratio of pressure drop to velocity pressure versus blade angle; C = f (blade angle position)."},
+			new TableValuePropertyType("RegeneratedSoundCurve", "IfcReal", "IfcVolumetricFlowRateMeasure") { Definition = "Regenerated sound versus air flow rate."} },
 				new [] { "IfcDamperType" });
 		yield return new PropertySetInfo("Pset_DamperTypeControlDamper", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ControlDamperOperation", new [] { "LINEAR", "EXPONENTIAL", "IFCPOLYLINE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The inherent characteristic of the control damper operation."},
@@ -704,7 +718,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("LayerName", "IfcIdentifier") { Definition = "Identifier of the layer name within the sending application."} },
 				new [] { "IfcElement", "IfcSpatialStructureElement" });
 		yield return new PropertySetInfo("Pset_DuctConnection", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("ConnectionType", "IfcText") { Definition = "The connection type between duct segments or fittings and other segments or fittings. If the list contains only one value, then this connection type value applies to all ports. For more than one value in the list, the connection type value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nANGLE: Angle. \nBEADEDSLEEVE: Beaded Sleeve. \nBRAZED: Brazed. \nCOMPRESSION: Compression. \nCRIMP: Crimp. \nDRAWBAND: Drawband. \nDRIVESLIP: Drive slip. \nFLANGED: Flanged. \nOUTSIDESLEEVE: Outside Sleeve. \nSLIPON: Slipon. \nSOLDERED: Soldered. \nSSLIP: S-Slip. \nSTANDINGSEAM: Standing seam. \nSWEDGE: Swedge. \nWELDED: Welded. \nNONE: No connection type.\nNOTDEFINED: Undefined connection type. "} },
 				new [] { "IfcDistributionElement" });
 		yield return new PropertySetInfo("Pset_DuctDesignCriteria", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("DuctSizingMethod", new [] { "CONSTANTFRICTION", "CONSTANTPRESSURE", "STATICREGAIN", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Enumeration that identifies the methodology to be used to size system components "},
@@ -722,7 +736,10 @@ public partial class PropertySetInfo
 			 },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_DuctFittingTypeCommon", new IPropertyTypeInfo[] {
+			new SingleValuePropertyType("EndStyleTreatment", "IfcText") { Definition = "The end-style treatment of the duct fitting manufactured. If the list contains only one value, then this end-style applies to all ports. For more than one value in the list, the end-style value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nANGLE: Angle. \nBEADEDSLEEVE: Beaded Sleeve. \nBRAZED: Brazed. \nCOMPRESSION: Compression. \nCRIMP: Crimp. \nDRAWBAND: Drawband. \nDRIVESLIP: Drive slip. \nFLANGED: Flanged. \nOUTSIDESLEEVE: Outside Sleeve. \nSLIPON: Slipon. \nSOLDERED: Soldered. \nSSLIP: S-Slip. \nSTANDINGSEAM: Standing seam. \nSWEDGE: Swedge. \nWELDED: Welded. \nNONE: No end-style treatment has been applied.\nNOTDEFINED: Undefined end-style type. "},
 			new SingleValuePropertyType("MaterialThickness", "IfcPositiveLengthMeasure") { Definition = "The thickness of the duct fitting material."},
+			new SingleValuePropertyType("NominalDiameterOrWidth", "IfcPositiveLengthMeasure") { Definition = "The nominal diameter or width of the duct fitting. If the list contains only one value, then this nominal diameter or width applies to all ports. For more than value in the list, the nominal diameter or width value applies to the port that corresponds to the list index."},
+			new SingleValuePropertyType("NominalHeight", "IfcPositiveLengthMeasure") { Definition = "The nominal height of the duct fitting. Refer to NominalDiameterOrWidth for comments about interpretation of multiple items in the list."},
 			new SingleValuePropertyType("PressureClass", "IfcPressureMeasure") { Definition = "Pressure classification as defined by the authority having jurisdiction (e.g., SMACNA, etc.)."},
 			new SingleValuePropertyType("PressureRange", "IfcPressureMeasure") { Definition = "Allowable maximum and minimum working pressure (relative to ambient pressure)."},
 			new SingleValuePropertyType("SubType", "IfcText") { Definition = "Subtype of fitting (I.e., 5-gore, pleated, stamped, etc.) "},
@@ -734,9 +751,12 @@ public partial class PropertySetInfo
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_DuctSegmentTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Shape", new [] { "FLATOVAL", "RECTANGULAR", "ROUND", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Cross sectional shape. Note that this shape is uniform throughout the length of the segment. For nonuniform shapes, a transition fitting should be used instead."},
+			new SingleValuePropertyType("EndStyleTreatment", "IfcText") { Definition = "The end-style treatment of the duct segment manufactured. If the list contains only one value, then this end-style applies to all ports. For more than one value in the list, the end-style value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nANGLE: Angle. \nBEADEDSLEEVE: Beaded Sleeve. \nBRAZED: Brazed. \nCOMPRESSION: Compression. \nCRIMP: Crimp. \nDRAWBAND: Drawband. \nDRIVESLIP: Drive slip. \nFLANGED: Flanged. \nOUTSIDESLEEVE: Outside Sleeve. \nSLIPON: Slipon. \nSOLDERED: Soldered. \nSSLIP: S-Slip. \nSTANDINGSEAM: Standing seam. \nSWEDGE: Swedge. \nWELDED: Welded. \nNONE: No end-style treatment has been applied.\nNOTDEFINED: Undefined end-style type. "},
 			new SingleValuePropertyType("Length", "IfcPositiveLengthMeasure") { Definition = "Length of the duct segment. If a Length attribute is provided in the occurrence property set, it supersedes this value."},
 			new SingleValuePropertyType("LongitudinalSeam", "IfcText") { Definition = "The type of seam to be used along the longitudinal axis of the duct segment."},
 			new SingleValuePropertyType("MaterialThickness", "IfcPositiveLengthMeasure") { Definition = "The thickness of the duct segment material."},
+			new SingleValuePropertyType("NominalDiameterOrWidth", "IfcPositiveLengthMeasure") { Definition = "The nominal diameter or width of the duct segment. If the list contains only one value, then this nominal diameter or width applies to all ports. For more than value in the list, the nominal diameter or width value applies to the port that corresponds to the list index."},
+			new SingleValuePropertyType("NominalHeight", "IfcPositiveLengthMeasure") { Definition = "The nominal height of the duct segment. Refer to NominalDiameterOrWidth for comments about interpretation of multiple items in the list."},
 			new SingleValuePropertyType("PressureRange", "IfcPressureMeasure") { Definition = "Allowable maximum and minimum working pressure (relative to ambient pressure)."},
 			new SingleValuePropertyType("Reinforcement", "IfcLabel") { Definition = "The type of reinforcement, if any, used for the duct segment."},
 			new SingleValuePropertyType("ReinforcementSpacing", "IfcPositiveLengthMeasure") { Definition = "The spacing between reinforcing elements."},
@@ -745,7 +765,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("WorkingPressure", "IfcPressureMeasure") { Definition = "Pressure classification as defined by the authority having jurisdiction (e.g., SMACNA, etc.)."} },
 				new [] { "IfcDuctSegmentType" });
 		yield return new PropertySetInfo("Pset_DuctSilencerPHistory", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("AirPressureDropCurve", "IfcPressureMeasure") { Definition = "Air pressure drop as a function of air flow rate."} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_DuctSilencerTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Shape", new [] { "FLATOVAL", "RECTANGULAR", "ROUND", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Cross sectional shape."},
@@ -836,7 +856,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NumberOfSections", "IfcInteger") { Definition = "Number of vertical sections, measured in the direction of flow."} },
 				new [] { "IfcEnergyConversionDevice" });
 		yield return new PropertySetInfo("Pset_EvaporativeCoolerPHistory", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("AirPressureDropCurve", "IfcPressureMeasure") { Definition = "Air pressure drop as function of air flow rate."},
+			new SingleValuePropertyType("EffectivenessTable", "IfcReal") { Definition = "Total heat transfer effectiveness curve as a function of the primary air flow rate."},
+			new SingleValuePropertyType("WaterPressDropCurve", "IfcPressureMeasure") { Definition = "Water pressure drop as function of water flow rate."} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_EvaporativeCoolerTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("FlowArrangement", new [] { "COUNTERFLOW", "CROSSFLOW", "PARALLELFLOW", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "CounterFlow: Air and water flow enter in different directions.\nCrossFlow: Air and water flow are perpendicular.\nParallelFlow: Air and water flow enter in same directions."},
@@ -860,7 +882,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NominalHeatTransferCoefficient", "IfcThermalTransmittanceMeasure") { Definition = "Nominal overall heat transfer coefficient associated with nominal heat transfer area."} },
 				new [] { "IfcEvaporatorType" });
 		yield return new PropertySetInfo("Pset_FanPHistory", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("EfficiencyCurve", "IfcReal", "IfcReal") { Definition = "Fan efficiency =f (flow rate)."},
+			new TableValuePropertyType("PressureCurve", "IfcReal", "IfcReal") { Definition = "Pressure rise = f (flow rate)."} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_FanTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("CapacityControlType", new [] { "INLETVANE", "VARIABLESPEEDDRIVE", "BLADEPITCHANGLE", "TWOSPEED", "DISCHARGEDAMPER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "\nInletVane: Control by adjusting inlet vane\nVariableSpeedDrive: Control by variable speed drive \nBladePitchAngle: Control by adjusting blade pitch angle\nTwoSpeed: Control by switch between high and low speed\nDischargeDamper: Control by modulating discharge damper"},
@@ -889,7 +912,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("FaceSurfaceArea", "IfcAreaMeasure") { Definition = "Face area of filter frame."},
 			new SingleValuePropertyType("MediaExtendedArea", "IfcAreaMeasure") { Definition = "Total extended media area."},
 			new SingleValuePropertyType("NominalCountedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle count concentration before and after the filter against particles with a certain size distribution."},
-			new SingleValuePropertyType("NominalWeightedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle weight concentration before and after the filter against particles with a certain size distribution."} },
+			new SingleValuePropertyType("NominalWeightedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle weight concentration before and after the filter against particles with a certain size distribution."},
+			new TableValuePropertyType("CountedEfficiencyCurve", "IfcReal", "IfcReal") { Definition = "Counted efficiency curve as a function of dust holding weight, efficiency = f (dust holding weight)."},
+			new TableValuePropertyType("PressureDropCurve", "IfcPressureMeasure", "IfcReal") { Definition = "Under certain dust holding weight, DelPressure = f (fluidflowRate)"},
+			new TableValuePropertyType("WeightedEfficiencyCurve", "IfcReal", "IfcReal") { Definition = "Weighted efficiency curve as a function of dust holding weight, efficiency = f (dust holding weight)."} },
 				new [] { "IfcFilterType" });
 		yield return new PropertySetInfo("Pset_FilterTypeCommon", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FinalResistance", "IfcPressureMeasure") { Definition = "Filter fluid resistance when replacement is required (i.e., Pressure drop at the maximum air flowrate across the filter when the filter needs replacement per ASHRAE Standard 52.1)."},
@@ -1088,7 +1114,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NumberOfPlates", "IfcInteger") { Definition = "Number of plates used by the plate heat exchanger."} },
 				new [] { "IfcHeatExchangerType" });
 		yield return new PropertySetInfo("Pset_HumidifierPHistory", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("AirPressureDropCurve", "IfcPressureMeasure", "IfcVolumetricFlowRateMeasure") { Definition = "Air pressure drop versus air-flow rate."},
+			new TableValuePropertyType("SaturationEfficiencyCurve", "IfcReal", "IfcVolumetricFlowRateMeasure") { Definition = "Saturation efficiency as a function of the air flow rate."} },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_HumidifierTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Application", new [] { "PORTABLE", "FIXED", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Humidifier application.\nFixed: Humidifier installed in a ducted flow distribution system.\nPortable: Humidifier is not installed in a ducted flow distribution system."},
@@ -1106,7 +1133,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ColorTemperature", "IfcThermodynamicTemperatureMeasure") { Definition = "The color temperature of any source of radiation is defined as the temperature (in Kelvin) of a black-body or Planckian radiator whose radiation has the same chromaticity as the source of radiation. Often the values are only approximate color temperatures as the black-body radiator cannot emit radiation of every chromaticity value. The color temperatures of the commonest artificial light sources range from less than 3000K (warm white) to 4000K (intermediate) and over 5000K (daylight)."},
 			new SingleValuePropertyType("ContributedLuminousFlux", "IfcLuminousFluxMeasure") { Definition = "Luminous flux is a photometric measure of radiant flux, i.e. the volume of light emitted from a light source. Luminous flux is measured either for the interior as a whole or for a part of the interior (partial luminous flux for a solid angle). All other photometric parameters are derivatives of luminous flux. Luminous flux is measured in lumens (lm). The luminous flux is given as a nominal value for each lamp."},
 			new SingleValuePropertyType("LampMaintenanceFactor", "IfcReal") { Definition = "Non recoverable losses of luminous flux of a lamp due to lamp depreciation; i.e. the decreasing of light output of a luminaire due to aging and dirt. "},
-			new SingleValuePropertyType("LightEmitterNominalPower", "IfcPowerMeasure") { Definition = "Light emitter nominal power."} },
+			new SingleValuePropertyType("LightEmitterNominalPower", "IfcPowerMeasure") { Definition = "Light emitter nominal power."},
+			new TableValuePropertyType("Spectrum", "IfcNumericMeasure", "IfcNumericMeasure") { Definition = "The spectrum of radiation describes its composition with regard to wavelength. Light, for example, as the portion of electromagnetic radiation that is visible to the human eye, is radiation with wavelengths in the range of approx. 380 to 780 nm (1 nm = 10 m). The corresponding range of colours varies from violet to indigo, blue, green, yellow, orange, and red. These colours form a continuous spectrum, in which the various spectral sectors merge into each other."} },
 				new [] { "IfcLampType" });
 		yield return new PropertySetInfo("Pset_LightFixtureTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("LightFixtureMountingType", new [] { "CableSpanned", "FreeStanding", "Pole_Side", "Pole_Top", "Recessed", "Surface", "Suspended", "TrackMounted", "Other", "NotKnown", "Unset" } ) { Definition = "A list of the available types of mounting for light fixtures from which that required may be selected."},
@@ -1151,12 +1179,16 @@ public partial class PropertySetInfo
 		yield return new PropertySetInfo("Pset_MultiStateInput", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("EventEnable", new [] { "To-OffNormal", "To-Fault", "To-Normal", "Other", "NotKnown", "Unset" } ) { Definition = "Enumeration that defines the type of event enabling"},
 			new EnumerationPropertyType("NotifyType", new [] { "Alarm", "Event", "AcknowledgeNotification", "Other", "NotKnown", "Unset" } ) { Definition = "Enumeration that defines the notification type"},
-			new SingleValuePropertyType("NumberOfStates", "IfcInteger") { Definition = "Number of states for the multi-state Input."} },
+			new SingleValuePropertyType("AlarmValues", "IfcInteger") { Definition = "Specifies any states the present value must equal before an EventEnable shall occur. Upper limit of the list is equal to the NumberOfStates."},
+			new SingleValuePropertyType("NumberOfStates", "IfcInteger") { Definition = "Number of states for the multi-state Input."},
+			new SingleValuePropertyType("StateText", "IfcText") { Definition = "String values to identify the state condition. Upper limit of the list is equal to the NumberOfStates."} },
 				new [] { "IfcDistributionControlElement" });
 		yield return new PropertySetInfo("Pset_MultiStateOutput", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("EventEnable", new [] { "To-OffNormal", "To-Fault", "To-Normal", "Other", "NotKnown", "Unset" } ) { Definition = "Enumeration that defines the type of event enabling"},
 			new EnumerationPropertyType("NotifyType", new [] { "Alarm", "Event", "AcknowledgeNotification", "Other", "NotKnown", "Unset" } ) { Definition = "Enumeration that defines the notification type"},
-			new SingleValuePropertyType("NumberOfStates", "IfcInteger") { Definition = "Number of states for the multi-state Input."} },
+			new SingleValuePropertyType("AlarmValues", "IfcInteger") { Definition = "Specifies any states the present value must equal before an EventEnable shall occur. Upper limit of the list is equal to the NumberOfStates."},
+			new SingleValuePropertyType("NumberOfStates", "IfcInteger") { Definition = "Number of states for the multi-state Input."},
+			new SingleValuePropertyType("StateText", "IfcText") { Definition = "String values to identify the state condition. Upper limit of the list is equal to the NumberOfStates."} },
 				new [] { "IfcDistributionControlElement" });
 		yield return new PropertySetInfo("Pset_OpeningElementCommon", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FireExit", "IfcBoolean") { Definition = "Indication whether this object is designed to serve as an exit in the case of fire (TRUE) or not (FALSE).\nHere whether the space (in case of e.g., a corridor) is designed to serve as an exit space, e.g., for fire escape purposes."},
@@ -1188,7 +1220,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("SpecialRequirements", "IfcText") { Definition = "Any additional special requirements that need to be included in the permit to work.\n\nNOTE - Additional permit requirements may be imposed according to the nature of the facility at which the work is carried out. For instance, in clean areas, special clothing may be required whilst in corrective institutions, it may be necessary to check in and check out tools that will be used for work as a safety precaution."} },
 				new [] { "IfcPermit" });
 		yield return new PropertySetInfo("Pset_PipeConnection", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("ConnectionType", "IfcLabel") { Definition = "The connection type between pipe segments or fittings and other segments or fittings. If the list contains only one value, then this connection type value applies to all ports. For more than one value in the list, the connection type value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nBRAZED: Brazed connection type. \nCOMPRESSION: Compression connection type. \nFLANGED: Flanged connection type including bolts and gasket. \nGLANDJOINT: Gland-joint  connection type. \nFLEXIBLEBOLTEDGLANDJOINT: Flexible bolted gland-joint  connection type. \nFLEXIBLEBOLTEDGLANDJOINTWITHANODEENDCAP: Flexible bolted gland-joint with anode end-cap connection type.  \nGROOVED: Grooved connection type. \nSOLDERED: Soldered connection type. \nSOLDERED_FEMALE: Female-soldered connection type. \nSOLDERED_MALE: Male-soldered connection type. \nSWEDGE: Swedge connection type.  \nTHREADED: Threaded connection type. \nTHREADED_FEMALE: Female-threaded connection type. \nTHREADED_MALE: Male-threaded connection type. \nWELDED: Welded connection type. \nWELDED_BUTT: Butt-welded connection type. \nWELDED_BRANCH: Branch-welded connection type. \nWELDED_FLANGE: Flange-welded connection type. \nNONE: There is no connection.\nNOTDEFINED: Undefined connection type. "} },
 				new [] { "IfcDistributionElement" });
 		yield return new PropertySetInfo("Pset_PipeConnectionFlanged", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BoltholePitch", "IfcLengthMeasure") { Definition = "Diameter of the circle along which the boltholes are placed"},
@@ -1204,7 +1236,11 @@ public partial class PropertySetInfo
 			 },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_PipeFittingTypeCommon", new IPropertyTypeInfo[] {
+			new SingleValuePropertyType("EndStyleTreatment", "IfcLabel") { Definition = "The end-style treatment of the pipe fitting as made available from the manufacturer. If the list contains only one value, then this end-style applies to all ports. For more than one value in the list, the end-style value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nFLANGED: Flanged. \nGROOVED: Grooved. \nTHREADED: Threaded. \nNONE: No end-style has been applied.\nNOTDEFINED: Undefined end-style type. "},
 			new SingleValuePropertyType("FittingLossFactor", "IfcReal") { Definition = "A factor that determines the pressure loss due to friction through the fitting."},
+			new SingleValuePropertyType("InnerDiameter", "IfcPositiveLengthMeasure") { Definition = "The actual inner diameter of the pipe. Refer to NominalDiameter for comments about interpretation of multiple items in the list."},
+			new SingleValuePropertyType("NominalDiameter", "IfcPositiveLengthMeasure") { Definition = "The nominal diameter of the pipe fitting. If the list contains only one value, then this nominal diameter applies to all ports. For more than value in the list, the nominal diameter value applies to the port that corresponds to the list index."},
+			new SingleValuePropertyType("OuterDiameter", "IfcPositiveLengthMeasure") { Definition = "The actual outer diameter of the pipe. Refer to NominalDiameter for comments about interpretation of multiple items in the list."},
 			new SingleValuePropertyType("PressureClass", "IfcPressureMeasure") { Definition = "The test or rated pressure classification of the fitting."},
 			new SingleValuePropertyType("PressureRange", "IfcPressureMeasure") { Definition = "Allowable maximum and minimum working pressure (relative to ambient pressure)."},
 			new SingleValuePropertyType("SubType", "IfcLabel") { Definition = "Subtype of the pipe fitting..The following suggested items should be utilized whenever possible for consistency across applications:\nBEND_15DEGREE: Changes the direction of flow through 15 degrees. \nBEND_22_5DEGREE: Changes the direction of flow through 22.5 degrees. \nBEND_25DEGREE: Changes the direction of flow through 25 degrees. \nBEND_30DEGREE: Changes the direction of flow through 30 degrees. \nBEND_45DEGREE: Changes the direction of flow through 45 degrees. \nBEND_67DEGREE: Changes the direction of flow through 67 degrees. \nBEND_76DEGREE: Changes the direction of flow through 76 degrees. \nBEND_87_5DEGREE: Changes the direction of flow through 87.5 degrees. \nBEND_90DEGREE: Changes the direction of flow through 90 degrees. \nBEND_135DEGREE: Changes the direction of flow through 135 degrees. \nBEND_180DEGREE: Changes the direction of flow through 180 degrees. \nJUNCTION_CROSS_SQUARE: Branch fitting with two opposing branches that are swept in the direction of the main flow. \nJUNCTION_CROSS_SWEEP: Branch fitting with two swept opposing branches at right angles to the main flow. \nJUNCTION_TEE_SQUARE: Branch fitting in which the branch is at an angle of 90 degrees to the main pipe. \nJUNCTION_TEE_SWEEP: Branch fitting in which the branch is curved through 90 degrees to join a main pipe tangentially. \nJUNCTION_TEE_TWINBEND: Symmetrical pipe fitting in which two short radius bends curve through 90 degree to form a single pipe. \n+I1JUNCTION_TEE_TWINELBOW: Symmetrical pipe fitting in which two elbows curve through 90 degree to form a single pipe. \nJUNCTION_TEE_Y: Branch fitting in the shape of a letter Y. \nOBSTRUCTION_CAP: Device fixed onto the end of a pipe or pipe fitting to close it. \nOBSTRUCTION_PLUG: Device fixed into the end of a pipe or pipe fitting to close it. \nOTHER: Other fitting subtype.\nNOTDEFINED: The fitting subtype is not defined. "},
@@ -1215,6 +1251,10 @@ public partial class PropertySetInfo
 			 },
 				new [] { "IfcPerformanceHistory" });
 		yield return new PropertySetInfo("Pset_PipeSegmentTypeCommon", new IPropertyTypeInfo[] {
+			new SingleValuePropertyType("EndStyleTreatment", "IfcLabel") { Definition = "The end-style treatment of the pipe segment as made available from the manufacturer. If the list contains only one value, then this end-style applies to all ports. For more than one value in the list, the end-style value applies to the port that corresponds to the list index.The following suggested items should be utilized whenever possible for correlation with port enumerations:\nFLANGED: Flanged. \nGROOVED: Grooved. \nTHREADED: Threaded. \nNONE: No end-style has been applied.\nNOTDEFINED: Undefined end-style type. "},
+			new SingleValuePropertyType("InnerDiameter", "IfcPositiveLengthMeasure") { Definition = "The actual inner diameter of the pipe. Refer to NominalDiameter for comments about interpretation of multiple items in the list."},
+			new SingleValuePropertyType("NominalDiameter", "IfcPositiveLengthMeasure") { Definition = "The nominal diameter of the pipe segment. If the list contains only one value, then this nominal diameter applies to all ports. For more than value in the list, the nominal diameter value applies to the port that corresponds to the list index."},
+			new SingleValuePropertyType("OuterDiameter", "IfcPositiveLengthMeasure") { Definition = "The actual outer diameter of the pipe. Refer to NominalDiameter for comments about interpretation of multiple items in the list."},
 			new SingleValuePropertyType("PressureRange", "IfcPressureMeasure") { Definition = "Allowable maximum and minimum working pressure (relative to ambient pressure)."},
 			new SingleValuePropertyType("TemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable maximum and minimum temperature."},
 			new SingleValuePropertyType("UnitWeight", "IfcMassMeasure") { Definition = "Weight per unit length."},
@@ -1324,7 +1364,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ProtectiveTagType", "IfcLabel") { Definition = "The breaking capacity value of the device. Note: This may be expressed as a code or a value depending on standard and/or source."},
 			new SingleValuePropertyType("RatedShortCircuitCurrent", "IfcElectricCurrentMeasure") { Definition = "An overcurrent resulting from a fault of negligible impedance between live conductors having a difference in potential under normal operating conditions. (IEC 826-05-08)"},
 			new SingleValuePropertyType("StandardUsed", "IfcLabel") { Definition = "The electrical standard used as a reference when preparing data for the device."},
-			new SingleValuePropertyType("SwitchingDuty", "IfcInteger") { Definition = "The maximum number of operations for the device at the rated making and breaking capacity."} },
+			new SingleValuePropertyType("SwitchingDuty", "IfcInteger") { Definition = "The maximum number of operations for the device at the rated making and breaking capacity."},
+			new TableValuePropertyType("CharacteristicTripCurve", "IfcElectricCurrentMeasure", "IfcTimeMeasure") { Definition = "A curve giving the time, e.g. prearcing time or operating time, as a function of the protective current under stated conditions of operation. "} },
 				new [] { "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTypeEarthFailureDevice", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("EarthFailureDeviceType", new [] { "Standard", "TimeDelayed", "Other", "NotKnown", "Unset" } ) { Definition = "A list of the available types of circuit breaker from which that required may be selected where:\n\nStandard - Device that operates without a time delay;\nTimeDelayed - Device that operates after a time delay."},
@@ -1495,6 +1536,7 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("RiskType", new [] { "Business", "Hazard", "HealthAndSafety", "Insurance", "Other", "NotKnown", "Unset" } ) { Definition = "Identifies the predefined types of risk from which the type required may be set."},
 			new SingleValuePropertyType("AffectsSurroundings", "IfcBoolean") { Definition = "Indicates wether the risk affects only to the person assigned to that task (FALSE) or if it can also affect to the people in the surroundings (TRUE).\n\nFor example, the process of painting would affect all the people in the vicinity of the process "},
 			new SingleValuePropertyType("NatureOfRisk", "IfcLabel") { Definition = "An indication of the generic nature of the risk that might be encountered. \n\nNOTE: It is anticipated that there will be a local agreement that constrains the values that might be assigned to this property. An example might be 'Fall'  or 'Fall of grille unit' causing injury and damage to person and property"},
+			new SingleValuePropertyType("PreventiveMeassures", "IfcText") { Definition = "Identifies preventive measures to be taken to mitigate risk"},
 			new SingleValuePropertyType("RiskCause", "IfcText") { Definition = "A value that may be assigned to capture the cause or trigger for the risk. An example might be 'poor fixing'"},
 			new SingleValuePropertyType("SubNatureOfRisk1", "IfcLabel") { Definition = "A first subsidiary value that might be assigned to designate a more specific type of risk.\n\nNOTE: Nature of risk may be identified in various ways depending upon the place where risk assessment takes place and according to local agreement. This property set allows for a generic nature of risk and up to two subsidiary natures. An example might be 'causing injury and damage'"},
 			new SingleValuePropertyType("SubNatureOfRisk2", "IfcLabel") { Definition = "A second subsidiary value that might be assigned to designate a more specific type of risk. An example might be 'o person and property'"} },
@@ -2456,11 +2498,15 @@ public partial class PropertySetInfo
 				new [] { "IfcBuildingSystem" });
 		yield return new PropertySetInfo("Pset_BuildingUse", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("MarketCategory", "IfcLabel") { Definition = "Category of use e.g. residential, commercial, recreation etc."},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableFuture", "IfcLabel") { Definition = "A list of the sub categories of property that are expected to be available in the future expressed in terms of IfcLabel."},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableNow", "IfcLabel") { Definition = "A list of the sub categories of property that are currently available expressed in terms of IfcLabel."},
 			new SingleValuePropertyType("MarketSubCategory", "IfcLabel") { Definition = "Subset of category of use e.g. multi-family, 2 bedroom, low rise."},
 			new SingleValuePropertyType("NarrativeText", "IfcText") { Definition = "Added information relating to the adjacent building use that is not appropriate to the general descriptive text associated with an entity through the inherited IfcRoot.Description."},
 			new SingleValuePropertyType("PlanningControlStatus", "IfcLabel") { Definition = "Label of zoning category or class, or planning control category for the site or facility."},
 			new SingleValuePropertyType("RentalRatesInCategoryFuture", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property expected to be available in the future in the required category."},
 			new SingleValuePropertyType("RentalRatesInCategoryNow", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property currently available in the required category."},
+			new SingleValuePropertyType("TenureModesAvailableFuture", "IfcLabel") { Definition = "A list of the tenure modes that are expected to be available in the future expressed in terms of IfcLabel."},
+			new SingleValuePropertyType("TenureModesAvailableNow", "IfcLabel") { Definition = "A list of the tenure modes that are currently available expressed in terms of IfcLabel."},
 			new SingleValuePropertyType("VacancyRateInCategoryFuture", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category expected in the future."},
 			new SingleValuePropertyType("VacancyRateInCategoryNow", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category currently."} },
 				new [] { "IfcBuilding" });
@@ -3003,6 +3049,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Current", "IfcElectricCurrentMeasure") { Definition = "The actual current and operable range."},
 			new SingleValuePropertyType("CurrentContent3rdHarmonic", "IfcPositiveRatioMeasure") { Definition = "The ratio between the third harmonic current and the phase current."},
 			new SingleValuePropertyType("Power", "IfcPowerMeasure") { Definition = "The actual power and operable range."},
+			new SingleValuePropertyType("Protocols", "IfcIdentifier") { Definition = "For data ports, identifies the protocols used as defined by the Open System Interconnection (OSI) Basic Reference Model (ISO 7498).  Layers include: 1. Physical; 2. DataLink; 3. Network; 4. Transport; 5. Session; 6. Presentation; 7. Application.  Example: 3:IP, 4:TCP, 5:HTTP"},
 			new SingleValuePropertyType("Voltage", "IfcElectricVoltageMeasure") { Definition = "The actual voltage and operable range."} },
 				new [] { "IfcDistributionPort" });
 		yield return new PropertySetInfo("Pset_DistributionPortTypeDuct", new IPropertyTypeInfo[] {
@@ -4019,6 +4066,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICS60898", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an MCB tested in accordance with the IEC 60898 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an MCB tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for an MCB tested in accordance with the IEC 60947 series."},
+			new SingleValuePropertyType("NominalCurrents", "IfcElectricCurrentMeasure") { Definition = "A set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the \nUltimateRatedCurrent associated with the same breaker unit."},
 			new SingleValuePropertyType("PowerLoss", "IfcPowerMeasure") { Definition = "The power loss in [W] per pole of the MCB  when the nominal current is flowing through the MCB."} },
 				new [] { "IfcProtectiveDevice" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitTypeMotorProtection", new IPropertyTypeInfo[] {
@@ -4026,7 +4074,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICM60947", "IfcElectricCurrentMeasure") { Definition = "The making capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
-			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."} },
+			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."},
+			new SingleValuePropertyType("PerformanceClasses", "IfcLabel") { Definition = "A set of designations of performance classes for the breaker unit for which the data of this instance is valid. A breaker unit being a motor protection device may be\nconstructed for different levels of breaking capacities. A maximum of 7 different\nperformance classes may be provided. Examples of performance classes that may be specified include B, C, N, S, H, L, V."} },
 				new [] { "IfcProtectiveDevice" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceOccurrence", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("PoleUsage", new [] { "1P", "2P", "3P", "4P", "1PN", "3PN", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Pole usage."},
@@ -4116,7 +4165,8 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("AdjustmentValueType", new [] { "RANGE", "LIST" } ) { Definition = "The type of adjustment value that is applied through the property set. This determines the properties that should be asserted (see below)."},
 			new SingleValuePropertyType("AdjustmentDesignation", "IfcLabel") { Definition = "The desgnation on the device for the adjustment."},
 			new SingleValuePropertyType("AdjustmentRange", "IfcElectricCurrentMeasure") { Definition = "Upper and lower current adjustment limits for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
-			new SingleValuePropertyType("AdjustmentRangeStepValue", "IfcElectricCurrentMeasure") { Definition = "Step value of current adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."} },
+			new SingleValuePropertyType("AdjustmentRangeStepValue", "IfcElectricCurrentMeasure") { Definition = "Step value of current adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
+			new SingleValuePropertyType("AdjustmentValues", "IfcElectricCurrentMeasure") { Definition = "A list of current adjustment values that may be applied to a tripping unit for an AdjustmentValueType = LIST. A minimum of 1 and a maximum of 16 adjustment values may be specified. Note that this property should not have a value for an  AdjustmentValueType = RANGE."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTimeAdjustment", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AdjustmentValueType", new [] { "RANGE", "LIST" } ) { Definition = "The type of adjustment value that is applied through the property set. This determines the properties that should be asserted (see below)."},
@@ -4124,6 +4174,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("AdjustmentDesignation", "IfcLabel") { Definition = "The desgnation on the device for the adjustment."},
 			new SingleValuePropertyType("AdjustmentRange", "IfcTimeMeasure") { Definition = "Upper and lower time adjustment limits for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
 			new SingleValuePropertyType("AdjustmentRangeStepValue", "IfcTimeMeasure") { Definition = "Step value of time adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
+			new SingleValuePropertyType("AdjustmentValues", "IfcTimeMeasure") { Definition = "A list of time adjustment values that may be applied to a tripping unit for an AdjustmentValueType = LIST. A minimum of 1 and a maximum of 16 adjustment values may be specified. Note that this property should not have a value for an  AdjustmentValueType = RANGE."},
 			new SingleValuePropertyType("CurrentForTimeDelay", "IfcTimeMeasure") { Definition = "The tripping current in [x In] at which the time delay is specified. A value for this property should only be asserted for time delay of L-function, and for I2t of the S and G function."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTypeCommon", new IPropertyTypeInfo[] {
@@ -4152,7 +4203,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("N_Protection_100", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit is tripping if the current in the N conductor is more than 100% of that of the phase conductors. The property is only asserted if the property N_Protection is asserted."},
 			new SingleValuePropertyType("N_Protection_50", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit is tripping if the current in the N conductor is more than 50% of that of the phase conductors. The property is only asserted if the property N_Protection is asserted."},
 			new SingleValuePropertyType("N_Protection_Select", "IfcBoolean") { Definition = "An indication whether the use of the N_Protection can be selected by the user or not. If both the properties N_Protection_50 and N_Protection_100 are asserted, the value of N_Protection_Select property is set to TRUE. The property is only asserted if the property N_Protection is asserted."},
-			new SingleValuePropertyType("N_Protection", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit has separate protection for the N conductor, or not."} },
+			new SingleValuePropertyType("N_Protection", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit has separate protection for the N conductor, or not."},
+			new SingleValuePropertyType("NominalCurrents", "IfcElectricCurrentMeasure") { Definition = "A set of values providing information on available modules (chips) for setting the nominal current of the protective device. If\nthe set is empty, no nominal current modules are available for the tripping unit."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTypeResidualCurrent", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("TrippingUnitReleaseCurrent", new [] { "10", "30", "100", "300", "500", "1000", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The value of tripping or residual current for which the device has the possibility to be equipped. The values are given in mA."} },
@@ -4171,7 +4223,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICM60947", "IfcElectricCurrentMeasure") { Definition = "The making capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
-			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."} },
+			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."},
+			new SingleValuePropertyType("PerformanceClasses", "IfcLabel") { Definition = "A set of designations of performance classes for the breaker unit for which the data of this instance is valid. A breaker unit being a circuit breaker may be\nconstructed for different levels of breaking capacities. A maximum of 7 different\nperformance classes may be provided. Examples of performance classes that may be specified include B, C, N, S, H, L, V."} },
 				new [] { "IfcProtectiveDevice" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "NEW", "EXISTING", "DEMOLISH", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -4302,6 +4355,7 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("RiskType", new [] { "BUSINESS", "HAZARD", "HEALTHANDSAFETY", "INSURANCE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Identifies the predefined types of risk from which the type required may be set."},
 			new SingleValuePropertyType("AffectsSurroundings", "IfcBoolean") { Definition = "Indicates wether the risk affects only to the person assigned to that task (FALSE) or if it can also affect to the people in the surroundings (TRUE).\n\nFor example, the process of painting would affect all the people in the vicinity of the process."},
 			new SingleValuePropertyType("NatureOfRisk", "IfcLabel") { Definition = "An indication of the generic nature of the risk that might be encountered. \n\nNOTE: It is anticipated that there will be a local agreement that constrains the values that might be assigned to this property. An example might be 'Fall'  or 'Fall of grille unit' causing injury and damage to person and property."},
+			new SingleValuePropertyType("PreventiveMeassures", "IfcText") { Definition = "Identifies preventive measures to be taken to mitigate risk."},
 			new SingleValuePropertyType("RiskCause", "IfcText") { Definition = "A value that may be assigned to capture the cause or trigger for the risk. An example might be 'poor fixing'."},
 			new SingleValuePropertyType("SubNatureOfRisk1", "IfcLabel") { Definition = "A first subsidiary value that might be assigned to designate a more specific type of risk.\n\nNOTE: Nature of risk may be identified in various ways depending upon the place where risk assessment takes place and according to local agreement. This property set allows for a generic nature of risk and up to two subsidiary natures. An example might be 'causing injury and damage'."},
 			new SingleValuePropertyType("SubNatureOfRisk2", "IfcLabel") { Definition = "A second subsidiary value that might be assigned to designate a more specific type of risk. An example might be 'o person and property'."} },
@@ -4538,7 +4592,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), provided, if there is no classification reference to a recognized classification system used."} },
 				new [] { "IfcSolarDevice" });
 		yield return new PropertySetInfo("Pset_SoundAttenuation", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("SoundScale", new [] { "DBA", "DBB", "DBC", "NC", "NR" } ) { Definition = "The reference sound scale.  \n\nDBA: Decibels in an A-weighted scale\nDBB: Decibels in an B-weighted scale\nDBC: Decibels in an C-weighted scale\nNC: Noise criteria\nNR: Noise rating"} },
+			new EnumerationPropertyType("SoundScale", new [] { "DBA", "DBB", "DBC", "NC", "NR" } ) { Definition = "The reference sound scale.  \n\nDBA: Decibels in an A-weighted scale\nDBB: Decibels in an B-weighted scale\nDBC: Decibels in an C-weighted scale\nNC: Noise criteria\nNR: Noise rating"},
+			new SingleValuePropertyType("SoundFrequency", "IfcFrequencyMeasure") { Definition = "List of nominal sound frequencies, correlated to the SoundPressure time series values (IfcTimeSeries.ListValues)"} },
 				new [] { "IfcAnnotation" });
 		yield return new PropertySetInfo("Pset_SoundGeneration", new IPropertyTypeInfo[] {
 			 },
@@ -4713,6 +4768,12 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("WalkingLineOffset", "IfcPositiveLengthMeasure") { Definition = "Offset of the walking line from the inner side of the flight. \nNote: the walking line may have a own shape representation (in case of inconsistencies, the value derived from the shape representation shall take precedence)."} },
 				new [] { "IfcStairFlight" });
 		yield return new PropertySetInfo("Pset_StructuralSurfaceMemberVaryingThickness", new IPropertyTypeInfo[] {
+			new SingleValuePropertyType("Location1Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness1 is given"},
+			new SingleValuePropertyType("Location1Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness1 is given"},
+			new SingleValuePropertyType("Location2Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness2 is given"},
+			new SingleValuePropertyType("Location2Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness2 is given"},
+			new SingleValuePropertyType("Location3Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness3 is given"},
+			new SingleValuePropertyType("Location3Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness3 is given"},
 			new SingleValuePropertyType("Thickness1", "IfcPositiveLengthMeasure") { Definition = "First thickness parameter of a surface member with varying thickness"},
 			new SingleValuePropertyType("Thickness2", "IfcPositiveLengthMeasure") { Definition = "Second thickness parameter of a surface member with varying thickness"},
 			new SingleValuePropertyType("Thickness3", "IfcPositiveLengthMeasure") { Definition = "Third thickness parameter of a surface member with varying thickness"} },
@@ -5166,13 +5227,18 @@ public partial class PropertySetInfo
 				new [] { "IfcActuator", "IfcActuatorType" });
 		yield return new PropertySetInfo("Pset_Address", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Purpose", new [] { "DISTRIBUTIONPOINT", "HOME", "OFFICE", "SITE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indication of the purpose of this object"},
+			new SingleValuePropertyType("AddressLines", "IfcLabel") { Definition = "The postal address.NOTE  A postal address may occupy several lines (or elements) when recorded. It is expected that normal usage will incorporate relevant elements of the following address concepts: A location within a building (e.g. 3rd Floor) Building name (e.g. Interoperability House) Street number (e.g. 6400) Street name (e.g. Alliance Boulevard). Typical content of address lines may vary in different countries."},
 			new SingleValuePropertyType("Country", "IfcLabel") { Definition = "The two letter country code (from ISO 3166)."},
 			new SingleValuePropertyType("Description", "IfcText") { Definition = "The Description of the object."},
+			new SingleValuePropertyType("ElectronicMailAddresses", "IfcLabel") { Definition = "The list of Email addresses at which Email messages may be received."},
+			new SingleValuePropertyType("FacsimileNumbers", "IfcLabel") { Definition = "The list of fax numbers at which fax messages may be received."},
 			new SingleValuePropertyType("InternalLocation", "IfcLabel") { Definition = "An organization defined address for internal mail delivery."},
+			new SingleValuePropertyType("MessagingIDs", "IfcURIReference") { Definition = "IDs or addresses for any other means of telecommunication, for example instant messaging, voice-over-IP, or file transfer protocols. The communication protocol is indicated by the URI value with scheme designations such as irc:, sip:, or ftp:."},
 			new SingleValuePropertyType("PagerNumber", "IfcLabel") { Definition = "The pager number at which paging messages may be received."},
 			new SingleValuePropertyType("PostalBox", "IfcLabel") { Definition = "An address that is implied by an identifiable mail drop."},
 			new SingleValuePropertyType("PostalCode", "IfcLabel") { Definition = "The code that is used by the country's postal service."},
 			new SingleValuePropertyType("Region", "IfcLabel") { Definition = "The name of a region.EXAMPLE  The counties of the United Kingdom and the states of North America are examples of regions."},
+			new SingleValuePropertyType("TelephoneNumbers", "IfcLabel") { Definition = "The list of telephone numbers at which telephone messages may be received."},
 			new SingleValuePropertyType("Town", "IfcLabel") { Definition = "The name of a town."},
 			new SingleValuePropertyType("UserDefinedPurpose", "IfcLabel") { Definition = "Allows for specification of user specific purpose of the address beyond the enumeration values provided by Purpose attribute of type IfcAddressTypeEnum. When a value is provided for attribute UserDefinedPurpose, in parallel the attribute Purpose shall have enumeration value USERDEFINED."},
 			new SingleValuePropertyType("WWWHomePageURL", "IfcURIReference") { Definition = "The world wide web address at which the preliminary page of information for the person or organization can be located.NOTE  Information on the world wide web for a person or organization may be separated into a number of pages and across a number of host sites, all of which may be linked together. It is assumed that all such information may be referenced from a single page that is termed the home page for that person or organization."} },
@@ -5227,7 +5293,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NeckAirVelocity", "IfcTimeSeries") { Definition = "Air velocity at the neck."},
 			new SingleValuePropertyType("PressureDrop", "IfcTimeSeries") { Definition = "Pressure drop.\n\nDrop in total pressure between inlet and outlet at nominal air-flow rate."},
 			new SingleValuePropertyType("SupplyAirTemperatureCooling", "IfcTimeSeries") { Definition = "Supply air temperature in cooling mode."},
-			new SingleValuePropertyType("SupplyAirTemperatureHeating", "IfcTimeSeries") { Definition = "Supply air temperature in heating mode."} },
+			new SingleValuePropertyType("SupplyAirTemperatureHeating", "IfcTimeSeries") { Definition = "Supply air temperature in heating mode."},
+			new TableValuePropertyType("CenterlineAirVelocity", "IfcLinearVelocityMeasure", "IfcLengthMeasure") { Definition = "Centerline air velocity versus distance from the diffuser and temperature differential; a function of distance from diffuser and temperature difference between supply air and room air."},
+			new TableValuePropertyType("InductionRatio", "IfcReal", "IfcLengthMeasure") { Definition = "Induction ratio versus distance from the diffuser and its discharge direction; induction ratio (or entrainment ratio) is the ratio of the volumetric flow rate in the jet to the volumetric flow rate at the air terminal."} },
 				new [] { "IfcAirTerminal" });
 		yield return new PropertySetInfo("Pset_AirTerminalTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AirTerminalMountingType", new [] { "FLATFLUSH", "LAYIN", "SURFACE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The way the air terminal is mounted to the ceiling, wall, etc.Surface: mounted to the surface of something (e.g., wall, duct, etc.).\nFlat flush: mounted flat and flush with a surface.\nLay-in: mounted in a lay-in type ceiling (e.g., a dropped ceiling grid)."},
@@ -5254,7 +5322,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("SlotLength", "IfcPositiveLengthMeasure") { Definition = "Slot length."},
 			new SingleValuePropertyType("SlotWidth", "IfcPositiveLengthMeasure") { Definition = "Slot width."},
 			new SingleValuePropertyType("TemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable maximum and minimum temperature.\n\nTemperature range within which the air terminal is designed to operate."},
-			new SingleValuePropertyType("ThrowLength", "IfcLengthMeasure") { Definition = "The horizontal or vertical axial distance an airstream travels after leaving an AirTerminal before the maximum stream velocity is reduced to a specified terminal velocity under isothermal conditions at the upper value of the AirFlowrateRange."} },
+			new SingleValuePropertyType("ThrowLength", "IfcLengthMeasure") { Definition = "The horizontal or vertical axial distance an airstream travels after leaving an AirTerminal before the maximum stream velocity is reduced to a specified terminal velocity under isothermal conditions at the upper value of the AirFlowrateRange."},
+			new TableValuePropertyType("AirFlowrateVersusFlowControlElement", "IfcVolumetricFlowRateMeasure", "IfcPositiveRatioMeasure") { Definition = "Air flowrate versus flow control element position at nominal pressure drop."} },
 				new [] { "IfcAirTerminal", "IfcAirTerminalType" });
 		yield return new PropertySetInfo("Pset_AirToAirHeatRecoveryPHistory", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("AirPressureDropCurves", "IfcTimeSeries") { Definition = "Air pressure drop as function of air flow rate."},
@@ -5287,7 +5356,8 @@ public partial class PropertySetInfo
 				new [] { "IfcAlarm" });
 		yield return new PropertySetInfo("Pset_AlarmTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("AlarmCondition", "IfcIdentifier", "IfcLabel") { Definition = "Table mapping alarm condition identifiers to descriptive labels, which may be used for interpreting Pset_AlarmPHistory.Condition."} },
 				new [] { "IfcAlarm", "IfcAlarmType" });
 		yield return new PropertySetInfo("Pset_AlignmentCantSegmentCommon", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CantDeficiency", "IfcLengthMeasure") { Definition = "Difference between applied cant and a higher equilibrium cant."},
@@ -5328,7 +5398,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("PowerState", "IfcTimeSeries") { Definition = "Indicates the power state of the device where True is on and False is off."} },
 				new [] { "IfcAudioVisualAppliance" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeAmplifier", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("AmplifierType", new [] { "FIXED", "VARIABLE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of amplifier."} },
+			new EnumerationPropertyType("AmplifierType", new [] { "FIXED", "VARIABLE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of amplifier."},
+			new TableValuePropertyType("AudioAmplification", "IfcFrequencyMeasure", "IfcSoundPowerMeasure") { Definition = "Indicates audio amplification frequency ranges."},
+			new TableValuePropertyType("AudioMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates audio sound modes and corresponding labels, if applicable."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeCamera", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("CameraType", new [] { "AUDIOVIDEO", "PHOTO", "VIDEO", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of camera."},
@@ -5339,11 +5411,16 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("TiltVertical", "IfcPlaneAngleMeasure") { Definition = "Indicates vertical range for pivoting, where 0.0 is level, +90 degrees is looking up, -90 degrees is looking down."},
 			new SingleValuePropertyType("VideoResolutionHeight", "IfcInteger") { Definition = "Indicates the number of vertical pixels (the largest native video resolution height)."},
 			new SingleValuePropertyType("VideoResolutionWidth", "IfcInteger") { Definition = "Indicates the number of horizontal pixels (the largest native video resolution width)."},
-			new SingleValuePropertyType("Zoom", "IfcPositiveLengthMeasure") { Definition = "Indicates the zoom range."} },
+			new SingleValuePropertyType("Zoom", "IfcPositiveLengthMeasure") { Definition = "Indicates the zoom range."},
+			new TableValuePropertyType("PanTiltZoomPreset", "IfcIdentifier", "IfcLabel") { Definition = "Indicates pan/tilt/zoom position presets."},
+			new TableValuePropertyType("VideoCaptureInterval", "IfcIdentifier", "IfcTimeMeasure") { Definition = "Indicates video frame capture time intervals."},
+			new TableValuePropertyType("VideoResolutionMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video resolution modes."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("AudioVolume", "IfcInteger", "IfcSoundPowerMeasure") { Definition = "Indicates discrete audio volume levels and corresponding sound power offsets, if applicable.  Missing values may be interpolated."},
+			new TableValuePropertyType("MediaSource", "IfcIdentifier", "IfcLabel") { Definition = "Indicates media sources and corresponding names of ports (IfcDistributionPort with FlowDirection=SINK and PredefinedType=AUDIOVISUAL) or aggregated audio/video components (IfcAudioVisualAppliance)."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeDisplay", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("DisplayType", new [] { "CRT", "DLP", "LCD", "LED", "PLASMA", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of display."},
@@ -5355,34 +5432,49 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NominalSize", "IfcPositiveLengthMeasure") { Definition = "Indicates the diagonal screen size."},
 			new SingleValuePropertyType("RefreshRate", "IfcFrequencyMeasure") { Definition = "Indicates the display refresh frequency."},
 			new SingleValuePropertyType("VideoResolutionHeight", "IfcInteger") { Definition = "Indicates the number of vertical pixels (the largest native video resolution height)."},
-			new SingleValuePropertyType("VideoResolutionWidth", "IfcInteger") { Definition = "Indicates the number of horizontal pixels (the largest native video resolution width)."} },
+			new SingleValuePropertyType("VideoResolutionWidth", "IfcInteger") { Definition = "Indicates the number of horizontal pixels (the largest native video resolution width)."},
+			new TableValuePropertyType("AudioMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates audio sound modes and corresponding labels, if applicable."},
+			new TableValuePropertyType("VideoCaptionMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video closed captioning modes."},
+			new TableValuePropertyType("VideoResolutionMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video resolution modes."},
+			new TableValuePropertyType("VideoScaleMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video scaling modes."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypePlayer", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("PlayerType", new [] { "AUDIO", "VIDEO", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of player."},
-			new SingleValuePropertyType("PlayerMediaEject", "IfcBoolean") { Definition = "Indicates whether the media can be ejected from the player (if physical media)."} },
+			new SingleValuePropertyType("PlayerMediaEject", "IfcBoolean") { Definition = "Indicates whether the media can be ejected from the player (if physical media)."},
+			new TableValuePropertyType("PlayerMediaFormat", "IfcIdentifier", "IfcLabel") { Definition = "Indicates supported media formats."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeProjector", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ProjectorType", new [] { "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of projector."},
 			new SingleValuePropertyType("VideoResolutionHeight", "IfcInteger") { Definition = "Indicates the number of vertical pixels (the largest native video resolution height)."},
-			new SingleValuePropertyType("VideoResolutionWidth", "IfcInteger") { Definition = "Indicates the number of horizontal pixels (the largest native video resolution width)."} },
+			new SingleValuePropertyType("VideoResolutionWidth", "IfcInteger") { Definition = "Indicates the number of horizontal pixels (the largest native video resolution width)."},
+			new TableValuePropertyType("VideoCaptionMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video closed captioning modes."},
+			new TableValuePropertyType("VideoResolutionMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video resolution modes."},
+			new TableValuePropertyType("VideoScaleMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates video scaling modes."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeRailwayCommunicationTerminal", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("RailwayCommunicationTerminalType", new [] { "IP", "LEGACY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of railway communication terminal."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeReceiver", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("ReceiverType", new [] { "AUDIO", "AUDIOVIDEO", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of receiver."} },
+			new EnumerationPropertyType("ReceiverType", new [] { "AUDIO", "AUDIOVIDEO", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of receiver."},
+			new TableValuePropertyType("AudioAmplification", "IfcFrequencyMeasure", "IfcRatioMeasure") { Definition = "Indicates audio amplification frequency ranges."},
+			new TableValuePropertyType("AudioMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates audio sound modes and corresponding labels, if applicable."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeRecordingEquipment", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("StorageCapacity", "IfcInteger") { Definition = "Indicates the total data storage capacity of the device. It is defined by bytes."} },
+			new SingleValuePropertyType("StorageCapacity", "IfcInteger") { Definition = "Indicates the total data storage capacity of the device. It is defined by bytes."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeSpeaker", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("SpeakerMounting", new [] { "CEILING", "FREESTANDING", "OUTDOOR", "WALL", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates how the speaker is designed to be mounted."},
 			new EnumerationPropertyType("SpeakerType", new [] { "COAXIAL", "FULLRANGE", "MIDRANGE", "TWEETER", "WOOFER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of speaker."},
-			new SingleValuePropertyType("Impedence", "IfcFrequencyMeasure") { Definition = "Indicates the speaker impedence."} },
+			new SingleValuePropertyType("Impedence", "IfcFrequencyMeasure") { Definition = "Indicates the speaker impedence."},
+			new TableValuePropertyType("FrequencyResponse", "IfcFrequencyMeasure", "IfcSoundPowerMeasure") { Definition = "Indicates the output over a specified range of frequencies."},
+			new TableValuePropertyType("SpeakerDriverSize", "IfcIdentifier", "IfcPositiveLengthMeasure") { Definition = "Indicates the number of drivers and their sizes."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AudioVisualApplianceTypeTuner", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("TunerType", new [] { "AUDIO", "VIDEO", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the tuner type."},
-			new SingleValuePropertyType("TunerFrequency", "IfcFrequencyMeasure") { Definition = "Indicates the tuner frequencies, if applicable."} },
+			new SingleValuePropertyType("TunerFrequency", "IfcFrequencyMeasure") { Definition = "Indicates the tuner frequencies, if applicable."},
+			new TableValuePropertyType("TunerChannel", "IfcIdentifier", "IfcLabel") { Definition = "Indicates the tuner channels, if applicable."},
+			new TableValuePropertyType("TunerMode", "IfcIdentifier", "IfcLabel") { Definition = "Indicates the tuner modes (or bands).  For example, 'AnalogCable', 'DigitalAir', 'AM', 'FM'."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Pset_AxleCountingEquipment", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AxleCountingEquipmentType", new [] { "EVALUATOR", "WHEELDETECTOR", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type of axle counting equipment."},
@@ -5397,7 +5489,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("RatedVoltage", "IfcElectricVoltageMeasure") { Definition = "The range of allowed voltage that a device is certified to handle. The upper bound of this value is the maximum."} },
 				new [] { "IfcSensor", "IfcSensorType" });
 		yield return new PropertySetInfo("Pset_BalanceWeightTensionerDesignCriteria", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("ReferenceDistanceRopeToPulley", "IfcThermodynamicTemperatureMeasure", "IfcPositiveLengthMeasure") { Definition = "The reference design criteria for distance from the end of the rope to the fixed pulley.It defines the nominal distance in relation to temperature."},
+			new TableValuePropertyType("ReferenceDistanceTensionerToGround", "IfcThermodynamicTemperatureMeasure", "IfcPositiveLengthMeasure") { Definition = "The reference design criteria distance from the last tensioner to the ground or the base surface (B value). It defines the nominal distance in relation to temperature."} },
 				new [] { "IfcDiscreteAccessory", "IfcDiscreteAccessoryType" });
 		yield return new PropertySetInfo("Pset_BeamCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -5411,7 +5504,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ThermalTransmittance", "IfcThermalTransmittanceMeasure") { Definition = "Thermal transmittance coefficient (U-Value) of an element, within the direction of the thermal flow (including all materials)."} },
 				new [] { "IfcBeam", "IfcBeamType" });
 		yield return new PropertySetInfo("Pset_BearingCommon", new IPropertyTypeInfo[] {
-			 },
+			new SingleValuePropertyType("DisplacementAccommodated", "IfcBoolean") { Definition = "A list of exactly three boolean values representing an accommodated displacement (value TRUE or 1) or no displacement (value FALSE or 0) on the corresponding axis where the first value represents axis X, second value axis Y and third value axis Z."},
+			new SingleValuePropertyType("RotationAccommodated", "IfcBoolean") { Definition = "A list of exactly three boolean values representing an accommodated rotation (value TRUE or 1) or no rotation (value FALSE or 0) about the corresponding axis where the first value represents axis X, second value axis Y and third value axis Z."} },
 				new [] { "IfcBearing", "IfcBearingType" });
 		yield return new PropertySetInfo("Pset_BerthCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("BerthApproach", new [] { "END", "SIDE" } ) { Definition = "How the vessel approaches the berth"},
@@ -5443,13 +5537,17 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("PressureRating", "IfcPressureMeasure") { Definition = "Pressure rating of the object.\n\nNominal pressure rating of the boiler as rated by the agency having jurisdiction."},
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
 			new SingleValuePropertyType("WaterInletTemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable water inlet temperature range."},
-			new SingleValuePropertyType("WaterStorageCapacity", "IfcVolumeMeasure") { Definition = "Water storage capacity."} },
+			new SingleValuePropertyType("WaterStorageCapacity", "IfcVolumeMeasure") { Definition = "Water storage capacity."},
+			new TableValuePropertyType("PartialLoadEfficiencyCurves", "IfcPositiveRatioMeasure", "IfcNormalisedRatioMeasure") { Definition = "Boiler efficiency as a function of the partial load factor; E = f (partialLaodfactor)."} },
 				new [] { "IfcBoiler", "IfcBoilerType" });
 		yield return new PropertySetInfo("Pset_BoilerTypeSteam", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("MaximumOutletPressure", "IfcLabel") { Definition = "Maximum steam outlet pressure."} },
+			new SingleValuePropertyType("MaximumOutletPressure", "IfcLabel") { Definition = "Maximum steam outlet pressure."},
+			new TableValuePropertyType("HeatOutput", "IfcThermodynamicTemperatureMeasure", "IfcEnergyMeasure") { Definition = "Total nominal heat output as listed by the Boiler manufacturer.\n\nFor steam boilers, it is a function of inlet temperature versus steam pressure.  Note: as two variables are used, DefiningValues and DefinedValues are null, and values are stored in IfcTable in the following order: InletTemperature(IfcThermodynamicTemperatureMeasure) and OutletTemperature(IfcThermodynamicTemperatureMeasure) in DefiningValues, and HeatOutput(IfcEnergyMeasure) in DefinedValues. For example, DefiningValues(InletTemp, OutletTemp), DefinedValues(null, HeatOutput). The IfcTable is related to IfcPropertyTableValue using IfcMetric and IfcResourceConstraintRelationship."},
+			new TableValuePropertyType("NominalEfficiencyTable", "IfcThermodynamicTemperatureMeasure", "IfcNormalisedRatioMeasure") { Definition = "The nominal efficiency of the boiler as defined by the manufacturer. For steam boilers, a function of inlet temperature versus steam pressure.  Note: as two variables are used, DefiningValues and DefinedValues are null, and values are stored in IfcTable in the following order: InletTemperature(IfcThermodynamicTemperatureMeasure) and OutletTemperature(IfcThermodynamicTemperatureMeasure) in DefiningValues, and NominalEfficiency(IfcNormalisedRatioMeasure) in DefinedValues. For example, DefininfValues(InletTemp, OutletTemp), DefinedValues(null, NominalEfficiency).  The IfcTable is related to IfcPropertyTableValue using IfcMetric and IfcResourceConstraintRelationship."} },
 				new [] { "IfcBoiler", "IfcBoilerType" });
 		yield return new PropertySetInfo("Pset_BoilerTypeWater", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("HeatOutput", "IfcThermodynamicTemperatureMeasure", "IfcEnergyMeasure") { Definition = "Total nominal heat output as listed by the Boiler manufacturer.\n\nFor water boilers, it is a function of inlet versus outlet temperature. For steam boilers, it is a function of inlet temperature versus steam pressure.  Note: as two variables are used, DefiningValues and DefinedValues are null, and values are stored in IfcTable in the following order: InletTemperature(IfcThermodynamicTemperatureMeasure), OutletTemperature(IfcThermodynamicTemperatureMeasure), HeatOutput(IfcEnergyMeasure).  The IfcTable is related to IfcPropertyTableValue using IfcMetric and IfcResourceConstraintRelationship."},
+			new TableValuePropertyType("NominalEfficiency", "IfcThermodynamicTemperatureMeasure", "IfcNormalisedRatioMeasure") { Definition = "Nominal object efficiency under nominal conditions.\n\nThe nominal efficiency of the boiler as defined by the manufacturer. For water boilers, a function of inlet versus outlet temperature. Note: as two variables are used, DefiningValues and DefinedValues are null, and values are stored in IfcTable in the following order: InletTemperature(IfcThermodynamicTemperatureMeasure), OutletTemperature(IfcThermodynamicTemperatureMeasure), NominalEfficiency(IfcNormalisedRatioMeasure).  The IfcTable is related to IfcPropertyTableValue using IfcMetric and IfcResourceConstraintRelationship."} },
 				new [] { "IfcBoiler", "IfcBoilerType" });
 		yield return new PropertySetInfo("Pset_BoreholeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("BoreholeState", new [] { "CAP_REPLACED", "CASING_INSTALLED", "CASING_PARTIALLY_REPLACED", "CASING_REPLACED", "CHAMBER_RECONDITIONED", "DECONSTRUCTED", "INSTALLED", "PARTIALLY_DECONSTRUCTED", "PARTIALLY_REFILLED", "RECONDITIONED", "REFILLED", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The state the borehole or trial pit has been left in. (boreholeML)."},
@@ -5514,11 +5612,15 @@ public partial class PropertySetInfo
 				new [] { "IfcBuildingSystem" });
 		yield return new PropertySetInfo("Pset_BuildingUse", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("MarketCategory", "IfcLabel") { Definition = "Category of use e.g. residential, commercial, recreation etc."},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableFuture", "IfcLabel") { Definition = "A list of the sub categories of property that are expected to be available in the future expressed in terms of IfcLabel."},
+			new SingleValuePropertyType("MarketSubCategoriesAvailableNow", "IfcLabel") { Definition = "A list of the sub categories of property that are currently available expressed in terms of IfcLabel."},
 			new SingleValuePropertyType("MarketSubCategory", "IfcLabel") { Definition = "Subset of category of use e.g. multi-family, 2 bedroom, low rise."},
 			new SingleValuePropertyType("NarrativeText", "IfcText") { Definition = "Added information relating to the adjacent building use that is not appropriate to the general descriptive text associated with an entity through the inherited IfcRoot.Description."},
 			new SingleValuePropertyType("PlanningControlStatus", "IfcLabel") { Definition = "Label of zoning category or class, or planning control category for the site or facility."},
 			new SingleValuePropertyType("RentalRatesInCategoryFuture", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property expected to be available in the future in the required category."},
 			new SingleValuePropertyType("RentalRatesInCategoryNow", "IfcMonetaryMeasure") { Definition = "Range of the cost rates for property currently available in the required category."},
+			new SingleValuePropertyType("TenureModesAvailableFuture", "IfcLabel") { Definition = "A list of the tenure modes that are expected to be available in the future expressed in terms of IfcLabel."},
+			new SingleValuePropertyType("TenureModesAvailableNow", "IfcLabel") { Definition = "A list of the tenure modes that are currently available expressed in terms of IfcLabel."},
 			new SingleValuePropertyType("VacancyRateInCategoryFuture", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category expected in the future."},
 			new SingleValuePropertyType("VacancyRateInCategoryNow", "IfcPositiveRatioMeasure") { Definition = "Percentage of vacancy found in the particular category currently."} },
 				new [] { "IfcBuilding" });
@@ -5791,7 +5893,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NominalEvaporatingTemperature", "IfcThermodynamicTemperatureMeasure") { Definition = "Chiller evaporating temperature."},
 			new SingleValuePropertyType("NominalHeatRejectionRate", "IfcPowerMeasure") { Definition = "Sum of the refrigeration effect and the heat equivalent of the power input to the compressor."},
 			new SingleValuePropertyType("NominalPowerConsumption", "IfcPowerMeasure") { Definition = "Nominal total power consumption."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("CapacityCurve", "IfcThermodynamicTemperatureMeasure", "IfcPowerMeasure") { Definition = "Chiller cooling capacity is a function of condensing temperature and evaporating temperature, data is in table form, Capacity = f (TempCon, TempEvp), capacity = a1+b1*Tei+c1*Tei\\^2+d1*Tci+e1*Tci\\^2+f1*Tei*Tci.\nThis table uses multiple input variables; to represent, both DefiningValues and DefinedValues lists are null and IfcTable is attached using IfcResourceConstraintRelationship and IfcMetric.  Columns are specified in the following order:\n1.IfcPowerMeasure:Capacity\n2.IfcThermodynamicTemperatureMeasure:CondensingTemperature\n3.IfcThermodynamicTemperatureMeasure:EvaporatingTemperature"},
+			new TableValuePropertyType("CoefficientOfPerformanceCurve", "IfcThermodynamicTemperatureMeasure", "IfcReal") { Definition = "Chiller coefficient of performance (COP) is function of condensing temperature and evaporating temperature, data is in table form, COP= f (TempCon, TempEvp), COP = a2+b2*Tei+c2*Tei\\^2+d2*Tci+e2*Tci\\^2+f2*Tei*Tci.\nThis table uses multiple input variables; to represent, both DefiningValues and DefinedValues lists are null and IfcTable is attached using IfcResourceConstraintRelationship and IfcMetric.  Columns are specified in the following order:\n1.IfcPositiveRatioMeasure:CoefficientOfPerformance\n2.IfcThermodynamicTemperatureMeasure:CondensingTemperature\n3.IfcThermodynamicTemperatureMeasure:EvaporatingTemperature"},
+			new TableValuePropertyType("FullLoadRatioCurve", "IfcPositiveRatioMeasure", "IfcNormalisedRatioMeasure") { Definition = "Ratio of actual power to full load power as a quadratic function of part load, at certain condensing and evaporating temperature, FracFullLoadPower = f ( PartLoadRatio)."} },
 				new [] { "IfcChiller", "IfcChillerType" });
 		yield return new PropertySetInfo("Pset_ChimneyCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -5845,7 +5950,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("PrimarySurfaceArea", "IfcAreaMeasure") { Definition = "Primary heat transfer surface area of the tubes and headers."},
 			new SingleValuePropertyType("SecondarySurfaceArea", "IfcAreaMeasure") { Definition = "Secondary heat transfer surface area created by fins."},
 			new SingleValuePropertyType("SensibleHeatRatio", "IfcNormalisedRatioMeasure") { Definition = "Air-side sensible heat ratio, or fraction of sensible heat transfer to the total heat transfer."},
-			new SingleValuePropertyType("WetCoilFraction", "IfcNormalisedRatioMeasure") { Definition = "Fraction of coil surface area that is wet (0-1)."} },
+			new SingleValuePropertyType("WetCoilFraction", "IfcNormalisedRatioMeasure") { Definition = "Fraction of coil surface area that is wet (0-1)."},
+			new TableValuePropertyType("TotalUACurves", "IfcReal", "IfcVolumetricFlowRateMeasure") { Definition = "Total UA curves, UA - air and water velocities, UA = [(C1 * AirFlowRate\\^0.8)\\^-1 + (C2 * WaterFlowRate\\^0.8)\\^-1]\\^-1.  Note: as two variables are used, DefiningValues and DefinedValues are null, and values are stored in IfcTable in the following order: AirFlowRate,WaterFlowRate,UA.  The IfcTable is related to IfcPropertyTableValue using IfcMetric and IfcResourceConstraintRelationship."},
+			new TableValuePropertyType("WaterPressureDropCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Water pressure drop curve, pressure drop – flow rate curve, WaterPressureDrop = f(WaterflowRate)."} },
 				new [] { "IfcCoil", "IfcCoilType" });
 		yield return new PropertySetInfo("Pset_ColumnCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -5879,7 +5986,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("StorageCapacity", "IfcInteger") { Definition = "Indicates the total data storage capacity of the device. It is defined by bytes."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeGateway", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeIntelligentPeripheral", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."} },
@@ -5889,20 +5996,26 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ManagingSoftware", "IfcLabel") { Definition = "Indicates the type of software responsible for managing the equipment."},
 			new SingleValuePropertyType("NumberOfCoolingFans", "IfcCountMeasure") { Definition = "Indicates the number of cooling fans in the equipment."},
 			new SingleValuePropertyType("NumberOfSlots", "IfcCountMeasure") { Definition = "Indicates the number of  slots."},
-			new SingleValuePropertyType("SupportedProtocol", "IfcLabel") { Definition = "Indicates the protocol supported by the IP network equipment."} },
+			new SingleValuePropertyType("SupportedProtocol", "IfcLabel") { Definition = "Indicates the protocol supported by the IP network equipment."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeModem", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("CommonInterfaceType", new [] { "DRYCONTACTSINTERFACE", "MANAGEMENTINTERFACE", "OTHER_IO_INTERFACE", "SYNCHRONIZATIONINTERFACE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of the device common interfaces."},
-			new EnumerationPropertyType("TrafficInterfaceType", new [] { "E1", "FASTETHERNET", "XDSL", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of the device traffic interfaces."} },
+			new EnumerationPropertyType("TrafficInterfaceType", new [] { "E1", "FASTETHERNET", "XDSL", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of the device traffic interfaces."},
+			new TableValuePropertyType("NumberOfCommonInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the number of common interfaces on the device."},
+			new TableValuePropertyType("NumberOfTrafficInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the number of traffic interfaces on the device."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeOpticalLineTerminal", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("NumberOfSlots", "IfcCountMeasure") { Definition = "Indicates the number of  slots."} },
+			new SingleValuePropertyType("NumberOfSlots", "IfcCountMeasure") { Definition = "Indicates the number of  slots."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeOpticalNetworkUnit", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("OpticalNetworkUnitType", new [] { "ACTIVE", "PASSIVE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of the optical network unit equipment."} },
+			new EnumerationPropertyType("OpticalNetworkUnitType", new [] { "ACTIVE", "PASSIVE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of the optical network unit equipment."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeTelecommand", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("NumberOfCPUs", "IfcCountMeasure") { Definition = "The number of CPUs used by the equipment."} },
+			new SingleValuePropertyType("NumberOfCPUs", "IfcCountMeasure") { Definition = "The number of CPUs used by the equipment."},
+			new TableValuePropertyType("NumberOfWorkstations", "IfcLabel", "IfcInteger") { Definition = "Indicates the types or purposes of workstations and their number in the equipment. The defined purpose can be e.g. 'Diagnostic and maintenance', 'Traffic and electric traction', etc."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_CommunicationsApplianceTypeTelephonyExchange", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."} },
@@ -6029,12 +6142,14 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("SignalFactor", "IfcReal") { Definition = "Factor multiplied onto offset signal."},
 			new SingleValuePropertyType("SignalOffset", "IfcReal") { Definition = "Offset constant added to modified signal."},
 			new SingleValuePropertyType("SignalTime", "IfcTimeMeasure") { Definition = "Time factor used for integral and running average controllers."},
-			new SingleValuePropertyType("Value", "IfcReal") { Definition = "The expected range and default value.\n\nThe expected range and default value.  While the property data type is IfcReal (to support all cases including when the units are unknown), a unit may optionally be provided to indicate the measure and unit.  The LowerLimitValue and UpperLimitValue must fall within the physical Range and may be used to determine extents when charting Pset_ControllerPHistory.Value."} },
+			new SingleValuePropertyType("Value", "IfcReal") { Definition = "The expected range and default value.\n\nThe expected range and default value.  While the property data type is IfcReal (to support all cases including when the units are unknown), a unit may optionally be provided to indicate the measure and unit.  The LowerLimitValue and UpperLimitValue must fall within the physical Range and may be used to determine extents when charting Pset_ControllerPHistory.Value."},
+			new TableValuePropertyType("Labels", "IfcReal", "IfcLabel") { Definition = "Table mapping values to labels\n\nLabels indicate transition points such as 'Hi', 'Lo', 'HiHi', or 'LoLo'."} },
 				new [] { "IfcController", "IfcControllerType" });
 		yield return new PropertySetInfo("Pset_ControllerTypeMultiPosition", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ControlType", new [] { "INPUT", "OUTPUT", "VARIABLE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type controller, signal modification effected and applicable ports\n\nINPUT: Controller element is a dedicated input.\nOUTPUT: Controller element is a dedicated output.\nVARIABLE: Controller element is an in-memory variable."},
 			new SingleValuePropertyType("IntegerRange", "IfcInteger") { Definition = "The physical range of values supported by the device."},
-			new SingleValuePropertyType("Value", "IfcInteger") { Definition = "The expected range and default value.\n\nThe expected range and default value.  The LowerLimitValue and UpperLimitValue must fall within the physical Range."} },
+			new SingleValuePropertyType("Value", "IfcInteger") { Definition = "The expected range and default value.\n\nThe expected range and default value.  The LowerLimitValue and UpperLimitValue must fall within the physical Range."},
+			new TableValuePropertyType("Labels", "IfcInteger", "IfcLabel") { Definition = "Table mapping values to labels\n\nEach entry corresponds to an integer within the ValueRange."} },
 				new [] { "IfcController", "IfcControllerType" });
 		yield return new PropertySetInfo("Pset_ControllerTypeProgrammable", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Application", new [] { "BOILERCONTROLLER", "CONSTANTLIGHTCONTROLLER", "DISCHARGEAIRCONTROLLER", "FANCOILUNITCONTROLLER", "LIGHTINGPANELCONTROLLER", "MODEMCONTROLLER", "OCCUPANCYCONTROLLER", "PARTITIONWALLCONTROLLER", "PUMPCONTROLLER", "REALTIMEBASEDSCHEDULER", "REALTIMEKEEPER", "ROOFTOPUNITCONTROLLER", "SCENECONTROLLER", "SPACECONFORTCONTROLLER", "SUNBLINDCONTROLLER", "TELEPHONEDIRECTORY", "UNITVENTILATORCONTROLLER", "VAV", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates application of controller."},
@@ -6050,12 +6165,14 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Range", "IfcReal") { Definition = "The physical range of values supported by the device."},
 			new SingleValuePropertyType("SignalTimeDecrease", "IfcTimeMeasure") { Definition = "Time factor used for exponential decrease."},
 			new SingleValuePropertyType("SignalTimeIncrease", "IfcTimeMeasure") { Definition = "Time factor used for exponential increase."},
-			new SingleValuePropertyType("Value", "IfcReal") { Definition = "The expected range and default value.\n\nThe expected range and default value.  While the property data type is IfcReal (to support all cases including when the units are unknown), a unit may optionally be provided to indicate the measure and unit."} },
+			new SingleValuePropertyType("Value", "IfcReal") { Definition = "The expected range and default value.\n\nThe expected range and default value.  While the property data type is IfcReal (to support all cases including when the units are unknown), a unit may optionally be provided to indicate the measure and unit."},
+			new TableValuePropertyType("Labels", "IfcReal", "IfcLabel") { Definition = "Table mapping values to labels\n\nLabels indicate transition points such as 'Hi', 'Lo', 'HiHi', or 'LoLo'."} },
 				new [] { "IfcController", "IfcControllerType" });
 		yield return new PropertySetInfo("Pset_ControllerTypeTwoPosition", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ControlType", new [] { "AND", "AVERAGE", "CALENDAR", "INPUT", "LOWERBANDSWITCH", "LOWERLIMITSWITCH", "NOT", "OR", "OUTPUT", "UPPERBANDSWITCH", "UPPERLIMITSWITCH", "VARIABLE", "XOR", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type controller, signal modification effected and applicable ports\n\nLOWERLIMITSWITCH: Single analog input is read and if less than Value.LowerBound then True is written to the output value.\nUPPERLIMITSWITCH: Single analog input is read and if more than Value.UpperBound then True is written to the output value.\nLOWERBANDSWITCH: Single analog input is read and if less than Value.LowerBound+BandWidth then True is written to the output value.\nUPPERBANDSWITCH: Single analog input is read and if more than Value.UpperBound-BandWidth then True is written to the output value.\nNOT: Single binary input is read and the opposite value is written to the output value.\nAND: Two binary inputs are read and if both are True then True is written to the output value.\nOR: Two binary inputs are read and if either is True then True is written to the output value.\nXOR: Two binary inputs are read and if one is true then True is written to the output value.\nCALENDAR: No inputs; the current time is compared with an IfcWorkCalendar to which the IfcController is assigned and True is written if active.\nINPUT: Controller element is a dedicated input.\nOUTPUT: Controller element is a dedicated output.\nVARIABLE: Controller element is an in-memory variable."},
 			new SingleValuePropertyType("Polarity", "IfcBoolean") { Definition = "True indicates normal polarity; False indicates reverse polarity."},
-			new SingleValuePropertyType("Value", "IfcBoolean") { Definition = "The expected range and default value.\n\nThe default value such as normally-closed or normally-open."} },
+			new SingleValuePropertyType("Value", "IfcBoolean") { Definition = "The expected range and default value.\n\nThe default value such as normally-closed or normally-open."},
+			new TableValuePropertyType("Labels", "IfcBoolean", "IfcLabel") { Definition = "Table mapping values to labels\n\nLabels indicate the meanings of True and False, such as 'Open' and 'Closed'"} },
 				new [] { "IfcController", "IfcControllerType" });
 		yield return new PropertySetInfo("Pset_CooledBeamPHistory", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BeamCoolingCapacity", "IfcTimeSeries") { Definition = "Cooling capacity of beam. This excludes cooling capacity of supply air."},
@@ -6214,7 +6331,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("OpenPressureDrop", "IfcPressureMeasure") { Definition = "Total pressure drop across damper."},
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
 			new SingleValuePropertyType("TemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable maximum and minimum temperature."},
-			new SingleValuePropertyType("TemperatureRating", "IfcThermodynamicTemperatureMeasure") { Definition = "Temperature rating."} },
+			new SingleValuePropertyType("TemperatureRating", "IfcThermodynamicTemperatureMeasure") { Definition = "Temperature rating."},
+			new TableValuePropertyType("LeakageCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Leakage versus pressure drop; Leakage = f (pressure)."},
+			new TableValuePropertyType("LossCoefficentCurve", "IfcPositivePlaneAngleMeasure", "IfcReal") { Definition = "Loss coefficient – blade position angle curve; ratio of pressure drop to velocity pressure versus blade angle; C = f (blade angle position)."},
+			new TableValuePropertyType("RegeneratedSoundCurve", "IfcVolumetricFlowRateMeasure", "IfcSoundPressureMeasure") { Definition = "Regenerated sound versus air flow rate."} },
 				new [] { "IfcDamper", "IfcDamperType" });
 		yield return new PropertySetInfo("Pset_DamperTypeControlDamper", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ControlDamperOperation", new [] { "EXPONENTIAL", "LINEAR", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The inherent characteristic of the control damper operation."},
@@ -6355,7 +6475,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
 				new [] { "IfcElectricDistributionBoard", "IfcElectricDistributionBoardType" });
 		yield return new PropertySetInfo("Pset_DistributionBoardTypeDispatchingBoard", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("DispatchingBoardType", new [] { "CENTER", "STATION", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of dispatching board."} },
+			new EnumerationPropertyType("DispatchingBoardType", new [] { "CENTER", "STATION", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of dispatching board."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcDistributionBoard", "IfcDistributionBoardType" });
 		yield return new PropertySetInfo("Pset_DistributionBoardTypeDistributionFrame", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("PortCapacity", "IfcInteger") { Definition = "Indicates the number of ports in the passive device that can be used to interconnect cables."} },
@@ -6478,6 +6599,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("HasConnector", "IfcBoolean") { Definition = "Indicate whether the wire pair end point is terminated with a connector or not."},
 			new SingleValuePropertyType("IsWelded", "IfcBoolean") { Definition = "Indicates whether the wire pair end point is joined to another wire pair end point by means of a welded junction."},
 			new SingleValuePropertyType("Power", "IfcPowerMeasure") { Definition = "The actual power and operable range."},
+			new SingleValuePropertyType("Protocols", "IfcIdentifier") { Definition = "For data ports, identifies the protocols used as defined by the Open System Interconnection (OSI) Basic Reference Model (ISO 7498).  Layers include: 1. Physical; 2. DataLink; 3. Network; 4. Transport; 5. Session; 6. Presentation; 7. Application.  Example: 3:IP, 4:TCP, 5:HTTP"},
 			new SingleValuePropertyType("Voltage", "IfcElectricVoltageMeasure") { Definition = "The actual voltage and operable range."} },
 				new [] { "IfcDistributionPort" });
 		yield return new PropertySetInfo("Pset_DistributionPortTypeDuct", new IPropertyTypeInfo[] {
@@ -6681,10 +6803,14 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Power", "IfcPowerMeasure") { Definition = "The actual power and operable range."},
 			new SingleValuePropertyType("PowerFactor", "IfcNormalisedRatioMeasure") { Definition = "Power factor; usually as ratio.\n\nThe ratio between the rated electrical power and the product of the rated current and rated voltage"},
 			new SingleValuePropertyType("RatedCurrent", "IfcElectricCurrentMeasure") { Definition = "The current that a device is designed to handle."},
-			new SingleValuePropertyType("RatedVoltage", "IfcElectricVoltageMeasure") { Definition = "The range of allowed voltage that a device is certified to handle. The upper bound of this value is the maximum."} },
+			new SingleValuePropertyType("RatedVoltage", "IfcElectricVoltageMeasure") { Definition = "The range of allowed voltage that a device is certified to handle. The upper bound of this value is the maximum."},
+			new TableValuePropertyType("NumberOfPowerSupplyPorts", "IfcLabel", "IfcInteger") { Definition = "Indicates the number of power supply ports of the electric device."} },
 				new [] { "IfcDistributionElement", "IfcDistributionElementType" });
 		yield return new PropertySetInfo("Pset_ElectricalDeviceCompliance", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("ElectroMagneticStandardsCompliance", "IfcLabel", "IfcBoolean") { Definition = "Information about compliance with regard to electro magnetic related standards."},
+			new TableValuePropertyType("ExplosiveAtmosphereStandardsCompliance", "IfcLabel", "IfcBoolean") { Definition = "Information about compliance with regard to explosive atmosphere related standards."},
+			new TableValuePropertyType("FireProofingStandardsCompliance", "IfcLabel", "IfcBoolean") { Definition = "Information about compliance with regard to fire proofing related standards."},
+			new TableValuePropertyType("LightningProtectionStandardsCompliance", "IfcLabel", "IfcBoolean") { Definition = "Information about compliance with regard to lightning protection related standards."} },
 				new [] { "IfcDistributionElement", "IfcDistributionElementType" });
 		yield return new PropertySetInfo("Pset_ElectricalFeederLine", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ElectricalFeederType", new [] { "ALONGTRACKFEEDER", "BYPASSFEEDER", "NEGATIVEFEEDER", "POSITIVEFEEDER", "REINFORCINGFEEDER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Type of electrical feeder."},
@@ -6871,7 +6997,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("LinearRange", "IfcPositiveLengthMeasure") { Definition = "Identifies the linear range of the kinematic behaviour."},
 			new SingleValuePropertyType("MaximumAngularVelocity", "IfcAngularVelocityMeasure") { Definition = "Identifies the maximum angular velocity of the kinematic behaviour."},
 			new SingleValuePropertyType("MaximumConstantSpeed", "IfcLinearVelocityMeasure") { Definition = "Identifies the maximum constant speed over the kinematic path."},
-			new SingleValuePropertyType("MinimumTime", "IfcTimeMeasure") { Definition = "Identifies the minimum time for the kinematic behaviour."} },
+			new SingleValuePropertyType("MinimumTime", "IfcTimeMeasure") { Definition = "Identifies the minimum time for the kinematic behaviour."},
+			new TableValuePropertyType("CyclicPath", "IfcTimeMeasure", "IfcPlaneAngleMeasure") { Definition = "Represents the time:angle table of the kinematic behaviour."},
+			new TableValuePropertyType("LinearPath", "IfcTimeMeasure", "IfcLengthMeasure") { Definition = "Represents the time:distance table of the kinematic behaviour."} },
 				new [] { "IfcElement", "IfcElementType" });
 		yield return new PropertySetInfo("Pset_ElementSize", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("NominalHeight", "IfcPositiveLengthMeasure") { Definition = "The nominal height of the object. The size information is provided in addition to the shape representation and the geometric parameters used within. In cases of inconsistency between the geometric parameters and the size properties, provided in the attached property set, the geometric parameters take precedence."},
@@ -6967,7 +7095,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("HeatExchangeArea", "IfcAreaMeasure") { Definition = "Heat exchange area."},
 			new SingleValuePropertyType("OperationTemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable operation ambient air temperature range."},
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
-			new SingleValuePropertyType("WaterRequirement", "IfcVolumetricFlowRateMeasure") { Definition = "Make-up water requirement."} },
+			new SingleValuePropertyType("WaterRequirement", "IfcVolumetricFlowRateMeasure") { Definition = "Make-up water requirement."},
+			new TableValuePropertyType("AirPressureDropCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Air pressure drop as a function of air flow rate."},
+			new TableValuePropertyType("EffectivenessTable", "IfcVolumetricFlowRateMeasure", "IfcReal") { Definition = "Total heat transfer effectiveness curve as a function of the primary air flow rate."},
+			new TableValuePropertyType("WaterPressDropCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Water pressure drop as function of water flow rate."} },
 				new [] { "IfcEvaporativeCooler", "IfcEvaporativeCoolerType" });
 		yield return new PropertySetInfo("Pset_EvaporatorPHistory", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CompressorEvaporatorHeatGain", "IfcTimeSeries") { Definition = "Heat gain between the evaporator outlet and the compressor inlet."},
@@ -7031,7 +7162,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NominalTotalPressure", "IfcPressureMeasure") { Definition = "Nominal total pressure rise across the fan."},
 			new SingleValuePropertyType("OperationalCriteria", "IfcTimeMeasure") { Definition = "Time of operation at maximum operational ambient air temperature."},
 			new SingleValuePropertyType("OperationTemperatureRange", "IfcThermodynamicTemperatureMeasure") { Definition = "Allowable operation ambient air temperature range."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("EfficiencyCurve", "IfcVolumetricFlowRateMeasure", "IfcNormalisedRatioMeasure") { Definition = "Fan efficiency =f (flow rate)."},
+			new TableValuePropertyType("PressureCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Pressure rise = f (flow rate)."} },
 				new [] { "IfcFan", "IfcFanType" });
 		yield return new PropertySetInfo("Pset_FastenerRailWeld", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AssemblyPlace", new [] { "FACTORY", "OFFSITE", "SITE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Enumeration defining where the assembly is intended to take place, either in a factory, other offsite location or on the building site."},
@@ -7095,7 +7228,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("FrameMaterial", "IfcMaterialDefinition") { Definition = "Filter frame material."},
 			new SingleValuePropertyType("MediaExtendedArea", "IfcAreaMeasure") { Definition = "Total extended media area."},
 			new SingleValuePropertyType("NominalCountedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle count concentration before and after the filter against particles with a certain size distribution."},
-			new SingleValuePropertyType("NominalWeightedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle weight concentration before and after the filter against particles with a certain size distribution."} },
+			new SingleValuePropertyType("NominalWeightedEfficiency", "IfcReal") { Definition = "Nominal filter efficiency based the particle weight concentration before and after the filter against particles with a certain size distribution."},
+			new TableValuePropertyType("CountedEfficiencyCurve", "IfcMassMeasure", "IfcReal") { Definition = "Counted efficiency curve as a function of dust holding weight, efficiency = f (dust holding weight)."},
+			new TableValuePropertyType("PressureDropCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Under certain dust holding weight, DelPressure = f (fluidflowRate)"},
+			new TableValuePropertyType("WeightedEfficiencyCurve", "IfcMassMeasure", "IfcReal") { Definition = "Weighted efficiency curve as a function of dust holding weight, efficiency = f (dust holding weight)."} },
 				new [] { "IfcFilter", "IfcFilterType" });
 		yield return new PropertySetInfo("Pset_FilterTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -7116,7 +7252,8 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("CompressedAirFilterType", new [] { "ACTIVATEDCARBON", "COALESCENSE_FILTER", "PARTICLE_FILTER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "ACTIVATEDCARBON: absorbs oil vapor and odor; PARTICLE_FILTER: used to absorb solid particles of medium size; COALESCENSE_FILTER: used to absorb fine solid, oil, and water particles, also called micro filter"},
 			new SingleValuePropertyType("AutomaticCondensateDischarge", "IfcBoolean") { Definition = "Whether or not the condensing water or oil is discharged automatically from the filter."},
 			new SingleValuePropertyType("CloggingIndicator", "IfcBoolean") { Definition = "Whether the filter has an indicator to display the degree of clogging of the filter."},
-			new SingleValuePropertyType("OperationPressureMax", "IfcPressureMeasure") { Definition = "Maximum pressure under normal operating conditions."} },
+			new SingleValuePropertyType("OperationPressureMax", "IfcPressureMeasure") { Definition = "Maximum pressure under normal operating conditions."},
+			new TableValuePropertyType("ParticleAbsorptionCurve", "IfcPositiveLengthMeasure", "IfcPositiveRatioMeasure") { Definition = "Ratio of particles that are removed by the filter.  Each entry describes the ratio of particles absorbed greater than equal to the specified size and less than the next specified size.  For example,  given for 3 significant particle sizes >= 0,1 micro m, >= 1 micro m, >= 5 micro m"} },
 				new [] { "IfcFilter", "IfcFilterType" });
 		yield return new PropertySetInfo("Pset_FilterTypeWaterFilter", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("WaterFilterType", new [] { "FILTRATION_DIATOMACEOUSEARTH", "FILTRATION_SAND", "PURIFICATION_DEIONIZING", "PURIFICATION_REVERSEOSMOSIS", "SOFTENING_ZEOLITE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Further qualifies the type of water filter.  Filtration removes undissolved matter; Purification removes dissolved matter; Softening replaces dissolved matter."} },
@@ -7303,7 +7440,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NominalMoistureGain", "IfcMassFlowRateMeasure") { Definition = "Nominal rate of water vapor added into the airstream."},
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
 			new SingleValuePropertyType("WaterRequirement", "IfcVolumetricFlowRateMeasure") { Definition = "Make-up water requirement."},
-			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"},
+			new TableValuePropertyType("AirPressureDropCurve", "IfcVolumetricFlowRateMeasure", "IfcPressureMeasure") { Definition = "Air pressure drop as a function of air flow rate.\n\nAir pressure drop versus air-flow rate."},
+			new TableValuePropertyType("SaturationEfficiencyCurve", "IfcVolumetricFlowRateMeasure", "IfcNormalisedRatioMeasure") { Definition = "Saturation efficiency as a function of the air flow rate."} },
 				new [] { "IfcHumidifier", "IfcHumidifierType" });
 		yield return new PropertySetInfo("Pset_ImpactProtectionDeviceOccurrenceBumper", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("BumperOrientation", new [] { "OPPOSITETOSTATIONDIRECTION", "STATIONDIRECTION", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Direction in which the bumper is aligned, e.g. same direction as increasing stationing values or opposite."},
@@ -7391,7 +7530,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ContributedLuminousFlux", "IfcLuminousFluxMeasure") { Definition = "Luminous flux is a photometric measure of radiant flux, i.e. the volume of light emitted from a light source. Luminous flux is measured either for the interior as a whole or for a part of the interior (partial luminous flux for a solid angle). All other photometric parameters are derivatives of luminous flux. Luminous flux is measured in lumens (lm). The luminous flux is given as a nominal value for each lamp."},
 			new SingleValuePropertyType("LampMaintenanceFactor", "IfcReal") { Definition = "Non recoverable losses of luminous flux of a lamp due to lamp depreciation; i.e. the decreasing of light output of a luminaire due to aging and dirt."},
 			new SingleValuePropertyType("LightEmitterNominalPower", "IfcPowerMeasure") { Definition = "Light emitter nominal power."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("Spectrum", "IfcNumericMeasure", "IfcNumericMeasure") { Definition = "The spectrum of radiation describes its composition with regard to wavelength. Light, for example, as the portion of electromagnetic radiation that is visible to the human eye, is radiation with wavelengths in the range of approx. 380 to 780 nm (1 nm = 10 m). The corresponding range of colours varies from violet to indigo, blue, green, yellow, orange, and red. These colours form a continuous spectrum, in which the various spectral sectors merge into each other."} },
 				new [] { "IfcLamp", "IfcLampType" });
 		yield return new PropertySetInfo("Pset_LandRegistration", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("IsPermanentID", "IfcBoolean") { Definition = "Indicates whether the identity assigned to the object is permanent (= TRUE) or temporary (=FALSE)."},
@@ -7571,7 +7711,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("StructuralGrade", "IfcLabel") { Definition = "Classification label to define mechanical properties according to structural grades defined in published standards; designated by numbers, letters, or a combination of both."},
 			new SingleValuePropertyType("UltimateStrain", "IfcPositiveRatioMeasure") { Definition = "A measure of the (engineering) strain at the state of ultimate stress of the material."},
 			new SingleValuePropertyType("UltimateStress", "IfcPressureMeasure") { Definition = "A measure of the ultimate stress of the material."},
-			new SingleValuePropertyType("YieldStress", "IfcPressureMeasure") { Definition = "A measure of the yield stress (or characteristic 0.2 percent proof stress) of the material."} },
+			new SingleValuePropertyType("YieldStress", "IfcPressureMeasure") { Definition = "A measure of the yield stress (or characteristic 0.2 percent proof stress) of the material."},
+			new TableValuePropertyType("Relaxations", "IfcNormalisedRatioMeasure", "IfcNormalisedRatioMeasure") { Definition = "Measures of decrease in stress over long time intervals resulting from plastic flow. Different relaxation values for different initial stress levels for a material may be given. It describes the time dependent relative relaxation value for a given initial stress level at constant strain.\nRelating values are the \"RelaxationValue\". Related values are the \"InitialStress\""} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MaterialThermal", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BoilingPoint", "IfcThermodynamicTemperatureMeasure") { Definition = "The boiling point of the material (fluid)."},
@@ -7617,7 +7758,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("YoungModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the Young's modulus of elasticity of the material."},
 			new SingleValuePropertyType("YoungModulusMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=0°."},
 			new SingleValuePropertyType("YoungModulusPerp", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, mean value, α=90°."},
-			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."} },
+			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."},
+			new TableValuePropertyType("InstabilityFactors", "IfcPositiveRatioMeasure", "IfcPositiveRatioMeasure") { Definition = "Defining values: slenderness ratios; defined values: either factors or divisors of the strength, depending on the design method (if <1: factors, if >1: divisors)."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MechanicalBeamInPlaneNegative", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BendingStrength", "IfcPressureMeasure") { Definition = "Bending strength.\n\nDefining values: α; defined values: bending strength."},
@@ -7634,7 +7776,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("YoungModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the Young's modulus of elasticity of the material."},
 			new SingleValuePropertyType("YoungModulusMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=0°."},
 			new SingleValuePropertyType("YoungModulusPerp", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, mean value, α=90°."},
-			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."} },
+			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."},
+			new TableValuePropertyType("InstabilityFactors", "IfcPositiveRatioMeasure", "IfcPositiveRatioMeasure") { Definition = "Defining values: slenderness ratios; defined values: either factors or divisors of the strength, depending on the design method (if <1: factors, if >1: divisors)."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MechanicalBeamOutOfPlane", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BendingStrength", "IfcPressureMeasure") { Definition = "Bending strength.\n\nDefining values: α; defined values: bending strength."},
@@ -7651,7 +7794,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("YoungModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the Young's modulus of elasticity of the material."},
 			new SingleValuePropertyType("YoungModulusMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=0°."},
 			new SingleValuePropertyType("YoungModulusPerp", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, mean value, α=90°."},
-			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."} },
+			new SingleValuePropertyType("YoungModulusPerpMin", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus, minimal value, α=90°."},
+			new TableValuePropertyType("InstabilityFactors", "IfcPositiveRatioMeasure", "IfcPositiveRatioMeasure") { Definition = "Defining values: slenderness ratios; defined values: either factors or divisors of the strength, depending on the design method (if <1: factors, if >1: divisors)."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MechanicalFastenerAnchorBolt", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("AnchorBoltDiameter", "IfcPositiveLengthMeasure") { Definition = "The nominal diameter of the anchor bolt bar(s)."},
@@ -7692,19 +7836,40 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("RaisedCompressiveStrength", "IfcPressureMeasure") { Definition = "Alternative value for compressive strength which may be used under material and code dependent conditions (e.g. if deformation is tolerable, or far from ends of the member); conditions should be stated in SELF\\IfcProperty.Description."},
 			new SingleValuePropertyType("ReferenceDepth", "IfcPositiveLengthMeasure") { Definition = "Depth in bending for which the mechanical properties are valid; provided as a means to check the integrity of material assignment."},
 			new SingleValuePropertyType("ShearModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the shear modulus of elasticity of the material."},
-			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."} },
+			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."},
+			new TableValuePropertyType("BearingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: bearing strength of bolt holes, i.e. intrados pressure."},
+			new TableValuePropertyType("BendingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Bending strength.\n\nDefining values: α; defined values: bending strength."},
+			new TableValuePropertyType("CompressiveStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "The compressive strength of the object or material.\n\nDefining values: α; defined values: compressive strength."},
+			new TableValuePropertyType("ShearStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: shear strength."},
+			new TableValuePropertyType("TensileStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Indicates the ability to withstand breakage apart under applied force."},
+			new TableValuePropertyType("YoungModulusBending", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in bending."},
+			new TableValuePropertyType("YoungModulusTension", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in tension."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MechanicalPanelOutOfPlane", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("RaisedCompressiveStrength", "IfcPressureMeasure") { Definition = "Alternative value for compressive strength which may be used under material and code dependent conditions (e.g. if deformation is tolerable, or far from ends of the member); conditions should be stated in SELF\\IfcProperty.Description."},
 			new SingleValuePropertyType("ReferenceDepth", "IfcPositiveLengthMeasure") { Definition = "Depth in bending for which the mechanical properties are valid; provided as a means to check the integrity of material assignment."},
 			new SingleValuePropertyType("ShearModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the shear modulus of elasticity of the material."},
-			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."} },
+			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."},
+			new TableValuePropertyType("BearingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: bearing strength of bolt holes, i.e. intrados pressure."},
+			new TableValuePropertyType("BendingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Bending strength.\n\nDefining values: α; defined values: bending strength."},
+			new TableValuePropertyType("CompressiveStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "The compressive strength of the object or material.\n\nDefining values: α; defined values: compressive strength."},
+			new TableValuePropertyType("ShearStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: shear strength."},
+			new TableValuePropertyType("TensileStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Indicates the ability to withstand breakage apart under applied force."},
+			new TableValuePropertyType("YoungModulusBending", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in bending."},
+			new TableValuePropertyType("YoungModulusTension", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in tension."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MechanicalPanelOutOfPlaneNegative", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("RaisedCompressiveStrength", "IfcPressureMeasure") { Definition = "Alternative value for compressive strength which may be used under material and code dependent conditions (e.g. if deformation is tolerable, or far from ends of the member); conditions should be stated in SELF\\IfcProperty.Description."},
 			new SingleValuePropertyType("ReferenceDepth", "IfcPositiveLengthMeasure") { Definition = "Depth in bending for which the mechanical properties are valid; provided as a means to check the integrity of material assignment."},
 			new SingleValuePropertyType("ShearModulus", "IfcModulusOfElasticityMeasure") { Definition = "A measure of the shear modulus of elasticity of the material."},
-			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."} },
+			new SingleValuePropertyType("YoungModulusCompression", "IfcModulusOfElasticityMeasure") { Definition = "Elastic modulus in compression."},
+			new TableValuePropertyType("BearingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: bearing strength of bolt holes, i.e. intrados pressure."},
+			new TableValuePropertyType("BendingStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Bending strength.\n\nDefining values: α; defined values: bending strength."},
+			new TableValuePropertyType("CompressiveStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "The compressive strength of the object or material.\n\nDefining values: α; defined values: compressive strength."},
+			new TableValuePropertyType("ShearStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Defining values: α; defined values: shear strength."},
+			new TableValuePropertyType("TensileStrength", "IfcPositivePlaneAngleMeasure", "IfcPressureMeasure") { Definition = "Indicates the ability to withstand breakage apart under applied force."},
+			new TableValuePropertyType("YoungModulusBending", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in bending."},
+			new TableValuePropertyType("YoungModulusTension", "IfcPositivePlaneAngleMeasure", "IfcModulusOfElasticityMeasure") { Definition = "Defining values: α; defined values: elastic modulus in tension."} },
 				new [] { "IfcMaterial" });
 		yield return new PropertySetInfo("Pset_MedicalDeviceTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -7751,12 +7916,14 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("DataEncryptionType", "IfcLabel") { Definition = "Indicates the type of security protocols that can be used in the access point to protect the wireless network."},
 			new SingleValuePropertyType("DataExchangeRate", "IfcIntegerCountRateMeasure") { Definition = "Indicates the data transfer rate of the access point in bit per second (bps)."},
 			new SingleValuePropertyType("NumberOfAntennas", "IfcCountMeasure") { Definition = "Indicates the number of antennas integrated in the device."},
-			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."} },
+			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeBasebandUnit", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("MaximumNumberOfRRUs", "IfcInteger") { Definition = "Indicates the maximum number of remote radio units (RRU) which can be connected to the baseband unit."},
 			new SingleValuePropertyType("NumberOfCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."},
-			new SingleValuePropertyType("NumberOfEmergencyTransceivers", "IfcCountMeasure") { Definition = "Indicates the number of emergency transceivers in the base band unit."} },
+			new SingleValuePropertyType("NumberOfEmergencyTransceivers", "IfcCountMeasure") { Definition = "Indicates the number of emergency transceivers in the base band unit."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeBaseTransceiverStation", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("DownlinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for downlink transmission."},
@@ -7764,7 +7931,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NumberOfAntennas", "IfcCountMeasure") { Definition = "Indicates the number of antennas integrated in the device."},
 			new SingleValuePropertyType("NumberOfCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."},
 			new SingleValuePropertyType("NumberOfEmergencyTransceivers", "IfcCountMeasure") { Definition = "Indicates the number of emergency transceivers in the base band unit."},
-			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."} },
+			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."},
+			new TableValuePropertyType("NumberOfTransceiversPerAntenna", "IfcLabel", "IfcInteger") { Definition = "Indicates the number of transceivers per antenna."},
+			new TableValuePropertyType("RadiatedOutputPowerPerAntenna", "IfcLabel", "IfcPowerMeasure") { Definition = "Indicates the power of radio waves emitted by each antenna of the base transceiver station."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -7774,7 +7944,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("DownlinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for downlink transmission."},
 			new SingleValuePropertyType("NumberOfAntennas", "IfcCountMeasure") { Definition = "Indicates the number of antennas integrated in the device."},
 			new SingleValuePropertyType("NumberOfCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."},
-			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."} },
+			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."},
+			new TableValuePropertyType("RadiatedOutputPowerPerAntenna", "IfcLabel", "IfcPowerMeasure") { Definition = "Indicates the power of radio waves emitted by each antenna of the base transceiver station."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeMasterUnit", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("MasterUnitType", new [] { "ANALOG", "DIGITAL", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the master unit type."},
@@ -7782,25 +7954,32 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("TransmittedSignal", new [] { "CDMA", "GSM", "LTE", "TD_SCDMA", "WCDMA", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type or standard of signal transmitted by the master unit."},
 			new SingleValuePropertyType("MaximumNumberOfConnectedRUs", "IfcInteger") { Definition = "Indicates the maximum number of remote units (RUs) which can be connected to the master unit."},
 			new SingleValuePropertyType("TransmittedBandwidth", "IfcFrequencyMeasure") { Definition = "Indicates the transmitted bandwidth of the master unit."},
-			new SingleValuePropertyType("TransmittedFrequency", "IfcFrequencyMeasure") { Definition = "Indicates the transmitted frequency used by the master unit."} },
+			new SingleValuePropertyType("TransmittedFrequency", "IfcFrequencyMeasure") { Definition = "Indicates the transmitted frequency used by the master unit."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeMobileSwitchingCenter", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("MaximumNumberOfManagedBSCs", "IfcInteger") { Definition = "Indicates the maximum number of base station controller (BSC) that can be managed simultaneously by the mobile switching center (MSC)."},
-			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."} },
+			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeMSCServer", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."} },
+			new SingleValuePropertyType("UserCapacity", "IfcInteger") { Definition = "Indicates the user capacity of the device, defined as the maximum number of users that can be active at the same time."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTeleCommunicationsApplianceTypeRemoteRadioUnit", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("RRUConnectionType", new [] { "CHAIN", "MIXED", "RING", "STAR", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the connection type between the remote radio unit and baseband unit."},
 			new SingleValuePropertyType("AntennaType", "IfcLabel") { Definition = "Indicates the type of antenna.\n\nIndicates the type of antenna integrated in the device."},
 			new SingleValuePropertyType("DownlinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for downlink transmission."},
 			new SingleValuePropertyType("NumberOfCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."},
-			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."} },
+			new SingleValuePropertyType("UplinkRadioBand", "IfcFrequencyMeasure") { Definition = "Indicates the frequency range, delimited by a lower frequency and an upper frequency, allocated for uplink transmission."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."},
+			new TableValuePropertyType("NumberOfTransceiversPerAntenna", "IfcLabel", "IfcInteger") { Definition = "Indicates the number of transceivers per antenna."},
+			new TableValuePropertyType("RadiatedOutputPowerPerAntenna", "IfcLabel", "IfcPowerMeasure") { Definition = "Indicates the power of radio waves emitted by each antenna of the base transceiver station."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MobileTelecommunicationsApplianceTypeRemoteUnit", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("RUConnectionType", new [] { "CHAIN", "MIXED", "RING", "STAR", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicate the connection type between the remote unit and the master unit."},
-			new SingleValuePropertyType("NumberOfAntennas", "IfcCountMeasure") { Definition = "Indicates the number of antennas integrated in the device."} },
+			new SingleValuePropertyType("NumberOfAntennas", "IfcCountMeasure") { Definition = "Indicates the number of antennas integrated in the device."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcMobileTelecommunicationsAppliance", "IfcMobileTelecommunicationsApplianceType" });
 		yield return new PropertySetInfo("Pset_MooringDeviceCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AnchorageType", new [] { "CASTIN", "DRILLEDANDFIXED", "THROUGHBOLTED" } ) { Definition = "Mooring device anchorage type"},
@@ -7846,7 +8025,8 @@ public partial class PropertySetInfo
 				new [] { "IfcCableSegment", "IfcCableSegmentType" });
 		yield return new PropertySetInfo("Pset_OpticalSplitter", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("OpticalSplitterType", new [] { "MULTIMODE", "SINGLEMODE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Indicates the type of optical splitter, single mode or multi-mode."},
-			new SingleValuePropertyType("NumberOfBranches", "IfcCountMeasure") { Definition = "Indicates the number of branches that can be supported by the optical splitter."} },
+			new SingleValuePropertyType("NumberOfBranches", "IfcCountMeasure") { Definition = "Indicates the number of branches that can be supported by the optical splitter."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcJunctionBox", "IfcJunctionBoxType" });
 		yield return new PropertySetInfo("Pset_OutletTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -8042,8 +8222,10 @@ public partial class PropertySetInfo
 				new [] { "IfcSlab", "IfcSlabType" });
 		yield return new PropertySetInfo("Pset_ProcessCapacity", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ProcessItem", new [] { "BARREL", "CGT", "PASSENGER", "TEU", "TONNE", "VEHICLE", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type of item (and its measurement method) being modelled within a process. This can be cargo, passengers or vehicles that pass through the system."},
+			new SingleValuePropertyType("DownstreamConnections", "IfcLabel") { Definition = "Names of downstream connected equipment and spaces, if not otherwise represented"},
 			new SingleValuePropertyType("ProcessCapacity", "IfcCountMeasure") { Definition = "The number of units that can be processed in the time defined in ProcessPerformance"},
-			new SingleValuePropertyType("ProcessPerformance", "IfcDuration") { Definition = "Minimum time to accept or dispatch the entire item capacity."} },
+			new SingleValuePropertyType("ProcessPerformance", "IfcDuration") { Definition = "Minimum time to accept or dispatch the entire item capacity."},
+			new SingleValuePropertyType("UpstreamConnections", "IfcLabel") { Definition = "Names of upstream connected equipment and spaces, if not otherwise represented"} },
 				new [] { "IfcBuiltSystem", "IfcDistributionSystem", "IfcDoor", "IfcDoorType", "IfcSpace", "IfcSpaceType", "IfcTransportationDevice", "IfcTransportationDeviceType", "IfcZone" });
 		yield return new PropertySetInfo("Pset_ProfileArbitraryDoubleT", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FlangeBaseFillet", "IfcNonNegativeLengthMeasure") { Definition = "Flange base fillet of the profile."},
@@ -8165,14 +8347,18 @@ public partial class PropertySetInfo
 				new [] { "IfcSpatialStructureElement", "IfcSpatialStructureElementType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitI2TCurve", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("VoltageLevel", new [] { "U1000", "U230", "U400", "U440", "U525", "U690", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The voltage levels for which the data of the instance is valid. More than one value may be selected in the enumeration."},
-			new SingleValuePropertyType("NominalCurrent", "IfcElectricCurrentMeasure") { Definition = "The nominal current that is designed to be measured.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."} },
+			new SingleValuePropertyType("NominalCurrent", "IfcElectricCurrentMeasure") { Definition = "The nominal current that is designed to be measured.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."},
+			new TableValuePropertyType("BreakerUnitCurve", "IfcElectricCurrentMeasure", "IfcReal") { Definition = "A curve that establishes the let through energy of a breaker unit when a particular prospective current is applied.  Note that the breaker unit curve is defined within a Cartesian coordinate system and this fact must be asserted within the property set:(1) Defining value: ProspectiveCurrent: A list of minimum 2 and maximum 16 numbers providing the currents in [A] for points in the current/I2t log/log coordinate space. The curve is drawn as a straight line between two consecutive points.\n(2) Defined value: LetThroughEnergy: A list of minimum 2 and maximum 16 numbers providing the let-through energy, I2t, in [A2s] for points in the current/I2t log/log coordinate space. The curve is drawn as a straight line between two consecutive points."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitI2TFuseCurve", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("VoltageLevel", new [] { "U1000", "U230", "U400", "U440", "U525", "U690", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The voltage levels for which the data of the instance is valid. More than one value may be selected in the enumeration."} },
+			new EnumerationPropertyType("VoltageLevel", new [] { "U1000", "U230", "U400", "U440", "U525", "U690", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The voltage levels for which the data of the instance is valid. More than one value may be selected in the enumeration."},
+			new TableValuePropertyType("BreakerUnitFuseBreakingingCurve", "IfcElectricCurrentMeasure", "IfcReal") { Definition = "A curve that establishes the let through breaking energy of a breaker unit when a particular prospective breaking current is applied.  Note that the breaker unit fuse breaking curve is defined within a Cartesian coordinate system and this fact must be:(1) Defining value: ProspectiveCurrentBreaking: A list of minimum 2 and maximum 8 numbers providing the currents in [A] for points in the\ncurrent/breaking energy log/log coordinate space. The curve is drawn as a straight line between two consecutive points.\n(2) Defined value: LetThroughBreakingEnergy: A list of minimum 2 and maximum 8 numbers providing the breaking energy whereby the fuse has provided a break, I2t, in [A2s] for points in the current/breakting_energy log/log coordinate space. The curve is drawn as a straight line between two consecutive."},
+			new TableValuePropertyType("BreakerUnitFuseMeltingCurve", "IfcElectricCurrentMeasure", "IfcReal") { Definition = "A curve that establishes the energy required to melt the fuse of a breaker unit when a particular prospective melting current is applied.  Note that the breaker unit fuse melting curve is defined within a Cartesian coordinate system and this fact must be:(1) Defining value: ProspectiveCurrentMelting :A list of minimum 2 and maximum 8 numbers providing the currents in [A] for points in the\ncurrent/melting_energy log/log coordinate space. The curve is drawn as a straight line between two consecutive points.\n(2) Defined value: MeltingEnergy: A list of minimum 2 and maximum 8 numbers providing the energy whereby the fuse is starting to melt, I2t, in [A2s] for points in the current/melting_energy log/log coordinate space. The curve is drawn as a straight line between two consecutive points."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitIPICurve", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("VoltageLevel", new [] { "U1000", "U230", "U400", "U440", "U525", "U690", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The voltage levels for which the data of the instance is valid. More than one value may be selected in the enumeration."},
-			new SingleValuePropertyType("NominalCurrent", "IfcElectricCurrentMeasure") { Definition = "The nominal current that is designed to be measured.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."} },
+			new SingleValuePropertyType("NominalCurrent", "IfcElectricCurrentMeasure") { Definition = "The nominal current that is designed to be measured.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."},
+			new TableValuePropertyType("BreakerUnitIPICurve", "IfcElectricCurrentMeasure", "IfcElectricCurrentMeasure") { Definition = "A curve that establishes the let through peak current of a breaker unit when a particular prospective current is applied.  Note that the breaker unit IPI curve is defined within a Cartesian coordinate system and this fact must be asserted within the property set:(1) Defining value: A list of minimum 2 and maximum 16 numbers providing the currents in [A] for points in the I/Î log/log coordinate space. The curve is drawn as a straight line between two consecutive points.\n(2) Defined value: A list of minimum 2 and maximum 16 numbers providing the let-through peak currents, Î, in [A] for points in the I/Î log/log coordinate space. The curve is drawn as a straight line between two consecutive points."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitTypeMCB", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("VoltageLevel", new [] { "U1000", "U230", "U400", "U440", "U525", "U690", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The voltage levels for which the data of the instance is valid. More than one value may be selected in the enumeration."},
@@ -8180,6 +8366,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICS60898", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an MCB tested in accordance with the IEC 60898 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
+			new SingleValuePropertyType("NominalCurrents", "IfcElectricCurrentMeasure") { Definition = "A set of values providing information on available modules (chips) for setting the nominal current of the protective device.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."},
 			new SingleValuePropertyType("PowerLoss", "IfcPowerMeasure") { Definition = "The power loss in [W].\n\nThe power loss in [W] per pole of the MCB  when the nominal current is flowing through the MCB."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceBreakerUnitTypeMotorProtection", new IPropertyTypeInfo[] {
@@ -8187,7 +8374,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICM60947", "IfcElectricCurrentMeasure") { Definition = "The making capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
-			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."} },
+			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."},
+			new SingleValuePropertyType("PerformanceClasses", "IfcLabel") { Definition = "A set of designations of performance classes for the breaker unit for which the data of this instance is valid.\n\nA set of designations of performance classes for the breaker unit for which the data of this instance is valid. A breaker unit being a motor protection device may be\nconstructed for different levels of breaking capacities. A maximum of 7 different\nperformance classes may be provided. Examples of performance classes that may be specified include B, C, N, S, H, L, V."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceOccurrence", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("PoleUsage", new [] { "1P", "1PN", "2P", "3P", "3PN", "4P", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Pole usage."},
@@ -8206,7 +8394,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ShortTimeTrippingTime", "IfcTimeMeasure") { Definition = "Short time tripping time. The set value of the short time tripping time if adjustable."} },
 				new [] { "IfcProtectiveDevice" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingCurve", new IPropertyTypeInfo[] {
-			new EnumerationPropertyType("TrippingCurveType", new [] { "LOWER", "UPPER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type of tripping curve that is represented by the property set."} },
+			new EnumerationPropertyType("TrippingCurveType", new [] { "LOWER", "UPPER", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The type of tripping curve that is represented by the property set."},
+			new TableValuePropertyType("TrippingCurve", "IfcElectricCurrentMeasure", "IfcTimeMeasure") { Definition = "A curve that establishes the release time of a tripping unit when a particular prospective current is applied.  Note that the tripping curve is defined within a Cartesian coordinate system and this fact must be asserted within the property set:(1) Defining value is the Prospective Current which is a list of minimum 2 and maximum 16 numbers providing the currents in [x In] for points in the current/time log/log coordinate space. The curve is drawn as a straight line between two consecutive points.\n(2) Defined value is a list of minimum 2 and maximum 16 numbers providing the release_time in [s] for points in the current/time log/log coordinate space. The curve is drawn as a straight line between two consecutive points. Note that a defined interpolation."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingFunctionGCurve", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CurrentTolerance1", "IfcPositiveRatioMeasure") { Definition = "The tolerance for the current of time/current-curve in [%]."},
@@ -8277,7 +8466,8 @@ public partial class PropertySetInfo
 			new EnumerationPropertyType("AdjustmentValueType", new [] { "LIST", "RANGE" } ) { Definition = "The type of adjustment value that is applied through the property set. This determines the properties that should be asserted (see below)."},
 			new SingleValuePropertyType("AdjustmentDesignation", "IfcLabel") { Definition = "The desgnation on the device for the adjustment."},
 			new SingleValuePropertyType("CurrentAdjustmentRange", "IfcElectricCurrentMeasure") { Definition = "Upper and lower current adjustment limits for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
-			new SingleValuePropertyType("CurrentAdjustmentRangeStepValue", "IfcElectricCurrentMeasure") { Definition = "Step value of current adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."} },
+			new SingleValuePropertyType("CurrentAdjustmentRangeStepValue", "IfcElectricCurrentMeasure") { Definition = "Step value of current adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
+			new SingleValuePropertyType("CurrentAdjustmentValues", "IfcElectricCurrentMeasure") { Definition = "A list of current adjustment values that may be applied to a tripping unit for an AdjustmentValueType = LIST. A minimum of 1 and a maximum of 16 adjustment values may be specified. Note that this property should not have a value for an  AdjustmentValueType = RANGE."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit", "IfcProtectiveDeviceTrippingUnitType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTimeAdjustment", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("AdjustmentValueType", new [] { "LIST", "RANGE" } ) { Definition = "The type of adjustment value that is applied through the property set. This determines the properties that should be asserted (see below)."},
@@ -8285,7 +8475,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("AdjustmentDesignation", "IfcLabel") { Definition = "The desgnation on the device for the adjustment."},
 			new SingleValuePropertyType("CurrentForTimeDelay", "IfcTimeMeasure") { Definition = "The tripping current in [x In] at which the time delay is specified. A value for this property should only be asserted for time delay of L-function, and for I2t of the S and G function."},
 			new SingleValuePropertyType("TimeAdjustmentRange", "IfcTimeMeasure") { Definition = "Upper and lower time adjustment limits for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
-			new SingleValuePropertyType("TimeAdjustmentRangeStepValue", "IfcTimeMeasure") { Definition = "Step value of time adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."} },
+			new SingleValuePropertyType("TimeAdjustmentRangeStepValue", "IfcTimeMeasure") { Definition = "Step value of time adjustment for an AdjustmentValueType = RANGE. Note that this property should not have a value for an  AdjustmentValueType = LIST."},
+			new SingleValuePropertyType("TimeAdjustmentValues", "IfcTimeMeasure") { Definition = "A list of time adjustment values that may be applied to a tripping unit for an AdjustmentValueType = LIST. A minimum of 1 and a maximum of 16 adjustment values may be specified. Note that this property should not have a value for an  AdjustmentValueType = RANGE."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit", "IfcProtectiveDeviceTrippingUnitType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -8313,7 +8504,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("N_Protection_100", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit is tripping if the current in the N conductor is more than 100% of that of the phase conductors. The property is only asserted if the property N_Protection is asserted."},
 			new SingleValuePropertyType("N_Protection_50", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit is tripping if the current in the N conductor is more than 50% of that of the phase conductors. The property is only asserted if the property N_Protection is asserted."},
 			new SingleValuePropertyType("N_Protection_Select", "IfcBoolean") { Definition = "An indication whether the use of the N_Protection can be selected by the user or not. If both the properties N_Protection_50 and N_Protection_100 are asserted, the value of N_Protection_Select property is set to TRUE. The property is only asserted if the property N_Protection is asserted."},
-			new SingleValuePropertyType("N_Protection", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit has separate protection for the N conductor, or not."} },
+			new SingleValuePropertyType("N_Protection", "IfcBoolean") { Definition = "An indication whether the electronic tripping unit has separate protection for the N conductor, or not."},
+			new SingleValuePropertyType("NominalCurrents", "IfcElectricCurrentMeasure") { Definition = "A set of values providing information on available modules (chips) for setting the nominal current of the protective device.\n\nA set of values providing information on available modules (chips) for setting the nominal current of the protective device. If\nthe set is empty, no nominal current modules are available for the tripping unit."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit", "IfcProtectiveDeviceTrippingUnitType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTrippingUnitTypeResidualCurrent", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("TrippingUnitReleaseCurrent", new [] { "10", "100", "1000", "30", "300", "500", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "The value of tripping or residual current for which the device has the possibility to be equipped. The values are given in mA."} },
@@ -8336,7 +8528,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ICM60947", "IfcElectricCurrentMeasure") { Definition = "The making capacity in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICS60947", "IfcElectricCurrentMeasure") { Definition = "The service breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
 			new SingleValuePropertyType("ICU60947", "IfcElectricCurrentMeasure") { Definition = "The ultimate breaking capacity in [A] for an object tested in accordance with the IEC 60947 series."},
-			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."} },
+			new SingleValuePropertyType("ICW60947", "IfcElectricCurrentMeasure") { Definition = "The thermal withstand current in [A] for a circuit breaker or motor protection device tested in accordance with the IEC 60947 series. The value shall be related to 1 s."},
+			new SingleValuePropertyType("PerformanceClasses", "IfcLabel") { Definition = "A set of designations of performance classes for the breaker unit for which the data of this instance is valid.\n\nA set of designations of performance classes for the breaker unit for which the data of this instance is valid. A breaker unit being a circuit breaker may be\nconstructed for different levels of breaking capacities. A maximum of 7 different\nperformance classes may be provided. Examples of performance classes that may be specified include B, C, N, S, H, L, V."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Pset_ProtectiveDeviceTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
@@ -9034,10 +9227,11 @@ public partial class PropertySetInfo
 				new [] { "IfcGeotechnicalStratum" });
 		yield return new PropertySetInfo("Pset_SoundAttenuation", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("SoundScale", new [] { "DBA", "DBB", "DBC", "NC", "NR" } ) { Definition = "The reference sound scale.DBA: Decibels in an A-weighted scale\nDBB: Decibels in an B-weighted scale\nDBC: Decibels in an C-weighted scale\nNC: Noise criteria\nNR: Noise rating"},
+			new SingleValuePropertyType("SoundFrequency", "IfcFrequencyMeasure") { Definition = "List of nominal sound frequencies, correlated to the SoundPressure time series values (IfcTimeSeries.ListValues)"},
 			new SingleValuePropertyType("SoundPressure", "IfcTimeSeries") { Definition = "A time series of sound pressure values measured in decibels at a reference pressure of 20 microPascals for the referenced octave band frequency.  Each value in IfcTimeSeries.ListValues is correlated to the sound frequency at the same position within SoundFrequencies."} },
 				new [] { "IfcAnnotation" });
 		yield return new PropertySetInfo("Pset_SoundGeneration", new IPropertyTypeInfo[] {
-			 },
+			new TableValuePropertyType("SoundCurve", "IfcFrequencyMeasure", "IfcSoundPowerMeasure") { Definition = "Sound curve.\n\nTable of sound frequencies and sound power measured in decibels at a reference power of 1 picowatt(10\\^(-12) watt) for the referenced octave band frequency."} },
 				new [] { "IfcDistributionFlowElement", "IfcDistributionFlowElementType" });
 		yield return new PropertySetInfo("Pset_SpaceAirHandlingDimensioning", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("BoundaryAreaHeatLoss", "IfcHeatFluxDensityMeasure") { Definition = "Heat loss per unit area for the boundary object. This is a design input value for use in the absence of calculated load data."},
@@ -9258,6 +9452,12 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Station", "IfcLengthMeasure") { Definition = "The station value at this location."} },
 				new [] { "IfcReferent" });
 		yield return new PropertySetInfo("Pset_StructuralSurfaceMemberVaryingThickness", new IPropertyTypeInfo[] {
+			new SingleValuePropertyType("Location1Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness1 is given"},
+			new SingleValuePropertyType("Location1Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness1 is given"},
+			new SingleValuePropertyType("Location2Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness2 is given"},
+			new SingleValuePropertyType("Location2Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness2 is given"},
+			new SingleValuePropertyType("Location3Global", "IfcLengthMeasure") { Definition = "Global X,Y,Z coordinates of the point in which Thickness3 is given"},
+			new SingleValuePropertyType("Location3Local", "IfcLengthMeasure") { Definition = "Local x,y coordinates of the point in which Thickness3 is given"},
 			new SingleValuePropertyType("Thickness1", "IfcPositiveLengthMeasure") { Definition = "First thickness parameter of a surface member with varying thickness"},
 			new SingleValuePropertyType("Thickness2", "IfcPositiveLengthMeasure") { Definition = "Second thickness parameter of a surface member with varying thickness"},
 			new SingleValuePropertyType("Thickness3", "IfcPositiveLengthMeasure") { Definition = "Third thickness parameter of a surface member with varying thickness"} },
@@ -9277,7 +9477,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("IsIlluminated", "IfcBoolean") { Definition = "An indication of whether there is an illuminated indicator to show that the switch is on (=TRUE) or not (= FALSE)."},
 			new SingleValuePropertyType("Legend", "IfcLabel") { Definition = "A text inscribed or applied to the switch as a legend to indicate purpose or function."},
 			new SingleValuePropertyType("NumberOfGangs", "IfcCountMeasure") { Definition = "Number of gangs in the object.\n\nNumber of gangs/buttons on this switch."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("SetPoint", "IfcInteger", "IfcLabel") { Definition = "Indicates the setpoint and label.\n\nFor toggle switches, there are two positions, 0 for off and 1 for on.  For dimmer switches, the values may indicate the fully-off and full-on positions, where missing integer values in between are interpolated.   For selector switches, the range indicates the available positions.\nAn IfcTable may be attached (using IfcMetric and IfcResourceConstraintRelationship) containing columns of the specified header names and types:\n'Position' (IfcInteger): The discrete setpoint level.\n'Sink' (IfcLabel): The Name of the switched input port (IfcDistributionPort with FlowDirection=SINK).\n'Source' (IfcLabel): The Name of the switched output port (IfcDistributionPort with FlowDirection=SOURCE).\n'Ratio' (IfcNormalisedRatioMeasure): The ratio of power at the setpoint where 0.0 is off and 1.0 is fully on."} },
 				new [] { "IfcSwitchingDevice", "IfcSwitchingDeviceType" });
 		yield return new PropertySetInfo("Pset_SwitchingDeviceTypeContactor", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("ContactorType", new [] { "CAPACITORSWITCHING", "LOWCURRENT", "MAGNETICLATCHING", "MECHANICALLATCHING", "MODULAR", "REVERSING", "STANDARD", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "A list of the available types of contactor from which that required may be selected where:CapacitorSwitching: for switching 3 phase single or multi-step capacitor banks.\nLowCurrent: requires the use of low resistance contacts.\nMagneticLatching: enables the contactor to remain in the on position when the coil is no longer energized.\nMechanicalLatching: requires that the contactor is mechanically retained in the on position.\nModular: are totally enclosed and self contained.\nReversing: has a double set of contactors that are prewired.\nStandard: is a generic device that controls the flow of power in a circuit on or off."} },
@@ -9599,7 +9800,8 @@ public partial class PropertySetInfo
 				new [] { "IfcProduct", "IfcTypeProduct" });
 		yield return new PropertySetInfo("Pset_UnitaryControlElementBaseStationController", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("NumberOfManagedBTSs", "IfcCountMeasure") { Definition = "Indicates the maximum number of base transceiver stations (BTSs) that can be handled by the device."},
-			new SingleValuePropertyType("NumberOfManagedCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."} },
+			new SingleValuePropertyType("NumberOfManagedCarriers", "IfcCountMeasure") { Definition = "Indicates how many carrier frequencies can be managed by the device."},
+			new TableValuePropertyType("NumberOfInterfaces", "IfcLabel", "IfcInteger") { Definition = "Indicates the types of interfaces and their number in the device."} },
 				new [] { "IfcUnitaryControlElement", "IfcUnitaryControlElementType" });
 		yield return new PropertySetInfo("Pset_UnitaryControlElementPHistory", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Fan", "IfcTimeSeries") { Definition = "Indicates fan operation where True is on, False is off, and Unknown is automatic."},
@@ -9609,7 +9811,8 @@ public partial class PropertySetInfo
 				new [] { "IfcUnitaryControlElement" });
 		yield return new PropertySetInfo("Pset_UnitaryControlElementTypeCommon", new IPropertyTypeInfo[] {
 			new EnumerationPropertyType("Status", new [] { "DEMOLISH", "EXISTING", "NEW", "TEMPORARY", "OTHER", "NOTKNOWN", "UNSET" } ) { Definition = "Status of the element, predominately used in renovation or retrofitting projects. The status can be assigned to as \"New\" - element designed as new addition, \"Existing\" - element exists and remains, \"Demolish\" - element existed but is to be demolished,  \"Temporary\" - element will exists only temporary (like a temporary support structure)."},
-			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
+			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."},
+			new TableValuePropertyType("OperationMode", "IfcIdentifier", "IfcLabel") { Definition = "Table mapping operation mode identifiers to descriptive labels, which may be used for interpreting Pset_UnitaryControlElementPHistory.Mode."} },
 				new [] { "IfcUnitaryControlElement", "IfcUnitaryControlElementType" });
 		yield return new PropertySetInfo("Pset_UnitaryControlElementTypeControlPanel", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("NominalCurrent", "IfcElectricCurrentMeasure") { Definition = "The nominal current that is designed to be measured.\n\nA set of nominal currents in [A] for which the data of this instance is valid. At least one value shall be provided. Any value in the set shall not exceed the value of the\nUltimateRatedCurrent associated with the same breaker unit."},
@@ -10489,4 +10692,3 @@ public partial class PropertySetInfo
 				new [] { "IfcWindow", "IfcWindowType" });
 	}
 }
-
