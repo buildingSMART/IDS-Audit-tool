@@ -60,7 +60,10 @@ public class IfcSchema_PropertiesGenerator
 			using var stream = entry.Open();			
 			var xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
-			yield return GetZipPsets(xmlDoc);
+			var t = GetZipPsets(xmlDoc);
+			if (t is null)
+				continue;
+			yield return t;
 		}
 	}
 

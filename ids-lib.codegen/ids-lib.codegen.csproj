@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
     <PackageReference Include="Xbim.Essentials" Version="6.0.517" />
     <PackageReference Include="Xbim.Properties" Version="6.0.11" />
     <PackageReference Include="XmlDocMarkdown.Core" Version="2.9.0" />
