@@ -57,7 +57,7 @@ namespace idsTool.tests
                     unexpectedMeasureTypes++;
                 }   
             }
-            unexpectedMeasureTypes.Should().Be(79, "these are the acknowledged variations");
+            unexpectedMeasureTypes.Should().Be(80, "these are the acknowledged variations");
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace idsTool.tests
                     unexpectedMeasureTypes++;
                 }
             }
-            var expectedCount = 606;
+            var expectedCount = 619;
             unexpectedMeasureTypes.Should().Be(expectedCount, $"{expectedCount} is the count of acknowledged variations");
         }
     }
