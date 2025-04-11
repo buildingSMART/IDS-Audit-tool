@@ -243,7 +243,7 @@ public class IfcSchema_PropertiesGenerator
 		return q_AREA switch
 		{
 			IfcSimplePropertyTemplateTypeEnum.Q_AREA => "IfcAreaMeasure",
-			IfcSimplePropertyTemplateTypeEnum.Q_WEIGHT => "IfcWeightMeasure",
+			IfcSimplePropertyTemplateTypeEnum.Q_WEIGHT => "IfcMassMeasure",
 			IfcSimplePropertyTemplateTypeEnum.Q_LENGTH => "IfcLengthMeasure",
 			IfcSimplePropertyTemplateTypeEnum.Q_VOLUME => "IfcVolumeMeasure",
 			IfcSimplePropertyTemplateTypeEnum.Q_COUNT => "IfcCountMeasure",

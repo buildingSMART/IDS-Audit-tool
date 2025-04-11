@@ -11,7 +11,7 @@
 				<ids:entity>
 					<ids:name>
 						<xs:restriction base="xs:string">
-							<!-- no case match -->
+							<!-- 1 no case match -->
 							<xs:pattern value="IFCcoVERING"/>
 						</xs:restriction>
 					</ids:name>
@@ -41,7 +41,7 @@
 				<ids:attribute>
 					<ids:name>
 						<xs:restriction base="xs:string">
-							<!-- invalid valid pattern -->
+							<!-- 2 invalid value pattern -->
 							<xs:pattern value="[Name"/>
 						</xs:restriction>
 					</ids:name>
@@ -59,7 +59,7 @@
 				<ids:attribute>
 					<ids:name>
 						<xs:restriction base="xs:string">
-							<!-- this is a valid pattern that does not match-->
+							<!-- 3 this is a valid pattern that does not match-->
 							<xs:pattern value="Invalid[Nn]ame"/>
 						</xs:restriction>
 					</ids:name>
@@ -70,7 +70,7 @@
 							<!-- this is a valid enumeration  -->
 							<xs:enumeration value="Name"/>
 							<xs:enumeration value="GlobalId"/>
-							<!-- this is not a valid enumeration  -->
+							<!-- 4 this is not a valid enumeration  -->
 							<xs:enumeration value="globalid"/>
 						</xs:restriction>
 					</ids:name>

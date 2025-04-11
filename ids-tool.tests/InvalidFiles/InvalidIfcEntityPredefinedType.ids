@@ -64,12 +64,9 @@
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
-							<!-- this is NOT ok -->
-							<xs:enumeration value="INVALID"/>
-							<!-- this is NOT ok -->
-							<xs:enumeration value="SOMEOTHERINVALID"/>
-							<!-- this is NOT ok -->
-							<xs:enumeration value="lineartransition"/>
+							<xs:enumeration value="INVALID"/>          <!-- 1 this is NOT ok -->					
+							<xs:enumeration value="SOMEOTHERINVALID"/> <!-- 2 this is NOT ok -->
+							<xs:enumeration value="lineartransition"/> <!-- 3 this is NOT ok -->
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
@@ -79,8 +76,7 @@
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
-							<!-- this is NOT ok, because not found -->
-							<xs:pattern value="INVALID"/>							
+							<xs:pattern value="INVALID"/>              <!-- 4 this is NOT ok, because not found -->
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>
@@ -90,8 +86,7 @@
 					</ids:name>
 					<ids:predefinedType>
 						<xs:restriction base="xs:string">
-							<!-- this is NOT ok bacause of case -->
-							<xs:pattern value="lineartransition"/>
+              <xs:pattern value="lineartransition"/>     <!-- 5 this is NOT ok bacause of case -->
 						</xs:restriction>
 					</ids:predefinedType>
 				</ids:entity>

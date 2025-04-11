@@ -134,7 +134,7 @@ public class AuditTests : BuildingSmartRepoFiles
         yield return new object[] { "InvalidFiles/InvalidAttributeTypes.ids", 6, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeCardinality.ids", 3, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError };
-        yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 5, Audit.Status.IdsContentError };
+        yield return new object[] { "InvalidFiles/InvalidIfcEntityPattern.ids", 4, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidIfcEntityPredefinedType.ids", 5, Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/invalidPropertyMeasures.ids", 4, Audit.Status.IdsStructureError | Audit.Status.IdsContentError };
         yield return new object[] { "InvalidFiles/InvalidPropertyCardinality.ids", 4, Audit.Status.IdsContentError };

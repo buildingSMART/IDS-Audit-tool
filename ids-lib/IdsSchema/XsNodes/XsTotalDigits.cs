@@ -12,7 +12,7 @@ internal class XsTotalDigits : IdsXmlNode, IStringListMatcher
 	{
 	}
 
-	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
+	public Audit.Status MustMatchAgainstCandidates(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
 	{
 		// totalDigits in invalid when it comes to string
 		matches = Enumerable.Empty<string>();

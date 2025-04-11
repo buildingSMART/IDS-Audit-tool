@@ -9912,21 +9912,21 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Reference", "IfcIdentifier") { Definition = "Reference ID for this specified type in this project (e.g. type 'A-1'), Also referred to as \"construction type\". It should be provided as an alternative to the name of the \"object type\", if the software does not support object types and no classification reference to a recognized classification system used.IFC4.3.0.0 DEPRECATION  The Reference property is deprecated and shall no longer be used, use attribute Name on the relating type instead."} },
 				new [] { "IfcZone" });
 		yield return new PropertySetInfo("Qto_ActuatorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcActuator", "IfcActuatorType" });
 		yield return new PropertySetInfo("Qto_AirTerminalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Perimeter", "IfcLengthMeasure") { Definition = "Perimeter of the object."},
 			new SingleValuePropertyType("TotalSurfaceArea", "IfcAreaMeasure") { Definition = "Total surface area of the element.\n\nConcerns the air terminal face plate."} },
 				new [] { "IfcAirTerminal", "IfcAirTerminalType" });
 		yield return new PropertySetInfo("Qto_AirTerminalBoxTypeBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcAirTerminalBox", "IfcAirTerminalBoxType" });
 		yield return new PropertySetInfo("Qto_AirToAirHeatRecoveryBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcAirToAirHeatRecovery", "IfcAirToAirHeatRecoveryType" });
 		yield return new PropertySetInfo("Qto_AlarmBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcAlarm", "IfcAlarmType" });
 		yield return new PropertySetInfo("Qto_ArealStratumBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Area", "IfcAreaMeasure") { Definition = "Calculated area for the object.\n\nArea represented, if lower edge of stratum known."},
@@ -9934,17 +9934,17 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("PlanLength", "IfcLengthMeasure") { Definition = "Projected plan length of upper edge of slice."} },
 				new [] { "IfcGeotechnicalStratum" });
 		yield return new PropertySetInfo("Qto_AudioVisualApplianceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcAudioVisualAppliance", "IfcAudioVisualApplianceType" });
 		yield return new PropertySetInfo("Qto_BeamBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
 			new SingleValuePropertyType("GrossSurfaceArea", "IfcAreaMeasure") { Definition = "Total gross area of the object, normally generated as perimeter * length + 2 * cross section area. It is the sum of OuterSurfaceArea + (2 x CrossSectionArea) and shall only be given, if the OuterSurfaceArea and CrossSectionArea cannot be established separately."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features."},
 			new SingleValuePropertyType("NetSurfaceArea", "IfcAreaMeasure") { Definition = "Net surface area of the object, normally generated as perimeter * length + 2 * cross section area taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcBeam", "IfcBeamType" });
 		yield return new PropertySetInfo("Qto_BodyGeometryValidation", new IPropertyTypeInfo[] {
@@ -9956,8 +9956,8 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("SurfaceGenusBeforeFeatures", "IfcCountMeasure") { Definition = "The Surface Genus of the evaluated representation items before applying product-level geometric features such as openings and projections.Surface Genus is a topological measure that represents the number of \"holes\" or \"handles\" on a surface. For example, a sphere has genus 0, and a torus has genus 1.Computed using the Euler characteristic:$$\\chi=V-E+F$$With the numbers of vertices (V), edges (E) and faces (F)$$\\chi=2−2g−b$$With surface genus (g) and the number of boundaries (b) the latter zero in case of an enclosed volume."} },
 				new [] { "IfcProduct" });
 		yield return new PropertySetInfo("Qto_BoilerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."},
 			new SingleValuePropertyType("TotalSurfaceArea", "IfcAreaMeasure") { Definition = "Total surface area of the element."} },
 				new [] { "IfcBoiler", "IfcBoilerType" });
 		yield return new PropertySetInfo("Qto_BuildingBaseQuantities", new IPropertyTypeInfo[] {
@@ -9983,54 +9983,54 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nSum of all net volumes of spaces enclosed by the building storey. It iexcludes the volumes of construction elements within the building storey. May be provided in addition to the quantities of the spaces assigned to the storey. In case of inconsistencies, the individual quantities of spaces take precedence."} },
 				new [] { "IfcBuildingStorey" });
 		yield return new PropertySetInfo("Qto_BurnerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcBurner", "IfcBurnerType" });
 		yield return new PropertySetInfo("Qto_CableCarrierFittingBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCableCarrierFitting", "IfcCableCarrierFittingType" });
 		yield return new PropertySetInfo("Qto_CableCarrierSegmentBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section, equal to the distance between inlet and outlet ports."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcCableCarrierSegment", "IfcCableCarrierSegmentType" });
 		yield return new PropertySetInfo("Qto_CableFittingBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCableFitting", "IfcCableFittingType" });
 		yield return new PropertySetInfo("Qto_CableSegmentBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section, equal to the distance between inlet and outlet ports."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcCableSegment", "IfcCableSegmentType" });
 		yield return new PropertySetInfo("Qto_ChillerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcChiller", "IfcChillerType" });
 		yield return new PropertySetInfo("Qto_ChimneyBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nFrom the foundation (or beginning) to the top not taking into account any cut-out's or other processing features."} },
 				new [] { "IfcChimney", "IfcChimneyType" });
 		yield return new PropertySetInfo("Qto_CoilBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCoil", "IfcCoilType" });
 		yield return new PropertySetInfo("Qto_ColumnBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
 			new SingleValuePropertyType("GrossSurfaceArea", "IfcAreaMeasure") { Definition = "Total gross area of the object, normally generated as perimeter * length + 2 * cross section area. It is the sum of OuterSurfaceArea + (2 x CrossSectionArea) and shall only be given, if the OuterSurfaceArea and CrossSectionArea cannot be established separately."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features."},
 			new SingleValuePropertyType("NetSurfaceArea", "IfcAreaMeasure") { Definition = "Net surface area of the object, normally generated as perimeter * length + 2 * cross section area taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcColumn", "IfcColumnType" });
 		yield return new PropertySetInfo("Qto_CommunicationsApplianceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCommunicationsAppliance", "IfcCommunicationsApplianceType" });
 		yield return new PropertySetInfo("Qto_CompressorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCompressor", "IfcCompressorType" });
 		yield return new PropertySetInfo("Qto_CondenserBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCondenser", "IfcCondenserType" });
 		yield return new PropertySetInfo("Qto_ConduitSegmentBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("InnerDiameter", "IfcLengthMeasure") { Definition = "The actual inner diameter of the object."},
@@ -10042,25 +10042,25 @@ public partial class PropertySetInfo
 				new [] { "IfcConstructionEquipmentResource", "IfcConstructionEquipmentResourceType" });
 		yield return new PropertySetInfo("Qto_ConstructionMaterialResourceBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account.\n\nIncluding material placed and wasted."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nIncluding material placed and wasted."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nIncluding material placed and wasted."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nTotal net volume of the material, including material placed but excluding material wasted."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nTotal net weight of the material, including material placed but excluding material wasted."} },
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nTotal net weight of the material, including material placed but excluding material wasted."} },
 				new [] { "IfcConstructionMaterialResource", "IfcConstructionMaterialResourceType" });
 		yield return new PropertySetInfo("Qto_ControllerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcController", "IfcControllerType" });
 		yield return new PropertySetInfo("Qto_CooledBeamBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCooledBeam", "IfcCooledBeamType" });
 		yield return new PropertySetInfo("Qto_CoolingTowerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcCoolingTower", "IfcCoolingTowerType" });
 		yield return new PropertySetInfo("Qto_CourseBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
 			new SingleValuePropertyType("Thickness", "IfcLengthMeasure") { Definition = "The geometric thickness of the object."},
 			new SingleValuePropertyType("Volume", "IfcVolumeMeasure") { Definition = "Volume of the element."},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"},
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcCourse", "IfcCourseType" });
 		yield return new PropertySetInfo("Qto_CoveringBaseQuantities", new IPropertyTypeInfo[] {
@@ -10076,10 +10076,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic).\n\nOnly be provided, if it is constant along the curtain wall path."} },
 				new [] { "IfcCurtainWall", "IfcCurtainWallType" });
 		yield return new PropertySetInfo("Qto_DamperBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcDamper", "IfcDamperType" });
 		yield return new PropertySetInfo("Qto_DistributionBoardBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("NumberOfCircuits", "IfcCountMeasure") { Definition = "Number of circuits.\n\nNumber of circuits in the distribution board."} },
 				new [] { "IfcElectricDistributionBoard", "IfcElectricDistributionBoardType" });
 		yield return new PropertySetInfo("Qto_DistributionChamberElementBaseQuantities", new IPropertyTypeInfo[] {
@@ -10097,27 +10097,27 @@ public partial class PropertySetInfo
 				new [] { "IfcDoor", "IfcDoorType" });
 		yield return new PropertySetInfo("Qto_DuctFittingBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section.\n\nAt the inlet, including the duct fitting itself and the interior flow space."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section and equal to the distance along the flow path from the port inlet to the port outlet. For junction fittings, it indicates the length of the longest flow path."},
 			new SingleValuePropertyType("NetCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section of the object.\n\nIncluding the duct fitting and excluding the interior flow space."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcDuctFitting", "IfcDuctFittingType" });
 		yield return new PropertySetInfo("Qto_DuctSegmentBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section.\n\nIncluding the duct itself and the interior flow space."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section, equal to the distance between inlet and outlet ports."},
 			new SingleValuePropertyType("NetCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section of the object.\n\nExcluding the interior flow space."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcDuctSegment", "IfcDuctSegmentType" });
 		yield return new PropertySetInfo("Qto_DuctSilencerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcDuctSilencer", "IfcDuctSilencerType" });
 		yield return new PropertySetInfo("Qto_EarthworksCutBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Depth", "IfcLengthMeasure") { Definition = "The depth of the object.\n\nDepth (one direction of the non-projected foot print area) of the slab. It shall only be provided, if the slab is rectangular.NOTE  Also referred to as width, but not to be confused with the \"Width\" quantity, that denotes the thickness in the context of the slab."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
 			new SingleValuePropertyType("LooseVolume", "IfcVolumeMeasure") { Definition = "Volume of the earthworks when in a loose piled state"},
 			new SingleValuePropertyType("UndisturbedVolume", "IfcVolumeMeasure") { Definition = "Undisturbed Volume"},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"},
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcEarthworksCut" });
 		yield return new PropertySetInfo("Qto_EarthworksFillBaseQuantities", new IPropertyTypeInfo[] {
@@ -10128,25 +10128,25 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcEarthworksFill" });
 		yield return new PropertySetInfo("Qto_ElectricApplianceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcElectricAppliance", "IfcElectricApplianceType" });
 		yield return new PropertySetInfo("Qto_ElectricFlowStorageDeviceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcElectricFlowStorageDevice", "IfcElectricFlowStorageDeviceType" });
 		yield return new PropertySetInfo("Qto_ElectricGeneratorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcElectricGenerator", "IfcElectricGeneratorType" });
 		yield return new PropertySetInfo("Qto_ElectricMotorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcElectricMotor", "IfcElectricMotorType" });
 		yield return new PropertySetInfo("Qto_ElectricTimeControlBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcElectricTimeControl", "IfcElectricTimeControlType" });
 		yield return new PropertySetInfo("Qto_EvaporativeCoolerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcEvaporativeCooler", "IfcEvaporativeCoolerType" });
 		yield return new PropertySetInfo("Qto_EvaporatorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcEvaporator", "IfcEvaporatorType" });
 		yield return new PropertySetInfo("Qto_FacilityPartBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Area", "IfcAreaMeasure") { Definition = "Calculated area for the object."},
@@ -10156,46 +10156,46 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcFacilityPart" });
 		yield return new PropertySetInfo("Qto_FanBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcFan", "IfcFanType" });
 		yield return new PropertySetInfo("Qto_FilterBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcFilter", "IfcFilterType" });
 		yield return new PropertySetInfo("Qto_FireSuppressionTerminalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcFireSuppressionTerminal", "IfcFireSuppressionTerminalType" });
 		yield return new PropertySetInfo("Qto_FlowInstrumentBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcFlowInstrument", "IfcFlowInstrumentType" });
 		yield return new PropertySetInfo("Qto_FlowMeterBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcFlowMeter", "IfcFlowMeterType" });
 		yield return new PropertySetInfo("Qto_FootingBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
 			new SingleValuePropertyType("GrossSurfaceArea", "IfcAreaMeasure") { Definition = "Total gross area of the object, normally generated as perimeter * length + 2 * cross section area. It is the sum of OuterSurfaceArea + (2 x CrossSectionArea) and shall only be given, if the OuterSurfaceArea and CrossSectionArea cannot be established separately."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height\n\nTotal nominal height of the footing. It should only be provided, if it is constant."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features. For strip footings it is measured along the path, for other footings it is one of the horizontal dimensions. It should only be provided, if it is constant."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic).\n\nFor strip footings it is measured perpendicular to the footing path (or longitudial axis). For other footings it is one of the horizontal dimensions. It should only be provided, if it is constant."} },
 				new [] { "IfcFooting", "IfcFootingType" });
 		yield return new PropertySetInfo("Qto_HeatExchangerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcHeatExchanger", "IfcHeatExchangerType" });
 		yield return new PropertySetInfo("Qto_HumidifierBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcHumidifier", "IfcHumidifierType" });
 		yield return new PropertySetInfo("Qto_ImpactProtectionDeviceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"} },
 				new [] { "IfcImpactProtectionDevice", "IfcImpactProtectionDeviceType" });
 		yield return new PropertySetInfo("Qto_InterceptorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcInterceptor", "IfcInterceptorType" });
 		yield return new PropertySetInfo("Qto_JunctionBoxBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height"},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
 			new SingleValuePropertyType("NumberOfGangs", "IfcCountMeasure") { Definition = "Number of gangs in the object.\n\nNumber of gangs in the junction box."},
@@ -10206,7 +10206,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height"},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
 			new SingleValuePropertyType("Volume", "IfcVolumeMeasure") { Definition = "Volume of the element."},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"},
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcKerb", "IfcKerbType" });
 		yield return new PropertySetInfo("Qto_LaborResourceBaseQuantities", new IPropertyTypeInfo[] {
@@ -10214,10 +10214,10 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("StandardWork", "IfcTimeMeasure") { Definition = "Work that is performed at regular times, up to a particular limit after which overtime rates may apply."} },
 				new [] { "IfcLaborResource", "IfcLaborResourceType" });
 		yield return new PropertySetInfo("Qto_LampBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcLamp", "IfcLampType" });
 		yield return new PropertySetInfo("Qto_LightFixtureBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcLightFixture", "IfcLightFixtureType" });
 		yield return new PropertySetInfo("Qto_LinearStratumBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Diameter", "IfcLengthMeasure") { Definition = "The Diameter of the object."},
@@ -10234,15 +10234,15 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
 			new SingleValuePropertyType("GrossSurfaceArea", "IfcAreaMeasure") { Definition = "Total gross area of the object, normally generated as perimeter * length + 2 * cross section area. It is the sum of OuterSurfaceArea + (2 x CrossSectionArea) and shall only be given, if the OuterSurfaceArea and CrossSectionArea cannot be established separately."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features."},
 			new SingleValuePropertyType("NetSurfaceArea", "IfcAreaMeasure") { Definition = "Net surface area of the object, normally generated as perimeter * length + 2 * cross section area taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcMember", "IfcMemberType" });
 		yield return new PropertySetInfo("Qto_MotorConnectionBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcMotorConnection", "IfcMotorConnectionType" });
 		yield return new PropertySetInfo("Qto_OpeningElementBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Area", "IfcAreaMeasure") { Definition = "Calculated area for the object.\n\nArea of the opening as viewed by an elevation view (for wall openings) or as viewed by a ground floor view (for slab openings)."},
@@ -10252,7 +10252,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic).\n\nWidth of the opening, in case of wall openings it is the horizontal dimension in case of slab openings it is one horizontal dimension. Only provided, if the area is rectangular."} },
 				new [] { "IfcOpeningElement" });
 		yield return new PropertySetInfo("Qto_OutletBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcOutlet", "IfcOutletType" });
 		yield return new PropertySetInfo("Qto_PavementBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Depth", "IfcLengthMeasure") { Definition = "The depth of the object.\n\nDepth (one direction of the non-projected foot print area) of the slab. It shall only be provided, if the slab is rectangular.NOTE  Also referred to as width, but not to be confused with the \"Width\" quantity, that denotes the thickness in the context of the slab."},
@@ -10271,36 +10271,36 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("CrossSectionArea", "IfcAreaMeasure") { Definition = "Total area of the cross section (or profile) of the object."},
 			new SingleValuePropertyType("GrossSurfaceArea", "IfcAreaMeasure") { Definition = "Total gross area of the object, normally generated as perimeter * length + 2 * cross section area. It is the sum of OuterSurfaceArea + (2 x CrossSectionArea) and shall only be given, if the OuterSurfaceArea and CrossSectionArea cannot be established separately."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcPile", "IfcPileType" });
 		yield return new PropertySetInfo("Qto_PipeFittingBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section.\n\nIncluding the pipe fitting itself and the interior flow space."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section and equal to the distance along the flow path from the port inlet to the port outlet. For junction fittings, it indicates the length of the longest flow path."},
 			new SingleValuePropertyType("NetCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section of the object.\n\nIncluding the pipe fitting and excluding the interior flow space."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the pipe fitting, including contained fluid as designed."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the pipe fitting, including contained fluid as designed."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcPipeFitting", "IfcPipeFittingType" });
 		yield return new PropertySetInfo("Qto_PipeSegmentBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FootPrintArea", "IfcAreaMeasure") { Definition = "Gross area of the site covered by the building(s)."},
 			new SingleValuePropertyType("GrossCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section.\n\nIncluding the pipe itself and the interior flow space."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nCalculated at midpoint of cross-section, equal to the distance between inlet and outlet ports."},
 			new SingleValuePropertyType("NetCrossSectionArea", "IfcAreaMeasure") { Definition = "Area of the cross section of the object.\n\nExcluding the interior flow space."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the pipe segment, including contained fluid as designed."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the pipe segment, including contained fluid as designed."},
 			new SingleValuePropertyType("OuterSurfaceArea", "IfcAreaMeasure") { Definition = "Total area of the surfaces of the object (not taking into account the end cap areas), normally generated as perimeter * length in case of extrusions."} },
 				new [] { "IfcPipeSegment", "IfcPipeSegmentType" });
 		yield return new PropertySetInfo("Qto_PlateBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossArea", "IfcAreaMeasure") { Definition = "Gross Area of the object. Openings, recesses, projections and cut-outs are not taken into account.\n\nIndicates the extruded area of the element. Only given, if the element is prismatic."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("NetArea", "IfcAreaMeasure") { Definition = "Total net area of the object. Openings, recesses and cut-outs are taken into account by subtraction, projections by addition.\n\nIndicates the extruded area of the object. Only given when prismatic."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nTotal net volume of the plate. Openings and recesses are taken into account by subtraction, projections by addition."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Perimeter", "IfcLengthMeasure") { Definition = "Perimeter of the object.\n\nPerimeter measured along the outer boundaries of the plate. Only given, if the plate is prismatic (constant thickness)."},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcPlate", "IfcPlateType" });
@@ -10309,18 +10309,18 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Volume", "IfcVolumeMeasure") { Definition = "Volume of the element.\n\nVolume of the projection. It is the additional volume of the projection to the element (e.g. wall or slab)."} },
 				new [] { "IfcProjectionElement" });
 		yield return new PropertySetInfo("Qto_ProtectiveDeviceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcProtectiveDevice", "IfcProtectiveDeviceType" });
 		yield return new PropertySetInfo("Qto_ProtectiveDeviceTrippingUnitBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcProtectiveDeviceTrippingUnit", "IfcProtectiveDeviceTrippingUnitType" });
 		yield return new PropertySetInfo("Qto_PumpBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcPump", "IfcPumpType" });
 		yield return new PropertySetInfo("Qto_RailBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
 			new SingleValuePropertyType("Volume", "IfcVolumeMeasure") { Definition = "Volume of the element."},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"} },
 				new [] { "IfcRail", "IfcRailType" });
 		yield return new PropertySetInfo("Qto_RailingBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nNot taking into account any cut-out's or other processing features."} },
@@ -10343,7 +10343,7 @@ public partial class PropertySetInfo
 		yield return new PropertySetInfo("Qto_ReinforcingElementBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Count", "IfcCountMeasure") { Definition = "Total count of reinforcing items."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"} },
 				new [] { "IfcReinforcingElement", "IfcReinforcingElementType" });
 		yield return new PropertySetInfo("Qto_RoofBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossArea", "IfcAreaMeasure") { Definition = "Gross Area of the object. Openings, recesses, projections and cut-outs are not taken into account.\n\nIndicates the outer surface of the roof and the sum of all roof slab gross areas."},
@@ -10351,18 +10351,18 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("ProjectedArea", "IfcAreaMeasure") { Definition = "Total gross area of the outer surfaces of the roof, projected tp the ground. It is the sum of all projected roof slab gross areas. Roof openings, like sky windows and other openings and cut-outs are not taken into account."} },
 				new [] { "IfcRoof", "IfcRoofType" });
 		yield return new PropertySetInfo("Qto_SanitaryTerminalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcSanitaryTerminal", "IfcSanitaryTerminalType" });
 		yield return new PropertySetInfo("Qto_SensorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcSensor", "IfcSensorType" });
 		yield return new PropertySetInfo("Qto_SignalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"} },
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"} },
 				new [] { "IfcSignal", "IfcSignalType" });
 		yield return new PropertySetInfo("Qto_SignBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height"},
 			new SingleValuePropertyType("Thickness", "IfcLengthMeasure") { Definition = "The geometric thickness of the object."},
-			new SingleValuePropertyType("Weight", "IfcWeightMeasure") { Definition = "Total weight of object"},
+			new SingleValuePropertyType("Weight", "IfcMassMeasure") { Definition = "Total weight of object"},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcSign", "IfcSignType" });
 		yield return new PropertySetInfo("Qto_SiteBaseQuantities", new IPropertyTypeInfo[] {
@@ -10373,11 +10373,11 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Depth", "IfcLengthMeasure") { Definition = "The depth of the object.\n\nDepth (one direction of the non-projected foot print area) of the slab. It shall only be provided, if the slab is rectangular.NOTE  Also referred to as width, but not to be confused with the \"Width\" quantity, that denotes the thickness in the context of the slab."},
 			new SingleValuePropertyType("GrossArea", "IfcAreaMeasure") { Definition = "Gross Area of the object. Openings, recesses, projections and cut-outs are not taken into account.\n\nIndicates the extruded area of the element. Only given, if the element is prismatic."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nOnly provided if rectangular."},
 			new SingleValuePropertyType("NetArea", "IfcAreaMeasure") { Definition = "Total net area of the object. Openings, recesses and cut-outs are taken into account by subtraction, projections by addition.\n\nIndicates the extruded area of the object. Only given when prismatic."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nTotal net volume of the slab. Openings and recesses are taken into account by subtraction, projections by addition."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Perimeter", "IfcLengthMeasure") { Definition = "Perimeter of the object.\n\nPerimeter measured along the outer boundaries of the slab. Only given, if the slab is prismatic (constant thickness)."},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcSlab", "IfcSlabType" });
@@ -10388,7 +10388,7 @@ public partial class PropertySetInfo
 				new [] { "IfcTrackElement", "IfcTrackElementType" });
 		yield return new PropertySetInfo("Qto_SolarDeviceBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossArea", "IfcAreaMeasure") { Definition = "Gross Area of the object. Openings, recesses, projections and cut-outs are not taken into account.\n\nIncluding the outer frame."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcSolarDevice", "IfcSolarDeviceType" });
 		yield return new PropertySetInfo("Qto_SpaceBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("FinishCeilingHeight", "IfcLengthMeasure") { Definition = "Height of the suspended ceiling (from top of flooring to the bottom of the suspended ceiling). To be provided only if the space has a suspended ceiling with constant height."},
@@ -10406,9 +10406,9 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("NetWallArea", "IfcAreaMeasure") { Definition = "Sum of all wall (and other vertically bounding elements, like columns) areas bounded by the space. It excludes the area covered by elements inside the wall area (doors, windows, other openings, etc.)."} },
 				new [] { "IfcSpace", "IfcSpaceType" });
 		yield return new PropertySetInfo("Qto_SpaceHeaterBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."} },
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."} },
 				new [] { "IfcSpaceHeater", "IfcSpaceHeaterType" });
 		yield return new PropertySetInfo("Qto_SpatialZoneBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height"},
@@ -10416,7 +10416,7 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcSpatialZone", "IfcSpatialZoneType" });
 		yield return new PropertySetInfo("Qto_StackTerminalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcStackTerminal", "IfcStackTerminalType" });
 		yield return new PropertySetInfo("Qto_StairFlightBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
@@ -10428,28 +10428,28 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object."} },
 				new [] { "IfcSurfaceFeature" });
 		yield return new PropertySetInfo("Qto_SwitchingDeviceBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcSwitchingDevice", "IfcSwitchingDeviceType" });
 		yield return new PropertySetInfo("Qto_TankBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."},
 			new SingleValuePropertyType("TotalSurfaceArea", "IfcAreaMeasure") { Definition = "Total surface area of the element."} },
 				new [] { "IfcTank", "IfcTankType" });
 		yield return new PropertySetInfo("Qto_TransformerBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcTransformer", "IfcTransformerType" });
 		yield return new PropertySetInfo("Qto_TubeBundleBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nNot including contained fluid."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nWeight of the element, including contained fluid as designed."} },
 				new [] { "IfcTubeBundle", "IfcTubeBundleType" });
 		yield return new PropertySetInfo("Qto_UnitaryControlElementBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcUnitaryControlElement", "IfcUnitaryControlElementType" });
 		yield return new PropertySetInfo("Qto_UnitaryEquipmentBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcUnitaryEquipment", "IfcUnitaryEquipmentType" });
 		yield return new PropertySetInfo("Qto_ValveBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcValve", "IfcValveType" });
 		yield return new PropertySetInfo("Qto_VehicleBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height"},
@@ -10457,11 +10457,11 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic)."} },
 				new [] { "IfcVehicle", "IfcVehicle", "IfcVehicle", "IfcVehicle", "IfcVehicle", "IfcVehicleType", "IfcVehicleType", "IfcVehicleType", "IfcVehicleType", "IfcVehicleType" });
 		yield return new PropertySetInfo("Qto_VibrationIsolatorBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcVibrationIsolator", "IfcVibrationIsolatorType" });
 		yield return new PropertySetInfo("Qto_VolumetricStratumBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Area", "IfcAreaMeasure") { Definition = "Calculated area for the object.\n\nActual area of upper surface of shape."},
-			new SingleValuePropertyType("Mass", "IfcWeightMeasure") { Definition = "Mass represented, if lower surface of stratum known."},
+			new SingleValuePropertyType("Mass", "IfcMassMeasure") { Definition = "Mass represented, if lower surface of stratum known."},
 			new SingleValuePropertyType("PlanArea", "IfcAreaMeasure") { Definition = "Projected plan area of upper surface of model."},
 			new SingleValuePropertyType("Volume", "IfcVolumeMeasure") { Definition = "Volume of the element.\n\nVolume represented, if lower surface of stratum known."} },
 				new [] { "IfcGeotechnicalStratum" });
@@ -10469,17 +10469,17 @@ public partial class PropertySetInfo
 			new SingleValuePropertyType("GrossFootPrintArea", "IfcAreaMeasure"),
 			new SingleValuePropertyType("GrossSideArea", "IfcAreaMeasure") { Definition = "Area of the wall as viewed by an elevation view of the middle plane of the wall.  It does not take into account any wall modifications (such as openings)."},
 			new SingleValuePropertyType("GrossVolume", "IfcVolumeMeasure") { Definition = "Total gross volume of the object. Openings, recesses, enclosed objects and projections are not taken into account."},
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Height", "IfcLengthMeasure") { Definition = "Characteristic height\n\nTotal nominal height of the wall. It should only be provided, if it is constant along the wall path."},
 			new SingleValuePropertyType("Length", "IfcLengthMeasure") { Definition = "The length of the object.\n\nAlong center line (even if different to the wall path)."},
 			new SingleValuePropertyType("NetFootPrintArea", "IfcAreaMeasure"),
 			new SingleValuePropertyType("NetSideArea", "IfcAreaMeasure") { Definition = "Area of the object as viewed by an elevation view of the middle plane of the object. It does take into account all object modifications (such as openings)."},
 			new SingleValuePropertyType("NetVolume", "IfcVolumeMeasure") { Definition = "Total net volume of the object, taking into account possible processing features (cut-out's, etc.) or openings and recesses.\n\nVolume of the wall, after subtracting the openings and after considering the connection geometry."},
-			new SingleValuePropertyType("NetWeight", "IfcWeightMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
+			new SingleValuePropertyType("NetWeight", "IfcMassMeasure") { Definition = "Total net weight of the object without add-on parts, taking into account possible processing features (cut-out's, etc.) or openings and recesses."},
 			new SingleValuePropertyType("Width", "IfcLengthMeasure") { Definition = "The width of the object. Only given, if the object has constant thickness (prismatic).\n\nMeasured perpendicular to the wall path. It should only be provided, if it is constant along the wall path."} },
 				new [] { "IfcWall", "IfcWallType" });
 		yield return new PropertySetInfo("Qto_WasteTerminalBaseQuantities", new IPropertyTypeInfo[] {
-			new SingleValuePropertyType("GrossWeight", "IfcWeightMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
+			new SingleValuePropertyType("GrossWeight", "IfcMassMeasure") { Definition = "Total Gross Weight of the object without any add-on parts and not taking into account possible processing features (cut-out's, etc.) or openings and recesses."} },
 				new [] { "IfcWasteTerminal", "IfcWasteTerminalType" });
 		yield return new PropertySetInfo("Qto_WindowBaseQuantities", new IPropertyTypeInfo[] {
 			new SingleValuePropertyType("Area", "IfcAreaMeasure") { Definition = "Calculated area for the object.\n\nTotal area of the outer lining of the window."},

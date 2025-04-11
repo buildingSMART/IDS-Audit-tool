@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.IfcSchema;
 using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using static IdsLib.Audit;
@@ -27,30 +29,38 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         Base = XsTypes.GetBaseFrom(BaseAsString);
     }
 
-	public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
+	public Audit.Status MustMatchAgainstCandidates(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
 		var ret = Audit.Status.Ok;
-        matches =  Enumerable.Empty<string>();
+        List<string>? validMatches = null;
         if ( // todo: discuss with group: do we want to force the base type requirement for strings?
             !string.IsNullOrWhiteSpace(BaseAsString) &&
             BaseAsString != "xs:string"
             )
-            return IdsErrorMessages.Report303RestrictionBadType(logger, this, BaseAsString);
-        
-        foreach (var child in Children)
         {
-            // only matcher values are reported
-            if (child is not IStringListMatcher ismv)
-            {
-                // ret |= IdsLoggerExtensions.ReportBadMatcher(logger, child, "string");
-                // this would let xs:annotation pass with no issues
-                continue;
-            }
-            ret |= ismv.DoesMatch(candidateStrings, ignoreCase, logger, out var thisM, variableName, schemaContext);
-            if (thisM.Any())
-                matches = matches.Union(thisM);   
+			matches = Enumerable.Empty<string>();
+			return IdsErrorMessages.Report303RestrictionBadType(logger, this, BaseAsString);
         }
-        return ret;
+
+		foreach (var ismv in ChildrenListMatchers())
+        {
+            ret |= ismv.MustMatchAgainstCandidates(candidateStrings, ignoreCase, logger, out var thisM, variableName, schemaContext);
+            if (thisM is null)
+            {
+                validMatches = new();
+			}
+            else
+            {
+                if (validMatches is null)
+                {
+                    validMatches = thisM.ToList();
+                }
+                else
+                    validMatches = validMatches.Intersect(thisM).ToList();
+			}
+        }
+		matches = validMatches ?? Enumerable.Empty<string>();
+		return ret;
     }
 
     public IEnumerable<string> GetDicreteValues()
@@ -70,6 +80,30 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
         return false;
     }
 
+	/// <summary>
+    /// Deals with the nature of enumerations.
+    /// 
+	/// Enumerations need to be managed independently,
+	/// they are evaluated with OR (internally) + AND (externally)
+	/// </summary>
+	private IEnumerable<IStringListMatcher> ChildrenListMatchers()
+    {
+        EnumerationSetMatcher? enumerationSetMatcher = null;
+		foreach (var child in Children.OfType<IStringListMatcher>())
+        {
+            if (child is XsEnumeration asEnum)
+			{
+                enumerationSetMatcher ??= new EnumerationSetMatcher(this);
+				enumerationSetMatcher.Add(asEnum);
+			}
+			else 
+				yield return child ;
+		}
+        if (enumerationSetMatcher is not null)
+			yield return enumerationSetMatcher;
+		
+	}
+
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)
     {
         matches = Enumerable.Empty<string>();
@@ -78,16 +112,20 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
             BaseAsString != "xs:string"
             )
             return false;
-        foreach (var child in Children)
+
+        // conditions are in AND with themselves
+        //
+        var conditions = false;
+		matches = candidateStrings.ToList(); // start with entire set
+		foreach (var child in ChildrenListMatchers())
         {
-            // only matcher values are reported
-            if (child is not IStringListMatcher ismv)
-            {
-                continue;
-            }
-            if (ismv.TryMatch(candidateStrings, ignoreCase, out var thisM))
-                matches = matches.Union(thisM);
+            conditions = true;
+            var thisMatches = child.TryMatch(matches, ignoreCase, out var thisChildMatch);
+			matches = thisChildMatch.ToList(); // reduce to the last matches
         }
+        if (conditions == false)
+            matches = Enumerable.Empty<string>();
+        
         return matches.Any();
     }
 
@@ -133,4 +171,14 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 
 		return ret;
     }
+
+	internal Status EachEnumMeaningfulAgainstCandidates(List<string> candidateStrings, bool ignoreCase, ILogger? logger, string variableName, IfcSchemaVersions schemaContext)
+	{
+		var ret = Audit.Status.Ok;
+		foreach (var ismv in Children.OfType<XsEnumeration>())
+		{
+			ret |= ismv.MustMatchAgainstCandidates(candidateStrings, ignoreCase, logger, out var thisM, variableName, schemaContext);
+		}
+		return ret;
+	}
 }

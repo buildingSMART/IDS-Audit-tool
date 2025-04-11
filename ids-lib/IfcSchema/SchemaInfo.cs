@@ -702,22 +702,27 @@ namespace IdsLib.IfcSchema
             return false;
 		}
 
-		private static IEnumerable<string> GetAllClassesFor(IfcSchemaVersions versions)
+		internal static IEnumerable<string> GetAllClassesFor(IfcSchemaVersions versions)
 		{
 			var schemaInfos = GetSchemas(versions);
+			return GetAllClassesFor(schemaInfos);
+		}
+
+		internal static IEnumerable<string> GetAllClassesFor(IEnumerable<SchemaInfo> schemaInfos)
+		{
 			var allSchemaClassNames = new List<string>();
 			foreach (var schema in schemaInfos)
 			{
-                allSchemaClassNames = allSchemaClassNames.Union(schema.Select(x => x.Name)).ToList();
+				allSchemaClassNames = allSchemaClassNames.Union(schema.Select(x => x.Name)).ToList();
 			}
-            return allSchemaClassNames;
+			return allSchemaClassNames;
 		}
 
-        /// <summary>
-        /// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
-        /// </summary>
-        /// <param name="attributeNames">The names of the attributes to evaluate</param>
-        /// <returns>string names of the types found in the evaluation of the attributes</returns>
+		/// <summary>
+		/// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
+		/// </summary>
+		/// <param name="attributeNames">The names of the attributes to evaluate</param>
+		/// <returns>string names of the types found in the evaluation of the attributes</returns>
 		public IEnumerable<string> GetAttributesTypes(IEnumerable<string> attributeNames)
 		{
             List<string> possible = new List<string>();
@@ -745,5 +750,28 @@ namespace IdsLib.IfcSchema
             }
 		}
 
+		internal static IEnumerable<string> GetAllPredefinedTypesFor(IEnumerable<SchemaInfo> schemaInfos, List<string> allSchemaClasses)
+		{
+			var allPredefinedTypes = new List<string>();
+			foreach (var schema in schemaInfos)
+			{
+				allPredefinedTypes = allPredefinedTypes.Union(schema.SelectPredefinedFor(allSchemaClasses)).ToList();
+			}
+			return allPredefinedTypes.Distinct().ToList();
+		}
+
+		private IEnumerable<string> SelectPredefinedFor(List<string> allSchemaClasses)
+		{
+            foreach (var className in allSchemaClasses)
+            {
+                var cl = this[className];
+                if (cl == null)
+					continue;
+                foreach (var pt in cl.PredefinedTypeValues)
+                {
+                    yield return pt;
+				}				
+			}
+		}
 	}
 }

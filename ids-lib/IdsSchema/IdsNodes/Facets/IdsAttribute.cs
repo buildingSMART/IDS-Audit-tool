@@ -68,7 +68,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
                     .Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
                     .Select(y => y.IfcAttributeName)
                 : schema.GetAttributeNames(); // this only considers attributes that have value type (e.g. LongName -> IFCLABEL)
-			var thisRet = sm.DoesMatch(validAttributeNames, false, logger, out var matchingAttributeNames, "attribute name", schema.Version);
+			var thisRet = sm.MustMatchAgainstCandidates(validAttributeNames, false, logger, out var matchingAttributeNames, "attribute name", schema.Version);
             if (thisRet != Audit.Status.Ok)
             {
                 ret |= thisRet;

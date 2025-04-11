@@ -18,7 +18,7 @@ internal class StringListMatcher : IStringListMatcher
         this.context = context;
     }
 
-    public Audit.Status DoesMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
+    public Audit.Status MustMatchAgainstCandidates(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
         if (!TryMatch(candidateStrings, ignoreCase, out matches))
             return IdsErrorMessages.Report103InvalidListMatcher(context, value, logger, variableName, schemaContext, candidateStrings);
@@ -39,7 +39,7 @@ internal class StringListMatcher : IStringListMatcher
     /// </summary>
     internal Audit.Status HasSingleMatch(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out string? singleMatch, string variableName, IfcSchema.IfcSchemaVersions schemaContext)
     {
-        var ret = DoesMatch(candidateStrings, ignoreCase, logger, out var matches, variableName, schemaContext);
+        var ret = MustMatchAgainstCandidates(candidateStrings, ignoreCase, logger, out var matches, variableName, schemaContext);
         if (ret == Audit.Status.Ok)
         {
             try

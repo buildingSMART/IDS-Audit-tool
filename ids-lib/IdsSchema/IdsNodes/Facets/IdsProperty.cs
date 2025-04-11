@@ -113,7 +113,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                 {
                     // see if there's a match with standard property sets
                     var validPropNames = SchemaInfo.SharedPropertyNames(schema.Version, possiblePsetNames);
-                    var nameMatch = nameMatcher.DoesMatch(validPropNames, false, logger, out var possiblePropertyNames, $"property {PropertyNodeName}", schema.Version);
+                    var nameMatch = nameMatcher.MustMatchAgainstCandidates(validPropNames, false, logger, out var possiblePropertyNames, $"property {PropertyNodeName}", schema.Version);
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
 
@@ -147,7 +147,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             }
 			if (dataTypeMatcher is not null)
 			{
-				ret |= dataTypeMatcher.DoesMatch(validMeasureNames, false, logger, out var dtMatches, "dataType", schema.Version);
+				ret |= dataTypeMatcher.MustMatchAgainstCandidates(validMeasureNames, false, logger, out var dtMatches, "dataType", schema.Version);
                 // if we have matches, we can test the value for compatible basetype
                 //
                 if (dtMatches.Any())

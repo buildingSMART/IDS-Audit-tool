@@ -67,6 +67,14 @@ namespace idsTool.tests
 		}
 
 		[Fact]
+		public void Issue_41_SchemaMatch()
+		{
+			// checking for multiple schemas should make it easy to write requirements that are trensferrable
+			var f = new FileInfo("IssueFiles/Issue 41 - Schema match.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
+
+		[Fact]
 		public void Issue_49_ErrorLocation()
 		{
 			var f = new FileInfo("IssueFiles/Issue 49 - Error location.ids");

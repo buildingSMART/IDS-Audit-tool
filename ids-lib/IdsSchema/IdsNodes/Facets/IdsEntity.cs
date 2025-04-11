@@ -42,38 +42,56 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
         var requiredSchemaVersions = spec.IfcSchemaVersions;
         var name = GetChildNodes("name").FirstOrDefault();
 
-        // one child must be a valid string matcher
-        var sm = name?.GetListMatcher();
-        if (sm is null)
+        // name must be a valid string matcher
+        var entityNameMatcher = name?.GetListMatcher();
+        if (entityNameMatcher is null)
             return IdsErrorMessages.Report102NoStringMatcher(logger, this, "name");
 
-        // we introduce a schema-by-schema evaluation of the valid classes
-        //
-        requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
+		// we introduce a schema-by-schema evaluation of the valid classes
+		//
+		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         Audit.Status ret = Audit.Status.Ok;
 		IsValid = true;
 
-        // preload subtype for efficiency
-        var predefinedType = GetChildNodes(PRED_TYPE).FirstOrDefault();
-        IStringListMatcher? predefinedTypeMatcher = null;
-        if (predefinedType is not null)
+		// preload subtype for efficiency
+		var predefinedType = GetChildNodes(PRED_TYPE).FirstOrDefault();
+		IStringListMatcher? predefinedTypeMatcher = null;
+		if (predefinedType is not null)
+		{
+			predefinedTypeMatcher = predefinedType.GetListMatcher();
+
+			if (predefinedTypeMatcher is null)
+			{
+				return IdsErrorMessages.Report102NoStringMatcher(logger, this, PRED_TYPE);
+			}
+		}
+
+        // we want to make sure that no values in the list can never match (i.e. they have at least one match against the union of schema).
+        List<string>? allSchemaClasses = null;
+		if (entityNameMatcher is XsRestriction rest)
         {
-            predefinedTypeMatcher = predefinedType.GetListMatcher();
-            if (predefinedTypeMatcher is null)
-            {
-                return IdsErrorMessages.Report102NoStringMatcher(logger, this, PRED_TYPE);
-            }
+			allSchemaClasses = SchemaInfo.GetAllClassesFor(schemas).Select(x => x.ToUpperInvariant()).ToList();
+			ret |= rest.EachEnumMeaningfulAgainstCandidates(allSchemaClasses, false, logger, "entity name", requiredSchemaVersions);
         }
 
-        foreach (var schema in schemas)
+
+		if (predefinedTypeMatcher is XsRestriction predRest)
+		{
+			allSchemaClasses ??= SchemaInfo.GetAllClassesFor(schemas).Select(x => x.ToUpperInvariant()).ToList();
+			var allSchemaPredefined = SchemaInfo.GetAllPredefinedTypesFor(schemas, allSchemaClasses).ToList();
+			ret |= predRest.EachEnumMeaningfulAgainstCandidates(allSchemaPredefined, false, logger, PRED_TYPE, requiredSchemaVersions);
+		}
+
+		foreach (var schema in schemas)
         {
-            var ValidClassNames = schema.Select(y => y.Name.ToUpperInvariant());
-			ret |= sm.DoesMatch(ValidClassNames, false, logger, out var possibleClasses, "entity name", schema.Version);
+			// we want to make sure that at least one match exist in the name list for each schema	
+			var ValidClassNames = schema.Select(y => y.Name.ToUpperInvariant());
+			ret |= entityNameMatcher.MustMatchAgainstCandidates(ValidClassNames, false, logger, out var possibleClasses, "entity name", schema.Version);
             if (ret != Audit.Status.Ok)
                 continue;
             typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
 
-            // now check predefined types that are common for the possibleClasses across defined schemas
+            // now check predefined types 
             
             if (predefinedType is null || predefinedTypeMatcher is null)
                 continue;            
@@ -99,7 +117,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                 continue;
             else
                 // todo: ensure that this notifies an error and that error cases are added for multiple enumeration values
-                ret |= predefinedTypeMatcher.DoesMatch(possiblePredefined, false, logger, out var matches, PRED_TYPE, schema.Version);
+                ret |= predefinedTypeMatcher.MustMatchAgainstCandidates(possiblePredefined, false, logger, out var matches, PRED_TYPE, schema.Version);
         }
         if (ret != Status.Ok)
         {
