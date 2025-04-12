@@ -205,11 +205,12 @@ class IfcSchema_AttributesGenerator
             // Debug.WriteLine($"Ok Prop: {prop.Name} : {tp.Name}");
             return tp.Name;
         }
-        else
+        else if (prop.EnumerableType is not null)
         {
-            // var nm = GetFriendlyTypeName(tp);
-            // Debug.WriteLine($"### Not ok 1 - Prop: {prop.Name} : {tp.Name}");
-        }
+			// var nm = GetFriendlyTypeName(tp);
+			// Debug.WriteLine($"### Not ok 1 - Prop: {prop.Name} : {tp.Name}");
+			return prop.EnumerableType.Name; // adding management of lists
+		}
         return "";
 	}
 

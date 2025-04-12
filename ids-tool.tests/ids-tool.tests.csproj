@@ -195,6 +195,9 @@
 		<None Update="IssueFiles\Issue 45 - IfcMassMeasure.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+		<None Update="IssueFiles\Issue 46 - Ensure feedback.ids">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="IssueFiles\Issue 49 - Error location.ids">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

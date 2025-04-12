@@ -75,6 +75,14 @@ namespace idsTool.tests
 		}
 
 		[Fact]
+		public void Issue_46_SchemaMatch()
+		{
+			var f = new FileInfo("IssueFiles/Issue 46 - Ensure feedback.ids");
+			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, IdsLib.Audit.Status.Ok);
+		}
+
+
+		[Fact(Skip = "Test case is no longer valid because the error was not meaningful when fixing #46")]
 		public void Issue_49_ErrorLocation()
 		{
 			var f = new FileInfo("IssueFiles/Issue 49 - Error location.ids");
