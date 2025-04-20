@@ -9,14 +9,15 @@ using System.Text;
 
 namespace IdsLib.IdsSchema.XsNodes
 {
-	internal class EnumerationSetMatcher : IStringListMatcher
+	internal class AlternativeSetMatcher : IStringListMatcher
 	{
-		private readonly List<XsEnumeration> _enumerations = new List<XsEnumeration>();
-		private XsRestriction xsRestriction;
-
-		public EnumerationSetMatcher(XsRestriction xsRestriction)
+		private readonly List<IStringListMatcher> _alternatives = new List<IStringListMatcher>();
+		private XsRestriction _xsRestriction;
+		private string _alternativeTypeName;
+		public AlternativeSetMatcher(XsRestriction xsRestriction, string alternativeTypeName)
 		{
-			this.xsRestriction = xsRestriction;
+			_xsRestriction = xsRestriction;
+			_alternativeTypeName = alternativeTypeName;
 		}
 
 		public Audit.Status MustMatchAgainstCandidates(IEnumerable<string> candidateStrings, bool ignoreCase, ILogger? logger, out IEnumerable<string> matches, string variableName, IfcSchemaVersions schemaContext)
@@ -26,7 +27,7 @@ namespace IdsLib.IdsSchema.XsNodes
 			var mtc = TryMatch(candidateStrings, ignoreCase, out matches);
 			if (!mtc)
 			{
-				ret |= IdsErrorMessages.Report103InvalidListMatcher(xsRestriction, "Enumeration options", logger, variableName, schemaContext, candidateStrings);
+				ret |= IdsErrorMessages.Report103InvalidListMatcher(_xsRestriction, _alternativeTypeName + " options", logger, variableName, schemaContext, candidateStrings);
 			}
 			return ret;
 		}
@@ -35,8 +36,8 @@ namespace IdsLib.IdsSchema.XsNodes
 		{
 			// conditions are in OR with themselves for the enums
 			//
-			matches = new List<string>(); // start with empty set
-			foreach (var child in _enumerations)
+			matches = []; // start with empty set
+			foreach (var child in _alternatives)
 			{
 				if (child.TryMatch(candidateStrings, ignoreCase, out var thisChildMatch))
 					matches = matches.Union(thisChildMatch).ToList(); // add the last matches
@@ -44,9 +45,9 @@ namespace IdsLib.IdsSchema.XsNodes
 			return matches.Any();
 		}
 
-		internal void Add(XsEnumeration asEnum)
+		internal void Add(IStringListMatcher asEnum)
 		{
-			_enumerations.Add(asEnum);
+			_alternatives.Add(asEnum);
 		}
 	}
 }

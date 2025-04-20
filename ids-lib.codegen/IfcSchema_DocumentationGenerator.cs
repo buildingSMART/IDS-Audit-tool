@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,21 @@ using Xbim.Common.Metadata;
 
 namespace IdsLib.codegen
 {
+	internal static class stringExtensions
+	{
+		internal static string FixMarkup(this string str)
+		{
+			str = str.Replace("|", "&#124;");
+			str = str.Replace("[", "&#91;");
+			str = str.Replace("]", "&#93;");
+			return str;
+		}
+	}
+
 	internal class IfcSchema_DocumentationGenerator
 	{
+		
+
 		internal static string Execute(Dictionary<string, typeMetadata> dataTypeDictionary)
 		{
 			var schemas = new string[] { "Ifc2x3", "Ifc4", "Ifc4x3" };
@@ -25,8 +39,8 @@ namespace IdsLib.codegen
 			var xmlTypes = dataTypeDictionary.Values.Select(x => x.XmlBackingType).Where(str => !string.IsNullOrWhiteSpace(str)).Distinct();
 			foreach (var dataType in xmlTypes.OrderBy(x => x))
 			{
-				var t =  "```" + XmlSchema_XsTypesGenerator.GetRegexString(dataType).Replace("|", "&#124;") + "```";
-				sbXmlTypes.AppendLine($"| {dataType,-11} | {t,-78} |");
+				var t =  "<code>" + XmlSchema_XsTypesGenerator.GetRegexString(dataType).FixMarkup() + "</code>";
+				sbXmlTypes.AppendLine($"| {dataType,-11} | {t,-133} |");
 			}
 
 			var source = stub;
@@ -53,8 +67,8 @@ namespace IdsLib.codegen
 
 			The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
 
-			| Base type   | string regex constraint                                                        |
-			| ----------- | ------------------------------------------------------------------------------ |
+			| Base type   | string regex constraint                                                                                                               |
+			| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 			<PlaceHolderXmlTypes>
 
 			For example:

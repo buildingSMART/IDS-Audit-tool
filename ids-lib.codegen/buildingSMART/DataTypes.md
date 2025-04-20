@@ -405,16 +405,16 @@ Columns of the table determine the validity of the type depending on the schema 
 
 The list of valid XML base types for the `base` attribute of `xs:restriction`, and the associated regex expression to check for the validity of string representation is as follows:
 
-| Base type   | string regex constraint                                                        |
-| ----------- | ------------------------------------------------------------------------------ |
-| xs:boolean  | ```^(true&#124;false&#124;0&#124;1)$```                                        |
-| xs:date     | ```^\d{4}-\d{2}-\d{2}(Z&#124;([+-]\d{2}:\d{2}))?$```                           |
-| xs:dateTime | ```^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$``` |
-| xs:double   | ```^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?&#124;NaN&#124;\+INF&#124;-INF)$``` |
-| xs:duration | ```^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$```                   |
-| xs:integer  | ```^[+-]?(\d+)$```                                                             |
-| xs:string   | ```^.?$```                                                                     |
-| xs:time     | ```^\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;([+-]\d{2}:\d{2}))?$```                   |
+| Base type   | string regex constraint                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| xs:boolean  | <code>^(true&#124;false&#124;0&#124;1)$</code>                                                                                        |
+| xs:date     | <code>^\d{4}-\d{2}-\d{2}(Z&#124;(&#91;+-&#93;\d{2}:\d{2}))?$</code>                                                                   |
+| xs:dateTime | <code>^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;(&#91;+-&#93;\d{2}:\d{2}))?$</code>                                         |
+| xs:double   | <code>^(&#91;-+&#93;?&#91;0-9&#93;*\.?&#91;0-9&#93;*(&#91;eE&#93;&#91;-+&#93;?&#91;0-9&#93;+)?&#124;NaN&#124;\+INF&#124;-INF)$</code> |
+| xs:duration | <code>^&#91;-+&#93;?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$</code>                                                           |
+| xs:integer  | <code>^&#91;+-&#93;?(\d+)$</code>                                                                                                     |
+| xs:string   | <code>^.*$</code>                                                                                                                     |
+| xs:time     | <code>^\d{2}:\d{2}:\d{2}(\.\d+)?(Z&#124;(&#91;+-&#93;\d{2}:\d{2}))?$</code>                                                           |
 
 For example:
 

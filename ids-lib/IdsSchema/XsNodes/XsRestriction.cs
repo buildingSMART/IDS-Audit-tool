@@ -83,25 +83,33 @@ internal class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 	/// <summary>
     /// Deals with the nature of enumerations.
     /// 
-	/// Enumerations need to be managed independently,
+	/// Enumerations and patterns need to be managed independently,
 	/// they are evaluated with OR (internally) + AND (externally)
 	/// </summary>
 	private IEnumerable<IStringListMatcher> ChildrenListMatchers()
     {
-        EnumerationSetMatcher? enumerationSetMatcher = null;
+        AlternativeSetMatcher? enumerationSetMatcher = null;
+        AlternativeSetMatcher? patternSetMatcher = null;
 		foreach (var child in Children.OfType<IStringListMatcher>())
         {
             if (child is XsEnumeration asEnum)
 			{
-                enumerationSetMatcher ??= new EnumerationSetMatcher(this);
+                enumerationSetMatcher ??= new AlternativeSetMatcher(this, "Enumeration");
 				enumerationSetMatcher.Add(asEnum);
+			}
+			else if (child is XsPattern asPattern)
+			{
+				patternSetMatcher ??= new AlternativeSetMatcher(this, "Pattern");
+				patternSetMatcher.Add(asPattern);
 			}
 			else 
 				yield return child ;
 		}
         if (enumerationSetMatcher is not null)
 			yield return enumerationSetMatcher;
-		
+		if (patternSetMatcher is not null)
+			yield return patternSetMatcher;
+
 	}
 
     public bool TryMatch(IEnumerable<string> candidateStrings, bool ignoreCase, out IEnumerable<string> matches)

@@ -14,7 +14,7 @@ namespace IdsLib.IdsSchema.XsNodes
 		private readonly static Regex regexDouble = new(@"^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?|NaN|\+INF|-INF)$", RegexOptions.Compiled);
 		private readonly static Regex regexDuration = new(@"^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$", RegexOptions.Compiled);
 		private readonly static Regex regexInteger = new(@"^[+-]?(\d+)$", RegexOptions.Compiled);
-		private readonly static Regex regexString = new(@"^.?$", RegexOptions.Compiled);
+		private readonly static Regex regexString = new(@"^.*$", RegexOptions.Compiled);
 		private readonly static Regex regexTime = new(@"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
 	}
 }

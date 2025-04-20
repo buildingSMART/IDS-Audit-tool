@@ -37,7 +37,7 @@ namespace IdsLib.codegen
 				"xs:double" => @"^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?|NaN|\+INF|-INF)$",
 				"xs:duration" => @"^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$",
 				"xs:integer" => @"^[+-]?(\d+)$",
-				"xs:string" => @"^.?$",
+				"xs:string" => @"^.*$",
 				"xs:time" => @"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$",
 				_ => ""
 			};
