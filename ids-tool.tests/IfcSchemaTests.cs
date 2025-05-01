@@ -1,16 +1,29 @@
 ﻿using FluentAssertions;
 using IdsLib.IfcSchema;
+using idsTool.tests.Helpers;
+using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using Xbim.Ifc.Extensions;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace idsTool.tests;
 
 public class IfcSchemaTests
 {
-    [Fact]
+
+	public IfcSchemaTests(ITestOutputHelper outputHelper)
+	{
+		XunitOutputHelper = outputHelper;
+	}
+	private ITestOutputHelper XunitOutputHelper { get; }
+
+	[Fact]
     public void CanGetAConcreteClass()
     {
         var wall = SchemaInfo.AllConcreteClasses.FirstOrDefault(x => x.PascalCaseName == "IfcWall");
@@ -205,7 +218,7 @@ public class IfcSchemaTests
     [Fact]
     public void HasMeasureInfo()
     {
-        var m = IdsLib.IfcSchema.SchemaInfo.AllMeasureInformation.ToList();
+        var m = SchemaInfo.AllMeasureInformation.ToList();
         m.Should().HaveCount(83);
         foreach (var measure in m)
         {
@@ -213,33 +226,51 @@ public class IfcSchemaTests
         }
     }
 
+	[Fact]
+	public void HasMeasureSiNames()
+	{
+		var logger = LoggerAndAuditHelpers.GetXunitLogger(XunitOutputHelper);
+		var measures = SchemaInfo.AllMeasureInformation.ToList();
+		var siunits = measures.Where(x => x.HasSiUnitEnum()).SelectMany(x => x.SiUnitNameEnums).ToList();
+		logger.LogInformation($"Available si enum units: {string.Join(", ", siunits)}");
+		var missingUnits = new List<string>();
+		foreach (var unitName in Enum.GetValues<Xbim.Ifc4.Interfaces.IfcSIUnitName>())
+		{
+			var measurefound = measures.Where(x => x.HasSiUnitEnum(unitName.ToString())).ToList();
+			if (!measurefound.Any())
+			{
+				missingUnits.Add(unitName.ToString());
+			}
+		}
+		missingUnits.Should().HaveCount(0, $"no SI unit name should be missing");
 
-    [Fact]
+		// we can use this to fix the units markdown, if needed
+		var sb = new StringBuilder();
+		foreach (var measure in measures)
+		{
+			sb.AppendLine($"{measure.Id} | {string.Join(", ", measure.SiUnitNameEnums)} |");
+		}	
+		var tot = sb.ToString();
+	}
+
+	[Fact]
     public void CanGetTopLevelClassesByAttribute()
     {
         // Issue #17
         var allClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("Description");
         var topLevelClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("Description", onlyTopClasses: true);
-        
         topLevelClasses.Should().BeSubsetOf(allClasses);
-
         topLevelClasses.Should().HaveCountLessThan(allClasses.Length);
-
     }
 
     [Fact]
     public void OnlyTopLevelClassesShouldRemoveAllSubClasses()
     {
-        // Issue #20
-        
+        // Issue #20     
         var topLevelClasses = SchemaInfo.SchemaIfc4.GetAttributeClasses("ObjectType", onlyTopClasses: true);
-
         topLevelClasses.Should().Contain("IFCOBJECT");
-
         topLevelClasses.Should().NotContain("IFCPRODUCT");
-
     }
-
 
     [Fact]
     public void AllSubClassesOfTypesAreIncludedAsPossibleTypesForPropertySets()
@@ -256,6 +287,4 @@ public class IfcSchemaTests
         classes.Should().Contain("IFCACTUATORTYPE"); 
         classes.Should().Contain("IFCAIRTERMINALTYPE");
     }
-
-
 }

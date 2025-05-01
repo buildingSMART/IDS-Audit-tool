@@ -21,8 +21,6 @@ namespace IdsLib.codegen
 
 	internal class IfcSchema_DocumentationGenerator
 	{
-		
-
 		internal static string Execute(Dictionary<string, typeMetadata> dataTypeDictionary)
 		{
 			var schemas = new string[] { "Ifc2x3", "Ifc4", "Ifc4x3" };

@@ -80,12 +80,11 @@ class IfcSchema_AttributesGenerator
 			}
 			if (!dataTypeDictionary.TryGetValue(x.ToUpperInvariant(), out var dt))
 			{
-				Debug.WriteLine($"Invalid attribute measure: `{x}` not found.");
+				// Debug.WriteLine($"Invalid attribute measure: `{x}` not found.");
 				return "";
 			}
 			return dt.XmlBackingType;
 		}
-
 	}
 
     /// <summary>

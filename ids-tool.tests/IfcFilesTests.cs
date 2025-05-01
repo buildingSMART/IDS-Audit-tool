@@ -52,13 +52,24 @@ namespace idsTool.tests
 			xbimContext.Logger.ClearReceivedCalls();
 			using var store = IfcStore.Open(ifcFile.FullName);
 			TestPredefinedType(store, musthave.Contains(ifcFile.Name));
+			TestRelationships(store);
+
 			if (ifcFile.Name == "bad.ifc")
 				xbimContext.Logger.ReceivedWithAnyArgs(1).Log(default, default);
 			else
 				xbimContext.Logger.ReceivedWithAnyArgs(0).Log(default, default);
+
+			
 		}
 
-		
+		private void TestRelationships(IfcStore store)
+		{
+			var ents = store.Instances.OfType<IIfcRelationship>();
+			foreach (var rel in ents)
+			{
+				XunitOutputHelper.WriteLine($"Evaluating #{rel.EntityLabel}: {rel.GetType().Name} - {rel.ToString()}");
+			}
+		}
 
 		private void TestPredefinedType(IfcStore store, bool mustHaveObjType)
 		{

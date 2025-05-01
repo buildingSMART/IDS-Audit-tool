@@ -10,16 +10,19 @@ public struct IfcMeasureInformation
 
 | name | description |
 | --- | --- |
-| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | basic constructor |
+| [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Complete constructor (2 constructors) |
 | [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit, e.g. 1 / s |
 | [Description](IfcMeasureInformation/Description.md) { get; } | A textual description, e.g. "Frequency" |
 | [Exponents](IfcMeasureInformation/Exponents.md) { get; } | Dimensional exponents useful for conversion to other units. |
 | [Id](IfcMeasureInformation/Id.md) { get; } | The string ID found in the XML persistence |
 | [IfcMeasure](IfcMeasureInformation/IfcMeasure.md) { get; } | String of the Ifc type expected |
+| [IsEmpty](IfcMeasureInformation/IsEmpty.md) { get; } | Checks if the measure information is empty. |
+| [SiUnitNameEnums](IfcMeasureInformation/SiUnitNameEnums.md) { get; } | the string values of the SI unit name enums, if any are available |
 | [Unit](IfcMeasureInformation/Unit.md) { get; } | Full name of the unit, e.g. hertz |
 | [UnitSymbol](IfcMeasureInformation/UnitSymbol.md) { get; } | Symbol used to present the unit, e.g. Hz |
 | [UnitTypeEnum](IfcMeasureInformation/UnitTypeEnum.md) { get; } | The string value of the UnitType enum of a valid matching unit |
 | [GetUnit](IfcMeasureInformation/GetUnit.md)() | Returns the SI preferred unit. |
+| [HasSiUnitEnum](IfcMeasureInformation/HasSiUnitEnum.md)(…) |  |
 
 ## See Also
 

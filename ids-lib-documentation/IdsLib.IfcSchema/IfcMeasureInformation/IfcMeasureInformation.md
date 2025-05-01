@@ -1,10 +1,26 @@
-# IfcMeasureInformation constructor
+# IfcMeasureInformation constructor (1 of 2)
 
 basic constructor
 
 ```csharp
 public IfcMeasureInformation(string measureId, string description, string unit, string unitSymbol, 
     string defDisplayUnit, string exponents, string unitTypeEnum)
+```
+
+## See Also
+
+* struct [IfcMeasureInformation](../IfcMeasureInformation.md)
+* namespace [IdsLib.IfcSchema](../../ids-lib.md)
+
+---
+
+# IfcMeasureInformation constructor (2 of 2)
+
+Complete constructor
+
+```csharp
+public IfcMeasureInformation(string measureId, string description, string unit, string unitSymbol, 
+    string defDisplayUnit, string exponents, string unitTypeEnum, string[] siUnitNameEnum)
 ```
 
 ## See Also

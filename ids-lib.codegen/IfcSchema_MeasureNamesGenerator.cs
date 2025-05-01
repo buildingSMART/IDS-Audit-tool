@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using Xbim.Common.Metadata;
+using Xbim.Ifc4.Interfaces;
 
 namespace IdsLib.codegen;
 
@@ -18,7 +19,31 @@ internal record typeMetadata
         Schemas.Add(schema);
     }
 
-    internal void SetBacking(string backing)
+	internal IEnumerable<string> GetSiUnits()
+	{
+		if (string.IsNullOrEmpty(Fields[2]?.Trim()))
+		{
+			yield break;
+		}
+		var temp = Fields[2]?.Trim().Replace(" ", "_")
+			.Replace("meter", "metre")
+			.Replace("kilogram", "gram")
+			;
+		List<string> units = [temp];
+		if (temp == "kelvin")
+		{
+			units.Add("degree_celsius");
+		}
+		foreach (var unit in units)
+		{
+			if (Enum.TryParse<IfcSIUnitName>(unit, true, out var siUnitEnum))
+			{
+				yield return $"IfcSIUnitName.{siUnitEnum.ToString().ToUpperInvariant()}";
+			}
+		}
+	}
+
+	internal void SetBacking(string backing)
     {
 
         if (XmlBackingType ==  backing) 
@@ -109,15 +134,17 @@ public class IfcSchema_DatatypeNamesGenerator
             }
         }
 
-
         var source = stub;
         var sbMeasures = new StringBuilder();
         foreach (var clNm in dataTypeDictionary.Keys.OrderBy(x => x))
         {
             var fnd = dataTypeDictionary[clNm];		
-            if (fnd.Fields is not null)
+            if (fnd.Fields is not null) // we have a measure
             {
-                var t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}")""";
+				var t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}")""";
+				var siUnits = fnd.GetSiUnits().ToList();
+				if (siUnits.Any()) // we have SI units, add to the information
+					t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}",{CodeHelpers.NewStringArray(siUnits)})""";
                 sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t}, "{fnd.XmlBackingType}");""");
             }
             else
@@ -195,7 +222,13 @@ public class IfcSchema_DatatypeNamesGenerator
     {
         System.Reflection.Module module = SchemaHelper.GetModule(schema);
         var tp2 = module.GetTypes().Where(x => !string.IsNullOrEmpty(x.BaseType?.Name) && x.BaseType.Name == "Enum").ToList();
-        return tp2.Select(x => x.Name.ToUpperInvariant()).Where(x => x.EndsWith("ENUM") && x.StartsWith("IFC"));
+		var ret = tp2.Select(x => x.Name.ToUpperInvariant()).Where(x => x.EndsWith("ENUM") && x.StartsWith("IFC")).ToList();
+
+		if (schema == "Ifc4")
+			ret.Remove("IFCALIGNMENTTYPEENUM"); // apparently not defined in Ifc4
+		ret.Remove("IFCNULLSTYLEENUM");
+
+		return ret;
     }
 
     private static IEnumerable<typeMetadata> GetDocumentationMeasures()
@@ -205,7 +238,7 @@ public class IfcSchema_DatatypeNamesGenerator
         {
             var modline = line.Trim(' ');
             var lineCells = modline.Split('|');
-            if (lineCells.Length != 9)
+            if (lineCells.Length != 10)
                 continue;
             var firstCell = lineCells[1].Trim();
             if (firstCell.Contains(' ') ||  firstCell.Contains('\t') || firstCell.Contains('-'))
@@ -214,7 +247,7 @@ public class IfcSchema_DatatypeNamesGenerator
             var ret = new typeMetadata() {
                 Name = firstCell,
                 Exponents = lineCells[6].Trim(),
-                Fields = lineCells.Skip(1).Take(7).Select(x => x.Trim()).ToArray(),
+                Fields = lineCells.Skip(1).Take(8).Select(x => x.Trim()).ToArray(),
             };
             yield return ret;
         }

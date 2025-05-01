@@ -21,7 +21,7 @@ Columns of the table determine the validity of the type depending on the schema 
 | IFCALARMTYPEENUM                              | ✔️      | ✔️      | ✔️      | xs:string             |
 | IFCALIGNMENTCANTSEGMENTTYPEENUM               | ❌      | ❌      | ✔️      | xs:string             |
 | IFCALIGNMENTHORIZONTALSEGMENTTYPEENUM         | ❌      | ❌      | ✔️      | xs:string             |
-| IFCALIGNMENTTYPEENUM                          | ❌      | ✔️      | ✔️      | xs:string             |
+| IFCALIGNMENTTYPEENUM                          | ❌      | ❌      | ✔️      | xs:string             |
 | IFCALIGNMENTVERTICALSEGMENTTYPEENUM           | ❌      | ❌      | ✔️      | xs:string             |
 | IFCAMOUNTOFSUBSTANCEMEASURE                   | ✔️      | ✔️      | ✔️      | xs:double             |
 | IFCANALYSISMODELTYPEENUM                      | ✔️      | ✔️      | ✔️      | xs:string             |
@@ -231,7 +231,6 @@ Columns of the table determine the validity of the type depending on the schema 
 | IFCNONNEGATIVELENGTHMEASURE                   | ❌      | ✔️      | ✔️      | xs:double             |
 | IFCNORMALISEDRATIOMEASURE                     | ✔️      | ✔️      | ✔️      | xs:double             |
 | IFCNULLSTYLE                                  | ✔️      | ✔️      | ❌      | xs:string             |
-| IFCNULLSTYLEENUM                              | ✔️      | ✔️      | ❌      | xs:string             |
 | IFCNUMERICMEASURE                             | ✔️      | ✔️      | ✔️      | xs:double             |
 | IFCOBJECTIVEENUM                              | ✔️      | ✔️      | ✔️      | xs:string             |
 | IFCOBJECTTYPEENUM                             | ✔️      | ✔️      | ❌      | xs:string             |
