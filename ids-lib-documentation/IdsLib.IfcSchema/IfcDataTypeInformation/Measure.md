@@ -3,7 +3,7 @@
 Metadata for unit of measure conversion, if relevant.
 
 ```csharp
-public IfcMeasureInformation? Measure { get; }
+public IfcMeasureInformation Measure { get; }
 ```
 
 ## See Also

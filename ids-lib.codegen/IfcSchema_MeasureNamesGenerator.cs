@@ -21,6 +21,8 @@ internal record typeMetadata
 
 	internal IEnumerable<string> GetSiUnits()
 	{
+		if (Fields is null)
+			yield break;
 		if (string.IsNullOrEmpty(Fields[2]?.Trim()))
 		{
 			yield break;

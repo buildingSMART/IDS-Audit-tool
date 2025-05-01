@@ -1,10 +1,14 @@
-# DimensionalExponents.ToUnitSymbol method
+# DimensionalExponents.IsBasicUnit property
 
-String expression of the combination of exponets in the SI [`Units`](./Units.md).
+Only has one exponent that at 1, the others are 0.
 
 ```csharp
-public string ToUnitSymbol()
+public bool IsBasicUnit { get; }
 ```
+
+## Return Value
+
+true if the exponents express a basic unit
 
 ## See Also
 

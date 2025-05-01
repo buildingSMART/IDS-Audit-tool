@@ -222,9 +222,28 @@ public class IfcSchemaTests
         m.Should().HaveCount(83);
         foreach (var measure in m)
         {
-            Debug.WriteLine($"{measure.UnitSymbol}\t{measure.DefaultDisplay}");
+			XunitOutputHelper.WriteLine($"{measure.Description}:\t{measure.Unit}\t{measure.UnitSymbol}\t{measure.DefaultDisplay}");
         }
     }
+
+	[Fact]
+	public void HasSiFundamentalsMeasureInfo()
+	{
+		var t = Enum.GetNames<DimensionType>().Should().HaveCount(7);
+		foreach (var item in Enum.GetValues<DimensionType>())
+		{
+			var exp = DimensionalExponents.GetUnit(item);
+			exp.Should().NotBeNull();
+			exp.IsBasicUnit.Should().BeTrue($"{exp}");
+		}
+		var m = SchemaInfo.AllMeasureInformation.Where(x=>x.IsBasicUnit).ToList();
+		m.Should().HaveCount(7);
+		foreach (var measure in m)
+		{
+			XunitOutputHelper.WriteLine($"{measure.Description}:\t{measure.Unit}\t{measure.UnitSymbol}\t{measure.DefaultDisplay}");
+		}
+	}
+
 
 	[Fact]
 	public void HasMeasureSiNames()

@@ -17,7 +17,7 @@ public class IfcDataTypeInformation
     /// <summary>
     /// Metadata for unit of measure conversion, if relevant.
     /// </summary>
-    public IfcMeasureInformation? Measure { get; } = null;
+    public IfcMeasureInformation Measure { get; } = IfcMeasureInformation.Empty;
     /// <summary>
     /// The XML type backing the datatype, if known.
     /// </summary>

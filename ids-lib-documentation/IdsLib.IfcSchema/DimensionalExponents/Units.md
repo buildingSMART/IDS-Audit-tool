@@ -1,9 +1,9 @@
-# DimensionalExponents.ToUnitSymbol method
+# DimensionalExponents.Units property
 
-String expression of the combination of exponets in the SI [`Units`](./Units.md).
+short form of the SI Units referenced by the exponents
 
 ```csharp
-public string ToUnitSymbol()
+public static string[] Units { get; }
 ```
 
 ## See Also

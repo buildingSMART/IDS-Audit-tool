@@ -111,7 +111,13 @@ namespace IdsLib.IfcSchema
 		/// <summary>
 		/// A selection of all the measures available in <see cref="AllDataTypes"/>.
 		/// </summary>
-		public static IEnumerable<IfcMeasureInformation> AllMeasureInformation => AllDataTypes.Where(x => x.Measure is not null).Select(x => x.Measure!.Value);
+		public static IEnumerable<IfcMeasureInformation> AllMeasureInformation => AllDataTypes.Where(x => !x.Measure.IsEmpty).Select(x => x.Measure);
+		
+		/// <summary>
+		/// A selection of measures available in relevant schemas<see cref="AllDataTypes"/>.
+		/// </summary>
+		public static IEnumerable<IfcMeasureInformation> GetMeasureInformation(IfcSchemaVersions schema = IfcSchemaVersions.IfcAllVersions) 
+			=> AllDataTypes.Where(x => x.ValidSchemaVersions.HasFlag(schema) && !x.Measure.IsEmpty).Select(x => x.Measure);
 
 		/// <summary>
 		/// Add a new classInfo to the collection

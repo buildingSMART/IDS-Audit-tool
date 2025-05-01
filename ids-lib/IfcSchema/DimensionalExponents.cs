@@ -246,12 +246,50 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 	}
 
 	/// <summary>
+	/// Only has one exponent that at 1, the others are 0.
+	/// </summary>
+	/// <returns>true if the exponents express a basic unit</returns>
+	public bool IsBasicUnit
+	{
+		get
+		{
+			int countOnes =
+				((Length == 1) ? 1 : 0) +
+				((Mass == 1) ? 1 : 0) +
+				((Time == 1) ? 1 : 0) +
+				((ElectricCurrent == 1) ? 1 : 0) +
+				((Temperature == 1) ? 1 : 0) +
+				((AmountOfSubstance == 1) ? 1 : 0) +
+				((LuminousIntensity == 1) ? 1 : 0);
+			int countZeros =
+				((Length == 0) ? 1 : 0) +
+				((Mass == 0) ? 1 : 0) +
+				((Time == 0) ? 1 : 0) +
+				((ElectricCurrent == 0) ? 1 : 0) +
+				((Temperature == 0) ? 1 : 0) +
+				((AmountOfSubstance == 0) ? 1 : 0) +
+				((LuminousIntensity == 0) ? 1 : 0);
+			return countOnes == 1 && countZeros == 6;
+		}
+	}
+
+	/// <summary>
 	/// short form of the SI Units referenced by the exponents
 	/// </summary>
-	static string[] Units { get; } = new string[]
-	{
+	public static string[] Units { get; } =
+	[
 		"m", "kg", "s", "A", "K", "mol", "cd"
-	};
+	];
+
+	/// <summary>
+	/// basic IFC measures of the Units referenced by the exponents
+	/// </summary>
+	public static string[] UnitMeasures { get; } =
+	[
+		"IFCLENGTHMEASURE", "IFCMASSMEASURE", "IFCTIMEMEASURE", "IFCELECTRICCURRENTMEASURE", "IFCTHERMODYNAMICTEMPERATUREMEASURE", "IFCAMOUNTOFSUBSTANCEMEASURE", "IFCLUMINOUSINTENSITYMEASURE"
+	];
+
+
 
 	/// <summary>
 	/// String expression of the combination of exponets in the SI <see cref="Units"/>.

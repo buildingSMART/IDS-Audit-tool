@@ -17,6 +17,7 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 | static [GetUnit](DimensionalExponents/GetUnit.md)(…) | Provides the DimensionalExponents of the base SI units. |
 | [AmountOfSubstance](DimensionalExponents/AmountOfSubstance.md) { get; set; } | Dimensional exponent for the AmountOfSubstance core SI unit of measure |
 | [ElectricCurrent](DimensionalExponents/ElectricCurrent.md) { get; set; } | Dimensional exponent for the ElectricCurrent core SI unit of measure |
+| [IsBasicUnit](DimensionalExponents/IsBasicUnit.md) { get; } | Only has one exponent that at 1, the others are 0. |
 | [Length](DimensionalExponents/Length.md) { get; set; } | Dimensional exponent for the Length core SI unit of measure |
 | [LuminousIntensity](DimensionalExponents/LuminousIntensity.md) { get; set; } | Dimensional exponent for the LuminousIntensity core SI unit of measure |
 | [Mass](DimensionalExponents/Mass.md) { get; set; } | Dimensional exponent for the Mass core SI unit of measure |
@@ -29,7 +30,9 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 | override [GetHashCode](DimensionalExponents/GetHashCode.md)() |  |
 | [Multiply](DimensionalExponents/Multiply.md)(…) | Generates a new [`DimensionalExponents`](./DimensionalExponents.md) instance, resulting from the multiplication of the current instance with the *other*. |
 | override [ToString](DimensionalExponents/ToString.md)() |  |
-| [ToUnitSymbol](DimensionalExponents/ToUnitSymbol.md)() | String expression of the combination of exponets in the SI Units. |
+| [ToUnitSymbol](DimensionalExponents/ToUnitSymbol.md)() | String expression of the combination of exponets in the SI [`Units`](./DimensionalExponents/Units.md). |
+| static [UnitMeasures](DimensionalExponents/UnitMeasures.md) { get; } | basic IFC measures of the Units referenced by the exponents |
+| static [Units](DimensionalExponents/Units.md) { get; } | short form of the SI Units referenced by the exponents |
 
 ## See Also
 

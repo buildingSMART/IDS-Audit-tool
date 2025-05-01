@@ -11,11 +11,13 @@ public struct IfcMeasureInformation
 | name | description |
 | --- | --- |
 | [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Complete constructor (2 constructors) |
-| [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit, e.g. 1 / s |
+| static readonly [Empty](IfcMeasureInformation/Empty.md) | Empty measure information, used for default values. |
+| [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K |
 | [Description](IfcMeasureInformation/Description.md) { get; } | A textual description, e.g. "Frequency" |
 | [Exponents](IfcMeasureInformation/Exponents.md) { get; } | Dimensional exponents useful for conversion to other units. |
-| [Id](IfcMeasureInformation/Id.md) { get; } | The string ID found in the XML persistence |
+| [Id](IfcMeasureInformation/Id.md) { get; } | The string ID found in the XML persistence, currently identical to the [`IfcMeasure`](./IfcMeasureInformation/IfcMeasure.md) |
 | [IfcMeasure](IfcMeasureInformation/IfcMeasure.md) { get; } | String of the Ifc type expected |
+| [IsBasicUnit](IfcMeasureInformation/IsBasicUnit.md) { get; } | Checks if the measure is a basic SI unit. |
 | [IsEmpty](IfcMeasureInformation/IsEmpty.md) { get; } | Checks if the measure information is empty. |
 | [SiUnitNameEnums](IfcMeasureInformation/SiUnitNameEnums.md) { get; } | the string values of the SI unit name enums, if any are available |
 | [Unit](IfcMeasureInformation/Unit.md) { get; } | Full name of the unit, e.g. hertz |

@@ -1,9 +1,9 @@
-# IfcMeasureInformation.DefaultDisplay property
+# IfcMeasureInformation.IsBasicUnit property
 
-Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K
+Checks if the measure is a basic SI unit.
 
 ```csharp
-public string DefaultDisplay { get; }
+public bool IsBasicUnit { get; }
 ```
 
 ## See Also

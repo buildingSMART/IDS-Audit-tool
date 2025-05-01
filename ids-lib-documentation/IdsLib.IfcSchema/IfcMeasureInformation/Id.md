@@ -1,6 +1,6 @@
 # IfcMeasureInformation.Id property
 
-The string ID found in the XML persistence
+The string ID found in the XML persistence, currently identical to the [`IfcMeasure`](./IfcMeasure.md)
 
 ```csharp
 public string Id { get; }

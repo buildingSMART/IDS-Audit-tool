@@ -1,9 +1,9 @@
-# IfcMeasureInformation.DefaultDisplay property
+# IfcMeasureInformation.Empty field
 
-Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K
+Empty measure information, used for default values.
 
 ```csharp
-public string DefaultDisplay { get; }
+public static readonly IfcMeasureInformation Empty;
 ```
 
 ## See Also

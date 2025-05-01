@@ -12,6 +12,11 @@ namespace IdsLib.IfcSchema;
 public readonly struct IfcMeasureInformation
 {
 	/// <summary>
+	/// Empty measure information, used for default values.
+	/// </summary>
+	public static readonly IfcMeasureInformation Empty = new("", "", "", "", "", "", "", []);
+
+	/// <summary>
 	/// Complete constructor
 	/// </summary>
 	public IfcMeasureInformation(string measureId, string description, string unit, string unitSymbol, string defDisplayUnit, string exponents, string unitTypeEnum, string[] siUnitNameEnum)
@@ -31,16 +36,6 @@ public readonly struct IfcMeasureInformation
 				return true;
 			if (string.IsNullOrEmpty(IfcMeasure))
 				return true;
-			if (string.IsNullOrEmpty(Unit))
-				return true;
-			if (string.IsNullOrEmpty(UnitSymbol))
-				return true;
-			if (string.IsNullOrEmpty(DefaultDisplay))
-				return true;
-			if (Exponents is null)
-				return true;
-			if (UnitTypeEnum is null)
-				return true;
 			return false;
 		}
 	}
@@ -58,17 +53,23 @@ public readonly struct IfcMeasureInformation
 		DefaultDisplay = defDisplayUnit;
 		Exponents = DimensionalExponents.FromString(exponents) ?? new DimensionalExponents();
 		UnitTypeEnum = unitTypeEnum;
+		IsBasicUnit = DimensionalExponents.UnitMeasures.Contains(Id);
+
 	}
 
 	/// <summary>
-	/// The string ID found in the XML persistence
+	/// Checks if the measure is a basic SI unit.
+	/// </summary>
+	public bool IsBasicUnit { get; }
+
+	/// <summary>
+	/// The string ID found in the XML persistence, currently identical to the <see cref="IfcMeasure"/>
 	/// </summary>
 	public string Id { get; }
 	/// <summary>
 	/// String of the Ifc type expected
 	/// </summary>
 	public string IfcMeasure { get; }
-
 	/// <summary>
 	/// A textual description, e.g. "Frequency"
 	/// </summary>
@@ -86,7 +87,7 @@ public readonly struct IfcMeasureInformation
 	/// </summary>
 	public string UnitSymbol { get; }
 	/// <summary>
-	/// Preferred representation unit, e.g. 1 / s
+	/// Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K
 	/// </summary>
 	public string DefaultDisplay { get; }
 	/// <summary>

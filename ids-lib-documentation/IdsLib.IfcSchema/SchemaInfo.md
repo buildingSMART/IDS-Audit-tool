@@ -30,6 +30,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [AllDataTypes](SchemaInfo/AllDataTypes.md) { get; } | The names of dataType classes across all schemas. |
 | static [AllMeasureInformation](SchemaInfo/AllMeasureInformation.md) { get; } | A selection of all the measures available in [`AllDataTypes`](./SchemaInfo/AllDataTypes.md). |
 | static [GetConcreteClassesFrom](SchemaInfo/GetConcreteClassesFrom.md)(…) | Returns a list of the concrete class names that implement a given top class. When multiple schema flags are passed the list is the non-repeating union of the values of each schema |
+| static [GetMeasureInformation](SchemaInfo/GetMeasureInformation.md)(…) | A selection of measures available in relevant schemas[`AllDataTypes`](./SchemaInfo/AllDataTypes.md). |
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
 | static [TryParseIfcDataType](SchemaInfo/TryParseIfcDataType.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |
 | static [TrySearchTopClass](SchemaInfo/TrySearchTopClass.md)(…) | Attempts to identify a single top class inheritance from a list of class names |
