@@ -147,10 +147,10 @@ public class IfcSchema_DatatypeNamesGenerator
 				var siUnits = fnd.GetSiUnits().ToList();
 				if (siUnits.Any()) // we have SI units, add to the information
 					t = $"""new IfcMeasureInformation("{fnd.Fields[0]}","{fnd.Fields[1]}","{fnd.Fields[2]}","{fnd.Fields[3]}","{fnd.Fields[4]}","{fnd.Fields[5]}","{fnd.Fields[6]}",{CodeHelpers.NewStringArray(siUnits)})""";
-                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t}, "{fnd.XmlBackingType}");""");
+                sbMeasures.AppendLine($"""		new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, {t}, "{fnd.XmlBackingType}"),""");
             }
             else
-                sbMeasures.AppendLine($"""            yield return new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, "{fnd.XmlBackingType}");""");
+                sbMeasures.AppendLine($"""		new IfcDataTypeInformation("{clNm}", {CodeHelpers.NewStringArray(fnd.Schemas)}, "{fnd.XmlBackingType}"),""");
         }
         source = source.Replace($"<PlaceHolderDataTypes>\r\n", sbMeasures.ToString());
         source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
@@ -267,16 +267,14 @@ public class IfcSchema_DatatypeNamesGenerator
 
 		public partial class SchemaInfo
 		{
+			private static readonly IfcDataTypeInformation[] _allDataTypes = [
+		<PlaceHolderDataTypes>
+				];
+
 		    /// <summary>
 		    /// The names of dataType classes across all schemas.
 		    /// </summary>
-		    public static IEnumerable<IfcDataTypeInformation> AllDataTypes
-		    {
-		        get
-		        {
-		<PlaceHolderDataTypes>
-		        }
-		    }
+		    public static IEnumerable<IfcDataTypeInformation> AllDataTypes => _allDataTypes;
 		}
 		""";
 }

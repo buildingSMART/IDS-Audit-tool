@@ -46,12 +46,12 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
         foreach (var clNm in classNames.Keys.OrderBy(x => x))
         {
             var schemes = classNames[clNm];
-            sbClasses.AppendLine($"""            yield return new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)});""");
+            sbClasses.AppendLine($"""		new IfcClassInformation("{clNm}", {CodeHelpers.NewStringArray(schemes)}),""");
         }
         foreach (var clNm in attNames.Keys.OrderBy(x => x))
         {
             var schemes = attNames[clNm];
-            sbAtts.AppendLine($"""            yield return new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())});""");
+            sbAtts.AppendLine($"""		new IfcAttributeInformation("{clNm}", {CodeHelpers.NewStringArray(schemes.Distinct())}),""");
         }
         source = source.Replace($"<PlaceHolderClasses>\r\n", sbClasses.ToString());
         source = source.Replace($"<PlaceHolderAttributes>\r\n", sbAtts.ToString());
@@ -76,29 +76,24 @@ public class IfcSchema_ClassAndAttributeNamesGenerator
 			/// </summary>
 			[Obsolete("Use AllConcreteClasses instead.")]
 			public static IEnumerable<IfcClassInformation> AllClasses => AllConcreteClasses;
-		        
-
-			/// <summary>
-			/// The names of all concrete classes across known IFC schemas.
-			/// </summary>
-			public static IEnumerable<IfcClassInformation> AllConcreteClasses
-		    {
-		        get
-		        {
+			
+			private static readonly IfcClassInformation[] _allConcreteClasses = [
 		<PlaceHolderClasses>
-		        }
-		    }
+				];
+		    
+			/// <summary>
+			/// The names of all concrete classes across known IFC schemas
+			/// </summary>
+			public static IEnumerable<IfcClassInformation> AllConcreteClasses => _allConcreteClasses;
+
+			private static readonly IfcAttributeInformation[] _allAttributes = [			
+		<PlaceHolderAttributes>
+				];
 
 		    /// <summary>
 		    /// The names of all attributes across all schemas.
 		    /// </summary>
-		    public static IEnumerable<IfcAttributeInformation> AllAttributes
-		    {
-		        get
-		        {
-		<PlaceHolderAttributes>
-		        }
-		    }
+		    public static IEnumerable<IfcAttributeInformation> AllAttributes => _allAttributes;
 		}
 		""";
 }

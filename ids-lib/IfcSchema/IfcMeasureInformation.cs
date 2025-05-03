@@ -9,13 +9,8 @@ namespace IdsLib.IfcSchema;
 /// Metadata about measure conversion behaviours.
 /// </summary>
 [DebuggerDisplay("{Id}, {Description}")]
-public readonly struct IfcMeasureInformation
+public record IfcMeasureInformation : IUnitInformation
 {
-	/// <summary>
-	/// Empty measure information, used for default values.
-	/// </summary>
-	public static readonly IfcMeasureInformation Empty = new("", "", "", "", "", "", "", []);
-
 	/// <summary>
 	/// Complete constructor
 	/// </summary>
@@ -23,21 +18,6 @@ public readonly struct IfcMeasureInformation
 		: this(measureId, description, unit, unitSymbol, defDisplayUnit, exponents, unitTypeEnum)
 	{
 		SiUnitNameEnums = siUnitNameEnum;
-	}
-
-	/// <summary>
-	/// Checks if the measure information is empty.
-	/// </summary>
-	public bool IsEmpty
-	{
-		get
-		{
-			if (string.IsNullOrEmpty(Id))
-				return true;
-			if (string.IsNullOrEmpty(IfcMeasure))
-				return true;
-			return false;
-		}
 	}
 
 	/// <summary>
@@ -54,7 +34,6 @@ public readonly struct IfcMeasureInformation
 		Exponents = DimensionalExponents.FromString(exponents) ?? new DimensionalExponents();
 		UnitTypeEnum = unitTypeEnum;
 		IsBasicUnit = DimensionalExponents.UnitMeasures.Contains(Id);
-
 	}
 
 	/// <summary>
@@ -67,7 +46,7 @@ public readonly struct IfcMeasureInformation
 	/// </summary>
 	public string Id { get; }
 	/// <summary>
-	/// String of the Ifc type expected
+	/// String of the Ifc type expected, e.g. IFCAREAMEASURE
 	/// </summary>
 	public string IfcMeasure { get; }
 	/// <summary>
@@ -103,7 +82,7 @@ public readonly struct IfcMeasureInformation
 	/// Returns the SI preferred unit.
 	/// </summary>
 	/// <returns>empty string for measures that do not have expected measures</returns>
-	public readonly string GetUnit()
+	public string GetUnit()
 	{
 		if (!string.IsNullOrEmpty(Unit))
 			return Unit;
@@ -122,5 +101,11 @@ public readonly struct IfcMeasureInformation
 		if (value is null)
 			return SiUnitNameEnums.Any();
 		return SiUnitNameEnums.Any(x => x.EndsWith(value));
+	}
+
+	/// <inheritdoc/>
+	public IUnitInformation? GetParentUnit()
+	{
+		return null;
 	}
 }

@@ -13,11 +13,11 @@ public class IfcDataTypeInformation
     /// <summary>
     /// Name of the entity as a string, stored in UPPERCASE
     /// </summary>
-    public string IfcDataTypeClassName { get; }    
-    /// <summary>
-    /// Metadata for unit of measure conversion, if relevant.
-    /// </summary>
-    public IfcMeasureInformation Measure { get; } = IfcMeasureInformation.Empty;
+    public string IfcDataTypeClassName { get; }
+	/// <summary>
+	/// Metadata for unit of measure conversion, if relevant.
+	/// </summary>
+	public IfcMeasureInformation? Measure { get; } = null;
     /// <summary>
     /// The XML type backing the datatype, if known.
     /// </summary>

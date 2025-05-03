@@ -97,8 +97,13 @@ namespace idsTool.tests
 		[Fact]
 		public void Issue_44_MeasureEnumeration()
 		{
-			var t = SchemaInfo.AllMeasureInformation.FirstOrDefault(x => x.IfcMeasure == "IfcMagneticFluxMeasure");
-			t.Should().NotBeNull();
+			var t = SchemaInfo.TryGetMeasureInformation("IfcMagneticFluxMeasure", out var measure);
+			t.Should().BeTrue();
+			measure.Should().NotBeNull();
+
+			var t2 = SchemaInfo.TryGetMeasureInformation("IfcMagneticFlux", out var measure2);
+			t2.Should().BeFalse();
+			measure2.Should().BeNull();
 		}
 
 		[Fact]

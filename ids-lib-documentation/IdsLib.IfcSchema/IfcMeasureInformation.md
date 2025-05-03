@@ -1,9 +1,9 @@
-# IfcMeasureInformation structure
+# IfcMeasureInformation record
 
 Metadata about measure conversion behaviours.
 
 ```csharp
-public struct IfcMeasureInformation
+public record IfcMeasureInformation : IUnitInformation
 ```
 
 ## Public Members
@@ -11,23 +11,23 @@ public struct IfcMeasureInformation
 | name | description |
 | --- | --- |
 | [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Complete constructor (2 constructors) |
-| static readonly [Empty](IfcMeasureInformation/Empty.md) | Empty measure information, used for default values. |
 | [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K |
 | [Description](IfcMeasureInformation/Description.md) { get; } | A textual description, e.g. "Frequency" |
 | [Exponents](IfcMeasureInformation/Exponents.md) { get; } | Dimensional exponents useful for conversion to other units. |
 | [Id](IfcMeasureInformation/Id.md) { get; } | The string ID found in the XML persistence, currently identical to the [`IfcMeasure`](./IfcMeasureInformation/IfcMeasure.md) |
-| [IfcMeasure](IfcMeasureInformation/IfcMeasure.md) { get; } | String of the Ifc type expected |
+| [IfcMeasure](IfcMeasureInformation/IfcMeasure.md) { get; } | String of the Ifc type expected, e.g. IFCAREAMEASURE |
 | [IsBasicUnit](IfcMeasureInformation/IsBasicUnit.md) { get; } | Checks if the measure is a basic SI unit. |
-| [IsEmpty](IfcMeasureInformation/IsEmpty.md) { get; } | Checks if the measure information is empty. |
 | [SiUnitNameEnums](IfcMeasureInformation/SiUnitNameEnums.md) { get; } | the string values of the SI unit name enums, if any are available |
 | [Unit](IfcMeasureInformation/Unit.md) { get; } | Full name of the unit, e.g. hertz |
 | [UnitSymbol](IfcMeasureInformation/UnitSymbol.md) { get; } | Symbol used to present the unit, e.g. Hz |
 | [UnitTypeEnum](IfcMeasureInformation/UnitTypeEnum.md) { get; } | The string value of the UnitType enum of a valid matching unit |
+| [GetParentUnit](IfcMeasureInformation/GetParentUnit.md)() |  |
 | [GetUnit](IfcMeasureInformation/GetUnit.md)() | Returns the SI preferred unit. |
 | [HasSiUnitEnum](IfcMeasureInformation/HasSiUnitEnum.md)(…) |  |
 
 ## See Also
 
+* interface [IUnitInformation](./IUnitInformation.md)
 * namespace [IdsLib.IfcSchema](../ids-lib.md)
 * [IfcMeasureInformation.cs](https://github.com/buildingSMART/IDS-Audit-tool/tree/main/ids-lib/IfcSchema/IfcMeasureInformation.cs)
 

@@ -3,12 +3,12 @@
 Metadata for unit of measure conversion, if relevant.
 
 ```csharp
-public IfcMeasureInformation Measure { get; }
+public IfcMeasureInformation? Measure { get; }
 ```
 
 ## See Also
 
-* struct [IfcMeasureInformation](../IfcMeasureInformation.md)
+* record [IfcMeasureInformation](../IfcMeasureInformation.md)
 * class [IfcDataTypeInformation](../IfcDataTypeInformation.md)
 * namespace [IdsLib.IfcSchema](../../ids-lib.md)
 

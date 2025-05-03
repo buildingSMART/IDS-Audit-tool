@@ -111,13 +111,26 @@ namespace IdsLib.IfcSchema
 		/// <summary>
 		/// A selection of all the measures available in <see cref="AllDataTypes"/>.
 		/// </summary>
-		public static IEnumerable<IfcMeasureInformation> AllMeasureInformation => AllDataTypes.Where(x => !x.Measure.IsEmpty).Select(x => x.Measure);
+		public static IEnumerable<IfcMeasureInformation> AllMeasureInformation => AllDataTypes.Where(x => x.Measure != null).Select(x => x.Measure!);
 		
 		/// <summary>
 		/// A selection of measures available in relevant schemas<see cref="AllDataTypes"/>.
 		/// </summary>
 		public static IEnumerable<IfcMeasureInformation> GetMeasureInformation(IfcSchemaVersions schema = IfcSchemaVersions.IfcAllVersions) 
-			=> AllDataTypes.Where(x => x.ValidSchemaVersions.HasFlag(schema) && !x.Measure.IsEmpty).Select(x => x.Measure);
+			=> AllDataTypes.Where(x => x.ValidSchemaVersions.HasFlag(schema) && x.Measure is not null).Select(x => x.Measure!);
+
+
+		/// <summary>
+		/// Returns the IfcMeasureInformation for a given measure class name.
+		/// </summary>
+		/// <param name="measureClassName">search is case insensitive</param>
+		/// <param name="measure">the populated measure, if found</param>
+		/// <returns>true if found otherwise false</returns>
+		public static bool TryGetMeasureInformation(string measureClassName,[NotNullWhen(true)] out IfcMeasureInformation? measure)
+		{
+			measure = AllMeasureInformation.FirstOrDefault(x => x.IfcMeasure == measureClassName.ToUpperInvariant());
+			return measure != null;
+		}
 
 		/// <summary>
 		/// Add a new classInfo to the collection

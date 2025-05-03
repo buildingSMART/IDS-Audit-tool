@@ -24,7 +24,7 @@ public IfcDataTypeInformation(string name, IEnumerable<string> schemas,
 
 ## See Also
 
-* struct [IfcMeasureInformation](../IfcMeasureInformation.md)
+* record [IfcMeasureInformation](../IfcMeasureInformation.md)
 * class [IfcDataTypeInformation](../IfcDataTypeInformation.md)
 * namespace [IdsLib.IfcSchema](../../ids-lib.md)
 

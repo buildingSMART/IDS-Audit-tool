@@ -8,7 +8,7 @@ public static IEnumerable<IfcMeasureInformation> AllMeasureInformation { get; }
 
 ## See Also
 
-* struct [IfcMeasureInformation](../IfcMeasureInformation.md)
+* record [IfcMeasureInformation](../IfcMeasureInformation.md)
 * class [SchemaInfo](../SchemaInfo.md)
 * namespace [IdsLib.IfcSchema](../../ids-lib.md)
 

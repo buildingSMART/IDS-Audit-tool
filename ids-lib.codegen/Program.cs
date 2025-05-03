@@ -12,7 +12,12 @@ internal class Program
         }
         var GeneratedContentChanged = false;
 
-        GeneratedContentChanged = EvaluateContentChanged(
+		// remove when finished
+		GeneratedContentChanged = EvaluateContentChanged(
+		IfcSchema_ConversionUnitHelperGenerator.Execute(),
+		@"ids-lib\IfcSchema\SchemaInfo.ConversionUnitsHelper.g.cs") | GeneratedContentChanged;
+		
+		GeneratedContentChanged = EvaluateContentChanged(
             IfcSchema_ObjectToTypeGenerator.Execute(),
             @"ids-lib\IfcSchema\SchemaInfo.ObjectTypes.g.cs") | GeneratedContentChanged;
 
@@ -29,7 +34,15 @@ internal class Program
             IfcSchema_DocumentationGenerator.Execute(dataTypeDictionary),
             @"ids-lib.codegen\buildingSMART\DataTypes.md") | GeneratedContentChanged;
 
-        GeneratedContentChanged = EvaluateContentChanged(
+		GeneratedContentChanged = EvaluateContentChanged(
+			OnlineResource_Getter.Execute("https://raw.githubusercontent.com/buildingSMART/IFC4.3.x-development/refs/heads/master/docs/schemas/resource/IfcMeasureResource/Entities/IfcConversionBasedUnit.md"),
+			@"ids-lib.codegen\buildingSMART\IfcConversionBasedUnit.md") | GeneratedContentChanged;
+
+		GeneratedContentChanged = EvaluateContentChanged(
+			IfcSchema_ConversionUnitHelperGenerator.Execute(),
+			@"ids-lib\IfcSchema\SchemaInfo.ConversionUnitsHelper.g.cs") | GeneratedContentChanged;
+
+		GeneratedContentChanged = EvaluateContentChanged(
             XmlSchema_XsTypesGenerator.Execute(dataTypeDictionary),
             @"ids-lib\IdsSchema\XsNodes\XsTypes.g.cs") | GeneratedContentChanged;
 
@@ -63,9 +76,14 @@ internal class Program
         IdsLib_DocumentationUpdater.Execute();
     }
 
-    private static bool EvaluateContentChanged(string content, string solutionDestinationPath)
+    private static bool EvaluateContentChanged(string? content, string solutionDestinationPath)
     {
-        Console.Write($"Evaluating: {solutionDestinationPath}... ");
+		if (string.IsNullOrWhiteSpace(content))
+		{
+			Message($"Warning: {solutionDestinationPath} skipped because empty.", ConsoleColor.Yellow);
+			return false;
+		}
+		Console.Write($"Evaluating: {solutionDestinationPath}... ");
         var destinationPathFolder = new DirectoryInfo(@"..\..\..\..\");
         var destinationFullName = Path.Combine(destinationPathFolder.FullName, solutionDestinationPath);
 
