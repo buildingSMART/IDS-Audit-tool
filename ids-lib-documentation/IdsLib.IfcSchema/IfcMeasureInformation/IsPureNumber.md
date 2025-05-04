@@ -1,9 +1,9 @@
-# IfcMeasureInformation.IsBasicUnit property
+# IfcMeasureInformation.IsPureNumber property
 
-Checks if the measure is one of the 7 basic SI unit.
+Checks if the measure has no unit components.
 
 ```csharp
-public bool IsBasicUnit { get; }
+public bool IsPureNumber { get; }
 ```
 
 ## See Also

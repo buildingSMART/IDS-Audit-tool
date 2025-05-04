@@ -9,14 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xbim.Ifc.Extensions;
+using Xbim.Ifc2x3.GeometryResource;
 using Xunit;
 using Xunit.Abstractions;
+using static IdsLib.IfcSchema.IfcConversionUnitInformation;
 
 namespace idsTool.tests;
 
 public class IfcSchemaTests
 {
-
 	public IfcSchemaTests(ITestOutputHelper outputHelper)
 	{
 		XunitOutputHelper = outputHelper;
@@ -242,6 +243,104 @@ public class IfcSchemaTests
 		{
 			XunitOutputHelper.WriteLine($"{measure.Description}:\t{measure.Unit}\t{measure.UnitSymbol}\t{measure.DefaultDisplay}");
 		}
+	}
+
+	[Theory]
+	[InlineData("m", true, true)]
+	[InlineData("m2", true, true)]
+	[InlineData("K2", true, true)]
+	[InlineData("K-2", true, true)]
+	[InlineData("K+2", true, true)]
+	[InlineData("K+-2", false, false)]
+	[InlineData("cm 2\t", true, true)]
+	[InlineData("\tcm2\t ", true, true)]
+	[InlineData("-2", false, false)]
+	[InlineData("2", false, false)]
+	[InlineData("\"", false, true)]
+	[InlineData("\'", false, true)]
+	[InlineData("μ", true, true)]
+	[InlineData("°K", true, true)]
+	[InlineData("°C", true, true)]
+	[InlineData("α", false, false)]
+	public void CanMatchUnitComponent(string component, bool expectedSIMatch, bool expectedBroadMatch)
+	{
+		var mSI = IfcMeasureInformation.SiUnitComponentMatcher.Match(component);
+		mSI.Success.Should().Be(expectedSIMatch);
+
+		var mBroad = IfcMeasureInformation.BroadUnitComponentMatcher.Match(component);
+		mBroad.Success.Should().Be(expectedBroadMatch);
+	}
+
+	[Theory]
+	[MemberData(nameof(GetSICombinations))]
+	public void CanParseSIunits(string val, IfcMeasureInformation m, SiPrefix pref, int exponent)
+	{
+		val.Should().NotBeNullOrEmpty();
+		var found = IfcMeasureInformation.TryGetSIUnitFromString(val, out var measurefound, out SiPrefix prefixFound, out var exp);
+		found.Should().BeTrue($"looking for {val}");
+		measurefound.Should().NotBeNull();
+		measurefound.ToString().Should().BeEquivalentTo(m.Exponents.ToString());
+		prefixFound.Should().Be(pref);
+		exp.Should().Be(exponent);
+	}
+
+	public static IEnumerable<object[]> GetSICombinations()
+	{
+		var m = SchemaInfo.AllMeasureInformation.Where(static x => x.IsDirectSIUnit).ToList();
+		foreach (var measure in m)
+		{
+			foreach (var pref in Enum.GetValues<SiPrefix>())
+			{
+				var prefT = IfcConversionUnitInformation.ShortStringPrefix(pref);
+				var sym = measure.UnitSymbol;
+
+				// in some cases we want to add more variants
+				string[] syms = [sym];
+				string[] prefs = [prefT];
+				if (sym == "°K")
+					syms = new[] { "K", "°K" };
+				if (prefT== "µ")
+					prefs = new[] { "u", "µ" };
+				foreach (var s in syms)
+				{
+					foreach (var p in prefs)
+					{
+						yield return [$"{p}{s}", measure, pref, 1];
+						yield return [$"{p}{s}1", measure, pref, 1];
+						yield return [$"{p}{s}2", measure, pref, 2];
+						yield return [$"{p}{s}-2", measure, pref, -2];
+					}
+				}
+			}
+		}
+		// add the following line to break the test.
+		// yield return ["", m.FirstOrDefault(), SiPrefix.NONE];
+	}
+
+	[Fact]
+	public void SiUnitsHaveCoherentExponents()
+	{
+		var unitExponenst = new Dictionary<string, string>();
+		StringBuilder sb = new StringBuilder();
+		foreach (var item in GetSICombinations())
+		{
+			var unitName = item[0].ToString()!;
+			var measureInfo = item[1] as IfcMeasureInformation;
+			var enumV = (SiPrefix)item[2];
+			var exp = measureInfo!.Exponents.ToString();
+			if (unitExponenst.TryGetValue(unitName, out var found))
+			{
+				found.Should().Be(exp, $"unit {unitName} is not consistent {exp} vs. {found}");
+			}
+			else
+			{
+				unitExponenst.Add(unitName, exp);
+				sb.AppendLine($""" "{unitName}" => ("{exp}", IfcConversionUnitInformation.SiPrefix.{enumV}), """);
+			}
+
+			// "" => ("", IfcConversionUnitInformation.SiPrefix.NONE),
+		}
+		var t = sb.ToString();
 	}
 
 	[Fact]

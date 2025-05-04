@@ -18,6 +18,7 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 | [AmountOfSubstance](DimensionalExponents/AmountOfSubstance.md) { get; set; } | Dimensional exponent for the AmountOfSubstance core SI unit of measure |
 | [ElectricCurrent](DimensionalExponents/ElectricCurrent.md) { get; set; } | Dimensional exponent for the ElectricCurrent core SI unit of measure |
 | [IsBasicUnit](DimensionalExponents/IsBasicUnit.md) { get; } | Only has one exponent that at 1, the others are 0. |
+| [IsPureNumber](DimensionalExponents/IsPureNumber.md) { get; } | Checks if the exponents are all 0, i.e. a pure number. |
 | [Length](DimensionalExponents/Length.md) { get; set; } | Dimensional exponent for the Length core SI unit of measure |
 | [LuminousIntensity](DimensionalExponents/LuminousIntensity.md) { get; set; } | Dimensional exponent for the LuminousIntensity core SI unit of measure |
 | [Mass](DimensionalExponents/Mass.md) { get; set; } | Dimensional exponent for the Mass core SI unit of measure |

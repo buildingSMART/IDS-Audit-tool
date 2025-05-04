@@ -289,7 +289,10 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 		"IFCLENGTHMEASURE", "IFCMASSMEASURE", "IFCTIMEMEASURE", "IFCELECTRICCURRENTMEASURE", "IFCTHERMODYNAMICTEMPERATUREMEASURE", "IFCAMOUNTOFSUBSTANCEMEASURE", "IFCLUMINOUSINTENSITYMEASURE"
 	];
 
-
+	/// <summary>
+	/// Checks if the exponents are all 0, i.e. a pure number.
+	/// </summary>
+	public bool IsPureNumber => Length == 0 && Mass == 0 && Time == 0 && ElectricCurrent == 0 && Temperature == 0 && AmountOfSubstance == 0 && LuminousIntensity == 0;
 
 	/// <summary>
 	/// String expression of the combination of exponets in the SI <see cref="Units"/>.

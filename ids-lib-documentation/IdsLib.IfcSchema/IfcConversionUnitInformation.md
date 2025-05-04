@@ -18,7 +18,12 @@ public record IfcConversionUnitInformation : IUnitInformation
 | [IfcMeasure](IfcConversionUnitInformation/IfcMeasure.md) { get; } | identifies the type of measure that the unit represents |
 | [GetConversionSteps](IfcConversionUnitInformation/GetConversionSteps.md)() | Retrieves the entire conversion chain, starting from the current unit. |
 | [GetParentUnit](IfcConversionUnitInformation/GetParentUnit.md)() | Retrieves the parent unit of the conversion unit, if available. |
+| static [LongStringPrefix](IfcConversionUnitInformation/LongStringPrefix.md)(…) | Converts the given SI prefix to its corresponding long string (e.g. kilo for KILO) |
+| static [PrefixFromShortString](IfcConversionUnitInformation/PrefixFromShortString.md)(…) | Converts the given SI prefix string to its corresponding enumeration (e.g. k to KILO) |
+| static [ShortStringPrefix](IfcConversionUnitInformation/ShortStringPrefix.md)(…) | Converts the given SI prefix to its corresponding short string (e.g. k for KILO) |
+| static [SiMultiplier](IfcConversionUnitInformation/SiMultiplier.md)(…) | Converts the given SI prefix to its corresponding multiplier. |
 | static [TryGetUnit](IfcConversionUnitInformation/TryGetUnit.md)(…) | Attempts the retrieval of a unit from the standard conversion units, including appropriate measure |
+| enum [SiPrefix](IfcConversionUnitInformation.SiPrefix.md) | Defines multiples and submultiples of the SI units. |
 
 ## See Also
 

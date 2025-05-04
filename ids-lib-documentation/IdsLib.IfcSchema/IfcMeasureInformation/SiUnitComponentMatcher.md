@@ -1,9 +1,9 @@
-# IfcMeasureInformation.IsBasicUnit property
+# IfcMeasureInformation.SiUnitComponentMatcher property
 
-Checks if the measure is one of the 7 basic SI unit.
+Standard regex catcher for SI unit components, such as mm, m2, mm-2 or Gy
 
 ```csharp
-public bool IsBasicUnit { get; }
+public static Regex SiUnitComponentMatcher { get; }
 ```
 
 ## See Also

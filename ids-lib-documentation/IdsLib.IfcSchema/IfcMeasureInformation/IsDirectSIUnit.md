@@ -1,9 +1,9 @@
-# IfcMeasureInformation.IsBasicUnit property
+# IfcMeasureInformation.IsDirectSIUnit property
 
-Checks if the measure is one of the 7 basic SI unit.
+Checks if the measure is a named SI unit which is not a pure number (e.g. excludes rad, db, m2).
 
 ```csharp
-public bool IsBasicUnit { get; }
+public bool IsDirectSIUnit { get; }
 ```
 
 ## See Also

@@ -48,7 +48,8 @@ public partial class SchemaInfo
 		new IfcConversionUnitInformation("square meter", "IFCAREAMEASURE", 1, "m2"),
 		new IfcConversionUnitInformation("cubic meter", "IFCVOLUMEMEASURE", 1, "m3"),
 		new IfcConversionUnitInformation("Kg", "IFCMASSMEASURE", 1, "kg"),
-		new IfcConversionUnitInformation(["°F", "Fahrenheit"], "IFCTHERMODYNAMICTEMPERATUREMEASURE", 1.8, "°K", -459.67),
+		new IfcConversionUnitInformation(["°F", "Fahrenheit"], "IFCTHERMODYNAMICTEMPERATUREMEASURE", 0.5555555555555556, "°K", 459.67),
+		new IfcConversionUnitInformation(["°C", "Celsius"], "IFCTHERMODYNAMICTEMPERATUREMEASURE", 1, "°K", 273.15),
 		];
 
 	/// <summary>

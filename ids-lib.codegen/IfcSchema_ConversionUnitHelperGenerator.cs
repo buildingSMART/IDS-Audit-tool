@@ -33,7 +33,8 @@ internal class IfcSchema_ConversionUnitHelperGenerator
 		new ConversionInfo("square meter", "area", "1", "m2", ""),
 		new ConversionInfo("cubic meter", "volume", "1", "m3", ""),
 		new ConversionInfo("Kg", "mass", "1", "kg", ""),
-		new ConversionInfo("°F", "thermodynamictemperature", "1.8", "°K", "Fahrenheit", "-459.67"),
+		new ConversionInfo("°F", "thermodynamictemperature", "5/9", "°K", "Fahrenheit", "459.67"),
+		new ConversionInfo("°C", "thermodynamictemperature", "1", "°K", "Celsius", "273.15"),
 		];
 
 	internal static string? Execute()
@@ -113,7 +114,10 @@ internal class IfcSchema_ConversionUnitHelperGenerator
 			conversion = conversion.Replace(" ", "");
 			if (conversion == "π/180")
 				// R for roundtrip, produces the maximum precision representable by a double
-				conversionRatio = (Math.PI / 180.0).ToString("R", CultureInfo.InvariantCulture); 
+				conversionRatio = (Math.PI / 180.0).ToString("R", CultureInfo.InvariantCulture);
+			else if (conversion == "5/9")
+				// R for roundtrip, produces the maximum precision representable by a double
+				conversionRatio = (5.0/9).ToString("R", CultureInfo.InvariantCulture);
 			else
 				conversionRatio = conversion;
 			otherunit = unit.Trim();
