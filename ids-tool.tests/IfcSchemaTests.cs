@@ -344,6 +344,35 @@ public class IfcSchemaTests
 	}
 
 	[Fact]
+	public void CanEquateExponents()
+	{
+		DimensionalExponents d1 = new DimensionalExponents(1, 0, 0, 0, 0, 0, 0);
+		DimensionalExponents d2 = new DimensionalExponents(1, 0, 0, 0, 0, 0, 0);
+		DimensionalExponents ddiff = new DimensionalExponents(2, 0, 0, 0, 0, 0, 0);
+
+		var found = SchemaInfo.AllMeasureInformation.Where(x => x.Exponents == d1);
+		found.Should().NotBeNull();
+		found.Should().HaveCount(3);
+
+		var CompareToNull = d1 == null;
+		CompareToNull.Should().BeFalse();
+
+		CompareToNull = d1 != null;
+		CompareToNull.Should().BeTrue();
+
+		var compareDifference = d1 != d2;
+		compareDifference.Should().BeFalse();
+
+		compareDifference = d1 != ddiff;
+		compareDifference.Should().BeTrue();
+
+
+		var CompareToEmpty = d1 == new DimensionalExponents();
+		CompareToEmpty.Should().BeFalse();
+
+	}
+
+	[Fact]
 	public void CanNavigateUnitsUp()
 	{
 		IfcConversionUnitInformation.TryGetUnit("mile", out var unit).Should().BeTrue();

@@ -34,6 +34,8 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 | [ToUnitSymbol](DimensionalExponents/ToUnitSymbol.md)() | String expression of the combination of exponets in the SI [`Units`](./DimensionalExponents/Units.md). |
 | static [UnitMeasures](DimensionalExponents/UnitMeasures.md) { get; } | basic IFC measures of the Units referenced by the exponents |
 | static [Units](DimensionalExponents/Units.md) { get; } | short form of the SI Units referenced by the exponents |
+| [operator ==](DimensionalExponents/op_Equality.md) |  |
+| [operator !=](DimensionalExponents/op_Inequality.md) |  |
 
 ## See Also
 

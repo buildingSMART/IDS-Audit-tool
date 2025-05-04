@@ -359,6 +359,18 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 		return Equals(obj as DimensionalExponents);
 	}
 
+	/// <inheritdoc />
+	public static bool operator ==(DimensionalExponents? left, DimensionalExponents? right)
+	{
+		return Equals(left, right);
+	}
+
+	/// <inheritdoc />
+	public static bool operator !=(DimensionalExponents? left, DimensionalExponents? right)
+	{
+		return !Equals(left, right);
+	}
+
 #pragma warning disable IDE0070 // Use 'System.HashCode'
 	/// <inheritdoc />
 	public override int GetHashCode()
