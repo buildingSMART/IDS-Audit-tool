@@ -11,6 +11,7 @@ public record IfcMeasureInformation : IUnitInformation
 | name | description |
 | --- | --- |
 | [IfcMeasureInformation](IfcMeasureInformation/IfcMeasureInformation.md)(…) | Complete constructor (2 constructors) |
+| static [GetPreferredMeasure](IfcMeasureInformation/GetPreferredMeasure.md)(…) | Gets the preferred measure for a given unit name. (2 methods) |
 | [DefaultDisplay](IfcMeasureInformation/DefaultDisplay.md) { get; } | Preferred representation unit. This could be either direct or derived, e.g. Ω, m4, or J / Kg K |
 | [Description](IfcMeasureInformation/Description.md) { get; } | A textual description, e.g. "Frequency" |
 | [Exponents](IfcMeasureInformation/Exponents.md) { get; } | Dimensional exponents useful for conversion to other units. |
@@ -22,14 +23,15 @@ public record IfcMeasureInformation : IUnitInformation
 | [SiUnitNameEnums](IfcMeasureInformation/SiUnitNameEnums.md) { get; } | the string values of the SI unit name enums, if any are available |
 | [Unit](IfcMeasureInformation/Unit.md) { get; } | Full name of the unit, e.g. hertz |
 | [UnitSymbol](IfcMeasureInformation/UnitSymbol.md) { get; } | Symbol used to present the unit, e.g. Hz |
-| [UnitTypeEnum](IfcMeasureInformation/UnitTypeEnum.md) { get; } | The string value of the UnitType enum of a valid matching unit |
+| [UnitTypeEnum](IfcMeasureInformation/UnitTypeEnum.md) { get; } | The string value of the UnitType enum of a valid matching unit, it starts with "IfcUnitEnum." or "IfcDerivedUnitEnum." |
 | [GetParentUnit](IfcMeasureInformation/GetParentUnit.md)() |  |
 | [GetUnit](IfcMeasureInformation/GetUnit.md)() | Returns the SI preferred unit. |
-| [HasSiUnitEnum](IfcMeasureInformation/HasSiUnitEnum.md)(…) |  |
+| [HasSiUnitEnum](IfcMeasureInformation/HasSiUnitEnum.md)(…) | Finsds the SI unit names enum for this measure, if any are available. |
 | static [BroadUnitComponentMatcher](IfcMeasureInformation/BroadUnitComponentMatcher.md) { get; } | Standard regex catcher for unit components, such as mm, m2, or Gy, but expanded to match " and ' for inch and feet |
 | static [SiUnitComponentMatcher](IfcMeasureInformation/SiUnitComponentMatcher.md) { get; } | Standard regex catcher for SI unit components, such as mm, m2, mm-2 or Gy |
 | static [BroadUnitNameCharactersRange](IfcMeasureInformation/BroadUnitNameCharactersRange.md) | The range of characters that reasonable in unit names. This includes the SI unit names expanded with double and single quotes for feet and inch. |
 | static [SiUnitNameCharactersRange](IfcMeasureInformation/SiUnitNameCharactersRange.md) | The range of characters that are valid in SI unit names. This includes the Greek letters mu and omega, and the degree symbol. |
+| static [TryCleanSIUnitFromString](IfcMeasureInformation/TryCleanSIUnitFromString.md)(…) | Tries to parse a string into a SI unit name, and returns the relevant components. |
 | static [TryGetSIUnitFromString](IfcMeasureInformation/TryGetSIUnitFromString.md)(…) | Tries to parse a string into a SI unit name, and returns the relevant exponents and SI prefix multiplier. |
 
 ## See Also

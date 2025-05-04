@@ -246,29 +246,37 @@ public class IfcSchemaTests
 	}
 
 	[Theory]
-	[InlineData("m", true, true)]
-	[InlineData("m2", true, true)]
-	[InlineData("K2", true, true)]
-	[InlineData("K-2", true, true)]
-	[InlineData("K+2", true, true)]
-	[InlineData("K+-2", false, false)]
-	[InlineData("cm 2\t", true, true)]
-	[InlineData("\tcm2\t ", true, true)]
-	[InlineData("-2", false, false)]
-	[InlineData("2", false, false)]
-	[InlineData("\"", false, true)]
-	[InlineData("\'", false, true)]
-	[InlineData("μ", true, true)]
-	[InlineData("°K", true, true)]
-	[InlineData("°C", true, true)]
-	[InlineData("α", false, false)]
-	public void CanMatchUnitComponent(string component, bool expectedSIMatch, bool expectedBroadMatch)
+	[InlineData("m", true, true, 1)]
+	[InlineData("m2", true, true, 2)]
+	[InlineData("cm²", true, true, 2)]
+	[InlineData("cm³", true, true, 3)]
+	[InlineData("K2", true, true, 2)]
+	[InlineData("K-2", true, true, -2)]
+	[InlineData("K+2", true, true, 2)]
+	[InlineData("K+-2", false, false, 0)] // exponent is ignored because previous false parameter
+	[InlineData("cm 2\t", true, true, 2)]
+	[InlineData("\tcm2\t ", true, true, 2)]
+	[InlineData("-2", false, false, 0)] // exponent is ignored because previous false parameter
+	[InlineData("2", false, false, 0)]
+	[InlineData("\"", false, true, 0)]// exponent is ignored because previous false parameter
+	[InlineData("\'", false, true, 0)]// exponent is ignored because previous false parameter
+	[InlineData("μ", true, true, 1)]
+	[InlineData("°K", true, true, 1)]
+	[InlineData("°C", true, true, 1)]
+	[InlineData("α", false, false, 0)]// exponent is ignored because previous false parameter
+	public void CanMatchUnitComponent(string component, bool expectedSIMatch, bool expectedBroadMatch, int exponent)
 	{
 		var mSI = IfcMeasureInformation.SiUnitComponentMatcher.Match(component);
 		mSI.Success.Should().Be(expectedSIMatch);
 
 		var mBroad = IfcMeasureInformation.BroadUnitComponentMatcher.Match(component);
 		mBroad.Success.Should().Be(expectedBroadMatch);
+
+		if (expectedSIMatch)
+		{
+			var found = IfcMeasureInformation.TryGetSIUnitFromString(component, out var measurefound, out SiPrefix prefixFound, out var exp);
+			exp.Should().Be(exponent);	
+		}
 	}
 
 	[Theory]
@@ -282,6 +290,11 @@ public class IfcSchemaTests
 		measurefound.ToString().Should().BeEquivalentTo(m.Exponents.ToString());
 		prefixFound.Should().Be(pref);
 		exp.Should().Be(exponent);
+
+		var foundBare = IfcMeasureInformation.TryCleanSIUnitFromString(val, out var bareUnit, out _, out _);
+		foundBare.Should().BeTrue($"looking for {val}");
+		bareUnit.Should().NotBeNull();
+		bareUnit.Should().BeEquivalentTo(m.UnitSymbol);
 	}
 
 	public static IEnumerable<object[]> GetSICombinations()
@@ -335,7 +348,7 @@ public class IfcSchemaTests
 			else
 			{
 				unitExponenst.Add(unitName, exp);
-				sb.AppendLine($""" "{unitName}" => ("{exp}", IfcConversionUnitInformation.SiPrefix.{enumV}), """);
+				sb.AppendLine($""" "{unitName}" => ("{exp}", IfcConversionUnitInformation.SiPrefix.{enumV}, "{measureInfo.UnitSymbol}"), """);
 			}
 
 			// "" => ("", IfcConversionUnitInformation.SiPrefix.NONE),

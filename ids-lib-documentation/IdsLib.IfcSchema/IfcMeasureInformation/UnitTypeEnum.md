@@ -1,6 +1,6 @@
 # IfcMeasureInformation.UnitTypeEnum property
 
-The string value of the UnitType enum of a valid matching unit
+The string value of the UnitType enum of a valid matching unit, it starts with "IfcUnitEnum." or "IfcDerivedUnitEnum."
 
 ```csharp
 public string UnitTypeEnum { get; }

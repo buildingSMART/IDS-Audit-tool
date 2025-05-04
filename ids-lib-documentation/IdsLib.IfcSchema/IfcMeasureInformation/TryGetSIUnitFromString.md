@@ -3,7 +3,7 @@
 Tries to parse a string into a SI unit name, and returns the relevant exponents and SI prefix multiplier.
 
 ```csharp
-public static bool TryGetSIUnitFromString(string val, out DimensionalExponents? exponents, 
+public static bool TryGetSIUnitFromString(string unitName, out DimensionalExponents? exponents, 
     out SiPrefix siPrefix, out int pow)
 ```
 

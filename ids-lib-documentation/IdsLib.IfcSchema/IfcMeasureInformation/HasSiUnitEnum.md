@@ -1,12 +1,14 @@
 # IfcMeasureInformation.HasSiUnitEnum method
 
+Finsds the SI unit names enum for this measure, if any are available.
+
 ```csharp
-public bool HasSiUnitEnum(string? value = null)
+public bool HasSiUnitEnum(string? filter = null)
 ```
 
 | parameter | description |
 | --- | --- |
-| value | leave empty to search for any SI unit enum, otherwise specify a string like `IfcSIUnitName.KELVIN` or `KELVIN` |
+| filter | leave empty to search for any SI unit enum, otherwise specify a string like `IfcSIUnitName.KELVIN` or `KELVIN` |
 
 ## See Also
 
