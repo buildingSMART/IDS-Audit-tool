@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 
@@ -13,31 +14,31 @@ public enum DimensionType
 	/// <summary>
 	/// Length
 	/// </summary>
-	Length,
+	Length = 0,
 	/// <summary>
 	/// Mass
 	/// </summary>
-	Mass,
+	Mass = 1,
 	/// <summary>
 	/// Time
 	/// </summary>
-	Time,
+	Time = 2,
 	/// <summary>
 	/// Electric Current
 	/// </summary>
-	ElectricCurrent,
+	ElectricCurrent = 3,
 	/// <summary>
 	/// Temperature
 	/// </summary>
-	Temperature,
+	Temperature = 4,
 	/// <summary>
 	/// Amount Of Substance
 	/// </summary>
-	AmountOfSubstance,
+	AmountOfSubstance = 5,
 	/// <summary>
 	/// Luminous Intensity
 	/// </summary>
-	LuminousIntensity,
+	LuminousIntensity = 6,
 }
 
 /// <summary>
@@ -141,6 +142,26 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 			val.AmountOfSubstance * exponent,
 			val.LuminousIntensity * exponent
 		);
+	}
+
+	/// <summary>
+	/// Returns a breakdown of the main components, with their 
+	/// </summary>
+	/// <returns>a tuple of exponent and measure</returns>
+	public IEnumerable<(int exponent, IfcMeasureInformation meas)> GetComponentUnits()
+	{
+		var baseunits = (DimensionType[])Enum.GetValues(typeof(DimensionType));
+		foreach (var baseunit in baseunits)
+		{
+			var thisExp = GetExponent(baseunit);
+			if (thisExp != 0)
+			{
+				var m = UnitMeasures[(int)baseunit];
+				var ms = SchemaInfo.AllMeasureInformation.FirstOrDefault(X => X.IfcMeasure == m);
+				if (ms != null)
+					yield return (thisExp, ms);
+			}
+		}
 	}
 
 

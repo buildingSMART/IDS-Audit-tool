@@ -182,7 +182,10 @@ public record IfcMeasureInformation : IUnitInformation
 		return !string.IsNullOrEmpty(bareUnit);
 	}
 
-	private static int GetExponent(string exponentString)
+	/// <summary>
+	/// Cleans a string representing an exponent and returns it as an int
+	/// </summary>
+	public static int GetExponent(string exponentString)
 	{
 		if (string.IsNullOrWhiteSpace(exponentString))
 			return 1;
