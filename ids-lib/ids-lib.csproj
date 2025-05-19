@@ -20,7 +20,7 @@
 		<PackageReleaseNotes>First implementation.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
-		<AssemblyVersion>1.0.92</AssemblyVersion>
+		<AssemblyVersion>1.0.93</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -68,7 +68,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
@@ -91,15 +91,4 @@
       <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
     </Exec>
   </Target>
-	<!--
-	If the expected destination folder exists on the local machine, this target copies the produced nupkg there too.
-	We are using forward slashes as they work on all OSs, but this is really only useful on windows at the moment.
-	-->
-	<Target Name="PublishLocally" AfterTargets="Pack" Condition="Exists('C:/Users/Claudio/OneDrive/Benghi/FastViewer') And '$(Configuration)' == 'Release'">
-		<!-- just use forward slashes, works in windws as well -->
-		<Message Importance="high" Text="Copying local package to:  C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
-		<Message Importance="high" Text="  source: $(OutputPath)/$(PackageId).$(PackageVersion).nupkg" />
-		<Copy SourceFiles="$(OutputPath)/$(PackageId).$(PackageVersion).nupkg" DestinationFolder="C:/Users/Claudio/OneDrive/Benghi/FastViewer" />
-	</Target>
-
 </Project>
