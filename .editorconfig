@@ -7,3 +7,5 @@ csharp_style_prefer_primary_constructors = false:suggestion
 # IDE0305: Use collection expression for fluent (IDE0305)
 dotnet_diagnostic.IDE0305.severity = none
 
+[*.csproj]
+indent_style = tab

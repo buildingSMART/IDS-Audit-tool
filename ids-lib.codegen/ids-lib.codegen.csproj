@@ -1,40 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>IdsLib.codegen</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Xbim.Essentials" Version="6.0.517" />
-    <PackageReference Include="Xbim.Properties" Version="6.0.11" />
-    <PackageReference Include="XmlDocMarkdown.Core" Version="2.9.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SolutionTooling\SolutionTooling.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="buildingSMART\annex-a-psd.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="buildingSMART\IfcConversionBasedUnit.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="buildingSMART\IFC_TYPES_MAPPING_BPS.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="buildingSMART\Pset_IFC4X3.ifc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="buildingSMART\units.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="documentation\ids-tool-README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<RootNamespace>IdsLib.codegen</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Xbim.Essentials" Version="6.0.517" />
+		<PackageReference Include="Xbim.Properties" Version="6.0.11" />
+		<PackageReference Include="XmlDocMarkdown.Core" Version="2.9.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SolutionTooling\SolutionTooling.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="buildingSMART\annex-a-psd.zip">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="buildingSMART\IfcConversionBasedUnit.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="buildingSMART\IFC_TYPES_MAPPING_BPS.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="buildingSMART\Pset_IFC4X3.ifc">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="buildingSMART\units.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="documentation\ids-tool-README.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

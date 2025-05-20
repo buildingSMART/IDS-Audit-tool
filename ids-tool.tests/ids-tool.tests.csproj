@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<IsPackable>false</IsPackable>
 		<IsPublishable>false</IsPublishable>
@@ -9,9 +8,8 @@
 		<LangVersion>latest</LangVersion>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
-    <NoWarn>1701;1702;8002</NoWarn>
-  </PropertyGroup>
-
+		<NoWarn>1701;1702;8002</NoWarn>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="[7.2.0]" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
@@ -25,14 +23,10 @@
 		<PackageReference Include="MartinCostello.Logging.XUnit" Version="0.5.1" />
 		<PackageReference Include="Xunit.SkippableFact" Version="1.5.23" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\ids-lib\ids-lib.csproj" />
 		<ProjectReference Include="..\ids-tool\ids-tool.csproj" />
 		<ProjectReference Include="..\SolutionTooling\SolutionTooling.csproj" />
 		<ProjectReference Include="..\testing.shared\testing.shared.csproj" />
 	</ItemGroup>
-
-
-
 </Project>

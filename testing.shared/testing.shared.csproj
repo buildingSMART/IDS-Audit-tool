@@ -8,11 +8,11 @@
 		<LangVersion>latest</LangVersion>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
-    <NoWarn>1701;1702;8002</NoWarn>
-  </PropertyGroup>
+		<NoWarn>1701;1702;8002</NoWarn>
+	</PropertyGroup>
 	<ItemGroup>
-	  <None Include="**\*.ids" CopyToOutputDirectory="PreserveNewest" />
-	  <None Include="**\*.xsd" CopyToOutputDirectory="PreserveNewest" />
-    <None Remove="bin\**" />
+		<None Include="**\*.ids" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="**\*.xsd" CopyToOutputDirectory="PreserveNewest" />
+		<None Remove="bin\**" />
 	</ItemGroup>
 </Project>
