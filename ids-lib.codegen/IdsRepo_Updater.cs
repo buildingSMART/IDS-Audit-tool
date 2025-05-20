@@ -80,10 +80,8 @@ namespace IdsLib.codegen
             }
         }
 
-        
-
         /// <summary>
-        /// 
+        /// Ensure consistency with main IDS repository.
         /// </summary>
         /// <returns>True if information has been changed locally... need to reboot.</returns>
         internal static bool UpdateRequiresRestart()
@@ -184,7 +182,7 @@ namespace IdsLib.codegen
             {
                 var destination = Path.Combine(
                    solutionDir.FullName,
-                    "ids-tool.tests",
+					"testing.shared",
                     "bsFiles",
                     "ids.xsd"
                     );

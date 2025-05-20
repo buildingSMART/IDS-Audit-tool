@@ -27,6 +27,7 @@ public class DimensionalExponents : IEquatable<DimensionalExponents>
 | [Elevate](DimensionalExponents/Elevate.md)(…) | elevates the current instance to the *exponent* power. |
 | [Equals](DimensionalExponents/Equals.md)(…) |  |
 | override [Equals](DimensionalExponents/Equals.md)(…) |  |
+| [GetComponentUnits](DimensionalExponents/GetComponentUnits.md)() | Returns a breakdown of the main components, with their |
 | [GetExponent](DimensionalExponents/GetExponent.md)(…) | Finds the exponent of one of the base SI units. |
 | override [GetHashCode](DimensionalExponents/GetHashCode.md)() |  |
 | [Multiply](DimensionalExponents/Multiply.md)(…) | Generates a new [`DimensionalExponents`](./DimensionalExponents.md) instance, resulting from the multiplication of the current instance with the *other*. |

@@ -238,7 +238,9 @@ public class IfcSchema_DatatypeNamesGenerator
         var markDown = File.ReadAllLines(@"buildingSMART\units.md");
         foreach (var line in markDown)
         {
-            var modline = line.Trim(' ');
+			var modline = line;
+			modline = line.Replace("\u00A0", " ");
+			modline = modline.Trim(' ');
             var lineCells = modline.Split('|');
             if (lineCells.Length != 10)
                 continue;

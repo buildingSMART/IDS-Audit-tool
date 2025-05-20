@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-lib.codegen", "ids-lib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionTooling", "SolutionTooling\SolutionTooling.csproj", "{6D103999-3F44-4586-A2AB-157098773FC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testing.shared", "testing.shared\testing.shared.csproj", "{699DEC93-7997-D12D-6A85-13C5B4399DC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{6D103999-3F44-4586-A2AB-157098773FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D103999-3F44-4586-A2AB-157098773FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D103999-3F44-4586-A2AB-157098773FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{699DEC93-7997-D12D-6A85-13C5B4399DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{699DEC93-7997-D12D-6A85-13C5B4399DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{699DEC93-7997-D12D-6A85-13C5B4399DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{699DEC93-7997-D12D-6A85-13C5B4399DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,7 +62,7 @@ public class BuildingSmartRepoFiles
 
     public static FileInfo GetIdsTestSuiteSchema()
     {
-        var schema = Path.Combine(IdsToolRepoPath, "ids-tool.tests", "bsFiles", "ids.xsd");
+        var schema = Path.Combine(IdsToolRepoPath, "testing.shared", "bsFiles", "ids.xsd");
         return new FileInfo(schema);
     }
 

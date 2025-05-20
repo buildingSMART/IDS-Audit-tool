@@ -31,6 +31,7 @@ public record IfcMeasureInformation : IUnitInformation
 | static [SiUnitComponentMatcher](IfcMeasureInformation/SiUnitComponentMatcher.md) { get; } | Standard regex catcher for SI unit components, such as mm, m2, mm-2 or Gy |
 | static [BroadUnitNameCharactersRange](IfcMeasureInformation/BroadUnitNameCharactersRange.md) | The range of characters that reasonable in unit names. This includes the SI unit names expanded with double and single quotes for feet and inch. |
 | static [SiUnitNameCharactersRange](IfcMeasureInformation/SiUnitNameCharactersRange.md) | The range of characters that are valid in SI unit names. This includes the Greek letters mu and omega, and the degree symbol. |
+| static [GetExponent](IfcMeasureInformation/GetExponent.md)(…) | Cleans a string representing an exponent and returns it as an int |
 | static [TryCleanSIUnitFromString](IfcMeasureInformation/TryCleanSIUnitFromString.md)(…) | Tries to parse a string into a SI unit name, and returns the relevant components. |
 | static [TryGetSIUnitFromString](IfcMeasureInformation/TryGetSIUnitFromString.md)(…) | Tries to parse a string into a SI unit name, and returns the relevant exponents and SI prefix multiplier. |
 
