@@ -103,7 +103,17 @@ internal static class LoggerAndAuditHelpers
         return logg;
     }
 
-    internal static void FullAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors = -1)
+	internal static ILogger<T> GetXunitLogger<T>(ITestOutputHelper helper)
+	{
+		var services = new ServiceCollection()
+					.AddLogging((builder) => builder.AddXUnit(helper).SetMinimumLevel(LogLevel.Debug));
+		IServiceProvider provider = services.BuildServiceProvider();
+		var logg = provider.GetRequiredService<ILogger<T>>();
+		Assert.NotNull(logg);
+		return logg;
+	}
+
+	internal static void FullAudit(FileInfo f, ITestOutputHelper xunitOutputHelper, Audit.Status expectedOutcome, int expectedWarnAndErrors = -1)
     {
         var c = new BatchAuditOptions()
         {

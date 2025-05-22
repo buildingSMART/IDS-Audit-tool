@@ -350,9 +350,19 @@ public static partial class Audit
         var ret = schemaProvider.GetSchemas(vrs, logger, out var schemas);
         if (ret != Status.Ok)
             return ret;
-        foreach (var schema in schemas)
+#if NETSTANDARD2_0
+		// try keeping just one
+		// schemas = schemas.Where(s => s.TargetNamespace == "http://standards.buildingsmart.org/IDS"); 
+		schemas = schemas.Where(s => s.TargetNamespace != "http://www.w3.org/XML/1998/namespace"); 
+#endif
+		foreach (var schema in schemas)
         {
+			logger?.LogTrace("Adding schema {ns} {vrs}", schema.TargetNamespace, schema.Version);
             destSchemas.Add(schema);
+			foreach (XmlSchema sch in destSchemas.Schemas())
+			{
+				logger?.LogTrace("- dest schema {ns} {vrs}", sch.TargetNamespace, sch.Version);
+			}
         }
         try
         {

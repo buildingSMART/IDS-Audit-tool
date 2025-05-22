@@ -2,6 +2,8 @@
 using IdsLib;
 using IdsLib.IdsSchema.IdsNodes;
 using IdsLib.SchemaProviders;
+using idsTool.tests.Helpers;
+using Microsoft.Extensions.Logging;
 using NSubstitute.Core;
 using System.Diagnostics;
 using System.IO;
@@ -9,12 +11,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace idsTool.tests
 {
 	public class FeedbackTests
 	{
-		[Theory]
+		public FeedbackTests(ITestOutputHelper OutputHelper)
+		{
+			xlogger = LoggerAndAuditHelpers.GetXunitLogger<FeedbackTests>(OutputHelper);
+		}
+
+		ILogger<FeedbackTests> xlogger;
+
+		[Theory(DisplayName = nameof(IdentificationIsCorrect))]
 		[InlineData("InvalidFiles/InvalidAttributeForClass.ids", new [] { "/ids1/specifications1/specification1" })]
 		[InlineData("IssueFiles/Issue 14 - ids file test.ids", new [] { 
 			"/ids1/specifications1/specification1/applicability1/attribute2/name1/restriction1",
@@ -42,7 +52,7 @@ namespace idsTool.tests
 			{
 				if (!foundPositions.Contains(expectedPositional))
 				{
-					// Debug.WriteLine($"Found values are : {string.Join(", ", foundPositions)}");
+					xlogger.LogInformation($"Found values are : {string.Join(", ", foundPositions)}");
 				}
 				foundPositions.Contains(expectedPositional).Should().BeTrue();
 			}
