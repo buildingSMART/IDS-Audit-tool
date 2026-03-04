@@ -102,6 +102,7 @@ namespace idsTool.tests
 		[InlineData("IssueFiles/Issue 53 - Userdefined - Fail.ids", IdsLib.Audit.Status.IdsContentError)]
 		[InlineData("IssueFiles/Issue 53 - IfcDistributionBoards Feeder is ok.ids", IdsLib.Audit.Status.Ok)]
 		[InlineData("IssueFiles/Issue 53 - IfcDistributionBoards Feeder or Incomer (enumeration) is not ok.ids", IdsLib.Audit.Status.Ok)]
+		[InlineData("IssueFiles/Issue 54 - Pset List Properties.ids", IdsLib.Audit.Status.IdsContentError, 1)] // the error is there to ensure that a test is actually performed
 		[InlineData("IssueFiles/Issue 55 - RelationConstraintFail.ids", IdsLib.Audit.Status.IdsStructureError | IdsLib.Audit.Status.IdsContentError)]
 		[InlineData("IssueFiles/Issue 55 - RelationConstraintOk.ids", IdsLib.Audit.Status.Ok)]
 		[InlineData("IssueFiles/Issue 56 - Ifc2x3 mapping.ids", IdsLib.Audit.Status.Ok)]

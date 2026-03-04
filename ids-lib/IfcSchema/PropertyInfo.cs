@@ -35,7 +35,10 @@ public static class IPropertyTypeInfoExtensions
 		switch (property)
 		{
 			case SingleValuePropertyType svp:
-                dataType = [svp.DataType.ToUpperInvariant()];
+				dataType = [svp.DataType.ToUpperInvariant()];
+				return true;
+			case ListValuePropertyType lvp:
+				dataType = [lvp.DataType.ToUpperInvariant()];
 				return true;
 			case EnumerationPropertyType ep:
 				// We assume that enumerations are stored as labels, having had a look at a few example on bSmart
@@ -130,4 +133,25 @@ public class SingleValuePropertyType : NamedPropertyType
     /// The base IFC datatype of the property in the schema
     /// </summary>
     public string DataType { get; }
+}
+
+/// <summary>
+/// Schema metadata for list value properties.
+/// For the purpose of IDS, these are functionally equivalent to single value properties but we want to be able to distinguish 
+/// them in the schema to support any procedural code generation that may be needed for their IFC verification.
+/// </summary>
+public class ListValuePropertyType : NamedPropertyType
+{
+	/// <summary>
+	/// minimal constructor
+	/// </summary>
+	public ListValuePropertyType(string name, string dataType) : base(name)
+	{
+		DataType = dataType;
+	}
+
+	/// <summary>
+	/// The base IFC datatype of the property in the schema
+	/// </summary>
+	public string DataType { get; }
 }

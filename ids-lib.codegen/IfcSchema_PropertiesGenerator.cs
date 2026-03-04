@@ -168,7 +168,7 @@ public class IfcSchema_PropertiesGenerator
 		{
 			// todo: this case would have an enum of valid values, that we are ignoring.
 			var tp = GetChildNodes(tList, "ListValue", "DataType").First().GetAttribute("type");
-			return $"""new SingleValuePropertyType("{nm}", "{tp}"){def}""";
+			return $"""new ListValuePropertyType("{nm}", "{tp}"){def}""";
 		}
 
 		var tTable = t.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.Name == "TypePropertyTableValue");
@@ -263,8 +263,10 @@ public class IfcSchema_PropertiesGenerator
 						case IfcSimplePropertyTemplateTypeEnum.P_BOUNDEDVALUE:
 							props.Add($"""new SingleValuePropertyType("{singleV.Name}", "{singleV.PrimaryMeasureType}"){def}""");
 							break;
-						case IfcSimplePropertyTemplateTypeEnum.P_TABLEVALUE:
 						case IfcSimplePropertyTemplateTypeEnum.P_LISTVALUE:
+							props.Add($"""new ListValuePropertyType("{singleV.Name}", "{singleV.PrimaryMeasureType}"){def}""");
+							break;
+						case IfcSimplePropertyTemplateTypeEnum.P_TABLEVALUE:
 							continue;
 						default:
 							break;
@@ -348,7 +350,7 @@ public class IfcSchema_PropertiesGenerator
 				else if (prop.PropertyType.PropertyValueType is TypePropertyListValue lst)
 				{
 					// todo: this case would have an enum of valid values, that we are ignoring.
-					var t = $"new SingleValuePropertyType(\"{prop.Name}\", \"{lst.ListValue.DataType.Type}\"){def}";
+					var t = $"new ListValuePropertyType(\"{prop.Name}\", \"{lst.ListValue.DataType.Type}\"){def}";
 					richProp.Add(t);
 				}
 				else if (prop.PropertyType.PropertyValueType is TypeSimpleProperty simple)
