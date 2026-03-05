@@ -32,7 +32,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
     /// <summary>
     /// value is used when evaluating cardinality for requirements
     /// </summary>
-    private IdsXmlNode? value { get; set; } = null;
+    private IdsXmlNode? valueConstraintNode { get; set; } = null;
 
     public bool IsRequired => cardinality.IsRequired;
 
@@ -70,8 +70,9 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
         if (nameMatcher is null)
             return IdsErrorMessages.Report102NoStringMatcher(logger, this, PropertyNodeName);
 
-        value = GetChildNodes("value").FirstOrDefault();
-        if (string.IsNullOrEmpty(dataType) && !IdsSimpleValue.IsNullOrEmpty(value))
+        valueConstraintNode = GetChildNodes("value").FirstOrDefault();
+		IStringListMatcher? valueConstraintMatcher = null; // this is initialised later, if needed
+		if (string.IsNullOrEmpty(dataType) && !IdsSimpleValue.IsNullOrEmpty(valueConstraintNode))
         {
             return IdsErrorMessages.Report203IncompatibleConstraints(logger, this, "specifiying a 'value' requires a 'dataType'");
         }
@@ -100,10 +101,8 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             // we start from the basic types in IfcRelDefinesByProperties 
             IIfcTypeConstraint filter = schema.GetRelAssignPropertyClasses!; // banged, because we should be guaranteed to have it.
 
-            // initiate valid measures, will constrain later if there's a known property
-            var validMeasureNames = SchemaInfo.AllDataTypes
-                    .Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
-                    .Select(y => y.IfcDataTypeClassName.ToUpperInvariant());
+			// initiate valid measures, will constrain later if there's a known property
+			IEnumerable<string>? validMeasureNames = null;
             IsValid = true;
 
             if (IsRequired)
@@ -116,6 +115,20 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                     var nameMatch = nameMatcher.MustMatchAgainstCandidates(validPropNames, false, logger, out var possiblePropertyNames, $"property {PropertyNodeName}", schema.Version);
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
+					
+					if (valueConstraintNode != null) // we only need to do this if we have a value constraint, otherwise we can allow all the values for the property
+					{
+						var hasLimitedValueOptions = SchemaInfo.HasEnumConstraintsForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames, out var valueOptions);
+						if (hasLimitedValueOptions)
+						{
+							valueConstraintMatcher ??= valueConstraintNode.GetListMatcher();
+							if (valueConstraintMatcher is not null)
+							{
+								// we have value constraints, we need to check that the value constraint is compatible with at least one of the possible properties
+								ret |= valueConstraintMatcher.MustMatchAgainstCandidates(valueOptions, false, logger, out var possibleValueConstraints, "value constraint", schema.Version);
+							}
+						}
+					}
 
 					// limit the validity of the IfcMeasure to the value coming from the metadata for the property
 					validMeasureNames = SchemaInfo.ValidMeasuresForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames);
@@ -143,6 +156,12 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
             }
 			if (dataTypeMatcher is not null)
 			{
+				// initialize the valid measure names with all the measures available for the schema,
+				// if not already constrained by the property name
+				validMeasureNames ??= SchemaInfo.AllDataTypes
+					.Where(x => (x.ValidSchemaVersions & schema.Version) == schema.Version)
+					.Select(y => y.IfcDataTypeClassName.ToUpperInvariant());
+
 				ret |= dataTypeMatcher.MustMatchAgainstCandidates(validMeasureNames, false, logger, out var dtMatches, "dataType", schema.Version);
                 // if we have matches, we can test the value for compatible basetype
                 //
@@ -154,28 +173,26 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                     {
                         if (SchemaInfo.TryParseIfcDataType(dtMatch, out var fnd, false))
                         {
-                            if (!string.IsNullOrEmpty(fnd.BackingType) && value is not null)
+                            if (!string.IsNullOrEmpty(fnd.BackingType) && valueConstraintNode is not null)
                             {
-                                if (value.HasXmlBaseType(out var baseType))
+                                if (valueConstraintNode.HasXmlBaseType(out var baseType))
                                 {
                                     if (fnd.BackingType != baseType)
                                     {
                                         if (string.IsNullOrEmpty(baseType))
-                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
+                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, valueConstraintNode, $"found empty but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
                                         else
-                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
+                                            ret |= IdsErrorMessages.Report303RestrictionBadType(logger, valueConstraintNode, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
                                     }
                                 }
-								else if (value.HasSimpleValue(out var simpleValueString))
+								else if (valueConstraintNode.HasSimpleValue(out var simpleValueString))
 								{
-									ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(fnd.BackingType!), simpleValueString, value);
+									ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(fnd.BackingType!), simpleValueString, valueConstraintNode);
 								}
-
 							}
                         }
                     }
                 }
-
 			}
 			if (ret != Audit.Status.Ok)
 				IsValid = false;

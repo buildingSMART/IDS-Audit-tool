@@ -31,8 +31,13 @@ internal static class IdsErrorMessages
 		return Audit.Status.IdsContentError;
 	}
 
-	internal static Audit.Status Report103InvalidListMatcher(IdsXmlNode xmlContext, string value, ILogger? logger, string variableName, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
+	internal static Audit.Status Report103InvalidListMatcher(IdsXmlNode xmlContext, string? value, ILogger? logger, string variableName, IfcSchema.IfcSchemaVersions schemaContext, IEnumerable<string> candidateStrings)
 	{
+		if (value is null)
+		{
+			value = "";
+		}
+
 		if (!candidateStrings.Any())
 			logger?.LogError("Error {errorCode}: Invalid {variableName} `{value}` (no valid values exist) in the context of {schemaContext} on {location}.", 103, variableName, value, schemaContext, xmlContext.GetNodeIdentification());
 		else

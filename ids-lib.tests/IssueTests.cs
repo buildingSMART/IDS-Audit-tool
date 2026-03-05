@@ -106,6 +106,7 @@ namespace idsTool.tests
 		[InlineData("IssueFiles/Issue 55 - RelationConstraintFail.ids", IdsLib.Audit.Status.IdsStructureError | IdsLib.Audit.Status.IdsContentError)]
 		[InlineData("IssueFiles/Issue 55 - RelationConstraintOk.ids", IdsLib.Audit.Status.Ok)]
 		[InlineData("IssueFiles/Issue 56 - Ifc2x3 mapping.ids", IdsLib.Audit.Status.Ok)]
+		[InlineData("IssueFiles/Issue 59 - PEnums.ids", IdsLib.Audit.Status.IdsContentError, 1)]
 		[InlineData("IssueFiles/Issue 60 - Restrictions.ids", IdsLib.Audit.Status.IdsStructureError | IdsLib.Audit.Status.IdsContentError, 6)]
 		[InlineData("IssueFiles/Issue 61/IDS - TEST for Architectural Requriements.ids", IdsLib.Audit.Status.Ok)]
 		[InlineData("IssueFiles/Issue 61/IDS - TEST for Electrical Requirements.ids", IdsLib.Audit.Status.Ok)]

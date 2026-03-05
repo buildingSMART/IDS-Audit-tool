@@ -560,7 +560,6 @@ namespace IdsLib.IfcSchema
 
 		internal static IEnumerable<string> ValidMeasuresForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames)
 		{
-
 			List<string> ret = new();
 			foreach (var schema in GetSchemas(version))
 			{
@@ -574,6 +573,31 @@ namespace IdsLib.IfcSchema
 			}
 			return ret.Distinct().ToList();
 		}
+
+		internal static bool HasEnumConstraintsForAllProperties(IfcSchemaVersions version, IEnumerable<string> possiblePsetNames, IEnumerable<string> possiblePropertyNames, out IEnumerable<string> valueConstraints)
+		{
+			var valueOptions = new List<string>();
+			foreach (var schema in GetSchemas(version))
+			{
+				var propsMatchingRequirements = schema.PropertySets.Where(x => possiblePsetNames.Contains(x.Name)).SelectMany(pset => pset.Properties.Where(prop => possiblePropertyNames.Contains(prop.Name)));
+				foreach (var prop in propsMatchingRequirements)
+				{
+					if (prop is EnumerationPropertyType ept)
+					{
+						valueOptions.AddRange(ept.EnumerationValues);					
+					}
+					else
+					{
+						// if we match a property that allows any values, then we can stop looking for constraints
+						valueConstraints = Enumerable.Empty<string>();
+						return false;
+					}
+				}
+			}
+			valueConstraints = valueOptions.Distinct().ToList();
+			return true;
+		}
+
 
 		/// <summary>
 		/// Returns a list of the concrete class names that implement a given top class.
@@ -796,5 +820,6 @@ namespace IdsLib.IfcSchema
 				}
 			}
 		}
+
 	}
 }
