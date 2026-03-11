@@ -49,6 +49,7 @@
 | interface [IPropertyTypeInfo](./IdsLib.IfcSchema/IPropertyTypeInfo.md) | Generalised metadata on IFC properties |
 | static class [IPropertyTypeInfoExtensions](./IdsLib.IfcSchema/IPropertyTypeInfoExtensions.md) | Static class to contain extension method helpers for [`IPropertyTypeInfo`](./IdsLib.IfcSchema/IPropertyTypeInfo.md). |
 | interface [IUnitInformation](./IdsLib.IfcSchema/IUnitInformation.md) | Interface for unit information, used to provide metadata about units and their conversion behaviours. |
+| class [ListValuePropertyType](./IdsLib.IfcSchema/ListValuePropertyType.md) | Schema metadata for list value properties. For the purpose of IDS, these are functionally equivalent to single value properties but we want to be able to distinguish them in the schema to support any procedural code generation that may be needed for their IFC verification. |
 | class [NamedPropertyType](./IdsLib.IfcSchema/NamedPropertyType.md) | Schema metadata for properties with name |
 | class [PartOfRelationInformation](./IdsLib.IfcSchema/PartOfRelationInformation.md) | Metadata container for relations that are primarily one-to-many between IFC entities |
 | class [PropertySetInfo](./IdsLib.IfcSchema/PropertySetInfo.md) | Information about standard property sets defined from bS |
