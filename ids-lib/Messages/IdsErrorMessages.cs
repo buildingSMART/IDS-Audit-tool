@@ -91,7 +91,7 @@ internal static class IdsErrorMessages
 
 	internal static Audit.Status Report109InvalidRegex(IdsXmlNode locationContext, string pattern, ILogger? logger)
 	{
-		logger?.LogError("Error {errorCode}: Ivalid pattern string '{pattern}' on {location}.", 109, pattern, locationContext.GetNodeIdentification());
+		logger?.LogError("Error {errorCode}: Invalid pattern string '{pattern}' on {location}.", 109, pattern, locationContext.GetNodeIdentification());
 		return Audit.Status.IdsContentError;
 	}
 
