@@ -43,6 +43,10 @@ namespace IdsLib.IfcSchema
 		/// Ensures that the information up to date.
 		/// </summary>
 		bool linked = false;
+
+		/// <summary>
+		/// Fastest lookup is available on CamelCase, otherwise it will try a case insensitive search which is more expensive
+		/// </summary>
 		private Dictionary<string, ClassInfo> Classes;
 
 		/// <summary>
@@ -62,6 +66,7 @@ namespace IdsLib.IfcSchema
 
 		/// <summary>
 		/// Get the classinfo by name string.
+		/// Fastest lookup is available on CamelCase, otherwise it will try a case insensitive search which is more expensive
 		/// </summary>
 		public ClassInfo? this[string className]
 		{
