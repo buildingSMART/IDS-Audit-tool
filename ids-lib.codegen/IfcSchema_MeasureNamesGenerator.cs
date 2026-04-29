@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using Xbim.Common.Metadata;
 using Xbim.Ifc4.Interfaces;
 
@@ -222,20 +223,34 @@ public class IfcSchema_DatatypeNamesGenerator
         }
     }
 
-    private static IEnumerable<string> GetEnumValueTypes(string schema)
-    {
-        System.Reflection.Module module = SchemaHelper.GetModule(schema);
-        var tp2 = module.GetTypes().Where(x => !string.IsNullOrEmpty(x.BaseType?.Name) && x.BaseType.Name == "Enum").ToList();
-		var ret = tp2.Select(x => x.Name.ToUpperInvariant()).Where(x => x.EndsWith("ENUM") && x.StartsWith("IFC")).ToList();
+	private static Regex reIfcEnumNames = new Regex(@"^Ifc[a-z]+Enum$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-		if (schema == "Ifc4")
-			ret.Remove("IFCALIGNMENTTYPEENUM"); // apparently not defined in Ifc4
-		ret.Remove("IFCNULLSTYLEENUM");
-
+	private static IEnumerable<string> GetEnumValueTypes(string schema)
+	{
+		List<Type> tp2 = GetEnumTypes(schema);
+		var ret = tp2.Select(x => x.Name.ToUpperInvariant()).ToList();
 		return ret;
-    }
+	}
 
-    private static IEnumerable<typeMetadata> GetDocumentationMeasures()
+	internal static List<Type> GetEnumTypes(string schema)
+	{
+		System.Reflection.Module module = SchemaHelper.GetModule(schema);
+		var tp2 = module.GetTypes()
+			.Where(x =>
+				!string.IsNullOrEmpty(x.BaseType?.Name)
+				&& x.BaseType.Name == "Enum"
+				&& reIfcEnumNames.IsMatch(x.Name)
+				).ToList();
+		if (schema == "Ifc4")
+		{
+			tp2.RemoveAll(x => x.Name.Equals("IfcAlignmentTypeEnum", StringComparison.OrdinalIgnoreCase)); // apparently not defined in Ifc4
+			tp2.RemoveAll(x => x.Name.Equals("IfcReferentTypeEnum", StringComparison.OrdinalIgnoreCase)); // apparently not defined in Ifc4
+		}
+		tp2.RemoveAll(x => x.Name.Equals("IfcNullStyleEnum", StringComparison.OrdinalIgnoreCase));
+		return tp2;
+	}
+
+	private static IEnumerable<typeMetadata> GetDocumentationMeasures()
     {
         var markDown = File.ReadAllLines(@"buildingSMART\units.md");
         foreach (var line in markDown)

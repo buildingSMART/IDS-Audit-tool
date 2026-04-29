@@ -1,6 +1,6 @@
 # SchemaInfo indexer
 
-Get the classinfo by name string.
+Get the classinfo by name string. Fastest lookup is available on CamelCase, otherwise it will try a case insensitive search which is more expensive
 
 ```csharp
 public ClassInfo? this[string className] { get; }

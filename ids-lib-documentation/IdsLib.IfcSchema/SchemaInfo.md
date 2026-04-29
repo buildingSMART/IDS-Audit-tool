@@ -15,7 +15,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [SchemaIfc4](SchemaInfo/SchemaIfc4.md) { get; } | Static property for the Ifc4 schema |
 | static [SchemaIfc4x3](SchemaInfo/SchemaIfc4x3.md) { get; } | Static property for the Ifc4 schema |
 | [AllPartOfRelations](SchemaInfo/AllPartOfRelations.md) { get; } | The names of classes across all schemas. |
-| [Item](SchemaInfo/Item.md) { get; } | Get the classinfo by name string. |
+| [Item](SchemaInfo/Item.md) { get; } | Get the classinfo by name string. Fastest lookup is available on CamelCase, otherwise it will try a case insensitive search which is more expensive |
 | [PropertySets](SchemaInfo/PropertySets.md) { get; } | Provides access to the property sets of the schema |
 | [Version](SchemaInfo/Version.md) { get; } | The version of the schema represented in the info |
 | [Add](SchemaInfo/Add.md)(…) | Add a new classInfo to the collection |

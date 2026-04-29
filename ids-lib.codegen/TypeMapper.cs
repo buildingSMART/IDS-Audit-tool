@@ -24,7 +24,7 @@ internal class TypeMapper
 		IfcMapToExpressType = expressType;
 	}
 
-	internal static List<TypeMapper> GetFor(string schema, List<IfcSchema_Ifc2x3MapperGenerator.Ifc2x3EntityMappingInformation> maps)
+	internal static List<TypeMapper> GetFor(string schema, List<IfcSchema_Ifc2x3MapperGenerator.Ifc2x3EntityMappingInformation> maps, out ExpressMetaData metaData)
 	{
 		var factory = SchemaHelper.GetFactory(schema);
 		var metaD = ExpressMetaData.GetMetadata(factory);
@@ -36,6 +36,7 @@ internal class TypeMapper
 		{
 			tpNames.AddRange(maps.Select(x => new TypeMapper(x.IdsEntity, x.IfcEntity, metaD)));
 		}
+		metaData = metaD;
 		return tpNames;
 	}
 }

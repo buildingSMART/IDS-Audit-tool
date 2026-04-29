@@ -81,12 +81,17 @@ public partial class ClassInfo
 	/// <summary>
 	/// List of predefined type strings from the schema
 	/// </summary>
-	public IEnumerable<string> PredefinedTypeValues { get; private set; }
+	public IEnumerable<string>? PredefinedTypeValues { get; private set; } = [];
 
 	/// <summary>
 	/// List of attribute names for the type
 	/// </summary>
-	public IEnumerable<string> DirectAttributes { get; private set; }
+	public IEnumerable<string>? DirectAttributes { get; private set; } = [];
+
+	/// <summary>
+	/// List of enumeration values 
+	/// </summary>
+	public IEnumerable<string>? EnumerationValues { get; private set; } = [];
 
 	/// <summary>
 	/// Similar to the c# Is clause
@@ -145,6 +150,18 @@ public partial class ClassInfo
 	}
 
 	/// <summary>
+	/// Create an enumeration type classinfo
+	/// </summary>
+	public ClassInfo(string enumName, string enumNameSpace, string[] values)
+	{
+		Name = enumName;
+		NameSpace = enumNameSpace;
+		Type = ClassType.Enumeration;
+		ParentName = string.Empty;
+		EnumerationValues = values;
+	}
+
+	/// <summary>
 	/// What are the Type Classes related to the current (e.g. IfcWall to IfcWallType).
 	/// </summary>
 	public string[]? RelationTypeClasses { get; private set; }
@@ -170,5 +187,10 @@ public partial class ClassInfo
 				subclass.AddTypeClasses(typeClasses);
 			}
 		}
+	}
+
+	internal static ClassInfo CreateEnumeration(string enumName, string enumNameSpace, string[] values)
+	{
+		return new ClassInfo(enumName, enumNameSpace, values);
 	}
 }

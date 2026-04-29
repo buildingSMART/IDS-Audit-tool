@@ -281,7 +281,7 @@ public partial class SchemaInfo
 		new IfcDataTypeInformation("IFCRATIOMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:double"),
 		new IfcDataTypeInformation("IFCREAL", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:double"),
 		new IfcDataTypeInformation("IFCRECURRENCETYPEENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string"),
-		new IfcDataTypeInformation("IFCREFERENTTYPEENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string"),
+		new IfcDataTypeInformation("IFCREFERENTTYPEENUM", new[] { "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCREFLECTANCEMETHODENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCREINFORCEDSOILTYPEENUM", new[] { "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCREINFORCINGBARROLEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string"),

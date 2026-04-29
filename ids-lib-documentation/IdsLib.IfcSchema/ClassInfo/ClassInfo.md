@@ -1,4 +1,19 @@
-# ClassInfo constructor
+# ClassInfo constructor (1 of 2)
+
+Create an enumeration type classinfo
+
+```csharp
+public ClassInfo(string enumName, string enumNameSpace, string[] values)
+```
+
+## See Also
+
+* class [ClassInfo](../ClassInfo.md)
+* namespace [IdsLib.IfcSchema](../../ids-lib.md)
+
+---
+
+# ClassInfo constructor (2 of 2)
 
 Public constructor
 

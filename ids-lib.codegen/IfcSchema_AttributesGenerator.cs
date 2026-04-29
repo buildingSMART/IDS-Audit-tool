@@ -101,7 +101,7 @@ class IfcSchema_AttributesGenerator
 			var factory = SchemaHelper.GetFactory(schemaString);
 			var metaD = ExpressMetaData.GetMetadata(factory);
 
-			var entities = TypeMapper.GetFor(schemaString, maps);
+			var entities = TypeMapper.GetFor(schemaString, maps, out _);
 			// create a dictionary that defines the attributes 
 			var attributes = GetAttributes(entities);
 			foreach (var item in attributes.Values)

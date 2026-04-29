@@ -3,7 +3,7 @@
 List of predefined type strings from the schema
 
 ```csharp
-public IEnumerable<string> PredefinedTypeValues { get; }
+public IEnumerable<string>? PredefinedTypeValues { get; }
 ```
 
 ## See Also

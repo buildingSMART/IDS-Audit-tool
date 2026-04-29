@@ -279,7 +279,7 @@ Columns of the table determine the validity of the type depending on the schema 
 | IFCRATIOMEASURE                               |    ✓    |    ✓    |    ✓    | xs:double             |
 | IFCREAL                                       |    ✓    |    ✓    |    ✓    | xs:double             |
 | IFCRECURRENCETYPEENUM                         |         |    ✓    |    ✓    | xs:string             |
-| IFCREFERENTTYPEENUM                           |         |    ✓    |    ✓    | xs:string             |
+| IFCREFERENTTYPEENUM                           |         |         |    ✓    | xs:string             |
 | IFCREFLECTANCEMETHODENUM                      |    ✓    |    ✓    |    ✓    | xs:string             |
 | IFCREINFORCEDSOILTYPEENUM                     |         |         |    ✓    | xs:string             |
 | IFCREINFORCINGBARROLEENUM                     |    ✓    |    ✓    |    ✓    | xs:string             |

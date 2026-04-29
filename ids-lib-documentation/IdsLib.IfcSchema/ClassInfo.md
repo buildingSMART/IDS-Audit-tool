@@ -10,8 +10,9 @@ public class ClassInfo
 
 | name | description |
 | --- | --- |
-| [ClassInfo](ClassInfo/ClassInfo.md)(…) | Public constructor |
+| [ClassInfo](ClassInfo/ClassInfo.md)(…) | Public constructor (2 constructors) |
 | [DirectAttributes](ClassInfo/DirectAttributes.md) { get; } | List of attribute names for the type |
+| [EnumerationValues](ClassInfo/EnumerationValues.md) { get; } | List of enumeration values |
 | [FunctionalType](ClassInfo/FunctionalType.md) { get; } | Is the class |
 | [MatchingConcreteClasses](ClassInfo/MatchingConcreteClasses.md) { get; } | All matching concrete classes, including self and entire subclass tree |
 | [Name](ClassInfo/Name.md) { get; } | Class Name as string (stored as camelcase, convert to upper for valid IDS class names) |

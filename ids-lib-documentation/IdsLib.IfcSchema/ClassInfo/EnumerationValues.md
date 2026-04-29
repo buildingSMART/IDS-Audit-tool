@@ -1,9 +1,9 @@
-# ClassInfo.DirectAttributes property
+# ClassInfo.EnumerationValues property
 
-List of attribute names for the type
+List of enumeration values
 
 ```csharp
-public IEnumerable<string>? DirectAttributes { get; }
+public IEnumerable<string>? EnumerationValues { get; }
 ```
 
 ## See Also

@@ -13,13 +13,13 @@ public partial class IfcSchema_ClassAndAttributeNamesGenerator
         var attNames = new Dictionary<string, List<string>>();
         foreach (var schema in Program.schemas)
         {
-			var entities = TypeMapper.GetFor(schema, maps);
+			var entities = TypeMapper.GetFor(schema, maps, out _);
 			foreach (var entity in entities)
             {
 				// only concrete classes are valid
 				if (entity.IfcMapToExpressType.Type.IsAbstract)
                     continue;
-
+				
                 // prepare just class names for schema
 				var className = entity.IdsName;
 				if (classNames.TryGetValue(className, out var lst))
