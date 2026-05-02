@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests
 {

@@ -4,7 +4,6 @@ using IdsTool;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 using static IdsLib.Audit;
 
 namespace idsTool.tests;

@@ -25,22 +25,22 @@ public class IdsInfoTests : BuildingSmartRepoFiles
         t.IsIds.Should().Be(isIds);
     }
 
-    [SkippableTheory]
+    [Theory]
     [MemberData(nameof(GetIdsRepositoryExampleIdsFiles))]
     public async Task CanReadIdsDevelopmentFiles(string idsFile)
     {
-        Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
+        Assert.SkipWhen(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(idsFile);
         var t = await IdsXmlHelpers.GetIdsInformationAsync(f);
         t.Should().NotBeNull();
         t.Version.Should().NotBe(IdsVersion.Invalid);
     }
 
-    [SkippableTheory]
+    [Theory]
     [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public async Task CanReadIdsTestCases(string idsFile)
     {
-        Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
+        Assert.SkipWhen(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(idsFile);
         var idsInformation = await IdsXmlHelpers.GetIdsInformationAsync(f);
         idsInformation.Should().NotBeNull();

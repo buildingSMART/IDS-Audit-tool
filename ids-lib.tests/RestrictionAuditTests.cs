@@ -3,7 +3,6 @@ using IdsLib.IdsSchema.XsNodes;
 using idsTool.tests.Helpers;
 using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests;
 

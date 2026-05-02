@@ -5,6 +5,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>idsTool.tests</RootNamespace>
 		<Nullable>enable</Nullable>
+		<OutputType>exe</OutputType>
 		<LangVersion>latest</LangVersion>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
@@ -14,14 +15,12 @@
 		<PackageReference Include="FluentAssertions" Version="[7.2.0]" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="NSubstitute" Version="5.3.0" />
-		<PackageReference Include="Xbim.Essentials" Version="6.0.565" />
-		<PackageReference Include="xunit" Version="2.9.3" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
+		<PackageReference Include="Xbim.Essentials" Version="6.0.587" />
+		<PackageReference Include="xunit.v3" Version="3.2.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="MartinCostello.Logging.XUnit" Version="0.5.1" />
-		<PackageReference Include="Xunit.SkippableFact" Version="1.5.23" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ids-lib\ids-lib.csproj" />

@@ -9,7 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests
 {
@@ -42,11 +41,11 @@ namespace idsTool.tests
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, warnings);
 		}
 
-		[SkippableFact]
+		[Fact]
         public void AuditIdsRepositoryWithItsSchema()
         {
 			var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-			Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
+			Assert.SkipWhen(!repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
 			var o = new BatchOpts
 			{
@@ -67,28 +66,28 @@ namespace idsTool.tests
 		}
 
         // This ensures that the schema in the tool is aligned with the version of the IDS repository
-		[SkippableFact]
+		[Fact]
         public void XsdSchemaIsAlignedWithIdsRepository()
         {
             var toolSchema = BuildingSmartRepoFiles.GetIdsToolSchema();
             toolSchema.Should().NotBeNull();
 
             var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-            Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
+            Assert.SkipWhen(!repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
             var schemasAreIdentical = BuildingSmartRepoFiles.FilesAreIdentical(repoSchema, toolSchema);
             schemasAreIdentical.Should().BeTrue("embedded schema and repository schema should be identical");
         }
 
 		// This ensures that the schema in the testing of the tool is aligned with the version of the IDS repository
-		[SkippableFact]
+		[Fact]
         public void XsdTestSuiteSchemaIsAlignedWithIdsRepository()
         {
             var toolSchema = BuildingSmartRepoFiles.GetIdsTestSuiteSchema();
             toolSchema.Should().NotBeNull();
 
             var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-            Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
+			Assert.SkipWhen(!repoSchema.Exists, "IDS repository folder not available for extra tests.");
 
             repoSchema.Exists.Should().BeTrue();
             toolSchema.Exists.Should().BeTrue();

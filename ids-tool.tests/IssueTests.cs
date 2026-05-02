@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Linq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests
 {

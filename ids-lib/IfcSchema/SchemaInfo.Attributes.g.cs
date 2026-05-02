@@ -1,4 +1,4 @@
-// generated code via ids-lib.codegen using Xbim.Essentials 6.0.565.0 - any changes made directly here will be lost
+// generated code via ids-lib.codegen using Xbim.Essentials 6.0.587.0 - any changes made directly here will be lost
 
 using System;
 

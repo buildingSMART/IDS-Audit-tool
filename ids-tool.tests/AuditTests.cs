@@ -11,7 +11,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 using static idsTool.tests.IdsSchemaTests;
 
 namespace idsTool.tests;
@@ -24,22 +23,22 @@ public class AuditTests : BuildingSmartRepoFiles
     }
     private ITestOutputHelper XunitOutputHelper { get; }
 
-    [SkippableTheory]
+    [Theory]
     [MemberData(nameof(GetIdsRepositoryExampleIdsFiles))]
     public void FullAuditOfDevelopmentFilesOk(string developmentIdsFile)
     {
-        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+        Assert.SkipWhen(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
         LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, Audit.Status.Ok, 0);
     }
 
-	[SkippableTheory]
+	[Theory]
 	[MemberData(nameof(GetIdsRepositoryExampleIdsFiles))]
 	public void FullAuditOfDevelopmentFilesWithItsSchemaOk(string developmentIdsFile)
 	{
 		var repoSchema = BuildingSmartRepoFiles.GetIdsSchema();
-		Skip.IfNot(repoSchema.Exists, "IDS repository folder not available for extra tests.");
-		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		Assert.SkipWhen(!repoSchema.Exists, "IDS repository folder not available for extra tests.");
+		Assert.SkipWhen(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
 		FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(developmentIdsFile);
 
         BatchOpts opt = new BatchOpts() {
@@ -49,14 +48,14 @@ public class AuditTests : BuildingSmartRepoFiles
 		LoggerAndAuditHelpers.BatchAuditWithOptions(opt, XunitOutputHelper, Audit.Status.Ok, 0);
 	}
 
-	[SkippableTheory]
+	[Theory]
     [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public void OmitContentAuditOfDocumentationFilesOk(string developmentIdsFile)
     {
-        // why does this throw an exception when we don't #define ManageReadLoopException?
-        // should the exception be prevented by the schema validation?
-        // 
-        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		// why does this throw an exception when we don't #define ManageReadLoopException?
+		// should the exception be prevented by the schema validation?
+		// 
+		Assert.SkipWhen(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new BatchAuditOptions()
         {
@@ -75,11 +74,11 @@ public class AuditTests : BuildingSmartRepoFiles
     /// because they could be failing due to invalid content.
     /// It still checks them for issues at schema level.
     /// </summary>
-    [SkippableTheory]
+    [Theory]
     [MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
     public void AuditOfDocumentationPassFilesOk(string developmentIdsFile)
     {
-        Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+        Assert.SkipWhen(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
         var c = new BatchAuditOptions()
         {
@@ -98,11 +97,11 @@ public class AuditTests : BuildingSmartRepoFiles
 	/// because they could be failing due to invalid content.
 	/// It still checks them for issues at schema level.
 	/// </summary>
-	[SkippableTheory]
+	[Theory]
 	[MemberData(nameof(GetIdsRepositoryTestCaseIdsFiles))]
 	public void AuditOfDocumentationInvalidFilesIsCoherent(string developmentIdsFile)
 	{
-		Skip.If(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
+		Assert.SkipWhen(developmentIdsFile == string.Empty, "IDS repository folder not available for extra tests.");
 		FileInfo f = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIdsFile);
 		var c = new BatchAuditOptions()
 		{
@@ -205,7 +204,7 @@ public class AuditTests : BuildingSmartRepoFiles
 	// todo: update tfk-regenerate-testcase-ids to master branch
 	private const string ValidNetworkIds = "https://github.com/CBenghi/IDS/raw/facetsReview/Development/IDS_ArcDox.ids";
 
-    [SkippableFact]
+    [Fact]
     public async Task TestSeekableNetworkStream()
     {
         var _httpClient = new HttpClient
@@ -217,7 +216,7 @@ public class AuditTests : BuildingSmartRepoFiles
         response.EnsureSuccessStatusCode();
         var stream = await response.Content.ReadAsStreamAsync();
         var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
-        Skip.If(ret != Audit.Status.Ok, "Online stream might be out of date.");
+        Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
         stream.Seek(0, SeekOrigin.Begin);
     }
 

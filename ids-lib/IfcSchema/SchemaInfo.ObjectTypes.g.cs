@@ -1,4 +1,4 @@
-// programmatically generated from ids-lib.codegen using Xbim 6.0.565.0
+// programmatically generated from ids-lib.codegen using Xbim 6.0.587.0
 using System.Collections.Generic;
 
 namespace IdsLib.IfcSchema;

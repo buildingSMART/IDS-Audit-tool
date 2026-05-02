@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using Xbim.Ifc.Extensions;
 using Xbim.Ifc2x3.GeometryResource;
 using Xunit;
-using Xunit.Abstractions;
 using static IdsLib.IfcSchema.IfcConversionUnitInformation;
 
 namespace idsTool.tests;

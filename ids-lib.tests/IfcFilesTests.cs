@@ -15,7 +15,6 @@ using Xbim.Ifc;
 using Xbim.Ifc4.Interfaces;
 using Xbim.IO.Parser;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests
 {
@@ -32,11 +31,11 @@ namespace idsTool.tests
 
 		private ITestOutputHelper XunitOutputHelper { get; }
 
-		[SkippableTheory]
+		[Theory]
 		[MemberData(nameof(GetIdsRepositoryTestCaseIfcFiles))]
 		public void IfcFileIsOk(string developmentIfcFile)
 		{
-			Skip.If(developmentIfcFile == string.Empty, "IDS repository folder not available for extra tests.");
+			Assert.SkipWhen(developmentIfcFile == string.Empty, "IDS repository folder not available for extra tests.");
 			FileInfo ifcFile = LoggerAndAuditHelpers.GetAndCheckDocumentationTestCaseFileInfo(developmentIfcFile);
 			string[] musthave =
 				[

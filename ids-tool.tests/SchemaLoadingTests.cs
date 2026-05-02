@@ -5,7 +5,6 @@ using IdsTool;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace idsTool.tests;
 
@@ -20,11 +19,11 @@ public class SchemaLoadingTests : BuildingSmartRepoFiles
     /// <summary>
     /// In case this test fails, see <see cref="AuditTests.FullAuditOfDevelopmentFilesOk"/> for issues in the file.
     /// </summary>
-    [SkippableTheory]
+    [Theory]
     [MemberData(nameof(GetIdsRepositoryExampleIdsFiles))]
     public void CanLoadEmbeddedResourceSchema(string idsFile)
     {
-        Skip.If(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
+        Assert.SkipWhen(idsFile == string.Empty, "IDS repository folder not available for extra tests.");
         FileInfo f = LoggerAndAuditHelpers.GetAndCheckIdsRepositoryDevelopmentFileInfo(idsFile);
         var c = new BatchAuditOptions()
         {
