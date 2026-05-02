@@ -213,9 +213,9 @@ public class AuditTests : BuildingSmartRepoFiles
             Timeout = new TimeSpan(0, 0, 30)
         };
         _httpClient.DefaultRequestHeaders.Clear();
-        using var response = await _httpClient.GetAsync(ValidNetworkIds);
+        using var response = await _httpClient.GetAsync(ValidNetworkIds, TestContext.Current.CancellationToken);
         response.EnsureSuccessStatusCode();
-        var stream = await response.Content.ReadAsStreamAsync();
+        var stream = await response.Content.ReadAsStreamAsync(TestContext.Current.CancellationToken);
         var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
         Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
         stream.Seek(0, SeekOrigin.Begin);

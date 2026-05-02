@@ -34,9 +34,10 @@ namespace idsTool.tests
 				{
 					var schemaClass = schema[schemaName];
 					schemaClass.Should().NotBeNull();
-					if (!schemaClass!.PredefinedTypeValues.Contains("USERDEFINED"))
+					schemaClass.PredefinedTypeValues.Should().NotBeNull();
+					if (!schemaClass.PredefinedTypeValues.Contains("USERDEFINED"))
 					{
-						var values = string.Join(", ", schemaClass!.PredefinedTypeValues);
+						var values = string.Join(", ", schemaClass.PredefinedTypeValues);
 						sb.AppendLine($"{schema.Version} has {schemaName}; values = {values}");
 						SomeLackingUserDefinedInPredefined = true;
 					}

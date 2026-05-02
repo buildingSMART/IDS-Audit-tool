@@ -114,7 +114,7 @@ namespace idsTool.tests
             var acceptable = new[] { "application/xml", "text/xml" };
 
 			var c = new HttpClient();
-            var t = await c.GetAsync(url);
+            var t = await c.GetAsync(url, TestContext.Current.CancellationToken);
             Assert.NotNull(t.Content.Headers.ContentType);
 			var receivedContentType = t.Content.Headers.ContentType.MediaType;
             receivedContentType.Should().NotBeNull();
