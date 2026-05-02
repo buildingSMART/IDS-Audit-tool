@@ -117,18 +117,6 @@ namespace idsTool.tests
 			var f = new FileInfo(filename);
 			LoggerAndAuditHelpers.FullAudit(f, XunitOutputHelper, expectedOutcome, expectedErrorCount);
 		}
-
-		[Fact(Skip = "Test case is no longer valid because the error was not meaningful when fixing #46")]
-		public void Issue_49_ErrorLocation()
-		{
-			var f = new FileInfo("IssueFiles/Issue 49 - Error location.ids");
-			var t = LoggerAndAuditHelpers.FullAuditLocations(f, XunitOutputHelper, LogLevel.Error);
-			t.Any(x =>
-				x.StartLineNumber == 44
-				&&
-				x.StartLinePosition == 12
-				).Should().BeTrue();
-		}
 		
 		[Fact]
 		public void Issue_44_MeasureEnumeration()

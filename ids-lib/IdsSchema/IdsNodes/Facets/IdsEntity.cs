@@ -85,7 +85,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 
             // now check predefined types 
             
-            if (predefinedType is null || predefinedTypeMatcher is null)
+            if (IdsSimpleValue.IsNullOrEmpty(predefinedType) || predefinedTypeMatcher is null)
                 continue;            
             
             List<string>? possiblePredefined = null;

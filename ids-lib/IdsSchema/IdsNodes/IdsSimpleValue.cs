@@ -49,13 +49,13 @@ internal partial class IdsSimpleValue : IdsXmlNode, IStringListMatcher, IStringP
         yield return Content;
     }
 
-    private static readonly string[] emptyStringArray = new[] { "" }; 
+    private static readonly string[] emptyStringArray = [string.Empty]; 
 
-    internal static bool IsNullOrEmpty(IdsXmlNode? parentNode)
+    internal static bool IsNullOrEmpty(IdsXmlNode? nodeToCheck)
     {
-        if (parentNode is null)
+        if (nodeToCheck is null)
             return true;
-        var frst = parentNode.Children.FirstOrDefault();
+        var frst = nodeToCheck.Children.FirstOrDefault();
         return frst switch
         {
             IdsSimpleValue simple => simple.Content == string.Empty, // we need a spec, if it's empty then its null or empty

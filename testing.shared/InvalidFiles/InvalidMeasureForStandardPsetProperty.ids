@@ -43,7 +43,7 @@
 		</ids:specification>
 		
 		<ids:specification name="External wall requirement" ifcVersion="IFC2X3">
-			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+			<ids:applicability minOccurs="1" maxOccurs="unbounded">
 				<ids:property dataType="IFCTEXT"> <!-- The Pset_WallCommon.IsExternal property is defined as IfcBoolean, IfcText is not an acceptable value-->
 					<ids:propertySet>
 						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
