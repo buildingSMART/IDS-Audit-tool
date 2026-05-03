@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xbim.Common.Configuration;
 using Xunit;
-using static idsTool.tests.IfcFilesTests;
 
 namespace idsTool.tests.Helpers
 {

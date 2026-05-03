@@ -1,13 +1,13 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib.IfcSchema;
-using idsTool.tests.Helpers;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
 	public class IssueTests
 	{

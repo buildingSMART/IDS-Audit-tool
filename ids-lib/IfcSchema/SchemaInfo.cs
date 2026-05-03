@@ -639,14 +639,78 @@ namespace IdsLib.IfcSchema
 		/// </summary>
 		readonly private static Dictionary<IfcSchemaVersions, Dictionary<string, string>> inheritanceListCache = new();
 
+		/// <summary>
+		/// Attempts to identify the minimal set of top-level classes that collectively cover all specified concrete class
+		/// names within the given schema versions.
+		/// </summary>
+		/// <remarks>This method is useful for simplifying class-based queries or filters by reducing a set of
+		/// concrete classes to their most general covering classes. The resulting set contains only the maximal top-level
+		/// classes needed to represent the input set without redundancy.</remarks>
+		/// <param name="concreteClassNames">A collection of concrete class names to be covered by the resulting top-level classes. Class names are compared
+		/// case-insensitively.</param>
+		/// <param name="schemas">The schema versions to use when determining class hierarchies and coverage.</param>
+		/// <param name="topClasses">When this method returns, contains the minimal set of top-level class names that cover all specified concrete
+		/// classes, if successful; otherwise, an empty collection.</param>
+		/// <returns>true if a covering set of top-level classes was found for all specified concrete classes; otherwise, false.</returns>
+		public static bool TrySimplifyTopClasses(IEnumerable<string> concreteClassNames, IfcSchemaVersions schemas, out IEnumerable<string> topClasses)
+		{
+			// we want to find the minimum set of top classes that can be used to cover the list of concrete classes,
+			// this is useful to simplify the search for the right class when we want to simplify the flag for includeSubclasses
+			var inputSet = new HashSet<string>(concreteClassNames.Select(x => x.ToUpperInvariant()));
+			if (inputSet.Count == 0)
+			{
+				topClasses = Enumerable.Empty<string>();
+				return false;
+			}
+
+			// For each class in the schema, check if its entire concrete subtree is fully covered by the input set.
+			// Among all such valid candidates, keep only the maximal ones (not subsumed by any other valid candidate).
+			var schemaInfos = GetSchemas(schemas).ToList();
+			var validCandidates = new List<(string Name, HashSet<string> ConcreteSet)>();
+			foreach (var schema in schemaInfos)
+			{
+				foreach (var classInfo in schema)
+				{
+					var concretes = new HashSet<string>(classInfo.MatchingConcreteClasses.Select(x => x.Name.ToUpperInvariant()));
+					if (concretes.Count == 0)
+						continue;
+					if (concretes.IsSubsetOf(inputSet))
+						validCandidates.Add((classInfo.Name, concretes));
+				}
+			}
+
+			// Keep only the maximal candidates: those whose concrete set is not a proper subset of another candidate's concrete set
+			var maximal = validCandidates
+				.Where(c => !validCandidates.Any(other => other.Name != c.Name && c.ConcreteSet.IsProperSubsetOf(other.ConcreteSet)))
+				.ToList();
+
+			// Greedily cover the input set with maximal candidates (largest coverage first)
+			var remaining = new HashSet<string>(inputSet);
+			var result = new List<string>();
+			foreach (var candidate in maximal.OrderByDescending(c => c.ConcreteSet.Count))
+			{
+				if (candidate.ConcreteSet.Any(remaining.Contains))
+				{
+					result.Add(candidate.Name);
+					remaining.ExceptWith(candidate.ConcreteSet);
+				}
+				if (remaining.Count == 0)
+					break;
+			}
+
+			topClasses = result;
+			return remaining.Count == 0;
+		}
 
 		/// <summary>
-		/// Attempts to identify a single top class inheritance from a list of class names
+		/// Attempts to identify a single top class inheritance from a list of class names.
+		/// Should be repalced by <see cref="TrySimplifyTopClasses"/>.
 		/// </summary>
 		/// <param name="concreteClassNames">the enumeration of class names must be uppercase</param>
 		/// <param name="schemas">the schemas in which the concrete classes are found</param>
 		/// <param name="topClass">The resulting name of the schema (PascalCase)</param>
 		/// <returns>true if a single top class can be found, false otherwise</returns>
+		[Obsolete("Use TrySimplifyTopClasses instead, which returns a set of top classes instead of a single one, and is more robust to cases where multiple inheritance is present")]
 		public static bool TrySearchTopClass(IEnumerable<string> concreteClassNames, IfcSchemaVersions schemas, [NotNullWhen(true)] out string? topClass)
 		{
 			var sorted = concreteClassNames.OrderBy(x => x).ToList();
@@ -658,10 +722,13 @@ namespace IdsLib.IfcSchema
 			if (sorted.Count == 1)
 			{
 				var first = sorted.First();
-				topClass = GetAllClassesFor(schemas).Where(x => x.ToUpperInvariant() == first).FirstOrDefault();
+				topClass = GetAllClassesFor(schemas).FirstOrDefault(x => x.ToUpperInvariant() == first);
 				return topClass is not null;
 			}
 
+			// create a dictionary for the schemas if not already available,
+			// the key is the combination of the first item in the list and the count,
+			// 
 			if (!inheritanceListCache.TryGetValue(schemas, out var dic))
 			{
 				Dictionary<string, List<string>> tempHashes = new();
@@ -682,7 +749,7 @@ namespace IdsLib.IfcSchema
 					// Debug.WriteLine($"{className}\t{t.First()}\t{t.Count}");
 				}
 
-				// now prepare the cahced dictionary
+				// now prepare the cached dictionary
 				dic = new Dictionary<string, string>();
 				foreach (var pair in tempHashes)
 				{

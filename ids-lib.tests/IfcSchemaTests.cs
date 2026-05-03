@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib.IfcSchema;
-using idsTool.tests.Helpers;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Xbim.Ifc.Extensions;
 using Xbim.Ifc2x3.GeometryResource;
+using Xbim.Ifc4.SharedBldgElements;
 using Xunit;
 using static IdsLib.IfcSchema.IfcConversionUnitInformation;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class IfcSchemaTests
 {
@@ -66,15 +67,51 @@ public class IfcSchemaTests
 		}
 	}
 
-	[Fact]
-	public void CanBuildConcreteSubtree()
+	[Theory]
+	[InlineData(new[] { "IFCWALL", "IFCSLAB" }, false)]
+	[InlineData(new[] { "IFCWALL", "IFCWALLSTANDARDCASE" }, true)]
+	[InlineData(new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWINDOW" }, false)]
+	[InlineData(new[] { "IFCWALLSTANDARDCASE" }, true)]
+	public void CanBuildConcreteSubtree(IEnumerable<string> types, bool outcome)
 	{
 		// Unrelated classes should not match
-		var noMatch = new[] { "IFCWALL", "IFCSLAB" };
-		var found = SchemaInfo.TrySearchTopClass(noMatch, IfcSchemaVersions.Ifc4, out _);
-		found.Should().BeFalse();
+		var found = SchemaInfo.TrySearchTopClass(types, IfcSchemaVersions.Ifc4x3, out _);
+		found.Should().Be(outcome);
 	}
 
+	[Theory]
+	[InlineData(IfcSchemaVersions.Ifc4, new[] { "IFCWALL", "IFCSLAB" }, false, -1)]
+	[InlineData(IfcSchemaVersions.Ifc4, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWALLELEMENTEDCASE" }, true, 1)] // even if ther'e one
+	[InlineData(IfcSchemaVersions.Ifc4, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWALLELEMENTEDCASE", "IFCWINDOW", "IFCWINDOWSTANDARDCASE" }, true, 2)]
+	[InlineData(IfcSchemaVersions.Ifc4, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWALLELEMENTEDCASE", "IFCWINDOW"}, false, -1)] // one is missing should not match
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALL", "IFCSLAB" }, false, -1)]
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALL", "IFCWALLSTANDARDCASE" }, true, 1)]
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALLSTANDARDCASE" }, true, 1)]
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWINDOW" }, true, 2)]
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCFURNISHINGELEMENT", "IFCFURNITURE" }, false, -1)] // because of the missing IfcSystemFurnitureElement under IfcFurnishingElement
+	[InlineData(IfcSchemaVersions.Ifc4x3 | IfcSchemaVersions.Ifc4, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWALLELEMENTEDCASE" }, true, 1)] // multi schema
+	[InlineData(IfcSchemaVersions.Ifc4x3, new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWALLELEMENTEDCASE" }, false, -1)] // one extra element not in the schema should not match
+	public void CanSimplifyConcreteSubtree(IfcSchemaVersions version, IEnumerable<string> types, bool outcome, int expectedCount)
+	{
+		// Unrelated classes should not match
+		XunitOutputHelper.WriteLine($"Testing with types: {string.Join(", ", types)}");
+		var found = SchemaInfo.TrySimplifyTopClasses(types, version, out var foundclasses);
+		found.Should().Be(outcome);
+
+		if (expectedCount > 0)
+		{
+			foundclasses.Count().Should().Be(expectedCount);
+			XunitOutputHelper.WriteLine($"Found classes");
+			foreach (var className in foundclasses.OrderBy(x => x)) 
+			{
+				XunitOutputHelper.WriteLine($"Found top class: {className}");
+			}
+		}
+		else
+		{
+			XunitOutputHelper.WriteLine($"No match.");
+		}
+	}
 
 	[Fact]
 	public void CanGetConcreteSubclasses()
@@ -130,8 +167,6 @@ public class IfcSchemaTests
 		elements2x3.Should().HaveCount(0);
 		var elements4x3 = SchemaInfo.GetConcreteClassesFrom("IfcBuiltElement", IfcSchemaVersions.Ifc4x3).Select(static x => x.ToUpperInvariant()).ToList();
 		elements4x3.Should().HaveCount(36);
-
-
 	}
 
 	[Fact]

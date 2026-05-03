@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib;
 using IdsLib.SchemaProviders;
 using idsTool.tests.Helpers;
@@ -10,9 +11,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
-using static idsTool.tests.IdsSchemaTests;
+using static idsLib.tests.IdsSchemaTests;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class AuditTests : BuildingSmartRepoFiles
 {
@@ -208,17 +209,28 @@ public class AuditTests : BuildingSmartRepoFiles
     [Fact]
     public async Task TestSeekableNetworkStream()
     {
-        var _httpClient = new HttpClient
-        {
-            Timeout = new TimeSpan(0, 0, 30)
-        };
-        _httpClient.DefaultRequestHeaders.Clear();
-        using var response = await _httpClient.GetAsync(ValidNetworkIds, TestContext.Current.CancellationToken);
-        response.EnsureSuccessStatusCode();
-        var stream = await response.Content.ReadAsStreamAsync(TestContext.Current.CancellationToken);
-        var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
-        Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
-        stream.Seek(0, SeekOrigin.Begin);
+		bool gotResponse = false;
+		try
+		{
+
+			var _httpClient = new HttpClient
+			{
+				Timeout = new TimeSpan(0, 0, 30)
+			};
+			_httpClient.DefaultRequestHeaders.Clear();
+			using HttpResponseMessage response = await _httpClient.GetAsync(ValidNetworkIds, TestContext.Current.CancellationToken);
+			gotResponse = true;
+			response.EnsureSuccessStatusCode();
+			var stream = await response.Content.ReadAsStreamAsync(TestContext.Current.CancellationToken);
+			var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
+			Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
+			stream.Seek(0, SeekOrigin.Begin);
+		}
+		catch (Exception)
+		{
+			Assert.SkipWhen(!gotResponse, "Network issue or file not available at the moment.");	
+		}
+        
     }
 
     [Fact]

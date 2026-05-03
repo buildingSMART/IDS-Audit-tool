@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using idsTool.tests.Helpers;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
 	/// <summary>
 	/// If these tests pass but the thest files are incoherent, rebuild the soluton.

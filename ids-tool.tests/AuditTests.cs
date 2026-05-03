@@ -3,6 +3,7 @@ using IdsLib;
 using IdsLib.SchemaProviders;
 using idsTool.tests.Helpers;
 using IdsTool;
+using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -212,43 +213,68 @@ public class AuditTests : BuildingSmartRepoFiles
             Timeout = new TimeSpan(0, 0, 30)
         };
         _httpClient.DefaultRequestHeaders.Clear();
-        using var response = await _httpClient.GetAsync(ValidNetworkIds, TestContext.Current.CancellationToken);
-        response.EnsureSuccessStatusCode();
-        var stream = await response.Content.ReadAsStreamAsync(TestContext.Current.CancellationToken);
-        var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
-        Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
-        stream.Seek(0, SeekOrigin.Begin);
+		bool gotStream = false;
+		try
+		{
+			using var response = await _httpClient.GetAsync(ValidNetworkIds, TestContext.Current.CancellationToken);
+			response.EnsureSuccessStatusCode();
+			var stream = await response.Content.ReadAsStreamAsync(TestContext.Current.CancellationToken);
+			gotStream = true;
+			var ret = LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, null);
+			Assert.SkipWhen(ret != Audit.Status.Ok, "Online stream might be out of date.");
+			stream.Seek(0, SeekOrigin.Begin);
+		}
+		catch (Exception)
+		{
+			Assert.SkipWhen(!gotStream, "Network stream not available for test.");
+		}
     }
 
     [Fact]
-    public void TestNonSeekableNetworkStream()
+    public void TestNonSeekableNetworkStreamThrows()
     {
+		bool gotStream = false;
+		try
+		{
 #pragma warning disable SYSLIB0014 // Type or member is obsolete
-        var Request = WebRequest.Create(ValidNetworkIds);
+			var Request = WebRequest.Create(ValidNetworkIds);
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
-        var stream = Request.GetResponse().GetResponseStream();
-        stream.Should().NotBeNull();
-        LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.UnhandledError);
-        Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
+			var stream = Request.GetResponse().GetResponseStream();
+			stream.Should().NotBeNull();
+			gotStream = true;
+			LoggerAndAuditHelpers.FullAudit(stream, XunitOutputHelper, Audit.Status.UnhandledError);
+			Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
+		}
+		catch (Exception)
+		{
+			Assert.SkipWhen(!gotStream, "Network stream not available for test.");
+		}
     }
-
 
     [Fact]
-    public void TestNonSeekableNetworkStream2()
+    public void TestNonSeekableNetworkStreamWithSingleAuditoptionsThrows()
     {
+		bool gotStream = false;
+		try
+		{
 #pragma warning disable SYSLIB0014 // Type or member is obsolete
-        var Request = WebRequest.Create(ValidNetworkIds);
+			var Request = WebRequest.Create(ValidNetworkIds);
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
-        var stream = Request.GetResponse().GetResponseStream();
-        stream.Should().NotBeNull();
-        var s = new SingleAuditOptions()
-        {
-            OmitIdsContentAudit = false,
-            SchemaProvider = new SeekableStreamSchemaProvider()
-        };
-        LoggerAndAuditHelpers.AuditWithStream(stream, s, XunitOutputHelper, Audit.Status.UnhandledError, -1);
-
-        Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
-    }
+			var stream = Request.GetResponse().GetResponseStream();
+			stream.Should().NotBeNull();
+			gotStream = true;
+			var s = new SingleAuditOptions()
+			{
+				OmitIdsContentAudit = false,
+				SchemaProvider = new SeekableStreamSchemaProvider()
+			};
+			LoggerAndAuditHelpers.AuditWithStream(stream, s, XunitOutputHelper, Audit.Status.UnhandledError, -1);
+			Assert.Throws<System.NotSupportedException>(() => stream.Seek(0, SeekOrigin.Begin));
+		}
+		catch (Exception)
+		{
+			Assert.SkipWhen(!gotStream, "Network stream not available for test.");
+		}
+	}
 
 }

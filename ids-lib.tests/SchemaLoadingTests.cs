@@ -1,11 +1,12 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib;
 using idsTool.tests.Helpers;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using Xunit;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class SchemaLoadingTests : BuildingSmartRepoFiles
 {

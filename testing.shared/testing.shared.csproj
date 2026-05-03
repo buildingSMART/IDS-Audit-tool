@@ -15,4 +15,7 @@
 		<None Include="**\*.xsd" CopyToOutputDirectory="PreserveNewest" />
 		<None Remove="bin\**" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="IssueFiles\IDS Repo\" />
+	</ItemGroup>
 </Project>

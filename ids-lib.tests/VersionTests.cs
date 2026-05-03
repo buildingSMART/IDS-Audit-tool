@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
     public class VersionTests
     {

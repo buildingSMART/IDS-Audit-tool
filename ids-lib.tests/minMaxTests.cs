@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
     public class MinMaxTests
     {

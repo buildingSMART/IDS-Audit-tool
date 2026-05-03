@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using idsTool.tests.Helpers;
+using idsLib.tests.Helpers;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
 using static IdsLib.Audit;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class MainFunctionTests
 {

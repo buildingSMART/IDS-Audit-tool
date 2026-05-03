@@ -3,7 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using Xunit;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 /// <summary>
 /// A logger provider that writes to xunit's ITestOutputHelper

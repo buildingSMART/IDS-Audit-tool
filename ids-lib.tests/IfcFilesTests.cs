@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using FluentAssertions.Common;
+using idsLib.tests.Helpers;
 using idsTool.tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,7 +17,7 @@ using Xbim.Ifc4.Interfaces;
 using Xbim.IO.Parser;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
 	[Collection("Database collection")]
 

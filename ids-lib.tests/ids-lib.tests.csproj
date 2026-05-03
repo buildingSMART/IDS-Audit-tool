@@ -3,7 +3,7 @@
 		<IsPackable>false</IsPackable>
 		<IsPublishable>false</IsPublishable>
 		<TargetFrameworks>net8.0</TargetFrameworks>
-		<RootNamespace>idsTool.tests</RootNamespace>
+		<RootNamespace>idsLib.tests</RootNamespace>
 		<OutputType>exe</OutputType>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>

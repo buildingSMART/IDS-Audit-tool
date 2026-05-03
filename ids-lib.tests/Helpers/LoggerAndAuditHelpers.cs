@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using IdsLib;
 using IdsLib.IdsSchema.IdsNodes;
+using idsTool.tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -11,7 +12,7 @@ using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace idsTool.tests.Helpers;
+namespace idsLib.tests.Helpers;
 
 internal static class LoggerAndAuditHelpers
 {

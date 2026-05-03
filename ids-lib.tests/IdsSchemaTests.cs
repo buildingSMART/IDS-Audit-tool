@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib;
 using idsTool.tests.Helpers;
 using Microsoft.VisualBasic;
@@ -10,7 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
     public class IdsSchemaTests
     {
@@ -104,21 +105,34 @@ namespace idsTool.tests
         // [InlineData("https://www.w3.org/2001/03/xml.xsd")]
         public async Task BuildingSmartWebServerShouldReturnSchemaCorrectly(string url)
         {
-            // see https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons
-            //
-            /// If an XML document -- that is, the unprocessed, source XML document -- is readable by casual users, 
-            /// text/xml is preferable to application/xml. MIME user agents (and web user agents) that do not 
-            /// have explicit support for text/xml will treat it as text/plain, for example, by displaying the 
-            /// XML MIME entity as plain text. Application/xml is preferable when the XML MIME entity is unreadable by casual users.
-            /// 
-            var acceptable = new[] { "application/xml", "text/xml" };
+			// see https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons
+			//
+			/// If an XML document -- that is, the unprocessed, source XML document -- is readable by casual users, 
+			/// text/xml is preferable to application/xml. MIME user agents (and web user agents) that do not 
+			/// have explicit support for text/xml will treat it as text/plain, for example, by displaying the 
+			/// XML MIME entity as plain text. Application/xml is preferable when the XML MIME entity is unreadable by casual users.
+			/// 
+			HttpResponseMessage? t = null;
+			try
+			{
+				var c = new HttpClient();
+				t = await c.GetAsync(url, TestContext.Current.CancellationToken);
+			}
+			catch
+			{
+				Assert.Skip("Unable to connect to BuildingSmart web server for extra tests.");
+			}
 
-			var c = new HttpClient();
-            var t = await c.GetAsync(url, TestContext.Current.CancellationToken);
-            Assert.NotNull(t.Content.Headers.ContentType);
+			if (t == null)
+			{
+				Assert.Skip("Unable to connect to BuildingSmart web server for extra tests.");
+			}
+			t.StatusCode.Should().Be(HttpStatusCode.OK);
+			var acceptable = new[] { "application/xml", "text/xml" };
+			Assert.NotNull(t.Content.Headers.ContentType);
 			var receivedContentType = t.Content.Headers.ContentType.MediaType;
-            receivedContentType.Should().NotBeNull();
-            receivedContentType.Should().BeOneOf(acceptable);   
-        }
+			receivedContentType.Should().NotBeNull();
+			receivedContentType.Should().BeOneOf(acceptable);
+		}
     }
 }

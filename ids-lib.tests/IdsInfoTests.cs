@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib.IdsSchema;
 using IdsLib.IdsSchema.IdsNodes;
 using idsTool.tests.Helpers;
@@ -6,7 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class IdsInfoTests : BuildingSmartRepoFiles
 {

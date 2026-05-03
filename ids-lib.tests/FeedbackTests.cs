@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib;
 using IdsLib.IdsSchema.IdsNodes;
 using IdsLib.SchemaProviders;
-using idsTool.tests.Helpers;
+using idsTool.tests;
 using Microsoft.Extensions.Logging;
 using NSubstitute.Core;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
 	public class FeedbackTests
 	{

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
 	public class IfcPredefinedTypeTests
 	{

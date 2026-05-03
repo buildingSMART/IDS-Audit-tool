@@ -1,5 +1,4 @@
-﻿using idsTool.tests.Helpers;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using System;
@@ -9,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Xbim.Common.Configuration;
 using Xunit;
-using static idsTool.tests.IfcFilesTests;
+using static idsLib.tests.IfcFilesTests;
 
-namespace idsTool.tests.Helpers
+namespace idsLib.tests.Helpers
 {
-	
 	public class XbimFixture : IDisposable
 	{
 		public ILogger<XbimFixture> Logger {  get; }

@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
+using idsLib.tests.Helpers;
 using IdsLib.IdsSchema.XsNodes;
-using idsTool.tests.Helpers;
 using System.IO;
 using Xunit;
 
-namespace idsTool.tests;
+namespace idsLib.tests;
 
 public class RestrictionAuditTests
 {

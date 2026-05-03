@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Xunit;
 
-namespace idsTool.tests
+namespace idsLib.tests
 {
     public class IfcPredefinedPropertiesTests
     {

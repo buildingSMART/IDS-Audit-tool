@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace idsTool.tests.Helpers
+namespace idsLib.tests.Helpers
 {
 	internal class BatchAuditOptions : IBatchAuditOptions
 	{
