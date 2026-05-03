@@ -79,7 +79,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
             {
                 // if a value is defined then the type must be value type
                 // we can also check that any value constraint matches the expected type
-                var possibleAttributeTypes = schema.GetAttributesTypes(matchingAttributeNames).ToList();
+                var possibleAttributeTypes = schema.GetAttributesXsdTypes(matchingAttributeNames).ToList();
                 if (!possibleAttributeTypes.Any())
                 {
 					ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"no valid base type exists", schema);

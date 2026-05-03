@@ -97,10 +97,11 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
                     ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"class metadata for {ifcClass} not found in schema {schema.Version}.", this);
                     continue;
                 }
-                if (possiblePredefined == null)
-                    possiblePredefined = [.. c.PredefinedTypeValues];
+				var thisPredefinedTypeValues = c.PredefinedTypeValues ?? [];
+				if (possiblePredefined == null)
+                    possiblePredefined = [.. thisPredefinedTypeValues];
                 else
-                    possiblePredefined = possiblePredefined.Intersect(c.PredefinedTypeValues).ToList(); // using intersect because it has got to work for all classes matched
+                    possiblePredefined = possiblePredefined.Intersect(thisPredefinedTypeValues).ToList(); // using intersect because it has got to work for all classes matched
             }
 
 			if (possiblePredefined == null)

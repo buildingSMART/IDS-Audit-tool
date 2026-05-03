@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using Xbim.Common.Metadata;
+using Xbim.Ifc2x3.StructuralAnalysisDomain;
 using Xbim.IO.Esent;
 using Xbim.IO.Xml.BsConf;
 using Xbim.Properties;
@@ -12,19 +13,23 @@ class IfcSchema_AttributesGenerator
 {
     private class IfcAttribute
     {
-		public IfcAttribute(string name, string owningClass , string tp)
+		public IfcAttribute(string name, string owningClass , string backingIfcType)
 		{
             Name = name;
             AddClass(owningClass);
-            AddBase(tp);
+            AddBase(backingIfcType);
 		}
 
 		public string Name { get; init; }
 		public List<string> XmlBaseTypes { get; set; } = [];
-        public List<string> ClassesDefining { get; init; } = [];
 
 		/// <summary>
-		/// The IFC type of the backing types
+		/// The names of the classes that define the attribute
+		/// </summary>
+		public List<string> ClassesDefining { get; init; } = [];
+
+		/// <summary>
+		/// The IFC types of the attribute in an owning class
 		/// </summary>
         public List<string> IfcBaseTypes { get; init; } = [];
 
@@ -41,6 +46,9 @@ class IfcSchema_AttributesGenerator
 			}
 		}
 
+		/// <summary>
+		/// tries to set the XML base types for this attribute, based on the IFC base types and the provided dictionary of data types.
+		/// </summary>
 		internal bool TrySetXmlBase(Dictionary<string, typeMetadata> dataTypeDictionary)
 		{
 			var xmlBases = IfcBaseTypes.Select(x => GetXmlBase(x, dataTypeDictionary)).Distinct();
@@ -114,8 +122,6 @@ class IfcSchema_AttributesGenerator
 
 		source = source.Replace($"<PlaceHolderVersion>", VersionHelper.GetFileVersion(typeof(ExpressMetaData)));
         return source;
-
-
     }
 
 	
@@ -158,14 +164,15 @@ class IfcSchema_AttributesGenerator
 
 			var classesInQuotes = attrib.ClassesDefining.Select(x => $"\"{x}\"").ToArray();
 			var XmlTypesInQuotes = attrib.XmlBaseTypes.Select(x => $"\"{x}\"").ToArray();
+			var ifcTypesInQuotes = attrib.IfcBaseTypes.Select(x => $"\"{x}\"").ToArray();
 			
 			var topClassesInQuotes = onlyTopClasses
 				.Where(c => !toRemove.Contains(c))
 				.Select(x => $"\"{x}\"").ToArray();
 
 			var line = (attrib.XmlBaseTypes.Any())
-				? $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }}, new[] {{ {string.Join(", ", XmlTypesInQuotes)} }});"
-				: $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
+				? $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", ifcTypesInQuotes)} }}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }}, new[] {{ {string.Join(", ", XmlTypesInQuotes)} }});"
+				: $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", ifcTypesInQuotes)} }}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
 
 
 			sb.AppendLine(line);
@@ -187,9 +194,11 @@ class IfcSchema_AttributesGenerator
 				if (prop.IsInverse || prop.IsDerived)
 					continue; // no match
 				var tp = Analyse(prop);
-				//if (string.IsNullOrEmpty(tp))
-				//	continue; // no value type
-				
+				if (string.IsNullOrEmpty(tp))
+				{
+					// continue; // no value type
+				}
+
 				// owning type
 				if (owningTypesByAttribute.TryGetValue(prop.Name, out var lst))
 				{
@@ -210,24 +219,23 @@ class IfcSchema_AttributesGenerator
 	{
         var tp = prop.PropertyInfo.PropertyType;
 
-        if (tp.IsValueType)
-        {
-            if (tp.IsGenericType && tp.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
-                var t2 = prop.PropertyInfo.PropertyType.GetGenericArguments()[0];
-                // Debug.WriteLine($"Prop: {prop.Name} : {t2}");
-                return t2.Name;
-            }
-            // Debug.WriteLine($"Ok Prop: {prop.Name} : {tp.Name}");
-            return tp.Name;
-        }
-        else if (prop.EnumerableType is not null)
+        if (prop.EnumerableType is not null)
         {
 			// var nm = GetFriendlyTypeName(tp);
 			// Debug.WriteLine($"### Not ok 1 - Prop: {prop.Name} : {tp.Name}");
 			return prop.EnumerableType.Name; // adding management of lists
 		}
-        return "";
+		else 
+		{
+			if (tp.IsGenericType && tp.GetGenericTypeDefinition() == typeof(Nullable<>))
+			{
+				var t2 = prop.PropertyInfo.PropertyType.GetGenericArguments()[0];
+				// Debug.WriteLine($"Prop: {prop.Name} : {t2}");
+				return t2.Name;
+			}
+			// Debug.WriteLine($"Ok Prop: {prop.Name} : {tp.Name}");
+			return tp.Name;
+		}
 	}
 
 	private const string stub = """

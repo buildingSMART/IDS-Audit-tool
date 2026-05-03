@@ -60,18 +60,49 @@ public class IfcSchemaTests
 	[Fact]
 	public void DebugTypeList()
 	{
+		XunitOutputHelper.WriteLine($"schemaVersions:");
 		foreach (var schema in SchemaInfo.GetSchemas(IfcSchemaVersions.IfcAllVersions))
 		{
-			Debug.WriteLine($"{schema.Version}");
-			Debug.WriteLine($"");
+			XunitOutputHelper.WriteLine($"- {schema.Version}");
+			schema.Version.ToString().Should().NotBeNullOrEmpty("version definition is missing");
 		}
 	}
+
+	[Theory]
+	[InlineData("GlobalId", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcGloballyUniqueId" })]
+	[InlineData("OwnerHistory", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcOwnerHistory" })]
+	[InlineData("RibWidth", IfcSchemaVersions.Ifc2x3, new[] { "IfcPositiveLengthMeasure" })]
+	[InlineData("CurveInterpolation", IfcSchemaVersions.Ifc4, new[] { "IfcCurveInterpolationEnum" })]
+	public void HasAttributeInformation(string attrubuteName, IfcSchemaVersions schemas, string[]? expected = null)
+	{
+		var oneSchema = false;
+		foreach (var schema in SchemaInfo.GetSchemas(schemas))
+		{
+			XunitOutputHelper.WriteLine($"Testing schema {schema.Version} for attribute {attrubuteName}");
+			oneSchema = true;
+			var fnd = schema.GetAttributesIfcTypes([attrubuteName]);
+			fnd.Should().NotBeNull();
+			if (expected is not null)
+			{
+				fnd.Should().HaveCount(expected.Length);
+				foreach (var exp in expected)
+				{
+					fnd.Should().Contain(exp);
+				}
+			}
+			else 
+				fnd.Should().NotBeEmpty();
+		}
+		oneSchema.Should().BeTrue("at least one schema should be tested");
+	}
+
 
 	[Theory]
 	[InlineData(new[] { "IFCWALL", "IFCSLAB" }, false)]
 	[InlineData(new[] { "IFCWALL", "IFCWALLSTANDARDCASE" }, true)]
 	[InlineData(new[] { "IFCWALL", "IFCWALLSTANDARDCASE", "IFCWINDOW" }, false)]
 	[InlineData(new[] { "IFCWALLSTANDARDCASE" }, true)]
+	[Obsolete("Ready to remove when the API is removed, tests covered elsewhere.")]
 	public void CanBuildConcreteSubtree(IEnumerable<string> types, bool outcome)
 	{
 		// Unrelated classes should not match
@@ -114,6 +145,7 @@ public class IfcSchemaTests
 	}
 
 	[Fact]
+	[Obsolete("Should convert to a more general test of the entire schema.")]
 	public void CanGetConcreteSubclasses()
 	{
 		// try the first set

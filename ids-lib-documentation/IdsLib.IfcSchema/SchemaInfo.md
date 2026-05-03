@@ -22,8 +22,9 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetAttributeClasses](SchemaInfo/GetAttributeClasses.md)(…) | Returns names of the classes that have an attribute. /// See  for similar function with different return type. |
 | [GetAttributeNames](SchemaInfo/GetAttributeNames.md)() | Returns all attribute names in the schema |
 | [GetAttributeRelations](SchemaInfo/GetAttributeRelations.md)(…) | Provides information of classes that have an attribute and the form of the relation to it. See  for similar function with different return type. |
-| [GetAttributesTypes](SchemaInfo/GetAttributesTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
-| [GetAttributesXmlTypes](SchemaInfo/GetAttributesXmlTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
+| [GetAttributesIfcTypes](SchemaInfo/GetAttributesIfcTypes.md)(…) | Returns a distinct enumerable of the IFC backing types of the required attributes, given a set of attribut names |
+| [GetAttributesXsdTypes](SchemaInfo/GetAttributesXsdTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
+| [GetAttributesXsdTypesEnum](SchemaInfo/GetAttributesXsdTypesEnum.md)(…) | Returns a distinct enumerable of the XSD backing types of the required attributes, given a set of attribut names |
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. |
 | static [AllConcreteClasses](SchemaInfo/AllConcreteClasses.md) { get; } | The names of all concrete classes across known IFC schemas |
@@ -36,7 +37,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [GetSchemas](SchemaInfo/GetSchemas.md)(…) | Returns the schema metadata information for the required versions. |
 | static [TryGetMeasureInformation](SchemaInfo/TryGetMeasureInformation.md)(…) | Returns the IfcMeasureInformation for a given measure class name. |
 | static [TryParseIfcDataType](SchemaInfo/TryParseIfcDataType.md)(…) | Attempts to convert a string value to an instance of the IfcMeasureInformation |
-| static [TrySearchTopClass](SchemaInfo/TrySearchTopClass.md)(…) | Attempts to identify a single top class inheritance from a list of class names |
+| static [TrySimplifyTopClasses](SchemaInfo/TrySimplifyTopClasses.md)(…) | Attempts to identify the minimal set of top-level classes that collectively cover all specified concrete class names within the given schema versions. |
 | enum [ClassAttributeMode](SchemaInfo.ClassAttributeMode.md) | Relation that allows to connect an available attribute to an entity |
 | struct [ClassRelationInfo](SchemaInfo.ClassRelationInfo.md) | A structure contianing information about the ways in which an attribute is related to a class |
 

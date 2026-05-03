@@ -35,7 +35,8 @@ namespace IdsLib.IfcSchema
 			Classes = new Dictionary<string, ClassInfo>();
 			AttributesToAllClasses = [];
 			AttributesToTopClasses = [];
-			AttributesToValueTypes = [];
+			AttributesToXsdValueTypes = [];
+			AttributesToIfcValueTypes = [];
 			PropertySets = PropertySetInfo.GetSchema(schemaVersion)!;
 		}
 
@@ -60,9 +61,14 @@ namespace IdsLib.IfcSchema
 		private Dictionary<string, string[]> AttributesToTopClasses { get; set; }
 
 		/// <summary>
-		/// from the attribute name to the names of the minimum set of classes that declare the attribute (no subclasses).
+		/// from the attribute name to the backing XSD types.
 		/// </summary>
-		private Dictionary<string, string[]?> AttributesToValueTypes { get; set; }
+		private Dictionary<string, string[]?> AttributesToXsdValueTypes { get; set; }
+
+		/// <summary>
+		/// from the attribute name to the backing IFC types.
+		/// </summary>
+		private Dictionary<string, string[]?> AttributesToIfcValueTypes { get; set; }
 
 		/// <summary>
 		/// Get the classinfo by name string.
@@ -506,7 +512,7 @@ namespace IdsLib.IfcSchema
 		static partial void GetAttributesIFC4(SchemaInfo destinationSchema);
 		static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema);
 
-		private void AddAttribute(string attributeName, string[] topClassNames, string[] allClassNames, string[]? valueTypes = null)
+		private void AddAttribute(string attributeName, string[] ifcTypes, string[] topClassNames, string[] allClassNames, string[]? valueTypes = null)
 		{
 			AttributesToAllClasses ??= new();
 			AttributesToAllClasses.Add(attributeName, allClassNames);
@@ -514,11 +520,17 @@ namespace IdsLib.IfcSchema
 			AttributesToTopClasses ??= new();
 			AttributesToTopClasses.Add(attributeName, topClassNames);
 
-			AttributesToValueTypes ??= new();
+			AttributesToXsdValueTypes ??= new();
 			if (valueTypes is null)
-				AttributesToValueTypes.Add(attributeName, null);
+				AttributesToXsdValueTypes.Add(attributeName, null);
 			else
-				AttributesToValueTypes.Add(attributeName, valueTypes);
+				AttributesToXsdValueTypes.Add(attributeName, valueTypes);
+
+			AttributesToIfcValueTypes ??= new();
+			if (ifcTypes is null)
+				AttributesToIfcValueTypes.Add(attributeName, null);
+			else
+				AttributesToIfcValueTypes.Add(attributeName, ifcTypes);
 		}
 
 		/// <summary>
@@ -838,16 +850,22 @@ namespace IdsLib.IfcSchema
 		}
 
 		/// <summary>
+		/// OBSOLETE: Use GetAttributesXsdTypes instead, which is more explicit in the return type
+		/// </summary>
+		[Obsolete("OBSOLETE. Use GetAttributesXsdTypes instead, which is more explicit in the return type")]
+		public IEnumerable<string> GetAttributesTypes(IEnumerable<string> attributeNames) => GetAttributesXsdTypes(attributeNames);
+
+		/// <summary>
 		/// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
 		/// </summary>
 		/// <param name="attributeNames">The names of the attributes to evaluate</param>
 		/// <returns>string names of the types found in the evaluation of the attributes</returns>
-		public IEnumerable<string> GetAttributesTypes(IEnumerable<string> attributeNames)
+		public IEnumerable<string> GetAttributesXsdTypes(IEnumerable<string> attributeNames)
 		{
 			List<string> possible = new List<string>();
 			foreach (var attribute in attributeNames)
 			{
-				if (!AttributesToValueTypes.TryGetValue(attribute, out var types))
+				if (!AttributesToXsdValueTypes.TryGetValue(attribute, out var types))
 					continue;
 				if (types is null)
 					continue;
@@ -857,13 +875,40 @@ namespace IdsLib.IfcSchema
 		}
 
 		/// <summary>
-		/// Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names
+		/// Returns a distinct enumerable of the IFC backing types of the required attributes, given a set of attribut names
 		/// </summary>
 		/// <param name="attributeNames">The names of the attributes to evaluate</param>
 		/// <returns>string names of the types found in the evaluation of the attributes</returns>
-		public IEnumerable<XsTypes.BaseTypes> GetAttributesXmlTypes(IEnumerable<string> attributeNames)
+		public IEnumerable<string> GetAttributesIfcTypes(IEnumerable<string> attributeNames)
 		{
-			foreach (var stringAttribute in GetAttributesTypes(attributeNames))
+			List<string> possible = new List<string>();
+			foreach (var attribute in attributeNames)
+			{
+				if (!AttributesToIfcValueTypes.TryGetValue(attribute, out var types))
+					continue;
+				if (types is null)
+					continue;
+				possible.AddRange(types);
+			}
+			return possible.Distinct();
+		}
+
+		/// <summary>
+		/// DO NOT USE, prefer the <see cref="GetAttributesXsdTypesEnum"/> version, which is better named.
+		/// </summary>
+		/// <param name="attributeNames"></param>
+		/// <returns></returns>
+		[Obsolete("Use GetAttributesXsdTypesEnum instead, which is better named")]
+		public IEnumerable<XsTypes.BaseTypes> GetAttributesXmlTypes(IEnumerable<string> attributeNames) => GetAttributesXsdTypesEnum(attributeNames);
+
+		/// <summary>
+		/// Returns a distinct enumerable of the XSD backing types of the required attributes, given a set of attribut names
+		/// </summary>
+		/// <param name="attributeNames">The names of the attributes to evaluate</param>
+		/// <returns>string names of the types found in the evaluation of the attributes</returns>
+		public IEnumerable<XsTypes.BaseTypes> GetAttributesXsdTypesEnum(IEnumerable<string> attributeNames)
+		{
+			foreach (var stringAttribute in GetAttributesXsdTypes(attributeNames))
 			{
 				yield return XsTypes.GetBaseFrom(stringAttribute);
 			}
@@ -885,6 +930,8 @@ namespace IdsLib.IfcSchema
 			{
 				var cl = this[className];
 				if (cl == null)
+					continue;
+				if (cl.PredefinedTypeValues is null)
 					continue;
 				foreach (var pt in cl.PredefinedTypeValues)
 				{
