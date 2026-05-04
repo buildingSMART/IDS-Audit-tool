@@ -13,6 +13,7 @@ internal partial class XsRestriction
 	private static Dictionary<XsTypes.BaseTypes, List<string>> validConstraintsDictionary = new Dictionary<XsTypes.BaseTypes, List<string>>()
 	{
 		{XsTypes.BaseTypes.XsString, ["annotation", "pattern", "enumeration", "minLength", "maxLength", "length"] },
+		{XsTypes.BaseTypes.XsAnyUri, ["annotation", "pattern", "enumeration", "minLength", "maxLength", "length"] },
 		{XsTypes.BaseTypes.XsDouble, ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
 		{XsTypes.BaseTypes.XsFloat, ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
 		{XsTypes.BaseTypes.XsDuration, ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },

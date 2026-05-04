@@ -1,5 +1,7 @@
 # XsTypes.BaseTypes enumeration
 
+Specifies the set of supported base data types for value representation and conversion operations.
+
 ```csharp
 public enum BaseTypes
 ```
@@ -21,6 +23,10 @@ public enum BaseTypes
 | XsDate | `10` | Date only value (with optional time zone offset) |
 | XsTime | `11` | Time only value (with optional time zone offset) |
 | XsAnyUri | `12` | URI value |
+
+## Remarks
+
+This enumeration is typically used to indicate the type of a value parsed from a string or to describe the expected data type in serialization, deserialization, or schema validation scenarios. The values correspond to common XML Schema (xs:) base types, including string, boolean, numeric, date/time, and URI types. The 'Invalid' member indicates a failed conversion, while 'Undefined' represents an uninitialized or unspecified type.
 
 ## See Also
 

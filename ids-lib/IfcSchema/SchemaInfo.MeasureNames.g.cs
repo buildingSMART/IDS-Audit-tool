@@ -375,7 +375,7 @@ public partial class SchemaInfo
 		new IfcDataTypeInformation("IFCUNITARYCONTROLELEMENTTYPEENUM", new[] { "Ifc4", "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCUNITARYEQUIPMENTTYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCUNITENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string"),
-		new IfcDataTypeInformation("IFCURIREFERENCE", new[] { "Ifc4", "Ifc4x3" }, "xs:string"),
+		new IfcDataTypeInformation("IFCURIREFERENCE", new[] { "Ifc4", "Ifc4x3" }, "xs:anyUri"),
 		new IfcDataTypeInformation("IFCVALVETYPEENUM", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, "xs:string"),
 		new IfcDataTypeInformation("IFCVAPORPERMEABILITYMEASURE", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }, new IfcMeasureInformation("IFCVAPORPERMEABILITYMEASURE","Vapor permeability","","","kg / s m Pa","(0, 0, 1, 0, 0, 0, 0)","IfcDerivedUnitEnum.VAPORPERMEABILITYUNIT"), "xs:double"),
 		new IfcDataTypeInformation("IFCVEHICLETYPEENUM", new[] { "Ifc4x3" }, "xs:string"),

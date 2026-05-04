@@ -20,7 +20,7 @@ namespace idsLib.tests
 		{
 			var types = IdsLib.IfcSchema.SchemaInfo.AllDataTypes.Select(x=>x.BackingType).Distinct().ToList();
 			var nullBacking = IdsLib.IfcSchema.SchemaInfo.AllDataTypes.Where(x => x.BackingType is null).ToList();
-			types.Count.Should().Be(9);
+			types.Count.Should().Be(10);
 		}
 
 		[Fact]

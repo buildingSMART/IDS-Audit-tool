@@ -1,13 +1,18 @@
-﻿using FluentAssertions;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using FluentAssertions;
 using idsLib.tests.Helpers;
 using IdsLib;
+using IdsLib.IdsSchema.IdsNodes;
+using IdsLib.IdsSchema.XsNodes;
 using idsTool.tests.Helpers;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -33,7 +38,74 @@ namespace idsLib.tests
             public IEnumerable<string> SchemaFiles => Schemas;		
         }
 
-        [Theory]
+		public static IEnumerable<object[]> AllBaseTypes =>
+			System.Enum.GetValues(typeof(XsTypes.BaseTypes))
+				.Cast<XsTypes.BaseTypes>()
+				.Select(v => new object[] { v });
+
+
+		[Theory]
+		[MemberData(nameof(xsdTypeStrings))]
+		public void TestXsdTypeStrings(string baseType)
+		{
+			var t = XsTypes.GetBaseFrom(baseType);
+
+			// now we need to check the availability of the regex string 
+			var regexString = XsTypes.GetRegexString(t);
+			regexString.Should().NotBeNullOrWhiteSpace($"base type {baseType} should have a regex string defined");
+			XunitOutputHelper.WriteLine($"base type {baseType} has regex string: {regexString}");
+
+			// now we need to check the availability of the associated XsdAllowedFacets
+			XsTypes.GetAllowedFacets(t).Should().NotBeEmpty($"base type {baseType} should have a valid array of valid facets");
+			XunitOutputHelper.WriteLine($"base type {baseType} has allowed facets: {string.Join(", ", XsTypes.GetAllowedFacets(t))}");
+
+			// now we need to check the availability of a default value for the type
+			var emptyValue = XsTypes.GetDefaultEmptyValue(t);
+			XunitOutputHelper.WriteLine($"base type {baseType} has default empty value: {emptyValue}");
+			
+			// and finally check that the default value is valid for the type
+			//
+			// built in regex first
+			XsTypes.IsValid(emptyValue, t).Should().BeTrue($"default empty value `{emptyValue}` should be valid for base type {baseType}");
+			// and then a new regex
+			Regex r = new Regex(regexString);
+
+			// and then it should match 
+			r.IsMatch(emptyValue).Should().BeTrue($"default empty value `{emptyValue}` should match the new regex built for base type {baseType}");
+		}
+
+
+		[Theory]
+		[MemberData(nameof(AllBaseTypes))]
+		public void TestXsdTypes(XsTypes.BaseTypes baseType)
+		{
+			if (baseType == XsTypes.BaseTypes.Invalid || baseType == XsTypes.BaseTypes.Undefined)
+				return; // these are not valid base types, so we skip them
+
+			XsTypes.GetValidBaseTypes().Should().Contain(baseType, $"base type {baseType} should be in the list of valid base types");
+
+			var str = XsTypes.GetStringFromEnum(baseType);
+			str.Should().NotBeNullOrWhiteSpace();
+
+			// now we parse the string back to the type
+			XsTypes.GetBaseFrom(str).Should().Be(baseType);
+
+			// more tests are performed for the critical types (i.e. those which are defined in the schemas)
+		}
+
+		
+
+		public static IEnumerable<object[]> xsdTypeStrings()
+		{
+			var vals = IdsLib.IfcSchema.SchemaInfo.AllDataTypes
+				.Where(x=> !string.IsNullOrEmpty(x.BackingType))
+				.Select(dt => dt.BackingType!)
+				.Distinct()
+				.ToList();
+			return vals.Select(v => new object[] { v });
+		}
+		
+		[Theory]
         [InlineData(@"ValidFiles/CanonicalVersions/canonical-1.0.ids", 0)]
         [InlineData(@"ValidFiles/CanonicalVersions/canonical-0.9.7.ids", 1)]
         public void CanAuditCanonicalVersions(string fileName, int warnings)

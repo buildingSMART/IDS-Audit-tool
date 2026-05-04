@@ -7,9 +7,10 @@ internal class IdsSchema_RestrictionTypeGenerator
 	// originally taken from: https://www.w3.org/TR/xmlschema-2/ with some adjustments based on IDS specification documents
 	// (e.g., we don't need to support all types)
 	// "totalDigits" and "fractionDigits" removed from integer and decimal
-	private static Dictionary<string, string[]> validConstraintsDictionary = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
+	internal static Dictionary<string, string[]> validConstraintsDictionary = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
 	{
 		{"XsString", ["annotation", "pattern", "enumeration", "minLength", "maxLength", "length"] },
+		{"XsAnyUri", ["annotation", "pattern", "enumeration", "minLength", "maxLength", "length"] },
 		{"XsDouble", ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
 		{"XsFloat", ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },
 		{"XsDuration", ["annotation", "pattern", "enumeration", "minExclusive", "maxExclusive", "minInclusive", "maxInclusive"] },

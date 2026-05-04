@@ -1400,7 +1400,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("CurveFontScaling", new[] { "IfcPositiveRatioMeasure" }, new[] { "IFCCURVESTYLEFONTANDSCALING" }, new[] { "IFCCURVESTYLEFONTANDSCALING" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("VisibleSegmentLength", new[] { "IfcLengthMeasure" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("InvisibleSegmentLength", new[] { "IfcPositiveLengthMeasure" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "xs:double" });
-		destinationSchema.AddAttribute("Location", new[] { "IfcURIReference", "IfcCartesianPoint" }, new[] { "IFCEXTERNALREFERENCE", "IFCPLACEMENT", "IFCCLASSIFICATION", "IFCDOCUMENTINFORMATION", "IFCLIBRARYINFORMATION" }, new[] { "IFCEXTERNALLYDEFINEDHATCHSTYLE", "IFCEXTERNALREFERENCE", "IFCEXTERNALLYDEFINEDSURFACESTYLE", "IFCEXTERNALLYDEFINEDTEXTFONT", "IFCAXIS1PLACEMENT", "IFCPLACEMENT", "IFCAXIS2PLACEMENT2D", "IFCAXIS2PLACEMENT3D", "IFCCLASSIFICATION", "IFCCLASSIFICATIONREFERENCE", "IFCDOCUMENTINFORMATION", "IFCDOCUMENTREFERENCE", "IFCLIBRARYINFORMATION", "IFCLIBRARYREFERENCE" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("Location", new[] { "IfcURIReference", "IfcCartesianPoint" }, new[] { "IFCEXTERNALREFERENCE", "IFCPLACEMENT", "IFCCLASSIFICATION", "IFCDOCUMENTINFORMATION", "IFCLIBRARYINFORMATION" }, new[] { "IFCEXTERNALLYDEFINEDHATCHSTYLE", "IFCEXTERNALREFERENCE", "IFCEXTERNALLYDEFINEDSURFACESTYLE", "IFCEXTERNALLYDEFINEDTEXTFONT", "IFCAXIS1PLACEMENT", "IFCPLACEMENT", "IFCAXIS2PLACEMENT2D", "IFCAXIS2PLACEMENT3D", "IFCCLASSIFICATION", "IFCCLASSIFICATIONREFERENCE", "IFCDOCUMENTINFORMATION", "IFCDOCUMENTREFERENCE", "IFCLIBRARYINFORMATION", "IFCLIBRARYREFERENCE" }, new[] { "xs:anyUri" });
 		destinationSchema.AddAttribute("FillStyles", new[] { "IfcFillStyleSelect" }, new[] { "IFCFILLAREASTYLE" }, new[] { "IFCFILLAREASTYLE" });
 		destinationSchema.AddAttribute("ModelorDraughting", new[] { "IfcBoolean" }, new[] { "IFCFILLAREASTYLE" }, new[] { "IFCFILLAREASTYLE" }, new[] { "xs:boolean" });
 		destinationSchema.AddAttribute("HatchLineAppearance", new[] { "IfcCurveStyle" }, new[] { "IFCFILLAREASTYLEHATCHING" }, new[] { "IFCFILLAREASTYLEHATCHING" });
@@ -1411,7 +1411,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("TilingPattern", new[] { "IfcVector" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" });
 		destinationSchema.AddAttribute("Tiles", new[] { "IfcStyledItem" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" });
 		destinationSchema.AddAttribute("TilingScale", new[] { "IfcPositiveRatioMeasure" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "xs:double" });
-		destinationSchema.AddAttribute("URLReference", new[] { "IfcURIReference" }, new[] { "IFCIMAGETEXTURE" }, new[] { "IFCIMAGETEXTURE" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("URLReference", new[] { "IfcURIReference" }, new[] { "IFCIMAGETEXTURE" }, new[] { "IFCIMAGETEXTURE" }, new[] { "xs:anyUri" });
 		destinationSchema.AddAttribute("MappedTo", new[] { "IfcTessellatedFaceSet", "IfcFace" }, new[] { "IFCINDEXEDCOLOURMAP", "IFCINDEXEDTEXTUREMAP", "IFCTEXTUREMAP" }, new[] { "IFCINDEXEDCOLOURMAP", "IFCINDEXEDTEXTUREMAP", "IFCINDEXEDTRIANGLETEXTUREMAP", "IFCTEXTUREMAP" });
 		destinationSchema.AddAttribute("Opacity", new[] { "IfcNormalisedRatioMeasure" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("Colours", new[] { "IfcColourRgbList" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "IFCINDEXEDCOLOURMAP" });
@@ -1851,8 +1851,8 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("FacsimileNumbers", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("PagerNumber", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("ElectronicMailAddresses", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
-		destinationSchema.AddAttribute("WWWHomePageURL", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
-		destinationSchema.AddAttribute("MessagingIDs", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("WWWHomePageURL", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:anyUri" });
+		destinationSchema.AddAttribute("MessagingIDs", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:anyUri" });
 	}
 
     static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema)
@@ -2085,7 +2085,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("Currency", new[] { "IfcLabel" }, new[] { "IFCMONETARYUNIT" }, new[] { "IFCMONETARYUNIT" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("Prefix", new[] { "IfcSIPrefix" }, new[] { "IFCSIUNIT" }, new[] { "IFCSIUNIT" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("Units", new[] { "IfcUnit" }, new[] { "IFCUNITASSIGNMENT" }, new[] { "IFCUNITASSIGNMENT" });
-		destinationSchema.AddAttribute("Specification", new[] { "IfcText", "IfcURIReference" }, new[] { "IFCPROPERTY", "IFCCLASSIFICATION" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTY", "IFCPROPERTYBOUNDEDVALUE", "IFCSIMPLEPROPERTY", "IFCPROPERTYENUMERATEDVALUE", "IFCPROPERTYLISTVALUE", "IFCPROPERTYREFERENCEVALUE", "IFCPROPERTYSINGLEVALUE", "IFCPROPERTYTABLEVALUE", "IFCCLASSIFICATION" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("Specification", new[] { "IfcText", "IfcURIReference" }, new[] { "IFCPROPERTY", "IFCCLASSIFICATION" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTY", "IFCPROPERTYBOUNDEDVALUE", "IFCSIMPLEPROPERTY", "IFCPROPERTYENUMERATEDVALUE", "IFCPROPERTYLISTVALUE", "IFCPROPERTYREFERENCEVALUE", "IFCPROPERTYSINGLEVALUE", "IFCPROPERTYTABLEVALUE", "IFCCLASSIFICATION" }, new[] { "xs:string", "xs:anyUri" });
 		destinationSchema.AddAttribute("UsageName", new[] { "IfcIdentifier", "IfcText", "IfcLabel" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTYREFERENCEVALUE", "IFCCOMPLEXPROPERTYTEMPLATE" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTYREFERENCEVALUE", "IFCCOMPLEXPROPERTYTEMPLATE" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("HasProperties", new[] { "IfcProperty" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTYSET" }, new[] { "IFCCOMPLEXPROPERTY", "IFCPROPERTYSET" });
 		destinationSchema.AddAttribute("UpperBoundValue", new[] { "IfcValue" }, new[] { "IFCPROPERTYBOUNDEDVALUE" }, new[] { "IFCPROPERTYBOUNDEDVALUE" });
@@ -2181,7 +2181,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("CurveFontScaling", new[] { "IfcPositiveRatioMeasure" }, new[] { "IFCCURVESTYLEFONTANDSCALING" }, new[] { "IFCCURVESTYLEFONTANDSCALING" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("VisibleSegmentLength", new[] { "IfcLengthMeasure" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("InvisibleSegmentLength", new[] { "IfcPositiveLengthMeasure" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "IFCCURVESTYLEFONTPATTERN" }, new[] { "xs:double" });
-		destinationSchema.AddAttribute("Location", new[] { "IfcURIReference", "IfcPoint" }, new[] { "IFCEXTERNALREFERENCE", "IFCPLACEMENT", "IFCDOCUMENTINFORMATION", "IFCLIBRARYINFORMATION" }, new[] { "IFCEXTERNALLYDEFINEDHATCHSTYLE", "IFCEXTERNALREFERENCE", "IFCEXTERNALLYDEFINEDSURFACESTYLE", "IFCEXTERNALLYDEFINEDTEXTFONT", "IFCAXIS1PLACEMENT", "IFCPLACEMENT", "IFCAXIS2PLACEMENT2D", "IFCAXIS2PLACEMENT3D", "IFCAXIS2PLACEMENTLINEAR", "IFCCLASSIFICATIONREFERENCE", "IFCDOCUMENTINFORMATION", "IFCDOCUMENTREFERENCE", "IFCLIBRARYINFORMATION", "IFCLIBRARYREFERENCE" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("Location", new[] { "IfcURIReference", "IfcPoint" }, new[] { "IFCEXTERNALREFERENCE", "IFCPLACEMENT", "IFCDOCUMENTINFORMATION", "IFCLIBRARYINFORMATION" }, new[] { "IFCEXTERNALLYDEFINEDHATCHSTYLE", "IFCEXTERNALREFERENCE", "IFCEXTERNALLYDEFINEDSURFACESTYLE", "IFCEXTERNALLYDEFINEDTEXTFONT", "IFCAXIS1PLACEMENT", "IFCPLACEMENT", "IFCAXIS2PLACEMENT2D", "IFCAXIS2PLACEMENT3D", "IFCAXIS2PLACEMENTLINEAR", "IFCCLASSIFICATIONREFERENCE", "IFCDOCUMENTINFORMATION", "IFCDOCUMENTREFERENCE", "IFCLIBRARYINFORMATION", "IFCLIBRARYREFERENCE" }, new[] { "xs:anyUri" });
 		destinationSchema.AddAttribute("FillStyles", new[] { "IfcFillStyleSelect" }, new[] { "IFCFILLAREASTYLE" }, new[] { "IFCFILLAREASTYLE" });
 		destinationSchema.AddAttribute("HatchLineAppearance", new[] { "IfcCurveStyle" }, new[] { "IFCFILLAREASTYLEHATCHING" }, new[] { "IFCFILLAREASTYLEHATCHING" });
 		destinationSchema.AddAttribute("StartOfNextHatchLine", new[] { "IfcHatchLineDistanceSelect" }, new[] { "IFCFILLAREASTYLEHATCHING" }, new[] { "IFCFILLAREASTYLEHATCHING" });
@@ -2191,7 +2191,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("TilingPattern", new[] { "IfcVector" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" });
 		destinationSchema.AddAttribute("Tiles", new[] { "IfcStyledItem" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" });
 		destinationSchema.AddAttribute("TilingScale", new[] { "IfcPositiveRatioMeasure" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "IFCFILLAREASTYLETILES" }, new[] { "xs:double" });
-		destinationSchema.AddAttribute("URLReference", new[] { "IfcURIReference" }, new[] { "IFCIMAGETEXTURE" }, new[] { "IFCIMAGETEXTURE" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("URLReference", new[] { "IfcURIReference" }, new[] { "IFCIMAGETEXTURE" }, new[] { "IFCIMAGETEXTURE" }, new[] { "xs:anyUri" });
 		destinationSchema.AddAttribute("MappedTo", new[] { "IfcTessellatedFaceSet", "IfcFace" }, new[] { "IFCINDEXEDCOLOURMAP", "IFCINDEXEDTEXTUREMAP", "IFCTEXTUREMAP" }, new[] { "IFCINDEXEDCOLOURMAP", "IFCINDEXEDTEXTUREMAP", "IFCINDEXEDTRIANGLETEXTUREMAP", "IFCTEXTUREMAP", "IFCINDEXEDPOLYGONALTEXTUREMAP" });
 		destinationSchema.AddAttribute("Opacity", new[] { "IfcNormalisedRatioMeasure" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "xs:double" });
 		destinationSchema.AddAttribute("Colours", new[] { "IfcColourRgbList" }, new[] { "IFCINDEXEDCOLOURMAP" }, new[] { "IFCINDEXEDCOLOURMAP" });
@@ -2779,7 +2779,7 @@ public partial class SchemaInfo
 		destinationSchema.AddAttribute("FacsimileNumbers", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("PagerNumber", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
 		destinationSchema.AddAttribute("ElectronicMailAddresses", new[] { "IfcLabel" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
-		destinationSchema.AddAttribute("WWWHomePageURL", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
-		destinationSchema.AddAttribute("MessagingIDs", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:string" });
+		destinationSchema.AddAttribute("WWWHomePageURL", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:anyUri" });
+		destinationSchema.AddAttribute("MessagingIDs", new[] { "IfcURIReference" }, new[] { "IFCTELECOMADDRESS" }, new[] { "IFCTELECOMADDRESS" }, new[] { "xs:anyUri" });
 	}
 }

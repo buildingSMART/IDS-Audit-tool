@@ -109,6 +109,8 @@ public class IfcSchema_DatatypeNamesGenerator
                     xmlType = MapToXml(tmpType.UnderlyingType, daDataType);
 					if (daDataType == "IFCCOUNTMEASURE") // exception for Xbim implementation quirkiness
 						xmlType = "xs:integer";
+					else if (daDataType == "IFCURIREFERENCE")
+						xmlType = "xs:anyUri";					
 				}
                 
 				if (dataTypeDictionary.TryGetValue(daDataType, out var lst))

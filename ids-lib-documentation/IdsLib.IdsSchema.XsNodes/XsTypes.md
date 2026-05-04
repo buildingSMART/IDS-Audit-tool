@@ -10,10 +10,15 @@ public static class XsTypes
 
 | name | description |
 | --- | --- |
+| static [GetAllowedFacets](XsTypes/GetAllowedFacets.md)(…) | Returns the set of XSD facets that are allowed for the specified base type. |
 | static [GetBaseFrom](XsTypes/GetBaseFrom.md)(…) | Utility function to evaluate the type enumeration from a string |
+| static [GetDefaultEmptyValue](XsTypes/GetDefaultEmptyValue.md)(…) | Returns the default empty value as a string for the specified base type. |
+| static [GetRegexString](XsTypes/GetRegexString.md)(…) | Returns the regular expression pattern string associated with the specified base type. |
 | static [GetStringFromEnum](XsTypes/GetStringFromEnum.md)(…) | Utility function to evaluate the string representation from the enum |
+| static [GetValidBaseTypes](XsTypes/GetValidBaseTypes.md)() | Returns an array of base types that are considered valid for use in XML schema definitions. |
 | static [IsValid](XsTypes/IsValid.md)(…) | Determines if a string value is compatible with a given type |
-| enum [BaseTypes](XsTypes.BaseTypes.md) |  |
+| enum [BaseTypes](XsTypes.BaseTypes.md) | Specifies the set of supported base data types for value representation and conversion operations. |
+| enum [XsdAllowedFacets](XsTypes.XsdAllowedFacets.md) | Specifies the set of XML Schema definition (XSD) facets that can be applied to specify values by constraint of lexical space or values space, or their description |
 
 ## See Also
 

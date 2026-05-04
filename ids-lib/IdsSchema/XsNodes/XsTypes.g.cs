@@ -8,6 +8,7 @@ namespace IdsLib.IdsSchema.XsNodes
 {
 	public static partial class XsTypes
 	{
+		private readonly static Regex regexAnyUri = new(@"^\S+$", RegexOptions.Compiled);
 		private readonly static Regex regexBoolean = new(@"^(true|false|0|1)$", RegexOptions.Compiled);
 		private readonly static Regex regexDate = new(@"^\d{4}-\d{2}-\d{2}(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
 		private readonly static Regex regexDateTime = new(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
@@ -16,5 +17,55 @@ namespace IdsLib.IdsSchema.XsNodes
 		private readonly static Regex regexInteger = new(@"^[+-]?(\d+)$", RegexOptions.Compiled);
 		private readonly static Regex regexString = new(@"^.*$", RegexOptions.Compiled);
 		private readonly static Regex regexTime = new(@"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
+
+		/// <summary>
+		/// Returns the regular expression pattern string associated with the specified base type.
+		/// </summary>
+		/// <param name="requiredType">The base type for which to retrieve the regular expression pattern.</param>
+		/// <returns>
+		/// A string containing the regular expression pattern for the specified base type. 
+		/// Returns an empty string if no
+		/// pattern is defined for the given type.
+		/// </returns>
+		public static string GetRegexString(BaseTypes requiredType)
+		{
+			return requiredType switch
+			{
+				BaseTypes.XsAnyUri => @"^\S+$",
+				BaseTypes.XsBoolean => @"^(true|false|0|1)$",
+				BaseTypes.XsDate => @"^\d{4}-\d{2}-\d{2}(Z|([+-]\d{2}:\d{2}))?$",
+				BaseTypes.XsDateTime => @"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$",
+				BaseTypes.XsDouble => @"^([-+]?[0-9]*\.?[0-9]*([eE][-+]?[0-9]+)?|NaN|\+INF|-INF)$",
+				BaseTypes.XsDuration => @"^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$",
+				BaseTypes.XsInteger => @"^[+-]?(\d+)$",
+				BaseTypes.XsString => @"^.*$",
+				BaseTypes.XsTime => @"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$",
+				_ => ""
+			};
+		}
+			
+		/// <summary>
+		/// Returns the set of XSD facets that are allowed for the specified base type.
+		/// </summary>
+		/// <param name="requiredType">The base type for which to retrieve the allowed XSD facets.</param>
+		/// <returns>An array of XsdAllowedFacets values representing the facets permitted for the specified base type. The array is
+		/// empty if no facets are allowed.</returns>
+		public static XsdAllowedFacets[] GetAllowedFacets(BaseTypes requiredType)
+		{
+			return requiredType switch
+			{
+				BaseTypes.XsAnyUri => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinLength, XsdAllowedFacets.MaxLength, XsdAllowedFacets.Length],
+				BaseTypes.XsBoolean => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern],
+				BaseTypes.XsDate => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
+				BaseTypes.XsDateTime => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
+				BaseTypes.XsDouble => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
+				BaseTypes.XsDuration => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
+				BaseTypes.XsInteger => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MaxInclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MinExclusive],
+				BaseTypes.XsString => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinLength, XsdAllowedFacets.MaxLength, XsdAllowedFacets.Length],
+				BaseTypes.XsTime => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
+				_ => []
+			};
+		}
+
 	}
 }

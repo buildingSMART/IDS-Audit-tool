@@ -137,8 +137,6 @@ internal partial class XsRestriction : IdsXmlNode, IStringListMatcher, IStringPr
         return matches.Any();
     }
 
-	
-
 	internal static IEnumerable<XsTypes.BaseTypes> GetXsBaseTypes() => validConstraintsDictionary.Keys;
 	internal static IEnumerable<string> GetXsRestrictionNodes(XsTypes.BaseTypes type)
 	{
