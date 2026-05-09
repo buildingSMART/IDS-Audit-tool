@@ -8,7 +8,7 @@ namespace IdsLib.IdsSchema.XsNodes
 {
 	public static partial class XsTypes
 	{
-		private readonly static Regex regexAnyUri = new(@"^\S+$", RegexOptions.Compiled);
+		private readonly static Regex regexAnyURI = new(@"^\S+$", RegexOptions.Compiled);
 		private readonly static Regex regexBoolean = new(@"^(true|false|0|1)$", RegexOptions.Compiled);
 		private readonly static Regex regexDate = new(@"^\d{4}-\d{2}-\d{2}(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
 		private readonly static Regex regexDateTime = new(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$", RegexOptions.Compiled);
@@ -31,7 +31,7 @@ namespace IdsLib.IdsSchema.XsNodes
 		{
 			return requiredType switch
 			{
-				BaseTypes.XsAnyUri => @"^\S+$",
+				BaseTypes.XsAnyURI => @"^\S+$",
 				BaseTypes.XsBoolean => @"^(true|false|0|1)$",
 				BaseTypes.XsDate => @"^\d{4}-\d{2}-\d{2}(Z|([+-]\d{2}:\d{2}))?$",
 				BaseTypes.XsDateTime => @"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$",
@@ -54,7 +54,7 @@ namespace IdsLib.IdsSchema.XsNodes
 		{
 			return requiredType switch
 			{
-				BaseTypes.XsAnyUri => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinLength, XsdAllowedFacets.MaxLength, XsdAllowedFacets.Length],
+				BaseTypes.XsAnyURI => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinLength, XsdAllowedFacets.MaxLength, XsdAllowedFacets.Length],
 				BaseTypes.XsBoolean => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern],
 				BaseTypes.XsDate => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],
 				BaseTypes.XsDateTime => [XsdAllowedFacets.Annotation, XsdAllowedFacets.Pattern, XsdAllowedFacets.Enumeration, XsdAllowedFacets.MinExclusive, XsdAllowedFacets.MaxExclusive, XsdAllowedFacets.MinInclusive, XsdAllowedFacets.MaxInclusive],

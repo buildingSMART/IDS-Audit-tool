@@ -22,7 +22,7 @@ namespace IdsLib.IdsSchema.XsNodes
 				case XsTypes.BaseTypes.Invalid: // notified in the the restriction already, do nothing here
 				case XsTypes.BaseTypes.XsString:
 					break;                          // nothing to do
-				case XsTypes.BaseTypes.XsAnyUri:
+				case XsTypes.BaseTypes.XsAnyURI:
 				case XsTypes.BaseTypes.XsBoolean:
 				case XsTypes.BaseTypes.XsInteger:
 				case XsTypes.BaseTypes.XsDouble:
@@ -74,8 +74,8 @@ namespace IdsLib.IdsSchema.XsNodes
 					return false;
 				case BaseTypes.XsBoolean:
 					return regexBoolean.IsMatch(valueString);
-				case BaseTypes.XsAnyUri: 
-					return regexAnyUri.IsMatch(valueString);
+				case BaseTypes.XsAnyURI: 
+					return regexAnyURI.IsMatch(valueString);
 			}
 			return false;
 		}
@@ -100,7 +100,8 @@ namespace IdsLib.IdsSchema.XsNodes
 				"xs:dateTime" => BaseTypes.XsDateTime,
 				"xs:date" => BaseTypes.XsDate,
 				"xs:time" => BaseTypes.XsTime,
-				"xs:anyUri" => BaseTypes.XsAnyUri,
+				"xs:anyURI" => BaseTypes.XsAnyURI,
+				"xs:anyUri" => BaseTypes.XsAnyURI, // alias for xs:anyURI will be removed
 				_ => BaseTypes.Invalid
 			};
 		}
@@ -124,7 +125,7 @@ namespace IdsLib.IdsSchema.XsNodes
 				BaseTypes.XsDateTime => "xs:dateTime",
 				BaseTypes.XsDate => "xs:date",
 				BaseTypes.XsTime => "xs:time",
-				BaseTypes.XsAnyUri => "xs:anyUri",
+				BaseTypes.XsAnyURI => "xs:anyURI",
 				_ => ""
 			};
 		}
@@ -150,7 +151,7 @@ namespace IdsLib.IdsSchema.XsNodes
 			BaseTypes.XsDateTime,
 			BaseTypes.XsDate,
 			BaseTypes.XsTime,
-			BaseTypes.XsAnyUri
+			BaseTypes.XsAnyURI
 		];
 
 
@@ -166,7 +167,7 @@ namespace IdsLib.IdsSchema.XsNodes
 		{
 			return requiredType switch
 			{
-				BaseTypes.XsAnyUri => "https://web",
+				BaseTypes.XsAnyURI => "https://web",
 				BaseTypes.XsBoolean => "false",
 				BaseTypes.XsDate => DateTimeOffset.Now.ToString("yyyy-MM-ddzzz"),
 				BaseTypes.XsDateTime => DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss'Z'"),
@@ -305,7 +306,12 @@ namespace IdsLib.IdsSchema.XsNodes
 			/// <summary>
 			/// URI value
 			/// </summary>
-			XsAnyUri,
+			XsAnyURI,
+			/// <summary>
+			/// URI value
+			/// </summary>
+			[Obsolete("Use XsAnyURI which is the correct XML capitalization instead. This alias will be removed in a future version.")]
+			XsAnyUri = XsAnyURI, // alias for xs:anyURI
 		}
 
 	}

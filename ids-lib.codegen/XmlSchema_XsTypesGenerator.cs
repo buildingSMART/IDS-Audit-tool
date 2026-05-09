@@ -65,7 +65,7 @@ namespace IdsLib.codegen
 				"xs:duration" => @"^[-+]?P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$",
 				"xs:integer" => @"^[+-]?(\d+)$",
 				"xs:string" => @"^.*$",
-				"xs:anyUri" => @"^\S+$", // This roughly matches the practical behavior of many validators: “any non-empty, non-whitespace string”.  Use of spaces is highly discouraged (unless they are encoded by %20).
+				"xs:anyURI" => @"^\S+$", // This roughly matches the practical behavior of many validators: “any non-empty, non-whitespace string”.  Use of spaces is highly discouraged (unless they are encoded by %20).
 				"xs:time" => @"^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|([+-]\d{2}:\d{2}))?$",
 				_ => ""
 			};

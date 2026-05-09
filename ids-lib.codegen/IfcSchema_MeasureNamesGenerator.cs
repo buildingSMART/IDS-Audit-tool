@@ -110,7 +110,7 @@ public class IfcSchema_DatatypeNamesGenerator
 					if (daDataType == "IFCCOUNTMEASURE") // exception for Xbim implementation quirkiness
 						xmlType = "xs:integer";
 					else if (daDataType == "IFCURIREFERENCE")
-						xmlType = "xs:anyUri";					
+						xmlType = "xs:anyURI";					
 				}
                 
 				if (dataTypeDictionary.TryGetValue(daDataType, out var lst))

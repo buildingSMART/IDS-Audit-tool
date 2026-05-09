@@ -47,8 +47,8 @@ public class RestrictionAuditTests
     [InlineData("P5Y2M10DT15H", XsTypes.BaseTypes.XsDuration, true)]
     [InlineData("PT15H", XsTypes.BaseTypes.XsDuration, true)]
     [InlineData("-P10D", XsTypes.BaseTypes.XsDuration, true)]
-    [InlineData("uri", XsTypes.BaseTypes.XsAnyUri, true)]
-    [InlineData("", XsTypes.BaseTypes.XsAnyUri, false)]
+    [InlineData("uri", XsTypes.BaseTypes.XsAnyURI, true)]
+    [InlineData("", XsTypes.BaseTypes.XsAnyURI, false)]
     public void Evaluates(string stringValue, XsTypes.BaseTypes type, bool expected)
     {
         var valid = XsTypes.IsValid(stringValue, type);
@@ -56,6 +56,5 @@ public class RestrictionAuditTests
 		    valid.Should().Be(expected, $"`{stringValue}` is a valid {type}");
         else
 		    valid.Should().Be(expected, $"`{stringValue}` is not a valid {type}");
-
     }
 }

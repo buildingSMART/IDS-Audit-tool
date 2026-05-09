@@ -22,7 +22,7 @@ public enum BaseTypes
 | XsDateTime | `9` | Date and time value (with optional time zone offset) |
 | XsDate | `10` | Date only value (with optional time zone offset) |
 | XsTime | `11` | Time only value (with optional time zone offset) |
-| XsAnyUri | `12` | URI value |
+| XsAnyURI | `12` | URI value |
 
 ## Remarks
 
