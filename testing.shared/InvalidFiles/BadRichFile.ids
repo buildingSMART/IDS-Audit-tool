@@ -1,0 +1,2727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+	<ids:info>
+		<ids:title>Handover Specifications</ids:title>
+		<ids:copyright>© 2026 Claudio Benghi. This work is licensed under CC BY-SA 4.0 (attribution required, Share Alike). To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/</ids:copyright>
+		<ids:description>This is a demo Information Specification requirement, which has been randomly generated for demonstration purposes.</ids:description>
+		<ids:author>claudio.benghi@gmail.com</ids:author>
+		<ids:date>2026-05-18</ids:date>
+	</ids:info>
+	<ids:specifications>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Absorbed radioactivity dose model" description="Required for the Landscape Architect prerequisites" instructions="The property will be contain the information of the J / kg for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in J / kg(gray/ gray)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ABSORBEDDOSEUNIT&#xD;&#xA;" identifier="ced0da90-7fa4-4cee-9ebc-6061f4865732">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCABSORBEDDOSEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Clerk of Works</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCABSORBEDDOSEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_FoundationCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Inspector</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3.60</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Acceleration representation" description="Required for the Mechanical Subcontractor conditions" instructions="The property will be contain the information of the m / s2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m / s2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ACCELERATIONUNIT&#xD;&#xA;" identifier="2a88d610-e9c8-439a-8e8e-ab72dc5b1ef8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCACCELERATIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Carpenter</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCACCELERATIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Cable trayCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Building Control Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.28</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Amount of substance case in point" description="Required for the Architect wishes" instructions="The property will be contain the information of the mol for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in mol(mole)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.AMOUNTOFSUBSTANCEUNIT&#xD;&#xA;" identifier="3247a93d-06cc-4cd1-a3f9-72e1857b8e4e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCAMOUNTOFSUBSTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Glazing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCAMOUNTOFSUBSTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Welder</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="11.15" />
+							<xs:maxExclusive value="22.82" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Angular velocity exemplar" description="Required for the CDM Coordinator requests" instructions="The property will be contain the information of the rad / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in rad / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ANGULARVELOCITYUNIT&#xD;&#xA;" identifier="2279c09c-43e6-4bae-9b3b-79395b07a07a">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCANGULARVELOCITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Urban Planner</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCANGULARVELOCITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Estimator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.55</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Area density template" description="Required for the Cost Consultant petitions" instructions="The property will be contain the information of the kg / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.AREADENSITYUNIT&#xD;&#xA;" identifier="777b541e-2ccb-4b9e-9670-96a3b3a2f230">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCAREADENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Planning Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCAREADENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Planning Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="10.44" />
+							<xs:maxInclusive value="17.92" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Area showcase" description="Required for the Principal Designer requests" instructions="The property will be contain the information of the m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m2(square meter)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.AREAUNIT&#xD;&#xA;" identifier="6838feba-2780-4b56-b04f-5bf87db848a0">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCAREAMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCAREAMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Crane Operator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>12.49</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Curvature case in point" description="Required for the Building Surveyor requirements" instructions="The property will be contain the information of the rad / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in rad / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.CURVATUREUNIT&#xD;&#xA;" identifier="3aadc4e7-450b-4037-ad2b-7170038144c3">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCCURVATUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Interior Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCCURVATUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_FoundationCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Builder</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>10.55</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Dose equivalent sample" description="Required for the Mechanical Engineer contractual criteria" instructions="The property will be contain the information of the J / kg for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in J / kg(sievert/ sievert)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.DOSEEQUIVALENTUNIT&#xD;&#xA;" identifier="c65882eb-53de-479d-bf92-6ebba31497f7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCDOSEEQUIVALENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Landscape Architect</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCDOSEEQUIVALENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Planning Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>11.76</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Dynamic viscosity precedent" description="Required for the Mechanical Engineer petitions" instructions="The property will be contain the information of the Pa s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Pa s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.DYNAMICVISCOSITYUNIT&#xD;&#xA;" identifier="d6f2f8d6-0939-4307-94ed-91b94cc34ecb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCDYNAMICVISCOSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Principal Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCDYNAMICVISCOSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_PartitionCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation MEP Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="5.38" />
+							<xs:maxExclusive value="22.94" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric capacitance sample" description="Required for the Site Foreman requirements" instructions="The property will be contain the information of the F for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in F(farad)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICCAPACITANCEUNIT&#xD;&#xA;" identifier="4b8f7c90-3fb9-4d01-a58b-6310da4bd182">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICCAPACITANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Structural Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICCAPACITANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="11.95" />
+							<xs:maxExclusive value="16.42" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric charge specimen" description="Required for the Landscape Architect expectations" instructions="The property will be contain the information of the C for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in C(coulomb)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICCHARGEUNIT&#xD;&#xA;" identifier="e11f367c-88de-44f8-87ff-e922d04600bb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICCHARGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICCHARGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Crane Operator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>5.68</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric conductance scenario" description="Required for the Architect wishes" instructions="The property will be contain the information of the S for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in S(siemens)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICCONDUCTANCEUNIT&#xD;&#xA;" identifier="b1ef729a-5ed7-4340-b82f-8cdbef44790d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICCONDUCTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Structural Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICCONDUCTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_SkylightCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Acoustic Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3.69</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric current case" description="Required for the Structural Engineer necessities" instructions="The property will be contain the information of the A for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in A(ampere)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICCURRENTUNIT&#xD;&#xA;" identifier="5257a67b-66f6-4537-8784-644f0e560831">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICCURRENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Planning Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICCURRENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Interior Designer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.48</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric resistance exhibit" description="Required for the Acoustic Consultant wishes" instructions="The property will be contain the information of the Ω for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Ω(ohm)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICRESISTANCEUNIT&#xD;&#xA;" identifier="903dbafa-75cc-4f25-9918-0c2be9cbac07">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICRESISTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Mechanical Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICRESISTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>8.19</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Electric voltage showcase" description="Required for the Mechanical Engineer petitions" instructions="The property will be contain the information of the V for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in V(volt)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ELECTRICVOLTAGEUNIT&#xD;&#xA;" identifier="b457e8c9-7d6c-4f03-863e-ed7123b26b91">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCELECTRICVOLTAGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Roofing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCELECTRICVOLTAGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="10.21" />
+							<xs:maxExclusive value="19.01" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Energy model" description="Required for the Site Foreman stipulations" instructions="The property will be contain the information of the J for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in J(joule)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ENERGYUNIT&#xD;&#xA;" identifier="0729e59b-1c5e-417f-997e-2796d57ed9b7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCENERGYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Welder</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCENERGYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Estimator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>10.73</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Force case" description="Required for the Inspector conditions" instructions="The property will be contain the information of the N for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N(newton)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.FORCEUNIT&#xD;&#xA;" identifier="4f26f49b-ca00-47c3-b548-78bf02a09a2e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Quantity Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>11.87</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Frequency precedent" description="Required for the Roofing Subcontractor wishes" instructions="The property will be contain the information of the Hz for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Hz(hertz)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.FREQUENCYUNIT&#xD;&#xA;" identifier="618ca692-2731-4ee4-a778-e74514f1b598">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCFREQUENCYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Inspector</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCFREQUENCYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>10.18</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Heat flux density instance" description="Required for the Building Control Officer conditions" instructions="The property will be contain the information of the W / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W / m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.HEATFLUXDENSITYUNIT&#xD;&#xA;" identifier="58f834a3-2850-4d7a-a625-baf76d0c9a12">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCHEATFLUXDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCHEATFLUXDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Urban Planner</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="6.22" />
+							<xs:maxExclusive value="21.82" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Heating precedent" description="Required for the Employer conditions" instructions="The property will be contain the information of the J / Kg for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in J / Kg&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.HEATINGVALUEUNIT&#xD;&#xA;" identifier="c3100a9f-a019-480f-9d51-209c2cb54a40">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCHEATINGVALUEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Client</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCHEATINGVALUEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="3.67" />
+							<xs:maxExclusive value="15.79" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Illuminance exemplar" description="Required for the Welder conditions" instructions="The property will be contain the information of the lx for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in lx(lux)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.ILLUMINANCEUNIT&#xD;&#xA;" identifier="4a02978b-625b-4cc2-8f75-16bd9871d5bc">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCILLUMINANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Site Foreman</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCILLUMINANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Roofing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.84</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Inductance example" description="Required for the Employer requirements" instructions="The property will be contain the information of the Wb / A for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Wb / A(henry/ henry)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.INDUCTANCEUNIT&#xD;&#xA;" identifier="99502e45-cf09-432d-8065-30e9cf5edb52">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCINDUCTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Urban Planner</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCINDUCTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_RampCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Construction Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>11.39</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Ion concentration measure model" description="Required for the Sustainability Consultant needs" instructions="The property will be contain the information of the mol / m3 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in mol / m3&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.IONCONCENTRATIONUNIT&#xD;&#xA;" identifier="2f6ab7c9-fea0-41e6-bf53-8ebae6ca8b20">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCIONCONCENTRATIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Project Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCIONCONCENTRATIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>8.43</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Iso thermal moisture capacity sample" description="Required for the Land Surveyor stipulations" instructions="The property will be contain the information of the m3 / kg for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m3 / kg&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ISOTHERMALMOISTURECAPACITYUNIT&#xD;&#xA;" identifier="904b87a4-bc6d-44b3-896b-ca3916db728b">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCISOTHERMALMOISTURECAPACITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Quantity Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCISOTHERMALMOISTURECAPACITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Site Foreman</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="7.68" />
+							<xs:maxInclusive value="17.59" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Kinematic viscosity scenario" description="Required for the Subcontractor conditions" instructions="The property will be contain the information of the m2 / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m2 / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.KINEMATICVISCOSITYUNIT&#xD;&#xA;" identifier="8a238016-1cff-4172-85db-b80add39b242">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCKINEMATICVISCOSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Health and Safety Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCKINEMATICVISCOSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Architect</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>8.52</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Length template" description="Required for the BIM Manager petitions" instructions="The property will be contain the information of the m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m(meter)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.LENGTHUNIT&#xD;&#xA;" identifier="86fa6360-3ac3-454f-aeb0-296710142545">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Structural Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_FoundationCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Crane Operator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="6.73" />
+							<xs:maxInclusive value="15.3" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Linear force demonstration" description="Required for the Builder requirements" instructions="The property will be contain the information of the N / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.LINEARFORCEUNIT&#xD;&#xA;" identifier="95703cb8-7e0c-4933-8ce4-c95b152e30d8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLINEARFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Principal Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLINEARFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.91" />
+							<xs:maxInclusive value="18.68" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Linear moment showcase" description="Required for the Urban Planner petitions" instructions="The property will be contain the information of the N m / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N m / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.LINEARMOMENTUNIT&#xD;&#xA;" identifier="c7717a24-acc0-4a1d-b407-f0926f589bf4">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLINEARMOMENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_PartitionCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Facade Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLINEARMOMENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing CDM Coordinator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3.01</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Linear stiffness specimen" description="Required for the Cost Consultant stipulations" instructions="The property will be contain the information of the N / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.LINEARSTIFFNESSUNIT&#xD;&#xA;" identifier="9ca566cc-615e-43ab-95b4-1e6a6fc7b3f8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLINEARSTIFFNESSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing BIM Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLINEARSTIFFNESSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Mechanical Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>5.31</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Speed example" description="Required for the Civil Engineer requests" instructions="The property will be contain the information of the m / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.LINEARVELOCITYUNIT&#xD;&#xA;" identifier="c5d5263f-470e-407c-9856-cffcf490c409">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLINEARVELOCITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLINEARVELOCITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Glazing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.63" />
+							<xs:maxExclusive value="17.6" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Luminous flux instance" description="Required for the Principal Contractor contractual criteria" instructions="The property will be contain the information of the lm for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in lm(lumen)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.LUMINOUSFLUXUNIT&#xD;&#xA;" identifier="807a162a-0e00-4e5a-92c2-b1233a4b4cbd">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLUMINOUSFLUXMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_SkylightCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Construction Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLUMINOUSFLUXMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Glazing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.16</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Luminous intensity distribution exhibit" description="Required for the Cost Consultant wishes" instructions="The property will be contain the information of the cd / lm for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in cd / lm&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.LUMINOUSINTENSITYDISTRIBUTIONUNIT&#xD;&#xA;" identifier="9137f457-5479-496e-b1ce-0dec95f9e58b">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLUMINOUSINTENSITYDISTRIBUTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Clerk of Works</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLUMINOUSINTENSITYDISTRIBUTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Contractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.75</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Luminous intensity illustration" description="Required for the Construction Manager petitions" instructions="The property will be contain the information of the cd for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in cd(candela)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.LUMINOUSINTENSITYUNIT&#xD;&#xA;" identifier="469eb505-83fa-4d7b-a132-39b1628672c0">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCLUMINOUSINTENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Interior Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCLUMINOUSINTENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Health and Safety Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="11.93" />
+							<xs:maxInclusive value="18.37" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Magnetic flux density use case" description="Required for the Site Foreman requirements" instructions="The property will be contain the information of the Wb / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Wb / m2(tesla/ tesla)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.MAGNETICFLUXDENSITYUNIT&#xD;&#xA;" identifier="4e439366-8ed6-4e0f-b681-b270dc7cec3c">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMAGNETICFLUXDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMAGNETICFLUXDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Planning Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.43" />
+							<xs:maxInclusive value="19.84" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Magnetic flux illustration" description="Required for the Planning Officer contractual criteria" instructions="The property will be contain the information of the Wb for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Wb(weber)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MAGNETICFLUXUNIT&#xD;&#xA;" identifier="3ea27d76-97a9-4520-b70b-d02dca28a6da">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMAGNETICFLUXMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Site Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMAGNETICFLUXMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Site Foreman</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="8.96" />
+							<xs:maxInclusive value="20.51" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Mass density exemplar" description="Required for the Planning Officer stipulations" instructions="The property will be contain the information of the kg / m3 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / m3&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MASSDENSITYUNIT&#xD;&#xA;" identifier="8ecad5dd-1961-488b-9a87-d60a86c21183">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMASSDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Contractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMASSDENSITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>8.30</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Mass flow rate case" description="Required for the Site Foreman contractual criteria" instructions="The property will be contain the information of the kg / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MASSFLOWRATEUNIT&#xD;&#xA;" identifier="afb85e73-866c-4e48-b3f4-c26038c6a182">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMASSFLOWRATEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMASSFLOWRATEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="11.37" />
+							<xs:maxInclusive value="20.06" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Mass occurrence" description="Required for the Principal Contractor conditions" instructions="The property will be contain the information of the kg for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg(kilogram)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.MASSUNIT&#xD;&#xA;" identifier="f1eebbac-a8d8-4273-98ff-cff03a2cf4aa">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMASSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_DuctCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMASSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Sustainability Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3.30</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Mass per length sample" description="Required for the MEP Engineer demands" instructions="The property will be contain the information of the kg / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MASSPERLENGTHUNIT&#xD;&#xA;" identifier="801c3e10-46fe-41c2-98c4-901cde21f998">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMASSPERLENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing CDM Coordinator</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMASSPERLENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Site Foreman</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="6.19" />
+							<xs:maxExclusive value="20.9" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Modulus of elasticity instance" description="Required for the Crane Operator wishes" instructions="The property will be contain the information of the N / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MODULUSOFELASTICITYUNIT&#xD;&#xA;" identifier="5229c461-2742-492b-b499-f34296f32a36">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMODULUSOFELASTICITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_RampCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Quantity Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMODULUSOFELASTICITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Principal Designer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.79</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Modulus of linear subgrade reaction showcase" description="Required for the Glazing Subcontractor demands" instructions="The property will be contain the information of the N / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MODULUSOFLINEARSUBGRADEREACTIONUNIT&#xD;&#xA;" identifier="2390477a-4b19-41fb-b661-7f7d56f19fc8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMODULUSOFLINEARSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMODULUSOFLINEARSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Bricklayer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3.31</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Modulus of rotational subgrade reaction exhibit" description="Required for the Inspector stipulations" instructions="The property will be contain the information of the N m / m rad for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N m / m rad&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MODULUSOFROTATIONALSUBGRADEREACTIONUNIT&#xD;&#xA;" identifier="a2d5b4da-4436-4b5f-9445-f765375f44e5">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMODULUSOFROTATIONALSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMODULUSOFROTATIONALSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_PartitionCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Welder</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="12.61" />
+							<xs:maxExclusive value="16.32" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Modulus of subgrade reaction occurrence" description="Required for the Concrete Worker necessities" instructions="The property will be contain the information of the N / m3 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m3&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MODULUSOFSUBGRADEREACTIONUNIT&#xD;&#xA;" identifier="768aa2d1-24e5-4b16-bbab-7154f5815bc7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMODULUSOFSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Estimator</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMODULUSOFSUBGRADEREACTIONMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_FoundationCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing BIM Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="7.06" />
+							<xs:maxExclusive value="20.34" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Moisture diffusivity sample" description="Required for the Acoustic Consultant expectations" instructions="The property will be contain the information of the m3 / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m3 / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MOISTUREDIFFUSIVITYUNIT&#xD;&#xA;" identifier="c60bddb2-4c6f-40a4-b34b-aa8fc8856321">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMOISTUREDIFFUSIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Facade Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMOISTUREDIFFUSIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Geotechnical Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>10.86</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Molecular weight reference" description="Required for the Crane Operator petitions" instructions="The property will be contain the information of the kg / mol for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / mol&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MOLECULARWEIGHTUNIT&#xD;&#xA;" identifier="a357ec31-0e2f-412f-b111-9a534ad5babe">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMOLECULARWEIGHTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RafterCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Scheduler</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMOLECULARWEIGHTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="8.26" />
+							<xs:maxInclusive value="17.72" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Moment of inertia instance" description="Required for the Builder expectations" instructions="The property will be contain the information of the m4 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m4&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.MOMENTOFINERTIAUNIT&#xD;&#xA;" identifier="6cfdeab7-92f4-4b20-a1ae-9ea81d93e5fc">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCMOMENTOFINERTIAMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_WindowCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation BIM Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCMOMENTOFINERTIAMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Cable trayCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="12.6" />
+							<xs:maxInclusive value="18.37" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Non negative length example" description="Required for the CDM Coordinator requirements" instructions="The property will be contain the information of the m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m(meter)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.LENGTHUNIT&#xD;&#xA;" identifier="9c4adc19-7461-4833-8143-97de3d2914bb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCNONNEGATIVELENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Clerk of Works</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCNONNEGATIVELENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Sustainability Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="11.28" />
+							<xs:maxExclusive value="21.48" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="pH case" description="Required for the Subcontractor requests" instructions="The property will be contain the information of the pH for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in pH&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.PHUNIT&#xD;&#xA;" identifier="3d6ba246-0b03-4d9f-ac16-3c15204fa4ff">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Principal Contractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="5.66" />
+							<xs:maxInclusive value="20.32" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Planar force specimen" description="Required for the Engineer necessities" instructions="The property will be contain the information of the Pa for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Pa(pascal)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.PLANARFORCEUNIT&#xD;&#xA;" identifier="41b1e104-703f-405f-bfed-cd139a4656c2">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPLANARFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Site Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPLANARFORCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="10.76" />
+							<xs:maxInclusive value="19.6" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Angle demonstration" description="Required for the Plumbing Subcontractor stipulations" instructions="The property will be contain the information of the rad for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in rad(radian)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.PLANEANGLEUNIT&#xD;&#xA;" identifier="e8467b02-39b4-4ec1-a1ca-40db98d06949">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPLANEANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Principal Contractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPLANEANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_BalconyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Carpenter</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>5.81</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Positive length model" description="Required for the Health and Safety Officer stipulations" instructions="The property will be contain the information of the m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m(meter)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.LENGTHUNIT&#xD;&#xA;" identifier="02987c76-688b-4221-988b-72ceb66efab9">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPOSITIVELENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Roofing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPOSITIVELENGTHMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>9.59</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Positive plane angle instance" description="Required for the Facade Engineer contractual criteria" instructions="The property will be contain the information of the rad for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in rad(radian)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.PLANEANGLEUNIT&#xD;&#xA;" identifier="ab15e121-a372-435d-9ef7-f5176d70b276">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPOSITIVEPLANEANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Building Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPOSITIVEPLANEANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing BIM Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="6.96" />
+							<xs:maxExclusive value="17.33" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Power occurrence" description="Required for the Roofing Subcontractor stipulations" instructions="The property will be contain the information of the W for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W(watt)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.POWERUNIT&#xD;&#xA;" identifier="fd576f00-9e76-4115-bbd5-3d7c4273045d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPOWERMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Architect</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPOWERMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Geotechnical Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.25</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Pressure exhibit" description="Required for the Civil Engineer stipulations" instructions="The property will be contain the information of the Pa for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Pa(pascal)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.PRESSUREUNIT&#xD;&#xA;" identifier="671cd412-629c-4143-a8ed-dbcde6ab6ae6">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCPRESSUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_DuctCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Carpenter</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCPRESSUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>10.71</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Radio activity model" description="Required for the Urban Planner contractual criteria" instructions="The property will be contain the information of the Bq for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Bq(becquerel)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.RADIOACTIVITYUNIT&#xD;&#xA;" identifier="2804039e-e9d7-4d18-86ee-8c09459e7faa">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCRADIOACTIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Electrical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCRADIOACTIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Employer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.37</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Rotational frequency exemplar" description="Required for the Glazing Subcontractor stipulations" instructions="The property will be contain the information of the Hz for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Hz(hertz)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ROTATIONALFREQUENCYUNIT&#xD;&#xA;" identifier="1ec592f4-6095-441e-97cb-d95aca4af063">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCROTATIONALFREQUENCYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Electrical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCROTATIONALFREQUENCYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.85" />
+							<xs:maxExclusive value="20.58" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Rotational mass use case" description="Required for the Employer needs" instructions="The property will be contain the information of the kg m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ROTATIONALMASSUNIT&#xD;&#xA;" identifier="f0130806-5c69-4f14-b6cb-f973cb6df20c">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCROTATIONALMASSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Principal Contractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCROTATIONALMASSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Architect</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="9.37" />
+							<xs:maxInclusive value="22.81" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Rotational stiffness specimen" description="Required for the Facade Engineer needs" instructions="The property will be contain the information of the N m / rad for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N m / rad&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.ROTATIONALSTIFFNESSUNIT&#xD;&#xA;" identifier="61486c2a-0279-4634-9a55-f864e756a0be">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCROTATIONALSTIFFNESSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCROTATIONALSTIFFNESSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Mechanical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.73</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Sectional area integral occurrence" description="Required for the Mechanical Subcontractor requirements" instructions="The property will be contain the information of the m5 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m5&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SECTIONALAREAINTEGRALUNIT&#xD;&#xA;" identifier="13a3585d-113f-42f5-b713-da00d8ae33d9">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSECTIONALAREAINTEGRALMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Interior Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSECTIONALAREAINTEGRALMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Facade Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="12.55" />
+							<xs:maxExclusive value="18.12" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Section modulus showcase" description="Required for the Architect petitions" instructions="The property will be contain the information of the m3 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m3&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SECTIONMODULUSUNIT&#xD;&#xA;" identifier="f2a045ea-e182-4d1b-8c6c-a84bc0215097">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSECTIONMODULUSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Bricklayer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSECTIONMODULUSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Architect</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>6.43</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Shear modulus illustration" description="Required for the Mechanical Engineer prerequisites" instructions="The property will be contain the information of the N / m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N / m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SHEARMODULUSUNIT&#xD;&#xA;" identifier="967c7608-06b5-4626-8506-e28616e67820">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSHEARMODULUSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation MEP Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSHEARMODULUSMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_BalconyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Construction Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="4.73" />
+							<xs:maxInclusive value="22.34" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Solid angle model" description="Required for the Glazing Subcontractor necessities" instructions="The property will be contain the information of the sr for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in sr(steradian)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.SOLIDANGLEUNIT&#xD;&#xA;" identifier="01f9df01-42d7-45ce-ba58-69953653df92">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSOLIDANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSOLIDANGLEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>12.00</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Sound power level (log ref. 1e-12 W) use case" description="Required for the Concrete Worker needs" instructions="The property will be contain the information of the db for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in db(decibel SWL)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SOUNDPOWERLEVELUNIT&#xD;&#xA;" identifier="63c4816f-8cea-4be0-8f69-fe63a18a3cec">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSOUNDPOWERLEVELMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_SkylightCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Electrical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSOUNDPOWERLEVELMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Contractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>7.77</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Sound power model" description="Required for the Mechanical Subcontractor demands" instructions="The property will be contain the information of the W for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W(watt)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SOUNDPOWERUNIT&#xD;&#xA;" identifier="8b9ac8c1-a42b-4cba-8029-6c0efea92cc5">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSOUNDPOWERMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Welder</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSOUNDPOWERMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_BalconyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>4.86</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Sound pressure level (log ref. 2e-5 Pa) model" description="Required for the Geotechnical Engineer stipulations" instructions="The property will be contain the information of the db for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in db(decibel SPL)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SOUNDPRESSURELEVELUNIT&#xD;&#xA;" identifier="a5260ca8-9b15-4afe-885b-28d017c7254e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSOUNDPRESSURELEVELMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Principal Designer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSOUNDPRESSURELEVELMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Plumbing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.13" />
+							<xs:maxExclusive value="20.35" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Sound pressure case in point" description="Required for the Structural Engineer demands" instructions="The property will be contain the information of the Pa for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in Pa(pascal)&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SOUNDPRESSUREUNIT&#xD;&#xA;" identifier="b3009bdd-d0ff-4264-a2dc-39f03387d455">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSOUNDPRESSUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Mechanical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSOUNDPRESSUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="6.95" />
+							<xs:maxInclusive value="19.39" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Specific heat capacity illustration" description="Required for the Plumbing Subcontractor stipulations" instructions="The property will be contain the information of the J / kg K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in J / kg K&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.SPECIFICHEATCAPACITYUNIT&#xD;&#xA;" identifier="54d3e346-5f43-47d0-92d4-dcc1158d1b17">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSPECIFICHEATCAPACITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSPECIFICHEATCAPACITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Urban Planner</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="9.88" />
+							<xs:maxExclusive value="16.91" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Temperature gradient prototype" description="Required for the CDM Coordinator conditions" instructions="The property will be contain the information of the K / m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in K / m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.TEMPERATUREGRADIENTUNIT&#xD;&#xA;" identifier="e59eac10-d345-4e9d-b4e5-093106238f61">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTEMPERATUREGRADIENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Health and Safety Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTEMPERATUREGRADIENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Facade Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>7.44</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Temperature rate of change case" description="Required for the BIM Manager conditions" instructions="The property will be contain the information of the K / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in K / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.TEMPERATURERATEOFCHANGEUNIT&#xD;&#xA;" identifier="449afdaa-1672-4561-9052-8f35d9ed8a2c">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTEMPERATURERATEOFCHANGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_Cable trayCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTEMPERATURERATEOFCHANGEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Acoustic Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="10.75" />
+							<xs:maxExclusive value="19.97" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Thermal admittance model" description="Required for the Client contractual criteria" instructions="The property will be contain the information of the W / m2 K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W / m2 K&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.THERMALADMITTANCEUNIT&#xD;&#xA;" identifier="853ce488-48ac-49f1-9964-4e7048ab469d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMALADMITTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Inspector</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMALADMITTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Planning Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>12.51</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Thermal conductivity specimen" description="Required for the Builder demands" instructions="The property will be contain the information of the W / m K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W / m K&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.THERMALCONDUCTANCEUNIT&#xD;&#xA;" identifier="467974df-fa8c-431f-96c7-eafd36aaa99f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMALCONDUCTIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Fire Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMALCONDUCTIVITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_Cable trayCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="3.82" />
+							<xs:maxInclusive value="22.28" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Thermal expansion coefficient specimen" description="Required for the Engineer wishes" instructions="The property will be contain the information of the 1 / K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in 1 / K&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.THERMALEXPANSIONCOEFFICIENTUNIT&#xD;&#xA;" identifier="00e5fb2d-7f1f-44df-aeb1-e1eb45586efc">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMALEXPANSIONCOEFFICIENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Crane Operator</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMALEXPANSIONCOEFFICIENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>5.97</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Thermal resistance demonstration" description="Required for the BIM Manager demands" instructions="The property will be contain the information of the m2 K / W for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m2 K / W&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.THERMALRESISTANCEUNIT&#xD;&#xA;" identifier="01736666-bda2-4fb8-bbc5-73dce5bab522">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMALRESISTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Principal Contractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMALRESISTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Health and Safety Officer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>7.59</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Thermal transmittance exemplar" description="Required for the Estimator demands" instructions="The property will be contain the information of the W / m2 K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in W / m2 K&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.THERMALTRANSMITTANCEUNIT&#xD;&#xA;" identifier="09df9f77-2a3d-47e7-848a-231d063a0561">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMALTRANSMITTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Urban Planner</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMALTRANSMITTANCEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Employer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="12.94" />
+							<xs:maxExclusive value="18.27" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Temperature template" description="Required for the Geotechnical Engineer demands" instructions="The property will be contain the information of the °K for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in °K(kelvin)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.THERMODYNAMICTEMPERATUREUNIT&#xD;&#xA;" identifier="f00ecea7-ef18-4efd-ac07-f89576b82eba">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTHERMODYNAMICTEMPERATUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Health and Safety Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTHERMODYNAMICTEMPERATUREMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_WindowCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Landscape Architect</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="6.85" />
+							<xs:maxExclusive value="22.92" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Time template" description="Required for the Building Surveyor demands" instructions="The property will be contain the information of the s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in s(second)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.TIMEUNIT&#xD;&#xA;" identifier="b8852a96-4c85-4c1d-8246-db68cbfba384">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTIMEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Bricklayer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTIMEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>5.83</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Torque precedent" description="Required for the Structural Engineer prerequisites" instructions="The property will be contain the information of the N m for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N m&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.TORQUEUNIT&#xD;&#xA;" identifier="c1839e81-704a-4583-98e4-f62bd50f3e40">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTORQUEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTORQUEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_CeilingCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Structural Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>7.69</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Vapor permeability illustration" description="Required for the Geotechnical Engineer wishes" instructions="The property will be contain the information of the kg / s m Pa for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in kg / s m Pa&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.VAPORPERMEABILITYUNIT&#xD;&#xA;" identifier="ce158d30-a63a-4471-86d9-4a04c5582958">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCVAPORPERMEABILITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCVAPORPERMEABILITYMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="7.57" />
+							<xs:maxExclusive value="18.73" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Volume reference" description="Required for the Health and Safety Officer wishes" instructions="The property will be contain the information of the m3 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m3(cubic meter)&#xD;&#xA;IFC models will have the property stored as IfcUnitEnum.VOLUMEUNIT&#xD;&#xA;" identifier="0b04a45d-270e-4830-8f7d-aa9fb65f7070">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCVOLUMEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_DoorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Mechanical Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCVOLUMEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>12.46</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Volumetric flow rate model" description="Required for the Fire Engineer necessities" instructions="The property will be contain the information of the m3 / s for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m3 / s&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.VOLUMETRICFLOWRATEUNIT&#xD;&#xA;" identifier="f54df6ae-750a-4595-b965-b90b15092b34">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCVOLUMETRICFLOWRATEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Project Manager</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCVOLUMETRICFLOWRATEMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Employer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="3.43" />
+							<xs:maxExclusive value="20.95" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Warping constant precedent" description="Required for the Landscape Architect prerequisites" instructions="The property will be contain the information of the m6 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in m6&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.WARPINGCONSTANTUNIT&#xD;&#xA;" identifier="0a634029-0bbe-422f-80ed-7fac810ae08f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCWARPINGCONSTANTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Building Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCWARPINGCONSTANTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_StairCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Acoustic Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>8.18</ids:simpleValue>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="Warping moment specimen" description="Required for the Carpenter requirements" instructions="The property will be contain the information of the N m2 for the related entity.&#xD;&#xA;Its unit in the IDS exchange file is interpreted in N m2&#xD;&#xA;IFC models will have the property stored as IfcDerivedUnitEnum.WARPINGMOMENTUNIT&#xD;&#xA;" identifier="52fdc9ba-675c-4209-9096-b9f3d06f9549">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCWARPINGMOMENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Building Surveyor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCWARPINGMOMENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_RoofCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Mechanical Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="5.42" />
+							<xs:maxInclusive value="20.55" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCBOOLEAN scenario" description="Required for the Scheduler requests" instructions="The property will be contain the information of the IFCBOOLEAN for the related entity." identifier="71973d4f-1ca9-4182-84c9-56c068bd9176">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCBOOLEAN">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_WindowCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Building Control Officer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCBOOLEAN">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing MEP Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCCARDINALPOINTREFERENCE occurrence" description="Required for the Structural Engineer demands" instructions="The property will be contain the information of the IFCCARDINALPOINTREFERENCE for the related entity." identifier="e29adc51-d398-470b-99ae-ae35007d7740">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCCARDINALPOINTREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Client</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCCARDINALPOINTREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Clerk of Works</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="14" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCCARDINALPOINTREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="32" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCCONTEXTDEPENDENTMEASURE exhibit" description="Required for the Concrete Worker demands" instructions="The property will be contain the information of the IFCCONTEXTDEPENDENTMEASURE for the related entity." identifier="e733dc6d-9d52-47e6-9b47-1addb14e9d5b">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCCONTEXTDEPENDENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_TrussCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Carpenter</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCCONTEXTDEPENDENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Construction Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="20.806847187121065" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCCONTEXTDEPENDENTMEASURE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Roofing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="44.34094456044956" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCDATE prototype" description="Required for the Electrical Subcontractor wishes" instructions="The property will be contain the information of the IFCDATE for the related entity." identifier="8539d20d-aabf-400f-af60-a3cd8913b98a">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Facade panelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Facade Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:enumeration value="2026-12-31" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_ChimneyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Quantity Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:enumeration value="2026-11-01" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:enumeration value="2042-03-21" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_PartitionCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Welder</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:minInclusive value="2052-08-11" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_BeamCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Site Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:enumeration value="1971-09-06" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:date">
+							<xs:maxInclusive value="1975-11-15" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCDATETIME case" description="Required for the Concrete Worker contractual criteria" instructions="The property will be contain the information of the IFCDATETIME for the related entity." identifier="f74b4d56-6318-485a-9e74-3efbbdc4587d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Estimator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:minInclusive value="2026-12-31T07:09:11" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_RampCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:enumeration value="2026-11-01T09:11:07" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_Curtain wallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:minInclusive value="2042-03-21T07:02:55" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_FloorCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Concrete Worker</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:enumeration value="2052-08-11T03:03:33" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:enumeration value="1971-09-06T14:23:45" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDATETIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_BalustradeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:dateTime">
+							<xs:enumeration value="1975-11-15T14:23:45" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCDURATION occurrence" description="Required for the Health and Safety Officer conditions" instructions="The property will be contain the information of the IFCDURATION for the related entity." identifier="6a8ce450-4eee-4793-a940-0c4ffc4cd223">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Engineer</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_FoundationCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Land Surveyor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:minInclusive value="1 day" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_ParapetCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Mechanical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:minExclusive value="3 hours" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_PipeCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Principal Designer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:maxExclusive value="PT5M30S" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:enumeration value="PT1H30M" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Contractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:enumeration value="PT1S" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCDURATION">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_SlabCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation CDM Coordinator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:duration">
+							<xs:maxInclusive value="P3DT4H15M30S" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCSTRIPPEDOPTIONAL instance" description="Required for the Acoustic Consultant prerequisites" instructions="The property will be contain the information of the IFCSTRIPPEDOPTIONAL for the related entity." identifier="43abf791-508b-4734-a10a-d05184d27d37">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCSTRIPPEDOPTIONAL">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_JoistCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Plumbing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCSTRIPPEDOPTIONAL">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Incredible_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Bricklayer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCTIME occurrence" description="Required for the Interior Designer expectations" instructions="The property will be contain the information of the IFCTIME for the related entity." identifier="7504a961-534b-42fa-9a31-ff920592f014">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Scheduler</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation CDM Coordinator</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:time">
+							<xs:maxInclusive value="7:35 PM" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_HandrailCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Sustainability Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:time">
+							<xs:maxExclusive value="3PM+01:00" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_PartitionCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Excavation Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:time">
+							<xs:enumeration value="03:06:12-01:00" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_Elevator shaftCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation BIM Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:time">
+							<xs:enumeration value="18:06:12" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_RampCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Cost Consultant</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:time">
+							<xs:minInclusive value="18:06:12+01:00" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Foundation Carpenter</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>18:06:12-01:00</ids:simpleValue><!-- valid -->
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCTIME">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Wonderful_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Civil Engineer</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<ids:simpleValue>3:45 PM</ids:simpleValue><!-- invalid time -->
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC4X3_ADD2" name="IFCURIREFERENCE illustration" description="Required for the Principal Designer conditions" instructions="The property will be contain the information of the IFCURIREFERENCE for the related entity." identifier="05249ced-6020-47a8-a587-73ca41c51a93">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:property dataType="IFCURIREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Amazing_LintelCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Mechanical Subcontractor</ids:simpleValue>
+					</ids:baseName>
+				</ids:property>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:property cardinality="required" dataType="IFCURIREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Fantastic_CanopyCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Finishing Project Manager</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:anyURI">
+							<xs:enumeration value="" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+				<ids:property cardinality="required" dataType="IFCURIREFERENCE">
+					<ids:propertySet>
+						<ids:simpleValue>Custom_Exciting_ColumnCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:baseName>
+						<ids:simpleValue>Framing Glazing Subcontractor</ids:simpleValue>
+					</ids:baseName>
+					<ids:value>
+						<xs:restriction base="xs:anyURI">
+							<xs:enumeration value="http://example.net/" />
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>
+		</ids:specification>
+	</ids:specifications>
+</ids:ids>

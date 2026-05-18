@@ -12,7 +12,7 @@ internal class IdsSpecification : IdsXmlNode
 {
     internal const string NodeSignature = "specification";
 
-	internal static readonly string[] SpecificationIdentificationArray = { NodeSignature };
+	internal static readonly string[] SpecificationIdentificationArray = [NodeSignature];
 
     internal readonly IfcSchemaVersions IfcSchemaVersions = IfcSchemaVersions.IfcNoVersion;
 

@@ -39,7 +39,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 	/// <summary>
 	/// prepared typefilters per schema version
 	/// </summary>
-	private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = new();
+	private readonly Dictionary<SchemaInfo, IIfcTypeConstraint> typeFilters = [];
 
 	/// <inheritdoc />
 	public IIfcTypeConstraint? GetTypesFilter(SchemaInfo schema)
@@ -185,8 +185,16 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
                                             ret |= IdsErrorMessages.Report303RestrictionBadType(logger, valueConstraintNode, $"found `{baseType}` but expected `{fnd.BackingType}` for `{fnd.IfcDataTypeClassName}`", schema);
                                     }
                                 }
-								else if (valueConstraintNode.HasSimpleValue(out var simpleValueString))
+								// all exact, min or max values in the restriction should match the type regex
+								if (valueConstraintNode.Children.FirstOrDefault() is IFiniteStringMatcher fsm3)
 								{
+									foreach (var discrete in fsm3.GetDicreteValues())
+									{
+										ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(fnd.BackingType!), discrete, valueConstraintNode);
+									}
+								}
+								else if (valueConstraintNode.HasSimpleValue(out var simpleValueString))
+								{   // this is probably never hit, because the finiteStringMatcher should be hit first
 									ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(fnd.BackingType!), simpleValueString, valueConstraintNode);
 								}
 							}

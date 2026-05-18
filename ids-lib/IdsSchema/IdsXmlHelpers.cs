@@ -33,6 +33,11 @@ internal class IdsXmlHelpers
             "totalDigits" => new XsTotalDigits(reader, parent),
             "pattern" => new XsPattern(reader, parent),
             "length" => new XsLength(reader, parent),
+			// xs boundaries
+			"minInclusive" => new XsBoundary(reader, parent),
+			"maxInclusive" => new XsBoundary(reader, parent),
+			"minExclusive" => new XsBoundary(reader, parent),
+			"maxExclusive" => new XsBoundary(reader, parent),
             // default
             _ => new IdsXmlNode(reader, parent),
         };
@@ -41,7 +46,7 @@ internal class IdsXmlHelpers
     public static async Task<IdsInformation> GetIdsInformationAsync(FileInfo fileInformation)
     {
         if (fileInformation is null)
-            throw new ArgumentNullException(nameof(fileInformation));
+			throw new ArgumentNullException(nameof(fileInformation));
         using var fs = fileInformation.OpenRead();
         return await GetIdsInformationAsync(fs);
     }

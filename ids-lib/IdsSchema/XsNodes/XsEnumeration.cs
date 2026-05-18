@@ -3,7 +3,6 @@ using IdsLib.Messages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Xml;
 using static IdsLib.Audit;
 
@@ -45,12 +44,12 @@ internal class XsEnumeration : IdsXmlNode, IStringListMatcher, IStringPrefixMatc
 
     public string Value => value;
 
-	protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
-	{
-		Audit.Status ret = Audit.Status.Ok;
-		if (!TryGetUpperNode<XsRestriction>(logger, this, XsRestriction.RestrictionIdentificationArray, out var restriction, out var retStatus))
-			return retStatus;
-        ret |= XsTypes.AuditStringValue(logger, restriction.Base, value, this);
-		return ret;
-	}
+	//protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)
+	//{
+	//	Audit.Status ret = Audit.Status.Ok;
+	//	if (!TryGetUpperNode<XsRestriction>(logger, this, XsRestriction.RestrictionIdentificationArray, out var restriction, out var retStatus))
+	//		return retStatus;
+	//	ret |= XsTypes.AuditStringValue(logger, restriction.Base, value, this);
+	//	return ret;
+	//}
 }
