@@ -1,6 +1,6 @@
 # SchemaInfo.AllConcreteClasses property
 
-The names of all concrete classes across known IFC schemas
+The names of all concrete classes across known IFC schemas, for schema specific information, use [`SchemaInfo`](../SchemaInfo.md) as enuberable, or String}).
 
 ```csharp
 public static IEnumerable<IfcClassInformation> AllConcreteClasses { get; }

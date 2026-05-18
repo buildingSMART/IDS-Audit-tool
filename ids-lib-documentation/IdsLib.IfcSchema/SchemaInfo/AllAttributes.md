@@ -1,6 +1,6 @@
 # SchemaInfo.AllAttributes property
 
-The names of all attributes across all schemas.
+The names of all attributes across all schemas. For richer information on a single schema you can use [`GetAttributeClasses`](./GetAttributeClasses.md), [`GetAttributeNames`](./GetAttributeNames.md), [`GetAttributeRelations`](./GetAttributeRelations.md), [`GetAttributesIfcTypes`](./GetAttributesIfcTypes.md), [`GetAttributesXsdTypesEnum`](./GetAttributesXsdTypesEnum.md), and [`GetAttributesXsdTypes`](./GetAttributesXsdTypes.md)
 
 ```csharp
 public static IEnumerable<IfcAttributeInformation> AllAttributes { get; }

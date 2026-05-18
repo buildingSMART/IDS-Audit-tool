@@ -23,6 +23,7 @@ public enum BaseTypes
 | XsDate | `10` | Date only value (with optional time zone offset) |
 | XsTime | `11` | Time only value (with optional time zone offset) |
 | XsAnyURI | `12` | URI value |
+| XsAnyUri | `12` | Obsolete for URI value, this is an alias for XsAnyURI to support convesion of codebases as we fixed the case. |
 
 ## Remarks
 

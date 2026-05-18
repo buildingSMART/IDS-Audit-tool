@@ -308,9 +308,9 @@ namespace IdsLib.IdsSchema.XsNodes
 			/// </summary>
 			XsAnyURI,
 			/// <summary>
-			/// URI value
+			/// Obsolete for URI value, this is an alias for XsAnyURI to support convesion of codebases as we fixed the case.
 			/// </summary>
-			[Obsolete("Use XsAnyURI which is the correct XML capitalization instead. This alias will be removed in a future version.")]
+			[Obsolete("Use XsAnyURI which is the correct XML case instead. This alias will be removed in a future version.")]
 			XsAnyUri = XsAnyURI, // alias for xs:anyURI
 		}
 

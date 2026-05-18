@@ -1039,9 +1039,10 @@ public partial class SchemaInfo
 		new IfcClassInformation("IfcZone", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }),
 		new IfcClassInformation("IfcZShapeProfileDef", new[] { "Ifc2x3", "Ifc4", "Ifc4x3" }),
 		];
-    
+	
 	/// <summary>
-	/// The names of all concrete classes across known IFC schemas
+	/// The names of all concrete classes across known IFC schemas, for schema specific information, use
+	/// <see cref="SchemaInfo"/> as enuberable, or <see cref="SchemaInfo.GetAllConcreteFrom(IList{string})"/>.
 	/// </summary>
 	public static IEnumerable<IfcClassInformation> AllConcreteClasses => _allConcreteClasses;
 
@@ -2280,8 +2281,14 @@ public partial class SchemaInfo
 		new IfcAttributeInformation("Zone", new[] { "Ifc2x3" }),
 		];
 
-    /// <summary>
-    /// The names of all attributes across all schemas.
-    /// </summary>
-    public static IEnumerable<IfcAttributeInformation> AllAttributes => _allAttributes;
+	/// <summary>
+	/// The names of all attributes across all schemas. For richer information on a single schema
+	/// you can use <see cref="SchemaInfo.GetAttributeClasses(string, bool)"/>, 
+	/// <see cref="SchemaInfo.GetAttributeNames"/>, 
+	/// <see cref="SchemaInfo.GetAttributeRelations(string)"/>,
+	/// <see cref="SchemaInfo.GetAttributesIfcTypes(IEnumerable{string})"/>,
+	/// <see cref="SchemaInfo.GetAttributesXsdTypesEnum(IEnumerable{string})"/>, and
+	/// <see cref="SchemaInfo.GetAttributesXsdTypes(IEnumerable{string})"/>
+	/// </summary>
+	public static IEnumerable<IfcAttributeInformation> AllAttributes => _allAttributes;
 }
