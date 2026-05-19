@@ -139,7 +139,7 @@ public class AuditTests : BuildingSmartRepoFiles
             { "InvalidFiles/InvalidAttributeCardinality.ids", 3, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidAttributeForClass.ids", 1, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidAttributeNames.ids", 2, Audit.Status.IdsContentError },
-            { "InvalidFiles/InvalidAttributeTypes.ids", 6, Audit.Status.IdsContentError },
+            { "InvalidFiles/InvalidAttributeTypes.ids", 7, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidClassification.ids", 2, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidClassificationImplication.ids", 1, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidCustomPsetBecauseOfPrefix.ids", 2, Audit.Status.IdsContentError },
