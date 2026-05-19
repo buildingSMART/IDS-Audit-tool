@@ -199,12 +199,18 @@ namespace idsLib.tests
 			{
 				Assert.Skip("Unable to connect to BuildingSmart web server for extra tests.");
 			}
-			t.StatusCode.Should().Be(HttpStatusCode.OK);
-			var acceptable = new[] { "application/xml", "text/xml" };
-			Assert.NotNull(t.Content.Headers.ContentType);
-			var receivedContentType = t.Content.Headers.ContentType.MediaType;
-			receivedContentType.Should().NotBeNull();
-			receivedContentType.Should().BeOneOf(acceptable);
+			if (t.StatusCode == HttpStatusCode.OK)
+			{
+				var acceptable = new[] { "application/xml", "text/xml" };
+				Assert.NotNull(t.Content.Headers.ContentType);
+				var receivedContentType = t.Content.Headers.ContentType.MediaType;
+				receivedContentType.Should().NotBeNull();
+				receivedContentType.Should().BeOneOf(acceptable);
+			}
+			else
+			{
+				Assert.Skip("Unable to connect to BuildingSmart web server for extra tests.");
+			}
 		}
     }
 }
