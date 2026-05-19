@@ -120,6 +120,9 @@ public class AuditTests : BuildingSmartRepoFiles
     [InlineData("ValidFiles/property.ids")]
     [InlineData("ValidFiles/validEmptyPredefinedType.ids")]
     [InlineData("ValidFiles/RichFile.ids")]
+    [InlineData("ValidFiles/RichFileAttribute_Ifc2x3.ids")]
+    [InlineData("ValidFiles/RichFileAttribute_Ifc4.ids")]
+    [InlineData("ValidFiles/RichFileAttribute_Ifc4x3.ids")]
     public void FullAuditPass(string path)
     {
         var f = new FileInfo(path);
@@ -157,6 +160,9 @@ public class AuditTests : BuildingSmartRepoFiles
             { "InvalidFiles/invalidPropertyMeasures.ids", 4, Audit.Status.IdsStructureError | Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidRestriction.ids", 2, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidRestrictions.ids", 6, Audit.Status.IdsContentError | Audit.Status.IdsStructureError },
+            { "InvalidFiles/RichFileAttribute_Ifc2x3.ids", 4, Audit.Status.IdsContentError  },
+            { "InvalidFiles/RichFileAttribute_Ifc4.ids", 7, Audit.Status.IdsContentError },
+            { "InvalidFiles/RichFileAttribute_Ifc4x3.ids", 3, Audit.Status.IdsContentError },
             { "InvalidFiles/structureAndContentFailure.ids", 3, Audit.Status.IdsStructureError | Audit.Status.IdsContentError },
             { "InvalidFiles/xsdFailure.ids", 2, Audit.Status.IdsStructureError }
         };

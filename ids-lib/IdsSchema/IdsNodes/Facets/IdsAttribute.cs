@@ -97,7 +97,15 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
 								ret |= IdsErrorMessages.Report303RestrictionBadType(logger, value, $"found `{baseType}` but expected `{expected}`", schema);
 						}
 					}
-                    else if (value.HasSimpleValue(out var simpleValueString))
+					if (value.Children.FirstOrDefault() is IFiniteStringMatcher fsm3)
+					{
+						foreach (var discrete in fsm3.GetDicreteValues())
+						{
+							ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(expected), discrete, value);
+						}
+					}
+
+					else if (value.HasSimpleValue(out var simpleValueString))
                     {
                         ret |= XsTypes.AuditStringValue(logger, XsTypes.GetBaseFrom(expected), simpleValueString, value);
                     }

@@ -1,0 +1,2389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+	<ids:info>
+		<ids:title>Technical Design Specifications</ids:title>
+		<ids:copyright>© 2026 Claudio Benghi. This work is licensed under CC BY-SA 4.0 (attribution required, Share Alike). To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/</ids:copyright>
+		<ids:description>This is a demo Information Specification requirement, which has been randomly generated for demonstration purposes.</ids:description>
+		<ids:author>claudio.benghi@gmail.com</ids:author>
+		<ids:date>2026-05-19</ids:date>
+	</ids:info>
+	<ids:specifications>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Description scenario" description="Demonstrates an attribute constraints for the IfcText type" identifier="42290d52-f4aa-454c-bfd8-aab399092862">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Description</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Description</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Description</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="collaboration" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute GlobalId occurrence" description="Demonstrates an attribute constraints for the IfcGloballyUniqueId type" identifier="7026a1c1-6a00-4339-a863-969d64df2377">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>GlobalId</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>GlobalId</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>GlobalId</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute SupportedLength case in point" description="Demonstrates an attribute constraints for the IfcLengthMeasure type" identifier="4ed1fc89-7c0f-42d4-befc-bdc842a4df5d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>SupportedLength</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SupportedLength</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="22.977674885630982" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SupportedLength</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="22.928773478225473" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ObjectType case" description="Demonstrates an attribute constraints for the IfcLabel type" identifier="0f41011a-efc0-4fa3-8ac4-631a145d2980">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ObjectType</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ObjectType</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ObjectType</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Coefficient precedent" description="Demonstrates an attribute constraints for the IfcRatioMeasure type" identifier="50d092a2-5d0a-42f2-8774-c673e84ec156">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Coefficient</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Coefficient</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="28.643802235442077" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Coefficient</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="31.300206275914963" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Thickness use case" description="Demonstrates an attribute constraints for the IfcPositiveLengthMeasure type" identifier="cbc165b4-1527-42df-8dc6-342c2367f03d">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Thickness</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Thickness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="25.46539353781943" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Thickness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="40.40272647176384" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TotalCrossSectionArea template" description="Demonstrates an attribute constraints for the IfcAreaMeasure type" identifier="88e6b6f2-ab3a-4ee6-8098-e8e4ef34951f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TotalCrossSectionArea</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TotalCrossSectionArea</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="36.37022861062455" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TotalCrossSectionArea</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="12.898429876944508" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute BarCount exhibit" description="Demonstrates an attribute constraints for the IfcCountMeasure type" identifier="6f893855-1d69-494a-8b34-fe616bf74237">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>BarCount</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>BarCount</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="27" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>BarCount</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="24" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute PhysicalWeight occurrence" description="Demonstrates an attribute constraints for the IfcMassPerLengthMeasure type" identifier="f51c04cf-6cc6-47af-82ea-153606695f08">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>PhysicalWeight</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PhysicalWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="17.30949704297518" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PhysicalWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="20.346577785913365" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TorsionalConstantX model" description="Demonstrates an attribute constraints for the IfcMomentOfInertiaMeasure type" identifier="e0d7140b-298c-4ae8-809e-89fcbc7426fd">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TorsionalConstantX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TorsionalConstantX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="33.962914243251845" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TorsionalConstantX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="34.407871809057625" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute WarpingConstant precedent" description="Demonstrates an attribute constraints for the IfcWarpingConstantMeasure type" identifier="c415eb51-0a9a-4cf7-9c22-d7100e949a34">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>WarpingConstant</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WarpingConstant</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="19.1167782504264" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WarpingConstant</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="36.036494066233885" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MaximumSectionModulusY demonstration" description="Demonstrates an attribute constraints for the IfcSectionModulusMeasure type" identifier="bc2b3c98-b63d-47ad-a7ec-91663466c957">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MaximumSectionModulusY</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MaximumSectionModulusY</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="15.356628029862087" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MaximumSectionModulusY</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="41.26181607400092" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute PlasticShapeFactorY occurrence" description="Demonstrates an attribute constraints for the IfcPositiveRatioMeasure type" identifier="815137de-0771-4afa-9620-16d19495918f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>PlasticShapeFactorY</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PlasticShapeFactorY</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="32.92410783421002" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PlasticShapeFactorY</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="33.804464584881515" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ProcedureID case in point" description="Demonstrates an attribute constraints for the IfcIdentifier type" identifier="827fc7d5-7ed7-45bf-a36e-831cfb37bd10">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ProcedureID</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ProcedureID</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ProcedureID</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="collaboration" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Duration case in point" description="Demonstrates an attribute constraints for the IfcTimeMeasure type" identifier="19fa6a97-c7df-4489-975a-d039cda848aa">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Duration</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Duration</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="35.429661279007846" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Duration</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="42.15010745648645" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute VolumeValue prototype" description="Demonstrates an attribute constraints for the IfcVolumeMeasure type" identifier="f1a49b02-2bd1-4ad0-b585-2b79cbfe7de1">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>VolumeValue</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VolumeValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="16.287502767393214" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VolumeValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="36.13634649681937" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute WeightValue prototype" description="Demonstrates an attribute constraints for the IfcMassMeasure type" identifier="57cf72b5-bb64-45ad-bb92-23c94b2f5745">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>WeightValue</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WeightValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="23.7176475518001" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WeightValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="36.593891901223174" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute CombustionTemperature illustration" description="Demonstrates an attribute constraints for the IfcThermodynamicTemperatureMeasure type" identifier="0557ff97-b59e-4794-8af9-fe657150980a">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>CombustionTemperature</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CombustionTemperature</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="14.386049160975125" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CombustionTemperature</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="14.197852663903182" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LowerHeatingValue use case" description="Demonstrates an attribute constraints for the IfcHeatingValueMeasure type" identifier="99332ab1-5367-423d-afd3-523b81a99863">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LowerHeatingValue</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LowerHeatingValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="35.456700486774885" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LowerHeatingValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="15.871761507788907" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MolecularWeight exemplar" description="Demonstrates an attribute constraints for the IfcMolecularWeightMeasure type" identifier="06b6b560-71c8-4275-8c26-9577f458b401">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MolecularWeight</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MolecularWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="44.408122658589676" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MolecularWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="39.95035642831334" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Porosity illustration" description="Demonstrates an attribute constraints for the IfcNormalisedRatioMeasure type" identifier="904439af-4d1f-4cbd-a8c8-2792113fb41e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Porosity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Porosity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="14.784714052363748" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Porosity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="31.859513751433774" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MassDensity template" description="Demonstrates an attribute constraints for the IfcMassDensityMeasure type" identifier="e0a6e09b-9136-4f0b-a84d-6101e5ac000f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MassDensity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MassDensity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="36.053364445023405" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MassDensity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="31.172225694379726" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute IsothermalMoistureCapacity representation" description="Demonstrates an attribute constraints for the IfcIsothermalMoistureCapacityMeasure type" identifier="2de1109d-2978-4c1f-b69b-3b7f135878b0">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>IsothermalMoistureCapacity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>IsothermalMoistureCapacity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="13.603191343367277" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>IsothermalMoistureCapacity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="27.270064160027722" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute VaporPermeability scenario" description="Demonstrates an attribute constraints for the IfcVaporPermeabilityMeasure type" identifier="e6157a18-57d9-406a-ba6e-ff66929a2d95">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>VaporPermeability</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VaporPermeability</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="35.594546579852555" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VaporPermeability</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="12.40947298952486" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MoistureDiffusivity case" description="Demonstrates an attribute constraints for the IfcMoistureDiffusivityMeasure type" identifier="ca8b68d5-52e9-4e71-aa4b-e29cb0fca4f4">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MoistureDiffusivity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MoistureDiffusivity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="41.71222106770355" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MoistureDiffusivity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="28.556517446292567" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute DynamicViscosity specimen" description="Demonstrates an attribute constraints for the IfcDynamicViscosityMeasure type" identifier="9d3cc9d8-7a49-460f-886c-ced1035f74d9">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>DynamicViscosity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DynamicViscosity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="26.64594933920724" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DynamicViscosity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="20.99131095116295" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute YoungModulus demonstration" description="Demonstrates an attribute constraints for the IfcModulusOfElasticityMeasure type" identifier="552ab948-a052-4bea-807d-4d69de980d12">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>YoungModulus</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>YoungModulus</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="18.206626628623134" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>YoungModulus</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="19.23903225975214" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ThermalExpansionCoefficient case" description="Demonstrates an attribute constraints for the IfcThermalExpansionCoefficientMeasure type" identifier="091abea1-4b8f-4a53-ba1f-80a30a4167b6">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ThermalExpansionCoefficient</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ThermalExpansionCoefficient</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="41.7743880056748" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ThermalExpansionCoefficient</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="22.43221717587502" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute CompressiveStrength illustration" description="Demonstrates an attribute constraints for the IfcPressureMeasure type" identifier="d9afcc45-7fa6-469b-824a-6e33d9acda13">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>CompressiveStrength</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CompressiveStrength</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="17.563532051644582" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CompressiveStrength</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="21.1797693326952" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute SpecificHeatCapacity occurrence" description="Demonstrates an attribute constraints for the IfcSpecificHeatCapacityMeasure type" identifier="88f1cd96-25c4-4216-beee-6027ecc14381">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>SpecificHeatCapacity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SpecificHeatCapacity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="23.940391460823562" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SpecificHeatCapacity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="15.896013592446229" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ThermalConductivity sample" description="Demonstrates an attribute constraints for the IfcThermalConductivityMeasure type" identifier="2738e21d-cf58-4c35-802b-26cc58c49e7e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ThermalConductivity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ThermalConductivity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="40.73102953248387" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ThermalConductivity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="35.87745962953843" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Hardness case" description="Demonstrates an attribute constraints for the IfcIonConcentrationMeasure type" identifier="56bfe38d-a50d-4e12-863f-d26df990ca9a">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Hardness</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Hardness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="22.88108058233353" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Hardness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="32.49743220879867" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute PHLevel reference" description="Demonstrates an attribute constraints for the IfcPHMeasure type" identifier="63f956e6-e0fe-4c7a-915f-2af42fb78040">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>PHLevel</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PHLevel</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="13.248706737822182" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PHLevel</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="44.61157774091826" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute IsVentilated representation" description="Demonstrates an attribute constraints for the IfcLogical type" identifier="bd02e26e-6892-4017-9fbf-8e12e8720b50">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>IsVentilated</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>IsVentilated</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>IsVentilated</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MainPlaneAngle showcase" description="Demonstrates an attribute constraints for the IfcPlaneAngleMeasure type" identifier="5cf04c1f-2a45-4130-a543-8b0afe3ffdb4">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MainPlaneAngle</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MainPlaneAngle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="17.99071709539414" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MainPlaneAngle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="41.71303473448462" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LuminousIntensity case" description="Demonstrates an attribute constraints for the IfcLuminousIntensityDistributionMeasure type" identifier="ed453751-d1c3-4cbd-bcdb-4e5da4415783">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LuminousIntensity</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LuminousIntensity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="13.263186975671202" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LuminousIntensity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="42.7735113824911" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LuminousFlux prototype" description="Demonstrates an attribute constraints for the IfcLuminousFluxMeasure type" identifier="39159bc2-7981-437a-a8e6-bf2eec956ebb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LuminousFlux</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LuminousFlux</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="18.585569272204474" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LuminousFlux</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="37.8144319238957" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ConstantAttenuation model" description="Demonstrates an attribute constraints for the IfcReal type" identifier="2fcaf022-e5da-4443-be9b-b1a6610bffcc">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ConstantAttenuation</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ConstantAttenuation</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="14.093640933364277" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ConstantAttenuation</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="13.245377124160175" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute SpreadAngle case" description="Demonstrates an attribute constraints for the IfcPositivePlaneAngleMeasure type" identifier="07a0be48-84be-411b-9b68-dbeb68047be7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>SpreadAngle</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SpreadAngle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="29.642539538626963" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SpreadAngle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="39.78872272902326" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute CoordinateSpaceDimension scenario" description="Demonstrates an attribute constraints for the IfcDimensionCount type" identifier="ba3d08c4-4c01-476a-ab20-9605b2a26cf8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>CoordinateSpaceDimension</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CoordinateSpaceDimension</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="23" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>CoordinateSpaceDimension</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:minExclusive value="43" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute InputVoltage use case" description="Demonstrates an attribute constraints for the IfcElectricVoltageMeasure type" identifier="f74edabc-6430-4225-9f22-00475e68394e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>InputVoltage</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>InputVoltage</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="15.526583458782916" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>InputVoltage</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="22.774734850067247" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute InputFrequency template" description="Demonstrates an attribute constraints for the IfcFrequencyMeasure type" identifier="eeecb0d3-1ac9-4942-ae21-3f36744369a1">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>InputFrequency</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>InputFrequency</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="35.15835279903547" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>InputFrequency</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="24.791076280229703" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute FullLoadCurrent demonstration" description="Demonstrates an attribute constraints for the IfcElectricCurrentMeasure type" identifier="4aacd3b7-e4a4-4a01-9ea4-1f1074a55f29">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>FullLoadCurrent</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FullLoadCurrent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="44.574292213767365" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FullLoadCurrent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="18.58112766303693" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MaximumPowerInput specimen" description="Demonstrates an attribute constraints for the IfcPowerMeasure type" identifier="b2c20524-8a22-425b-8b85-633d66685d80">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MaximumPowerInput</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MaximumPowerInput</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="24.40232456074132" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MaximumPowerInput</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="30.058665985149492" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute VelocitySingleValue demonstration" description="Demonstrates an attribute constraints for the IfcLinearVelocityMeasure type" identifier="ebc5a352-2322-41b3-947b-052815fdcd40">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>VelocitySingleValue</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VelocitySingleValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="34.609611734964005" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>VelocitySingleValue</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="28.718812252781436" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute IsAttenuating representation" description="Demonstrates an attribute constraints for the IfcBoolean type" identifier="087fbd0d-5ae9-4d48-a4f7-9ab10ff5d8f7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>IsAttenuating</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>IsAttenuating</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute FontFamily specimen" description="Demonstrates an attribute constraints for the IfcTextFontName type" identifier="77fd5e81-5528-41fe-8816-97a1ac12c8b3">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>FontFamily</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontFamily</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontFamily</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute FontStyle showcase" description="Demonstrates an attribute constraints for the IfcFontStyle type" identifier="6c1adeb4-8faa-4290-ae43-7477ad5b68eb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>FontStyle</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontStyle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontStyle</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="collaboration" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute FontVariant model" description="Demonstrates an attribute constraints for the IfcFontVariant type" identifier="efb3bd3c-3d89-4b8c-924e-a190b4ee3734">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>FontVariant</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontVariant</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="efficiency" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontVariant</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute FontWeight precedent" description="Demonstrates an attribute constraints for the IfcFontWeight type" identifier="8920abc4-191b-45f5-bbed-f3cbe9b3449a">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>FontWeight</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>FontWeight</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TensionForce instance" description="Demonstrates an attribute constraints for the IfcForceMeasure type" identifier="15e0bd03-17f7-490d-b58a-e557e9acd5b8">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TensionForce</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TensionForce</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="24.28618912350261" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TensionForce</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="43.75017008343897" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LinearStiffnessByLengthX use case" description="Demonstrates an attribute constraints for the IfcModulusOfLinearSubgradeReactionMeasure type" identifier="b11b596c-a412-4245-acc7-d01e6b2c464c">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minInclusive value="19.803422446808067" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="42.97912000242274" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute RotationalStiffnessByLengthX specimen" description="Demonstrates an attribute constraints for the IfcModulusOfRotationalSubgradeReactionMeasure type" identifier="b4fbc5f3-416c-4be6-be1d-5e6d75fd3ddf">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="42.33494252602432" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessByLengthX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="43.003699106312766" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LinearStiffnessByAreaX template" description="Demonstrates an attribute constraints for the IfcModulusOfSubgradeReactionMeasure type" identifier="1c06c203-54ea-47fa-ba72-dd9d128d7543">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByAreaX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByAreaX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="44.37968149588501" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessByAreaX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="26.502763892042054" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LinearStiffnessX illustration" description="Demonstrates an attribute constraints for the IfcLinearStiffnessMeasure type" identifier="f60f264b-ad80-4670-9b12-9d91362186c6">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="29.52428177372704" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearStiffnessX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="39.37345176173789" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute RotationalStiffnessX demonstration" description="Demonstrates an attribute constraints for the IfcRotationalStiffnessMeasure type" identifier="330995c4-a480-4c8a-99af-1a9e8f31c4be">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="40.42276150689812" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>RotationalStiffnessX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="36.785415316355" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute WarpingStiffness demonstration" description="Demonstrates an attribute constraints for the IfcWarpingMomentMeasure type" identifier="41bef22b-e66e-42a4-a58e-37ff79830664">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>WarpingStiffness</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WarpingStiffness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="17.927691228546056" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>WarpingStiffness</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="39.75134556213443" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LinearForceX occurrence" description="Demonstrates an attribute constraints for the IfcLinearForceMeasure type" identifier="1d1d501c-f261-4014-84a7-60fb5823ac8f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LinearForceX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearForceX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="44.49737910889719" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearForceX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="32.37996877624782" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LinearMomentX reference" description="Demonstrates an attribute constraints for the IfcLinearMomentMeasure type" identifier="3cde9efc-c2a5-4257-ae8e-000e3b28a60e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LinearMomentX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearMomentX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="24.623900938815645" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LinearMomentX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="12.844005376875314" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute PlanarForceX occurrence" description="Demonstrates an attribute constraints for the IfcPlanarForceMeasure type" identifier="d0e7aab7-b665-4d45-9c87-51b9fcc79b4c">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>PlanarForceX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PlanarForceX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxInclusive value="29.22455830678635" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PlanarForceX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:minExclusive value="26.186244647206877" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Distortion instance" description="Demonstrates an attribute constraints for the IfcCurvatureMeasure type" identifier="f5152bf4-e5c8-4397-9dee-84a95abef5ab">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Distortion</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Distortion</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="12.054786667957792" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Distortion</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="28.306229544208122" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MomentX use case" description="Demonstrates an attribute constraints for the IfcTorqueMeasure type" identifier="441af7c9-112d-476b-9b7a-eae180f785ea">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MomentX</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MomentX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="17.696531205529215" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MomentX</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="28.21839651109767" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute ColourComponents sample" description="Demonstrates an attribute constraints for the IfcInteger type" identifier="89c789ef-364d-4694-8881-3fcab7b8a71e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>ColourComponents</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ColourComponents</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:minExclusive value="19" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>ColourComponents</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="39" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TextAlign exhibit" description="Demonstrates an attribute constraints for the IfcTextAlignment type" identifier="cc15effe-af3d-4d55-b0a4-ca81b8ad7a0e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TextAlign</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextAlign</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="collaboration" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextAlign</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TextDecoration example" description="Demonstrates an attribute constraints for the IfcTextDecoration type" identifier="84bc7cc2-0569-477d-86b6-7373448ea79e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TextDecoration</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextDecoration</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextDecoration</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute TextTransform model" description="Demonstrates an attribute constraints for the IfcTextTransformation type" identifier="a41a846d-a359-4d23-88b4-519eea063f75">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>TextTransform</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextTransform</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>TextTransform</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute LastModifiedDate case" description="Demonstrates an attribute constraints for the IfcTimeStamp type" identifier="dcbee8c2-b7a7-44bc-a90c-dd64abc5616e">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>LastModifiedDate</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LastModifiedDate</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxInclusive value="39" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>LastModifiedDate</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxExclusive value="45" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute Literal model" description="Demonstrates an attribute constraints for the IfcPresentableText type" identifier="034cce51-9f2a-4bc5-adc4-921ef3e46ab7">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>Literal</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Literal</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>Literal</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="resilience" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute BoxAlignment instance" description="Demonstrates an attribute constraints for the IfcBoxAlignment type" identifier="71e7d7e3-6f76-4792-8673-b7f271b31c0f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>BoxAlignment</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>BoxAlignment</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="innovation" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>BoxAlignment</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="sustainability" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute PointParameter reference" description="Demonstrates an attribute constraints for the IfcParameterValue type" identifier="b7dac7a3-78b9-4cd3-80fc-e08a2bebd69b">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>PointParameter</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PointParameter</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="29.165916925464888" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>PointParameter</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:maxExclusive value="32.43540083616675" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute DayComponent reference" description="Demonstrates an attribute constraints for the IfcDayInMonthNumber type" identifier="faf42287-5edc-4e96-b826-d2d357c65c09">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>DayComponent</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DayComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="28" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DayComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxExclusive value="23" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MonthComponent sample" description="Demonstrates an attribute constraints for the IfcMonthInYearNumber type" identifier="0d7b6d14-c8a0-45f4-a637-b8d2cedd3f2f">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MonthComponent</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MonthComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxExclusive value="40" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MonthComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="18" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute YearComponent precedent" description="Demonstrates an attribute constraints for the IfcYearNumber type" identifier="c9db4f57-ef0c-4232-9512-f1cfd4750bdb">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>YearComponent</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>YearComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxExclusive value="38" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>YearComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="36" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute HourOffset exhibit" description="Demonstrates an attribute constraints for the IfcHourInDay type" identifier="5d3b3be4-edd3-4a86-b5c8-5437010e2769">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>HourOffset</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>HourOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="27" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>HourOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="15" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute MinuteOffset illustration" description="Demonstrates an attribute constraints for the IfcMinuteInHour type" identifier="ba3e0331-7aa6-45fe-bbad-2b8805e96554">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>MinuteOffset</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MinuteOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxInclusive value="21" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>MinuteOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxInclusive value="34" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute SecondComponent specimen" description="Demonstrates an attribute constraints for the IfcSecondInMinute type" identifier="20fad95a-4b57-4d15-97d4-57c4ea1efe85">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>SecondComponent</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SecondComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="31.94968302012764" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>SecondComponent</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:double">
+							<xs:enumeration value="21.80406261701491" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+		<ids:specification ifcVersion="IFC2X3" name="Attribute DaylightSavingOffset prototype" description="Demonstrates an attribute constraints for the IfcDaylightSavingHour type" identifier="c741afc3-e7ac-4ba8-a887-d8fa22789561">
+			<ids:applicability minOccurs="0" maxOccurs="unbounded">
+				<ids:attribute>
+					<ids:name>
+						<ids:simpleValue>DaylightSavingOffset</ids:simpleValue>
+					</ids:name>
+				</ids:attribute>
+			</ids:applicability>
+			<ids:requirements>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DaylightSavingOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:minExclusive value="30" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+				<ids:attribute cardinality="required">
+					<ids:name>
+						<ids:simpleValue>DaylightSavingOffset</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:integer">
+							<xs:maxInclusive value="27" />
+						</xs:restriction>
+					</ids:value>
+				</ids:attribute>
+			</ids:requirements>
+		</ids:specification>
+	</ids:specifications>
+</ids:ids>
