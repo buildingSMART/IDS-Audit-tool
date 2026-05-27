@@ -347,6 +347,10 @@ public static partial class Audit
 
     private static Status PopulateSchema(Stream vrs, ISchemaProvider schemaProvider, ILogger? logger, XmlSchemaSet destSchemas)
     {
+		if (vrs.CanSeek && vrs.Length == 0)
+		{
+			return Status.IdsStructureError;
+		}
         var ret = schemaProvider.GetSchemas(vrs, logger, out var schemas);
         if (ret != Status.Ok)
             return ret;

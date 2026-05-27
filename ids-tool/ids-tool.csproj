@@ -10,14 +10,11 @@
 		<Copyright>Claudio Benghi</Copyright>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
-		<Description>
-			A command line tool to audit IDS Files and IDS schemas.
-			buildingSmart Information Delivery Specification files can be audited against their relative schema and against the implementation agreements of the standard.
-		</Description>
+		<Description>A command line tool to audit IDS (Information Delivery Specification) files from buildingSMART.</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>IDS, buildingSmart</PackageTags>
 		<!-- Github actions are setup so that when this version is bumped the nuget package is uploaded -->
-		<AssemblyVersion>1.0.116</AssemblyVersion>
+		<AssemblyVersion>1.0.118</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 		<RepositoryUrl>https://github.com/buildingSMART/IDS-Audit-tool.git</RepositoryUrl>

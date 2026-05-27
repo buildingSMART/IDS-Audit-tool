@@ -134,6 +134,7 @@ public class AuditTests : BuildingSmartRepoFiles
         return new TheoryData<string, int, Audit.Status>
         {
             { "InvalidFiles/BadRichFile.ids", 6, Audit.Status.IdsContentError },
+            { "InvalidFiles/empty.ids", 0, Audit.Status.IdsStructureError },
             { "InvalidFiles/EntityImpossible.ids", 1, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidApplicability.ids", 3, Audit.Status.IdsContentError | Audit.Status.IdsStructureError },
             { "InvalidFiles/InvalidAttributeCardinality.ids", 3, Audit.Status.IdsContentError },
@@ -242,7 +243,6 @@ public class AuditTests : BuildingSmartRepoFiles
 		{
 			Assert.SkipWhen(!gotResponse, "Network issue or file not available at the moment.");	
 		}
-        
     }
 
     [Fact]

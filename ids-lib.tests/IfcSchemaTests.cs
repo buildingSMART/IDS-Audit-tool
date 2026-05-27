@@ -352,6 +352,7 @@ public class IfcSchemaTests
 	public void CanParseSIunits(string val, string measureId, SiPrefix pref, int exponent)
 	{
 		var m = SchemaInfo.AllMeasureInformation.FirstOrDefault(x => x.Id == measureId);
+		m.Should().NotBeNull($"measure {measureId} should be found");
 		val.Should().NotBeNullOrEmpty();
 		var found = IfcMeasureInformation.TryGetSIUnitFromString(val, out var measurefound, out SiPrefix prefixFound, out var exp);
 		found.Should().BeTrue($"looking for {val}");
