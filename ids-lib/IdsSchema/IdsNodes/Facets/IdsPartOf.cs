@@ -69,12 +69,12 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 				// types of both sides of the relation
 				//
 				if (matchedRelationName is null)
-					return SetInvalid();
+					continue;
 				var relationInfo = schema.AllPartOfRelations.FirstOrDefault(x => x.RelationIfcName == matchedRelationName);
 				if (relationInfo is null)
 				{
 					ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid relation found for {matchedRelationName}", this);
-					return SetInvalid(ret);
+					continue;
 				}
 
 				// Entities of the partOf need to be of type of relationInfo.PartIfcType
@@ -83,27 +83,39 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 				if (IfcTypeConstraint.IsNotNullAndEmpty(filter))
 				{
 					ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.PartIfcType}", this);
-					return SetInvalid(ret);
+					continue;
 				}
 				typeFilters.Add(schema, filter);
 
-				// The entity needs to be of type of relationInfo.OwnerIfcType
+				// The entity needs to be of type valid for relationInfo.OwnerIfcType
 				//
-				if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider childEntity)
+				if (GetChildNodes("entity").FirstOrDefault() is not IIfcTypeConstraintProvider bePartOfEntity)
 				{
 					ret |= IdsErrorMessages.Report106InvalidEmtpyValue(logger, this, "entity");
-					return SetInvalid(ret);
+					continue;
 				}
 
-				var validChildEntityType = new IfcInheritanceTypeConstraint(relationInfo.OwnerIfcType, schema.Version);
-				var possible = validChildEntityType.Intersect(childEntity.GetTypesFilter(schema));
+				var validPartOfEntityType = new IfcInheritanceTypeConstraint(relationInfo.OwnerIfcType, schema.Version);
+				var bePartOfTypes = bePartOfEntity.GetTypesFilter(schema);
+				var possible = validPartOfEntityType.Intersect(bePartOfTypes);
 				if (possible.IsEmpty)
 				{
-					ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schema, "relation not compatible with provided child entity");
-					return SetInvalid(ret);
+					var concrete = bePartOfTypes?.ConcreteTypes.ToList() ?? [];
+					var count = concrete.Count();
+					var message = count switch
+					{
+						1 => $"the provided entity constraint ({concrete.First()}) is not compatible with the relation, it should be a descendant of " + relationInfo.OwnerIfcType,
+						> 0 and < 6 => $"the provided entity constraints ({string.Join(", ", concrete)}) are not compatible with the relation, at least one should be a descendant of " + relationInfo.OwnerIfcType,
+						>= 6 => $"the provided entity constraints ({count} in total, starting with {string.Join(", ", concrete.Take(5))}) are not compatible with the relation, at least one should be a descendant of " + relationInfo.OwnerIfcType,
+						_ => $"the provided entity constraint is not compatible with the relation, it should be a descendant of " + relationInfo.OwnerIfcType,
+					};
+					ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schema, message);
+					continue;
 				}
 			}
         }
+		if (ret != Status.Ok)
+			return SetInvalid(ret);
 		IsValid = true;
 		return ret;
 	}

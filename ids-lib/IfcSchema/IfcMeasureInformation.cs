@@ -9,6 +9,8 @@ namespace IdsLib.IfcSchema;
 
 /// <summary>
 /// Metadata about measure conversion behaviours.
+/// Get a list of the available measures and their metadata from <see cref="SchemaInfo.AllMeasureInformation"/>.
+/// Otherwise get a list of the ones for a specific schema from <see cref="SchemaInfo.GetMeasureInformation(IfcSchemaVersions)"/>.
 /// </summary>
 [DebuggerDisplay("{Id}, {Description}")]
 public record IfcMeasureInformation : IUnitInformation

@@ -151,6 +151,7 @@ public class AuditTests : BuildingSmartRepoFiles
             { "InvalidFiles/InvalidIfcEnumerationIntegerValues.ids", 3, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidIfcOccurs.ids", 11, Audit.Status.IdsStructureError | Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidIfcPartOf.ids", 1, Audit.Status.IdsContentError },
+            { "InvalidFiles/InvalidIfcPartOfType.ids", 3, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidIfcPropertyForType.ids", 1, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidIfcPropertyInPset.ids", 1, Audit.Status.IdsContentError },
             { "InvalidFiles/InvalidIfcVersion.ids", 2, Audit.Status.IdsStructureError },

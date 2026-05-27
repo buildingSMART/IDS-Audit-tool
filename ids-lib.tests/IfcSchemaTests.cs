@@ -326,12 +326,12 @@ public class IfcSchemaTests
 	[InlineData("\tcm2\t ", true, true, 2)]
 	[InlineData("-2", false, false, 0)] // exponent is ignored because previous false parameter
 	[InlineData("2", false, false, 0)]
-	[InlineData("\"", false, true, 0)]// exponent is ignored because previous false parameter
-	[InlineData("\'", false, true, 0)]// exponent is ignored because previous false parameter
+	[InlineData("\"", false, true, 0)]
+	[InlineData("\'", false, true, 0)]
 	[InlineData("μ", true, true, 1)]
 	[InlineData("°K", true, true, 1)]
 	[InlineData("°C", true, true, 1)]
-	[InlineData("α", false, false, 0)]// exponent is ignored because previous false parameter
+	[InlineData("α", false, false, 0)]
 	public void CanMatchUnitComponent(string component, bool expectedSIMatch, bool expectedBroadMatch, int exponent)
 	{
 		var mSI = IfcMeasureInformation.SiUnitComponentMatcher.Match(component);
@@ -348,9 +348,10 @@ public class IfcSchemaTests
 	}
 
 	[Theory]
-	[MemberData(nameof(GetSICombinations))]
-	public void CanParseSIunits(string val, IfcMeasureInformation m, SiPrefix pref, int exponent)
+	[MemberData(nameof(GetSIUnitNamesWithPreixes))]
+	public void CanParseSIunits(string val, string measureId, SiPrefix pref, int exponent)
 	{
+		var m = SchemaInfo.AllMeasureInformation.FirstOrDefault(x => x.Id == measureId);
 		val.Should().NotBeNullOrEmpty();
 		var found = IfcMeasureInformation.TryGetSIUnitFromString(val, out var measurefound, out SiPrefix prefixFound, out var exp);
 		found.Should().BeTrue($"looking for {val}");
@@ -365,7 +366,7 @@ public class IfcSchemaTests
 		bareUnit.Should().BeEquivalentTo(m.UnitSymbol);
 	}
 
-	public static IEnumerable<object[]> GetSICombinations()
+	public static IEnumerable<object[]> GetSIUnitNamesWithPreixes()
 	{
 		var m = SchemaInfo.AllMeasureInformation.Where(static x => x.IsDirectSIUnit).ToList();
 		foreach (var measure in m)
@@ -387,10 +388,10 @@ public class IfcSchemaTests
 				{
 					foreach (var p in prefs)
 					{
-						yield return [$"{p}{s}", measure, pref, 1];
-						yield return [$"{p}{s}1", measure, pref, 1];
-						yield return [$"{p}{s}2", measure, pref, 2];
-						yield return [$"{p}{s}-2", measure, pref, -2];
+						yield return [$"{p}{s}", measure.Id, pref, 1];
+						yield return [$"{p}{s}1", measure.Id, pref, 1];
+						yield return [$"{p}{s}2", measure.Id, pref, 2];
+						yield return [$"{p}{s}-2", measure.Id, pref, -2];
 					}
 				}
 			}
@@ -402,21 +403,22 @@ public class IfcSchemaTests
 	[Fact]
 	public void SiUnitsHaveCoherentExponents()
 	{
-		var unitExponenst = new Dictionary<string, string>();
+		var unitExponents = new Dictionary<string, string>();
 		StringBuilder sb = new StringBuilder();
-		foreach (var item in GetSICombinations())
+		foreach (var item in GetSIUnitNamesWithPreixes())
 		{
 			var unitName = item[0].ToString()!;
-			var measureInfo = item[1] as IfcMeasureInformation;
+			var measureName = item[1] as string;
+			IfcMeasureInformation measureInfo = SchemaInfo.AllMeasureInformation.First(x => x.Id == measureName)!;
 			var enumV = (SiPrefix)item[2];
-			var exp = measureInfo!.Exponents.ToString();
-			if (unitExponenst.TryGetValue(unitName, out var found))
+			var exp = measureInfo.Exponents.ToString();
+			if (unitExponents.TryGetValue(unitName, out var found))
 			{
 				found.Should().Be(exp, $"unit {unitName} is not consistent {exp} vs. {found}");
 			}
 			else
 			{
-				unitExponenst.Add(unitName, exp);
+				unitExponents.Add(unitName, exp);
 				sb.AppendLine($""" "{unitName}" => ("{exp}", IfcConversionUnitInformation.SiPrefix.{enumV}, "{measureInfo.UnitSymbol}"), """);
 			}
 
@@ -451,7 +453,6 @@ public class IfcSchemaTests
 
 		var CompareToEmpty = d1 == new DimensionalExponents();
 		CompareToEmpty.Should().BeFalse();
-
 	}
 
 	[Fact]
