@@ -127,7 +127,7 @@ internal class IdsAttribute : IdsXmlNode, IIdsFacet, IIfcTypeConstraintProvider,
                 
 			}
 			// if we have valid attributes we can restrict the valid types depending on them
-			typeFilters.Add(schema, new IfcConcreteTypeList(SchemaInfo.SharedClassesForAttributes(schema.Version, matchingAttributeNames)));
+			typeFilters.Add(schema, new IfcTypeConcreteListConstraint(SchemaInfo.SharedClassesForAttributes(schema.Version, matchingAttributeNames)));
 		}
 		
         if (ret != Audit.Status.Ok)

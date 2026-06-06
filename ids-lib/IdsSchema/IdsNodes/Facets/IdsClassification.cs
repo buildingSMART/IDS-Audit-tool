@@ -37,7 +37,7 @@ internal class IdsClassification : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeCon
 	{
 		if (!IsRequired)
 			return null;
-		return new IfcConcreteTypeList(schema.GetRelAsssignClassificationClasses());		
+		return new IfcTypeConcreteListConstraint(schema.GetRelAsssignClassificationClasses());		
 	}
 
     protected internal override Audit.Status PerformAudit(AuditStateInformation stateInfo, ILogger? logger)

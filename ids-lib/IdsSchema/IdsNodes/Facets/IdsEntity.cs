@@ -81,7 +81,7 @@ internal class IdsEntity : IdsXmlNode, IIfcTypeConstraintProvider, IIdsFacet
 			ret |= entityNameMatcher.MustMatchAgainstCandidates(ValidClassNames, false, logger, out var possibleClasses, "entity name", schema.Version);
             if (ret != Audit.Status.Ok)
                 continue;
-            typeFilters.Add(schema, new IfcConcreteTypeList(possibleClasses));
+            typeFilters.Add(schema, new IfcTypeConcreteListConstraint(possibleClasses));
 
             // now check predefined types 
             

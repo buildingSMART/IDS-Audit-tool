@@ -36,7 +36,7 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
             if (provider is IIdsCardinalityFacet card && !card.IsRequired)
                 continue;
             typeFilter = IfcTypeConstraint.Intersect(typeFilter, provider.GetTypesFilter(schema));
-            if (IfcTypeConstraint.IsNotNullAndEmpty(typeFilter))
+            if (IfcTypeConstraint.CannotBeMet(typeFilter))
                 break;
         }
         typeFilterDic.Add(schema.Version, typeFilter);
@@ -68,7 +68,7 @@ internal class IdsFacetCollection : IdsXmlNode, IIfcTypeConstraintProvider
         {
             foreach (var schemaInfo in schemaInfos)
             {
-				if (!ChildFacets.Any(x => !x.IsValid) && IfcTypeConstraint.IsNotNullAndEmpty(GetTypesFilter(schemaInfo)))
+				if (!ChildFacets.Any(x => !x.IsValid) && GetTypesFilter(schemaInfo).CannotBeMet())
 					ret |= IdsErrorMessages.Report201IncompatibleClauses(logger, this, schemaInfo, "impossible match of constraints in set");
 			}
         }

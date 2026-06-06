@@ -1,6 +1,6 @@
 # ClassInfo class
 
-Complext metedata container for properties of IFC classes
+Metadata container for properties of IFC classes
 
 ```csharp
 public class ClassInfo

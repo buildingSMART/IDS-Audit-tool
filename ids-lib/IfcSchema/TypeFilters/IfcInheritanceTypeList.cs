@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
 namespace IdsLib.IfcSchema.TypeFilters
 {
-    // todo: all IIfcTypeConstraint concrete classes need to covered thoroughly with unit tests
 
-    [DebuggerDisplay("Types inheriting from {upperInvariantTopType} ({ConreteTypesCount})")]
-    internal class IfcInheritanceTypeConstraint : IIfcTypeConstraint
+	/// <summary>
+	/// Represents a type constraint based on inheritance. 
+	/// It defines that a top type, and all subclass shat inherit from it, in the required schemas are considered valid.
+	/// </summary>
+	[DebuggerDisplay("Types inheriting from {upperInvariantTopType} ({ConreteTypesCount})")]
+    public class IfcInheritanceTypeConstraint : IIfcTypeConstraint
 	{
 		private readonly string upperInvariantTopType;
 
@@ -17,6 +21,9 @@ namespace IdsLib.IfcSchema.TypeFilters
 
 		internal int ConreteTypesCount => ConcreteTypes.Count();
 
+		/// <summary>
+		/// Default constructor
+		/// </summary>
         public IfcInheritanceTypeConstraint(string topType, IfcSchemaVersions requiredSchemaVersions)
 		{
 			this.upperInvariantTopType = topType.ToUpperInvariant();
@@ -31,7 +38,7 @@ namespace IdsLib.IfcSchema.TypeFilters
 				if (concreteTypes is null) 
 				{
 					// this gets to the name of the top class (it must exist in all required schemas)
-				    IfcConcreteTypeList? c = null;
+				    IfcTypeConcreteListConstraint? c = null;
 				
 					var schemas = SchemaInfo.GetSchemas(requiredSchemaVersions);
 					// we identify the intersection of classes in all required schemas
@@ -39,16 +46,15 @@ namespace IdsLib.IfcSchema.TypeFilters
 					foreach (var schema in schemas)
 					{
 						if (c == null)
-							c = IfcConcreteTypeList.FromTopClass(schema, upperInvariantTopType);
+							c = IfcTypeConcreteListConstraint.FromTopClass(schema, upperInvariantTopType);
 						else
-							c.Intersect(IfcConcreteTypeList.FromTopClass(schema, upperInvariantTopType));
+							c.Intersect(IfcTypeConcreteListConstraint.FromTopClass(schema, upperInvariantTopType));
 						if (c.IsEmpty)
 						{
 							break;
 						}
 					}
-				
-					c ??= IfcConcreteTypeList.Empty;
+					c ??= IfcTypeConcreteListConstraint.Empty;
                     concreteTypes = c.ConcreteTypes;
 				}
 				return concreteTypes;
@@ -64,10 +70,60 @@ namespace IdsLib.IfcSchema.TypeFilters
 			if (other is null)
 				return this;
             if (this.IsEmpty || other.IsEmpty)
-				return IfcConcreteTypeList.Empty;
-			return new IfcConcreteTypeList(
+				return IfcTypeConcreteListConstraint.Empty;
+			if (other is IfcInheritanceTypeConstraint otherInheritance)
+			{
+				return GetLowest(otherInheritance);
+			}
+			return new IfcTypeConcreteListConstraint(
 				ConcreteTypes.Intersect(other.ConcreteTypes)
 				);
+		}
+
+		/// <summary>
+		/// Returns this, if they are the same.
+		/// Returns the highest of the two, if one inherits from the other;
+		/// Otherwise returns empty.
+		/// </summary>
+		private IIfcTypeConstraint GetHighest(IfcInheritanceTypeConstraint otherInheritance)
+		{
+			if (otherInheritance.GetInheritanceList().Contains(upperInvariantTopType))
+				return this;
+			if (GetInheritanceList().Contains(otherInheritance.upperInvariantTopType))
+				return otherInheritance;
+			return IfcTypeConcreteListConstraint.Empty;
+		}
+
+		/// <summary>
+		/// Returns this, if they are the same.
+		/// Returns the lowest of the two, if one inherits from the other;
+		/// Otherwise returns empty.
+		/// </summary>
+		private IIfcTypeConstraint GetLowest(IfcInheritanceTypeConstraint otherInheritance)
+		{
+			if (GetInheritanceList().Contains(otherInheritance.upperInvariantTopType))
+				return this;
+			if (otherInheritance.GetInheritanceList().Contains(upperInvariantTopType))
+				return otherInheritance;
+			return IfcTypeConcreteListConstraint.Empty;
+		}
+
+		/// <summary>
+		/// Gets the list of all types from this one upwards
+		/// </summary>
+		/// <returns></returns>
+		/// <exception cref="NotImplementedException"></exception>
+		private IEnumerable<string> GetInheritanceList()
+		{
+			var schema = SchemaInfo.GetSchemas(requiredSchemaVersions).FirstOrDefault();
+			if (schema is null)
+				yield break;
+			var tp = schema[upperInvariantTopType];
+			while (tp != null)
+			{
+				yield return tp.Name.ToUpperInvariant();
+				tp = tp.Parent;
+			}
 		}
 
 		/// <inheritdoc/>
@@ -79,11 +135,14 @@ namespace IdsLib.IfcSchema.TypeFilters
 				return this;
 			if (this.IsEmpty)
 				return other;
-			return new IfcConcreteTypeList(
+			if (other is IfcInheritanceTypeConstraint otherInheritance)
+			{
+				return GetHighest(otherInheritance);
+			}
+			return new IfcTypeConcreteListConstraint(
 				ConcreteTypes.Union(other.ConcreteTypes)
 				);
 		}
 	}
-
 
 }

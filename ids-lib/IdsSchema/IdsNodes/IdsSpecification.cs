@@ -73,13 +73,11 @@ internal class IdsSpecification : IdsXmlNode
                 {
                     var aF = applic.GetTypesFilter(schemaInfo);
                     var rF = reqs.GetTypesFilter(schemaInfo);
-					if (
-                        !IfcTypeConstraint.IsNotNullAndEmpty(aF) // if they are empty an error would already be notified
-                        && !IfcTypeConstraint.IsNotNullAndEmpty(rF)
-                        )
-                    {
+					// if filters are individually empty an error would already be notified, no need to report again here
+					if (aF.CanBeMet() && rF.CanBeMet()) 
+					{
                         var totalFilters = IfcTypeConstraint.Intersect(aF, rF);
-                        if (IfcTypeConstraint.IsNotNullAndEmpty(totalFilters))
+                        if (totalFilters.CannotBeMet())
                         {
                             var appDesc = aF!.ConcreteTypes.Count() > 5
                                 ? $"{aF.ConcreteTypes.Count()} types"

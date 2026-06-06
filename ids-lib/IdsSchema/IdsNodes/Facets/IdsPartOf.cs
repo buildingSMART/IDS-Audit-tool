@@ -80,7 +80,7 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 				// Entities of the partOf need to be of type of relationInfo.PartIfcType
 				// 
 				var filter = new IfcInheritanceTypeConstraint(relationInfo.PartIfcType, schema.Version);
-				if (IfcTypeConstraint.IsNotNullAndEmpty(filter))
+				if (filter.CannotBeMet())
 				{
 					ret |= IdsErrorMessages.Report501UnexpectedScenario(logger, $"no valid types found for {relationInfo.PartIfcType}", this);
 					continue;

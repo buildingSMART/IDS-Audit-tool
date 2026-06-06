@@ -135,7 +135,7 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 
                     // limit the validity of the type
                     var validTypes = SchemaInfo.PossibleTypesForPropertySets(schema.Version, possiblePsetNames);
-					typeFilters.Add(schema, new IfcConcreteTypeList(validTypes));
+					typeFilters.Add(schema, new IfcTypeConcreteListConstraint(validTypes));
                 }
                 else if (psetMatcher is IStringPrefixMatcher ssm && ssm.MatchesPrefix("Pset_"))
                 {

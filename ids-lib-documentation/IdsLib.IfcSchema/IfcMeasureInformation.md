@@ -1,6 +1,6 @@
 # IfcMeasureInformation record
 
-Metadata about measure conversion behaviours.
+Metadata about measure conversion behaviours. Get a list of the available measures and their metadata from [`AllMeasureInformation`](./SchemaInfo/AllMeasureInformation.md). Otherwise get a list of the ones for a specific schema from [`GetMeasureInformation`](./SchemaInfo/GetMeasureInformation.md).
 
 ```csharp
 public record IfcMeasureInformation : IUnitInformation

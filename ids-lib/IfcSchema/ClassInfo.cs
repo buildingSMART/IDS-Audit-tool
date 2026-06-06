@@ -47,7 +47,7 @@ public enum FunctionalType
 }
 
 /// <summary>
-/// Complext metedata container for properties of IFC classes
+/// Metadata container for properties of IFC classes
 /// </summary>
 [DebuggerDisplay("{Name}")]
 public partial class ClassInfo

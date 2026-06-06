@@ -31,7 +31,7 @@
 
 | public type | description |
 | --- | --- |
-| class [ClassInfo](./IdsLib.IfcSchema/ClassInfo.md) | Complext metedata container for properties of IFC classes |
+| class [ClassInfo](./IdsLib.IfcSchema/ClassInfo.md) | Metadata container for properties of IFC classes |
 | enum [ClassType](./IdsLib.IfcSchema/ClassType.md) | Information on the potential use of the class |
 | class [DimensionalExponents](./IdsLib.IfcSchema/DimensionalExponents.md) | Supports conversion of measures from different forms of unit expression |
 | enum [DimensionType](./IdsLib.IfcSchema/DimensionType.md) | One of the core SI units of measure |
@@ -42,7 +42,7 @@
 | class [IfcClassInformation](./IdsLib.IfcSchema/IfcClassInformation.md) | Simplistic metadata container for entities of an IfcSchema |
 | record [IfcConversionUnitInformation](./IdsLib.IfcSchema/IfcConversionUnitInformation.md) | Provides information to assemble conversion units, as per the documentation available on buidlingSMART's website. |
 | class [IfcDataTypeInformation](./IdsLib.IfcSchema/IfcDataTypeInformation.md) | Metadata container for entities containing measures of an IfcSchema. Access the list from [`AllDataTypes`](./IdsLib.IfcSchema/SchemaInfo/AllDataTypes.md). |
-| record [IfcMeasureInformation](./IdsLib.IfcSchema/IfcMeasureInformation.md) | Metadata about measure conversion behaviours. |
+| record [IfcMeasureInformation](./IdsLib.IfcSchema/IfcMeasureInformation.md) | Metadata about measure conversion behaviours. Get a list of the available measures and their metadata from [`AllMeasureInformation`](./IdsLib.IfcSchema/SchemaInfo/AllMeasureInformation.md). Otherwise get a list of the ones for a specific schema from [`GetMeasureInformation`](./IdsLib.IfcSchema/SchemaInfo/GetMeasureInformation.md). |
 | class [IfcSchemaAttribute](./IdsLib.IfcSchema/IfcSchemaAttribute.md) | Metadata attribute to define if a value of [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) identifies a single version of the schema |
 | [Flags] enum [IfcSchemaVersions](./IdsLib.IfcSchema/IfcSchemaVersions.md) | Enumerations for the identification of multiple schema versions. |
 | static class [IfcSchemaVersionsExtensions](./IdsLib.IfcSchema/IfcSchemaVersionsExtensions.md) | Provides utility methods for the [`IfcSchemaVersions`](./IdsLib.IfcSchema/IfcSchemaVersions.md) enum. |
@@ -56,6 +56,15 @@
 | class [SchemaInfo](./IdsLib.IfcSchema/SchemaInfo.md) | Provides static methods to get the collection of classes in the published schemas. |
 | class [SingleValuePropertyType](./IdsLib.IfcSchema/SingleValuePropertyType.md) | Schema metadata for single value properties |
 | class [TableValuePropertyType](./IdsLib.IfcSchema/TableValuePropertyType.md) | Schema metadata for single value properties |
+
+## IdsLib.IfcSchema.TypeFilters namespace
+
+| public type | description |
+| --- | --- |
+| class [IfcInheritanceTypeConstraint](./IdsLib.IfcSchema.TypeFilters/IfcInheritanceTypeConstraint.md) | Represents a type constraint based on inheritance. It defines that a top type, and all subclass shat inherit from it, in the required schemas are considered valid. |
+| class [IfcTypeConcreteListConstraint](./IdsLib.IfcSchema.TypeFilters/IfcTypeConcreteListConstraint.md) | Represents a type constraint defined by a specific list of concrete types. |
+| static class [IfcTypeConstraint](./IdsLib.IfcSchema.TypeFilters/IfcTypeConstraint.md) | Helper class for the interpretation of nullable [`IIfcTypeConstraint`](./IdsLib.IfcSchema.TypeFilters/IIfcTypeConstraint.md) instances. |
+| interface [IIfcTypeConstraint](./IdsLib.IfcSchema.TypeFilters/IIfcTypeConstraint.md) | Represents a constraint on the types of an entity, such as the allowed types for an attribute or the types of entities that can be related in a relationship. The constraint is defined as a set of concrete types, represented as upper invariant strings. The interface provides methods for intersecting and unioning constraints, as well as checking if a constraint is empty (i.e., has no allowed types). The standard empty constraint is the static [`Empty`](./IdsLib.IfcSchema.TypeFilters/IfcTypeConcreteListConstraint/Empty.md). |
 
 ## IdsLib.SchemaProviders namespace
 
