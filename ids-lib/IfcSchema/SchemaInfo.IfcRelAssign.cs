@@ -123,7 +123,11 @@ namespace IdsLib.IfcSchema
         private static IIfcTypeConstraint? relAssignPropertyClassesIfc4 = null;
         private static IIfcTypeConstraint? relAssignPropertyClassesIfc4x3 = null;
 
-		internal IIfcTypeConstraint? GetRelAssignPropertyClasses
+		/// <summary>
+		/// Returns the type constraint for the classes that can be related to a property.
+		/// This could help UI editors to filter the list depending on existing constraints on a facet.
+		/// </summary>
+		public IIfcTypeConstraint? GetRelAssignPropertyClasses
         {
             get
             {
@@ -151,7 +155,11 @@ namespace IdsLib.IfcSchema
 			}
         }
 
-		internal IEnumerable<string> GetRelAsssignClasses()
+		/// <summary>
+		/// Returns the list of classes that can in a relationship of type IfcRelAssign, per schema version.
+		/// This could help UI editors to filter the list depending on existing constraints on a facet.
+		/// </summary>
+		public IEnumerable<string> GetRelAsssignClasses()
         {
             if (Version == IfcSchemaVersions.Ifc2x3)
                 return Ifc2x3RelAssignClasses;
@@ -162,7 +170,12 @@ namespace IdsLib.IfcSchema
             return Enumerable.Empty<string>();
         }
 
-		internal IEnumerable<string> GetRelAsssignClassificationClasses()
+
+		/// <summary>
+		/// Returns the list of classes that related to a classification.
+		/// This could help UI editors to filter the list depending on existing constraints on a facet.
+		/// </summary>
+		public IEnumerable<string> GetRelAsssignClassificationClasses()
 		{
             if (Version == IfcSchemaVersions.Ifc2x3)
                 return Ifc2x3RelAssignClasses;

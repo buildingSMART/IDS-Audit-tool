@@ -17,6 +17,35 @@ namespace idsLib.tests
 			CollapseToConcrete
 		}
 
+		[Fact]
+		public void DebugHelpingTests()
+		{
+			// just some quick tests to help debug the union and intersection logic
+			var schemaVersion = IdsLib.IfcSchema.IfcSchemaVersions.Ifc4;
+			
+			GetUnionAndIntersectionWithInheritance(schemaVersion, ["IfcWall", "IfcWindow"], out var resultU, out var resultI);
+			resultI.IsEmpty.Should().BeTrue();
+			resultU.IsEmpty.Should().BeFalse();
+
+			GetUnionAndIntersectionWithInheritance(schemaVersion, ["IfcWall", "IfcWallStandardCase"], out resultU, out resultI);
+			resultI.IsEmpty.Should().BeFalse();
+			resultU.IsEmpty.Should().BeFalse();
+		}
+
+		private static void GetUnionAndIntersectionWithInheritance(IdsLib.IfcSchema.IfcSchemaVersions schemaVersion, string[] matchedNames, out IIfcTypeConstraint resultU, out IIfcTypeConstraint resultI)
+		{
+			var filterS = matchedNames.Select(x => new IfcInheritanceTypeConstraint(x, schemaVersion) as IIfcTypeConstraint).ToList();
+
+			resultU = filterS[0];
+			resultI = filterS[0];
+			for (var i = 1; i < filterS.Count; i++)
+			{
+				// Union and intersection both fail... need to fix 
+				resultU = resultU.Union(filterS[i]);
+				resultI = resultI.Intersect(filterS[i]);
+			}
+		}
+
 		[Theory]
 		[InlineData(TypeMode.keepInheritance)]
 		[InlineData(TypeMode.CollapseToConcrete)]

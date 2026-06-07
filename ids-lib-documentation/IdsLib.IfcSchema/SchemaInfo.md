@@ -15,6 +15,7 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | static [SchemaIfc4](SchemaInfo/SchemaIfc4.md) { get; } | Static property for the Ifc4 schema |
 | static [SchemaIfc4x3](SchemaInfo/SchemaIfc4x3.md) { get; } | Static property for the Ifc4 schema |
 | [AllPartOfRelations](SchemaInfo/AllPartOfRelations.md) { get; } | The names of classes across all schemas. |
+| [GetRelAssignPropertyClasses](SchemaInfo/GetRelAssignPropertyClasses.md) { get; } | Returns the type constraint for the classes that can be related to a property. This could help UI editors to filter the list depending on existing constraints on a facet. |
 | [Item](SchemaInfo/Item.md) { get; } | Get the classinfo by name string. Fastest lookup is available on CamelCase, otherwise it will try a case insensitive search which is more expensive |
 | [PropertySets](SchemaInfo/PropertySets.md) { get; } | Provides access to the property sets of the schema |
 | [Version](SchemaInfo/Version.md) { get; } | The version of the schema represented in the info |
@@ -26,6 +27,8 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetAttributesXsdTypes](SchemaInfo/GetAttributesXsdTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
 | [GetAttributesXsdTypesEnum](SchemaInfo/GetAttributesXsdTypesEnum.md)(…) | Returns a distinct enumerable of the XSD backing types of the required attributes, given a set of attribut names |
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
+| [GetRelAsssignClasses](SchemaInfo/GetRelAsssignClasses.md)() | Returns the list of classes that can in a relationship of type IfcRelAssign, per schema version. This could help UI editors to filter the list depending on existing constraints on a facet. |
+| [GetRelAsssignClassificationClasses](SchemaInfo/GetRelAsssignClassificationClasses.md)() | Returns the list of classes that related to a classification. This could help UI editors to filter the list depending on existing constraints on a facet. |
 | static [AllAttributes](SchemaInfo/AllAttributes.md) { get; } | The names of all attributes across all schemas. For richer information on a single schema you can use [`GetAttributeClasses`](./SchemaInfo/GetAttributeClasses.md), [`GetAttributeNames`](./SchemaInfo/GetAttributeNames.md), [`GetAttributeRelations`](./SchemaInfo/GetAttributeRelations.md), [`GetAttributesIfcTypes`](./SchemaInfo/GetAttributesIfcTypes.md), [`GetAttributesXsdTypesEnum`](./SchemaInfo/GetAttributesXsdTypesEnum.md), and [`GetAttributesXsdTypes`](./SchemaInfo/GetAttributesXsdTypes.md) |
 | static [AllConcreteClasses](SchemaInfo/AllConcreteClasses.md) { get; } | The names of all concrete classes across known IFC schemas, for schema specific information, use [`SchemaInfo`](./SchemaInfo.md) as enuberable, or String}). |
 | static [AllDataTypes](SchemaInfo/AllDataTypes.md) { get; } | The names of dataType classes across all schemas. |

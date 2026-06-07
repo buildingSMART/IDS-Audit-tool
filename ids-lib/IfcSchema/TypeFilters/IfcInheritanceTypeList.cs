@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace IdsLib.IfcSchema.TypeFilters
@@ -81,17 +82,20 @@ namespace IdsLib.IfcSchema.TypeFilters
 		}
 
 		/// <summary>
-		/// Returns this, if they are the same.
-		/// Returns the highest of the two, if one inherits from the other;
-		/// Otherwise returns empty.
+		/// Tries to evaluate if the two inheritance constraints are related, and if so, identifies the highest of the two.
 		/// </summary>
-		private IIfcTypeConstraint GetHighest(IfcInheritanceTypeConstraint otherInheritance)
+		/// <param name="otherInheritance">The other inheritance type constraint</param>
+		/// <param name="highest">The highest inheritance type constraint of the two, if they are related</param>
+		/// <returns>Returns true if the two inheritance are related or the same, false otherwise</returns>
+		private bool TryGetHighest(IfcInheritanceTypeConstraint otherInheritance, [NotNullWhen(true)] out IIfcTypeConstraint? highest)
 		{
 			if (otherInheritance.GetInheritanceList().Contains(upperInvariantTopType))
-				return this;
-			if (GetInheritanceList().Contains(otherInheritance.upperInvariantTopType))
-				return otherInheritance;
-			return IfcTypeConcreteListConstraint.Empty;
+				highest = this;
+			else if (GetInheritanceList().Contains(otherInheritance.upperInvariantTopType))
+				highest = otherInheritance;
+			else
+				highest = null;
+			return highest != null;
 		}
 
 		/// <summary>
@@ -135,9 +139,9 @@ namespace IdsLib.IfcSchema.TypeFilters
 				return this;
 			if (this.IsEmpty)
 				return other;
-			if (other is IfcInheritanceTypeConstraint otherInheritance)
+			if (other is IfcInheritanceTypeConstraint otherInheritance && TryGetHighest(otherInheritance, out var highest))
 			{
-				return GetHighest(otherInheritance);
+				return highest;
 			}
 			return new IfcTypeConcreteListConstraint(
 				ConcreteTypes.Union(other.ConcreteTypes)
