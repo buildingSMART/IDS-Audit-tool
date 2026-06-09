@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using IdsLib.IfcSchema.TypeFilters;
 using System;
 using System.Collections.Generic;

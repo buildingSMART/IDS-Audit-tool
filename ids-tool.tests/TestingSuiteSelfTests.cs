@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using idsTool.tests.Helpers;
 using System;
 using System.Collections.Generic;

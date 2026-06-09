@@ -1,4 +1,4 @@
-# ClassInfo constructor (1 of 2)
+# ClassInfo constructor (1 of 3)
 
 Create an enumeration type classinfo
 
@@ -13,14 +13,50 @@ public ClassInfo(string enumName, string enumNameSpace, string[] values)
 
 ---
 
-# ClassInfo constructor (2 of 2)
+# ClassInfo constructor (2 of 3)
 
 Public constructor
 
 ```csharp
 public ClassInfo(string name, string parentName, ClassType type, IEnumerable<string> predefined, 
-    string nameSpace, IEnumerable<string> directAttributes)
+    string nameSpace, IEnumerable<AttributeInfo>? directAttributes = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| name | Class name |
+| parentName | parent class name |
+| type | Class type |
+| predefined | List of valid predefinedtype strings |
+| nameSpace | The IFC schema namespace |
+| directAttributes | List of attribute info objects |
+
+## See Also
+
+* enum [ClassType](../ClassType.md)
+* record [AttributeInfo](../AttributeInfo.md)
+* class [ClassInfo](../ClassInfo.md)
+* namespace [IdsLib.IfcSchema](../../ids-lib.md)
+
+---
+
+# ClassInfo constructor (3 of 3)
+
+Public constructor for classes without attribute info. Fakes attribute info with empty types.
+
+```csharp
+public ClassInfo(string name, string parentName, ClassType type, IEnumerable<string> predefined, 
+    string nameSpace, IEnumerable<string> directAttributeNames)
+```
+
+| parameter | description |
+| --- | --- |
+| name | Class name |
+| parentName | parent class name |
+| type | Class type |
+| predefined | List of valid predefinedtype strings |
+| nameSpace | The IFC schema namespace |
+| directAttributeNames | If you do not have attribute info available, use just the names, otherwise prefer the constructor with [`AttributeInfo`](../AttributeInfo.md). |
 
 ## See Also
 

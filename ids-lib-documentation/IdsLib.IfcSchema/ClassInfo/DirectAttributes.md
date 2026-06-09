@@ -1,6 +1,6 @@
 # ClassInfo.DirectAttributes property
 
-List of attribute names for the type
+List of all attribute names for the type, if you need background attribute info, use [`DirectAttributesInfo`](./DirectAttributesInfo.md)
 
 ```csharp
 public IEnumerable<string>? DirectAttributes { get; }

@@ -1,5 +1,5 @@
 ﻿using Castle.Components.DictionaryAdapter.Xml;
-using FluentAssertions;
+using AwesomeAssertions;
 using idsLib.tests.Helpers;
 using IdsLib;
 using IdsLib.IdsSchema.IdsNodes;

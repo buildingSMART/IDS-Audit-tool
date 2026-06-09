@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11723.231 stable
+VisualStudioVersion = 18.5.11723.231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ids-tool", "ids-tool\ids-tool.csproj", "{CE0C9794-9CEC-4BBA-8FF3-396995F23AA8}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testing.shared", "testing.shared\testing.shared.csproj", "{699DEC93-7997-D12D-6A85-13C5B4399DC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ids-lib.tests", "ids-lib.tests\ids-lib.tests.csproj", "{0D47FE9C-7E71-777B-E031-6D72FD9D9880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ids-lib.codegen.tests", "ids-lib.codegen.tests\ids-lib.codegen.tests.csproj", "{503C5E4E-E997-48CA-B09F-FBE0CFFD9A39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{0D47FE9C-7E71-777B-E031-6D72FD9D9880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D47FE9C-7E71-777B-E031-6D72FD9D9880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D47FE9C-7E71-777B-E031-6D72FD9D9880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503C5E4E-E997-48CA-B09F-FBE0CFFD9A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503C5E4E-E997-48CA-B09F-FBE0CFFD9A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503C5E4E-E997-48CA-B09F-FBE0CFFD9A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503C5E4E-E997-48CA-B09F-FBE0CFFD9A39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -84,9 +84,14 @@ public partial class ClassInfo
 	public IEnumerable<string>? PredefinedTypeValues { get; private set; } = [];
 
 	/// <summary>
-	/// List of attribute names for the type
+	/// List of all attribute names for the type, if you need background attribute info, use <see cref="DirectAttributesInfo"/>
 	/// </summary>
-	public IEnumerable<string>? DirectAttributes { get; private set; } = [];
+	public IEnumerable<string>? DirectAttributes => DirectAttributesInfo?.Select(x => x.Name);
+
+	/// <summary>
+	/// List of all attribute for the type with their metadata
+	/// </summary>
+	public IEnumerable<AttributeInfo>? DirectAttributesInfo { get; private set; } = [];
 
 	/// <summary>
 	/// List of enumeration values 
@@ -137,16 +142,41 @@ public partial class ClassInfo
 	}
 
 	/// <summary>
-	/// Public constructor
+	/// Public constructor for classes without attribute info. Fakes attribute info with empty types.
 	/// </summary>
-	public ClassInfo(string name, string parentName, ClassType type, IEnumerable<string> predefined, string nameSpace, IEnumerable<string> directAttributes)
+	/// <param name="name">Class name</param>
+	/// <param name="parentName">parent class name</param>
+	/// <param name="type">Class type</param>
+	/// <param name="predefined">List of valid predefinedtype strings</param>
+	/// <param name="nameSpace">The IFC schema namespace</param>
+	/// <param name="directAttributeNames">If you do not have attribute info available, use just the names, otherwise prefer the constructor with <see cref="AttributeInfo"/>.</param>
+	public ClassInfo(string name, string parentName, ClassType type, IEnumerable<string> predefined, string nameSpace, IEnumerable<string> directAttributeNames)
 	{
 		Name = name;
 		ParentName = parentName;
 		Type = type;
 		PredefinedTypeValues = predefined;
 		NameSpace = nameSpace;
-		DirectAttributes = directAttributes;
+		DirectAttributesInfo = directAttributeNames.Select(x => new AttributeInfo(x, string.Empty));
+	}
+
+	/// <summary>
+	/// Public constructor
+	/// </summary>
+	/// <param name="name">Class name</param>
+	/// <param name="parentName">parent class name</param>
+	/// <param name="type">Class type</param>
+	/// <param name="predefined">List of valid predefinedtype strings</param>
+	/// <param name="nameSpace">The IFC schema namespace</param>
+	/// <param name="directAttributes">List of attribute info objects</param>
+	public ClassInfo(string name, string parentName, ClassType type, IEnumerable<string> predefined, string nameSpace, IEnumerable<AttributeInfo>? directAttributes = null)
+	{
+		Name = name;
+		ParentName = parentName;
+		Type = type;
+		PredefinedTypeValues = predefined;
+		NameSpace = nameSpace;
+		DirectAttributesInfo = directAttributes;
 	}
 
 	/// <summary>

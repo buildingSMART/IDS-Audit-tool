@@ -188,7 +188,7 @@ class IfcSchema_AttributesGenerator
 		foreach (var map in entities)
 		{
 			var daType = map.IfcMapToExpressType;
-			foreach (var prop in daType.Properties.Values)
+			foreach (var prop in daType.GetRelevantProperties())
 			{
 				// we should skip derived and inverse
 				if (prop.IsInverse || prop.IsDerived)

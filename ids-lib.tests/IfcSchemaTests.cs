@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using idsLib.tests.Helpers;
 using IdsLib.IfcSchema;
 using Microsoft.Extensions.Logging;

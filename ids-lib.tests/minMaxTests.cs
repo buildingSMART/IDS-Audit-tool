@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using IdsLib.IdsSchema.Cardinality;
 using System.IO;
 using System.Xml;

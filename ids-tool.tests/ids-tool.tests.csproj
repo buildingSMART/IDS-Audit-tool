@@ -12,7 +12,7 @@
 		<NoWarn>1701;1702;8002</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="FluentAssertions" Version="[7.2.0]" />
+		<PackageReference Include="AwesomeAssertions" Version="9.4.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
 		<PackageReference Include="NSubstitute" Version="5.3.0" />
 		<PackageReference Include="Xbim.Essentials" Version="6.0.587" />

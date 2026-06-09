@@ -58,6 +58,8 @@ internal class IdsPartOf : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstraintP
 		requiredSchemaVersions.TryGetSchemaInformation(out var schemas);
         foreach (var schema in schemas)
         {
+			// todo: FIX: INCOMPLETE: even if we have no relation value, we should limit the type, to the union of all possible relation types.
+			//
 			if (!string.IsNullOrEmpty(relationValue))
 			{
 				var relMatcher = new StringListMatcher(relationValue, this);

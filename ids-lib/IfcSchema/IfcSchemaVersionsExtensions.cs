@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace IdsLib.IfcSchema;
 
@@ -93,7 +94,6 @@ public static class IfcSchemaVersionsExtensions
 		return SchemaInfo.TryGetSchemaInformation(schemas, out schemaInfo);
 	}
 
-
     /// <summary>
     /// Utility extension to help identify if the flag enum <see cref="IfcSchemaVersions"/> represents a single schema value.
     /// </summary>
@@ -105,6 +105,27 @@ public static class IfcSchemaVersionsExtensions
         if (att == null) 
             return false;
         return att.IsSpecificAttribute;
+	}
+
+	static readonly IfcSchemaVersions[] SingleBits = [IfcSchemaVersions.Ifc2x3, IfcSchemaVersions.Ifc4, IfcSchemaVersions.Ifc4x3];
+
+	// todo: we are still deciding to ship this API
+	private static IEnumerable<IfcSingleSchemaVersion> Decompose(this IfcSchemaVersions source)
+	{
+		foreach (var bit in SingleBits)
+			if (source.HasFlag(bit))
+				yield return (IfcSingleSchemaVersion)(int)bit;
+	}
+
+	// todo: we are still deciding to ship this API
+	static bool IsSingleVersion(IfcSchemaVersions value, out IfcSingleSchemaVersion schemaVersion)
+	{
+		schemaVersion = default;
+		var att = value.GetAttributeOfType<IfcSchemaAttribute>();
+		if (att == null || !att.IsSpecificAttribute)
+			return false;
+		schemaVersion = (IfcSingleSchemaVersion)(int)value;
+		return true;
 	}
 }
 

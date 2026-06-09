@@ -8,6 +8,16 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="BannedSymbols.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <AdditionalFiles Include="BannedSymbols.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
 		<PackageReference Include="Xbim.Essentials" Version="6.0.587" />
@@ -24,5 +34,10 @@
 		<None Update="documentation\ids-tool-README.md">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>ids-lib.codegen.tests</_Parameter1>
+		</AssemblyAttribute>
 	</ItemGroup>
 </Project>

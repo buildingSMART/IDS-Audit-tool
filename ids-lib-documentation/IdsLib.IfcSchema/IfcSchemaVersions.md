@@ -1,6 +1,6 @@
 # IfcSchemaVersions enumeration
 
-Enumerations for the identification of multiple schema versions.
+Enumerations for the identification of multiple schema versions
 
 ```csharp
 [Flags]
@@ -12,9 +12,9 @@ public enum IfcSchemaVersions
 | name | value | description |
 | --- | --- | --- |
 | IfcNoVersion | `0x0` | Matches no schema |
-| Ifc2x3 | `0x1` | Matches includes version Ifc2x3 |
-| Ifc4 | `0x2` | Matches includes version Ifc4 |
-| Ifc4x3 | `0x4` | Matches includes version Ifc4x3 |
+| Ifc2x3 | `0x1` | Matches version Ifc2x3 |
+| Ifc4 | `0x2` | Matches version Ifc4 |
+| Ifc4x3 | `0x4` | Matches version Ifc4x3 |
 | IfcAllVersions | `0x7` | Matches includes all valid Ifc versions |
 
 ## See Also

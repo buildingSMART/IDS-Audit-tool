@@ -30,7 +30,7 @@ public class IfcSchema_PartOfRelationGenerator
 						
 						if (string.IsNullOrEmpty(manySide)) // if the starting point has been assigned, we can avoid its search
 						{
-							var propOnManySide = t.Properties.SingleOrDefault(x => x.Value.EnumerableType is not null).Value;
+							var propOnManySide = t.GetRelevantProperties().SingleOrDefault(x => x.EnumerableType is not null);
 							Type? manySideType = null;
 							if (propOnManySide is not null)
 							{
@@ -38,13 +38,13 @@ public class IfcSchema_PartOfRelationGenerator
 							}
 							else
 							{
-								propOnManySide = t.Properties.Single(x => x.Value.EnumerableType is null && x.Value.Name.StartsWith("Related")).Value;
+								propOnManySide = t.GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Related"));
 								manySideType = propOnManySide.PropertyInfo.PropertyType;
 							}
 							var manySideExpressType = metaD.ExpressType(manySideType.Name.ToUpperInvariant());
 							manySide = manySideExpressType.Name.ToUpperInvariant();
 						}
-						var propOnOneSide = t.Properties.Single(x => x.Value.EnumerableType is null && x.Value.Name.StartsWith("Relating")).Value;
+						var propOnOneSide = t.GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Relating"));
 						var oneSideType = propOnOneSide.PropertyInfo.PropertyType;
 						var oneSideExpressType = metaD.ExpressType(oneSideType.Name.ToUpperInvariant());
 						oneSide = oneSideExpressType.Name.ToUpperInvariant();

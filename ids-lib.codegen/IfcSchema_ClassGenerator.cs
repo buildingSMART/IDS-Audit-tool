@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using Xbim.Common.Metadata;
@@ -17,7 +18,7 @@ public class IfcSchema_ClassGenerator
         var source = stub;
         foreach (var schema in Program.schemas)
         {
-			HashSet<string> typeNames = new();
+			Dictionary<string, string> alreadyProcessedTypeNames = new();
 			List<TypeMapper> entities = TypeMapper.GetFor(schema, maps, out var metaD);
 			var sb = new StringBuilder();
 
@@ -30,8 +31,8 @@ public class IfcSchema_ClassGenerator
                 //}
 
                 // Enriching schema with predefined types
-                var propPdefT = classMap.IfcMapToExpressType.Properties.Values.FirstOrDefault(x => x.Name == "PredefinedType");
-                var predType = "Enumerable.Empty<string>()";
+                var propPdefT = classMap.IfcMapToExpressType.GetRelevantProperties().FirstOrDefault(x => x.Name == "PredefinedType");
+                var predType = "[]"; // empty array.
                 if (propPdefT != null)
                 {
                     var pt = propPdefT.PropertyInfo.PropertyType;
@@ -52,13 +53,19 @@ public class IfcSchema_ClassGenerator
                 var abstractOrNot = classMap.IfcMapToExpressType.Type.IsAbstract ? "ClassType.Abstract" : "ClassType.Concrete";
                 var ns = classMap.IfcMapToExpressType.Type.Namespace![5..];
 
-                // Enriching schema with attribute names
-                var attnames = NewStringArray(classMap.IfcMapToExpressType.Properties.Values.Select(x => x.Name).ToArray());
-
-				if (IsDuplicate(classMap.IdsName, schema, typeNames))
+				// Enriching schema with attribute names			
+				var attClasses = classMap.IfcMapToExpressType.GetRelevantProperties().Select(x => BuildAttributeDeclaration(x)).ToArray();
+				if (IsDuplicate(classMap.IdsName, schema, alreadyProcessedTypeNames)) // warning in case the class name is not an unique identifier across the schema, because of namespace differences
 					continue;
-				sb.AppendLine($@"			new ClassInfo(""{classMap.IdsName}"", ""{classMap.IfcMapToExpressType.SuperType?.Name}"", {abstractOrNot}, {predType}, ""{ns}"", {attnames}),");
-
+				if (attClasses.Any())
+				{
+					sb.AppendLine($@"			new ClassInfo(""{classMap.IdsName}"", ""{classMap.IfcMapToExpressType.SuperType?.Name}"", {abstractOrNot}, {predType}, ""{ns}"",");
+					sb.AppendLine($@"				new AttributeInfo[] {{{string.Join(", ", attClasses)}}}),");
+				}
+				else
+				{
+					sb.AppendLine($@"			new ClassInfo(""{classMap.IdsName}"", ""{classMap.IfcMapToExpressType.SuperType?.Name}"", {abstractOrNot}, {predType}, ""{ns}""),");
+				}
             }
 			foreach (var enumerationClass in IfcSchema_DatatypeNamesGenerator.GetEnumTypes(schema))
 			{
@@ -71,7 +78,7 @@ public class IfcSchema_ClassGenerator
 						throw new Exception("Must have a valid namespace hardcoded");
 					}
 				}
-				if (IsDuplicate(enumerationClass.Name, schema, typeNames))
+				if (IsDuplicate(enumerationClass.Name, $"{schema}.{ns}" , alreadyProcessedTypeNames)) // Class name is not an unique identifier across the schema, because of namespace differences
 					continue;
 
 				var vals = Enum.GetValues(enumerationClass).Cast<object>().Select(x => x.ToString()!).ToArray()!;
@@ -84,14 +91,23 @@ public class IfcSchema_ClassGenerator
         return source;
     }
 
-	private static bool IsDuplicate(string idsName, string schemaName, HashSet<string> typeNames)
+	private static string BuildAttributeDeclaration(ExpressMetaProperty x)
 	{
-		if (typeNames.Contains(idsName))
+		return $"""new ("{x.Name}","{XbimHelper.GetExpressTypeDefinition(x)}")""";
+	}
+
+	private static bool IsDuplicate(string className, string schemaAndNamespace, Dictionary<string, string> processedClassNameSpaces)
+	{
+		if (processedClassNameSpaces.ContainsKey(className))
 		{
-			Program.Message($"Warning: skipping duplicate type name `{idsName}` in `{schemaName}`", ConsoleColor.DarkYellow);
+			Program.Message($"Warning: skipping duplicate type name `{className}` in `{schemaAndNamespace}` (existing in {processedClassNameSpaces[className]})", ConsoleColor.DarkYellow);
 			return true;
 		}
-		typeNames.Add(idsName);
+		if (className == "IfcAnnotationTypeEnum")
+		{
+
+		}
+		processedClassNameSpaces[className] = schemaAndNamespace;
 		return false;
 	}
 

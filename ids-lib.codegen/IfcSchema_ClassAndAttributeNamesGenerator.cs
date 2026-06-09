@@ -28,7 +28,7 @@ public partial class IfcSchema_ClassAndAttributeNamesGenerator
 					classNames.Add(className, new List<string>() { schema });
 
 				// Enriching schema with attribute names
-				var thisattnames = entity.IfcMapToExpressType.Properties.Values.Select(x => x.Name);
+				var thisattnames = entity.IfcMapToExpressType.GetRelevantProperties().Select(x => x.Name);
 				foreach (var attributeName in thisattnames)
 				{
 					if (attNames.TryGetValue(attributeName, out var attlst))

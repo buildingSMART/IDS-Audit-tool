@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using IdsLib.IdsSchema;
 using IdsLib.IdsSchema.IdsNodes;
 using idsTool.tests.Helpers;

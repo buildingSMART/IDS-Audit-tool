@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using FluentAssertions.Common;
+﻿using AwesomeAssertions;
 using idsLib.tests.Helpers;
 using idsTool.tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using AwesomeAssertions;
 using IdsLib;
 using IdsLib.SchemaProviders;
 using idsTool.tests.Helpers;

@@ -10,8 +10,9 @@ public class ClassInfo
 
 | name | description |
 | --- | --- |
-| [ClassInfo](ClassInfo/ClassInfo.md)(…) | Public constructor (2 constructors) |
-| [DirectAttributes](ClassInfo/DirectAttributes.md) { get; } | List of attribute names for the type |
+| [ClassInfo](ClassInfo/ClassInfo.md)(…) | Public constructor for classes without attribute info. Fakes attribute info with empty types. (3 constructors) |
+| [DirectAttributes](ClassInfo/DirectAttributes.md) { get; } | List of all attribute names for the type, if you need background attribute info, use [`DirectAttributesInfo`](./ClassInfo/DirectAttributesInfo.md) |
+| [DirectAttributesInfo](ClassInfo/DirectAttributesInfo.md) { get; } | List of all attribute for the type with their metadata |
 | [EnumerationValues](ClassInfo/EnumerationValues.md) { get; } | List of enumeration values |
 | [FunctionalType](ClassInfo/FunctionalType.md) { get; } | Is the class |
 | [MatchingConcreteClasses](ClassInfo/MatchingConcreteClasses.md) { get; } | All matching concrete classes, including self and entire subclass tree |

@@ -105,20 +105,20 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 			IEnumerable<string>? validMeasureNames = null;
             IsValid = true;
 
+			// todo: evaluate if we should also do some test if Optional. (eg. pset names)
             if (IsRequired)
             {
-                var validPsetNames = SchemaInfo.SharedPropertySetNames(schema.Version);
-                if (psetMatcher.TryMatch(validPsetNames, false, out var possiblePsetNames))
+				var allSchemaPsetNames = schema.PropertySets.Select(x => x.Name); // because we are taking one schema at a time we can use a simple call.
+                if (psetMatcher.TryMatch(allSchemaPsetNames, false, out var matchingPsetNames))
                 {
                     // see if there's a match with standard property sets
-                    var validPropNames = SchemaInfo.SharedPropertyNames(schema.Version, possiblePsetNames);
+                    var validPropNames = SchemaInfo.SharedPropertyNames(schema.Version, matchingPsetNames);
                     var nameMatch = nameMatcher.MustMatchAgainstCandidates(validPropNames, false, logger, out var possiblePropertyNames, $"property {PropertyNodeName}", schema.Version);
                     if (nameMatch != Audit.Status.Ok)
                         return SetInvalid();
-					
 					if (valueConstraintNode != null) // we only need to do this if we have a value constraint, otherwise we can allow all the values for the property
 					{
-						var hasLimitedValueOptions = SchemaInfo.HasEnumConstraintsForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames, out var valueOptions);
+						var hasLimitedValueOptions = SchemaInfo.HasEnumConstraintsForAllProperties(schema.Version, matchingPsetNames, possiblePropertyNames, out var valueOptions);
 						if (hasLimitedValueOptions)
 						{
 							valueConstraintMatcher ??= valueConstraintNode.GetListMatcher();
@@ -131,10 +131,10 @@ internal class IdsProperty : IdsXmlNode, IIdsCardinalityFacet, IIfcTypeConstrain
 					}
 
 					// limit the validity of the IfcMeasure to the value coming from the metadata for the property
-					validMeasureNames = SchemaInfo.ValidMeasuresForAllProperties(schema.Version, possiblePsetNames, possiblePropertyNames);
+					validMeasureNames = SchemaInfo.ValidMeasuresForAllProperties(schema.Version, matchingPsetNames, possiblePropertyNames);
 
                     // limit the validity of the type
-                    var validTypes = SchemaInfo.PossibleTypesForPropertySets(schema.Version, possiblePsetNames);
+                    var validTypes = SchemaInfo.PossibleTypesForPropertySets(schema.Version, matchingPsetNames);
 					typeFilters.Add(schema, new IfcTypeConcreteListConstraint(validTypes));
                 }
                 else if (psetMatcher is IStringPrefixMatcher ssm && ssm.MatchesPrefix("Pset_"))

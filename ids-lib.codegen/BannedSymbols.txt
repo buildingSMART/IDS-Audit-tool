@@ -1,0 +1,1 @@
+﻿P:Xbim.Common.Metadata.ExpressType.Properties;Use XbimHelper.GetRelevantProperties() extension method instead.

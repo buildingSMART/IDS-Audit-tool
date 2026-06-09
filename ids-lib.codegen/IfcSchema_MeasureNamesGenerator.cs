@@ -243,6 +243,22 @@ public class IfcSchema_DatatypeNamesGenerator
 				&& x.BaseType.Name == "Enum"
 				&& reIfcEnumNames.IsMatch(x.Name)
 				).ToList();
+		if (schema == "Ifc4x3")
+		{
+			var removeNameSpace = "SharedInfrastructureElements";
+			string[] s = ["IfcAnnotationTypeEnum", "IfcFacilityPartCommonTypeEnum", "IfcFacilityUsageEnum"];
+			foreach (var toRemove in s)
+			{
+				
+				tp2.RemoveAll(x => 
+					x.Name.Equals(toRemove, StringComparison.OrdinalIgnoreCase)
+					&& !string.IsNullOrEmpty(x.Namespace)
+					&& x.Namespace.Contains(removeNameSpace, StringComparison.OrdinalIgnoreCase)
+					);
+			}
+
+			
+		}
 		if (schema == "Ifc4")
 		{
 			tp2.RemoveAll(x => x.Name.Equals("IfcAlignmentTypeEnum", StringComparison.OrdinalIgnoreCase)); // apparently not defined in Ifc4

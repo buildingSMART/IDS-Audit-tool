@@ -370,6 +370,8 @@ namespace IdsLib.IfcSchema
 			return ret;
 		}
 
+		// todo: this needs to be simplified, because it is worked out schema by schema in the reporting from IdsAttribute
+
 		/// <summary>
 		/// the set of classes that satisfy the attributes across all provided schemas
 		/// </summary>
@@ -419,6 +421,7 @@ namespace IdsLib.IfcSchema
 		}
 
 		// todo: this is probably a performance problem, we could be caching in memory
+		[Obsolete("Use schema.PropertySets.Select directly if only for one schema")]
 		internal static IEnumerable<string> SharedPropertySetNames(IfcSchemaVersions version)
 		{
 			IEnumerable<string>? ret = null;

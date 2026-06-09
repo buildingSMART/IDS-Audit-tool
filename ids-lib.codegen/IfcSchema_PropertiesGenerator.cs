@@ -337,6 +337,9 @@ public class IfcSchema_PropertiesGenerator
 				}
 				else if (prop.PropertyType.PropertyValueType is TypePropertyEnumeratedValue enumV)
 				{
+					// this is a type of property that defines a closed list of acceptable values,
+					// however it is not an EXPRESS enumeration, but rather a list of possible values for a String (likely stored as IFCLABEL in the model, not any ENUM types)
+					//
 					if (enumV.ConstantList.Any())
 						throw new Exception("Not implemented data structure.");
 					else
