@@ -1,0 +1,439 @@
+﻿#nullable enable
+const IdsLib.IdsSchema.IdsNodes.IdsFacts.DefaultIdsVersion = IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids1_0 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+const IdsLib.IfcSchema.IfcSchemaVersionsExtensions.IfcSchema2x3String = "IFC2X3" -> string!
+const IdsLib.IfcSchema.IfcSchemaVersionsExtensions.IfcSchema4String = "IFC4" -> string!
+const IdsLib.IfcSchema.IfcSchemaVersionsExtensions.IfcSchema4x3String = "IFC4X3_ADD2" -> string!
+const IdsLib.IfcSchema.IfcSchemaVersionsExtensions.IfcSchema4x3StringLegacy = "IFC4X3" -> string!
+IdsLib.Action
+IdsLib.Action.IdsContent = 2 -> IdsLib.Action
+IdsLib.Action.IdsContentWithOmissions = 3 -> IdsLib.Action
+IdsLib.Action.IdsStructure = 0 -> IdsLib.Action
+IdsLib.Action.XsdCorrectness = 1 -> IdsLib.Action
+IdsLib.ActionCollection
+IdsLib.ActionCollection.ActionCollection() -> void
+IdsLib.ActionCollection.GetActions() -> System.Collections.Generic.IEnumerable<IdsLib.Action>!
+IdsLib.ActionCollection.ToString(string? format, System.IFormatProvider? formatProvider) -> string!
+IdsLib.Audit
+IdsLib.Audit.ISchemaProvider
+IdsLib.Audit.ISchemaProvider.GetSchemas(System.IO.Stream! source, Microsoft.Extensions.Logging.ILogger? logger, out System.Collections.Generic.IEnumerable<System.Xml.Schema.XmlSchema!>! schemas) -> IdsLib.Audit.Status
+IdsLib.Audit.Status
+IdsLib.Audit.Status.IdsContentError = 16 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.IdsStructureError = 8 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.IdsStructureWarning = 256 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.InvalidOptionsError = 2 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.NotFoundError = 4 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.NotImplementedError = 1 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.Ok = 0 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.UnhandledError = 128 -> IdsLib.Audit.Status
+IdsLib.Audit.Status.XsdSchemaError = 64 -> IdsLib.Audit.Status
+IdsLib.AuditProcessOptions
+IdsLib.AuditProcessOptions.AuditProcessOptions() -> void
+IdsLib.AuditProcessOptions.XmlWarningBehaviour
+IdsLib.AuditProcessOptions.XmlWarningBehaviour.Ignore = 0 -> IdsLib.AuditProcessOptions.XmlWarningBehaviour
+IdsLib.AuditProcessOptions.XmlWarningBehaviour.ReportAsError = 3 -> IdsLib.AuditProcessOptions.XmlWarningBehaviour
+IdsLib.AuditProcessOptions.XmlWarningBehaviour.ReportAsInformation = 1 -> IdsLib.AuditProcessOptions.XmlWarningBehaviour
+IdsLib.AuditProcessOptions.XmlWarningBehaviour.ReportAsWarning = 2 -> IdsLib.AuditProcessOptions.XmlWarningBehaviour
+IdsLib.IBatchAuditOptions
+IdsLib.IBatchAuditOptions.AuditSchemaDefinition.get -> bool
+IdsLib.IBatchAuditOptions.AuditSchemaDefinition.set -> void
+IdsLib.IBatchAuditOptions.InputExtension.get -> string!
+IdsLib.IBatchAuditOptions.InputSource.get -> string!
+IdsLib.IBatchAuditOptions.OmitIdsContentAudit.get -> bool
+IdsLib.IBatchAuditOptions.OmitIdsContentAuditPattern.get -> string!
+IdsLib.IBatchAuditOptions.SchemaFiles.get -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IdsSchema.IdsNodes.IdsFacts
+IdsLib.IdsSchema.IdsNodes.IdsFacts.IdsFacts() -> void
+IdsLib.IdsSchema.IdsNodes.IdsInformation
+IdsLib.IdsSchema.IdsNodes.IdsInformation.GetVersion(Microsoft.Extensions.Logging.ILogger? logger = null) -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsInformation.IdsInformation() -> void
+IdsLib.IdsSchema.IdsNodes.IdsInformation.IsIds.get -> bool
+IdsLib.IdsSchema.IdsNodes.IdsInformation.SchemaLocation.get -> string!
+IdsLib.IdsSchema.IdsNodes.IdsInformation.StatusMessage.get -> string!
+IdsLib.IdsSchema.IdsNodes.IdsInformation.Version.get -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9 = 1 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_6 = 2 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids0_9_7 = 3 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion.Ids1_0 = 4 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.IdsVersion.Invalid = 0 -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+IdsLib.IdsSchema.IdsNodes.NodeIdentification
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.NodeIdentification() -> void
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.NodeType.get -> string!
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.NodeType.set -> void
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.PositionalIdentifier.get -> string!
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.PositionalIdentifier.set -> void
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.StartLineNumber.get -> int
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.StartLineNumber.set -> void
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.StartLinePosition.get -> int
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.StartLinePosition.set -> void
+IdsLib.IdsSchema.IdsNodes.NodeIdentification.ToString(string? format, System.IFormatProvider? formatProvider) -> string!
+IdsLib.IdsSchema.XsNodes.XsTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.Invalid = 0 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.Undefined = 1 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsAnyURI = 12 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsAnyUri = 12 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsBoolean = 3 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsDate = 10 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsDateTime = 9 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsDecimal = 7 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsDouble = 5 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsDuration = 8 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsFloat = 6 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsInteger = 4 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsString = 2 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes.XsTime = 11 -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.Annotation = 0 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.Enumeration = 1 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.FractionDigits = 10 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.Length = 2 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MaxExclusive = 3 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MaxInclusive = 4 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MaxLength = 5 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MinExclusive = 6 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MinInclusive = 7 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.MinLength = 8 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.Pattern = 9 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets.TotalDigits = 11 -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets
+IdsLib.IfcSchema.AttributeInfo
+IdsLib.IfcSchema.AttributeInfo.AttributeInfo(string! name, string! expressDefinition) -> void
+IdsLib.IfcSchema.AttributeInfo.BaseType.get -> string!
+IdsLib.IfcSchema.AttributeInfo.ExpressType.get -> IdsLib.IfcSchema.ExpressDefinition!
+IdsLib.IfcSchema.AttributeInfo.IsCollection.get -> bool
+IdsLib.IfcSchema.AttributeInfo.IsOptional.get -> bool
+IdsLib.IfcSchema.AttributeInfo.Name.get -> string!
+IdsLib.IfcSchema.AttributeInfo.XmlBaseType.get -> string!
+IdsLib.IfcSchema.ClassInfo
+IdsLib.IfcSchema.ClassInfo.ClassInfo(string! enumName, string! enumNameSpace, string![]! values) -> void
+IdsLib.IfcSchema.ClassInfo.ClassInfo(string! name, string! parentName, IdsLib.IfcSchema.ClassType type, System.Collections.Generic.IEnumerable<string!>! predefined, string! nameSpace, System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.AttributeInfo!>? directAttributes = null) -> void
+IdsLib.IfcSchema.ClassInfo.ClassInfo(string! name, string! parentName, IdsLib.IfcSchema.ClassType type, System.Collections.Generic.IEnumerable<string!>! predefined, string! nameSpace, System.Collections.Generic.IEnumerable<string!>! directAttributeNames) -> void
+IdsLib.IfcSchema.ClassInfo.DirectAttributes.get -> System.Collections.Generic.IEnumerable<string!>?
+IdsLib.IfcSchema.ClassInfo.DirectAttributesInfo.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.AttributeInfo!>?
+IdsLib.IfcSchema.ClassInfo.EnumerationValues.get -> System.Collections.Generic.IEnumerable<string!>?
+IdsLib.IfcSchema.ClassInfo.FunctionalType.get -> IdsLib.IfcSchema.FunctionalType
+IdsLib.IfcSchema.ClassInfo.Is(string! className) -> bool
+IdsLib.IfcSchema.ClassInfo.MatchingConcreteClasses.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.ClassInfo!>!
+IdsLib.IfcSchema.ClassInfo.Name.get -> string!
+IdsLib.IfcSchema.ClassInfo.NameSpace.get -> string!
+IdsLib.IfcSchema.ClassInfo.Parent.get -> IdsLib.IfcSchema.ClassInfo?
+IdsLib.IfcSchema.ClassInfo.ParentName.get -> string!
+IdsLib.IfcSchema.ClassInfo.PredefinedTypeValues.get -> System.Collections.Generic.IEnumerable<string!>?
+IdsLib.IfcSchema.ClassInfo.RelationTypeClasses.get -> string![]?
+IdsLib.IfcSchema.ClassInfo.SubClasses -> System.Collections.Generic.List<IdsLib.IfcSchema.ClassInfo!>!
+IdsLib.IfcSchema.ClassInfo.Type.get -> IdsLib.IfcSchema.ClassType
+IdsLib.IfcSchema.ClassType
+IdsLib.IfcSchema.ClassType.Abstract = 0 -> IdsLib.IfcSchema.ClassType
+IdsLib.IfcSchema.ClassType.Concrete = 1 -> IdsLib.IfcSchema.ClassType
+IdsLib.IfcSchema.ClassType.Enumeration = 2 -> IdsLib.IfcSchema.ClassType
+IdsLib.IfcSchema.DimensionalExponents
+IdsLib.IfcSchema.DimensionalExponents.AmountOfSubstance.get -> int
+IdsLib.IfcSchema.DimensionalExponents.AmountOfSubstance.set -> void
+IdsLib.IfcSchema.DimensionalExponents.DimensionalExponents() -> void
+IdsLib.IfcSchema.DimensionalExponents.DimensionalExponents(int length, int mass, int time, int electricCurrent, int temperature, int amountOfSsubstance, int luminousIntensity) -> void
+IdsLib.IfcSchema.DimensionalExponents.ElectricCurrent.get -> int
+IdsLib.IfcSchema.DimensionalExponents.ElectricCurrent.set -> void
+IdsLib.IfcSchema.DimensionalExponents.Elevate(int exponent) -> void
+IdsLib.IfcSchema.DimensionalExponents.Equals(IdsLib.IfcSchema.DimensionalExponents? other) -> bool
+IdsLib.IfcSchema.DimensionalExponents.GetComponentUnits() -> System.Collections.Generic.IEnumerable<(int exponent, IdsLib.IfcSchema.IfcMeasureInformation! meas)>!
+IdsLib.IfcSchema.DimensionalExponents.GetExponent(IdsLib.IfcSchema.DimensionType tp) -> int
+IdsLib.IfcSchema.DimensionalExponents.IsBasicUnit.get -> bool
+IdsLib.IfcSchema.DimensionalExponents.IsPureNumber.get -> bool
+IdsLib.IfcSchema.DimensionalExponents.Length.get -> int
+IdsLib.IfcSchema.DimensionalExponents.Length.set -> void
+IdsLib.IfcSchema.DimensionalExponents.LuminousIntensity.get -> int
+IdsLib.IfcSchema.DimensionalExponents.LuminousIntensity.set -> void
+IdsLib.IfcSchema.DimensionalExponents.Mass.get -> int
+IdsLib.IfcSchema.DimensionalExponents.Mass.set -> void
+IdsLib.IfcSchema.DimensionalExponents.Multiply(IdsLib.IfcSchema.DimensionalExponents! other) -> IdsLib.IfcSchema.DimensionalExponents!
+IdsLib.IfcSchema.DimensionalExponents.Temperature.get -> int
+IdsLib.IfcSchema.DimensionalExponents.Temperature.set -> void
+IdsLib.IfcSchema.DimensionalExponents.Time.get -> int
+IdsLib.IfcSchema.DimensionalExponents.Time.set -> void
+IdsLib.IfcSchema.DimensionalExponents.ToUnitSymbol() -> string!
+IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.AmountOfSubstance = 5 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.ElectricCurrent = 3 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.Length = 0 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.LuminousIntensity = 6 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.Mass = 1 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.Temperature = 4 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.DimensionType.Time = 2 -> IdsLib.IfcSchema.DimensionType
+IdsLib.IfcSchema.EnumerationPropertyType
+IdsLib.IfcSchema.EnumerationPropertyType.EnumerationPropertyType(string! name, System.Collections.Generic.IEnumerable<string!>! values) -> void
+IdsLib.IfcSchema.EnumerationPropertyType.EnumerationValues.get -> System.Collections.Generic.IList<string!>!
+IdsLib.IfcSchema.ExpressDefinition
+IdsLib.IfcSchema.ExpressDefinition.BaseType.get -> string!
+IdsLib.IfcSchema.ExpressDefinition.Definition.get -> string!
+IdsLib.IfcSchema.ExpressDefinition.ExpressDefinition(string! expressDefinition) -> void
+IdsLib.IfcSchema.ExpressDefinition.IsCollection.get -> bool
+IdsLib.IfcSchema.ExpressDefinition.IsOptional.get -> bool
+IdsLib.IfcSchema.ExpressDefinition.XmlBaseType.get -> string!
+IdsLib.IfcSchema.FunctionalType
+IdsLib.IfcSchema.FunctionalType.Element = 0 -> IdsLib.IfcSchema.FunctionalType
+IdsLib.IfcSchema.FunctionalType.ElementWithTypes = 1 -> IdsLib.IfcSchema.FunctionalType
+IdsLib.IfcSchema.FunctionalType.TypeOfElement = 2 -> IdsLib.IfcSchema.FunctionalType
+IdsLib.IfcSchema.Ifc2x3EntityMappingInformation
+IdsLib.IfcSchema.Ifc2x3EntityMappingInformation.IdsEntity.get -> string!
+IdsLib.IfcSchema.Ifc2x3EntityMappingInformation.Ifc2x3EntityMappingInformation(string! sourceEntity, string! mappedEntity, string! mappedType) -> void
+IdsLib.IfcSchema.Ifc2x3EntityMappingInformation.IfcEntity.get -> string!
+IdsLib.IfcSchema.Ifc2x3EntityMappingInformation.IfcEntityType.get -> string!
+IdsLib.IfcSchema.IfcAttributeInformation
+IdsLib.IfcSchema.IfcAttributeInformation.IfcAttributeInformation(string! name, System.Collections.Generic.IEnumerable<string!>! schemas) -> void
+IdsLib.IfcSchema.IfcAttributeInformation.IfcAttributeName.get -> string!
+IdsLib.IfcSchema.IfcAttributeInformation.ValidSchemaVersions.get -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcClassInformation
+IdsLib.IfcSchema.IfcClassInformation.IfcClassInformation(string! nameInPascalCase, System.Collections.Generic.IEnumerable<string!>! schemas) -> void
+IdsLib.IfcSchema.IfcClassInformation.PascalCaseName.get -> string!
+IdsLib.IfcSchema.IfcClassInformation.UpperCaseName.get -> string!
+IdsLib.IfcSchema.IfcClassInformation.ValidSchemaVersions.get -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcConversionUnitInformation
+IdsLib.IfcSchema.IfcConversionUnitInformation.BaseUnit.get -> string!
+IdsLib.IfcSchema.IfcConversionUnitInformation.ConversionOffset.get -> double?
+IdsLib.IfcSchema.IfcConversionUnitInformation.ConversionUnitNames.get -> string![]!
+IdsLib.IfcSchema.IfcConversionUnitInformation.ConversionValue.get -> double
+IdsLib.IfcSchema.IfcConversionUnitInformation.GetConversionSteps() -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IUnitInformation!>!
+IdsLib.IfcSchema.IfcConversionUnitInformation.GetParentUnit() -> IdsLib.IfcSchema.IUnitInformation?
+IdsLib.IfcSchema.IfcConversionUnitInformation.IfcConversionUnitInformation(string! name, string! ifcMeasure, double conv, string! baseUnit) -> void
+IdsLib.IfcSchema.IfcConversionUnitInformation.IfcConversionUnitInformation(string![]! names, string! ifcMeasure, double conv, string! baseUnit, double? offset = null) -> void
+IdsLib.IfcSchema.IfcConversionUnitInformation.IfcMeasure.get -> string!
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.ATTO = 16 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.CENTI = 10 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.DECA = 7 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.DECI = 9 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.EXA = 0 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.FEMTO = 15 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.GIGA = 3 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.HECTO = 6 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.KILO = 5 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.MEGA = 4 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.MICRO = 12 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.MILLI = 11 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.NANO = 13 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.NONE = 8 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.PETA = 1 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.PICO = 14 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix.TERA = 2 -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+IdsLib.IfcSchema.IfcDataTypeInformation
+IdsLib.IfcSchema.IfcDataTypeInformation.BackingType.get -> string?
+IdsLib.IfcSchema.IfcDataTypeInformation.IfcDataTypeClassName.get -> string!
+IdsLib.IfcSchema.IfcDataTypeInformation.IfcDataTypeInformation(string! name, System.Collections.Generic.IEnumerable<string!>! schemas, IdsLib.IfcSchema.IfcMeasureInformation! ifcMeasureInformation, string! type = "") -> void
+IdsLib.IfcSchema.IfcDataTypeInformation.IfcDataTypeInformation(string! name, System.Collections.Generic.IEnumerable<string!>! schemas, string! type = "") -> void
+IdsLib.IfcSchema.IfcDataTypeInformation.Measure.get -> IdsLib.IfcSchema.IfcMeasureInformation?
+IdsLib.IfcSchema.IfcDataTypeInformation.ValidSchemaVersions.get -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcMeasureInformation
+IdsLib.IfcSchema.IfcMeasureInformation.DefaultDisplay.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.Description.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.Exponents.get -> IdsLib.IfcSchema.DimensionalExponents!
+IdsLib.IfcSchema.IfcMeasureInformation.GetParentUnit() -> IdsLib.IfcSchema.IUnitInformation?
+IdsLib.IfcSchema.IfcMeasureInformation.GetUnit() -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.HasSiUnitEnum(string? filter = null) -> bool
+IdsLib.IfcSchema.IfcMeasureInformation.Id.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.IfcMeasure.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.IfcMeasureInformation(string! measureId, string! description, string! unit, string! unitSymbol, string! defDisplayUnit, string! exponents, string! unitTypeEnum) -> void
+IdsLib.IfcSchema.IfcMeasureInformation.IfcMeasureInformation(string! measureId, string! description, string! unit, string! unitSymbol, string! defDisplayUnit, string! exponents, string! unitTypeEnum, string![]! siUnitNameEnum) -> void
+IdsLib.IfcSchema.IfcMeasureInformation.IsBasicUnit.get -> bool
+IdsLib.IfcSchema.IfcMeasureInformation.IsDirectSIUnit.get -> bool
+IdsLib.IfcSchema.IfcMeasureInformation.IsPureNumber.get -> bool
+IdsLib.IfcSchema.IfcMeasureInformation.SiUnitNameEnums.get -> string![]!
+IdsLib.IfcSchema.IfcMeasureInformation.Unit.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.UnitSymbol.get -> string!
+IdsLib.IfcSchema.IfcMeasureInformation.UnitTypeEnum.get -> string!
+IdsLib.IfcSchema.IfcSchemaAttribute
+IdsLib.IfcSchema.IfcSchemaAttribute.IfcSchemaAttribute(bool isSpecific) -> void
+IdsLib.IfcSchema.IfcSchemaAttribute.IsSpecificAttribute -> bool
+IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersions.Ifc2x3 = 1 -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersions.Ifc4 = 2 -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersions.Ifc4x3 = 4 -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersions.IfcAllVersions = IdsLib.IfcSchema.IfcSchemaVersions.Ifc2x3 | IdsLib.IfcSchema.IfcSchemaVersions.Ifc4 | IdsLib.IfcSchema.IfcSchemaVersions.Ifc4x3 -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersions.IfcNoVersion = 0 -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.IfcSchemaVersionsExtensions
+IdsLib.IfcSchema.IPropertyTypeInfo
+IdsLib.IfcSchema.IPropertyTypeInfo.Definition.get -> string!
+IdsLib.IfcSchema.IPropertyTypeInfo.Definition.set -> void
+IdsLib.IfcSchema.IPropertyTypeInfo.Name.get -> string!
+IdsLib.IfcSchema.IPropertyTypeInfoExtensions
+IdsLib.IfcSchema.IUnitInformation
+IdsLib.IfcSchema.IUnitInformation.GetParentUnit() -> IdsLib.IfcSchema.IUnitInformation?
+IdsLib.IfcSchema.IUnitInformation.IfcMeasure.get -> string!
+IdsLib.IfcSchema.ListValuePropertyType
+IdsLib.IfcSchema.ListValuePropertyType.DataType.get -> string!
+IdsLib.IfcSchema.ListValuePropertyType.ListValuePropertyType(string! name, string! dataType) -> void
+IdsLib.IfcSchema.NamedPropertyType
+IdsLib.IfcSchema.NamedPropertyType.Definition.get -> string!
+IdsLib.IfcSchema.NamedPropertyType.Definition.set -> void
+IdsLib.IfcSchema.NamedPropertyType.Name.get -> string!
+IdsLib.IfcSchema.NamedPropertyType.NamedPropertyType(string! name) -> void
+IdsLib.IfcSchema.PartOfRelationInformation
+IdsLib.IfcSchema.PartOfRelationInformation.OwnerIfcType.get -> string!
+IdsLib.IfcSchema.PartOfRelationInformation.OwnerIfcType.set -> void
+IdsLib.IfcSchema.PartOfRelationInformation.PartIfcType.get -> string!
+IdsLib.IfcSchema.PartOfRelationInformation.PartIfcType.set -> void
+IdsLib.IfcSchema.PartOfRelationInformation.PartOfRelationInformation(string! relationName, string! oneSideType, string! manySideType = "") -> void
+IdsLib.IfcSchema.PartOfRelationInformation.RelationIfcName.get -> string!
+IdsLib.IfcSchema.PartOfRelationInformation.RelationIfcName.set -> void
+IdsLib.IfcSchema.PropertySetInfo
+IdsLib.IfcSchema.PropertySetInfo.ApplicableClasses.get -> System.Collections.Generic.IList<string!>!
+IdsLib.IfcSchema.PropertySetInfo.ApplicableClasses.set -> void
+IdsLib.IfcSchema.PropertySetInfo.GetProperty(string! name) -> IdsLib.IfcSchema.IPropertyTypeInfo?
+IdsLib.IfcSchema.PropertySetInfo.Name.get -> string!
+IdsLib.IfcSchema.PropertySetInfo.Properties.get -> System.Collections.Generic.IList<IdsLib.IfcSchema.IPropertyTypeInfo!>!
+IdsLib.IfcSchema.PropertySetInfo.Properties.set -> void
+IdsLib.IfcSchema.PropertySetInfo.PropertyNames.get -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.PropertySetInfo.PropertySetInfo(string! propertySetName, System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IPropertyTypeInfo!>! properties, System.Collections.Generic.IEnumerable<string!>! applicableClasses) -> void
+IdsLib.IfcSchema.SchemaInfo
+IdsLib.IfcSchema.SchemaInfo.Add(IdsLib.IfcSchema.ClassInfo! classToAdd) -> void
+IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode
+IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode.ViaElement = 1 -> IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode
+IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode.ViaRelationType = 2 -> IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo.ClassName.get -> string!
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo.ClassName.set -> void
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo.ClassRelationInfo() -> void
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo.Connection.get -> IdsLib.IfcSchema.SchemaInfo.ClassAttributeMode
+IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo.Connection.set -> void
+IdsLib.IfcSchema.SchemaInfo.GetAttributeClasses(string! attributeName, bool onlyTopClasses = false) -> string![]!
+IdsLib.IfcSchema.SchemaInfo.GetAttributeNames() -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributeRelations(string! attributeName) -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.SchemaInfo.ClassRelationInfo>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesByType(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint! typeFilter) -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.AttributeInfo!>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesIfcTypes(System.Collections.Generic.IEnumerable<string!>! attributeNames) -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesTypes(System.Collections.Generic.IEnumerable<string!>! attributeNames) -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesXmlTypes(System.Collections.Generic.IEnumerable<string!>! attributeNames) -> System.Collections.Generic.IEnumerable<IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesXsdTypes(System.Collections.Generic.IEnumerable<string!>! attributeNames) -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.GetAttributesXsdTypesEnum(System.Collections.Generic.IEnumerable<string!>! attributeNames) -> System.Collections.Generic.IEnumerable<IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes>!
+IdsLib.IfcSchema.SchemaInfo.GetClassesByType(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint! typeFilter) -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.ClassInfo!>!
+IdsLib.IfcSchema.SchemaInfo.GetEnumerator() -> System.Collections.Generic.IEnumerator<IdsLib.IfcSchema.ClassInfo!>!
+IdsLib.IfcSchema.SchemaInfo.GetRelAssignPropertyClasses.get -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint?
+IdsLib.IfcSchema.SchemaInfo.GetRelAsssignClasses() -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.GetRelAsssignClassificationClasses() -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.SchemaInfo.PropertySets.get -> System.Collections.Generic.IList<IdsLib.IfcSchema.PropertySetInfo!>!
+IdsLib.IfcSchema.SchemaInfo.SchemaInfo(IdsLib.IfcSchema.IfcSchemaVersions schemaVersion) -> void
+IdsLib.IfcSchema.SchemaInfo.this[string! className].get -> IdsLib.IfcSchema.ClassInfo?
+IdsLib.IfcSchema.SchemaInfo.Version.get -> IdsLib.IfcSchema.IfcSchemaVersions
+IdsLib.IfcSchema.SingleValuePropertyType
+IdsLib.IfcSchema.SingleValuePropertyType.DataType.get -> string!
+IdsLib.IfcSchema.SingleValuePropertyType.SingleValuePropertyType(string! name, string! dataType) -> void
+IdsLib.IfcSchema.TableValuePropertyType
+IdsLib.IfcSchema.TableValuePropertyType.DataType1.get -> string!
+IdsLib.IfcSchema.TableValuePropertyType.DataType2.get -> string!
+IdsLib.IfcSchema.TableValuePropertyType.TableValuePropertyType(string! name, string! dataType1, string! dataType2) -> void
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint.ConcreteTypes.get -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint.IfcInheritanceTypeConstraint(string! topType, IdsLib.IfcSchema.IfcSchemaVersions requiredSchemaVersions) -> void
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint.Intersect(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint.IsEmpty.get -> bool
+IdsLib.IfcSchema.TypeFilters.IfcInheritanceTypeConstraint.Union(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.ConcreteTypes.get -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.IfcTypeConcreteListConstraint(System.Collections.Generic.IEnumerable<string!>! concreteTypeCollection) -> void
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.Intersect(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.IsEmpty.get -> bool
+IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.Union(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.IfcSchema.TypeFilters.IfcTypeConstraint
+IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint
+IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint.ConcreteTypes.get -> System.Collections.Generic.IEnumerable<string!>!
+IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint.Intersect(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint.IsEmpty.get -> bool
+IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint.Union(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? other) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint!
+IdsLib.LibraryInformation
+IdsLib.SchemaProviders.FixedVersionSchemaProvider
+IdsLib.SchemaProviders.FixedVersionSchemaProvider.FixedVersionSchemaProvider(IdsLib.IdsSchema.IdsNodes.IdsVersion vrs) -> void
+IdsLib.SchemaProviders.FixedVersionSchemaProvider.GetSchemas(System.IO.Stream! vrs, Microsoft.Extensions.Logging.ILogger? logger, out System.Collections.Generic.IEnumerable<System.Xml.Schema.XmlSchema!>! schemas) -> IdsLib.Audit.Status
+IdsLib.SchemaProviders.SchemaProvider
+IdsLib.SchemaProviders.SchemaProvider.SchemaProvider() -> void
+IdsLib.SingleAuditOptions
+IdsLib.SingleAuditOptions.SingleAuditOptions() -> void
+override IdsLib.ActionCollection.ToString() -> string!
+override IdsLib.IdsSchema.IdsNodes.NodeIdentification.ToString() -> string!
+override IdsLib.IfcSchema.AttributeInfo.ToString() -> string!
+override IdsLib.IfcSchema.DimensionalExponents.Equals(object? obj) -> bool
+override IdsLib.IfcSchema.DimensionalExponents.GetHashCode() -> int
+override IdsLib.IfcSchema.DimensionalExponents.ToString() -> string!
+override IdsLib.IfcSchema.IfcConversionUnitInformation.ToString() -> string!
+static IdsLib.Audit.Run(IdsLib.IBatchAuditOptions! batchOptions, Microsoft.Extensions.Logging.ILogger? logger = null) -> IdsLib.Audit.Status
+static IdsLib.Audit.Run(System.IO.Stream! idsSource, IdsLib.SingleAuditOptions! options, Microsoft.Extensions.Logging.ILogger? logger = null) -> IdsLib.Audit.Status
+static IdsLib.Audit.RunAsync(System.IO.Stream! idsSource, IdsLib.SingleAuditOptions! options, Microsoft.Extensions.Logging.ILogger? logger = null) -> System.Threading.Tasks.Task<IdsLib.Audit.Status>!
+static IdsLib.IdsSchema.IdsNodes.IdsFacts.GetValidBaseTypes(IdsLib.IdsSchema.IdsNodes.IdsVersion version) -> System.Collections.Generic.IEnumerable<string!>!
+static IdsLib.IdsSchema.IdsNodes.IdsFacts.GetValidRestrictions(string! xsType, IdsLib.IdsSchema.IdsNodes.IdsVersion version) -> System.Collections.Generic.IEnumerable<string!>!
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetAllowedFacets(IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes requiredType) -> IdsLib.IdsSchema.XsNodes.XsTypes.XsdAllowedFacets[]!
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetBaseFrom(string! baseAsString) -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetDefaultEmptyValue(IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes requiredType) -> string!
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetRegexString(IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes requiredType) -> string!
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetStringFromEnum(IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes baseType) -> string!
+static IdsLib.IdsSchema.XsNodes.XsTypes.GetValidBaseTypes() -> IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes[]!
+static IdsLib.IdsSchema.XsNodes.XsTypes.IsValid(string! valueString, IdsLib.IdsSchema.XsNodes.XsTypes.BaseTypes base) -> bool
+static IdsLib.IfcSchema.DimensionalExponents.Elevated(IdsLib.IfcSchema.DimensionalExponents! val, int exponent) -> IdsLib.IfcSchema.DimensionalExponents!
+static IdsLib.IfcSchema.DimensionalExponents.FromString(string! str) -> IdsLib.IfcSchema.DimensionalExponents?
+static IdsLib.IfcSchema.DimensionalExponents.GetUnit(IdsLib.IfcSchema.DimensionType tp) -> IdsLib.IfcSchema.DimensionalExponents!
+static IdsLib.IfcSchema.DimensionalExponents.operator !=(IdsLib.IfcSchema.DimensionalExponents? left, IdsLib.IfcSchema.DimensionalExponents? right) -> bool
+static IdsLib.IfcSchema.DimensionalExponents.operator ==(IdsLib.IfcSchema.DimensionalExponents? left, IdsLib.IfcSchema.DimensionalExponents? right) -> bool
+static IdsLib.IfcSchema.DimensionalExponents.UnitMeasures.get -> string![]!
+static IdsLib.IfcSchema.DimensionalExponents.Units.get -> string![]!
+static IdsLib.IfcSchema.IfcConversionUnitInformation.LongStringPrefix(IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix prefix) -> string!
+static IdsLib.IfcSchema.IfcConversionUnitInformation.PrefixFromShortString(string! prefix) -> IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix
+static IdsLib.IfcSchema.IfcConversionUnitInformation.ShortStringPrefix(IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix prefix) -> string!
+static IdsLib.IfcSchema.IfcConversionUnitInformation.SiMultiplier(IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix prefix) -> double
+static IdsLib.IfcSchema.IfcConversionUnitInformation.TryGetUnit(string! unitName, out IdsLib.IfcSchema.IUnitInformation? unit, string? ifcMeasure = null) -> bool
+static IdsLib.IfcSchema.IfcMeasureInformation.BroadUnitComponentMatcher.get -> System.Text.RegularExpressions.Regex!
+static IdsLib.IfcSchema.IfcMeasureInformation.BroadUnitNameCharactersRange -> string!
+static IdsLib.IfcSchema.IfcMeasureInformation.GetExponent(string! exponentString) -> int
+static IdsLib.IfcSchema.IfcMeasureInformation.GetPreferredMeasure(IdsLib.IfcSchema.DimensionalExponents! exp) -> IdsLib.IfcSchema.IfcMeasureInformation?
+static IdsLib.IfcSchema.IfcMeasureInformation.GetPreferredMeasure(string! unitName) -> IdsLib.IfcSchema.IfcMeasureInformation?
+static IdsLib.IfcSchema.IfcMeasureInformation.SiUnitComponentMatcher.get -> System.Text.RegularExpressions.Regex!
+static IdsLib.IfcSchema.IfcMeasureInformation.SiUnitNameCharactersRange -> string!
+static IdsLib.IfcSchema.IfcMeasureInformation.TryCleanSIUnitFromString(string! unitName, out string? bareUnit, out IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix siPrefix, out int pow) -> bool
+static IdsLib.IfcSchema.IfcMeasureInformation.TryGetSIUnitFromString(string! unitName, out IdsLib.IfcSchema.DimensionalExponents? exponents, out IdsLib.IfcSchema.IfcConversionUnitInformation.SiPrefix siPrefix, out int pow) -> bool
+static IdsLib.IfcSchema.IfcSchemaVersionsExtensions.EncodeAsXmlSchemasAttribute(this IdsLib.IfcSchema.IfcSchemaVersions versions) -> string!
+static IdsLib.IfcSchema.IfcSchemaVersionsExtensions.GetSchema(System.Collections.Generic.IEnumerable<string!>! schemaStrings) -> IdsLib.IfcSchema.IfcSchemaVersions
+static IdsLib.IfcSchema.IfcSchemaVersionsExtensions.IsSingleSchema(this IdsLib.IfcSchema.IfcSchemaVersions schemaEnum) -> bool
+static IdsLib.IfcSchema.IfcSchemaVersionsExtensions.ParseXmlSchemasFromAttribute(this string! spaceSeparatedSchemaStrings) -> IdsLib.IfcSchema.IfcSchemaVersions
+static IdsLib.IfcSchema.IfcSchemaVersionsExtensions.TryGetSchemaInformation(this IdsLib.IfcSchema.IfcSchemaVersions schemas, out System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.SchemaInfo!>! schemaInfo) -> bool
+static IdsLib.IfcSchema.IPropertyTypeInfoExtensions.HasDataTypes(this IdsLib.IfcSchema.IPropertyTypeInfo! property, out System.Collections.Generic.IEnumerable<string!>! dataType) -> bool
+static IdsLib.IfcSchema.PropertySetInfo.Get(IdsLib.IfcSchema.IfcSchemaVersions version, string! propertySetName, string! propertyName) -> IdsLib.IfcSchema.IPropertyTypeInfo?
+static IdsLib.IfcSchema.PropertySetInfo.GetSchema(IdsLib.IfcSchema.IfcSchemaVersions version) -> System.Collections.Generic.IList<IdsLib.IfcSchema.PropertySetInfo!>?
+static IdsLib.IfcSchema.PropertySetInfo.SchemaIfc2x3.get -> System.Collections.Generic.IList<IdsLib.IfcSchema.PropertySetInfo!>!
+static IdsLib.IfcSchema.PropertySetInfo.SchemaIfc4.get -> System.Collections.Generic.IList<IdsLib.IfcSchema.PropertySetInfo!>!
+static IdsLib.IfcSchema.PropertySetInfo.SchemaIfc4x3.get -> System.Collections.Generic.IList<IdsLib.IfcSchema.PropertySetInfo!>!
+static IdsLib.IfcSchema.SchemaInfo.AllAttributes.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcAttributeInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.AllClasses.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcClassInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.AllConcreteClasses.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcClassInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.AllMeasureInformation.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcMeasureInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.GetConcreteClassesFrom(string! topClass, IdsLib.IfcSchema.IfcSchemaVersions schemaVersions) -> System.Collections.Generic.IEnumerable<string!>!
+static IdsLib.IfcSchema.SchemaInfo.GetMeasureInformation(IdsLib.IfcSchema.IfcSchemaVersions schema = IdsLib.IfcSchema.IfcSchemaVersions.IfcAllVersions) -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcMeasureInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.GetSchemas(IdsLib.IfcSchema.IfcSchemaVersions schemaVersions) -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.SchemaInfo!>!
+static IdsLib.IfcSchema.SchemaInfo.Ifc2x3SpecialEntityMaps.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.Ifc2x3EntityMappingInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.SchemaIfc2x3.get -> IdsLib.IfcSchema.SchemaInfo!
+static IdsLib.IfcSchema.SchemaInfo.SchemaIfc4.get -> IdsLib.IfcSchema.SchemaInfo!
+static IdsLib.IfcSchema.SchemaInfo.SchemaIfc4x3.get -> IdsLib.IfcSchema.SchemaInfo!
+static IdsLib.IfcSchema.SchemaInfo.StandardConversionUnits.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcConversionUnitInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.TryGetMeasureInformation(string! measureClassName, out IdsLib.IfcSchema.IfcMeasureInformation? measure) -> bool
+static IdsLib.IfcSchema.SchemaInfo.TryParseIfcDataType(string! value, out IdsLib.IfcSchema.IfcDataTypeInformation? found, bool strict = true) -> bool
+static IdsLib.IfcSchema.SchemaInfo.TryParseIfcMeasure(string! value, out IdsLib.IfcSchema.IfcDataTypeInformation? found, bool strict = true) -> bool
+static IdsLib.IfcSchema.SchemaInfo.TrySearchTopClass(System.Collections.Generic.IEnumerable<string!>! concreteClassNames, IdsLib.IfcSchema.IfcSchemaVersions schemas, out string? topClass) -> bool
+static IdsLib.IfcSchema.SchemaInfo.TrySimplifyTopClasses(System.Collections.Generic.IEnumerable<string!>! concreteClassNames, IdsLib.IfcSchema.IfcSchemaVersions schemas, out System.Collections.Generic.IEnumerable<string!>! topClasses) -> bool
+static IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint.Empty.get -> IdsLib.IfcSchema.TypeFilters.IfcTypeConcreteListConstraint!
+static IdsLib.IfcSchema.TypeFilters.IfcTypeConstraint.CanBeMet(this IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? constraint) -> bool
+static IdsLib.IfcSchema.TypeFilters.IfcTypeConstraint.CannotBeMet(this IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? constraint) -> bool
+static IdsLib.IfcSchema.TypeFilters.IfcTypeConstraint.Intersect(IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? first, IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint? second) -> IdsLib.IfcSchema.TypeFilters.IIfcTypeConstraint?
+static IdsLib.LibraryInformation.AssemblyVersion.get -> string!
+static IdsLib.LibraryInformation.Commit.get -> string!
+static IdsLib.LibraryInformation.CommitDate.get -> string!
+static IdsLib.LibraryInformation.Isdirty.get -> bool
+static IdsLib.LibraryInformation.Sha.get -> string!
+static IdsLib.SchemaProviders.SchemaProvider.GetResourceSchemasByVersion(IdsLib.IdsSchema.IdsNodes.IdsVersion vrs, Microsoft.Extensions.Logging.ILogger? logger, out System.Collections.Generic.IEnumerable<System.Xml.Schema.XmlSchema!>! schemas) -> IdsLib.Audit.Status
+static IdsLib.SchemaProviders.SchemaProvider.GetResourceSchemasFromImports(Microsoft.Extensions.Logging.ILogger? logger, System.Collections.Generic.IEnumerable<string!>! imports) -> System.Collections.Generic.IEnumerable<System.Xml.Schema.XmlSchema!>!
+static IdsLib.SchemaProviders.SchemaProvider.GetSchema(string! name) -> System.Xml.Schema.XmlSchema!
+virtual IdsLib.AuditProcessOptions.OmitIdsContentAudit.get -> bool
+virtual IdsLib.AuditProcessOptions.OmitIdsContentAudit.set -> void
+virtual IdsLib.AuditProcessOptions.OmitIdsSchemaAudit.get -> bool
+virtual IdsLib.AuditProcessOptions.OmitIdsSchemaAudit.set -> void
+virtual IdsLib.AuditProcessOptions.SchemaProvider.get -> IdsLib.Audit.ISchemaProvider!
+virtual IdsLib.AuditProcessOptions.SchemaProvider.set -> void
+virtual IdsLib.AuditProcessOptions.XmlWarningAction.get -> IdsLib.AuditProcessOptions.XmlWarningBehaviour
+virtual IdsLib.AuditProcessOptions.XmlWarningAction.set -> void
+virtual IdsLib.SingleAuditOptions.IdsVersion.get -> IdsLib.IdsSchema.IdsNodes.IdsVersion
+virtual IdsLib.SingleAuditOptions.IdsVersion.set -> void
+IdsLib.IfcSchema.SchemaInfo.AllPartOfRelations.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.PartOfRelationInformation!>!
+static IdsLib.IfcSchema.SchemaInfo.AllDataTypes.get -> System.Collections.Generic.IEnumerable<IdsLib.IfcSchema.IfcDataTypeInformation!>!
