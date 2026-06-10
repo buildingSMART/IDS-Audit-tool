@@ -3,7 +3,7 @@
 namespace IdsLib.IfcSchema;
 
 /// <summary>
-/// Metadata container for attributes of entities in IfcSchema
+/// Metadata container for the association of attributes to entities in the IfcSchema, identified by their name
 /// </summary>
 public class IfcAttributeInformation
 {

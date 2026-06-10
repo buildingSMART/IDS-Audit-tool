@@ -1,6 +1,6 @@
 # AttributeInfo record
 
-Metadata container for attributes of IFC classes
+Metadata container for the attributes of a single entity in the IfcSchema. Contains their name, express type definition, and some helper properties to quickly access the most important information about the type.
 
 ```csharp
 public record AttributeInfo
@@ -11,9 +11,12 @@ public record AttributeInfo
 | name | description |
 | --- | --- |
 | [AttributeInfo](AttributeInfo/AttributeInfo.md)(…) | Default constructor |
+| [BaseType](AttributeInfo/BaseType.md) { get; } |  |
 | [ExpressType](AttributeInfo/ExpressType.md) { get; } | full express type string definition |
-| [IsOptional](AttributeInfo/IsOptional.md) { get; } | Defines if the attribute is marked optional in the schema |
+| [IsCollection](AttributeInfo/IsCollection.md) { get; } |  |
+| [IsOptional](AttributeInfo/IsOptional.md) { get; } |  |
 | [Name](AttributeInfo/Name.md) { get; } | Attribute Name as string (stored as camelcase) |
+| [XmlBaseType](AttributeInfo/XmlBaseType.md) { get; } |  |
 
 ## See Also
 

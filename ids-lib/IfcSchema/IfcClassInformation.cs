@@ -4,7 +4,8 @@ using System.Diagnostics;
 namespace IdsLib.IfcSchema;
 
 /// <summary>
-/// Simplistic metadata container for entities of an IfcSchema
+/// Simplistic metadata container for entities of an IfcSchema and their association to schema versions.
+/// For detailed information about the attributes of an entity, the <see cref="ClassInfo"/> class.
 /// </summary>
 [DebuggerDisplay("{IfcClassName} ({ValidSchemaVersions})")]
 public class IfcClassInformation

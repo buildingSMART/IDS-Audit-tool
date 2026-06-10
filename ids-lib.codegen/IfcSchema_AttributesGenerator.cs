@@ -11,9 +11,9 @@ namespace IdsLib.codegen;
 
 class IfcSchema_AttributesGenerator
 {
-    private class IfcAttribute
+    private class IfcGeneratorAttribute
     {
-		public IfcAttribute(string name, string owningClass , string backingIfcType)
+		public IfcGeneratorAttribute(string name, string owningClass , string backingIfcType)
 		{
             Name = name;
             AddClass(owningClass);
@@ -63,11 +63,8 @@ class IfcSchema_AttributesGenerator
 
 		private static string GetXmlBase(string x, Dictionary<string, typeMetadata> dataTypeDictionary)
 		{
-			if (x.StartsWith("OPTIONAL "))
-			{
-				var t = x.Substring(9);
-				x = t;
-			}
+			var splits = x.Split(' ');
+			x = splits[splits.Length - 1]; // if it's the full type definition we just want the last part, which is the actual type name (could be part of a list or set, or be optional, etc.)
 			switch (x)
 			{
 				case "": // disabled
@@ -133,7 +130,7 @@ class IfcSchema_AttributesGenerator
 
 	
 
-	private static StringBuilder BuildCode(ExpressMetaData metaD, Dictionary<string, IfcAttribute> owningTypesByAttribute, List<Ifc2x3EntityMappingInformation> maps)
+	private static StringBuilder BuildCode(ExpressMetaData metaD, Dictionary<string, IfcGeneratorAttribute> owningTypesByAttribute, List<Ifc2x3EntityMappingInformation> maps)
 	{
 		var sb = new StringBuilder();
 
@@ -186,9 +183,9 @@ class IfcSchema_AttributesGenerator
 		return sb;
 	}
 
-	private static Dictionary<string, IfcAttribute> GetAttributes(List<TypeMapper> entities)
+	private static Dictionary<string, IfcGeneratorAttribute> GetAttributes(List<TypeMapper> entities)
 	{
-		Dictionary<string, IfcAttribute> owningTypesByAttribute = new();
+		Dictionary<string, IfcGeneratorAttribute> owningTypesByAttribute = new();
 
 		foreach (var map in entities)
 		{
@@ -198,10 +195,10 @@ class IfcSchema_AttributesGenerator
 				// todo: we need to consider all properties with their complete details
 				// for now we just take the express type, but we should also consider the cardinality and optionality, which can be different in different classes for the same attribute name
 				//
-				var tp = prop.GetExpressTypeDefinition(XbimHelper.IncludeBuildParameters.ProcessEnumerables | XbimHelper.IncludeBuildParameters.ProcessSingleValues);
+				var tp = prop.GetExpressTypeDefinition();
 				if (tp is null)
 				{
-					Debug.WriteLine($"Could not get express type for property {prop.Name} in class {daType.Name}");
+					Program.Message($"Could not get express type for property {prop.Name} in class {daType.Name}", ConsoleColor.DarkYellow);
 					continue;
 				}
 				// owning type
@@ -212,7 +209,7 @@ class IfcSchema_AttributesGenerator
 				}
 				else
 				{
-					owningTypesByAttribute.Add(prop.Name, new IfcAttribute(prop.Name, map.IdsName, tp));
+					owningTypesByAttribute.Add(prop.Name, new IfcGeneratorAttribute(prop.Name, map.IdsName, tp));
 				}
 			}
 		}

@@ -12,5 +12,13 @@ namespace System.Runtime.CompilerServices
 	{
 	}
 }
-#endif
 
+internal static class LinqPolyfills
+{
+	public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source)
+		=> new HashSet<T>(source);
+
+	public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source, IEqualityComparer<T> comparer)
+		=> new HashSet<T>(source, comparer);
+}
+#endif

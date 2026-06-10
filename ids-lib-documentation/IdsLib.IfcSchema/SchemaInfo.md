@@ -23,9 +23,11 @@ public class SchemaInfo : IEnumerable<ClassInfo>
 | [GetAttributeClasses](SchemaInfo/GetAttributeClasses.md)(…) | Returns names of the classes that have an attribute. /// See  for similar function with different return type. |
 | [GetAttributeNames](SchemaInfo/GetAttributeNames.md)() | Returns all attribute names in the schema |
 | [GetAttributeRelations](SchemaInfo/GetAttributeRelations.md)(…) | Provides information of classes that have an attribute and the form of the relation to it. See  for similar function with different return type. |
+| [GetAttributesByType](SchemaInfo/GetAttributesByType.md)(…) | Returns a distinct set of the attributes of the classes that match the provided type filter. |
 | [GetAttributesIfcTypes](SchemaInfo/GetAttributesIfcTypes.md)(…) | Returns a distinct enumerable of the IFC backing types of the required attributes, given a set of attribut names |
 | [GetAttributesXsdTypes](SchemaInfo/GetAttributesXsdTypes.md)(…) | Returns a distinct enumerable of the backing types of the required attributes, given a set of attribut names |
 | [GetAttributesXsdTypesEnum](SchemaInfo/GetAttributesXsdTypesEnum.md)(…) | Returns a distinct enumerable of the XSD backing types of the required attributes, given a set of attribut names |
+| [GetClassesByType](SchemaInfo/GetClassesByType.md)(…) | Returns the set of the classes that match the provided type filter. |
 | [GetEnumerator](SchemaInfo/GetEnumerator.md)() | The default enumerator for the schema returns the classes defined within |
 | [GetRelAsssignClasses](SchemaInfo/GetRelAsssignClasses.md)() | Returns the list of classes that can in a relationship of type IfcRelAssign, per schema version. This could help UI editors to filter the list depending on existing constraints on a facet. |
 | [GetRelAsssignClassificationClasses](SchemaInfo/GetRelAsssignClassificationClasses.md)() | Returns the list of classes that related to a classification. This could help UI editors to filter the list depending on existing constraints on a facet. |

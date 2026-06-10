@@ -1,7 +1,5 @@
 # AttributeInfo.IsOptional property
 
-Defines if the attribute is marked optional in the schema
-
 ```csharp
 public bool IsOptional { get; }
 ```

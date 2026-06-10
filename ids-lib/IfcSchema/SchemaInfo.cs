@@ -1,4 +1,5 @@
 ﻿using IdsLib.IdsSchema.XsNodes;
+using IdsLib.IfcSchema.TypeFilters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,6 +53,7 @@ namespace IdsLib.IfcSchema
 
 		/// <summary>
 		/// from the attribute name to the names of the classes that have the attribute.
+		/// Consumed via <see cref="GetAttributeClasses(string, bool)"/>
 		/// </summary>
 		private Dictionary<string, string[]> AttributesToAllClasses { get; set; }
 
@@ -61,12 +63,14 @@ namespace IdsLib.IfcSchema
 		private Dictionary<string, string[]> AttributesToTopClasses { get; set; }
 
 		/// <summary>
-		/// from the attribute name to the backing XSD types.
+		/// from the attribute name to the backing XSD types. 
+		/// Consumed via <see cref="GetAttributesXsdTypes(IEnumerable{string})"/>
 		/// </summary>
 		private Dictionary<string, string[]?> AttributesToXsdValueTypes { get; set; }
 
 		/// <summary>
 		/// from the attribute name to the backing IFC types.
+		/// consumed via <see cref="GetAttributesIfcTypes(IEnumerable{string})"/>
 		/// </summary>
 		private Dictionary<string, string[]?> AttributesToIfcValueTypes { get; set; }
 
@@ -240,7 +244,7 @@ namespace IdsLib.IfcSchema
 				: AttributesToAllClasses;
 			if (toUse.TryGetValue(attributeName, out var ret))
 				return ret;
-			return Array.Empty<string>();
+			return [];
 		}
 
 		private readonly Dictionary<string, ClassRelationInfo[]> relAttributes = new();
@@ -515,6 +519,8 @@ namespace IdsLib.IfcSchema
 		static partial void GetAttributesIFC4(SchemaInfo destinationSchema);
 		static partial void GetAttributesIFC4x3(SchemaInfo destinationSchema);
 
+		/// Schema specific function to add an attribute to the internal collections. 
+		/// This is used in the partial methods that populate the schema information, and is not intended for external use.
 		private void AddAttribute(string attributeName, string[] ifcTypes, string[] topClassNames, string[] allClassNames, string[]? valueTypes = null)
 		{
 			AttributesToAllClasses ??= new();
@@ -529,11 +535,13 @@ namespace IdsLib.IfcSchema
 			else
 				AttributesToXsdValueTypes.Add(attributeName, valueTypes);
 
+			// AttributesToIfcValueTypes only contains the base type, not the full ExpressDefinition
+			var asExpress = ifcTypes.Select(x => new ExpressDefinition(x));
 			AttributesToIfcValueTypes ??= new();
 			if (ifcTypes is null)
 				AttributesToIfcValueTypes.Add(attributeName, null);
 			else
-				AttributesToIfcValueTypes.Add(attributeName, ifcTypes);
+				AttributesToIfcValueTypes.Add(attributeName, asExpress.Select(y=>y.BaseType).ToArray());
 		}
 
 		/// <summary>

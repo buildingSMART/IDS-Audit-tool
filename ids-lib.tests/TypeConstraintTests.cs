@@ -1,4 +1,5 @@
 ﻿using AwesomeAssertions;
+using IdsLib.IfcSchema;
 using IdsLib.IfcSchema.TypeFilters;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,38 @@ namespace idsLib.tests
 {
 	public class TypeConstraintTests
 	{
+
+		public TypeConstraintTests(ITestOutputHelper outputHelper)
+		{
+			XunitOutputHelper = outputHelper;
+		}
+		private ITestOutputHelper XunitOutputHelper { get; }
+
 		public enum TypeMode
 		{
 			keepInheritance,
 			CollapseToConcrete
+		}
+
+		[Theory]
+		[InlineData(IfcSchemaVersions.Ifc2x3)]
+		[InlineData(IfcSchemaVersions.Ifc4)]
+		[InlineData(IfcSchemaVersions.Ifc4x3)]
+		public void TryGetAttributesViaTypeConstraint(IfcSchemaVersions schema)
+		{
+			var schemaToLookAt = SchemaInfo.GetSchemas(schema).FirstOrDefault();
+			schemaToLookAt.Should().NotBeNull();
+			var wall = new IfcInheritanceTypeConstraint("IFCWALL", schema);
+			var window = new IfcInheritanceTypeConstraint("IFCWINDOW", schema);
+			var union = wall.Union(window);
+			var attributes = schemaToLookAt.GetAttributesByType(union);
+
+			foreach (var attribute in attributes)
+			{
+				XunitOutputHelper.WriteLine($"{attribute}");
+			}
+			attributes.Should().NotBeEmpty();
+
 		}
 
 		[Fact]

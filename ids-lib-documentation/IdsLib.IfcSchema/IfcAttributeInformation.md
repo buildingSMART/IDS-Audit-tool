@@ -1,6 +1,6 @@
 # IfcAttributeInformation class
 
-Metadata container for attributes of entities in IfcSchema
+Metadata container for the association of attributes to entities in the IfcSchema, identified by their name
 
 ```csharp
 public class IfcAttributeInformation

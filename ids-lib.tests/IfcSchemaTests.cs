@@ -70,15 +70,17 @@ public class IfcSchemaTests
 
 	[Theory]
 	[InlineData("GlobalId", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcGloballyUniqueId" })]
-	[InlineData("OwnerHistory", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcOwnerHistory" })]
+	[InlineData("OwnerHistory", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcOwnerHistory" }, false)]
 	[InlineData("RibWidth", IfcSchemaVersions.Ifc2x3, new[] { "IfcPositiveLengthMeasure" })]
 	[InlineData("CurveInterpolation", IfcSchemaVersions.Ifc4, new[] { "IfcCurveInterpolationEnum" })]
 	[InlineData("OverallHeight", IfcSchemaVersions.Ifc4x3, new[] { "IfcPositiveLengthMeasure" })]
-	public void HasAttributeDataType(string attributeName, IfcSchemaVersions schemas, string[]? expected = null)
+	public void HasAttributeDataType(string attributeName, IfcSchemaVersions schemas, string[]? expected = null, bool hasXmlTypes = true)
 	{
 		var oneSchema = false;
 		foreach (var schema in SchemaInfo.GetSchemas(schemas))
 		{
+			
+
 			XunitOutputHelper.WriteLine($"Testing schema {schema.Version} for attribute {attributeName}");
 			oneSchema = true;
 			var ifcTypesWithAttribute = schema.GetAttributesIfcTypes([attributeName]);
@@ -97,9 +99,14 @@ public class IfcSchemaTests
 				ifcTypesWithAttribute.Should().NotBeEmpty();
 				XunitOutputHelper.WriteLine($"Types with attribute {attributeName} in schema {schema.Version}: {string.Join(", ", ifcTypesWithAttribute)}");
 			}
-			
-
-			XunitOutputHelper.WriteLine($"");
+			if (hasXmlTypes)
+			{
+				var xmlS = schema.GetAttributesXsdTypes([attributeName]);
+				XunitOutputHelper.WriteLine($"XML: {string.Join(", ", xmlS)}");
+				xmlS.Should().NotBeEmpty();
+				xmlS.Where(x => string.IsNullOrEmpty(x)).Should().BeEmpty("each XSD type should be defined");
+				XunitOutputHelper.WriteLine($"");
+			}
 		}
 		oneSchema.Should().BeTrue("at least one schema should be tested");
 	}

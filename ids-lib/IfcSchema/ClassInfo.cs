@@ -47,7 +47,8 @@ public enum FunctionalType
 }
 
 /// <summary>
-/// Metadata container for properties of IFC classes
+/// Metadata container for properties of and IFC class in the context of a specific schema version.
+/// For information about which class names and their availability in various schema versions, see <see cref="IfcClassInformation"/>.
 /// </summary>
 [DebuggerDisplay("{Name}")]
 public partial class ClassInfo

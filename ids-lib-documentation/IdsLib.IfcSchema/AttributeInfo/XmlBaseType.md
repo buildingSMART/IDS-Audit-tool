@@ -1,9 +1,7 @@
-# AttributeInfo constructor
-
-Default constructor
+# AttributeInfo.XmlBaseType property
 
 ```csharp
-public AttributeInfo(string name, string expressDefinition)
+public string XmlBaseType { get; }
 ```
 
 ## See Also

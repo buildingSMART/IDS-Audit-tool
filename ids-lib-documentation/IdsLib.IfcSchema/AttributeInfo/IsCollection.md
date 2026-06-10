@@ -1,9 +1,7 @@
-# AttributeInfo constructor
-
-Default constructor
+# AttributeInfo.IsCollection property
 
 ```csharp
-public AttributeInfo(string name, string expressDefinition)
+public bool IsCollection { get; }
 ```
 
 ## See Also
