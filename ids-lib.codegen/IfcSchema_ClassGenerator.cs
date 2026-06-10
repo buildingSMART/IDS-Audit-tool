@@ -33,20 +33,10 @@ public class IfcSchema_ClassGenerator
                 // Enriching schema with predefined types
                 var propPdefT = classMap.IfcMapToExpressType.GetRelevantProperties().FirstOrDefault(x => x.Name == "PredefinedType");
                 var predType = "[]"; // empty array.
-                if (propPdefT != null)
+                if (propPdefT?.ResolveType() is Type resolvedType)
                 {
-                    var pt = propPdefT.PropertyInfo.PropertyType;
-                    pt = Nullable.GetUnderlyingType(pt) ?? pt;
-                    var vals = Enum.GetValues(pt);
-
-                    List<string> pdtypes = new();
-                    foreach (var val in vals)
-                    {
-                        if (val is null)
-                            continue;
-                        pdtypes.Add(val.ToString()!);
-                    }
-                    predType = NewStringArray(pdtypes.ToArray());
+					var vals = Enum.GetNames(resolvedType);
+                    predType = NewStringArray(vals);
                 }
 
                 // other fields

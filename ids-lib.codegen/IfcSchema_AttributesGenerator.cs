@@ -38,8 +38,10 @@ class IfcSchema_AttributesGenerator
 			ClassesDefining.Add(owningClass.ToUpperInvariant());
 		}
 
-		internal void AddBase(string tp)
+		internal void AddBase(string? tp)
 		{
+			if (string.IsNullOrEmpty(tp))
+				return;
 			if (!IfcBaseTypes.Contains(tp))
 			{
 				IfcBaseTypes.Add(tp);
@@ -61,6 +63,11 @@ class IfcSchema_AttributesGenerator
 
 		private static string GetXmlBase(string x, Dictionary<string, typeMetadata> dataTypeDictionary)
 		{
+			if (x.StartsWith("OPTIONAL "))
+			{
+				var t = x.Substring(9);
+				x = t;
+			}
 			switch (x)
 			{
 				case "": // disabled
@@ -173,8 +180,6 @@ class IfcSchema_AttributesGenerator
 			var line = (attrib.XmlBaseTypes.Any())
 				? $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", ifcTypesInQuotes)} }}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }}, new[] {{ {string.Join(", ", XmlTypesInQuotes)} }});"
 				: $"\t\tdestinationSchema.AddAttribute({attribute}, new[] {{ {string.Join(", ", ifcTypesInQuotes)} }}, new[] {{ {string.Join(", ", topClassesInQuotes)} }}, new[] {{ {string.Join(", ", classesInQuotes)} }});";
-
-
 			sb.AppendLine(line);
 		}
 
@@ -190,15 +195,15 @@ class IfcSchema_AttributesGenerator
 			var daType = map.IfcMapToExpressType;
 			foreach (var prop in daType.GetRelevantProperties())
 			{
-				// we should skip derived and inverse
-				if (prop.IsInverse || prop.IsDerived)
-					continue; // no match
-				var tp = Analyse(prop);
-				if (string.IsNullOrEmpty(tp))
+				// todo: we need to consider all properties with their complete details
+				// for now we just take the express type, but we should also consider the cardinality and optionality, which can be different in different classes for the same attribute name
+				//
+				var tp = prop.GetExpressTypeDefinition(XbimHelper.IncludeBuildParameters.ProcessEnumerables | XbimHelper.IncludeBuildParameters.ProcessSingleValues);
+				if (tp is null)
 				{
-					// continue; // no value type
+					Debug.WriteLine($"Could not get express type for property {prop.Name} in class {daType.Name}");
+					continue;
 				}
-
 				// owning type
 				if (owningTypesByAttribute.TryGetValue(prop.Name, out var lst))
 				{
@@ -213,29 +218,6 @@ class IfcSchema_AttributesGenerator
 		}
 
 		return owningTypesByAttribute;
-	}
-
-	private static string Analyse(ExpressMetaProperty prop)
-	{
-        var tp = prop.PropertyInfo.PropertyType;
-
-        if (prop.EnumerableType is not null)
-        {
-			// var nm = GetFriendlyTypeName(tp);
-			// Debug.WriteLine($"### Not ok 1 - Prop: {prop.Name} : {tp.Name}");
-			return prop.EnumerableType.Name; // adding management of lists
-		}
-		else 
-		{
-			if (tp.IsGenericType && tp.GetGenericTypeDefinition() == typeof(Nullable<>))
-			{
-				var t2 = prop.PropertyInfo.PropertyType.GetGenericArguments()[0];
-				// Debug.WriteLine($"Prop: {prop.Name} : {t2}");
-				return t2.Name;
-			}
-			// Debug.WriteLine($"Ok Prop: {prop.Name} : {tp.Name}");
-			return tp.Name;
-		}
 	}
 
 	private const string stub = """

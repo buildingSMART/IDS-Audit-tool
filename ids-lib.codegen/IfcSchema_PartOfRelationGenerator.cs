@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using Xbim.Common.Metadata;
 
 namespace IdsLib.codegen;
@@ -16,48 +17,14 @@ public class IfcSchema_PartOfRelationGenerator
 			var module = SchemaHelper.GetFactory(schema);
 			var metaD = ExpressMetaData.GetMetadata(module);
             foreach (var daRelation in relationNames)
-            {
-                try
-                {
-					var partNames = daRelation.Split(' ');
-					string manySide = string.Empty;
-					string oneSide = string.Empty;
-					foreach (var partName in partNames.Reverse())
-					{
-						var t = metaD.ExpressType(partName.ToUpperInvariant());
-						if (t is null)
-							continue;
-						
-						if (string.IsNullOrEmpty(manySide)) // if the starting point has been assigned, we can avoid its search
-						{
-							var propOnManySide = t.GetRelevantProperties().SingleOrDefault(x => x.EnumerableType is not null);
-							Type? manySideType = null;
-							if (propOnManySide is not null)
-							{
-								manySideType = propOnManySide.EnumerableType;
-							}
-							else
-							{
-								propOnManySide = t.GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Related"));
-								manySideType = propOnManySide.PropertyInfo.PropertyType;
-							}
-							var manySideExpressType = metaD.ExpressType(manySideType.Name.ToUpperInvariant());
-							manySide = manySideExpressType.Name.ToUpperInvariant();
-						}
-						var propOnOneSide = t.GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Relating"));
-						var oneSideType = propOnOneSide.PropertyInfo.PropertyType;
-						var oneSideExpressType = metaD.ExpressType(oneSideType.Name.ToUpperInvariant());
-						oneSide = oneSideExpressType.Name.ToUpperInvariant();
-					}
-					// sb.AppendLine($"""                yield return new PartOfRelationInformation("{daRelation}", "{ownerExpressType.Name.ToUpperInvariant()}", "{partExpressType.Name.ToUpperInvariant()}");""");
-					sb.AppendLine($"""                yield return new PartOfRelationInformation("{daRelation}", "{oneSide.ToUpperInvariant()}", "{manySide.ToUpperInvariant()}");""");
-                }
-                catch 
-                {
-                    continue;
-                }                
-            }
-            schemaInfos.Add(schema.ToString(), sb);
+			{
+				var relationChainNames = daRelation.Split(' ').Reverse().ToArray();
+				GetMultipleRelationChain(metaD, relationChainNames, out var manySide, out var oneSide);
+				// sb.AppendLine($"""                yield return new PartOfRelationInformation("{daRelation}", "{ownerExpressType.Name.ToUpperInvariant()}", "{partExpressType.Name.ToUpperInvariant()}");""");
+				sb.AppendLine($"""                yield return new PartOfRelationInformation("{daRelation}", "{oneSide.ToUpperInvariant()}", "{manySide.ToUpperInvariant()}");""");
+
+			}
+			schemaInfos.Add(schema.ToString(), sb);
         }
         var source = stub;
         foreach (var schema in schemaInfos.Keys.OrderBy(x => x))
@@ -69,7 +36,44 @@ public class IfcSchema_PartOfRelationGenerator
         return source;
     }
 
-    private static IEnumerable<string> GetRelationNames()
+	private static void GetMultipleRelationChain(ExpressMetaData metaD, string[] relationChainNames, out string manySide, out string oneSide)
+	{
+		oneSide = string.Empty;
+		// Debug.WriteLine($"Iterating relation type: {string.Join(",", relationChainNames)} for {metaD.Module.Name}");
+		manySide = GetManySide(metaD, GetExpress(metaD, relationChainNames[0])); // get the many side of the first relation in the chain
+		oneSide = GetOneSide(metaD, relationChainNames[relationChainNames.Length - 1]); // get the one side of the last relation in the chain
+	}
+
+	private static string GetOneSide(ExpressMetaData metaD, string iteratingRelationType)
+	{
+		// Debug.WriteLine($"    Searching for one side by 'Relating' name");
+		var propOnOneSide = GetExpress(metaD, iteratingRelationType).GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Relating"));
+		return propOnOneSide.GetExpressTypeDefinition()?.ToUpper() ?? "";
+	}
+
+	private static string GetManySide(ExpressMetaData metaD, ExpressType relationType)
+	{
+		// Debug.WriteLine($"    searching for many side by single enumerable type");
+		var propOnManySide = relationType.GetRelevantProperties().SingleOrDefault(x => x.EnumerableType is not null);
+		if (propOnManySide is not null)
+			return propOnManySide.GetExpressTypeDefinition(XbimHelper.IncludeBuildParameters.ProcessEnumerables)?.ToUpper() ?? "";
+		// Debug.WriteLine($"    searching for many side by single 'Related' name");
+		propOnManySide = relationType.GetRelevantProperties().Single(x => x.EnumerableType is null && x.Name.StartsWith("Related"));
+		if (propOnManySide is not null)
+			return propOnManySide.GetExpressTypeDefinition(XbimHelper.IncludeBuildParameters.ProcessSingleValues)?.ToUpper() ?? "";
+		return "";
+	}
+
+	private static ExpressType GetExpress(ExpressMetaData metaD, string iteratingRelationType)
+	{
+		// Debug.WriteLine($"  Iterating relation type: {iteratingRelationType}");
+		var relationType = metaD.ExpressType(iteratingRelationType.ToUpperInvariant());
+		if (relationType is null)
+			throw new InvalidOperationException($"Relation type not found: {iteratingRelationType}");
+		return relationType;
+	}
+
+	private static IEnumerable<string> GetRelationNames()
     {
         yield return "IFCRELAGGREGATES";
         yield return "IFCRELASSIGNSTOGROUP";

@@ -73,25 +73,33 @@ public class IfcSchemaTests
 	[InlineData("OwnerHistory", IfcSchemaVersions.Ifc2x3 | IfcSchemaVersions.Ifc4 | IfcSchemaVersions.Ifc4x3, new[] { "IfcOwnerHistory" })]
 	[InlineData("RibWidth", IfcSchemaVersions.Ifc2x3, new[] { "IfcPositiveLengthMeasure" })]
 	[InlineData("CurveInterpolation", IfcSchemaVersions.Ifc4, new[] { "IfcCurveInterpolationEnum" })]
-	public void HasAttributeInformation(string attrubuteName, IfcSchemaVersions schemas, string[]? expected = null)
+	[InlineData("OverallHeight", IfcSchemaVersions.Ifc4x3, new[] { "IfcPositiveLengthMeasure" })]
+	public void HasAttributeDataType(string attributeName, IfcSchemaVersions schemas, string[]? expected = null)
 	{
 		var oneSchema = false;
 		foreach (var schema in SchemaInfo.GetSchemas(schemas))
 		{
-			XunitOutputHelper.WriteLine($"Testing schema {schema.Version} for attribute {attrubuteName}");
+			XunitOutputHelper.WriteLine($"Testing schema {schema.Version} for attribute {attributeName}");
 			oneSchema = true;
-			var fnd = schema.GetAttributesIfcTypes([attrubuteName]);
-			fnd.Should().NotBeNull();
+			var ifcTypesWithAttribute = schema.GetAttributesIfcTypes([attributeName]);
+			ifcTypesWithAttribute.Should().NotBeNull();
 			if (expected is not null)
 			{
-				fnd.Should().HaveCount(expected.Length);
+				XunitOutputHelper.WriteLine($"Types with attribute {attributeName} in schema {schema.Version}: {string.Join(", ", ifcTypesWithAttribute)}");
+				ifcTypesWithAttribute.Should().HaveCount(expected.Length);
 				foreach (var exp in expected)
 				{
-					fnd.Should().Contain(exp);
+					ifcTypesWithAttribute.Should().Contain(exp);
 				}
 			}
-			else 
-				fnd.Should().NotBeEmpty();
+			else
+			{
+				ifcTypesWithAttribute.Should().NotBeEmpty();
+				XunitOutputHelper.WriteLine($"Types with attribute {attributeName} in schema {schema.Version}: {string.Join(", ", ifcTypesWithAttribute)}");
+			}
+			
+
+			XunitOutputHelper.WriteLine($"");
 		}
 		oneSchema.Should().BeTrue("at least one schema should be tested");
 	}
